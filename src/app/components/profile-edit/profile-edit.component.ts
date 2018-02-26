@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserProfile } from '../../models/userProfile';
 
 @Component({
   selector: 'app-profile-edit',
@@ -7,21 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileEditComponent implements OnInit {
 
-  name: string;
-  firmName: string;
-  registeredAddress: string;
-  officeAddress: string;
-  landlineNo: string;
-  fax: string;
-  website: string;
-  panNo : string;
-  gstNo : string;
-  bankAccountName : string;
-  bankAccountNo : string;
-  bankName : string;
-  bankIfsc : string;
-  bankBranchAddress : string;
-  bankAccountType : string;
+  profile: UserProfile = new UserProfile("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
 
   constructor() { }
 

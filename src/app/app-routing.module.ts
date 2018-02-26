@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './components/app/app.component'
+
 import { HomeComponent } from './components/home/home.component';
 import { PlanSelectorComponent } from './components/plan-selector/plan-selector.component';
 import { PhoneVerifyComponent } from './components/phone-verify/phone-verify.component';
@@ -11,9 +11,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 
 const routes: Routes = [
-  // { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: '', component: HomeComponent },
-  // { path: 'home', component: HomeComponent },
   { path: 'plan', component: PlanSelectorComponent },
   { path: 'otp', component: PhoneVerifyComponent },
   { path: 'login', component: LoginComponent },

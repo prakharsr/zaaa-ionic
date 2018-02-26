@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
+import { map } from 'rxjs/operators/map';
 
 import { Plan } from '../models/plan';
 import { Template } from '../models/template';
@@ -17,7 +18,7 @@ export class ApiService {
 
   private _authToken: string;
 
-  get authToken() : string {
+  private get authToken() : string {
     if (!this._authToken)
     {
       this._authToken = this.windowService.window.localStorage.getItem(this.authTokenKey);
@@ -37,7 +38,7 @@ export class ApiService {
     return new User("Mathew Sachin", "Mathew.Sachin@outlook.com", "8527852352");
   }
 
-  set authToken(authToken: string) {
+  private set authToken(authToken: string) {
     if (!authToken) {
       this._authToken = '';
       this.windowService.window.localStorage.removeItem(this.authTokenKey);
@@ -50,26 +51,87 @@ export class ApiService {
 
   constructor(private http: HttpClient, private windowService: WindowService) { }
 
-  signup(email: string, password: string)
-  {
-    //this.http.post("http://localhost:8080/api/signup", {
-    //  name: email,
-    //  password: password
-    //})//.subscribe(data => this.debug = JSON.stringify(data),
-     //error => this.debug = JSON.stringify(error));
+  private baseUrl = "http://localhost:8080/api";
+
+  private post(url: string, body: any) : Observable<any> {
+
+    if (this.authToken)
+    {
+        return this.http.post(this.baseUrl + url, body, { headers: { Authorization: this.authToken }});
+    }
+    else return this.http.post(this.baseUrl + url, body);
   }
 
-  login(email: string, password: string): boolean {
-    return false;
+  private get(url: string) : Observable<any> {
+
+    if (this.authToken)
+    {
+        return this.http.get(this.baseUrl + url, { headers: { Authorization: this.authToken }});
+    }
+    else return this.http.get(this.baseUrl + url);
+  }
+
+  private extractToken(base: Observable<any>) : Observable<any> {
+    return base.pipe(
+      map(data => {
+        if (data.success) {
+          this.authToken = data.token;
+
+          data.token = '';
+        }
+
+        return data;
+      })
+    );
+  }
+
+  signup(email: string, password: string) : Observable<any>
+  {
+    const base = this.post('/user/signup', {
+      email: email,
+      password: password
+    });
+
+    return this.extractToken(base);
+  }
+
+  login(emailOrPhone: string, password: string): Observable<any> {
+    
+    let base : Observable<any>;
+
+    if (emailOrPhone.indexOf('@') != -1) {
+      base = this.post("/user/login", { email: emailOrPhone, password: password });
+    }
+    else base = this.post("/user/login", { phone: emailOrPhone, password: password });
+
+    return this.extractToken(base);
+  }
+
+  logout() {
+    this.authToken = '';
   }
 
   get plans() : Observable<Plan[]> {
-    return of([
-      new Plan("Trial", 0, 2, 1, "One month trial"),
-      new Plan("Silver", 5000, 2, 1, "Small agencies"),
-      new Plan("Gold", 10000, 5, 2, "Most popular"),
-      new Plan("Platinum", 15000, 10, 3, "Maximum value"),
-    ]);
+
+    let base = this.get('/get/plans');
+
+    let result = base.pipe(
+      map(data => {
+        let arr : Plan[] = [];
+
+        data.plans.forEach(element => {
+          let plan = new Plan(element.name, element.cost, element.maxUsers, element.maxAdmins);
+
+          plan.id = element._id;
+
+          arr.push(plan);
+        });
+
+        return arr;
+      })
+    );
+
+    return result;
   }
 
   get templates() : Observable<Template[]> {
@@ -85,15 +147,23 @@ export class ApiService {
 
   set state(state: number) {}
 
-  set plan(plan: Plan) { }
+  setPlan(plan: Plan, payment: string) : Observable<any> {
+    return this.post('/user/set/plan', { planID: plan.id, paymentID: payment });
+  }
 
-  sendOtp(number: string) { }
-
-  verifyOtp(otp: string) : boolean {
-    return false;
+  verifyOtp(otp: string) : Observable<any> {
+    return this.post('/user/verify/mobile', { code: otp });
   }
 
   setTemplates(invoiceTemplate: Template,
     releaseOrderTemplate: Template,
     paymentReceiptTemplate: Template) {}
+
+  sendVerificationMail() : Observable<any> {
+    return this.post('/user/verify/email', {});
+  }
+
+  setMobile(phone: string) : Observable<any> {
+    return this.post('/user/mobile', { phone: phone });
+  }
 }
