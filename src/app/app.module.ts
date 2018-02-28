@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 // import { LocationStrategy,
          // PathLocationStrategy } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './/app-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { PlanSelectorComponent } from './components/plan-selector/plan-selector.component';
 import { PhoneVerifyComponent } from './components/phone-verify/phone-verify.component';
@@ -20,15 +20,18 @@ import { TemplateSelectorComponent } from './components/template-selector/templa
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 import { TemplateSelectorItemComponent } from './components/template-selector-item/template-selector-item.component';
-
 import { ApiService } from './services/api.service';
 import { RazorPayService } from './services/razorpay.service';
 import { WindowService } from './services/window.service';
+import { CoUsersComponent } from './components/co-users/co-users.component';
+import { ProfileViewComponent } from './components/profile-view/profile-view.component';
 import { AppComponent } from './components/app/app.component';
+import { NewCoUserComponent } from './components/new-co-user/new-co-user.component';
 
 @NgModule({
   declarations: [
     MyApp,
+    AppComponent,
     NavbarComponent,
     HomeComponent,
     PlanSelectorComponent,
@@ -39,7 +42,9 @@ import { AppComponent } from './components/app/app.component';
     RegisterComponent,
     ProfileEditComponent,
     TemplateSelectorItemComponent,
-    AppComponent
+    CoUsersComponent,
+    ProfileViewComponent,
+    NewCoUserComponent
   ],
   imports: [
     BrowserModule,

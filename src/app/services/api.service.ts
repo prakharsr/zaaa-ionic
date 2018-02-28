@@ -85,9 +85,10 @@ export class ApiService {
     );
   }
 
-  signup(email: string, password: string) : Observable<any>
+  signup(name: string, email: string, password: string) : Observable<any>
   {
     const base = this.post('/user/signup', {
+      name: name,
       email: email,
       password: password
     });
@@ -111,27 +112,21 @@ export class ApiService {
     this.authToken = '';
   }
 
-  get plans() : Observable<Plan[]> {
+  get plans() : Observable<any> {
+    return this.get('/plans');
+  }
 
-    let base = this.get('/get/plans');
+  get coUsers() : Observable<any> {
+    return this.get('/user/co-user');
+  }
 
-    let result = base.pipe(
-      map(data => {
-        let arr : Plan[] = [];
-
-        data.plans.forEach(element => {
-          let plan = new Plan(element.name, element.cost, element.maxUsers, element.maxAdmins);
-
-          plan.id = element._id;
-
-          arr.push(plan);
-        });
-
-        return arr;
-      })
-    );
-
-    return result;
+  createCoUser(name: string, email: string, phone: string, password: string) : Observable<any> {
+    return this.post('/user/co-user', {
+      name: name,
+      email: email,
+      phone: phone,
+      password: password
+    });
   }
 
   get templates() : Observable<Template[]> {
@@ -141,14 +136,16 @@ export class ApiService {
     ]);
   }
 
-  get state() : number {
-    return 0;
+  getState() : Observable<number> {
+    return this.get('/user/state');
   }
 
-  set state(state: number) {}
+  setState(state: number) : Observable<any> {
+    return this.post('/user/state', { state: state });
+  }
 
   setPlan(plan: Plan, payment: string) : Observable<any> {
-    return this.post('/user/set/plan', { planID: plan.id, paymentID: payment });
+    return this.post('/user/plan', { planID: plan.id, paymentID: payment });
   }
 
   verifyOtp(otp: string) : Observable<any> {
@@ -166,4 +163,5 @@ export class ApiService {
   setMobile(phone: string) : Observable<any> {
     return this.post('/user/mobile', { phone: phone });
   }
+
 }

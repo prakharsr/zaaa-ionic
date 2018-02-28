@@ -1,3 +1,10 @@
+<br><br>
+<div class="text-center">
+  <h2>Select Plan</h2>
+  <small>The Trial plan is available for a period of 1 month.</small>
+</div>
+<br>
+
 <div class="planContainer">
     <div *ngFor="let plan of plans" class="plan">
       <div class="titleContainer">
@@ -14,4 +21,4 @@
         </ul><a class="selectPlan" [class.disabled]="paid" (click)="selectPlan(plan)">Select Plan</a>
       </div>
     </div>
-</div>
+  </div>
