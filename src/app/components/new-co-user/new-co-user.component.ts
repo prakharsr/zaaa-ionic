@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CoUser } from '../../models/coUser';
 import { ApiService } from '../../services/api.service';
+import { UserRoles } from '../../models/userRoles';
 
 @Component({
   selector: 'app-new-co-user',
@@ -14,7 +15,7 @@ export class NewCoUserComponent implements OnInit {
   phone: string;
   password: string;
   cpassword: string;
-
+  roles = new UserRoles();
 
   @Output() done = new EventEmitter<CoUser>();
   @Output() cancel = new EventEmitter<boolean>();
@@ -33,7 +34,13 @@ export class NewCoUserComponent implements OnInit {
 
           coUser.id = data.msg;
 
-          this.done.emit(coUser);
+          this.api.setRoles(coUser.id, this.roles).subscribe(d => {
+            if (data.success) {
+              coUser.roles = this.roles;
+
+              this.done.emit(coUser);
+            }
+          });
         }
       }
     );
