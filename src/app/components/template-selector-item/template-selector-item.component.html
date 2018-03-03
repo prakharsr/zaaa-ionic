@@ -6,9 +6,18 @@
 <div class="text-center">
   <p>{{selectedTemplate.name}}</p>
 
-  <img [src]="selectedTemplate.imgUrl">
+  <img [src]="selectedTemplate.imgUrl" class="img-fluid">
 
   <br><br>
+
+  <form>
+    <div class="form-group">
+      <label for="tnc">Terms and Conditions</label>
+      <textarea class="form-control" name="tnc" id="tnc" [(ngModel)]="tnc" placeholder="Enter Terms and Conditions"></textarea>
+    </div>
+  </form>
+
+  <br>
 
   <button class="btn btn-primary" [disabled]="selectedIndex == 0" (click)="PrevTemplate()">Previous</button>
       

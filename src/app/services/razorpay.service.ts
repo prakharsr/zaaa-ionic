@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
+import { WindowService } from './window.service';
+
 import { environment } from '../../environments/environment';
 
 @Injectable()
 export class RazorPayService {
 
-    constructor() {
+    constructor(private windowService: WindowService) {
     }
 
     public initPay(number: string,
@@ -24,17 +26,20 @@ export class RazorPayService {
         },
         theme: {
           color: "#f37254"
-        }
-        ,
-         handler: callback
+        },
+        handler: callback
       };
-      
+
       var successCallback = function(success) {
         callback(success)
       }
+
+      var cancelCallback = function(error) {
+        callback(error)
+      }
       
       RazorpayCheckout.on('payment.success', successCallback)
+      RazorpayCheckout.on('payment.cancel', cancelCallback)
       RazorpayCheckout.open(options)
-    
     }
 }

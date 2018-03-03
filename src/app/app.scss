@@ -7,10 +7,27 @@
 // styles are for the entire app and not just one component.
 // Additionally, this file can be also used as an entry point
 // to import other Sass files to be included in the output CSS.
-//
+
 // Shared Sass variables, which can be used to adjust Ionic's
 // default Sass variables, belong in "theme/variables.scss".
-//
+
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.max-w-200 {
+    max-width: 200px;
+}
+
+.hidden-file {
+    position: fixed;
+    right: 100%;
+    bottom: 100%;
+}
+
+.file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}

@@ -12,6 +12,11 @@ import { User } from '../models/user';
 import { WindowService } from './window.service';
 import { UserRoles } from '../models/userRoles';
 
+import { environment } from '../../environments/environment';
+import { UserProfile } from '../models/userProfile';
+import { Firm } from '../models/firm';
+import { CoUser } from '../models/coUser';
+
 @Injectable()
 export class ApiService {
 
@@ -35,10 +40,6 @@ export class ApiService {
     return false;
   }
 
-  get loggedInUser() : User {
-    return new User("Mathew Sachin", "Mathew.Sachin@outlook.com", "8527852352");
-  }
-
   private set authToken(authToken: string) {
     if (!authToken) {
       this._authToken = '';
@@ -52,24 +53,53 @@ export class ApiService {
 
   constructor(private http: HttpClient, private windowService: WindowService) { }
 
-  private baseUrl = "http://localhost:8080/api";
+  private get headers() {
+    return { headers: { Authorization: this.authToken }};
+  }
 
   private post(url: string, body: any) : Observable<any> {
 
     if (this.authToken)
     {
-        return this.http.post(this.baseUrl + url, body, { headers: { Authorization: this.authToken }});
+        return this.http.post(environment.apiUrl + url, body, this.headers);
     }
-    else return this.http.post(this.baseUrl + url, body);
+    else return this.http.post(environment.apiUrl + url, body);
   }
 
   private get(url: string) : Observable<any> {
 
     if (this.authToken)
     {
-        return this.http.get(this.baseUrl + url, { headers: { Authorization: this.authToken }});
+        return this.http.get(environment.apiUrl + url, this.headers);
     }
-    else return this.http.get(this.baseUrl + url);
+    else return this.http.get(environment.apiUrl + url);
+  }
+
+  private delete(url: string) : Observable<any> {
+    return this.http.delete(environment.apiUrl + url, this.headers);
+  }
+
+  deleteCoUser(coUser: CoUser) : Observable<any> {
+    return this.delete('/user/co_user/' + coUser.id);
+  }
+
+  private fileUpload(url: string, key: string, fileToUpload: File) : Observable<any> {
+    const formData = new FormData();
+    formData.append(key, fileToUpload, fileToUpload.name);
+
+    return this.http.post(environment.apiUrl + url, formData, this.headers);
+  }
+
+  uploadProfilePicture(fileToUpload: File) : Observable<any> {
+    return this.fileUpload("/user/image", "user", fileToUpload);
+  }
+
+  uploadSign(fileToUpload: File) : Observable<any> {
+    return this.fileUpload("/user/sign", "sign", fileToUpload);
+  }
+  
+  uploadFirmLogo(fileToUpload: File) : Observable<any> {
+    return this.fileUpload("/firm/logo", "logo", fileToUpload);
   }
 
   private extractToken(base: Observable<any>) : Observable<any> {
@@ -137,14 +167,6 @@ export class ApiService {
     ]);
   }
 
-  getState() : Observable<number> {
-    return this.get('/user/state');
-  }
-
-  setState(state: number) : Observable<any> {
-    return this.post('/user/state', { state: state });
-  }
-
   setPlan(plan: Plan, payment: string) : Observable<any> {
     return this.post('/user/plan', { planID: plan.id, paymentID: payment });
   }
@@ -156,10 +178,6 @@ export class ApiService {
   setTemplates(invoiceTemplate: Template,
     releaseOrderTemplate: Template,
     paymentReceiptTemplate: Template) {}
-
-  sendVerificationMail() : Observable<any> {
-    return this.post('/user/verify/email', {});
-  }
 
   setMobile(phone: string) : Observable<any> {
     return this.post('/user/mobile', { phone: phone });
@@ -176,6 +194,134 @@ export class ApiService {
       media_house: roles.media_house,
       clients: roles.clients,
       executives: roles.executives 
+    });
+  }
+
+  getUser() : Observable<any> {
+    return this.get('/user/profile');
+  }
+
+  getUserProfile() : Observable<UserProfile> {
+    let base = this.get('/user/profile');
+
+    let result = base.pipe(
+      map(data => {
+        let profile = new UserProfile();
+
+        if (data.success) {
+          profile.name = data.user.name;
+          profile.designation = data.user.designation;
+
+          if (data.user.photo) {
+            profile.photo = environment.uploadsBaseUrl + data.user.photo;
+          }
+
+          if (data.user.signature) {
+            profile.sign = environment.uploadsBaseUrl + data.user.signature;
+          }
+
+          if (data.user.Socials) {
+            profile.facebook = data.user.Socials.fb;
+            profile.twitter = data.user.Socials.twitter;
+            profile.other = data.user.Socials.other;
+          }
+        }
+
+        return profile;
+      })
+    );
+
+    return result;
+  }
+
+  setUserProfile(userProfile: UserProfile) : Observable<any> {
+    return this.post('/user/profile', {
+      name: userProfile.name,
+      designation: userProfile.designation,
+      fb: userProfile.facebook,
+      twitter: userProfile.twitter,
+      other: userProfile.other
+    });
+  }
+
+  resetPsw(email: string): Observable<any> {
+    return this.post('/user/resetpassword', {
+      email: email
+    });
+  }
+  
+  getFirm() : Observable<any> {
+    return this.get('/firm/profile');
+  }
+
+  getFirmProfile() : Observable<Firm> {
+    let base = this.get('/firm/profile');
+
+    let result = base.pipe(
+      map(data => {
+        let profile = new Firm();
+
+        if (data.success) {
+          profile.name = data.firm.FirmName;
+          profile.tagline = data.firm.TagLine;
+          profile.nickname = data.firm.DisplayName;
+          profile.fax = data.firm.Fax;
+          profile.landlineNo = data.firm.Landline;
+          profile.website = data.firm.Website;
+          profile.panNo = data.firm.PanNo;
+          profile.gstNo = data.firm.GSTIN;
+          profile.registeredAddress = data.firm.RegisteredAddress;
+          profile.officeAddress = data.firm.OfficeAddress;
+
+          if (data.firm.LogoURL) {
+            profile.logo = environment.uploadsBaseUrl + data.firm.LogoURL;
+          }
+
+          if (data.firm.BankDetails) {
+            let bank = data.firm.BankDetails;
+
+            profile.bankAccountName = bank.AccountName;
+            profile.bankAccountNo = bank.AccountNo;
+            profile.bankName = bank.BankName;
+            profile.bankIfsc = bank.IFSC;
+            profile.bankBranchAddress = bank.BranchAddress;
+            profile.bankAccountType = bank.AccountType;
+          }
+        }
+
+        return profile;
+      })
+    );
+
+    return result;
+  }
+
+  setFirmProfile(firm: Firm) : Observable<any> {
+    return this.post('/firm/profile', {
+      name: firm.name,
+      tagline: firm.tagline,
+      displayName: firm.nickname,
+      registeredAddress: firm.registeredAddress,
+      officeAddress: firm.officeAddress,
+      fax: firm.fax,
+      landline: firm.landlineNo,
+      website: firm.website,
+      pan: firm.panNo,
+      gst: firm.gstNo,
+
+      accountName: firm.bankAccountName,
+      accountNo: firm.bankAccountNo,
+      ifsc: firm.bankIfsc,
+      bankName: firm.bankName,
+      bankAddress: firm.bankBranchAddress,
+      accountType: firm.bankAccountType
+    });
+  }
+
+  changePassword(oldPassword: string, newPassword: string) : Observable<any> {
+    return this.post('/user/changePassword', {
+      oldPassword: oldPassword,
+      newPassword: newPassword
     });
   }
 }

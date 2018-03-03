@@ -1,35 +1,51 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { ApiService } from '../../services/api.service';
+import { routerAnimation } from '../../animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
+  animations: [routerAnimation],
   templateUrl: './register.component.html',
   // styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
 
-  state: number = 0;
+  @HostBinding('@routeAnimation') routeAnimation = true;
 
-  constructor(private api: ApiService) { }
+  name: string;
+  email: string;
+  password: string;
+  cpassword: string;
+  error: string;
 
-  ngOnInit() {
-    this.api.getState().subscribe(
-      data => this.state = data
-    );
+  constructor(private api: ApiService, private router: Router) { }
+
+  ngOnInit() { }
+
+  GoToDashboard() : void {
+    this.router.navigateByUrl('/dashboard');
   }
 
-  prev() {
-    --this.state;
-  }
-
-  next() {
-    ++this.state;
-  }
-
-  NextState() : void
+  submit()
   {
-    ++this.state;
+    this.error = '';
 
-    this.api.setState(this.state);
+    this.api.signup(this.name, this.email, this.password).subscribe(
+      data => {
+        if (data.success) {
+          this.GoToDashboard();
+        }
+        else {
+          console.log(data);
+
+          this.error = data.msg;
+        }
+      },
+      err => {
+        this.error = "Connection failed";
+        console.log(err);
+      }
+    );
   }
 }

@@ -11,11 +11,14 @@ import { UserRoles } from '../../models/userRoles';
 export class NewCoUserComponent implements OnInit {
 
   name: string;
+  designation: string;
   email: string;
   phone: string;
   password: string;
   cpassword: string;
   roles = new UserRoles();
+
+  error: string;
 
   @Output() done = new EventEmitter<CoUser>();
   @Output() cancel = new EventEmitter<boolean>();
@@ -26,22 +29,44 @@ export class NewCoUserComponent implements OnInit {
   }
 
   submit() {
+    this.error = '';
+
     this.api.createCoUser(this.name, this.email, this.phone, this.password).subscribe(
       data => {
         if (data.success)
         {
-          let coUser = new CoUser(this.name, this.email, this.phone);
+          let coUser = new CoUser(this.name, this.designation, this.email, this.phone);
 
           coUser.id = data.msg;
 
           this.api.setRoles(coUser.id, this.roles).subscribe(d => {
-            if (data.success) {
+            if (d.success) {
               coUser.roles = this.roles;
 
               this.done.emit(coUser);
             }
+            else {
+              console.log(d);
+
+              this.error = d.msg;
+            }
+          },
+          err => {
+            console.log(err);
+
+            this.error = 'Connection failed';
           });
         }
+        else {
+          console.log(data);
+
+          this.error = data.msg;
+        }
+      },
+      err => {
+        console.log(err);
+
+        this.error = 'Connection failed';
       }
     );
   }
