@@ -6,8 +6,13 @@ export class Firm {
     fax: string;
     website: string;
 
+    email: string;
+    phone: string;
+
     panNo : string;
     gstNo : string;
+
+    incDate: Date;
 
     bankAccountName : string;
     bankAccountNo : string;

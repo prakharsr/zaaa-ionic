@@ -2,7 +2,6 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { UserProfile } from '../../models/userProfile';
 import { routerAnimation } from '../../animations';
 import { ApiService } from '../../services/api.service';
-import { User } from '../../models/user';
 
 @Component({
   selector: 'app-profile-view',
@@ -15,7 +14,6 @@ export class ProfileViewComponent implements OnInit {
   @HostBinding('@routeAnimation') routeAnimation = true;
 
   profile = new UserProfile();
-  // profile : UserProfile;
 
   constructor(private api: ApiService) { }
 

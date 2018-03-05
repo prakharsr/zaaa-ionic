@@ -1,42 +1,48 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuardService } from './services/auth-guard.service';
-import { PhoneVerifyGuardService } from './services/phone-verify-guard.service';
+import { AuthGuard } from './guards/auth-guard.service';
+import { PhoneVerifyGuard } from './guards/phone-verify-guard.service';
+import { AdminGuard } from './guards/admin-guard.service';
+import { PlanGuard } from './guards/plan-guard.service';
 
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 import { ProfileViewComponent } from './components/profile-view/profile-view.component';
 import { CoUsersComponent } from './components/co-users/co-users.component';
-import { TemplateSelectorComponent } from './components/template-selector/template-selector.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FirmProfileViewComponent } from './components/firm-profile-view/firm-profile-view.component';
-import { FirmProfileEditComponent } from './components/firm-profile-edit/firm-profile-edit.component';
 import { PhoneVerifyComponent } from './components/phone-verify/phone-verify.component';
-import { AdminGuardService } from './services/admin-guard.service';
-import { PlanSelectorComponent } from './components/plan-selector/plan-selector.component';
-import { PlanGuardService } from './services/plan-guard.service';
 import { ChangePswComponent } from './components/change-psw/change-psw.component';
 import { ForgotPswComponent } from './components/forgot-psw/forgot-psw.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { CanDeactiveGuard } from './guards/can-deactive-guard.service';
+
+import { FirmProfileEditComponent } from './admin/firm-profile-edit/firm-profile-edit.component';
+import { NewCoUserComponent } from './admin/new-co-user/new-co-user.component';
+import { ProfileEditComponent } from './admin/profile-edit/profile-edit.component';
+import { TemplateSelectorComponent } from './admin/template-selector/template-selector.component';
+import { PlanSelectorComponent } from './admin/plan-selector/plan-selector.component';
+import { RoleEditComponent } from './admin/role-edit/role-edit.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: "register", component: RegisterComponent },
   { path: 'forgotPassword', component: ForgotPswComponent },
-  { path: "verify/mobile", component: PhoneVerifyComponent, canActivate: [AuthGuardService] },
-  { path: "profile/edit", component: ProfileEditComponent, canActivate: [AdminGuardService, PhoneVerifyGuardService, PlanGuardService] },
-  { path: "profile", component: ProfileViewComponent, canActivate: [AuthGuardService, PhoneVerifyGuardService, PlanGuardService] },
-  { path: "firm", component: FirmProfileViewComponent, canActivate: [AuthGuardService, PhoneVerifyGuardService, PlanGuardService] },
-  { path: "firm/edit", component: FirmProfileEditComponent, canActivate: [AdminGuardService, PhoneVerifyGuardService, PlanGuardService] },
-  { path: 'coUsers', component: CoUsersComponent, canActivate: [AuthGuardService, PhoneVerifyGuardService, PlanGuardService] },
-  { path: 'templates', component: TemplateSelectorComponent, canActivate: [AdminGuardService, PhoneVerifyGuardService, PlanGuardService] },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService, PhoneVerifyGuardService, PlanGuardService] },
-  { path: 'plan', component: PlanSelectorComponent, canActivate: [AuthGuardService, AdminGuardService] },
-  { path: 'changePassword', component: ChangePswComponent, canActivate: [AuthGuardService] },
+  { path: "verify/mobile", component: PhoneVerifyComponent, canActivate: [AuthGuard] },
+  { path: "profile/edit", component: ProfileEditComponent, canActivate: [AuthGuard, PhoneVerifyGuard, PlanGuard], canDeactivate: [CanDeactiveGuard] },
+  { path: "profile", component: ProfileViewComponent, canActivate: [AuthGuard, PhoneVerifyGuard, PlanGuard] },
+  { path: "firm", component: FirmProfileViewComponent, canActivate: [AuthGuard, PhoneVerifyGuard, PlanGuard] },
+  { path: "firm/edit", component: FirmProfileEditComponent, canActivate: [AdminGuard, PhoneVerifyGuard, PlanGuard], canDeactivate: [CanDeactiveGuard] },
+  { path: 'coUsers', component: CoUsersComponent, canActivate: [AuthGuard, PhoneVerifyGuard, PlanGuard] },
+  { path: 'coUsers/new', component: NewCoUserComponent, canActivate: [AdminGuard, PhoneVerifyGuard, PlanGuard], canDeactivate: [CanDeactiveGuard] },
+  { path: 'coUsers/:id', component: RoleEditComponent, canActivate: [AdminGuard, PhoneVerifyGuard, PlanGuard] },
+  { path: 'templates', component: TemplateSelectorComponent, canActivate: [AdminGuard, PhoneVerifyGuard, PlanGuard] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard, PhoneVerifyGuard, PlanGuard] },
+  { path: 'plan', component: PlanSelectorComponent, canActivate: [AuthGuard, AdminGuard] },
+  { path: 'changePassword', component: ChangePswComponent, canActivate: [AuthGuard] },
   { path: '**', component: NotFoundComponent }
 ];
 

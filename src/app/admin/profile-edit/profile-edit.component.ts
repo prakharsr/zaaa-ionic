@@ -1,8 +1,10 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit, HostBinding, ViewChild } from '@angular/core';
 import { UserProfile } from '../../models/userProfile';
 import { routerAnimation } from '../../animations';
 import { ApiService } from '../../services/api.service';
 import { environment } from '../../../environments/environment';
+import { CanComponentDeactivate } from '../../guards/canComponentDeactivate';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-profile-edit',
@@ -10,12 +12,13 @@ import { environment } from '../../../environments/environment';
   templateUrl: './profile-edit.component.html',
   // styleUrls: ['./profile-edit.component.css']
 })
-export class ProfileEditComponent implements OnInit {
+export class ProfileEditComponent implements OnInit, CanComponentDeactivate {
 
   @HostBinding('@routeAnimation') routeAnimation = true;
 
+  @ViewChild('profileForm') profileForm: NgForm;
+
   profile = new UserProfile();
-  // profile: UserProfile;
   error: string;
   success: string;
 
@@ -23,6 +26,10 @@ export class ProfileEditComponent implements OnInit {
 
   ngOnInit() {
     this.api.getUserProfile().subscribe(data => this.profile = data);
+  }
+
+  canDeactivate() {
+    return !this.profileForm.dirty;
   }
 
   uploadProfilePicture(files: FileList) {
