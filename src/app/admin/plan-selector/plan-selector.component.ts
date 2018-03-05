@@ -5,6 +5,11 @@ import { RazorPayService } from '../../services/razorpay.service';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { WindowService } from '../../services/window.service';
+import { NavController, NavParams } from 'ionic-angular';
+import { DashboardComponent } from '../../components/dashboard/dashboard.component';
+import { environment } from '../../../environments/environment';
+import { EmptyComponent } from '../empty/empty.component';
+import { HomeComponent } from '../../components/home/home.component';
 
 @Component({
   selector: 'app-plan-selector',
@@ -23,7 +28,9 @@ export class PlanSelectorComponent implements OnInit {
     private razorPay: RazorPayService,
     private appRef: ApplicationRef,
     private router: Router,
-    private winRef: WindowService) { }
+    private winRef: WindowService,
+    public navCtrl: NavController,
+    public navParams: NavParams ) { }
 
   ngOnInit() {
     this.api.plans.subscribe(data => {
@@ -59,11 +66,8 @@ export class PlanSelectorComponent implements OnInit {
 
           this.api.setPlan(plan, response.razorpay_payment_id).subscribe(
             data => {
-              // redirect
-              // this.winRef.window.location.pathname = '/dashboard';
-              this.router.navigateByUrl('/dashboard');
-              
-              this.appRef.tick();
+                this.appRef.tick();
+                this.navCtrl.push(EmptyComponent);
             },
             err => alert("Plan was not saved.\n\nContact support with reference no: " + response.razorpay_payment_id)
           );

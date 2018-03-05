@@ -9,6 +9,7 @@ import { RoleControlComponent } from './role-control/role-control.component';
 import { RoleEditComponent } from './role-edit/role-edit.component';
 import { TemplateSelectorItemComponent } from './template-selector-item/template-selector-item.component';
 import { TemplateSelectorComponent } from './template-selector/template-selector.component';
+import { EmptyComponent } from './empty/empty.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { TemplateSelectorComponent } from './template-selector/template-selector
     RoleControlComponent,
     RoleEditComponent,
     TemplateSelectorItemComponent,
-    TemplateSelectorComponent
+    TemplateSelectorComponent,
+    EmptyComponent
   ]
 })
 export class AdminModule { }

@@ -25,9 +25,11 @@ import { ProfileEditComponent } from './admin/profile-edit/profile-edit.componen
 import { TemplateSelectorComponent } from './admin/template-selector/template-selector.component';
 import { PlanSelectorComponent } from './admin/plan-selector/plan-selector.component';
 import { RoleEditComponent } from './admin/role-edit/role-edit.component';
+import { EmptyComponent } from './admin/empty/empty.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'empty', component: EmptyComponent},
   { path: 'login', component: LoginComponent },
   { path: "register", component: RegisterComponent },
   { path: 'forgotPassword', component: ForgotPswComponent },

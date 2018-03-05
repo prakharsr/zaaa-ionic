@@ -1,4 +1,4 @@
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule, NavController } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
@@ -30,6 +30,8 @@ import { ChangePswComponent } from './components/change-psw/change-psw.component
 import { ForgotPswComponent } from './components/forgot-psw/forgot-psw.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -45,7 +47,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     FirmProfileViewComponent,
     ChangePswComponent,
     ForgotPswComponent,
-    NotFoundComponent,
+    NotFoundComponent
   ],
   imports: [
     IonicModule.forRoot(MyApp),    
