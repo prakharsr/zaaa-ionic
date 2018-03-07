@@ -17,6 +17,7 @@ import { PhoneVerifyGuard } from './guards/phone-verify-guard.service';
 import { AdminGuard } from './guards/admin-guard.service';
 import { PlanGuard } from './guards/plan-guard.service';
 import { CanDeactiveGuard } from './guards/can-deactive-guard.service';
+import { IonicModule } from 'ionic-angular';
 
 @NgModule({
   imports: [

@@ -13,7 +13,7 @@
     
       <div class="form-group form-row">
         <label class="col-md-3 col-form-label" for="name">Name</label>
-        <input type="text" class="form-control col-md-9" id="name" name="name" placeholder="Enter name" [(ngModel)]="profile.name" required #nameField="ngModel">
+        <ion-input type="text" class="form-control col-md-9" id="name" name="name" placeholder="Enter name" [(ngModel)]="profile.name" required #nameField="ngModel"></ion-input>
       </div>
     
       <div *ngIf="nameField.invalid && (nameField.dirty || nameField.touched)" class="text-danger">
@@ -25,7 +25,7 @@
     
       <div class="form-group form-row">
         <label class="col-md-3 col-form-label" for="designation">Designation</label>
-        <input type="text" class="form-control col-md-9" id="designation" name="designation" placeholder="Enter designation" [(ngModel)]="profile.designation" required #designationField="ngModel">
+        <ion-input type="text" class="form-control col-md-9" id="designation" name="designation" placeholder="Enter designation" [(ngModel)]="profile.designation" required #designationField="ngModel"></ion-input>
       </div>
     
       <div *ngIf="designationField.invalid && (designationField.dirty || designationField.touched)" class="text-danger">
@@ -41,17 +41,17 @@
     
       <div class="form-group form-row">
         <label class="col-md-3 col-form-label" for="nickname">Facebook</label>
-        <input type="text" class="form-control col-md-9" id="facebook" name="facebook" placeholder="Enter Facebook Link" [(ngModel)]="profile.facebook" #facebookField="ngModel">
+        <ion-input type="text" class="form-control col-md-9" id="facebook" name="facebook" placeholder="Enter Facebook Link" [(ngModel)]="profile.facebook" #facebookField="ngModel"></ion-input>
       </div>
     
       <div class="form-group form-row">
         <label class="col-md-3 col-form-label" for="nickname">Twitter</label>
-        <input type="text" class="form-control col-md-9" id="twitter" name="twitter" placeholder="Enter Twitter Link" [(ngModel)]="profile.twitter" #twitterField="ngModel">
+        <ion-input type="text" class="form-control col-md-9" id="twitter" name="twitter" placeholder="Enter Twitter Link" [(ngModel)]="profile.twitter" #twitterField="ngModel"></ion-input>
       </div>
     
       <div class="form-group form-row">
         <label class="col-md-3 col-form-label" for="nickname">Others</label>
-        <input type="text" class="form-control col-md-9" id="others" name="others" placeholder="Enter other social Link" [(ngModel)]="profile.other" #otherField="ngModel">
+        <ion-input type="text" class="form-control col-md-9" id="others" name="others" placeholder="Enter other social Link" [(ngModel)]="profile.other" #otherField="ngModel"></ion-input>
       </div>
       
       <br>
@@ -61,7 +61,7 @@
 
       <br>
 
-      <button type="submit" class="btn btn-success" [disabled]="!profileForm.form.valid">Save</button>
+      <button ion-button type="submit" class="btn btn-success" [disabled]="!profileForm.form.valid">Save</button>
     </form>
 
     <br>

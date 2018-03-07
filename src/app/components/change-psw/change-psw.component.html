@@ -5,7 +5,7 @@
 
     <div class="form-group">
       <label for="oldPassword">Old Password</label>
-      <input type="password" class="form-control" id="oldPassword" name="oldPassword" placeholder="Enter Old Password" [(ngModel)]="oldPassword" required #oldPasswordField="ngModel">
+      <ion-input type="password" class="form-control" id="oldPassword" name="oldPassword" placeholder="Enter Old Password" [(ngModel)]="oldPassword" required #oldPasswordField="ngModel"></ion-input>
     </div>
   
     <div *ngIf="oldPasswordField.invalid && (oldPasswordField.dirty || oldPasswordField.touched)" class="text-danger">
@@ -17,7 +17,7 @@
 
     <div class="form-group">
       <label for="password">New Password</label>
-      <input type="password" class="form-control" id="password" name="password" placeholder="Enter New Password" [(ngModel)]="password" required #passwordField="ngModel">
+      <ion-input type="password" class="form-control" id="password" name="password" placeholder="Enter New Password" [(ngModel)]="password" required #passwordField="ngModel"></ion-input>
     </div>
 
     <div *ngIf="passwordField.invalid && (passwordField.dirty || passwordField.touched)" class="text-danger">
@@ -29,7 +29,7 @@
 
     <div class="form-group">
       <label for="cpassword">Confirm New Password</label>
-      <input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Confirm New Password" [(ngModel)]="cpassword" required #cpasswordField="ngModel">
+      <ion-input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Confirm New Password" [(ngModel)]="cpassword" required #cpasswordField="ngModel"></ion-input>
     </div>
 
     <div *ngIf="cpasswordField.invalid && (cpasswordField.dirty || cpasswordField.touched)" class="text-danger">
@@ -53,5 +53,5 @@
 
       <br><br>
     </div>
-    <button type="submit" class="btn btn-success" [disabled]="!changePswForm.form.valid || password != cpassword">Change</button>
+    <button ion-button type="submit" class="btn btn-success" [disabled]="!changePswForm.form.valid || password != cpassword">Change</button>
  </form>

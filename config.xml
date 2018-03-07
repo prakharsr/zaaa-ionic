@@ -88,7 +88,8 @@
     <plugin name="com.razorpay.cordova" spec="git+https://github.com/razorpay/razorpay-cordova.git" />
     <allow-navigation href="http://192.168.0.105:8102" />
     <allow-navigation href="http://192.168.43.128:8100" />
+    <allow-navigation href="http://192.168.0.106:8100" />
     <engine name="browser" spec="5.0.3" />
     <engine name="android" spec="7.0.0" />
-    <allow-navigation href="http://192.168.0.106:8100" />
+    <engine name="ios" spec="4.5.4" />
 </widget>

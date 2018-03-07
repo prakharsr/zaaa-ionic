@@ -50,8 +50,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     NotFoundComponent
   ],
   imports: [
-    IonicModule.forRoot(MyApp),    
-
+    IonicModule.forRoot(MyApp),
     NgbModule.forRoot(),
     BrowserModule,
     BaseModule,
@@ -64,7 +63,19 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AppComponent
+    AppComponent,
+    NavbarComponent,
+    HomeComponent,
+    PhoneVerifyComponent,
+    LoginComponent,
+    RegisterComponent,
+    CoUsersComponent,
+    ProfileViewComponent,
+    DashboardComponent,
+    FirmProfileViewComponent,
+    ChangePswComponent,
+    ForgotPswComponent,
+    NotFoundComponent
   ],
   providers: [
     StatusBar,

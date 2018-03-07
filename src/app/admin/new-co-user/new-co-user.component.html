@@ -5,7 +5,7 @@
 
   <div class="form-group form-row">
     <label class="col-form-label col-md-3" for="name">Name</label>
-    <input type="text" class="form-control col-md-9" id="name" name="name" placeholder="Enter name" [(ngModel)]="name" required #nameField="ngModel">
+    <ion-input type="text" class="form-control col-md-9" id="name" name="name" placeholder="Enter name" [(ngModel)]="name" required #nameField="ngModel"></ion-input>
   </div>
 
   <div *ngIf="nameField.invalid && (nameField.dirty || nameField.touched)" class="text-danger">
@@ -17,7 +17,7 @@
 
   <div class="form-group form-row">
     <label class="col-form-label col-md-3" for="email">Email address</label>
-    <input type="email" class="form-control col-md-9" id="email" name="email" placeholder="Enter email" [(ngModel)]="email" required #emailField="ngModel" email>
+    <ion-input type="email" class="form-control col-md-9" id="email" name="email" placeholder="Enter email" [(ngModel)]="email" required #emailField="ngModel" email></ion-input>
   </div>
 
   <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)" class="text-danger">
@@ -32,7 +32,7 @@
 
   <div class="form-group form-row">
     <label class="col-form-label col-md-3" for="phone">Phone Number</label>
-    <input type="number" class="form-control col-md-9" id="phone" name="phone" placeholder="Enter Phone Number" [(ngModel)]="phone" required #phoneField="ngModel">
+    <ion-input type="number" class="form-control col-md-9" id="phone" name="phone" placeholder="Enter Phone Number" [(ngModel)]="phone" required #phoneField="ngModel"></ion-input>
   </div>
 
   <div *ngIf="phoneField.invalid && (phoneField.dirty || phoneField.touched)" class="text-danger">
@@ -44,7 +44,7 @@
 
   <div class="form-group form-row">
     <label class="col-form-label col-md-3" for="password">Password</label>
-    <input type="password" class="form-control col-md-9" id="password" name="password" placeholder="Enter Password" [(ngModel)]="password" required #passwordField="ngModel">
+    <ion-input type="password" class="form-control col-md-9" id="password" name="password" placeholder="Enter Password" [(ngModel)]="password" required #passwordField="ngModel"></ion-input>
   </div>
 
   <div *ngIf="passwordField.invalid && (passwordField.dirty || passwordField.touched)" class="text-danger">
@@ -56,7 +56,7 @@
 
   <div class="form-group form-row">
     <label class="col-form-label col-md-3" for="cpassword">Confirm Password</label>
-    <input type="password" class="form-control col-md-9" id="cpassword" name="cpassword" placeholder="Confirm Password" [(ngModel)]="cpassword" required #cpasswordField="ngModel">
+    <ion-input type="password" class="form-control col-md-9" id="cpassword" name="cpassword" placeholder="Confirm Password" [(ngModel)]="cpassword" required #cpasswordField="ngModel"></ion-input>
   </div>
 
   <div *ngIf="cpasswordField.invalid && (cpasswordField.dirty || cpasswordField.touched)" class="text-danger">
@@ -76,6 +76,6 @@
     <br><br>
   </div>
 
-  <button type="submit" class="btn btn-success" [disabled]="!newCoUserForm.form.valid || password != cpassword">Add</button>
-  <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+  <button ion-button type="submit" class="btn btn-success" [disabled]="!newCoUserForm.form.valid || password != cpassword">Add</button>
+  <button ion-button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
 </form>

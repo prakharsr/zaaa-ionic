@@ -1,5 +1,6 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { routerAnimation } from '../../animations';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-home',

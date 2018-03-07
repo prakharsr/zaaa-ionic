@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
+import { NavController } from 'ionic-angular';
+import { DashboardComponent } from '../dashboard/dashboard.component';
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +13,7 @@ export class NavbarComponent implements OnInit {
 
   isNavbarCollapsed = true;
 
-  constructor(public api: ApiService) { }
+  constructor(public api: ApiService, private navCtrl: NavController) { }
 
   ngOnInit() {
   }

@@ -13,7 +13,7 @@
     
       <div class="form-group form-row">
         <label class="col-md-3 col-form-label" for="firmName">Firm Name</label>
-        <input type="text" class="form-control col-md-9" id="firmName" name="firmName" placeholder="Enter Firm Name" [(ngModel)]="profile.name" required #firmNameField="ngModel">
+        <ion-input type="text" class="form-control col-md-9" id="firmName" name="firmName" placeholder="Enter Firm Name" [(ngModel)]="profile.name" required #firmNameField="ngModel"></ion-input>
       </div>
     
       <div *ngIf="firmNameField.invalid && (firmNameField.dirty || firmNameField.touched)" class="text-danger">
@@ -25,17 +25,17 @@
     
       <div class="form-group form-row">
         <label class="col-md-3 col-form-label" for="tagline">Tag Line</label>
-        <input type="text" class="form-control col-md-9" id="tagline" name="tagline" placeholder="Enter Tagline" [(ngModel)]="profile.tagline" #taglineField="ngModel">
+        <ion-input type="text" class="form-control col-md-9" id="tagline" name="tagline" placeholder="Enter Tagline" [(ngModel)]="profile.tagline" #taglineField="ngModel"></ion-input>
       </div>
     
       <div class="form-group form-row">
         <label class="col-md-3 col-form-label" for="nickname">Display / Nickname</label>
-        <input type="text" class="form-control col-md-9" id="nickname" name="nickname" placeholder="Enter Nickname" [(ngModel)]="profile.nickname" #nicknameField="ngModel">
+        <ion-input type="text" class="form-control col-md-9" id="nickname" name="nickname" placeholder="Enter Nickname" [(ngModel)]="profile.nickname" #nicknameField="ngModel"></ion-input>
       </div>
     
       <div class="form-group form-row">
         <label class="col-md-3 col-form-label" for="registeredAddress">Registered Address</label>
-        <input type="text" class="form-control col-md-9" id="registeredAddress" name="registeredAddress" placeholder="Enter Registered Address" [(ngModel)]="profile.registeredAddress" required #registeredAddressField="ngModel">
+        <ion-input type="text" class="form-control col-md-9" id="registeredAddress" name="registeredAddress" placeholder="Enter Registered Address" [(ngModel)]="profile.registeredAddress" required #registeredAddressField="ngModel"></ion-input>
       </div>
     
       <div *ngIf="registeredAddressField.invalid && (registeredAddressField.dirty || registeredAddressField.touched)" class="text-danger">
@@ -47,17 +47,17 @@
     
       <div class="form-group form-row">
         <label class="col-md-3 col-form-label" for="officeAddress">Office Address</label>
-        <input type="text" class="form-control col-md-9" id="officeAddress" name="officeAddress" placeholder="Enter Office Address" [(ngModel)]="profile.officeAddress" #officeAddressField="ngModel">
+        <ion-input type="text" class="form-control col-md-9" id="officeAddress" name="officeAddress" placeholder="Enter Office Address" [(ngModel)]="profile.officeAddress" #officeAddressField="ngModel"></ion-input>
       </div>
     
       <div class="form-group form-row">
         <label class="col-md-3 col-form-label" for="incDate">Incorporation Date</label>
-        <input type="date" class="form-control col-md-9" id="incDate" name="incDate" placeholder="Enter Incorporation Date" [(ngModel)]="profile.incDate" #incDateField="ngModel">
+        <ion-input type="date" class="form-control col-md-9" id="incDate" name="incDate" placeholder="Enter Incorporation Date" [(ngModel)]="profile.incDate" #incDateField="ngModel"></ion-input>
       </div>
 
       <div class="form-group form-row">
         <label class="col-md-3 col-form-label" for="email">Email address</label>
-        <input type="email" class="form-control col-md-9" id="email" name="email" placeholder="Enter email" [(ngModel)]="profile.email" required #emailField="ngModel" email>
+        <ion-input type="email" class="form-control col-md-9" id="email" name="email" placeholder="Enter email" [(ngModel)]="profile.email" required #emailField="ngModel" email></ion-input>
       </div>
     
       <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)" class="text-danger">
@@ -72,7 +72,7 @@
 
       <div class="form-group form-row">
         <label class="col-md-3 col-form-label" for="phone">Phone Number</label>
-        <input type="tel" [(ngModel)]="profile.phone" required class="form-control col-md-9" id="phone" name="phone" placeholder="Enter phone number" #phoneField="ngModel">
+        <ion-input type="tel" [(ngModel)]="profile.phone" required class="form-control col-md-9" id="phone" name="phone" placeholder="Enter phone number" #phoneField="ngModel"></ion-input>
       </div>
 
       <div *ngIf="phoneField.invalid && (phoneField.dirty || phoneField.touched)" class="text-danger">
@@ -84,22 +84,22 @@
     
       <div class="form-group form-row">
         <label class="col-md-3 col-form-label" for="landlineNo">Landline Number</label>
-        <input type="number" class="form-control col-md-9" id="landlineNo" name="landlineNo" placeholder="Enter Landline Number" [(ngModel)]="profile.landlineNo" #landlineNoField="ngModel">
+        <ion-input type="number" class="form-control col-md-9" id="landlineNo" name="landlineNo" placeholder="Enter Landline Number" [(ngModel)]="profile.landlineNo" #landlineNoField="ngModel"></ion-input>
       </div>
     
       <div class="form-group form-row">
         <label class="col-md-3 col-form-label" for="fax">Fax</label>
-        <input type="number" class="form-control col-md-9" id="fax" name="fax" placeholder="Enter Fax" [(ngModel)]="profile.fax" #faxField="ngModel">
+        <ion-input type="number" class="form-control col-md-9" id="fax" name="fax" placeholder="Enter Fax" [(ngModel)]="profile.fax" #faxField="ngModel"></ion-input>
       </div>
     
       <div class="form-group form-row">
         <label class="col-md-3 col-form-label" for="website">Website</label>
-        <input type="text" class="form-control col-md-9" id="website" name="website" placeholder="Enter Website" [(ngModel)]="profile.website" #websiteField="ngModel">
+        <ion-input type="text" class="form-control col-md-9" id="website" name="website" placeholder="Enter Website" [(ngModel)]="profile.website" #websiteField="ngModel"></ion-input>
       </div>
     
       <div class="form-group form-row">
         <label class="col-md-3 col-form-label" for="panNo">PAN Number</label>
-        <input type="number" class="form-control col-md-9" id="panNo" name="panNo" placeholder="Enter PAN Number" [(ngModel)]="profile.panNo" required #panNoField="ngModel">
+        <ion-input type="number" class="form-control col-md-9" id="panNo" name="panNo" placeholder="Enter PAN Number" [(ngModel)]="profile.panNo" required #panNoField="ngModel"></ion-input>
       </div>
     
       <div *ngIf="panNoField.invalid && (panNoField.dirty || panNoField.touched)" class="text-danger">
@@ -111,7 +111,7 @@
     
       <div class="form-group form-row">
         <label class="col-md-3 col-form-label" for="gstNo">GST Number</label>
-        <input type="number" class="form-control col-md-9" id="gstNo" name="gstNo" placeholder="Enter GST Number" [(ngModel)]="profile.gstNo" required #gstNoField="ngModel">
+        <ion-input type="number" class="form-control col-md-9" id="gstNo" name="gstNo" placeholder="Enter GST Number" [(ngModel)]="profile.gstNo" required #gstNoField="ngModel"></ion-input>
       </div>
     
       <div *ngIf="gstNoField.invalid && (gstNoField.dirty || gstNoField.touched)" class="text-danger">
@@ -129,7 +129,7 @@
     
       <div class="form-group form-row">
         <label class="col-md-3 col-form-label" for="bankAccountName">Account Name</label>
-        <input type="text" class="form-control col-md-9" id="bankAccountName" name="bankAccountName" placeholder="Enter Bank Account Name" [(ngModel)]="profile.bankAccountName" required #bankAccountNameField="ngModel">
+        <ion-input type="text" class="form-control col-md-9" id="bankAccountName" name="bankAccountName" placeholder="Enter Bank Account Name" [(ngModel)]="profile.bankAccountName" required #bankAccountNameField="ngModel"></ion-input>
       </div>
     
       <div *ngIf="bankAccountNameField.invalid && (bankAccountNameField.dirty || bankAccountNameField.touched)" class="text-danger">
@@ -141,7 +141,7 @@
     
       <div class="form-group form-row">
         <label class="col-md-3 col-form-label" for="bankAccountNo">Account Number</label>
-        <input type="number" class="form-control col-md-9" id="bankAccountNo" name="bankAccountNo" placeholder="Enter Bank Account NUmber" [(ngModel)]="profile.bankAccountNo" required #bankAccountNoField="ngModel">
+        <ion-input type="number" class="form-control col-md-9" id="bankAccountNo" name="bankAccountNo" placeholder="Enter Bank Account NUmber" [(ngModel)]="profile.bankAccountNo" required #bankAccountNoField="ngModel"></ion-input>
       </div>
     
       <div *ngIf="bankAccountNoField.invalid && (bankAccountNoField.dirty || bankAccountNoField.touched)" class="text-danger">
@@ -153,7 +153,7 @@
     
       <div class="form-group form-row">
         <label class="col-md-3 col-form-label" for="bankIfsc">IFSC</label>
-        <input type="text" class="form-control col-md-9" id="bankIfsc" name="bankIfsc" placeholder="Enter Bank IFSC" [(ngModel)]="profile.bankIfsc" required minlength="11" maxlength="11" #bankIfscField="ngModel" (input)="ifscChanged()">
+        <ion-input type="text" class="form-control col-md-9" id="bankIfsc" name="bankIfsc" placeholder="Enter Bank IFSC" [(ngModel)]="profile.bankIfsc" required minlength="11" maxlength="11" #bankIfscField="ngModel" (input)="ifscChanged()"></ion-input>
       </div>
     
       <div *ngIf="bankIfscField.invalid && (bankIfscField.dirty || bankIfscField.touched)" class="text-danger">
@@ -168,7 +168,7 @@
     
       <div class="form-group form-row">
         <label class="col-md-3 col-form-label" for="bankName">Bank Name</label>
-        <input type="text" class="form-control col-md-9" id="bankName" name="bankName" placeholder="Enter Bank Name" [(ngModel)]="profile.bankName" required #bankNameField="ngModel">
+        <ion-input type="text" class="form-control col-md-9" id="bankName" name="bankName" placeholder="Enter Bank Name" [(ngModel)]="profile.bankName" required #bankNameField="ngModel"></ion-input>
       </div>
     
       <div *ngIf="bankNameField.invalid && (bankNameField.dirty || bankNameField.touched)" class="text-danger">
@@ -180,7 +180,7 @@
     
       <div class="form-group form-row">
         <label class="col-md-3 col-form-label" for="bankBranchAddress">Bank Branch Address</label>
-        <input type="text" class="form-control col-md-9" id="bankBranchAddress" name="bankBranchAddress" placeholder="Enter Bank Branch Address" [(ngModel)]="profile.bankBranchAddress" required #bankBranchAddressField="ngModel">
+        <ion-input type="text" class="form-control col-md-9" id="bankBranchAddress" name="bankBranchAddress" placeholder="Enter Bank Branch Address" [(ngModel)]="profile.bankBranchAddress" required #bankBranchAddressField="ngModel"></ion-input>
       </div>
     
       <div *ngIf="bankBranchAddressField.invalid && (bankBranchAddressField.dirty || bankBranchAddressField.touched)" class="text-danger">
@@ -205,7 +205,7 @@
 
       <br>
     
-      <button type="submit" class="btn btn-success" [disabled]="!profileForm.form.valid">Save</button>
+      <button ion-button type="submit" class="btn btn-success" [disabled]="!profileForm.form.valid">Save</button>
     </form>
   </div>
   <div class="col-md-4">
@@ -220,7 +220,7 @@
     <label for="logo-upload" class="file-upload">
         Upload
     </label>
-    <input type="file" id="logo-upload" class="hidden-file" (change)="uploadLogo($event.target.files)"/>
+    <input type="file" id="logo-upload" class="hidden-file" (change)="uploadLogo($event.target.files)">
 
     <br>
   </div>

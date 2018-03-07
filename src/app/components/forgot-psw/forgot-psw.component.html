@@ -7,7 +7,7 @@
 <form (ngSubmit)="submit()" #forgotPswForm="ngForm">
   <div class="form-group">
     <label for="email">Email address</label>
-    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" [(ngModel)]="email" required #emailField="ngModel" email>
+    <ion-input type="email" class="form-control" id="email" name="email" placeholder="Enter email" [(ngModel)]="email" required #emailField="ngModel" email></ion-input>
   </div>
 
   <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)" class="text-danger">
@@ -32,5 +32,5 @@
   </div>
 
   <br>
-  <button class="btn btn-success" [disabled]="!forgotPswForm.form.valid">Send Reset Email</button>
+  <button ion-button class="btn btn-success" [disabled]="!forgotPswForm.form.valid">Send Reset Email</button>
  </form>

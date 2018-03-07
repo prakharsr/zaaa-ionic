@@ -5,7 +5,7 @@
 <form (ngSubmit)="sendOtp()" #phoneNumberForm="ngForm">
     <div class="form-group">
       <label for="phone">Phone Number</label>
-      <input type="tel" [(ngModel)]="number" required class="form-control" id="phone" name="phone" placeholder="Enter phone number">
+      <ion-input type="tel" [(ngModel)]="number" required class="form-control" id="phone" name="phone" placeholder="Enter phone number"></ion-input>
     </div>
 
     <div *ngIf="sendError" class="text-danger">
@@ -17,14 +17,14 @@
     </div>
 
     <div class="text-right">
-      <button type="submit" class="btn btn-primary" [disabled]="!number || otpSent">Send Code</button>
+      <button ion-button type="submit" class="btn btn-primary" [disabled]="!number || otpSent">Send Code</button>
     </div>
 </form>
 
 <form *ngIf="otpSent" (ngSubmit)="verifyOtp()" #otpForm="ngForm">
     <div class="form-group">
       <label for="otp">Verification Code</label>
-      <input type="text" [(ngModel)]="otp" required class="form-control" name="otp" id="otp" placeholder="Enter OTP">
+      <ion-input type="text" [(ngModel)]="otp" required class="form-control" name="otp" id="otp" placeholder="Enter OTP"></ion-input>
       <small class="form-text text-muted">Enter the Verification code received on your mobile.</small>
     </div>
 
@@ -37,5 +37,5 @@
     </div>
 
     <br>
-    <button type="submit" class="btn btn-success" [disabled]="!otp">Verify Code</button>
+    <button ion-button type="submit" class="btn btn-success" [disabled]="!otp">Verify Code</button>
 </form>

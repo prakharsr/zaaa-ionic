@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-dark">
+<!-- <nav class="navbar navbar-expand-sm navbar-dark">
   <div class="container">
       <a class="navbar-brand" routerLink="/">Zenedo</a>
       <button class="navbar-toggler" (click)="toggleNavbar()" type="button">
@@ -27,4 +27,41 @@
         </ul>
       </div>
   </div>
-</nav>
+</nav> -->
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle left>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Zenedo</ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-menu [content]="content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <button ion-item routerLink="/" menuClose>
+        Home
+        </button>
+        <button ion-item routerLinkActive="active" *ngIf="!api.isLoggedIn" routerLink="/register" menuClose>
+        Register
+        </button>
+        <button ion-item routerLinkActive="active" *ngIf="!api.isLoggedIn" routerLink="/login" menuClose>
+        Login
+        </button>
+        <button ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" routerLink="/dashboard" menuClose>
+        Dashboard
+        </button>
+        <button ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" routerLink="/" (click)="api.logout()" menuClose>
+        Logout
+        </button>
+        
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  
+  <ion-nav id="nav" #content [root]="rootPage"></ion-nav>

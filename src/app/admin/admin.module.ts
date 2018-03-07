@@ -10,9 +10,11 @@ import { RoleEditComponent } from './role-edit/role-edit.component';
 import { TemplateSelectorItemComponent } from './template-selector-item/template-selector-item.component';
 import { TemplateSelectorComponent } from './template-selector/template-selector.component';
 import { EmptyComponent } from './empty/empty.component';
+import { IonicModule } from 'ionic-angular';
 
 @NgModule({
   imports: [
+    IonicModule.forRoot(AdminModule),
     BaseModule
   ],
   declarations: [
