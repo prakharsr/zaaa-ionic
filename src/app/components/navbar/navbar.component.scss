@@ -2,4 +2,13 @@ app-navbar {
     .toolbar-background {
         background-color: #9b59b6;
     }
+    .toolbar .toolbar-title, .toolbar .bar-button-default {
+        color: mintcream;
+      }
+    .toolbar:focus {
+        outline: none;
+    }
+    .hamburger:focus {
+        outline: none;
+    }
 }

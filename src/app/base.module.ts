@@ -18,6 +18,7 @@ import { AdminGuard } from './guards/admin-guard.service';
 import { PlanGuard } from './guards/plan-guard.service';
 import { CanDeactiveGuard } from './guards/can-deactive-guard.service';
 import { IonicModule } from 'ionic-angular';
+import { GobackService} from './services/goback.service'
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { IonicModule } from 'ionic-angular';
     BrowserAnimationsModule
   ],
   providers: [
+    GobackService,
     ApiService,
     WindowService,
     RazorPayService,

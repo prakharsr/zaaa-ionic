@@ -5,6 +5,7 @@ import { ApiService } from '../../services/api.service';
 import { environment } from '../../../environments/environment';
 import { CanComponentDeactivate } from '../../guards/canComponentDeactivate';
 import { NgForm } from '@angular/forms';
+import { GobackService } from '../../services/goback.service';
 
 @Component({
   selector: 'app-profile-edit',
@@ -22,9 +23,10 @@ export class ProfileEditComponent implements OnInit, CanComponentDeactivate {
   error: string;
   success: string;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private goback:GobackService) { }
 
   ngOnInit() {
+    this.goback.urlInit();
     this.api.getUserProfile().subscribe(data => this.profile = data);
   }
 

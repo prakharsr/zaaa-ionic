@@ -1,6 +1,8 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { routerAnimation } from '../../animations';
 import { ApiService } from '../../services/api.service';
+import { Platform } from 'ionic-angular';
+import { GobackService } from '../../services/goback.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,9 +16,12 @@ export class DashboardComponent implements OnInit {
 
   @HostBinding('@routeAnimation') routeAnimation = true;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private goback: GobackService) {
+    
+   }
 
   ngOnInit() {
+    this.goback.urlInit();
     this.api.getUser().subscribe(data => {
       if (data.success) {
         this.admin = data.user.isAdmin;

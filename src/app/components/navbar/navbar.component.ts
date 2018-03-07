@@ -3,6 +3,7 @@ import { ApiService } from '../../services/api.service';
 import { NavController } from 'ionic-angular';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { RegisterComponent } from '../register/register.component';
+import { GobackService } from '../../services/goback.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,18 +12,9 @@ import { RegisterComponent } from '../register/register.component';
 })
 export class NavbarComponent implements OnInit {
 
-  isNavbarCollapsed = true;
-
-  constructor(public api: ApiService, private navCtrl: NavController) { }
+  constructor(public api: ApiService, private navCtrl: NavController, private goback: GobackService) { }
 
   ngOnInit() {
-  }
-
-  collapseNavbar() {
-    this.isNavbarCollapsed = true;
-  }
-
-  toggleNavbar() {
-    this.isNavbarCollapsed = !this.isNavbarCollapsed;
+    this.goback.urlInit();
   }
 }

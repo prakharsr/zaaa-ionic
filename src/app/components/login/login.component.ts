@@ -1,7 +1,9 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { ApiService } from '../../services/api.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { routerAnimation } from '../../animations';
+import { Platform } from 'ionic-angular';
+import { GobackService } from '../../services/goback.service';
 
 @Component({
   selector: 'app-login',
@@ -18,9 +20,14 @@ export class LoginComponent implements OnInit {
 
   error: string;
 
-  constructor(private api: ApiService, private router: Router) { }
+  constructor(private api: ApiService, private router: Router, platform: Platform, private route: ActivatedRoute, private goback: GobackService) { }
 
   ngOnInit() {
+    // this.router.queryParams.subscribe((params) => {
+    //   this.returnUrl = params.returnUrl;
+  // });
+    this.goback.urlInit();
+
   }
 
   submit() {

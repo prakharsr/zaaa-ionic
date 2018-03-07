@@ -3,6 +3,7 @@ import { UserRoles } from '../../models/userRoles';
 import { ApiService } from '../../services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { routerAnimation } from '../../animations';
+import { GobackService } from '../../services/goback.service';
 
 @Component({
   selector: 'app-role-edit',
@@ -20,9 +21,11 @@ export class RoleEditComponent implements OnInit {
 
   constructor(private api: ApiService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private goback:GobackService) { }
 
   ngOnInit() {
+    this.goback.urlInit();
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
 

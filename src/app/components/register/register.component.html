@@ -1,7 +1,10 @@
 <h2 class="text-center">Sign Up</h2>
 <p class="text-center"><small>For Advertsing Agency Administrators</small></p>
 <br>
-
+<!--   <!-- <ion-item>
+    <ion-label floating>Confirm Password</ion-label>
+    <ion-input></ion-input>
+  </ion-item> -->
 <form (ngSubmit)="submit()" #signUpForm="ngForm">
   <div class="form-group">
     <label for="name">Name</label>
@@ -63,8 +66,9 @@
 
     <br><br>
   </div>
-  <button ion-button type="submit" class="btn btn-success" [disabled]="!signUpForm.form.valid || password != cpassword">Sign Up</button>
+  <button ion-button type="submit" color="brand_success" [disabled]="!signUpForm.form.valid || password != cpassword">Sign Up</button>
 </form>
 
 <br>
-<p>Already have an account, <a routerLink="/login">Login</a>.</p>
+Already have an account?
+<a (click)="this.goback.gotoComponent('login')" ><span> Login</span></a>

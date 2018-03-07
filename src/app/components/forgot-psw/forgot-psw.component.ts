@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
+import { GobackService } from '../../services/goback.service';
 
 @Component({
   selector: 'app-forgot-psw',
@@ -12,9 +13,10 @@ export class ForgotPswComponent implements OnInit {
   error: string;
   success: boolean;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private goback:GobackService) { }
 
   ngOnInit() {
+    this.goback.urlInit();
   }
 
   submit() {

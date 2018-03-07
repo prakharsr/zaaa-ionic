@@ -2,6 +2,7 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { routerAnimation } from '../../animations';
 import { Router } from '@angular/router';
+import { GobackService } from '../../services/goback.service';
 
 @Component({
   selector: 'app-register',
@@ -19,12 +20,14 @@ export class RegisterComponent implements OnInit {
   cpassword: string;
   error: string;
 
-  constructor(private api: ApiService, private router: Router) { }
+  constructor(private api: ApiService, private router: Router, private goback:GobackService) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.goback.urlInit();
+  }
 
   GoToDashboard() : void {
-    this.router.navigateByUrl('/dashboard');
+    this.goback.gotoComponent('dashboard');
   }
 
   submit()
@@ -34,7 +37,7 @@ export class RegisterComponent implements OnInit {
     this.api.signup(this.name, this.email, this.password).subscribe(
       data => {
         if (data.success) {
-          this.GoToDashboard();
+          this.router.navigateByUrl('dashboard');
         }
         else {
           console.log(data);

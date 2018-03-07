@@ -42,9 +42,41 @@ $colors: (
   light:      #f4f4f4,
   dark:       #222,
   yellow_color: yellow,
-  orange_color: orange
+  orange_color: orange,
+  brand_primary:        #0275d8,
+  brand_success:        #5cb85c,
+  brand_info:           #5bc0de,
+  brand_warning:        #f0ad4e,
+  brand_danger:         #d9534f,
+  brand_inverse:        #292b2c,
 
 );
+
+$white:  #fff !default;
+$black:  #000 !default;
+$red:    #d9534f !default;
+$orange: #f0ad4e !default;
+$yellow: #ffd500 !default;
+$green:  #5cb85c !default;
+$blue:   #0275d8 !default;
+$teal:   #5bc0de !default;
+$pink:   #ff5b77 !default;
+$purple: #613d7c !default;
+
+// Create grayscale
+$gray-dark:                 #292b2c !default;
+$gray:                      #464a4c !default;
+$gray-light:                #636c72 !default;
+$gray-lighter:              #eceeef !default;
+$gray-lightest:             #f7f7f9 !default;
+
+// Reassign color vars to semantic color scheme
+$brand-primary:             $blue !default;
+$brand-success:             $green !default;
+$brand-info:                $teal !default;
+$brand-warning:             $orange !default;
+$brand-danger:              $red !default;
+$brand-inverse:             $gray-dark !default;
 
 
 // App iOS Variables

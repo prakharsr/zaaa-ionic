@@ -1,20 +1,20 @@
 <h2 class="text-center">Dashboard</h2>
-<br><br>
+<br>
 
 <div class="row">
     <div class="col-lg-3 col-md-4 col-sm-6">
-        <button ion-button block color="default" class="btn btn-primary" routerLink="/profile"><span class="fa fa-lg fa-user-circle"></span> User Profile</button>
+        <button ion-button block color="brand_primary" class="btn btn-primary" (click)="this.goback.gotoComponent('profile')"><span class="fa fa-lg fa-user-circle"></span> User Profile</button>
     </div>
     <div class="col-lg-3 col-md-4 col-sm-6">
-        <button ion-button block color="secondary"  class="btn btn-success" routerLink="/firm"><span class="fa fa-lg fa-building"></span> Firm Profile</button>
+        <button ion-button block color="brand_success"  class="btn btn-success" (click)="this.goback.gotoComponent('firm')"><span class="fa fa-lg fa-building"></span> Firm Profile</button>
     </div>
     <div class="col-lg-3 col-md-4 col-sm-6">
-        <button ion-button block color="yellow_color" class="btn btn-warning" routerLink="/coUsers"><span class="fa fa-lg fa-users"></span> Co-Users</button>
+        <button ion-button block color="brand_warning" class="btn btn-warning" (click)="this.goback.gotoComponent('coUsers')"><span class="fa fa-lg fa-users"></span> Co-Users</button>
     </div>
     <div class="col-lg-3 col-md-4 col-sm-6" *ngIf="admin">
-        <button ion-button block color="orange_color" class="btn btn-info" routerLink="/templates"><span class="fa fa-lg fa-file-alt"></span> Templates</button>
+        <button ion-button block color="brand_info" class="btn btn-info" (click)="this.goback.gotoComponent('templates')"><span class="fa fa-lg fa-file-alt"></span> Templates</button>
     </div>
     <div class="col-lg-3 col-md-4 col-sm-6">
-        <button ion-button block color="danger" class="btn btn-danger" routerLink="/changePassword"><span class="fa fa-lg fa-key"></span> Change Password</button>
+        <button ion-button block color="brand_danger" class="btn btn-danger" (click)="this.goback.gotoComponent('changePassword')"><span class="fa fa-lg fa-key"></span> Change Password</button>
     </div>
 </div>

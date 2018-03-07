@@ -2,6 +2,7 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { UserProfile } from '../../models/userProfile';
 import { routerAnimation } from '../../animations';
 import { ApiService } from '../../services/api.service';
+import { GobackService } from '../../services/goback.service';
 
 @Component({
   selector: 'app-profile-view',
@@ -15,9 +16,10 @@ export class ProfileViewComponent implements OnInit {
 
   profile = new UserProfile();
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private goback:GobackService) { }
 
   ngOnInit() {
+    this.goback.urlInit();
     this.api.getUserProfile().subscribe(data => this.profile = data);
   }
 }

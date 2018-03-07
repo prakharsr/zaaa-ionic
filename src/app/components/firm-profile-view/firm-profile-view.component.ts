@@ -2,6 +2,7 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { Firm } from '../../models/firm';
 import { routerAnimation } from '../../animations';
 import { ApiService } from '../../services/api.service';
+import { GobackService } from '../../services/goback.service';
 
 @Component({
   selector: 'app-firm-profile-view',
@@ -17,10 +18,11 @@ export class FirmProfileViewComponent implements OnInit {
 
   profile = new Firm();
 
-  constructor(private api: ApiService) {
+  constructor(private api: ApiService, private goback: GobackService) {
   }
 
   ngOnInit() {
+    this.goback.urlInit();
     this.api.getFirmProfile().subscribe(data => this.profile = data);
 
     this.api.getUser().subscribe(data => {

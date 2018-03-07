@@ -6,6 +6,7 @@ import { ApiService } from '../../services/api.service';
 import { environment } from '../../../environments/environment';
 import { NgForm } from '@angular/forms';
 import { CanComponentDeactivate } from '../../guards/canComponentDeactivate';
+import { GobackService } from '../../services/goback.service';
 
 @Component({
   selector: 'app-firm-profile-edit',
@@ -23,9 +24,10 @@ export class FirmProfileEditComponent implements OnInit, CanComponentDeactivate 
   error: string;
   success: string;
 
-  constructor(private ifscService: IfscService, private api: ApiService) { }
+  constructor(private ifscService: IfscService, private api: ApiService, private goback:GobackService) { }
 
   ngOnInit() {
+    this.goback.urlInit();
     this.api.getFirmProfile().subscribe(data => this.profile = data);
   }
 

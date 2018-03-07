@@ -16,7 +16,7 @@
   </div>
 
   <div class="form-group">
-      <p style="float:right"><a routerLink="/forgotPassword">Forgot Password</a></p>
+      <p style="float:right"><a (click)="this.goback.gotoComponent('forgotPassword')"><span>Forgot Password</span></a></p>
     <label for="password">Password</label>
     <ion-input type="password" class="form-control" id="password" placeholder="Enter Password" [(ngModel)]="password" name="password" required #passwordField="ngModel"></ion-input>
   </div>
@@ -35,8 +35,8 @@
   </div>
 
   <br>
-  <button ion-button class="btn btn-success" [disabled]="!loginForm.form.valid">Login</button>
+  <button ion-button color="brand_success" [disabled]="!loginForm.form.valid">Login</button>
 </form>
 
 <br>
-<p>Don't have an account, create <a routerLink="/register">one</a>.</p>
+<p>Don't have an account? Create <a (click)="this.goback.gotoComponent('register')"><span>one</span></a>.</p>

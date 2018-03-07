@@ -10,6 +10,7 @@ import { DashboardComponent } from '../../components/dashboard/dashboard.compone
 import { environment } from '../../../environments/environment';
 import { EmptyComponent } from '../empty/empty.component';
 import { HomeComponent } from '../../components/home/home.component';
+import { GobackService } from '../../services/goback.service';
 
 @Component({
   selector: 'app-plan-selector',
@@ -30,9 +31,11 @@ export class PlanSelectorComponent implements OnInit {
     private router: Router,
     private winRef: WindowService,
     public navCtrl: NavController,
-    public navParams: NavParams ) { }
+    public navParams: NavParams, 
+    private goback:GobackService ) { }
 
   ngOnInit() {
+    this.goback.urlInit();
     this.api.plans.subscribe(data => {
       this.plans = [];
 

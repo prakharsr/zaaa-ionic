@@ -2,6 +2,7 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { routerAnimation } from '../../animations';
 import { NavController, NavParams } from 'ionic-angular';
 import { WindowService } from '../../services/window.service';
+import { GobackService } from '../../services/goback.service';
 
 @Component({
   selector: 'app-empty',
@@ -11,11 +12,12 @@ import { WindowService } from '../../services/window.service';
 })
 export class EmptyComponent implements OnInit {
 
-  constructor(public navCtrl: NavController, private winRef: WindowService, public navParams: NavParams) { }
+  constructor(public navCtrl: NavController, private winRef: WindowService, public navParams: NavParams, private goback:GobackService) { }
 
   @HostBinding('@routeAnimation') routeAnimation = true;
 
   ngOnInit() {
+    this.goback.urlInit();
   }
 
   ionViewWillEnter() {

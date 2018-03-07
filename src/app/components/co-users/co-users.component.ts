@@ -2,6 +2,7 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { CoUser } from '../../models/coUser';
 import { ApiService } from '../../services/api.service';
 import { routerAnimation } from '../../animations';
+import { GobackService } from '../../services/goback.service';
 
 @Component({
   selector: 'app-co-users',
@@ -17,9 +18,10 @@ export class CoUsersComponent implements OnInit {
 
   coUsers: CoUser[] = [];
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private goback:GobackService) { }
 
   ngOnInit() {
+    this.goback.urlInit();
     this.api.coUsers.subscribe(data => {
       data.co_users.forEach(element => {
         let coUser = new CoUser(element.name, element.designation, element.email, element.phone);
