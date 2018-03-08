@@ -1,9 +1,10 @@
 import { Component, OnInit, Input, Output, HostBinding } from '@angular/core';
-import { UserRoles } from '../../models/userRoles';
+import { UserRoles } from '../userRoles';
 import { ApiService } from '../../services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { routerAnimation } from '../../animations';
 import { GobackService } from '../../services/goback.service';
+import { CoUserApiService } from '../co-user-api.service';
 
 @Component({
   selector: 'app-role-edit',
@@ -19,7 +20,7 @@ export class RoleEditComponent implements OnInit {
   id: string;
   error: string;
 
-  constructor(private api: ApiService,
+  constructor(private api: CoUserApiService,
     private route: ActivatedRoute,
     private router: Router,
     private goback:GobackService) { }

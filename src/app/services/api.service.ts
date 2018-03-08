@@ -10,12 +10,10 @@ import { Template } from '../models/template';
 import { User } from '../models/user';
 
 import { WindowService } from './window.service';
-import { UserRoles } from '../models/userRoles';
 
 import { environment } from '../../environments/environment';
 import { UserProfile } from '../models/userProfile';
 import { Firm } from '../models/firm';
-import { CoUser } from '../models/coUser';
 
 @Injectable()
 export class ApiService {
@@ -57,7 +55,7 @@ export class ApiService {
     return { headers: { Authorization: this.authToken }};
   }
 
-  private post(url: string, body: any) : Observable<any> {
+  post(url: string, body: any) : Observable<any> {
 
     if (this.authToken)
     {
@@ -66,7 +64,7 @@ export class ApiService {
     else return this.http.post(environment.apiUrl + url, body);
   }
 
-  private get(url: string) : Observable<any> {
+  get(url: string) : Observable<any> {
 
     if (this.authToken)
     {
@@ -75,15 +73,11 @@ export class ApiService {
     else return this.http.get(environment.apiUrl + url);
   }
 
-  private delete(url: string) : Observable<any> {
+  delete(url: string) : Observable<any> {
     return this.http.delete(environment.apiUrl + url, this.headers);
   }
 
-  deleteCoUser(coUser: CoUser) : Observable<any> {
-    return this.delete('/user/co_user/' + coUser.id);
-  }
-
-  private fileUpload(url: string, key: string, fileToUpload: File) : Observable<any> {
+  fileUpload(url: string, key: string, fileToUpload: File) : Observable<any> {
     const formData = new FormData();
     formData.append(key, fileToUpload, fileToUpload.name);
 
@@ -116,12 +110,11 @@ export class ApiService {
     );
   }
 
-  signup(name: string, email: string, password: string) : Observable<any>
+  signup(name: string, email: string) : Observable<any>
   {
     const base = this.post('/user/signup', {
       name: name,
-      email: email,
-      password: password
+      email: email
     });
 
     return this.extractToken(base);
@@ -147,19 +140,6 @@ export class ApiService {
     return this.get('/plans');
   }
 
-  get coUsers() : Observable<any> {
-    return this.get('/user/co_user');
-  }
-
-  createCoUser(name: string, email: string, phone: string, password: string) : Observable<any> {
-    return this.post('/user/co_user', {
-      name: name,
-      email: email,
-      phone: phone,
-      password: password
-    });
-  }
-
   get templates() : Observable<Template[]> {
     return of([
       new Template("Template 1", "http://www.monsterbeatsstudio.us/download/20039/systemdesigndocument1.gif"),
@@ -167,8 +147,19 @@ export class ApiService {
     ]);
   }
 
-  setPlan(plan: Plan, payment: string) : Observable<any> {
-    return this.post('/user/plan', { planID: plan.id, paymentID: payment });
+  setPlan(plan: Plan,
+    payment: string,
+    firmName: string,
+    billingAddress: string,
+    gstNo: string) : Observable<any> {
+
+    return this.post('/user/plan', {
+      planID: plan.id,
+      paymentID: payment,
+      firmName: firmName,
+      billingAddress: billingAddress,
+      gstNo: gstNo
+    });
   }
 
   verifyOtp(otp: string) : Observable<any> {
@@ -181,48 +172,6 @@ export class ApiService {
 
   setMobile(phone: string) : Observable<any> {
     return this.post('/user/mobile', { phone: phone });
-  }
-
-  setRoles(coUserId : string, roles : UserRoles) : Observable<any> {
-    return this.post('/user/role', { 
-      id: coUserId,
-      release_order: roles.release_order,
-      invoice: roles.invoice,
-      payment_receipts: roles.payment_receipts,
-      accounts: roles.accounts,
-      reports: roles.reports,
-      media_house: roles.media_house,
-      clients: roles.clients,
-      executives: roles.executives 
-    });
-  }
-
-  getRoles(coUserId: string) : Observable<UserRoles> {
-    let base = this.get('/user/role/' + coUserId);
-
-    return base.pipe(
-      map(data => {
-        let roles = new UserRoles();
-
-        if (data.success) {
-          roles.release_order = data.msg.Release_order;
-          roles.invoice = data.msg.Invoice;
-          roles.payment_receipts = data.msg.Payment_receipts;
-          roles.accounts = data.msg.Accounts;
-          roles.reports = data.msg.Reports;
-
-          if (data.msg.directory) {
-            let dir = data.msg.directory;
-
-            roles.media_house = dir.media_house;
-            roles.clients = dir.clients;
-            roles.executives = dir.executives;
-          }
-        }
-
-        return roles;
-      })
-    );
   }
 
   getUser() : Observable<any> {
@@ -247,12 +196,6 @@ export class ApiService {
           if (data.user.signature) {
             profile.sign = environment.uploadsBaseUrl + data.user.signature;
           }
-
-          if (data.user.Socials) {
-            profile.facebook = data.user.Socials.fb;
-            profile.twitter = data.user.Socials.twitter;
-            profile.other = data.user.Socials.other;
-          }
         }
 
         return profile;
@@ -265,10 +208,7 @@ export class ApiService {
   setUserProfile(userProfile: UserProfile) : Observable<any> {
     return this.post('/user/profile', {
       name: userProfile.name,
-      designation: userProfile.designation,
-      fb: userProfile.facebook,
-      twitter: userProfile.twitter,
-      other: userProfile.other
+      designation: userProfile.designation
     });
   }
 
@@ -320,6 +260,12 @@ export class ApiService {
             profile.bankBranchAddress = bank.BranchAddress;
             profile.bankAccountType = bank.AccountType;
           }
+
+          if (data.firm.Socials) {
+            profile.facebook = data.firm.Socials.fb;
+            profile.twitter = data.firm.Socials.twitter;
+            profile.other = data.firm.Socials.other;
+          }
         }
 
         return profile;
@@ -352,7 +298,11 @@ export class ApiService {
       ifsc: firm.bankIfsc,
       bankName: firm.bankName,
       bankAddress: firm.bankBranchAddress,
-      accountType: firm.bankAccountType
+      accountType: firm.bankAccountType,
+
+      fb: firm.facebook,
+      twitter: firm.twitter,
+      other: firm.other
     });
   }
 

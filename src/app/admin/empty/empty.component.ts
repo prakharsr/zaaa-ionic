@@ -23,7 +23,7 @@ export class EmptyComponent implements OnInit {
   ionViewWillEnter() {
     this.navCtrl.pop().then(p=>
     {
-      this.winRef.window.location.assign("index.html#/dashboard");
+      this.winRef.window.location.assign("index.html#/");
     })
   }
 

@@ -1,14 +1,23 @@
 <ion-header>
     <ion-navbar>
         <ion-buttons left>
+          <!-- *ngIf="!this.isLoginComponent" -->
             <button ion-button icon-only (click)="this.goback.goBack()" class="hamburger">
                 <ion-icon name="arrow-back"></ion-icon>
             </button>
         </ion-buttons>
+        <ion-buttons right>
+          <button ion-button icon-only *ngIf="!this.api.isLoggedIn" (click)="this.goback.gotoComponent('login')" class="hamburger">
+              <ion-icon name="log-in"></ion-icon>
+          </button>
+          <button ion-button icon-only *ngIf="this.api.isLoggedIn" (click)=" api.logout(); this.goback.gotoComponent('')" class="hamburger">
+            <ion-icon name="log-out"></ion-icon>
+        </button>
+      </ion-buttons>
         <button class="hamburger" ion-button menuToggle left>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>Zenedo</ion-title>
+        <ion-title>AAMan</ion-title>
     </ion-navbar>
   </ion-header>
   <ion-menu [content]="content">
@@ -23,7 +32,7 @@
         Home
         </button> -->
         <button class="hamburger" ion-item routerLinkActive="active" *ngIf="!api.isLoggedIn" (click)="this.goback.gotoComponent('login')" menuClose>
-            Login
+        Login
         </button>
         <button class="hamburger" ion-item routerLinkActive="active" *ngIf="!api.isLoggedIn" (click)="this.goback.gotoComponent('register')" menuClose>
         Register

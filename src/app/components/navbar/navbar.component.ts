@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { RegisterComponent } from '../register/register.component';
 import { GobackService } from '../../services/goback.service';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-navbar',
@@ -12,9 +13,19 @@ import { GobackService } from '../../services/goback.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public api: ApiService, private navCtrl: NavController, private goback: GobackService) { }
+  isLoginComponent : boolean;
+
+  constructor(public api: ApiService, private navCtrl: NavController, private goback: GobackService) { 
+    // let view = this.navCtrl.getActive();
+    // if ( view.instance instanceof LoginComponent ){
+    //     this.isLoginComponent = true;
+    //   }
+  }
 
   ngOnInit() {
     this.goback.urlInit();
   }
+
+  
+
 }

@@ -11,6 +11,7 @@ import { environment } from '../../../environments/environment';
 import { EmptyComponent } from '../empty/empty.component';
 import { HomeComponent } from '../../components/home/home.component';
 import { GobackService } from '../../services/goback.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-plan-selector',
@@ -22,8 +23,11 @@ export class PlanSelectorComponent implements OnInit {
   plans: Plan[];
   paid: boolean;
 
+  private selectedPlan: Plan;
+
   private email: string;
   private phone: string;
+
 
   constructor(private api: ApiService,
     private razorPay: RazorPayService,
@@ -32,7 +36,8 @@ export class PlanSelectorComponent implements OnInit {
     private winRef: WindowService,
     public navCtrl: NavController,
     public navParams: NavParams, 
-    private goback:GobackService ) { }
+    private goback:GobackService,
+    private modalService: NgbModal ) { }
 
   ngOnInit() {
     this.goback.urlInit();
@@ -52,37 +57,52 @@ export class PlanSelectorComponent implements OnInit {
     });
   }
 
-  selectPlan(plan: Plan)
+  billingDetails(param: { firmName: string, billingAddress: string, gstNo: string }) {
+    console.log(param);
+
+    this.razorPay.initPay(this.phone,
+      this.email,
+      this.selectedPlan.cost,
+      "ZAAA " + this.selectedPlan.name,
+      response => {
+        console.log(response.razorpay_payment_id);
+
+        this.paid = true;
+
+        this.api.setPlan(this.selectedPlan,
+          response.razorpay_payment_id,
+          param.firmName,
+          param.billingAddress,
+          param.gstNo
+        ).subscribe(
+          data => {
+            // redirect
+            this.appRef.tick();
+          this.navCtrl.push(EmptyComponent);
+            // this.router.navigateByUrl("/");
+          },
+          err => alert("Plan was not saved.\n\nContact support with reference no: " + response.razorpay_payment_id)
+        );
+      });
+  }
+
+  selectPlan(plan: Plan, modalContent)
   {
     if (this.paid)
       return;
 
     if (plan.cost != 0) {
-      this.razorPay.initPay(this.phone,
-        this.email,
-        plan.cost,
-        "ZAAA " + plan.name,
-        response => {
-          console.log(response.razorpay_payment_id);
+      this.selectedPlan = plan;
 
-          this.paid = true;
-
-          this.api.setPlan(plan, response.razorpay_payment_id).subscribe(
-            data => {
-                this.appRef.tick();
-                this.navCtrl.push(EmptyComponent);
-            },
-            err => alert("Plan was not saved.\n\nContact support with reference no: " + response.razorpay_payment_id)
-          );
-        });
+      this.modalService.open(modalContent);
     }
     else {
       this.paid = true;
       
-      this.api.setPlan(plan, '').subscribe(
+      this.api.setPlan(plan, '', '', '', '').subscribe(
         data => {
-          this.router.navigateByUrl('/dashboard');
-        },
+          this.router.navigateByUrl("/");
+      },
         err => alert("Plan was not saved.")
       );
     }

@@ -6,8 +6,8 @@
 export const environment = {
   production: false,
   razorPay: "rzp_test_glA246D8rCFOVc",
-  apiUrl:  "http://6300ba09.ngrok.io/api",
-  uploadsBaseUrl:  "http://6300ba09.ngrok.io",
+  apiUrl:  "http://a3ba5fd1.ngrok.io/api",
+  uploadsBaseUrl:  "http://a3ba5fd1.ngrok.io",
   // apiUrl:  "http://localhost:8080/api",
   // uploadsBaseUrl:  "http://localhost:8080"
 };

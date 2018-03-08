@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
   {
     this.error = '';
 
-    this.api.signup(this.name, this.email, this.password).subscribe(
+    this.api.signup(this.name, this.email).subscribe(
       data => {
         if (data.success) {
           this.router.navigateByUrl('dashboard');

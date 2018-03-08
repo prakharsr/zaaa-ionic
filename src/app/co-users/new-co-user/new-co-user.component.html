@@ -16,6 +16,11 @@
   </div>
 
   <div class="form-group form-row">
+    <label class="col-form-label col-md-3" for="designation">Designation</label>
+    <ion-input type="text" class="form-control col-md-9" id="designation" name="designation" placeholder="Enter Designation" [(ngModel)]="designation" #designationField="ngModel"></ion-input>
+  </div>
+
+  <div class="form-group form-row">
     <label class="col-form-label col-md-3" for="email">Email address</label>
     <ion-input type="email" class="form-control col-md-9" id="email" name="email" placeholder="Enter email" [(ngModel)]="email" required #emailField="ngModel" email></ion-input>
   </div>
@@ -42,32 +47,6 @@
     <br>
   </div>
 
-  <div class="form-group form-row">
-    <label class="col-form-label col-md-3" for="password">Password</label>
-    <ion-input type="password" class="form-control col-md-9" id="password" name="password" placeholder="Enter Password" [(ngModel)]="password" required #passwordField="ngModel"></ion-input>
-  </div>
-
-  <div *ngIf="passwordField.invalid && (passwordField.dirty || passwordField.touched)" class="text-danger">
-    <div *ngIf="passwordField.errors.required">
-      Password is required.
-    </div>
-    <br>
-  </div>
-
-  <div class="form-group form-row">
-    <label class="col-form-label col-md-3" for="cpassword">Confirm Password</label>
-    <ion-input type="password" class="form-control col-md-9" id="cpassword" name="cpassword" placeholder="Confirm Password" [(ngModel)]="cpassword" required #cpasswordField="ngModel"></ion-input>
-  </div>
-
-  <div *ngIf="cpasswordField.invalid && (cpasswordField.dirty || cpasswordField.touched)" class="text-danger">
-    <div *ngIf="cpasswordField.errors.required">
-      Password confirmation is required.
-    </div>
-  </div>
-  <div *ngIf="password != cpassword" class="text-danger">
-    Passwords don't match.
-  </div>
-
   <app-role-control [(roles)]="roles"></app-role-control>
 
   <div class="text-danger" *ngIf="error">
@@ -76,6 +55,6 @@
     <br><br>
   </div>
 
-  <button ion-button type="submit" class="btn btn-success" [disabled]="!newCoUserForm.form.valid || password != cpassword">Add</button>
-  <button ion-button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+  <button ion-button type="submit" color="brand_success" class="btn btn-success" [disabled]="!newCoUserForm.form.valid">Add</button>
+  <button ion-button type="button" color="brand_danger" class="btn btn-danger" (click)="onCancel()">Cancel</button>
 </form>

@@ -1,3 +1,6 @@
+import { IonicModule } from 'ionic-angular';
+import { GobackService} from './services/goback.service';
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,8 +20,7 @@ import { PhoneVerifyGuard } from './guards/phone-verify-guard.service';
 import { AdminGuard } from './guards/admin-guard.service';
 import { PlanGuard } from './guards/plan-guard.service';
 import { CanDeactiveGuard } from './guards/can-deactive-guard.service';
-import { IonicModule } from 'ionic-angular';
-import { GobackService} from './services/goback.service'
+
 
 @NgModule({
   imports: [
@@ -31,6 +33,7 @@ import { GobackService} from './services/goback.service'
   ],
   providers: [
     GobackService,
+
     ApiService,
     WindowService,
     RazorPayService,

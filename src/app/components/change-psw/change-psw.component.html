@@ -27,20 +27,6 @@
       <br>
     </div>
 
-    <div class="form-group">
-      <label for="cpassword">Confirm New Password</label>
-      <ion-input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="Confirm New Password" [(ngModel)]="cpassword" required #cpasswordField="ngModel"></ion-input>
-    </div>
-
-    <div *ngIf="cpasswordField.invalid && (cpasswordField.dirty || cpasswordField.touched)" class="text-danger">
-      <div *ngIf="cpasswordField.errors.required">
-        New Password confirmation is required.
-      </div>
-    </div>
-    <div *ngIf="password != cpassword" class="text-danger">
-      Passwords don't match.
-    </div>
-
     <br>
 
     <div class="text-danger" *ngIf="error">
