@@ -1,12 +1,17 @@
-<h2>Edit Roles</h2>
+<br>
+<div class="container">
+  <h2>Edit Roles</h2>
 
-<app-role-control [(roles)]="roles"></app-role-control>
+  <app-role-control [(roles)]="roles"></app-role-control>
 
-<div class="text-danger" *ngIf="error">
-  {{error}}
+  <br>
+  
+  <div class="text-danger" *ngIf="error">
+    {{error}}
 
-  <br><br>
+    <br><br>
+  </div>
+
+  <button ion-button color="brand_success" type="submit" class="btn btn-success" (click)="submit()">Update</button>
+  <button ion-button type="button" color="brand_danger" class="btn btn-danger" (click)="onCancel()">Cancel</button>
 </div>
-
-<button ion-button color="brand_success" type="submit" class="btn btn-success" (click)="submit()">Update</button>
-<button ion-button type="button" color="brand_danger" class="btn btn-danger" (click)="onCancel()">Cancel</button>

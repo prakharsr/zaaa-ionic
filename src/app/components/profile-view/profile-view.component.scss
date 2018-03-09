@@ -1,13 +1,11 @@
 app-profile-view {
-    .detailView {
-        margin-top: 20px;
-    }
-
-    .detailView div:first-child {
-        font-weight: 600;
+    .list-group-item div:first-child {
+        font-style: italic;
+        display: inline-block;
+        width: 250px;
     }
     
-    h3 {
-        margin-top: 30px;
+    .list-group-item div:last-child {
+        display: inline;
     }
 }

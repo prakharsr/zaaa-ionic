@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
 
   constructor(platform: Platform,
      private goback: GobackService,
-     private api: ApiService,
+     public api: ApiService,
      private router: Router,
      private splash: SplashScreen,
      private loadingCtrl: LoadingController) {

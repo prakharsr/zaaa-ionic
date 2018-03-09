@@ -1,4 +1,6 @@
-<h2 class="text-center">Sign Up</h2>
+<br>
+<div class="container">
+  <h2 class="text-center">Sign Up</h2>
 <p class="text-center"><small>For Advertsing Agency Administrators</small></p>
 <br>
 
@@ -19,6 +21,10 @@
   <ion-item class="form-group">
     <ion-label floating for="email">Email address</ion-label>
     <ion-input type="email" id="email" name="email" [(ngModel)]="email" required #emailField="ngModel" email></ion-input>
+
+    <small class="form-text text-muted">
+           <br>An auto-generated password will be sent to this Email.<br>
+    </small>
   </ion-item>
 
   <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)" class="text-danger">
@@ -57,3 +63,4 @@
 
 <br>
 <p>Already have an account, <a routerLink="/login">Login</a>.</p>
+</div>

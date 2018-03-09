@@ -1,7 +1,12 @@
-<h2 class="text-center">Change Password</h2>
-<br>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Change Password</h1>
+    </div>
+  </div>
+  
+  <div class="container">  
 
-<form (ngSubmit)="submit()" #changePswForm="ngForm">
+  <form (ngSubmit)="submit()" #changePswForm="ngForm">
 
     <ion-item class="form-group">
       <ion-label floating for="oldPassword">Old Password</ion-label>
@@ -40,4 +45,5 @@
       <br><br>
     </div>
     <button ion-button type="submit" class="btn btn-success" [disabled]="!changePswForm.form.valid || password != cpassword">Change</button>
- </form>
+  </form>
+  </div>

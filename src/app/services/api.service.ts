@@ -188,6 +188,8 @@ export class ApiService {
         if (data.success) {
           profile.name = data.user.name;
           profile.designation = data.user.designation;
+          profile.contact = data.user.phone;
+          profile.email = data.user.email;
 
           if (data.user.photo) {
             profile.photo = environment.uploadsBaseUrl + data.user.photo;

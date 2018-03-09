@@ -1,6 +1,10 @@
-<h2 class="text-center">Verify Phone Number</h2>
-
-<br>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Verify Phone Number</h1>
+    </div>
+  </div>
+  
+  <div class="container">
 
 <form (ngSubmit)="sendOtp()" #phoneNumberForm="ngForm">
     <ion-item class="form-group">
@@ -39,3 +43,4 @@
     <br>
     <button ion-button type="submit" class="btn btn-success" [disabled]="!otp">Verify Code</button>
 </form>
+</div>

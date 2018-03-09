@@ -1,3 +1,5 @@
+<br>
+<div class="container">
 <h2>Add New Co-User</h2>
 <br>
 
@@ -47,8 +49,15 @@
     <br>
   </div>
 
+
+  <br>
+  <h4>Roles</h4>
+  <br>
+
   <app-role-control [(roles)]="roles"></app-role-control>
 
+  <br>
+  
   <div class="text-danger" *ngIf="error">
     {{error}}
 
@@ -58,3 +67,4 @@
   <button ion-button type="submit" color="brand_success" class="btn btn-success" [disabled]="!newCoUserForm.form.valid">Add</button>
   <button ion-button type="button" color="brand_danger" class="btn btn-danger" (click)="onCancel()">Cancel</button>
 </form>
+</div>

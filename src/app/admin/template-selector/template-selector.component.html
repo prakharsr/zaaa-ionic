@@ -1,28 +1,32 @@
-<br><br>
-<h2 class="text-center">Select Templates</h2>
-<br><br>
-
-<form>
-  <ion-item class="form-group form-row">
-    <ion-label floating for="jurisdiction" class="col-md-3 col-form-label">Jurisdiction</ion-label>
-    <ion-input type="text" name="jurisdiction" id="jurisdiction" [(ngModel)]="jurisdiction"></ion-input>
-  </ion-item>
-</form>
-
-<br><br>
-
-<div class="row">
-  <div class="col-lg">
-    <app-template-selector-item name="Invoice" [templates]="templates" (templateChanged)="invoiceTemplate = $event"></app-template-selector-item>
-  </div>
-  <div class="col-lg">
-    <app-template-selector-item name="Release Order" [templates]="templates" (templateChanged)="releaseOrderTemplate = $event"></app-template-selector-item>
-  </div>
-  <div class="col-lg">
-    <app-template-selector-item name="Payment Receipt" [templates]="templates" (templateChanged)="paymentReceiptTemplate = $event"></app-template-selector-item>
-  </div>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Templates</h1>
+    </div>
 </div>
 
-<div class="text-center">
-  <button ion-button class="btn btn-success" (click)="submit()">Submit</button>
+<div class="container">
+  <form>
+    <ion-item class="form-group form-row">
+      <ion-label floating for="jurisdiction" class="col-md-3 col-form-label">Jurisdiction</ion-label>
+      <ion-input type="text" name="jurisdiction" id="jurisdiction" [(ngModel)]="jurisdiction"></ion-input>
+    </ion-item>
+  </form>
+
+  <br><br>
+
+  <div class="row">
+    <div class="col-lg">
+      <app-template-selector-item name="Invoice" [templates]="templates" (templateChanged)="invoiceTemplate = $event"></app-template-selector-item>
+    </div>
+    <div class="col-lg">
+      <app-template-selector-item name="Release Order" [templates]="templates" (templateChanged)="releaseOrderTemplate = $event"></app-template-selector-item>
+    </div>
+    <div class="col-lg">
+      <app-template-selector-item name="Payment Receipt" [templates]="templates" (templateChanged)="paymentReceiptTemplate = $event"></app-template-selector-item>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <button ion-button class="btn btn-success" (click)="submit()">Submit</button>
+  </div>
 </div>

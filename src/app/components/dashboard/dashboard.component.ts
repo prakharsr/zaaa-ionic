@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
 
   @HostBinding('@routeAnimation') routeAnimation = true;
 
-  constructor(private api: ApiService, private goback: GobackService) {
+  constructor(public api: ApiService, private goback: GobackService) {
     
    }
 
