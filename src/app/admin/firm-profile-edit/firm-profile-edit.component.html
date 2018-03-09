@@ -13,10 +13,10 @@
       <h2>Business Details</h2>
       <br>
     
-      <div class="form-group form-row">
-        <label class="col-md-3 col-form-label" for="firmName">Firm Name</label>
-        <ion-input type="text" class="form-control col-md-9" id="firmName" name="firmName" placeholder="Enter Firm Name" [(ngModel)]="profile.name" required #firmNameField="ngModel"></ion-input>
-      </div>
+      <ion-item class="form-group form-row">
+        <ion-label floating class="col-md-3 col-form-label" for="firmName">Firm Name</ion-label>
+        <ion-input type="text" id="firmName" name="firmName" [(ngModel)]="profile.name" required #firmNameField="ngModel"></ion-input>
+      </ion-item>
     
       <div *ngIf="firmNameField.invalid && (firmNameField.dirty || firmNameField.touched)" class="text-danger">
         <div *ngIf="firmNameField.errors.required">
@@ -25,20 +25,20 @@
         <br>
       </div>
     
-      <div class="form-group form-row">
-        <label class="col-md-3 col-form-label" for="tagline">Tag Line</label>
-        <ion-input type="text" class="form-control col-md-9" id="tagline" name="tagline" placeholder="Enter Tagline" [(ngModel)]="profile.tagline" #taglineField="ngModel"></ion-input>
-      </div>
+      <ion-item class="form-group form-row">
+        <ion-label floating class="col-md-3 col-form-label" for="tagline">Tag Line</ion-label>
+        <ion-input type="text" id="tagline" name="tagline"  [(ngModel)]="profile.tagline" #taglineField="ngModel"></ion-input>
+      </ion-item>
     
-      <div class="form-group form-row">
-        <label class="col-md-3 col-form-label" for="nickname">Display / Nickname</label>
-        <ion-input type="text" class="form-control col-md-9" id="nickname" name="nickname" placeholder="Enter Nickname" [(ngModel)]="profile.nickname" #nicknameField="ngModel"></ion-input>
-      </div>
+      <ion-item class="form-group form-row">
+        <ion-label floating class="col-md-3 col-form-label" for="nickname">Display / Nickname</ion-label>
+        <ion-input type="text" id="nickname" name="nickname"  [(ngModel)]="profile.nickname" #nicknameField="ngModel"></ion-input>
+      </ion-item>
     
-      <div class="form-group form-row">
-        <label class="col-md-3 col-form-label" for="registeredAddress">Registered Address</label>
-        <ion-input type="text" class="form-control col-md-9" id="registeredAddress" name="registeredAddress" placeholder="Enter Registered Address" [(ngModel)]="profile.registeredAddress" required #registeredAddressField="ngModel"></ion-input>
-      </div>
+      <ion-item class="form-group form-row">
+        <ion-label floating class="col-md-3 col-form-label" for="registeredAddress">Registered Address</ion-label>
+        <ion-input type="text" id="registeredAddress" name="registeredAddress" [(ngModel)]="profile.registeredAddress" required #registeredAddressField="ngModel"></ion-input>
+      </ion-item>
     
       <div *ngIf="registeredAddressField.invalid && (registeredAddressField.dirty || registeredAddressField.touched)" class="text-danger">
         <div *ngIf="registeredAddressField.errors.required">
@@ -47,24 +47,23 @@
         <br>
       </div>
     
-      <div class="form-group form-row">
-        <label class="col-md-3 col-form-label" for="officeAddress">Office Address</label>
-        <ion-input type="text" class="form-control col-md-9" id="officeAddress" name="officeAddress" placeholder="Enter Office Address" [(ngModel)]="profile.officeAddress" #officeAddressField="ngModel"></ion-input>
-      </div>
+      <ion-item class="form-group form-row">
+        <ion-label floating class="col-md-3 col-form-label" for="officeAddress">Office Address</ion-label>
+        <ion-input type="text" id="officeAddress" name="officeAddress" [(ngModel)]="profile.officeAddress" #officeAddressField="ngModel"></ion-input>
+      </ion-item>
     
       <!-- <div class="form-group form-row">
-        <label class="col-md-3 col-form-label" for="incDate">Incorporation Date</label>
-        <input type="date" class="form-control col-md-9" id="incDate" name="incDate" placeholder="Enter Incorporation Date" [(ngModel)]="profile.incDate" #incDateField="ngModel">
-      </div> -->
-      <div class="form-group form-row">
-          <label class="col-md-3 col-form-label" for="incDate">Incorporation Date</label>
-          <ion-datetime class="form-control col-md-9" displayFormat="DD/MM/YYYY" id="incDate" name="incDate" placeholder="Enter Incorporation Date" [(ngModel)]="profile.incDate" #incDateField="ngModel"></ion-datetime>
-        </div>
+        <ion-label floating class="col-md-3 col-form-label" for="incDate">Incorporation Date</ion-label>
+        <input type="date" id="incDate" name="incDate" [(ngModel)]="profile.incDate" #incDateField="ngModel"ion-item     </div> -->
+      <ion-item class="form-group form-row">
+          <ion-label floating class="col-md-3 col-form-label" for="incDate">Incorporation Date</ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY" id="incDate" name="incDate" [(ngModel)]="profile.incDate" #incDateField="ngModel"></ion-datetime>
+        </ion-item>
 
-      <div class="form-group form-row">
-        <label class="col-md-3 col-form-label" for="email">Email address</label>
-        <ion-input type="email" class="form-control col-md-9" id="email" name="email" placeholder="Enter email" [(ngModel)]="profile.email" required #emailField="ngModel" email></ion-input>
-      </div>
+      <ion-item class="form-group form-row">
+        <ion-label floating class="col-md-3 col-form-label" for="email">Email address</ion-label>
+        <ion-input type="email" id="email" name="email" [(ngModel)]="profile.email" required #emailField="ngModel" email></ion-input>
+      </ion-item>
     
       <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)" class="text-danger">
         <div *ngIf="emailField.errors.required">
@@ -76,10 +75,10 @@
         <br>
       </div>
 
-      <div class="form-group form-row">
-        <label class="col-md-3 col-form-label" for="phone">Phone Number</label>
-        <ion-input type="tel" [(ngModel)]="profile.phone" required class="form-control col-md-9" id="phone" name="phone" placeholder="Enter phone number" #phoneField="ngModel"></ion-input>
-      </div>
+      <ion-item class="form-group form-row">
+        <ion-label floating class="col-md-3 col-form-label" for="phone">Phone Number</ion-label>
+        <ion-input type="tel" [(ngModel)]="profile.phone" required id="phone" name="phone" #phoneField="ngModel"></ion-input>
+      </ion-item>
 
       <div *ngIf="phoneField.invalid && (phoneField.dirty || phoneField.touched)" class="text-danger">
         <div *ngIf="phoneField.errors.required">
@@ -88,25 +87,25 @@
         <br>
       </div>
     
-      <div class="form-group form-row">
-        <label class="col-md-3 col-form-label" for="landlineNo">Landline Number</label>
-        <ion-input type="number" class="form-control col-md-9" id="landlineNo" name="landlineNo" placeholder="Enter Landline Number" [(ngModel)]="profile.landlineNo" #landlineNoField="ngModel"></ion-input>
-      </div>
+      <ion-item class="form-group form-row">
+        <ion-label floating class="col-md-3 col-form-label" for="landlineNo">Landline Number</ion-label>
+        <ion-input type="number" id="landlineNo" name="landlineNo" [(ngModel)]="profile.landlineNo" #landlineNoField="ngModel"></ion-input>
+      </ion-item>
     
-      <div class="form-group form-row">
-        <label class="col-md-3 col-form-label" for="fax">Fax</label>
-        <ion-input type="number" class="form-control col-md-9" id="fax" name="fax" placeholder="Enter Fax" [(ngModel)]="profile.fax" #faxField="ngModel"></ion-input>
-      </div>
+      <ion-item class="form-group form-row">
+        <ion-label floating class="col-md-3 col-form-label" for="fax">Fax</ion-label>
+        <ion-input type="number" id="fax" name="fax" [(ngModel)]="profile.fax" #faxField="ngModel"></ion-input>
+      </ion-item>
     
-      <div class="form-group form-row">
-        <label class="col-md-3 col-form-label" for="website">Website</label>
-        <ion-input type="text" class="form-control col-md-9" id="website" name="website" placeholder="Enter Website" [(ngModel)]="profile.website" #websiteField="ngModel"></ion-input>
-      </div>
+      <ion-item class="form-group form-row">
+        <ion-label floating class="col-md-3 col-form-label" for="website">Website</ion-label>
+        <ion-input type="text" id="website" name="website" [(ngModel)]="profile.website" #websiteField="ngModel"></ion-input>
+      </ion-item>
     
-      <div class="form-group form-row">
-        <label class="col-md-3 col-form-label" for="panNo">PAN Number</label>
-        <ion-input type="number" class="form-control col-md-9" id="panNo" name="panNo" placeholder="Enter PAN Number" [(ngModel)]="profile.panNo" required #panNoField="ngModel"></ion-input>
-      </div>
+      <ion-item class="form-group form-row">
+        <ion-label floating class="col-md-3 col-form-label" for="panNo">PAN Number</ion-label>
+        <ion-input type="number" id="panNo" name="panNo" [(ngModel)]="profile.panNo" required #panNoField="ngModel"></ion-input>
+      </ion-item>
     
       <div *ngIf="panNoField.invalid && (panNoField.dirty || panNoField.touched)" class="text-danger">
         <div *ngIf="panNoField.errors.required">
@@ -115,10 +114,10 @@
         <br>
       </div>
     
-      <div class="form-group form-row">
-        <label class="col-md-3 col-form-label" for="gstNo">GST Number</label>
-        <ion-input type="number" class="form-control col-md-9" id="gstNo" name="gstNo" placeholder="Enter GST Number" [(ngModel)]="profile.gstNo" required #gstNoField="ngModel"></ion-input>
-      </div>
+      <ion-item class="form-group form-row">
+        <ion-label floating class="col-md-3 col-form-label" for="gstNo">GST Number</ion-label>
+        <ion-input type="number" id="gstNo" name="gstNo" [(ngModel)]="profile.gstNo" required #gstNoField="ngModel"></ion-input>
+      </ion-item>
     
       <div *ngIf="gstNoField.invalid && (gstNoField.dirty || gstNoField.touched)" class="text-danger">
         <div *ngIf="gstNoField.errors.required">
@@ -133,10 +132,10 @@
     
       <br><br>
     
-      <div class="form-group form-row">
-        <label class="col-md-3 col-form-label" for="bankAccountName">Account Name</label>
-        <ion-input type="text" class="form-control col-md-9" id="bankAccountName" name="bankAccountName" placeholder="Enter Bank Account Name" [(ngModel)]="profile.bankAccountName" required #bankAccountNameField="ngModel"></ion-input>
-      </div>
+      <ion-item class="form-group form-row">
+        <ion-label floating class="col-md-3 col-form-label" for="bankAccountName">Account Name</ion-label>
+        <ion-input type="text" id="bankAccountName" name="bankAccountName" [(ngModel)]="profile.bankAccountName" required #bankAccountNameField="ngModel"></ion-input>
+      </ion-item>
     
       <div *ngIf="bankAccountNameField.invalid && (bankAccountNameField.dirty || bankAccountNameField.touched)" class="text-danger">
         <div *ngIf="bankAccountNameField.errors.required">
@@ -145,10 +144,10 @@
         <br>
       </div>
     
-      <div class="form-group form-row">
-        <label class="col-md-3 col-form-label" for="bankAccountNo">Account Number</label>
-        <ion-input type="number" class="form-control col-md-9" id="bankAccountNo" name="bankAccountNo" placeholder="Enter Bank Account NUmber" [(ngModel)]="profile.bankAccountNo" required #bankAccountNoField="ngModel"></ion-input>
-      </div>
+      <ion-item class="form-group form-row">
+        <ion-label floating class="col-md-3 col-form-label" for="bankAccountNo">Account Number</ion-label>
+        <ion-input type="number" id="bankAccountNo" name="bankAccountNo" [(ngModel)]="profile.bankAccountNo" required #bankAccountNoField="ngModel"></ion-input>
+      </ion-item>
     
       <div *ngIf="bankAccountNoField.invalid && (bankAccountNoField.dirty || bankAccountNoField.touched)" class="text-danger">
         <div *ngIf="bankAccountNoField.errors.required">
@@ -157,10 +156,10 @@
         <br>
       </div>
     
-      <div class="form-group form-row">
-        <label class="col-md-3 col-form-label" for="bankIfsc">IFSC</label>
-        <ion-input type="text" class="form-control col-md-9" id="bankIfsc" name="bankIfsc" placeholder="Enter Bank IFSC" [(ngModel)]="profile.bankIfsc" required minlength="11" maxlength="11" #bankIfscField="ngModel" (input)="ifscChanged()"></ion-input>
-      </div>
+      <ion-item class="form-group form-row">
+        <ion-label floating class="col-md-3 col-form-label" for="bankIfsc">IFSC</ion-label>
+        <ion-input type="text" id="bankIfsc" name="bankIfsc" [(ngModel)]="profile.bankIfsc" required minlength="11" maxlength="11" #bankIfscField="ngModel" (input)="ifscChanged()"></ion-input>
+      </ion-item>
     
       <div *ngIf="bankIfscField.invalid && (bankIfscField.dirty || bankIfscField.touched)" class="text-danger">
         <div *ngIf="bankIfscField.errors.required">
@@ -172,10 +171,10 @@
         <br>
       </div>
     
-      <div class="form-group form-row">
-        <label class="col-md-3 col-form-label" for="bankName">Bank Name</label>
-        <ion-input type="text" class="form-control col-md-9" id="bankName" name="bankName" placeholder="Enter Bank Name" [(ngModel)]="profile.bankName" required #bankNameField="ngModel"></ion-input>
-      </div>
+      <ion-item class="form-group form-row">
+        <ion-label floating class="col-md-3 col-form-label" for="bankName">Bank Name</ion-label>
+        <ion-input type="text" id="bankName" name="bankName" [(ngModel)]="profile.bankName" required #bankNameField="ngModel"></ion-input>
+      </ion-item>
     
       <div *ngIf="bankNameField.invalid && (bankNameField.dirty || bankNameField.touched)" class="text-danger">
         <div *ngIf="bankNameField.errors.required">
@@ -184,10 +183,10 @@
         <br>
       </div>
     
-      <div class="form-group form-row">
-        <label class="col-md-3 col-form-label" for="bankBranchAddress">Bank Branch Address</label>
-        <ion-input type="text" class="form-control col-md-9" id="bankBranchAddress" name="bankBranchAddress" placeholder="Enter Bank Branch Address" [(ngModel)]="profile.bankBranchAddress" required #bankBranchAddressField="ngModel"></ion-input>
-      </div>
+      <ion-item class="form-group form-row">
+        <ion-label floating class="col-md-3 col-form-label" for="bankBranchAddress">Bank Branch Address</ion-label>
+        <ion-input type="text" id="bankBranchAddress" name="bankBranchAddress" [(ngModel)]="profile.bankBranchAddress" required #bankBranchAddressField="ngModel"></ion-input>
+      </ion-item>
     
       <div *ngIf="bankBranchAddressField.invalid && (bankBranchAddressField.dirty || bankBranchAddressField.touched)" class="text-danger">
         <div *ngIf="bankBranchAddressField.errors.required">
@@ -196,32 +195,34 @@
         <br>
       </div>
     
-      <div class="form-group form-row">
-        <label class="col-md-3 col-form-label" for="bankAccountType">Bank Branch Address</label>
-        <select class="form-control col-md-9" id="bankAccountType" name="bankAccountType" [(ngModel)]="profile.bankAccountType">
-          <option value="Current">Current</option>
-          <option value="Savings">Savings</option>
-        </select>
-      </div>
+      <br>
+
+      <ion-item class="form-group form-row">
+        <ion-label class="col-form-label" for="bankAccountType">Bank Account Type</ion-label>
+        <ion-select id="bankAccountType" name="bankAccountType" [(ngModel)]="profile.bankAccountType">
+          <ion-option value="Current">Current</ion-option>
+          <ion-option value="Savings">Savings</ion-option>
+        </ion-select>
+      </ion-item>
       
       <br>
       <h3>Social</h3>
       <br>
     
-      <div class="form-group form-row">
-        <label class="col-md-3 col-form-label" for="nickname">Facebook</label>
-        <ion-input type="text" class="form-control col-md-9" id="facebook" name="facebook" placeholder="Enter Facebook Link" [(ngModel)]="profile.facebook" #facebookField="ngModel"></ion-input>
-      </div>
+      <ion-item class="form-group form-row">
+        <ion-label floating class="col-md-3 col-form-label" for="nickname">Facebook</ion-label>
+        <ion-input type="text" id="facebook" name="facebook" [(ngModel)]="profile.facebook" #facebookField="ngModel"></ion-input>
+      </ion-item>
     
-      <div class="form-group form-row">
-        <label class="col-md-3 col-form-label" for="nickname">Twitter</label>
-        <ion-input type="text" class="form-control col-md-9" id="twitter" name="twitter" placeholder="Enter Twitter Link" [(ngModel)]="profile.twitter" #twitterField="ngModel"></ion-input>
-      </div>
+      <ion-item class="form-group form-row">
+        <ion-label floating class="col-md-3 col-form-label" for="nickname">Twitter</ion-label>
+        <ion-input type="text" id="twitter" name="twitter" [(ngModel)]="profile.twitter" #twitterField="ngModel"></ion-input>
+      </ion-item>
     
-      <div class="form-group form-row">
-        <label class="col-md-3 col-form-label" for="nickname">Others</label>
-        <ion-input type="text" class="form-control col-md-9" id="others" name="others" placeholder="Enter other social Link" [(ngModel)]="profile.other" #otherField="ngModel"></ion-input>
-      </div>
+      <ion-item class="form-group form-row">
+        <ion-label floating class="col-md-3 col-form-label" for="nickname">Others</ion-label>
+        <ion-input type="text" id="others" name="others" [(ngModel)]="profile.other" #otherField="ngModel"></ion-input>
+      </ion-item>
 
       <br>
     

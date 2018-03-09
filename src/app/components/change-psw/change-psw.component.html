@@ -3,10 +3,10 @@
 
 <form (ngSubmit)="submit()" #changePswForm="ngForm">
 
-    <div class="form-group">
-      <label for="oldPassword">Old Password</label>
-      <ion-input type="password" class="form-control" id="oldPassword" name="oldPassword" placeholder="Enter Old Password" [(ngModel)]="oldPassword" required #oldPasswordField="ngModel"></ion-input>
-    </div>
+    <ion-item class="form-group">
+      <ion-label floating for="oldPassword">Old Password</ion-label>
+      <ion-input type="password" id="oldPassword" name="oldPassword" [(ngModel)]="oldPassword" required #oldPasswordField="ngModel"></ion-input>
+    </ion-item>
   
     <div *ngIf="oldPasswordField.invalid && (oldPasswordField.dirty || oldPasswordField.touched)" class="text-danger">
       <div *ngIf="oldPasswordField.errors.required">
@@ -15,10 +15,10 @@
       <br>
     </div>
 
-    <div class="form-group">
-      <label for="password">New Password</label>
-      <ion-input type="password" class="form-control" id="password" name="password" placeholder="Enter New Password" [(ngModel)]="password" required #passwordField="ngModel"></ion-input>
-    </div>
+    <ion-item class="form-group">
+      <ion-label floating for="password">New Password</ion-label>
+      <ion-input type="password" id="password" name="password" [(ngModel)]="password" required #passwordField="ngModel"></ion-input>
+    </ion-item>
 
     <div *ngIf="passwordField.invalid && (passwordField.dirty || passwordField.touched)" class="text-danger">
       <div *ngIf="passwordField.errors.required">

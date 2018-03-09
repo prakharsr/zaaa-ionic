@@ -5,10 +5,10 @@
 <br>
 
 <form (ngSubmit)="submit()" #forgotPswForm="ngForm">
-  <div class="form-group">
-    <label for="email">Email address</label>
-    <ion-input type="email" class="form-control" id="email" name="email" placeholder="Enter email" [(ngModel)]="email" required #emailField="ngModel" email></ion-input>
-  </div>
+  <ion-item class="form-group">
+    <ion-label floating for="email">Email address</ion-label>
+    <ion-input type="email" id="email" name="email" [(ngModel)]="email" required #emailField="ngModel" email></ion-input>
+  </ion-item>
 
   <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)" class="text-danger">
     <div *ngIf="emailField.errors.required">

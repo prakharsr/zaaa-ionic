@@ -3,10 +3,10 @@
 <br>
 
 <form (ngSubmit)="sendOtp()" #phoneNumberForm="ngForm">
-    <div class="form-group">
-      <label for="phone">Phone Number</label>
-      <ion-input type="tel" [(ngModel)]="number" required class="form-control" id="phone" name="phone" placeholder="Enter phone number"></ion-input>
-    </div>
+    <ion-item class="form-group">
+      <ion-label floating for="phone">Phone Number</ion-label>
+      <ion-input type="tel" [(ngModel)]="number" required id="phone" name="phone"></ion-input>
+    </ion-item>
 
     <div *ngIf="sendError" class="text-danger">
       <br>

@@ -1,19 +1,20 @@
 <div>
     <h2>Co-Users</h2>
     <br>
-    <!-- <button ion-button class="btn btn-primary" *ngIf="admin" (click)="this.goback.gotoComponent('coUsers/new')"><span class="fa fa-plus"></span> Add New</button> -->
+  
     <button ion-button class="fab" color="brand_success" *ngIf="admin" (click)="this.goback.gotoComponent('coUsers/new')"><span class="fa fa-plus"></span></button>
-
-    <div *ngFor="let coUser of coUsers" class="co-user">
+    <div *ngFor="let coUser of coUsers" class="card mb-4">
+      <div class="card-header">{{coUser.name}}</div>
+      <div class="card-body">
         <div *ngIf="admin" style="float:right">
-            <button ion-button small color="brand_primary" class="btn btn-primary" [routerLink]="['/coUsers', coUser.id]"><span class="fa fa-pencil-alt"></span> Edit Roles</button>
-            <button ion-button small color="brand_danger" class="btn btn-danger" (click)="delete(coUser)"><span class="fa fa-trash-alt"></span> Delete</button>
+          <button ion-button small color="brand_primary" class="btn btn-primary" [routerLink]="['/coUsers', coUser.id]"><span class="fa fa-pencil-alt"></span> Edit Roles</button>
+          <button ion-button small color="brand_danger" class="btn btn-danger" (click)="delete(coUser)"><span class="fa fa-trash-alt"></span></button>
         </div>
-        <h5>{{coUser.name}}</h5>
         <h6>{{coUser.designation}}</h6>
-        <span class="fa fa-envelope"></span> {{ coUser.email }}
+        <span class="fa fa-envelope mr-3"></span> {{ coUser.email }}
         <br>
-        <span class="fa fa-phone"></span> {{ coUser.phone }}
+        <span class="fa fa-phone mr-3"></span> {{ coUser.phone }}
         <br>
+      </div>
     </div>
-</div>
+  </div>
