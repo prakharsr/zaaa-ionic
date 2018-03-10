@@ -1,11 +1,9 @@
 app-profile-view {
     .list-group-item div:first-child {
         font-style: italic;
-        display: inline-block;
-        width: 250px;
     }
-    
+
     .list-group-item div:last-child {
-        display: inline;
+        font-style: normal;
     }
 }
