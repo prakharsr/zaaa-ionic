@@ -1,8 +1,11 @@
-<br>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Sign Up</h1>
+    <p class="lead">For Advertsing Agency Administrators</p>
+  </div>
+</div>
+
 <div class="container">
-  <h2 class="text-center">Sign Up</h2>
-<p class="text-center"><small>For Advertsing Agency Administrators</small></p>
-<br>
 
 <form (ngSubmit)="submit()" #signUpForm="ngForm">
 
@@ -21,11 +24,10 @@
   <ion-item class="form-group">
     <ion-label floating for="email">Email address</ion-label>
     <ion-input type="email" id="email" name="email" [(ngModel)]="email" required #emailField="ngModel" email></ion-input>
-
-    <small class="form-text text-muted">
-           <br>An auto-generated password will be sent to this Email.<br>
-    </small>
   </ion-item>
+  <small class="form-text text-muted">
+    <br>An auto-generated password will be sent to this Email.<br>
+</small>
 
   <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)" class="text-danger">
     <div *ngIf="emailField.errors.required">

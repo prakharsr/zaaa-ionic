@@ -61,7 +61,7 @@
         
           <ion-item class="form-group">
             <ion-label floating for="incDate">Incorporation Date</ion-label>
-            <ion-input type="date" id="incDate" name="incDate"  [(ngModel)]="profile.incDate" #incDateField="ngModel"></ion-input>
+            <ion-datetime displayFormat="DD/MM/YYYY" id="incDate" name="incDate" [(ngModel)]="profile.incDate" #incDateField="ngModel"></ion-datetime>
           </ion-item>
       
           <ion-item class="form-group">
@@ -200,7 +200,7 @@
             </div>
             <br>
           </div>
-        
+        <br>
           <ion-item class="form-group">
             <ion-label for="bankAccountType">Bank Account Type</ion-label>
             <ion-select id="bankAccountType" name="bankAccountType" [(ngModel)]="profile.bankAccountType">

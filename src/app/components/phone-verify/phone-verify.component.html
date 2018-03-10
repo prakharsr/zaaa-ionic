@@ -26,11 +26,11 @@
 </form>
 
 <form *ngIf="otpSent" (ngSubmit)="verifyOtp()" #otpForm="ngForm">
-    <div class="form-group">
-      <label for="otp">Verification Code</label>
-      <ion-input type="text" [(ngModel)]="otp" required class="form-control" name="otp" id="otp" placeholder="Enter OTP"></ion-input>
-      <small class="form-text text-muted">Enter the Verification code received on your mobile.</small>
-    </div>
+    <ion-item class="form-group">
+      <ion-label for="otp">Verification Code</ion-label>
+      <ion-input type="text" [(ngModel)]="otp" required name="otp" id="otp"></ion-input>
+    </ion-item>
+    <small class="form-text text-muted">Enter the Verification code received on your mobile.</small>
 
     <div *ngIf="verifyError" class="text-danger">
       <br>
