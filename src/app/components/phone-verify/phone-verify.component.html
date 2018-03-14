@@ -21,13 +21,13 @@
     </div>
 
     <div class="text-right">
-      <button ion-button type="submit" class="btn btn-primary" [disabled]="!number || otpSent">Send Code</button>
+      <button ion-button type="submit" color="brand_primary" class="btn btn-primary" [disabled]="!number || otpSent">Send Code</button>
     </div>
 </form>
 
 <form *ngIf="otpSent" (ngSubmit)="verifyOtp()" #otpForm="ngForm">
     <ion-item class="form-group">
-      <ion-label for="otp">Verification Code</ion-label>
+      <ion-label floating for="otp">Verification Code</ion-label>
       <ion-input type="text" [(ngModel)]="otp" required name="otp" id="otp"></ion-input>
     </ion-item>
     <small class="form-text text-muted">Enter the Verification code received on your mobile.</small>
@@ -41,6 +41,6 @@
     </div>
 
     <br>
-    <button ion-button type="submit" class="btn btn-success" [disabled]="!otp">Verify Code</button>
+    <button ion-button type="submit" color="brand_success" class="btn btn-success" [disabled]="!otp">Verify Code</button>
 </form>
 </div>

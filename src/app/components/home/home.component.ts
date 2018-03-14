@@ -1,7 +1,7 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { routerAnimation } from '../../animations';
 import { ApiService } from '../../services/api.service';
-import { Platform, LoadingController } from 'ionic-angular';
+import { Platform, LoadingController, Spinner } from 'ionic-angular';
 import { GobackService } from '../../services/goback.service';
 import { Router } from '@angular/router';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
      private goback: GobackService,
      public api: ApiService,
      private router: Router,
-     private splash: SplashScreen,
      private loadingCtrl: LoadingController) {
    }
       
@@ -31,20 +30,22 @@ export class HomeComponent implements OnInit {
       //      <img [src]="this.profile.logo" class="img-fluid max-w-200" [alt]="this.profile.name">
       // </div>
 
-presentLoadingCustom() {
-  let loading = this.loadingCtrl.create({
-    spinner: 'hide',
-    content: `<br>
+      presentLoadingCustom() {
+        let loading = this.loadingCtrl.create({
+          spinner: 'hide',
+          content: `<br>
+      
+          <div class="text-center">
+            <h1>Advertising Agency Manager (AAMan)</h1>
+            <br>
+            <p>A complete solution for Advertising Agencies.</p>
+            <br>
+            <img src="assets/small_tux.png" width="150" height="150">
+          </div>`,
+          duration:3000
+        });
+  
 
-    <div class="text-center">
-      <h1>Advertising Agency Manager (AAMan)</h1>
-      <br>
-      <p>A complete solution for Advertising Agencies.</p>
-      <br>
-      <img src="assets/small_tux.png" width="150" height="150">
-    </div>`,
-    duration:3000
-  });
 
   setTimeout(() => {
     this.router.navigateByUrl("/dashboard");

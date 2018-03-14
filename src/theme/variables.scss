@@ -10,9 +10,10 @@ $font-path: "../assets/fonts";
 // rtl styles in your app. For more info, please see:
 // http://ionicframework.com/docs/theming/rtl-support/
 $app-direction: ltr;
-// $bootstrap-path : "../../node_modules/bootstrap/dist/css/bootstrap";
-
+// $fa-font-path: "../../node_modules/font-awesome/webfonts";
+// @import "../../node_modules/font-awesome/scss/fontawesome.scss";
 @import "ionic.globals";
+
 @import url("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css");
 @import url("https://use.fontawesome.com/releases/v5.0.7/css/all.css");
 // @import “ionic.bootstrap-path”
