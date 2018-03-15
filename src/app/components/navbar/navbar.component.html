@@ -53,6 +53,8 @@
         Co-Users
         </button><button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('coUsers')" menuClose>
         Directory
+       </button><button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('ratecards')" menuClose>
+        Rate Cards
         </button><button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('dir')" menuClose>
         Templates
         </button><button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('changePassword')" menuClose>

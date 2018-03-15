@@ -7,7 +7,6 @@ import { map } from 'rxjs/operators/map';
 
 import { Plan } from '../models/plan';
 import { Template } from '../models/template';
-import { User } from '../models/user';
 
 import { WindowService } from './window.service';
 
@@ -62,6 +61,15 @@ export class ApiService {
         return this.http.post(environment.apiUrl + url, body, this.headers);
     }
     else return this.http.post(environment.apiUrl + url, body);
+  }
+
+  patch(url: string, body: any) : Observable<any> {
+
+    if (this.authToken)
+    {
+        return this.http.patch(environment.apiUrl + url, body, this.headers);
+    }
+    else return this.http.patch(environment.apiUrl + url, body);
   }
 
   get(url: string) : Observable<any> {

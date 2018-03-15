@@ -17,6 +17,7 @@ export class CoUsersComponent implements OnInit {
   @HostBinding('@routeAnimation') routeAnimation = true;
 
   admin: boolean;
+  myId: string;
 
   coUsers: CoUser[] = [];
 
@@ -24,19 +25,12 @@ export class CoUsersComponent implements OnInit {
 
   ngOnInit() {
     this.goback.urlInit();
-    this.api.coUsers.subscribe(data => {
-      data.co_users.forEach(element => {
-        let coUser = new CoUser(element.name, element.designation, element.email, element.phone);
-
-        coUser.id = element._id;
-
-        this.coUsers.push(coUser);
-      });
-    });
+    this.api.coUsers.subscribe(data => this.coUsers = data);
 
     this.api.getUser().subscribe(data => {
       if (data.success) {
         this.admin = data.user.isAdmin;
+        this.myId = data.user._id;
       }
     })
   }
@@ -59,3 +53,39 @@ export class CoUsersComponent implements OnInit {
     );
   }
 }
+
+//     this.api.coUsers.subscribe(data => {
+//       data.co_users.forEach(element => {
+//         let coUser = new CoUser(element.name, element.designation, element.email, element.phone);
+
+//         coUser.id = element._id;
+
+//         this.coUsers.push(coUser);
+//       });
+//     });
+
+//     this.api.getUser().subscribe(data => {
+//       if (data.success) {
+//         this.admin = data.user.isAdmin;
+//       }
+//     })
+//   }
+
+//   delete(coUser: CoUser) {
+//     this.dialog.confirm("Are you sure want to delete this Co-User?").subscribe(
+//       confirm => {
+//         if (!confirm) {
+//           return;
+//         }
+
+//         this.api.deleteCoUser(coUser).subscribe(
+//           data => {
+//             if (data.success) {
+//               this.coUsers = this.coUsers.filter(h => h.id !== coUser.id);
+//             }
+//           }
+//         );
+//       }
+//     );
+//   }
+// }

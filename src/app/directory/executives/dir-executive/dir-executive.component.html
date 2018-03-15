@@ -1,0 +1,101 @@
+<form (ngSubmit)="submit()" #dirForm="ngForm">
+  <div class="row">
+    <div class="col-md">
+      <h2 *ngIf="edit">Edit Executive</h2>
+      <h2 *ngIf="!edit">Add Executive</h2>
+      <br>
+    
+      <ion-item class="form-group">
+        <ion-label floating for="orgName">Organisation Name</ion-label>
+        <ion-input type="text" id="orgName" name="orgName"  [(ngModel)]="executive.orgName" #orgNameField="ngModel"></ion-input>
+      </ion-item>
+    
+      <ion-item class="form-group">
+        <ion-label floating for="companyName">Company Name</ion-label>
+        <ion-input type="text" id="companyName" name="companyName"  [(ngModel)]="executive.companyName" required #companyNameField="ngModel"></ion-input>
+      </ion-item>
+    
+      <div *ngIf="companyNameField.invalid && (companyNameField.dirty || companyNameField.touched)" class="text-danger">
+        <div *ngIf="companyNameField.errors.required">
+          Company Name is required.
+        </div>
+        <br>
+      </div>
+    
+      <ion-item class="form-group">
+        <ion-label floating for="executiveName">Executive Name</ion-label>
+        <ion-input type="text" id="executiveName" name="executiveName"  [(ngModel)]="executive.executiveName" required #executiveNameField="ngModel"></ion-input>
+      </ion-item>
+    
+      <div *ngIf="executiveNameField.invalid && (executiveNameField.dirty || executiveNameField.touched)" class="text-danger">
+        <div *ngIf="executiveNameField.errors.required">
+          Executive Name is required.
+        </div>
+        <br>
+      </div>
+    
+      <ion-item class="form-group">
+        <ion-label floating for="designation">Designation</ion-label>
+        <ion-input type="text" id="designation" name="designation"  [(ngModel)]="executive.designation" #designationField="ngModel"></ion-input>
+      </ion-item>
+    
+      <ion-item class="form-group">
+        <ion-label floating for="department">Department</ion-label>
+        <ion-input type="text" id="department" name="department"  [(ngModel)]="executive.department" #departmentField="ngModel"></ion-input>
+      </ion-item>
+    
+      <ion-item class="form-group">
+        <ion-label floating for="mobileNo">Mobile Number</ion-label>
+        <ion-input type="text" id="mobileNo" name="mobileNo"  [(ngModel)]="executive.mobileNo" required #mobileNoField="ngModel"></ion-input>
+      </ion-item>
+    
+      <div *ngIf="mobileNoField.invalid && (mobileNoField.dirty || mobileNoField.touched)" class="text-danger">
+        <div *ngIf="mobileNoField.errors.required">
+          Mobile Number is required.
+        </div>
+        <br>
+      </div>
+    
+      <ion-item class="form-group">
+        <ion-label floating for="email">Email</ion-label>
+        <ion-input type="email" id="email" name="email"  [(ngModel)]="executive.email" required #emailField="ngModel" email></ion-input>
+      </ion-item>
+    
+      <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)" class="text-danger">
+        <div *ngIf="emailField.errors.required">
+          Email is required.
+        </div>
+        <div *ngIf="!emailField.errors.required && emailField.errors.email">
+          Invalid Email.
+        </div>
+        <br>
+      </div>
+      <br>
+    </div>
+    <div class="col-md">
+      <br>
+      <h4>Personal Details</h4>
+      <br>
+      <!--photo -->
+
+      <ion-item class="form-group">
+        <ion-label floating for="dob">Date of Birth</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" id="dob" name="dob"  [(ngModel)]="executive.dob" #dobField="ngModel"></ion-datetime>
+      </ion-item>
+    
+      <ion-item class="form-group">
+        <ion-label floating for="anniversaryDate">Anniversary Date</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" id="anniversaryDate" name="anniversaryDate"  [(ngModel)]="executive.anniversaryDate" #anniversaryDateField="ngModel"></ion-datetime>
+      </ion-item>
+    </div>
+  </div>
+
+  <div *ngIf="error" class="text-danger">
+    {{error}}
+    
+    <br>
+  </div>
+
+  <button ion-button color="brand_success" type="submit" class="btn btn-success" [disabled]="!dirForm.form.valid">Save</button>
+  <button ion-button color="brand_danger" class="btn btn-danger" (click)="cancel()">Cancel</button>
+</form>

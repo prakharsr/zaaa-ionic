@@ -29,6 +29,7 @@ import { FirmProfileViewComponent } from './components/firm-profile-view/firm-pr
 import { ChangePswComponent } from './components/change-psw/change-psw.component';
 import { ForgotPswComponent } from './components/forgot-psw/forgot-psw.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { RateCardModule } from './rate-card/rate-card.module';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     AdminModule,
     DirectoryModule,
     CoUsersModule,
+    RateCardModule,
     AppRoutingModule
   ],
   bootstrap: [IonicApp],

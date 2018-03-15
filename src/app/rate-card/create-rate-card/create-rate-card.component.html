@@ -1,0 +1,519 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4" *ngIf="!edit">Create Rate Card</h1>
+    <h1 class="display-4" *ngIf="edit">Edit Rate Card</h1>
+  </div>
+</div>
+
+<!-- Validation -->
+
+<div class="container">
+  <form (ngSubmit)="submit()" #rateCardForm="ngForm">
+  <div class="form-row">    
+    <div class="col-md">
+      <ion-item class="form-group">
+        <ion-label floating>Media Type</ion-label>
+        <ion-select name="mediaType" [(ngModel)]="mediaType" id="mediaType" #mediaTypeField="ngModel" required>
+          <ion-option *ngFor="let item of mediaTypes" [value]="item">{{item}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+    <div class="col-md">
+      <ion-item class="form-group">
+        <ion-label floating>Ad Type</ion-label>
+        <ion-select name="adType" [(ngModel)]="rateCard.adType" id="adType" #adTypeField="ngModel" required>
+          <ion-option *ngFor="let item of adTypes" [value]="item">{{item}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+    <div class="col-md">
+      <ion-item class="form-group">
+        <ion-label floating>Rate Card Type</ion-label>
+        <ion-select name="rateCardType" [(ngModel)]="rateCard.rateCardType" id="rateCardType" #rateCardTypeField="ngModel" required>
+          <ion-option *ngFor="let item of rateCardTypes" [value]="item">{{item}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+  </div>
+
+  <br>
+  <h3>Booking Center</h3>
+  <br>
+  
+  <div class="form-row">
+    <div class="col-md">
+      <ion-item class="form-group">
+        <ion-label floating>Media House Name</ion-label>
+        <ion-input type="text" id="mediaHouseName" [(ngModel)]="rateCard.mediaHouseName" name="mediaHouseName" required #mediaHouseNameField="ngModel"></ion-input>
+      </ion-item>
+    </div>
+    <div class="col-md">
+      <ion-item class="form-group">
+        <ion-label floating>Edition</ion-label>
+        <ion-input type="text" id="bookingEdition" [(ngModel)]="rateCard.bookingEdition" name="bookingEdition" required #bookingEditionField="ngModel"></ion-input>
+      </ion-item>
+    </div>
+  </div>
+  
+  <div class="form-row form-group">    
+      <ion-item class="form-group">
+          <ion-label floating class="col-md-3 col-form-label">
+              Pullout Name
+            </ion-label>
+        <ion-select name="pullOutName" [(ngModel)]="dropdownPullOutName" id="pullOutName" #pullOutNameField="ngModel" required>
+          <ion-option>1</ion-option>
+          <ion-option>2</ion-option>
+          <ion-option>{{others}}</ion-option>
+        </ion-select>
+      </ion-item>
+    <div class="col-md" *ngIf="dropdownPullOutName == others">
+      <ion-item >
+        <ion-input type="text" id="specPullOutName" [(ngModel)]="customPullOutName" name="specPullOutName" #specPullOutNameField="ngModel"></ion-input>
+      </ion-item>
+    </div>
+  </div>
+  
+  <br>
+  <h3>Frequency</h3>
+  <br>
+
+  <div class="form-row">
+    <div class="col-sm">
+      <ion-item class="form-group">
+        <ion-label floating>Period</ion-label>
+        <ion-select name="freqPeriod" [(ngModel)]="rateCard.freqPeriod" id="freqPeriod" #freqPeriodField="ngModel" required>
+          <ion-option *ngFor="let item of periods" [value]="item">{{item}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+    <div class="col-sm">
+      <ion-item class="form-group">
+        <ion-label floating>Remark</ion-label>
+        <ion-input type="text" id="freqRemark" [(ngModel)]="rateCard.freqRemark" name="freqRemark" #freqRemarkField="ngModel"></ion-input>
+      </ion-item>
+    </div>
+  </div>
+
+  <br>
+  <h3>Categories</h3>
+  <br>
+
+  <div class="form-row">
+    <div class="form-group col">
+      <select class="form-control" name="category1" [(ngModel)]="category1" id="category1" required>
+        <option *ngFor="let item of categories" [ngValue]="item">{{item.name}}</option>
+      </select>
+    </div>
+
+    <div class="w-100 d-block d-sm-none"></div>
+
+    <div class="form-group col" *ngIf="category1 && category1.subcategories.length">
+      <select class="form-control" name="category2" [(ngModel)]="category2" id="category2">
+        <option *ngFor="let item of category1.subcategories" [ngValue]="item">{{item.name}}</option>
+      </select>
+    </div>
+
+    <div class="w-100 d-block d-md-none"></div>
+
+    <div class="form-group col" *ngIf="category2 && category2.subcategories.length">
+      <select class="form-control" name="category3" [(ngModel)]="category3" id="category3">
+        <option *ngFor="let item of category2.subcategories" [ngValue]="item">{{item.name}}</option>
+      </select>
+    </div>
+
+    <div class="w-100 d-block d-sm-none d-md-block d-xl-none"></div>
+
+    <div class="form-group col" *ngIf="category3 && category3.subcategories.length">
+      <select class="form-control" name="category4" [(ngModel)]="category4" id="category4">
+        <option *ngFor="let item of category3.subcategories" [ngValue]="item">{{item.name}}</option>
+      </select>
+    </div>
+
+    <div class="w-100 d-block d-md-none"></div>
+
+    <div class="form-group col" *ngIf="category4 && category4.subcategories.length">
+      <select class="form-control" name="category5" [(ngModel)]="category5" id="category5">
+        <option *ngFor="let item of category4.subcategories" [ngValue]="item">{{item.name}}</option>
+      </select>
+    </div>
+
+    <div class="w-100 d-block d-sm-none"></div>
+
+    <div class="form-group col" *ngIf="category5 && category5.subcategories.length">
+      <select class="form-control" name="category6" [(ngModel)]="category6" id="category6">
+        <option *ngFor="let item of category5.subcategories" [ngValue]="item">{{item.name}}</option>
+      </select>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="form-row">
+    <ion-label class="col-md-3 col-form-label">Rate</ion-label>
+    <div class="col col-md-5">
+      <ion-item class="form-group">
+        <ion-input type="text" id="rate" [(ngModel)]="rateCard.rate" name="rate" required #rateField="ngModel"></ion-input>
+      </ion-item>
+    </div>
+    <div class="col col-md-4">
+      <ion-item class="form-group">
+        <ion-select name="unit" [(ngModel)]="rateCard.unit" id="unit" #unitField="ngModel" required>
+          <ion-option *ngFor="let item of units" [value]="item">{{item}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+  </div>
+  
+  <div class="form-row">
+    <div class="col-md-9">
+      <ion-item class="form-group">
+        <ion-label floating>Position</ion-label>      
+        <ion-select name="position" [(ngModel)]="rateCard.position" id="position" #positionField="ngModel" required>
+          <ion-option *ngFor="let item of positions" [value]="item">{{item}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="col-md-9">
+      <ion-item class="form-group">
+        <ion-label floating>Hue</ion-label>
+        <ion-select name="hue" [(ngModel)]="rateCard.hue" id="hue" #hueField="ngModel" required>
+          <ion-option selected>Colored</ion-option>
+          <ion-option>Black &amp; White</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+  </div>
+  
+  <div class="form-row">
+    <ion-label class="col-md-3 col-form-label">Minimum Size Limit</ion-label>
+    <br>
+    <div class="col">
+    <div class="form-row">
+      <ion-item class="form-group">
+        <ion-input type="number" id="minLength" [(ngModel)]="rateCard.minLength" name="minLength" required #minLengthField="ngModel"></ion-input>
+      </ion-item>
+    <div class="col-auto form-text">&times;</div>
+      <ion-item class="form-group">
+        <ion-input type="number" id="minWidth" [(ngModel)]="rateCard.minWidth" name="minWidth" required #minWidthField="ngModel"></ion-input>
+      </ion-item>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-row">
+    <ion-label class="col-md-3 col-form-label">Maximum Size Limit</ion-label>
+    <br>
+      <div class="col">
+      <ion-item class="form-group">
+        <ion-input type="number" id="maxLength" [(ngModel)]="rateCard.maxLength" name="maxLength" required #maxLengthField="ngModel"></ion-input>
+      </ion-item>
+    <div class="col-auto form-text">&times;</div>
+      <ion-item class="form-group">
+        <ion-input type="number" id="maxWidth" [(ngModel)]="rateCard.maxWidth" name="maxWidth" required #maxWidthField="ngModel"></ion-input>
+      </ion-item>
+    </div>
+  </div>
+
+      <ion-item class="form-group">   
+          <ion-label floating>Validity</ion-label>     
+        <ion-datetime displayFormat="DD/MM/YYYY" id="validFrom" [(ngModel)]="rateCard.validFrom" name="validFrom" required #validFromField="ngModel"></ion-datetime>
+      </ion-item>
+
+      <ion-item class="form-group">
+          <ion-label floating>to</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" id="validTill" [(ngModel)]="rateCard.validTill" name="validTill" required #validTillField="ngModel"></ion-datetime>
+      </ion-item>
+  
+  <!-- fixsize -->
+  <br>
+  <div class="form-row">
+    <div class="col">
+      <h4>Fix Size ({{rateCard.fixSizes.length}})</h4>
+    </div>
+    <div class="col-auto">
+      <button type="button" (click)="addFixSize()" class="btn btn-outline-info"><span class="fa fa-plus"></span></button>
+    </div>
+  </div>
+  <br>
+  
+  <div *ngFor="let item of rateCard.fixSizes; index as i" class="card mb-4">
+    <div class="card-header">
+      <button type="button" class="btn btn-outline-danger float-right" (click)="removeFixSize(i)"><span class="fa fa-trash-alt"></span></button>
+      #{{i + 1}}
+    </div>
+    <div class="card-body">
+      <div class="form-row">
+        <div class="col-md">
+          <div class="form-group">
+            <label for="length">Length</label>
+            <input type="number" class="form-control" id="length-{{i}}" name="length-{{i}}" [(ngModel)]="item.length" required #lengthField="ngModel">
+          </div>
+          
+          <div *ngIf="lengthField.invalid && (lengthField.dirty || lengthField.touched)" class="text-danger">
+            <div *ngIf="lengthField.errors.required">
+              Length is required.
+            </div>
+            <br>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-group">
+            <label for="width">Width</label>
+            <input type="number" class="form-control" id="width-{{i}}" name="width-{{i}}" [(ngModel)]="item.width" required #widthField="ngModel">
+          </div>
+          
+          <div *ngIf="widthField.invalid && (widthField.dirty || widthField.touched)" class="text-danger">
+            <div *ngIf="widthField.errors.required">
+              Width is required.
+            </div>
+            <br>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-group">
+            <label for="amount">Amount</label>
+            <input type="number" class="form-control" id="amount-{{i}}" name="amount-{{i}}" [(ngModel)]="item.amount" required #amountField="ngModel">
+          </div>
+          
+          <div *ngIf="amountField.invalid && (amountField.dirty || amountField.touched)" class="text-danger">
+            <div *ngIf="amountField.errors.required">
+              Amount is required.
+            </div>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Schemes -->
+  <br>
+  <div class="form-row">
+    <div class="col">
+      <h4>Scheme ({{rateCard.schemes.length}})</h4>
+    </div>
+    <div class="col-auto">
+      <button type="button" (click)="addScheme()" class="btn btn-outline-info"><span class="fa fa-plus"></span></button>
+    </div>
+  </div>
+  <br>
+  
+  <div *ngFor="let item of rateCard.schemes; index as i" class="card mb-4">
+    <div class="card-header">
+      <button type="button" class="btn btn-outline-danger float-right" (click)="removeScheme(i)"><span class="fa fa-trash-alt"></span></button>
+      #{{i + 1}}
+    </div>
+    <div class="card-body">
+      <div class="form-row">
+        <div class="col-md">
+          <div class="form-group">
+            <label for="paid">Paid</label>
+            <input type="number" class="form-control" id="paid-{{i}}" name="paid-{{i}}" placeholder="Enter Paid" [(ngModel)]="item.paid" required #paidField="ngModel">
+          </div>
+          
+          <div *ngIf="paidField.invalid && (paidField.dirty || paidField.touched)" class="text-danger">
+            <div *ngIf="paidField.errors.required">
+              Paid is required.
+            </div>
+            <br>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-group">
+            <label for="free">Free</label>
+            <input type="number" class="form-control" id="free-{{i}}" name="free-{{i}}" placeholder="Enter Free" [(ngModel)]="item.Free" required #freeField="ngModel">
+          </div>
+          
+          <div *ngIf="freeField.invalid && (freeField.dirty || freeField.touched)" class="text-danger">
+            <div *ngIf="freeField.errors.required">
+              Free is required.
+            </div>
+            <br>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-group">
+            <label for="timelimit">Time Limit</label>
+            <input type="number" class="form-control" id="timelimit-{{i}}" name="timelimit-{{i}}" placeholder="Enter Time limit" [(ngModel)]="item.timeLimit" required #timeLimitField="ngModel">
+          </div>
+          
+          <div *ngIf="timeLimitField.invalid && (timeLimitField.dirty || timeLimitField.touched)" class="text-danger">
+            <div *ngIf="timeLimitField.errors.required">
+              Time Limit is required.
+            </div>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Premium -->
+  <br>
+  <div class="form-row">
+    <div class="col">
+      <h4>Premium ({{rateCard.premiums.length}})</h4>
+    </div>
+    <div class="col-auto">
+      <button type="button" (click)="addPremium()" class="btn btn-outline-info"><span class="fa fa-plus"></span></button>
+    </div>
+  </div>
+  <br>
+  
+  <div *ngFor="let item of rateCard.premiums; index as i" class="card mb-4">
+    <div class="card-header">
+      <button type="button" class="btn btn-outline-danger float-right" (click)="removePremium(i)"><span class="fa fa-trash-alt"></span></button>
+      #{{i + 1}}
+    </div>
+    <div class="card-body">
+      <div class="form-row">
+        <div class="col-md">
+          <div class="form-group">
+            <label for="premiumType">Type</label>
+            <input type="text" class="form-control" id="premiumType-{{i}}" name="premiumType-{{i}}" placeholder="Enter Type" [(ngModel)]="item.premType" required #premTypeField="ngModel">
+          </div>
+          
+          <div *ngIf="premTypeField.invalid && (premTypeField.dirty || premTypeField.touched)" class="text-danger">
+            <div *ngIf="premTypeField.errors.required">
+              Type is required.
+            </div>
+            <br>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-group">
+            <label for="premAmount">Amount</label>
+            <input type="number" class="form-control" id="premAmount-{{i}}" name="premAmount-{{i}}" placeholder="Enter Amount" [(ngModel)]="item.premAmount" required #premAmountField="ngModel">
+          </div>
+          
+          <div *ngIf="premAmountField.invalid && (premAmountField.dirty || premAmountField.touched)" class="text-danger">
+            <div *ngIf="premAmountField.errors.required">
+              Amount is required.
+            </div>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tax -->  
+  <br>
+  <div class="form-row">
+    <div class="col">
+      <h4>Taxes ({{rateCard.taxes.length}})</h4>
+    </div>
+    <div class="col-auto">
+      <button type="button" (click)="addTax()" class="btn btn-outline-info"><span class="fa fa-plus"></span></button>
+    </div>
+  </div>
+  <br>
+  
+  <div class="card">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let tax of rateCard.taxes; index as i">
+        <div class="form-row">
+          <input type="checkbox" class="col-auto form-check-input" id="taxIncluded-{{i}}" name="taxIncluded-{{i}}" [(ngModel)]="tax.included" #taxIncludedField="ngModel">
+          <label class="col-auto col-form-label">&nbsp;#{{i + 1}}</label>
+          <input type="number" class="form-control col mx-3" [disabled]="!tax.included" id="taxVal-{{i}}" placeholder="Enter Tax" [(ngModel)]="tax.rate" name="taxVal-{{i}}" #taxValField="ngModel">
+          <button type="button" class="btn btn-outline-danger col-auto px-2" (click)="removeTax(i)"><span class="fa fa-trash-alt"></span></button>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <br>
+  
+  <!-- Covered -->
+  <br>
+  <div class="form-row">
+    <div class="col">
+      <h4>Covered ({{rateCard.covered.length}})</h4>
+    </div>
+    <div class="col-auto">
+      <button type="button" (click)="addCovered()" class="btn btn-outline-info"><span class="fa fa-plus"></span></button>
+    </div>
+  </div>
+  <br>
+  
+  <div *ngFor="let item of rateCard.covered; index as i" class="card mb-4">
+    <div class="card-header">
+      <button type="button" class="btn btn-outline-danger float-right" (click)="removeCovered(i)"><span class="fa fa-trash-alt"></span></button>
+      #{{i + 1}}
+    </div>
+    <div class="card-body">
+      <div class="form-row">
+        <div class="col-md">
+          <div class="form-group">
+            <label for="covMediaHouse">Media House</label>
+            <input type="text" class="form-control" id="covMediaHouse-{{i}}" name="covMediaHouse-{{i}}" placeholder="Enter Media House" [(ngModel)]="item.covMediaHouse" required #covMediaHouseField="ngModel">
+          </div>
+          
+          <div *ngIf="covMediaHouseField.invalid && (covMediaHouseField.dirty || covMediaHouseField.touched)" class="text-danger">
+            <div *ngIf="covMediaHouseField.errors.required">
+              Media House is required.
+            </div>
+            <br>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-group">
+            <label for="covEdition">Edition</label>
+            <input type="text" class="form-control" id="covEdition-{{i}}" name="covEdition-{{i}}" placeholder="Enter Edition" [(ngModel)]="item.covEdition" required #covEditionField="ngModel">
+          </div>
+          
+          <div *ngIf="covEditionField.invalid && (covEditionField.dirty || covEditionField.touched)" class="text-danger">
+            <div *ngIf="covEditionField.errors.required">
+              Edition is required.
+            </div>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Remarks -->  
+  <br>
+  <div class="form-row">
+    <div class="col">
+      <h4>Remarks ({{rateCard.remarks.length}})</h4>
+    </div>
+    <div class="col-auto">
+      <button type="button" (click)="addRemark()" class="btn btn-outline-info"><span class="fa fa-plus"></span></button>
+    </div>
+  </div>
+  <br>
+  
+  <div class="card">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let item of rateCard.remarks; index as i">
+        <div class="form-row">
+            <label class="col-auto col-form-label">#{{i + 1}}</label>
+            <input type="text" class="form-control col mx-3" id="remark-{{i}}" name="remark-{{i}}" placeholder="Enter Remark" [(ngModel)]="item.remark" required #remarkField="ngModel">
+            <button type="button" class="btn btn-outline-danger col-auto px-2" (click)="removeRemark(i)"><span class="fa fa-trash-alt"></span></button>
+        </div>
+
+        <div *ngIf="remarkField.invalid && (remarkField.dirty || remarkField.touched)" class="text-danger">
+          <div *ngIf="remarkField.errors.required">
+            Remark is required.
+          </div>
+          <br>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <br><br>
+
+  <div *ngIf="error">
+    {{error}}
+    <br><br>
+  </div>
+
+  <button ion-button color="brand_success" type="submit" class="btn btn-success" [disabled]="!rateCardForm.form.valid">Save</button>
+  <button ion-button color="brand_danger" class="btn btn-danger" (click)="cancel()">Cancel</button>
+</form>
+</div>

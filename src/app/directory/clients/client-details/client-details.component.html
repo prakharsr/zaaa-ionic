@@ -1,0 +1,134 @@
+<button class="fab bg-info" [routerLink]="['/dir/clients/edit', id]"><span class="fa fa-pencil-alt"></span></button>
+
+<div class="row">
+  <div class="col-lg">
+    <div class="card mb-3">
+      <div class="card-header">Client</div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-4">Organization Name</div>
+            <div class="col-md-8">{{client.orgName}}</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-4">Company Name</div>
+            <div class="col-md-8">{{client.companyName}}</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-4">Nick Name</div>
+            <div class="col-md-8">{{client.nickName}}</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-4">Category</div>
+            <div class="col-md-8">{{client.category}}</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-4">Address</div>
+            <div class="col-md-8">{{client.address}}</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-4">Landline</div>
+            <div class="col-md-8">{{client.landLine}}</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-4">Website</div>
+            <div class="col-md-8">{{client.website}}</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-4">PAN</div>
+            <div class="col-md-8">{{client.panNo}}</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-4">GSTIN</div>
+            <div class="col-md-8">{{client.gstNo}}</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-lg">
+    <div class="card mb-3" *ngFor="let contactPerson of client.contactpersons; index as i">
+      <div class="card-header">Contact Person {{i + 1}}</div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-4">Name</div>
+            <div class="col-md-8">{{contactPerson.name}}</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-4">Designation</div>
+            <div class="col-md-8">{{contactPerson.designation}}</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-4">Department</div>
+            <div class="col-md-8">{{contactPerson.department}}</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-4">Mobile</div>
+            <div class="col-md-8">{{contactPerson.mobileNo}}</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-4">Email</div>
+            <div class="col-md-8">{{contactPerson.email}}</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-4">Date of Birth</div>
+            <div class="col-md-8">{{contactPerson.dob | date}}</div>
+          </div>
+        </li>        
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-4">Anniversary</div>
+            <div class="col-md-8">{{contactPerson.anniversaryDate | date}}</div>
+          </div>
+        </li>
+      </ul>
+      <div class="card-header">Profile Picture</div>
+      <div class="card-body text-center">
+        <img [src]="contactPerson.photo" class="img-fluid max-w-200">
+  
+        <br><br>
+        
+        <label for="profile-upload-{{i}}" class="btn btn-outline-info">
+            Upload
+        </label>
+        <input type="file" id="profile-upload-{{i}}" class="hidden-file" accept="image/*" (change)="uploadProfilePicture($event.target.files)"/>
+
+        <div *ngIf="error || success">
+          <br>
+      
+          <ngb-alert *ngIf="error" type="danger" (close)="error = null">{{ error }}</ngb-alert>
+          <ngb-alert *ngIf="success" type="success" (close)="success = null">{{ success }}</ngb-alert>
+      
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

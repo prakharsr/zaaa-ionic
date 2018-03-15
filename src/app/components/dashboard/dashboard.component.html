@@ -18,6 +18,9 @@
         <div class="col-lg-3 col-md-4 col-sm-6">
             <button ion-button block color="brand_info" class="btn btn-info" (click)="this.goback.gotoComponent('dir')"><span class="fa fa-lg fa-address-book"></span> Directory</button>
         </div>
+        <div class="col-lg-3 col-md-4 col-sm-6">
+            <button ion-button block color="brand_danger" class="btn btn-danger" (click)="this.goback.gotoComponent('ratecards')"><span class="fa fa-lg fa-dollar-sign"></span> Rate Cards</button>
+        </div>
         <div class="col-lg-3 col-md-4 col-sm-6" *ngIf="admin">
             <button ion-button block color="brand_secondary" class="btn btn-secondary" (click)="this.goback.gotoComponent('templates')"><span class="fa fa-lg fa-file-alt"></span> Templates</button>
         </div>
