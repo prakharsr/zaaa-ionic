@@ -99,52 +99,52 @@
   <br>
 
   <div class="form-row">
-    <div class="form-group col">
-      <select class="form-control" name="category1" [(ngModel)]="category1" id="category1" required>
-        <option *ngFor="let item of categories" [ngValue]="item">{{item.name}}</option>
-      </select>
-    </div>
-
-    <div class="w-100 d-block d-sm-none"></div>
-
-    <div class="form-group col" *ngIf="category1 && category1.subcategories.length">
-      <select class="form-control" name="category2" [(ngModel)]="category2" id="category2">
-        <option *ngFor="let item of category1.subcategories" [ngValue]="item">{{item.name}}</option>
-      </select>
-    </div>
-
-    <div class="w-100 d-block d-md-none"></div>
-
-    <div class="form-group col" *ngIf="category2 && category2.subcategories.length">
-      <select class="form-control" name="category3" [(ngModel)]="category3" id="category3">
-        <option *ngFor="let item of category2.subcategories" [ngValue]="item">{{item.name}}</option>
-      </select>
-    </div>
-
-    <div class="w-100 d-block d-sm-none d-md-block d-xl-none"></div>
-
-    <div class="form-group col" *ngIf="category3 && category3.subcategories.length">
-      <select class="form-control" name="category4" [(ngModel)]="category4" id="category4">
-        <option *ngFor="let item of category3.subcategories" [ngValue]="item">{{item.name}}</option>
-      </select>
-    </div>
-
-    <div class="w-100 d-block d-md-none"></div>
-
-    <div class="form-group col" *ngIf="category4 && category4.subcategories.length">
-      <select class="form-control" name="category5" [(ngModel)]="category5" id="category5">
-        <option *ngFor="let item of category4.subcategories" [ngValue]="item">{{item.name}}</option>
-      </select>
-    </div>
-
-    <div class="w-100 d-block d-sm-none"></div>
-
-    <div class="form-group col" *ngIf="category5 && category5.subcategories.length">
-      <select class="form-control" name="category6" [(ngModel)]="category6" id="category6">
-        <option *ngFor="let item of category5.subcategories" [ngValue]="item">{{item.name}}</option>
-      </select>
-    </div>
-  </div>
+      <div class="form-group col">
+        <select class="form-control" name="category1" [(ngModel)]="category1" id="category1" required>
+          <option *ngFor="let item of categories" [ngValue]="item">{{item.name}}</option>
+        </select>
+      </div>
+  
+      <div class="w-100 d-block d-sm-none"></div>
+  
+      <div class="form-group col" *ngIf="category1 && category1.subcategories.length">
+        <select class="form-control" name="category2" [(ngModel)]="category2" id="category2">
+          <option *ngFor="let item of category1.subcategories" [ngValue]="item">{{item.name}}</option>
+        </select>
+      </div>
+  
+      <div class="w-100 d-block d-md-none"></div>
+  
+      <div class="form-group col" *ngIf="category2 && category2.subcategories.length">
+        <select class="form-control" name="category3" [(ngModel)]="category3" id="category3">
+          <option *ngFor="let item of category2.subcategories" [ngValue]="item">{{item.name}}</option>
+        </select>
+      </div>
+  
+      <div class="w-100 d-block d-sm-none d-md-block d-xl-none"></div>
+  
+      <div class="form-group col" *ngIf="category3 && category3.subcategories.length">
+        <select class="form-control" name="category4" [(ngModel)]="category4" id="category4">
+          <option *ngFor="let item of category3.subcategories" [ngValue]="item">{{item.name}}</option>
+        </select>
+      </div>
+  
+      <div class="w-100 d-block d-md-none"></div>
+  
+      <div class="form-group col" *ngIf="category4 && category4.subcategories.length">
+        <select class="form-control" name="category5" [(ngModel)]="category5" id="category5">
+          <option *ngFor="let item of category4.subcategories" [ngValue]="item">{{item.name}}</option>
+        </select>
+      </div>
+  
+      <div class="w-100 d-block d-sm-none"></div>
+  
+      <div class="form-group col" *ngIf="category5 && category5.subcategories.length">
+        <select class="form-control" name="category6" [(ngModel)]="category6" id="category6">
+          <option *ngFor="let item of category5.subcategories" [ngValue]="item">{{item.name}}</option>
+        </select>
+      </div>
+    </div>  
 
   <br>
 
@@ -247,10 +247,10 @@
     <div class="card-body">
       <div class="form-row">
         <div class="col-md">
-          <div class="form-group">
-            <label for="length">Length</label>
-            <input type="number" class="form-control" id="length-{{i}}" name="length-{{i}}" [(ngModel)]="item.length" required #lengthField="ngModel">
-          </div>
+          <ion-item class="form-group">
+            <ion-label floating for="length">Length</ion-label>
+            <ion-input type="number" id="length-{{i}}" name="length-{{i}}" [(ngModel)]="item.length" required #lengthField="ngModel"></ion-input>
+          </ion-item>
           
           <div *ngIf="lengthField.invalid && (lengthField.dirty || lengthField.touched)" class="text-danger">
             <div *ngIf="lengthField.errors.required">
@@ -260,10 +260,10 @@
           </div>
         </div>
         <div class="col-md">
-          <div class="form-group">
-            <label for="width">Width</label>
-            <input type="number" class="form-control" id="width-{{i}}" name="width-{{i}}" [(ngModel)]="item.width" required #widthField="ngModel">
-          </div>
+          <ion-item class="form-group">
+            <ion-label floating for="width">Width</ion-label>
+            <ion-input type="number" id="width-{{i}}" name="width-{{i}}" [(ngModel)]="item.width" required #widthField="ngModel"></ion-input>
+          </ion-item>
           
           <div *ngIf="widthField.invalid && (widthField.dirty || widthField.touched)" class="text-danger">
             <div *ngIf="widthField.errors.required">
@@ -273,10 +273,10 @@
           </div>
         </div>
         <div class="col-md">
-          <div class="form-group">
-            <label for="amount">Amount</label>
-            <input type="number" class="form-control" id="amount-{{i}}" name="amount-{{i}}" [(ngModel)]="item.amount" required #amountField="ngModel">
-          </div>
+          <ion-item class="form-group">
+            <ion-label floating for="amount">Amount</ion-label>
+            <ion-input type="number" id="amount-{{i}}" name="amount-{{i}}" [(ngModel)]="item.amount" required #amountField="ngModel"></ion-input>
+          </ion-item>
           
           <div *ngIf="amountField.invalid && (amountField.dirty || amountField.touched)" class="text-danger">
             <div *ngIf="amountField.errors.required">
@@ -309,10 +309,10 @@
     <div class="card-body">
       <div class="form-row">
         <div class="col-md">
-          <div class="form-group">
-            <label for="paid">Paid</label>
-            <input type="number" class="form-control" id="paid-{{i}}" name="paid-{{i}}" placeholder="Enter Paid" [(ngModel)]="item.paid" required #paidField="ngModel">
-          </div>
+          <ion-item class="form-group">
+            <ion-label floating for="paid">Paid</ion-label>
+            <ion-input type="number" id="paid-{{i}}" name="paid-{{i}}" [(ngModel)]="item.paid" required #paidField="ngModel"></ion-input>
+          </ion-item>
           
           <div *ngIf="paidField.invalid && (paidField.dirty || paidField.touched)" class="text-danger">
             <div *ngIf="paidField.errors.required">
@@ -322,10 +322,10 @@
           </div>
         </div>
         <div class="col-md">
-          <div class="form-group">
-            <label for="free">Free</label>
-            <input type="number" class="form-control" id="free-{{i}}" name="free-{{i}}" placeholder="Enter Free" [(ngModel)]="item.Free" required #freeField="ngModel">
-          </div>
+          <ion-item class="form-group">
+            <ion-label floating for="free">Free</ion-label>
+            <ion-input type="number" id="free-{{i}}" name="free-{{i}}" [(ngModel)]="item.Free" required #freeField="ngModel"></ion-input>
+          </ion-item>
           
           <div *ngIf="freeField.invalid && (freeField.dirty || freeField.touched)" class="text-danger">
             <div *ngIf="freeField.errors.required">
@@ -335,10 +335,10 @@
           </div>
         </div>
         <div class="col-md">
-          <div class="form-group">
-            <label for="timelimit">Time Limit</label>
-            <input type="number" class="form-control" id="timelimit-{{i}}" name="timelimit-{{i}}" placeholder="Enter Time limit" [(ngModel)]="item.timeLimit" required #timeLimitField="ngModel">
-          </div>
+          <ion-item class="form-group">
+            <ion-label floating for="timelimit">Time Limit</ion-label>
+            <ion-input type="number" id="timelimit-{{i}}" name="timelimit-{{i}}" [(ngModel)]="item.timeLimit" required #timeLimitField="ngModel"></ion-input>
+          </ion-item>
           
           <div *ngIf="timeLimitField.invalid && (timeLimitField.dirty || timeLimitField.touched)" class="text-danger">
             <div *ngIf="timeLimitField.errors.required">
@@ -371,10 +371,10 @@
     <div class="card-body">
       <div class="form-row">
         <div class="col-md">
-          <div class="form-group">
-            <label for="premiumType">Type</label>
-            <input type="text" class="form-control" id="premiumType-{{i}}" name="premiumType-{{i}}" placeholder="Enter Type" [(ngModel)]="item.premType" required #premTypeField="ngModel">
-          </div>
+          <ion-item class="form-group">
+            <ion-label floating for="premiumType">Type</ion-label>
+            <ion-input type="text" id="premiumType-{{i}}" name="premiumType-{{i}}" [(ngModel)]="item.premType" required #premTypeField="ngModel"></ion-input>
+          </ion-item>
           
           <div *ngIf="premTypeField.invalid && (premTypeField.dirty || premTypeField.touched)" class="text-danger">
             <div *ngIf="premTypeField.errors.required">
@@ -384,10 +384,10 @@
           </div>
         </div>
         <div class="col-md">
-          <div class="form-group">
-            <label for="premAmount">Amount</label>
-            <input type="number" class="form-control" id="premAmount-{{i}}" name="premAmount-{{i}}" placeholder="Enter Amount" [(ngModel)]="item.premAmount" required #premAmountField="ngModel">
-          </div>
+          <ion-item class="form-group">
+            <ion-label floating for="premAmount">Amount</ion-label>
+            <ion-input type="number" id="premAmount-{{i}}" name="premAmount-{{i}}" [(ngModel)]="item.premAmount" required #premAmountField="ngModel"></ion-input>
+          </ion-item>
           
           <div *ngIf="premAmountField.invalid && (premAmountField.dirty || premAmountField.touched)" class="text-danger">
             <div *ngIf="premAmountField.errors.required">
@@ -413,18 +413,25 @@
   <br>
   
   <div class="card">
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item" *ngFor="let tax of rateCard.taxes; index as i">
-        <div class="form-row">
-          <input type="checkbox" class="col-auto form-check-input" id="taxIncluded-{{i}}" name="taxIncluded-{{i}}" [(ngModel)]="tax.included" #taxIncludedField="ngModel">
-          <label class="col-auto col-form-label">&nbsp;#{{i + 1}}</label>
-          <input type="number" class="form-control col mx-3" [disabled]="!tax.included" id="taxVal-{{i}}" placeholder="Enter Tax" [(ngModel)]="tax.rate" name="taxVal-{{i}}" #taxValField="ngModel">
-          <button type="button" class="btn btn-outline-danger col-auto px-2" (click)="removeTax(i)"><span class="fa fa-trash-alt"></span></button>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <br>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let tax of rateCard.taxes; index as i">
+          <ion-list>
+            <ion-item>
+              <ion-label>Tax</ion-label>
+                <ion-checkbox id="taxIncluded-{{i}}" name="taxIncluded-{{i}}" [(ngModel)]="tax.included" #taxIncludedField="ngModel"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+                <ion-label >#{{i + 1}}</ion-label>
+                <ion-input type="number" [disabled]="!tax.included" id="taxVal-{{i}}" [(ngModel)]="tax.rate" name="taxVal-{{i}}" #taxValField="ngModel"></ion-input>
+                <button type="button" class="btn btn-outline-danger col-auto px-2" (click)="removeTax(i)"><span class="fa fa-trash-alt"></span></button>
+            </ion-item>
+            
+            
+          </ion-list>
+        </li>
+      </ul>
+    </div>
+    <br>
   
   <!-- Covered -->
   <br>
@@ -446,10 +453,10 @@
     <div class="card-body">
       <div class="form-row">
         <div class="col-md">
-          <div class="form-group">
-            <label for="covMediaHouse">Media House</label>
-            <input type="text" class="form-control" id="covMediaHouse-{{i}}" name="covMediaHouse-{{i}}" placeholder="Enter Media House" [(ngModel)]="item.covMediaHouse" required #covMediaHouseField="ngModel">
-          </div>
+          <ion-item class="form-group">
+            <ion-label floating for="covMediaHouse">Media House</ion-label>
+            <ion-input type="text" id="covMediaHouse-{{i}}" name="covMediaHouse-{{i}}" [(ngModel)]="item.covMediaHouse" required #covMediaHouseField="ngModel"></ion-input>
+          </ion-item>
           
           <div *ngIf="covMediaHouseField.invalid && (covMediaHouseField.dirty || covMediaHouseField.touched)" class="text-danger">
             <div *ngIf="covMediaHouseField.errors.required">
@@ -459,10 +466,10 @@
           </div>
         </div>
         <div class="col-md">
-          <div class="form-group">
-            <label for="covEdition">Edition</label>
-            <input type="text" class="form-control" id="covEdition-{{i}}" name="covEdition-{{i}}" placeholder="Enter Edition" [(ngModel)]="item.covEdition" required #covEditionField="ngModel">
-          </div>
+          <ion-item class="form-group">
+            <ion-label floating for="covEdition">Edition</ion-label>
+            <ion-input type="text" id="covEdition-{{i}}" name="covEdition-{{i}}" [(ngModel)]="item.covEdition" required #covEditionField="ngModel"></ion-input>
+          </ion-item>
           
           <div *ngIf="covEditionField.invalid && (covEditionField.dirty || covEditionField.touched)" class="text-danger">
             <div *ngIf="covEditionField.errors.required">
@@ -490,11 +497,11 @@
   <div class="card">
     <ul class="list-group list-group-flush">
       <li class="list-group-item" *ngFor="let item of rateCard.remarks; index as i">
-        <div class="form-row">
-            <label class="col-auto col-form-label">#{{i + 1}}</label>
-            <input type="text" class="form-control col mx-3" id="remark-{{i}}" name="remark-{{i}}" placeholder="Enter Remark" [(ngModel)]="item.remark" required #remarkField="ngModel">
+        <ion-item>
+            <ion-label floating>#{{i + 1}}</ion-label>
+            <ion-input type="text" id="remark-{{i}}" name="remark-{{i}}" [(ngModel)]="item.remark" required #remarkField="ngModel"></ion-input>
             <button type="button" class="btn btn-outline-danger col-auto px-2" (click)="removeRemark(i)"><span class="fa fa-trash-alt"></span></button>
-        </div>
+        </ion-item>
 
         <div *ngIf="remarkField.invalid && (remarkField.dirty || remarkField.touched)" class="text-danger">
           <div *ngIf="remarkField.errors.required">

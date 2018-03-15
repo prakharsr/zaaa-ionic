@@ -41,12 +41,12 @@
 
 <br><br>
 
-  <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="acceptTnC" name="acceptTnC" [(ngModel)]="acceptTnC" required #acceptTnCField="ngModel">
-    <label class="form-check-label" for="acceptTnC">&nbsp;&nbsp;&nbsp;Accept Terms and Conditions</label>
-  </div>
+  <ion-item class="form-group">
+      <ion-label for="acceptTnC">Accept Terms and Conditions</ion-label>
+    <ion-checkbox id="acceptTnC" name="acceptTnC" [(ngModel)]="acceptTnC" required #acceptTnCField="ngModel"></ion-checkbox>
+  </ion-item>
 
-  <div *ngIf="acceptTnCField.invalid && (acceptTnCField.dirty || acceptTnCField.touched)" class="text-danger">
+   <div *ngIf="acceptTnCField.invalid && (acceptTnCField.dirty || acceptTnCField.touched)" class="text-danger">
     <div *ngIf="acceptTnCField.errors.required">
         Accept Terms and Conditions to continue.
     </div>
