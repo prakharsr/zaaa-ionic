@@ -38,12 +38,7 @@
         <ion-label floating for="category">Category / Type</ion-label>
         <ion-input type="text" id="category" name="category" [(ngModel)]="client.category" #categoryField="ngModel"></ion-input>
       </ion-item>
-    
-      <ion-item class="form-group">
-        <ion-label floating for="address">Address</ion-label>
-        <ion-input type="text" id="address" name="address" [(ngModel)]="client.address" #addressField="ngModel"></ion-input>
-      </ion-item>
-    
+
       <ion-item class="form-group">
         <ion-label floating for="landLine">Landline</ion-label>
         <ion-input type="text" id="landLine" name="landLine" [(ngModel)]="client.landLine" #landLineField="ngModel"></ion-input>
@@ -63,6 +58,48 @@
         <ion-label floating for="gstNo">GST Number</ion-label>
         <ion-input type="text" id="gstNo" name="gstNo" [(ngModel)]="client.gstNo" #gstNoField="ngModel"></ion-input>
       </ion-item>
+
+      <br>
+
+      <h3 class="mb-3">Address</h3>
+    
+      <ion-item class="form-group">
+        <ion-input type="text" id="address" name="address" [(ngModel)]="client.address.address" required #addressField="ngModel"></ion-input>
+      </ion-item>
+    
+      <div *ngIf="addressField.invalid && (addressField.dirty || addressField.touched)" class="text-danger">
+        <div *ngIf="addressField.errors.required">
+          Address is required.
+        </div>
+        <br>
+      </div>
+
+      <ion-item class="form-group">
+        <ion-label floating for="city">City</ion-label>
+        <ion-input type="text" id="city" name="city" [(ngModel)]="client.address.city" required #cityField="ngModel"></ion-input>
+      </ion-item>
+    
+      <div *ngIf="cityField.invalid && (cityField.dirty || cityField.touched)" class="text-danger">
+        <div *ngIf="cityField.errors.required">
+          City is required.
+        </div>
+        <br>
+      </div>
+
+      <ion-item class="form-group">
+        <ion-label floating for="state">State</ion-label>
+        <select id="state" name="state" [(ngModel)]="client.address.state" required #stateField="ngModel">
+          <option *ngFor="let state of stateApi.states" [value]="state">{{state}}</option>
+        </select>
+      </div>
+    
+      <div *ngIf="stateField.invalid && (stateField.dirty || stateField.touched)" class="text-danger">
+        <div *ngIf="stateField.errors.required">
+          State is required.
+        </div>
+        <br>
+      </div>
+
       <br>
     </div>
 
@@ -88,7 +125,7 @@
         <ion-item class="form-group">
           <ion-label floating for="name">Name</ion-label>
           <ion-input type="text" id="name-{{i}}" name="s-{{i}}-name" [(ngModel)]="item.name" required #nameField="ngModel"></ion-input>
-        </ion-item>
+        </div>
 
         <div *ngIf="nameField.invalid && (nameField.dirty || nameField.touched)" class="text-danger">
           <div *ngIf="nameField.errors.required">
@@ -100,12 +137,12 @@
         <ion-item class="form-group">
           <ion-label floating for="designation">Designation</ion-label>
           <ion-input type="text" id="designation-{{i}}" name="s-{{i}}-designation" [(ngModel)]="item.designation" #designationField="ngModel"></ion-input>
-        </ion-item>
+        </div>
 
         <ion-item class="form-group">
           <ion-label floating for="department">Department</ion-label>
           <ion-input type="text" id="department-{{i}}" name="s-{{i}}-department" [(ngModel)]="item.department" required #departmentField="ngModel"></ion-input>
-        </ion-item>
+        </div>
 
         <div *ngIf="departmentField.invalid && (departmentField.dirty || departmentField.touched)" class="text-danger">
           <div *ngIf="departmentField.errors.required">
@@ -117,7 +154,7 @@
         <ion-item class="form-group">
           <ion-label floating for="personLandLine">Land Line</ion-label>
           <ion-input type="text" id="personLandLine-{{i}}" name="s-{{i}}-personLandLine" [(ngModel)]="item.personLandLine" required #personLandLineField="ngModel"></ion-input>
-        </ion-item>
+        </div>
 
         <div *ngIf="personLandLineField.invalid && (personLandLineField.dirty || personLandLineField.touched)" class="text-danger">
           <div *ngIf="personLandLineField.errors.required">
@@ -129,12 +166,12 @@
         <ion-item class="form-group">
           <ion-label floating for="mobileNo">Mobile Number</ion-label>
           <ion-input type="text" id="mobileNo-{{i}}" name="s-{{i}}-mobileNo" [(ngModel)]="item.mobileNo" #mobileNoField="ngModel"></ion-input>
-        </ion-item>
+        </div>
 
         <ion-item class="form-group">
           <ion-label floating for="email">E-mail</ion-label>
           <ion-input type="email" id="email-{{i}}" name="s-{{i}}-email" [(ngModel)]="item.email" required #emailField="ngModel" email></ion-input>
-        </ion-item>
+        </div>
 
         <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)" class="text-danger">
           <div *ngIf="emailField.errors.required">
@@ -148,13 +185,13 @@
 
         <ion-item class="form-group">
           <ion-label floating for="dob">Date of birth</ion-label>
-          <ion-datetime displayFormat="DD/MM/YYYY" id="dob" name="dob" [(ngModel)]="item.dob" #dobField="ngModel"></ion-datetime>
-        </ion-item>
+          <ion-input type="date" id="dob-{{i}}" name="dob-{{i}}" [(ngModel)]="item.dob" #dobField="ngModel"></ion-input>
+        </div>
   
         <ion-item class="form-group">
           <ion-label floating for="anniversaryDate">Anniversary Date</ion-label>
-          <ion-datetime displayFormat="DD/MM/YYYY" id="anniversaryDate" name="anniversaryDate" [(ngModel)]="item.anniversaryDate" #anniversaryDateField="ngModel"></ion-datetime>
-        </ion-item>
+          <ion-input type="date" id="anniversaryDate-{{i}}" name="anniversaryDate-{{i}}" [(ngModel)]="item.anniversaryDate" #anniversaryDateField="ngModel"></ion-input>
+        </div>
 
         <!-- Assign Ad Type, Assign Edition -->
       </div>
@@ -168,6 +205,6 @@
   <br><br>
 </div>
 
-  <button ion-button color="brand_success" type="submit" class="btn btn-success" [disabled]="!dirForm.form.valid">Save</button>
-  <button ion-button color="brand_danger" class="btn btn-danger" (click)="cancel()">Cancel</button>
+  <button type="submit" class="btn btn-success" [disabled]="!dirForm.form.valid">Save</button>
+  <button class="btn btn-danger" (click)="cancel()">Cancel</button>
 </form>

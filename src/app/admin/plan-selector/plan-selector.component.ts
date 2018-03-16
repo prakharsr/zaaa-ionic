@@ -5,7 +5,7 @@ import { RazorPayService } from '../../services/razorpay.service';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { WindowService } from '../../services/window.service';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { DashboardComponent } from '../../components/dashboard/dashboard.component';
 import { environment } from '../../../environments/environment';
 import { EmptyComponent } from '../empty/empty.component';
@@ -13,6 +13,8 @@ import { HomeComponent } from '../../components/home/home.component';
 import { GobackService } from '../../services/goback.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Firm } from '../../models/firm';
+import { Address } from '../../models/address';
+import { BillingDetailsComponent } from '../billing-details/billing-details.component';
 
 @Component({
   selector: 'app-plan-selector',
@@ -39,7 +41,7 @@ export class PlanSelectorComponent implements OnInit {
     public navCtrl: NavController,
     public navParams: NavParams, 
     private goback:GobackService,
-    private modalService: NgbModal ) { }
+    private modalService: NgbModal) { }
 
   ngOnInit() {
     this.goback.urlInit();
@@ -61,7 +63,7 @@ export class PlanSelectorComponent implements OnInit {
     this.api.getFirmProfile().subscribe(data => this.firm = data);
   }
 
-  private openPay(firmName: string, billingAddress: string, gstNo: string) {
+  private openPay(firmName: string, billingAddress: Address, gstNo: string) {
     this.razorPay.initPay(this.phone,
       this.email,
       this.selectedPlan.cost,
@@ -87,7 +89,7 @@ export class PlanSelectorComponent implements OnInit {
       });
   }
 
-  billingDetails(param: { firmName: string, billingAddress: string, gstNo: string }) {
+  billingDetails(param: { firmName: string, billingAddress: Address, gstNo: string }) {
     this.openPay(param.firmName, param.billingAddress, param.gstNo);
   }
 
@@ -103,13 +105,12 @@ export class PlanSelectorComponent implements OnInit {
         this.openPay(this.firm.name, this.firm.registeredAddress, this.firm.gstNo);
       }
       else {
-        this.modalService.open(modalContent);
-      }
+        this.modalService.open(modalContent);      }
     }
     else {
       this.paid = true;
       
-      this.api.setPlan(plan, '', '', '', '').subscribe(
+      this.api.setPlan(plan, '', '', new Address(), '').subscribe(
         data => {
           this.router.navigateByUrl("/");
         },

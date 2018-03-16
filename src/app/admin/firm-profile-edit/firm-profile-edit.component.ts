@@ -6,6 +6,8 @@ import { ApiService } from '../../services/api.service';
 import { NgForm } from '@angular/forms';
 import { CanComponentDeactivate } from '../../guards/canComponentDeactivate';
 import { GobackService } from '../../services/goback.service';
+import { StateApiService } from '../../services/state-api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-firm-profile-edit',
@@ -23,7 +25,7 @@ export class FirmProfileEditComponent implements OnInit, CanComponentDeactivate 
   error: string;
   success: string;
 
-  constructor(private ifscService: IfscService, private api: ApiService, private goback:GobackService) { }
+  constructor(private ifscService: IfscService, private api: ApiService, private goback:GobackService, public stateApi: StateApiService, private router: Router) { }
 
   ngOnInit() {
     this.goback.urlInit();
@@ -49,6 +51,12 @@ export class FirmProfileEditComponent implements OnInit, CanComponentDeactivate 
     }
   }
 
+  copyAddress() {
+        this.profile.officeAddress.address = this.profile.registeredAddress.address;
+        this.profile.officeAddress.city = this.profile.registeredAddress.city;
+        this.profile.officeAddress.state = this.profile.registeredAddress.state;
+      }
+
   submit() {
     this.error = '';
     this.success = '';
@@ -56,7 +64,7 @@ export class FirmProfileEditComponent implements OnInit, CanComponentDeactivate 
     this.api.setFirmProfile(this.profile).subscribe(
       data => {
         if (data.success) {
-          this.success = 'Firm Profile updated successfully';
+          this.router.navigateByUrl('/firm');
         }
         else {
           console.log(data);

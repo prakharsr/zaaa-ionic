@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DirClient, ContactPerson } from '../dirClient';
 import { ClientApiService } from '../client-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { StateApiService } from '../../../services/state-api.service';
 import { GobackService } from '../../../services/goback.service';
 
 @Component({
@@ -20,11 +21,12 @@ export class DirClientComponent implements OnInit {
 
   constructor(private api: ClientApiService,
     private route: ActivatedRoute,
-    private router: Router, private goback:GobackService) { }
+    private router: Router,
+    public stateApi: StateApiService,
+    private goback: GobackService) { }
 
   ngOnInit() {
     this.goback.urlInit();
-    
     this.route.paramMap.subscribe(params => {
       if (params.has('id')) {
         this.id = params.get('id');

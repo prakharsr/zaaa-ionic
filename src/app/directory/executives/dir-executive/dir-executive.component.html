@@ -7,12 +7,12 @@
     
       <ion-item class="form-group">
         <ion-label floating for="orgName">Organisation Name</ion-label>
-        <ion-input type="text" id="orgName" name="orgName"  [(ngModel)]="executive.orgName" #orgNameField="ngModel"></ion-input>
+        <ion-input type="text" id="orgName" name="orgName" [(ngModel)]="executive.orgName" #orgNameField="ngModel"></ion-input>
       </ion-item>
     
       <ion-item class="form-group">
         <ion-label floating for="companyName">Company Name</ion-label>
-        <ion-input type="text" id="companyName" name="companyName"  [(ngModel)]="executive.companyName" required #companyNameField="ngModel"></ion-input>
+        <ion-input type="text" id="companyName" name="companyName" [(ngModel)]="executive.companyName" required #companyNameField="ngModel"></ion-input>
       </ion-item>
     
       <div *ngIf="companyNameField.invalid && (companyNameField.dirty || companyNameField.touched)" class="text-danger">
@@ -24,7 +24,7 @@
     
       <ion-item class="form-group">
         <ion-label floating for="executiveName">Executive Name</ion-label>
-        <ion-input type="text" id="executiveName" name="executiveName"  [(ngModel)]="executive.executiveName" required #executiveNameField="ngModel"></ion-input>
+        <ion-input type="text" id="executiveName" name="executiveName" [(ngModel)]="executive.executiveName" required #executiveNameField="ngModel"></ion-input>
       </ion-item>
     
       <div *ngIf="executiveNameField.invalid && (executiveNameField.dirty || executiveNameField.touched)" class="text-danger">
@@ -36,17 +36,17 @@
     
       <ion-item class="form-group">
         <ion-label floating for="designation">Designation</ion-label>
-        <ion-input type="text" id="designation" name="designation"  [(ngModel)]="executive.designation" #designationField="ngModel"></ion-input>
+        <ion-input type="text" id="designation" name="designation" [(ngModel)]="executive.designation" #designationField="ngModel"></ion-input>
       </ion-item>
     
       <ion-item class="form-group">
         <ion-label floating for="department">Department</ion-label>
-        <ion-input type="text" id="department" name="department"  [(ngModel)]="executive.department" #departmentField="ngModel"></ion-input>
+        <ion-input type="text" id="department" name="department" [(ngModel)]="executive.department" #departmentField="ngModel"></ion-input>
       </ion-item>
     
       <ion-item class="form-group">
         <ion-label floating for="mobileNo">Mobile Number</ion-label>
-        <ion-input type="text" id="mobileNo" name="mobileNo"  [(ngModel)]="executive.mobileNo" required #mobileNoField="ngModel"></ion-input>
+        <ion-input type="text" id="mobileNo" name="mobileNo" [(ngModel)]="executive.mobileNo" required #mobileNoField="ngModel"></ion-input>
       </ion-item>
     
       <div *ngIf="mobileNoField.invalid && (mobileNoField.dirty || mobileNoField.touched)" class="text-danger">
@@ -58,7 +58,7 @@
     
       <ion-item class="form-group">
         <ion-label floating for="email">Email</ion-label>
-        <ion-input type="email" id="email" name="email"  [(ngModel)]="executive.email" required #emailField="ngModel" email></ion-input>
+        <ion-input type="email" id="email" name="email" [(ngModel)]="executive.email" required #emailField="ngModel" email></ion-input>
       </ion-item>
     
       <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)" class="text-danger">
@@ -80,12 +80,24 @@
 
       <ion-item class="form-group">
         <ion-label floating for="dob">Date of Birth</ion-label>
-        <ion-datetime displayFormat="DD/MM/YYYY" id="dob" name="dob"  [(ngModel)]="executive.dob" #dobField="ngModel"></ion-datetime>
+        <ion-input type="date" id="dob" name="dob" [(ngModel)]="executive.dob" #dobField="ngModel"></ion-input>
       </ion-item>
+
+      <!-- <ion-item class="form-group">
+        <ion-label floating class="mr-3">Date of Birth:</ion-label>
+        <span *ngIf="dobModel">{{dobModel.day}}-{{dobModel.month}}-{{dobModel.year}}</span>
+        <span *ngIf="!dobModel">dd-MM-yyyy</span>
+        <ng-template #dobPopContent>
+          <ngb-datepicker name="dobPicker" #dp [(ngModel)]="dobModel" (select)="dobPopover.close()"></ngb-datepicker>
+        </ng-template>
+        <button type="button" class="btn btn-outline-secondary ml-3" [ngbPopover]="dobPopContent" #dobPopover="ngbPopover" popoverTitle="Select Date of Birth">
+          <span class="fa fa-calendar"></span>
+        </button>
+      </div> -->
     
       <ion-item class="form-group">
         <ion-label floating for="anniversaryDate">Anniversary Date</ion-label>
-        <ion-datetime displayFormat="DD/MM/YYYY" id="anniversaryDate" name="anniversaryDate"  [(ngModel)]="executive.anniversaryDate" #anniversaryDateField="ngModel"></ion-datetime>
+        <ion-input type="date" id="anniversaryDate" name="anniversaryDate" [(ngModel)]="executive.anniversaryDate" #anniversaryDateField="ngModel"></ion-input>
       </ion-item>
     </div>
   </div>
@@ -96,6 +108,6 @@
     <br>
   </div>
 
-  <button ion-button color="brand_success" type="submit" class="btn btn-success" [disabled]="!dirForm.form.valid">Save</button>
-  <button ion-button color="brand_danger" class="btn btn-danger" (click)="cancel()">Cancel</button>
+  <button type="submit" class="btn btn-success" [disabled]="!dirForm.form.valid">Save</button>
+  <button class="btn btn-danger" (click)="cancel()">Cancel</button>
 </form>

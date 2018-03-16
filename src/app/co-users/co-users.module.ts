@@ -11,16 +11,15 @@ import { IonicModule } from 'ionic-angular';
 
 @NgModule({
   imports: [
-    IonicModule.forRoot(CoUsersModule),
-
     BaseModule,
     CoUsersRoutingModule,
+    IonicModule.forRoot(CoUsersModule)
   ],
   declarations: [
     CoUsersComponent,
     NewCoUserComponent,
     RoleControlComponent,
-    RoleEditComponent 
+    RoleEditComponent
   ],
   providers: [CoUserApiService]
 })

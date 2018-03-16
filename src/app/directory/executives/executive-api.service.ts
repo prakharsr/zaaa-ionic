@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { DirExecutive } from './dirExecutive';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
+import { of } from 'rxjs/observable/of';
 
 @Injectable()
 export class ExecutiveApiService {
@@ -67,6 +68,26 @@ export class ExecutiveApiService {
         return executives;
       })
     );
+  }
+
+  searchExecutives(query: string) : Observable<DirExecutive[]> {
+    if (query) {
+      return this.api.get('/user/executives/' + query).pipe(
+        map(data => {
+          let executives : DirExecutive[] = [];
+
+          if (data.success) {
+            data.executives.forEach(element => {
+              executives.push(this.bodyToExecutive(element));            
+            });
+          }
+
+          return executives;
+        })
+      );
+    }
+    
+    return of([]);
   }
 
   editExecutive(executive: DirExecutive) : Observable<any> {

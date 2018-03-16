@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DirMediaHouse, MediaHouseScheduling } from '../dirMediaHouse';
 import { MediaHouseApiService } from '../media-house-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { StateApiService } from '../../../services/state-api.service';
+import { GobackService } from '../../../services/goback.service';
 
 @Component({
   selector: 'app-dir-media-house',
@@ -19,9 +21,12 @@ export class DirMediaHouseComponent implements OnInit {
 
   constructor(private api: MediaHouseApiService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    public stateApi: StateApiService,
+    private goback: GobackService) { }
 
   ngOnInit() {
+    this.goback.urlInit();
     this.mediaHouse.scheduling = [new MediaHouseScheduling()];
 
     this.route.paramMap.subscribe(params => {
@@ -32,6 +37,7 @@ export class DirMediaHouseComponent implements OnInit {
 
         this.api.getMediaHouse(this.id).subscribe(data => this.mediaHouse = data);
       }
+      else this.mediaHouse.mediaType = 'Print';
     });
   }
 

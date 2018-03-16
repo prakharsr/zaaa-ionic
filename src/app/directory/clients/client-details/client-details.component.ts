@@ -20,11 +20,10 @@ export class ClientDetailsComponent implements OnInit {
   constructor(private api: ClientApiService,
     private route: ActivatedRoute,
     private router: Router,
-    private goback:GobackService) { }
+    private goback: GobackService) { }
 
   ngOnInit() {
     this.goback.urlInit();
-
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
 

@@ -5,15 +5,6 @@
   </div>
   
   <div class="container">
-    <div *ngIf="error || success">
-      <br>
-  
-      <ngb-alert *ngIf="error" type="danger" (close)="error = null">{{ error }}</ngb-alert>
-      <ngb-alert *ngIf="success" type="success" (close)="success = null">{{ success }}</ngb-alert>
-  
-      <br>
-    </div>
-  
     <form (ngSubmit)="submit()" #profileForm="ngForm">
       <div class="row">
         <div class="col-md-6">
@@ -41,9 +32,10 @@
             <ion-label floating for="nickname">Display / Nickname</ion-label>
             <ion-input type="text" id="nickname" name="nickname"  [(ngModel)]="profile.nickname" #nicknameField="ngModel"></ion-input>
           </ion-item>
+
+          <h3 class="my-5 text-muted">Registered Address</h3>
         
           <ion-item class="form-group">
-            <ion-label floating for="registeredAddress">Registered Address</ion-label>
             <ion-input type="text" id="registeredAddress" name="registeredAddress"  [(ngModel)]="profile.registeredAddress" required #registeredAddressField="ngModel"></ion-input>
           </ion-item>
         
@@ -55,20 +47,64 @@
           </div>
         
           <ion-item class="form-group">
-            <ion-label floating for="officeAddress">Office Address</ion-label>
-            <ion-input type="text" id="officeAddress" name="officeAddress"  [(ngModel)]="profile.officeAddress" #officeAddressField="ngModel"></ion-input>
+            <ion-label floating for="registeredCity">City</ion-label>
+            <ion-input type="text" id="registeredCity" name="registeredCity" [(ngModel)]="profile.registeredAddress.city" required #registeredCityField="ngModel"></ion-input>
           </ion-item>
+        
+          <div *ngIf="registeredCityField.invalid && (registeredCityField.dirty || registeredCityField.touched)" class="text-danger">
+            <div *ngIf="registeredCityField.errors.required">
+              City is required.
+            </div>
+            <br>
+          </div>
+        
+          <ion-item class="form-group">
+            <ion-label floating for="registeredState">State</ion-label>
+            <ion-select id="registeredState" name="registeredState" [(ngModel)]="profile.registeredAddress.state" required #registeredStateField="ngModel">
+              <ion-option *ngFor="let state of stateApi.states" [value]="state">{{state}}</ion-option>
+            </ion-select>
+          </ion-item>
+        
+          <div *ngIf="registeredStateField.invalid && (registeredStateField.dirty || registeredStateField.touched)" class="text-danger">
+            <div *ngIf="registeredStateField.errors.required">
+              State is required.
+            </div>
+            <br>
+          </div>
+  
+          <h3 class="my-5 text-muted">Office Address</h3>
+  
+          <button type="button" class="btn btn-warning btn-sm" (click)="copyAddress()">Copy from Above</button>
+          <br><br>
+  
+          <ion-item class="form-group">
+            <ion-input type="text" id="officeAddress" name="officeAddress" [(ngModel)]="profile.officeAddress.address" #officeAddressField="ngModel"></ion-input>
+          </ion-item>
+        
+          <ion-item class="form-group">
+            <ion-label floating for="officeCity">City</ion-label>
+            <ion-input type="text" id="officeCity" name="officeCity" [(ngModel)]="profile.officeAddress.city" #officeCityField="ngModel"></ion-input>
+          </ion-item>
+        
+          <ion-item class="form-group">
+            <ion-label floating for="officeState">State</ion-label>
+            <ion-select id="officeState" name="officeState" [(ngModel)]="profile.officeAddress.state" #officeStateField="ngModel">
+              <ion-option *ngFor="let state of stateApi.states" [value]="state">{{state}}</ion-option>
+            </ion-select>
+          </ion-item>
+  
+          <br><br><br>
         
           <ion-item class="form-group">
             <ion-label floating for="incDate">Incorporation Date</ion-label>
             <ion-datetime displayFormat="DD/MM/YYYY" id="incDate" name="incDate" [(ngModel)]="profile.incDate" #incDateField="ngModel"></ion-datetime>
           </ion-item>
-      
+  
           <ion-item class="form-group">
             <ion-label floating for="email">Email address</ion-label>
-            <ion-input type="email" id="email" name="email"  [(ngModel)]="profile.email" required #emailField="ngModel" email></ion-input>
+            <ion-input type="email" id="email" name="email" [(ngModel)]="profile.email" required #emailField="ngModel" email></ion-input>
           </ion-item>
-        
+
           <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)" class="text-danger">
             <div *ngIf="emailField.errors.required">
               Email is required.
@@ -234,10 +270,8 @@
   
       <br>
     
-      <div *ngIf="error || success">      
-        <ngb-alert *ngIf="error" type="danger" (close)="error = null">{{ error }}</ngb-alert>
-        <ngb-alert *ngIf="success" type="success" (close)="success = null">{{ success }}</ngb-alert>
-      
+      <div *ngIf="error">      
+        <ngb-alert type="danger" (close)="error = null">{{ error }}</ngb-alert>
         <br>
       </div>
     

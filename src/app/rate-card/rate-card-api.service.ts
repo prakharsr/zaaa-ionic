@@ -3,6 +3,7 @@ import { ApiService } from '../services/api.service';
 import { RateCard, FixSize, Remark } from './rateCard';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
+import { of } from 'rxjs/observable/of';
 
 @Injectable()
 export class RateCardApiService {
@@ -104,6 +105,7 @@ export class RateCardApiService {
     let rateCard = new RateCard();
 
     rateCard.id = body._id;
+    rateCard.global = body.global;
 
     rateCard.mediaType = body.MediaType;
     rateCard.adType = body.AdType;
@@ -254,6 +256,26 @@ export class RateCardApiService {
     );
   }
 
+  searchRateCards(query: string) : Observable<RateCard[]> {
+    if (query) {
+      return this.api.get('/user/ratecards/' + query).pipe(
+        map(data => {
+          let ratecards : RateCard[] = [];
+
+          if (data.success) {
+            data.ratecards.forEach(element => {
+              ratecards.push(this.bodyToRateCard(element));
+            });
+          }
+
+          return ratecards;
+        })
+      );
+    }
+    
+    return of([]);
+  }
+
   editRateCard(rateCard: RateCard): Observable<any> {
     let fixSizes = [],
       schemes = [],
@@ -344,5 +366,21 @@ export class RateCardApiService {
       Remarks: rateCard.remarks,
       Covered: covered
     });
+  }
+
+  searchMediaHouseNames(query: string) : Observable<string[]> {
+    return this.api.get('/user/mediahouses/' + query).pipe(
+      map(data => {
+        let mediaHouseNames : string[] = [];
+
+        if (data.success && data.mediahouses) {
+          data.mediahouses.forEach(element => {
+            mediaHouseNames.push(element.OrganizationName);
+          });
+        }
+
+        return mediaHouseNames;
+      })
+    );
   }
 }

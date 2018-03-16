@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DirMediaHouse } from '../dirMediaHouse';
 import { MediaHouseApiService } from '../media-house-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { GobackService } from '../../../services/goback.service';
 
 @Component({
   selector: 'app-media-house-details',
@@ -15,9 +16,11 @@ export class MediaHouseDetailsComponent implements OnInit {
 
   constructor(private api: MediaHouseApiService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private goback: GobackService) { }
 
   ngOnInit() {
+    this.goback.urlInit();
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
 

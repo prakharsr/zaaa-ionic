@@ -3,6 +3,7 @@ import { ApiService } from '../../services/api.service';
 import { Observable } from 'rxjs/Observable';
 import { DirMediaHouse, MediaHouseScheduling } from './dirMediaHouse';
 import { map } from 'rxjs/operators';
+import { of } from 'rxjs/observable/of';
 
 @Injectable()
 export class MediaHouseApiService {
@@ -18,7 +19,7 @@ export class MediaHouseApiService {
       organizationName: mediaHouse.orgName,
       publicationName: mediaHouse.pubName,
       nickName: mediaHouse.nickName,
-      edition: mediaHouse.edition,
+      mediaType: mediaHouse.mediaType,
       address: mediaHouse.address,
       officeLandline: mediaHouse.officeLandLine,
       scheduling: scheduling
@@ -51,12 +52,12 @@ export class MediaHouseApiService {
     let mediaHouse = new DirMediaHouse();
 
     mediaHouse.id = body._id;
+    mediaHouse.global = body.global;
 
     mediaHouse.orgName = body.OrganizationName;
     mediaHouse.pubName = body.PublicationName;
     mediaHouse.nickName = body.NickName;
     mediaHouse.mediaType = body.MediaType;
-    mediaHouse.edition = body.Edition;
     mediaHouse.address = body.Address;
     mediaHouse.officeLandLine = body.OfficeLandline;
 
@@ -87,7 +88,6 @@ export class MediaHouseApiService {
       PublicationName: mediaHouse.pubName,
       NickName: mediaHouse.nickName,
       MediaType: mediaHouse.mediaType,
-      Edition: mediaHouse.edition,
       Address: mediaHouse.address,
       OfficeLandline: mediaHouse.officeLandLine,
 
@@ -115,6 +115,26 @@ export class MediaHouseApiService {
         return mediaHouses;
       })
     );
+  }
+
+  searchMediaHouses(query: string) : Observable<DirMediaHouse[]> {
+    if (query) {
+      return this.api.get('/user/mediahouses/' + query).pipe(
+        map(data => {
+          let mediaHouses : DirMediaHouse[] = [];
+
+          if (data.success) {
+            data.mediahouses.forEach(element => {
+              mediaHouses.push(this.bodyToMediaHouse(element));            
+            });
+          }
+
+          return mediaHouses;
+        })
+      );
+    }
+
+    return of([]);
   }
 
   deleteMediaHouse(mediaHouse: DirMediaHouse) : Observable<any> {

@@ -21,6 +21,9 @@ import { IonicModule } from 'ionic-angular';
     TemplateSelectorComponent,
     BillingDetailsComponent,
     EmptyComponent
-  ]
+  ],
+  entryComponents: [
+    BillingDetailsComponent
+    ]
 })
 export class AdminModule { }

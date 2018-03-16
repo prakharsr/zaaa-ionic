@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { DirClient, ContactPerson } from './dirClient';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
+import { of } from 'rxjs/observable/of';
 
 @Injectable()
 export class ClientApiService {
@@ -20,7 +21,7 @@ export class ClientApiService {
       companyName: client.companyName,
       nickName: client.nickName,
       categoryType: client.category,
-      addressState: client.address,
+      address: client.address,
       landline: client.landLine,
       website: client.website,
       panNo: client.panNo,
@@ -66,7 +67,7 @@ export class ClientApiService {
     client.companyName = data.CompanyName;
     client.nickName = data.NickName;
     client.category = data.CategoryType;
-    client.address = data.AddressState;
+    client.address = data.Address;
     client.landLine = data.Landline;
     client.website = data.Website;
     client.panNo = data.PanNO;
@@ -96,7 +97,7 @@ export class ClientApiService {
       CompanyName: client.companyName,
       NickName: client.nickName,
       CategoryType: client.category,
-      AddressState: client.address,
+      Address: client.address,
       Landline: client.landLine,
       Website: client.website,
       PanNO: client.panNo,
@@ -125,6 +126,26 @@ export class ClientApiService {
         return clients;
       })
     );
+  }
+
+  searchClients(query: string) : Observable<DirClient[]> {
+    if (query) {
+      return this.api.get('/user/clients/' + query).pipe(
+        map(data => {
+          let clients : DirClient[] = [];
+
+          if (data.success) {
+            data.clients.forEach(element => {
+              clients.push(this.bodyToClient(element));            
+            });
+          }
+
+          return clients;
+        })
+      );
+    }
+    
+    return of([]);
   }
 
   deleteClient(client: DirClient) : Observable<any> {

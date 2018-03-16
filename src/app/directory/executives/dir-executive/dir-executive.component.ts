@@ -14,6 +14,8 @@ export class DirExecutiveComponent implements OnInit {
   executive = new DirExecutive();
   error: string;
 
+  // dobModel;
+
   id: string;
 
   edit = false;
