@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  razorPay: "rzp_test_glA246D8rCFOVc",
+  razorPay: "rzp_test_qIUnr51XOjxMYX",
   apiUrl:   "https://zaaa-server.appspot.com/api",
   uploadsBaseUrl:  "https://zaaa-server.appspot.com",
   // apiUrl:  "http://localhost:8080/api",
