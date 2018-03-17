@@ -2,6 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { RateCard, FixSize, Scheme, Premium, Covered, Remark, Category, Tax } from '../rateCard';
 import { RateCardApiService } from '../rate-card-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import {of} from 'rxjs/observable/of';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
+import { map } from 'rxjs/operators';
 import { GobackService } from '../../services/goback.service';
 
 @Component({
@@ -13,6 +20,7 @@ export class CreateRateCardComponent implements OnInit {
 
   edit = false;
   id: string;
+  query: string;
 
   others = "Others";
 
@@ -41,28 +49,127 @@ export class CreateRateCardComponent implements OnInit {
     this.rateCard.hue = this.hues[0];
   }
 
+  private initEdit(data: RateCard) {
+    this.rateCard = data;
+
+    this.dropdownPullOutName = this.others;
+    this.customPullOutName = this.rateCard.pullOutName;
+
+    this.buildCategoryTree();
+  }
+
+  private buildCategoryTree() {
+    let c : Category = this.categories.find(p => p.name == this.rateCard.categories[0]);
+
+    if (c) {
+      this.category1 = c;
+
+      let i = 1;
+
+      while (i < this.rateCard.categories.length && c.subcategories.length > 0) {
+        c = c.subcategories.find(p => p.name == this.rateCard.categories[i]);
+
+        if (c) {
+          this.setCategory(i, c);
+
+          ++i;
+        }
+        else break;
+      }
+    }
+  }
+
+  findSubCategories(category: Category, query: string): Category[] {
+    let result : Category[] = [];
+
+    if (category.name.toLowerCase().indexOf(query.toLowerCase()) != -1) {
+      result.push(category);
+    }
+
+    if (category.subcategories) {
+      category.subcategories.forEach(subCategory => {
+        this.findSubCategories(subCategory, query).forEach(a => result.push(a));
+      });
+    }
+
+    return result;
+  }
+
+  findCategories(query: string): Category[]  {
+    let result : Category[] = [];
+
+    if (query) {
+      this.categories.forEach(element => {
+        this.findSubCategories(element, query).forEach(a => result.push(a));
+      });
+    }
+
+    return result;
+
+  }
+
+  searchCategories = (text: Observable<string>) => {
+    return text.debounceTime(300)
+      .distinctUntilChanged()
+      .pipe(
+        map(term => this.findCategories(term))
+      )
+      .catch(() => of([]));
+  }
+
+  searchMediaHouse = (text: Observable<string>) => {
+    return text.debounceTime(300)
+      .distinctUntilChanged()
+      .switchMap(term => this.api.searchMediaHouseNames(term))
+      .catch(() => of([]));
+  }
+
+  inputFormatter = (result: Category) => {
+    let stack : Category[] = [];
+
+    while (result) {
+      stack.push(result);
+      result = result.parent;
+    }
+
+    let i = 0;
+
+    while (stack.length) {
+      this.setCategory(i, stack.pop());
+
+      ++i;
+    }
+  }
+
+  resultFormatter = (result: Category) => {
+    let stack : Category[] = [];
+
+    while (result) {
+      stack.push(result);
+      result = result.parent;
+    }
+
+    let formatted = stack.pop().name;
+
+    while (stack.length) {
+      formatted += " > " + stack.pop().name;
+    }
+
+    return formatted;
+  }
+
   ngOnInit() {
     this.goback.urlInit();
-
     this.route.paramMap.subscribe(params => {
       if (params.has('id')) {
         this.id = params.get('id');
 
         this.edit = true;
 
-        this.api.getRateCard(this.id).subscribe(data => {
-          this.rateCard = data;
-
-          this.dropdownPullOutName = this.others;
-          this.customPullOutName = this.rateCard.pullOutName;
-
-          // reconstruct selected categories
-        });
+        this.api.getRateCard(this.id).subscribe(data => this.initEdit(data));
       }
       else if (params.has('copy')) {
-        this.api.getRateCard(params.get('copy')).subscribe(data => {
-          this.rateCard = data;
-        })
+        this.api.getRateCard(params.get('copy')).subscribe(data => this.initEdit(data))
       }
       else this.initNew();
     });

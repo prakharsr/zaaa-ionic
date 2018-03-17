@@ -5,9 +5,9 @@ import { Firm } from '../../models/firm';
 import { ApiService } from '../../services/api.service';
 import { NgForm } from '@angular/forms';
 import { CanComponentDeactivate } from '../../guards/canComponentDeactivate';
-import { GobackService } from '../../services/goback.service';
 import { StateApiService } from '../../services/state-api.service';
 import { Router } from '@angular/router';
+import { GobackService } from '../../services/goback.service';
 
 @Component({
   selector: 'app-firm-profile-edit',
@@ -23,9 +23,8 @@ export class FirmProfileEditComponent implements OnInit, CanComponentDeactivate 
 
   profile = new Firm();
   error: string;
-  success: string;
 
-  constructor(private ifscService: IfscService, private api: ApiService, private goback:GobackService, public stateApi: StateApiService, private router: Router) { }
+  constructor(private ifscService: IfscService, private api: ApiService, public stateApi: StateApiService, private router: Router, private goback: GobackService) { }
 
   ngOnInit() {
     this.goback.urlInit();
@@ -52,19 +51,22 @@ export class FirmProfileEditComponent implements OnInit, CanComponentDeactivate 
   }
 
   copyAddress() {
-        this.profile.officeAddress.address = this.profile.registeredAddress.address;
-        this.profile.officeAddress.city = this.profile.registeredAddress.city;
-        this.profile.officeAddress.state = this.profile.registeredAddress.state;
-      }
+    this.profile.officeAddress.address = this.profile.registeredAddress.address;
+    this.profile.officeAddress.city = this.profile.registeredAddress.city;
+    this.profile.officeAddress.state = this.profile.registeredAddress.state;
+  }
+
+  private goBack() {
+    this.router.navigateByUrl('/firm');
+  }
 
   submit() {
     this.error = '';
-    this.success = '';
 
     this.api.setFirmProfile(this.profile).subscribe(
       data => {
         if (data.success) {
-          this.router.navigateByUrl('/firm');
+          this.goBack();
         }
         else {
           console.log(data);
@@ -78,5 +80,9 @@ export class FirmProfileEditComponent implements OnInit, CanComponentDeactivate 
         this.error = 'Connection failed';
       }
     );
+  }
+
+  cancel() {
+    this.goBack();
   }
 }

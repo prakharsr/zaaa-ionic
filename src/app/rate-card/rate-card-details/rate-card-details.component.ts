@@ -20,8 +20,6 @@ export class RateCardDetailsComponent implements OnInit {
     private goback: GobackService) { }
 
   ngOnInit() {
-    this.goback.urlInit();
-
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
 

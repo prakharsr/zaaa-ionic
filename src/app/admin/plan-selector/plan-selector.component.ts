@@ -5,16 +5,12 @@ import { RazorPayService } from '../../services/razorpay.service';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { WindowService } from '../../services/window.service';
-import { NavController, NavParams, ModalController } from 'ionic-angular';
-import { DashboardComponent } from '../../components/dashboard/dashboard.component';
-import { environment } from '../../../environments/environment';
-import { EmptyComponent } from '../empty/empty.component';
-import { HomeComponent } from '../../components/home/home.component';
-import { GobackService } from '../../services/goback.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Firm } from '../../models/firm';
 import { Address } from '../../models/address';
-import { BillingDetailsComponent } from '../billing-details/billing-details.component';
+import { GobackService } from '../../services/goback.service';
+import { EmptyComponent } from '../empty/empty.component';
+import { NavController, NavParams } from 'ionic-angular';
 
 @Component({
   selector: 'app-plan-selector',
@@ -27,24 +23,22 @@ export class PlanSelectorComponent implements OnInit {
   paid: boolean;
 
   private selectedPlan: Plan;
+  private firm: Firm;
 
   private email: string;
   private phone: string;
-  private firm: Firm;
-
 
   constructor(private api: ApiService,
     private razorPay: RazorPayService,
     private appRef: ApplicationRef,
     private router: Router,
     private winRef: WindowService,
+    private modalService: NgbModal,
+    private goback: GobackService,
     public navCtrl: NavController,
-    public navParams: NavParams, 
-    private goback:GobackService,
-    private modalService: NgbModal) { }
+    public navParams: NavParams) { }
 
   ngOnInit() {
-    this.goback.urlInit();
     this.api.plans.subscribe(data => {
       this.plans = [];
 
@@ -81,8 +75,9 @@ export class PlanSelectorComponent implements OnInit {
         ).subscribe(
           data => {
             // redirect
+            this.navCtrl.push(EmptyComponent);
+            
             this.appRef.tick();
-          this.navCtrl.push(EmptyComponent);
           },
           err => alert("Plan was not saved.\n\nContact support with reference no: " + response.razorpay_payment_id)
         );
@@ -105,14 +100,15 @@ export class PlanSelectorComponent implements OnInit {
         this.openPay(this.firm.name, this.firm.registeredAddress, this.firm.gstNo);
       }
       else {
-        this.modalService.open(modalContent);      }
+        this.modalService.open(modalContent);
+      }
     }
     else {
       this.paid = true;
       
       this.api.setPlan(plan, '', '', new Address(), '').subscribe(
         data => {
-          this.router.navigateByUrl("/");
+          this.router.navigateByUrl('/');
         },
         err => alert("Plan was not saved.")
       );

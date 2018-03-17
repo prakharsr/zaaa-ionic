@@ -5,10 +5,10 @@
       <h2 *ngIf="!edit">Add Media House</h2>
       <br>
 
-      <div class="form-group">
-        <label for="orgName">Organisation Name</label>
-        <input type="text" class="form-control" id="orgName" name="orgName" placeholder="Enter Organisation Name" [(ngModel)]="mediaHouse.orgName" required #orgNameField="ngModel">
-      </div>
+      <ion-item class="form-group">
+        <ion-label floating for="orgName">Organisation Name</ion-label>
+        <ion-input type="text" id="orgName" name="orgName" [(ngModel)]="mediaHouse.orgName" required #orgNameField="ngModel"></ion-input>
+      </ion-item>
     
       <div *ngIf="orgNameField.invalid && (orgNameField.dirty || orgNameField.touched)" class="text-danger">
         <div *ngIf="orgNameField.errors.required">
@@ -17,10 +17,10 @@
         <br>
       </div>
     
-      <div class="form-group">
-        <label for="pubName">Publication Name</label>
-        <input type="text" class="form-control" id="pubName" name="pubName" placeholder="Enter Publication Name" [(ngModel)]="mediaHouse.pubName" required #pubNameField="ngModel">
-      </div>
+      <ion-item class="form-group">
+        <ion-label floating for="pubName">Publication Name</ion-label>
+        <ion-input type="text" id="pubName" name="pubName" [(ngModel)]="mediaHouse.pubName" required #pubNameField="ngModel"></ion-input>
+      </ion-item>
     
       <div *ngIf="pubNameField.invalid && (pubNameField.dirty || pubNameField.touched)" class="text-danger">
         <div *ngIf="pubNameField.errors.required">
@@ -29,19 +29,19 @@
         <br>
       </div>
         
-      <div class="form-group">
-        <label for="nickName">Nick Name</label>
-        <input type="text" class="form-control" id="nickName" name="nickName" placeholder="Enter Nick Name" [(ngModel)]="mediaHouse.nickName" #nickNameField="ngModel">
-      </div>
+      <ion-item class="form-group">
+        <ion-label floating for="nickName">Nick Name</ion-label>
+        <ion-input type="text" id="nickName" name="nickName" [(ngModel)]="mediaHouse.nickName" #nickNameField="ngModel"></ion-input>
+      </ion-item>
     
-      <div class="form-group">
-        <label for="mediaType">Media Type</label>
-        <select class="form-control" id="mediaType" name="mediaType" [(ngModel)]="mediaHouse.mediaType" required #mediaTypeField="ngModel">
-          <option>Print</option>
-          <option>Air</option>
-          <option>Electronic</option>
-        </select>
-      </div>
+      <ion-item class="form-group">
+        <ion-label floating for="mediaType">Media Type</ion-label>
+        <ion-select id="mediaType" name="mediaType" [(ngModel)]="mediaHouse.mediaType" required #mediaTypeField="ngModel">
+          <ion-option>Print</ion-option>
+          <ion-option>Air</ion-option>
+          <ion-option>Electronic</ion-option>
+        </ion-select>
+      </ion-item>
     
       <div *ngIf="mediaTypeField.invalid && (mediaTypeField.dirty || mediaTypeField.touched)" class="text-danger">
         <div *ngIf="mediaTypeField.errors.required">
@@ -50,18 +50,18 @@
         <br>
       </div>
     
-      <div class="form-group">
-        <label for="officeLandLine">Office Landline</label>
-        <input type="text" class="form-control" id="officeLandLine" name="officeLandLine" placeholder="Enter Office Landline Number" [(ngModel)]="mediaHouse.officeLandLine" #officeLandLineField="ngModel">
-      </div>
+      <ion-item class="form-group">
+        <ion-label floating for="officeLandLine">Office Landline</ion-label>
+        <ion-input type="text" id="officeLandLine" name="officeLandLine" [(ngModel)]="mediaHouse.officeLandLine" #officeLandLineField="ngModel"></ion-input>
+      </ion-item>
     
       <br>
 
       <h3 class="mb-3">Address</h3>
     
-      <div class="form-group">
-        <input type="text" class="form-control" id="address" name="address" placeholder="Enter Address" [(ngModel)]="mediaHouse.address.address" required #addressField="ngModel">
-      </div>
+      <ion-item class="form-group">
+        <ion-input type="text" id="address" name="address" [(ngModel)]="mediaHouse.address.address" required #addressField="ngModel"></ion-input>
+      </ion-item>
     
       <div *ngIf="addressField.invalid && (addressField.dirty || addressField.touched)" class="text-danger">
         <div *ngIf="addressField.errors.required">
@@ -70,10 +70,10 @@
         <br>
       </div>
 
-      <div class="form-group">
-        <label for="city">City</label>
-        <input type="text" class="form-control" id="city" name="city" placeholder="Enter City" [(ngModel)]="mediaHouse.address.city" required #cityField="ngModel">
-      </div>
+      <ion-item class="form-group">
+        <ion-label floating for="city">City</ion-label>
+        <ion-input type="text" id="city" name="city" [(ngModel)]="mediaHouse.address.city" required #cityField="ngModel"></ion-input>
+      </ion-item>
     
       <div *ngIf="cityField.invalid && (cityField.dirty || cityField.touched)" class="text-danger">
         <div *ngIf="cityField.errors.required">
@@ -82,12 +82,12 @@
         <br>
       </div>
 
-      <div class="form-group">
-        <label for="state">State</label>
-        <select class="form-control" id="state" name="state" [(ngModel)]="mediaHouse.address.state" required #stateField="ngModel">
-          <option *ngFor="let state of stateApi.states" [value]="state">{{state}}</option>
-        </select>
-      </div>
+      <ion-item class="form-group">
+        <ion-label floating for="state">State</ion-label>
+        <ion-select id="state" name="state" [(ngModel)]="mediaHouse.address.state" required #stateField="ngModel">
+          <ion-option *ngFor="let state of stateApi.states" [value]="state">{{state}}</ion-option>
+        </ion-select>
+      </ion-item>
     
       <div *ngIf="stateField.invalid && (stateField.dirty || stateField.touched)" class="text-danger">
         <div *ngIf="stateField.errors.required">
@@ -96,10 +96,10 @@
         <br>
       </div>
 
-      <div class="form-group">
-        <label for="edition">Edition</label>
-        <input type="text" class="form-control" id="edition" name="edition" placeholder="Enter Edition" [(ngModel)]="mediaHouse.address.edition" required #editionField="ngModel">
-      </div>
+      <ion-item class="form-group">
+        <ion-label floating for="edition">Edition</ion-label>
+        <ion-input type="text" id="edition" name="edition" [(ngModel)]="mediaHouse.address.edition" required #editionField="ngModel"></ion-input>
+      </ion-item>
     
       <div *ngIf="editionField.invalid && (editionField.dirty || editionField.touched)" class="text-danger">
         <div *ngIf="editionField.errors.required">
@@ -130,10 +130,10 @@
           #{{i + 1}}
         </div>
         <div class="card-body">
-          <div class="form-group">
-            <label for="person">Person</label>
-            <input type="text" class="form-control" id="person-{{i}}" name="s-{{i}}-person" placeholder="Enter Person" [(ngModel)]="item.person" required #personField="ngModel">
-          </div>
+          <ion-item class="form-group">
+            <ion-label floating for="person">Person</ion-label>
+            <ion-input type="text" id="person-{{i}}" name="s-{{i}}-person" [(ngModel)]="item.person" required #personField="ngModel"></ion-input>
+          </ion-item>
 
           <div *ngIf="personField.invalid && (personField.dirty || personField.touched)" class="text-danger">
             <div *ngIf="personField.errors.required">
@@ -142,15 +142,15 @@
             <br>
           </div>
 
-          <div class="form-group">
-            <label for="designation">Designation</label>
-            <input type="text" class="form-control" id="designation-{{i}}" name="s-{{i}}-designation" placeholder="Enter Designation" [(ngModel)]="item.designation" #designationField="ngModel">
-          </div>
+          <ion-item class="form-group">
+            <ion-label floating for="designation">Designation</ion-label>
+            <ion-input type="text" id="designation-{{i}}" name="s-{{i}}-designation" [(ngModel)]="item.designation" #designationField="ngModel"></ion-input>
+          </ion-item>
 
-          <div class="form-group">
-            <label for="mobileNo">Mobile Number</label>
-            <input type="text" class="form-control" id="mobileNo-{{i}}" name="s-{{i}}-mobileNo" placeholder="Enter Mobile Number" [(ngModel)]="item.mobileNo" required #mobileNoField="ngModel">
-          </div>
+          <ion-item class="form-group">
+            <ion-label floating for="mobileNo">Mobile Number</ion-label>
+            <ion-input type="text" id="mobileNo-{{i}}" name="s-{{i}}-mobileNo" [(ngModel)]="item.mobileNo" required #mobileNoField="ngModel"></ion-input>
+          </ion-item>
 
           <div *ngIf="mobileNoField.invalid && (mobileNoField.dirty || mobileNoField.touched)" class="text-danger">
             <div *ngIf="mobileNoField.errors.required">
@@ -159,15 +159,15 @@
             <br>
           </div>
 
-          <div class="form-group">
-            <label for="deskExtension">Desk Extension</label>
-            <input type="text" class="form-control" id="deskExtension-{{i}}" name="s-{{i}}-deskExtension" placeholder="Enter Desk Extension" [(ngModel)]="item.deskExtension" #deskExtensionField="ngModel">
-          </div>
+          <ion-item class="form-group">
+            <ion-label floating for="deskExtension">Desk Extension</ion-label>
+            <ion-input type="text" id="deskExtension-{{i}}" name="s-{{i}}-deskExtension" [(ngModel)]="item.deskExtension" #deskExtensionField="ngModel"></ion-input>
+          </ion-item>
 
-          <div class="form-group">
-            <label for="email">E-mail</label>
-            <input type="email" class="form-control" id="email-{{i}}" name="s-{{i}}-email" placeholder="Enter email" [(ngModel)]="item.email" required #emailField="ngModel" email>
-          </div>
+          <ion-item class="form-group">
+            <ion-label floating for="email">E-mail</ion-label>
+            <ion-input type="email" id="email-{{i}}" name="s-{{i}}-email" [(ngModel)]="item.email" required #emailField="ngModel" email></ion-input>
+          </ion-item>
 
           <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)" class="text-danger">
             <div *ngIf="emailField.errors.required">
@@ -191,6 +191,6 @@
     <br><br>
   </div>
 
-  <button type="submit" class="btn btn-success" [disabled]="!dirForm.form.valid">Save</button>
-  <button class="btn btn-danger" (click)="cancel()">Cancel</button>
+  <button ion-button color="brand_success" type="submit" class="btn btn-success" [disabled]="!dirForm.form.valid">Save</button>
+  <button ion-button color="brand_danger" class="btn btn-danger" (click)="cancel()">Cancel</button>
 </form>

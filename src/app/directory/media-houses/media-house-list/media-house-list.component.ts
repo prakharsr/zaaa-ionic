@@ -15,7 +15,7 @@ import { GobackService } from '../../../services/goback.service';
 @Component({
   selector: 'app-media-house-list',
   templateUrl: './media-house-list.component.html',
-  styleUrls: ['./media-house-list.component.css']
+  // styleUrls: ['./media-house-list.component.css']
 })
 export class MediaHouseListComponent implements OnInit {
 

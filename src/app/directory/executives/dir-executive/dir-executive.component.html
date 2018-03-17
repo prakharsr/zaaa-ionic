@@ -80,7 +80,7 @@
 
       <ion-item class="form-group">
         <ion-label floating for="dob">Date of Birth</ion-label>
-        <ion-input type="date" id="dob" name="dob" [(ngModel)]="executive.dob" #dobField="ngModel"></ion-input>
+        <ion-datetime displayFormat="DD/MM/YYYY" id="dob" name="dob" [(ngModel)]="executive.dob" #dobField="ngModel"></ion-datetime>
       </ion-item>
 
       <!-- <ion-item class="form-group">
@@ -97,7 +97,7 @@
     
       <ion-item class="form-group">
         <ion-label floating for="anniversaryDate">Anniversary Date</ion-label>
-        <ion-input type="date" id="anniversaryDate" name="anniversaryDate" [(ngModel)]="executive.anniversaryDate" #anniversaryDateField="ngModel"></ion-input>
+        <ion-datetime displayFormat="DD/MM/YYYY" id="anniversaryDate" name="anniversaryDate" [(ngModel)]="executive.anniversaryDate" #anniversaryDateField="ngModel"></ion-datetime>
       </ion-item>
     </div>
   </div>
@@ -108,6 +108,6 @@
     <br>
   </div>
 
-  <button type="submit" class="btn btn-success" [disabled]="!dirForm.form.valid">Save</button>
-  <button class="btn btn-danger" (click)="cancel()">Cancel</button>
+  <button ion-button color="brand_success" type="submit" class="btn btn-success" [disabled]="!dirForm.form.valid">Save</button>
+  <button ion-button color="brand_danger" class="btn btn-danger" (click)="cancel()">Cancel</button>
 </form>

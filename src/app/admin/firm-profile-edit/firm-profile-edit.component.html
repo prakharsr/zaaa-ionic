@@ -1,282 +1,284 @@
 <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-4">Edit Firm Profile</h1>
-    </div>
-  </div>
-  
   <div class="container">
-    <form (ngSubmit)="submit()" #profileForm="ngForm">
-      <div class="row">
-        <div class="col-md-6">
-          <h3 class="text-muted">Business Details</h3>
-          <br>
-        
-          <ion-item class="form-group">
-            <ion-label floating for="firmName">Firm Name</ion-label>
-            <ion-input type="text" id="firmName" name="firmName"  [(ngModel)]="profile.name" required #firmNameField="ngModel"></ion-input>
-          </ion-item>
-        
-          <div *ngIf="firmNameField.invalid && (firmNameField.dirty || firmNameField.touched)" class="text-danger">
-            <div *ngIf="firmNameField.errors.required">
-              Firm Name is required.
-            </div>
-            <br>
-          </div>
-        
-          <ion-item class="form-group">
-            <ion-label floating for="tagline">Tag Line</ion-label>
-            <ion-input type="text" id="tagline" name="tagline"  [(ngModel)]="profile.tagline" #taglineField="ngModel"></ion-input>
-          </ion-item>
-        
-          <ion-item class="form-group">
-            <ion-label floating for="nickname">Display / Nickname</ion-label>
-            <ion-input type="text" id="nickname" name="nickname"  [(ngModel)]="profile.nickname" #nicknameField="ngModel"></ion-input>
-          </ion-item>
-
-          <h3 class="my-5 text-muted">Registered Address</h3>
-        
-          <ion-item class="form-group">
-            <ion-input type="text" id="registeredAddress" name="registeredAddress"  [(ngModel)]="profile.registeredAddress" required #registeredAddressField="ngModel"></ion-input>
-          </ion-item>
-        
-          <div *ngIf="registeredAddressField.invalid && (registeredAddressField.dirty || registeredAddressField.touched)" class="text-danger">
-            <div *ngIf="registeredAddressField.errors.required">
-              Registered Address is required.
-            </div>
-            <br>
-          </div>
-        
-          <ion-item class="form-group">
-            <ion-label floating for="registeredCity">City</ion-label>
-            <ion-input type="text" id="registeredCity" name="registeredCity" [(ngModel)]="profile.registeredAddress.city" required #registeredCityField="ngModel"></ion-input>
-          </ion-item>
-        
-          <div *ngIf="registeredCityField.invalid && (registeredCityField.dirty || registeredCityField.touched)" class="text-danger">
-            <div *ngIf="registeredCityField.errors.required">
-              City is required.
-            </div>
-            <br>
-          </div>
-        
-          <ion-item class="form-group">
-            <ion-label floating for="registeredState">State</ion-label>
-            <ion-select id="registeredState" name="registeredState" [(ngModel)]="profile.registeredAddress.state" required #registeredStateField="ngModel">
-              <ion-option *ngFor="let state of stateApi.states" [value]="state">{{state}}</ion-option>
-            </ion-select>
-          </ion-item>
-        
-          <div *ngIf="registeredStateField.invalid && (registeredStateField.dirty || registeredStateField.touched)" class="text-danger">
-            <div *ngIf="registeredStateField.errors.required">
-              State is required.
-            </div>
-            <br>
-          </div>
-  
-          <h3 class="my-5 text-muted">Office Address</h3>
-  
-          <button type="button" class="btn btn-warning btn-sm" (click)="copyAddress()">Copy from Above</button>
-          <br><br>
-  
-          <ion-item class="form-group">
-            <ion-input type="text" id="officeAddress" name="officeAddress" [(ngModel)]="profile.officeAddress.address" #officeAddressField="ngModel"></ion-input>
-          </ion-item>
-        
-          <ion-item class="form-group">
-            <ion-label floating for="officeCity">City</ion-label>
-            <ion-input type="text" id="officeCity" name="officeCity" [(ngModel)]="profile.officeAddress.city" #officeCityField="ngModel"></ion-input>
-          </ion-item>
-        
-          <ion-item class="form-group">
-            <ion-label floating for="officeState">State</ion-label>
-            <ion-select id="officeState" name="officeState" [(ngModel)]="profile.officeAddress.state" #officeStateField="ngModel">
-              <ion-option *ngFor="let state of stateApi.states" [value]="state">{{state}}</ion-option>
-            </ion-select>
-          </ion-item>
-  
-          <br><br><br>
-        
-          <ion-item class="form-group">
-            <ion-label floating for="incDate">Incorporation Date</ion-label>
-            <ion-datetime displayFormat="DD/MM/YYYY" id="incDate" name="incDate" [(ngModel)]="profile.incDate" #incDateField="ngModel"></ion-datetime>
-          </ion-item>
-  
-          <ion-item class="form-group">
-            <ion-label floating for="email">Email address</ion-label>
-            <ion-input type="email" id="email" name="email" [(ngModel)]="profile.email" required #emailField="ngModel" email></ion-input>
-          </ion-item>
-
-          <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)" class="text-danger">
-            <div *ngIf="emailField.errors.required">
-              Email is required.
-            </div>
-            <div *ngIf="!emailField.errors.required && emailField.errors.email">
-              Invalid Email.
-            </div>
-            <br>
-          </div>
-      
-          <ion-item class="form-group">
-            <ion-label floating for="phone">Phone Number</ion-label>
-            <ion-input type="tel" [(ngModel)]="profile.phone" required id="phone" name="phone"  #phoneField="ngModel"></ion-input>
-          </ion-item>
-      
-          <div *ngIf="phoneField.invalid && (phoneField.dirty || phoneField.touched)" class="text-danger">
-            <div *ngIf="phoneField.errors.required">
-              Phone Number is empty or invalid.
-            </div>
-            <br>
-          </div>
-        
-          <ion-item class="form-group">
-            <ion-label floating for="landlineNo">Landline Number</ion-label>
-            <ion-input type="number" id="landlineNo" name="landlineNo"  [(ngModel)]="profile.landlineNo" #landlineNoField="ngModel"></ion-input>
-          </ion-item>
-        
-          <ion-item class="form-group">
-            <ion-label floating for="fax">Fax</ion-label>
-            <ion-input type="number" id="fax" name="fax"  [(ngModel)]="profile.fax" #faxField="ngModel"></ion-input>
-          </ion-item>
-        
-          <ion-item class="form-group">
-            <ion-label floating for="website">Website</ion-label>
-            <ion-input type="text" id="website" name="website"  [(ngModel)]="profile.website" #websiteField="ngModel"></ion-input>
-          </ion-item>
-        
-          <ion-item class="form-group">
-            <ion-label floating for="panNo">PAN Number</ion-label>
-            <ion-input type="number" id="panNo" name="panNo"  [(ngModel)]="profile.panNo" required #panNoField="ngModel"></ion-input>
-          </ion-item>
-        
-          <div *ngIf="panNoField.invalid && (panNoField.dirty || panNoField.touched)" class="text-danger">
-            <div *ngIf="panNoField.errors.required">
-              PAN Number is empty or invalid.
-            </div>
-            <br>
-          </div>
-        
-          <ion-item class="form-group">
-            <ion-label floating for="gstNo">GST Number</ion-label>
-            <ion-input type="number" id="gstNo" name="gstNo"  [(ngModel)]="profile.gstNo" required #gstNoField="ngModel"></ion-input>
-          </ion-item>
-        
-          <div *ngIf="gstNoField.invalid && (gstNoField.dirty || gstNoField.touched)" class="text-danger">
-            <div *ngIf="gstNoField.errors.required">
-              GST Number is empty or invalid.
-            </div>
-            <br>
-          </div> 
-          
-          <br><br>
-        </div>
-  
-        <div class="col-md-5 offset-md-1">
-          <h3 class="text-muted">Bank Account Details</h3>
-  
-          <br>
-        
-          <ion-item class="form-group">
-            <ion-label floating for="bankAccountName">Account Name</ion-label>
-            <ion-input type="text" id="bankAccountName" name="bankAccountName"  [(ngModel)]="profile.bankAccountName" required #bankAccountNameField="ngModel"></ion-input>
-          </ion-item>
-        
-          <div *ngIf="bankAccountNameField.invalid && (bankAccountNameField.dirty || bankAccountNameField.touched)" class="text-danger">
-            <div *ngIf="bankAccountNameField.errors.required">
-              Account Name is required.
-            </div>
-            <br>
-          </div>
-        
-          <ion-item class="form-group">
-            <ion-label floating for="bankAccountNo">Account Number</ion-label>
-            <ion-input type="number" id="bankAccountNo" name="bankAccountNo"  [(ngModel)]="profile.bankAccountNo" required #bankAccountNoField="ngModel"></ion-input>
-          </ion-item>
-        
-          <div *ngIf="bankAccountNoField.invalid && (bankAccountNoField.dirty || bankAccountNoField.touched)" class="text-danger">
-            <div *ngIf="bankAccountNoField.errors.required">
-              Account Number is empty or invalid.
-            </div>
-            <br>
-          </div>
-        
-          <ion-item class="form-group">
-            <ion-label floating for="bankIfsc">IFSC</ion-label>
-            <ion-input type="text" id="bankIfsc" name="bankIfsc"  [(ngModel)]="profile.bankIfsc" required minlength="11" maxlength="11" #bankIfscField="ngModel" (input)="ifscChanged()"></ion-input>
-          </ion-item>
-        
-          <div *ngIf="bankIfscField.invalid && (bankIfscField.dirty || bankIfscField.touched)" class="text-danger">
-            <div *ngIf="bankIfscField.errors.required">
-              IFSC is required.
-            </div>
-            <div *ngIf="bankIfscField.errors.minlength || bankIfscField.errors.maxlength">
-              IFSC should have 11 characters.
-            </div>
-            <br>
-          </div>
-        
-          <ion-item class="form-group">
-            <ion-label floating for="bankName">Bank Name</ion-label>
-            <ion-input type="text" id="bankName" name="bankName"  [(ngModel)]="profile.bankName" required #bankNameField="ngModel"></ion-input>
-          </ion-item>
-        
-          <div *ngIf="bankNameField.invalid && (bankNameField.dirty || bankNameField.touched)" class="text-danger">
-            <div *ngIf="bankNameField.errors.required">
-              Bank Name is required.
-            </div>
-            <br>
-          </div>
-        
-          <ion-item class="form-group">
-            <ion-label floating for="bankBranchAddress">Bank Branch Address</ion-label>
-            <ion-input type="text" id="bankBranchAddress" name="bankBranchAddress"  [(ngModel)]="profile.bankBranchAddress" required #bankBranchAddressField="ngModel"></ion-input>
-          </ion-item>
-        
-          <div *ngIf="bankBranchAddressField.invalid && (bankBranchAddressField.dirty || bankBranchAddressField.touched)" class="text-danger">
-            <div *ngIf="bankBranchAddressField.errors.required">
-              Bank Branch Address is required.
-            </div>
-            <br>
-          </div>
-        <br>
-          <ion-item class="form-group">
-            <ion-label for="bankAccountType">Bank Account Type</ion-label>
-            <ion-select id="bankAccountType" name="bankAccountType" [(ngModel)]="profile.bankAccountType">
-              <ion-option value="Current">Current</ion-option>
-              <ion-option value="Savings">Savings</ion-option>
-            </ion-select>
-          </ion-item>
-          
-          <br><br>
-          
-          <h3 class="text-muted">Social</h3>
-  
-          <br>
-        
-          <ion-item class="form-group">
-            <ion-label floating for="nickname">Facebook</ion-label>
-            <ion-input type="text" id="facebook" name="facebook"  [(ngModel)]="profile.facebook" #facebookField="ngModel"></ion-input>
-          </ion-item>
-        
-          <ion-item class="form-group">
-            <ion-label floating for="nickname">Twitter</ion-label>
-            <ion-input type="text" id="twitter" name="twitter"  [(ngModel)]="profile.twitter" #twitterField="ngModel"></ion-input>
-          </ion-item>
-        
-          <ion-item class="form-group">
-            <ion-label floating for="nickname">Others</ion-label>
-            <ion-input type="text" id="others" name="others"  [(ngModel)]="profile.other" #otherField="ngModel"></ion-input>
-          </ion-item>
-        </div>
-      </div>
-  
-      <br>
-    
-      <div *ngIf="error">      
-        <ngb-alert type="danger" (close)="error = null">{{ error }}</ngb-alert>
-        <br>
-      </div>
-    
-      <button ion-button type="submit" color="brand_success" class="btn btn-success" [disabled]="!profileForm.form.valid">Save</button>
-  
-      <br><br><br>
-    </form>
+    <h1 class="display-4">Edit Firm Profile</h1>
   </div>
+</div>
+
+<div class="container">
+  <form (ngSubmit)="submit()" #profileForm="ngForm">
+    <div class="row">
+      <div class="col-md-6">
+        <h3 class="text-muted">Business Details</h3>
+        <br>
+      
+        <ion-item class="form-group">
+          <ion-label floating for="firmName">Firm Name</ion-label>
+          <ion-input type="text" id="firmName" name="firmName" [(ngModel)]="profile.name" required #firmNameField="ngModel"></ion-input>
+        </ion-item>
+      
+        <div *ngIf="firmNameField.invalid && (firmNameField.dirty || firmNameField.touched)" class="text-danger">
+          <div *ngIf="firmNameField.errors.required">
+            Firm Name is required.
+          </div>
+          <br>
+        </div>
+      
+        <ion-item class="form-group">
+          <ion-label floating for="tagline">Tag Line</ion-label>
+          <ion-input type="text" id="tagline" name="tagline" [(ngModel)]="profile.tagline" #taglineField="ngModel"></ion-input>
+        </ion-item>
+      
+        <ion-item class="form-group">
+          <ion-label floating for="nickname">Display / Nickname</ion-label>
+          <ion-input type="text" id="nickname" name="nickname" [(ngModel)]="profile.nickname" #nicknameField="ngModel"></ion-input>
+        </ion-item>
+              
+        <h3 class="my-5 text-muted">Registered Address</h3>
+
+        <ion-item class="form-group">
+          <ion-input type="text" id="registeredAddress" name="registeredAddress" [(ngModel)]="profile.registeredAddress.address" required #registeredAddressField="ngModel"></ion-input>
+        </ion-item>
+      
+        <div *ngIf="registeredAddressField.invalid && (registeredAddressField.dirty || registeredAddressField.touched)" class="text-danger">
+          <div *ngIf="registeredAddressField.errors.required">
+              Registered Address is required.
+          </div>
+          <br>
+        </div>
+      
+        <ion-item class="form-group">
+          <ion-label floating for="registeredCity">City</ion-label>
+          <ion-input type="text" id="registeredCity" name="registeredCity" [(ngModel)]="profile.registeredAddress.city" required #registeredCityField="ngModel"></ion-input>
+        </ion-item>
+      
+        <div *ngIf="registeredCityField.invalid && (registeredCityField.dirty || registeredCityField.touched)" class="text-danger">
+          <div *ngIf="registeredCityField.errors.required">
+            City is required.
+          </div>
+          <br>
+        </div>
+      
+        <ion-item class="form-group">
+          <ion-label floating for="registeredState">State</ion-label>
+          <ion-select id="registeredState" name="registeredState" [(ngModel)]="profile.registeredAddress.state" required #registeredStateField="ngModel">
+            <ion-option *ngFor="let state of stateApi.states" [value]="state">{{state}}</ion-option>
+          </ion-select>
+        </ion-item>
+      
+        <div *ngIf="registeredStateField.invalid && (registeredStateField.dirty || registeredStateField.touched)" class="text-danger">
+          <div *ngIf="registeredStateField.errors.required">
+            State is required.
+          </div>
+          <br>
+        </div>
+
+        <h3 class="my-5 text-muted">Office Address</h3>
+
+        <button ion-button color="brand_danger" small type="button" class="btn btn-warning btn-sm" (click)="copyAddress()">Copy from Above</button>
+        <br><br>
+
+        <ion-item class="form-group">
+          <ion-input type="text" id="officeAddress" name="officeAddress" [(ngModel)]="profile.officeAddress.address" #officeAddressField="ngModel"></ion-input>
+        </ion-item>
+      
+        <ion-item class="form-group">
+          <ion-label floating for="officeCity">City</ion-label>
+          <ion-input type="text" id="officeCity" name="officeCity" [(ngModel)]="profile.officeAddress.city" #officeCityField="ngModel"></ion-input>
+        </ion-item>
+      
+        <ion-item class="form-group">
+          <ion-label floating for="officeState">State</ion-label>
+          <ion-select id="officeState" name="officeState" [(ngModel)]="profile.officeAddress.state" #officeStateField="ngModel">
+            <ion-option *ngFor="let state of stateApi.states" [value]="state">{{state}}</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <br><br><br>
+      
+        <ion-item class="form-group">
+          <ion-label floating for="incDate">Incorporation Date</ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY" id="incDate" name="incDate" [(ngModel)]="profile.incDate" #incDateField="ngModel"></ion-datetime>
+        </ion-item>
+    
+        <ion-item class="form-group">
+          <ion-label floating for="email">Email address</ion-label>
+          <ion-input type="email" id="email" name="email" [(ngModel)]="profile.email" required #emailField="ngModel" email></ion-input>
+        </ion-item>
+      
+        <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)" class="text-danger">
+          <div *ngIf="emailField.errors.required">
+            Email is required.
+          </div>
+          <div *ngIf="!emailField.errors.required && emailField.errors.email">
+            Invalid Email.
+          </div>
+          <br>
+        </div>
+    
+        <ion-item class="form-group">
+          <ion-label floating for="phone">Phone Number</ion-label>
+          <ion-input type="tel" [(ngModel)]="profile.phone" required id="phone" name="phone" #phoneField="ngModel"></ion-input>
+        </ion-item>
+    
+        <div *ngIf="phoneField.invalid && (phoneField.dirty || phoneField.touched)" class="text-danger">
+          <div *ngIf="phoneField.errors.required">
+            Phone Number is empty or invalid.
+          </div>
+          <br>
+        </div>
+      
+        <ion-item class="form-group">
+          <ion-label floating for="landlineNo">Landline Number</ion-label>
+          <ion-input type="number" id="landlineNo" name="landlineNo" [(ngModel)]="profile.landlineNo" #landlineNoField="ngModel"></ion-input>
+        </ion-item>
+      
+        <ion-item class="form-group">
+          <ion-label floating for="fax">Fax</ion-label>
+          <ion-input type="number" id="fax" name="fax" [(ngModel)]="profile.fax" #faxField="ngModel"></ion-input>
+        </ion-item>
+      
+        <ion-item class="form-group">
+          <ion-label floating for="website">Website</ion-label>
+          <ion-input type="text" id="website" name="website" [(ngModel)]="profile.website" #websiteField="ngModel"></ion-input>
+        </ion-item>
+      
+        <ion-item class="form-group">
+          <ion-label floating for="panNo">PAN Number</ion-label>
+          <ion-input type="number" id="panNo" name="panNo" [(ngModel)]="profile.panNo" required #panNoField="ngModel"></ion-input>
+        </ion-item>
+      
+        <div *ngIf="panNoField.invalid && (panNoField.dirty || panNoField.touched)" class="text-danger">
+          <div *ngIf="panNoField.errors.required">
+            PAN Number is empty or invalid.
+          </div>
+          <br>
+        </div>
+      
+        <ion-item class="form-group">
+          <ion-label floating for="gstNo">GST Number</ion-label>
+          <ion-input type="number" id="gstNo" name="gstNo" [(ngModel)]="profile.gstNo" required #gstNoField="ngModel"></ion-input>
+        </ion-item>
+      
+        <div *ngIf="gstNoField.invalid && (gstNoField.dirty || gstNoField.touched)" class="text-danger">
+          <div *ngIf="gstNoField.errors.required">
+            GST Number is empty or invalid.
+          </div>
+          <br>
+        </div> 
+        
+        <br><br>
+      </div>
+
+      <div class="col-md-5 offset-md-1">
+        <h3 class="text-muted">Bank Account Details</h3>
+
+        <br>
+      
+        <ion-item class="form-group">
+          <ion-label floating for="bankAccountName">Account Name</ion-label>
+          <ion-input type="text" id="bankAccountName" name="bankAccountName" [(ngModel)]="profile.bankAccountName" required #bankAccountNameField="ngModel"></ion-input>
+        </ion-item>
+      
+        <div *ngIf="bankAccountNameField.invalid && (bankAccountNameField.dirty || bankAccountNameField.touched)" class="text-danger">
+          <div *ngIf="bankAccountNameField.errors.required">
+            Account Name is required.
+          </div>
+          <br>
+        </div>
+      
+        <ion-item class="form-group">
+          <ion-label floating for="bankAccountNo">Account Number</ion-label>
+          <ion-input type="number" id="bankAccountNo" name="bankAccountNo" [(ngModel)]="profile.bankAccountNo" required #bankAccountNoField="ngModel"></ion-input>
+        </ion-item>
+      
+        <div *ngIf="bankAccountNoField.invalid && (bankAccountNoField.dirty || bankAccountNoField.touched)" class="text-danger">
+          <div *ngIf="bankAccountNoField.errors.required">
+            Account Number is empty or invalid.
+          </div>
+          <br>
+        </div>
+      
+        <ion-item class="form-group">
+          <ion-label floating for="bankIfsc">IFSC</ion-label>
+          <ion-input type="text" id="bankIfsc" name="bankIfsc" [(ngModel)]="profile.bankIfsc" required minlength="11" maxlength="11" #bankIfscField="ngModel" (input)="ifscChanged()"></ion-input>
+        </ion-item>
+      
+        <div *ngIf="bankIfscField.invalid && (bankIfscField.dirty || bankIfscField.touched)" class="text-danger">
+          <div *ngIf="bankIfscField.errors.required">
+            IFSC is required.
+          </div>
+          <div *ngIf="bankIfscField.errors.minlength || bankIfscField.errors.maxlength">
+            IFSC should have 11 characters.
+          </div>
+          <br>
+        </div>
+      
+        <ion-item class="form-group">
+          <ion-label floating for="bankName">Bank Name</ion-label>
+          <ion-input type="text" id="bankName" name="bankName" [(ngModel)]="profile.bankName" required #bankNameField="ngModel"></ion-input>
+        </ion-item>
+      
+        <div *ngIf="bankNameField.invalid && (bankNameField.dirty || bankNameField.touched)" class="text-danger">
+          <div *ngIf="bankNameField.errors.required">
+            Bank Name is required.
+          </div>
+          <br>
+        </div>
+      
+        <ion-item class="form-group">
+          <ion-label floating for="bankBranchAddress">Bank Branch Address</ion-label>
+          <ion-input type="text" id="bankBranchAddress" name="bankBranchAddress" [(ngModel)]="profile.bankBranchAddress" required #bankBranchAddressField="ngModel"></ion-input>
+        </ion-item>
+      
+        <div *ngIf="bankBranchAddressField.invalid && (bankBranchAddressField.dirty || bankBranchAddressField.touched)" class="text-danger">
+          <div *ngIf="bankBranchAddressField.errors.required">
+            Bank Branch Address is required.
+          </div>
+          <br>
+        </div>
+      
+        <ion-item class="form-group">
+          <ion-label floating for="bankAccountType">Bank Account Type</ion-label>
+          <ion-select id="bankAccountType" name="bankAccountType" [(ngModel)]="profile.bankAccountType">
+            <ion-option value="Current">Current</ion-option>
+            <ion-option value="Savings">Savings</ion-option>
+          </ion-select>
+        </ion-item>
+        
+        <br><br>
+        
+        <h3 class="text-muted">Social</h3>
+
+        <br>
+      
+        <ion-item class="form-group">
+          <ion-label floating for="nickname">Facebook</ion-label>
+          <ion-input type="text" id="facebook" name="facebook" [(ngModel)]="profile.facebook" #facebookField="ngModel"></ion-input>
+        </ion-item>
+      
+        <ion-item class="form-group">
+          <ion-label floating for="nickname">Twitter</ion-label>
+          <ion-input type="text" id="twitter" name="twitter" [(ngModel)]="profile.twitter" #twitterField="ngModel"></ion-input>
+        </ion-item>
+      
+        <ion-item class="form-group">
+          <ion-label floating for="nickname">Others</ion-label>
+          <ion-input type="text" id="others" name="others" [(ngModel)]="profile.other" #otherField="ngModel"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+
+    <br>
+  
+    <div *ngIf="error">
+      <ngb-alert type="danger" (close)="error = null">{{ error }}</ngb-alert>
+      
+      <br>
+    </div>
+  
+    <button ion-button color="brand_success" type="submit" class="btn btn-success" [disabled]="!profileForm.form.valid">Save</button>
+    <button ion-button color="brand_danger" type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
+
+    <br><br><br>
+  </form>
+</div>

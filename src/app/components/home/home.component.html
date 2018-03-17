@@ -1,12 +1,15 @@
-<!-- <div class="text-center">
-  <br>
-  <br>
-  <img [src]="firm.profile.logo" class="img-fluid max-w-200" [alt]="firm.profile.name">
-</div> -->
-
-<!-- <br>
-
 <div class="text-center">
+  <br>
+  <br>
+  <img *ngIf="profile.logo" [src]="profile.logo" class="img-fluid max-w-200">
+  <br>
+  <br>
+  <br>
+  <img src="assets/zenedo.jpeg" width="150" height="150">
+</div>
+
+
+<!-- <div class="text-center">
   <h1>Advertising Agency Manager (AAMan)</h1>
   <br>
   <p>A complete solution for Advertising Agencies.</p>

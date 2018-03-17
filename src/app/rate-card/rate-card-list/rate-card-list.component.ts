@@ -2,6 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { RateCard } from '../rateCard';
 import { RateCardApiService } from '../rate-card-api.service';
 import { DialogService } from '../../services/dialog.service';
+import { Observable } from 'rxjs/Observable';
+import {of} from 'rxjs/observable/of';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/switchMap';
+import { Router } from '@angular/router';
 import { GobackService } from '../../services/goback.service';
 
 @Component({
@@ -12,13 +20,32 @@ import { GobackService } from '../../services/goback.service';
 export class RateCardListComponent implements OnInit {
 
   ratecards: RateCard[] = [];
+  globalRateCards: RateCard[] = [];
 
-  constructor(private api: RateCardApiService, private dialog: DialogService, private goback: GobackService) { }
+  query: string;
+  searchFailed = false;
+
+  constructor(private api: RateCardApiService, private dialog: DialogService, private router: Router, private goback: GobackService) { }
 
   ngOnInit() {
-    this.goback.urlInit();
-
     this.api.getRateCards().subscribe(data => this.ratecards = data);
+
+    this.api.getRateCards(true).subscribe(data => this.globalRateCards = data);
+  }
+
+  search = (text: Observable<string>) =>
+    text.debounceTime(300)
+      .distinctUntilChanged()
+      .switchMap(term =>
+        this.api.searchRateCards(term)
+          .do(() => this.searchFailed = false)
+          .catch(() => {
+            this.searchFailed = true;
+            return of([]);
+          }));
+
+  inputFormatter = (result: RateCard) => {
+    this.router.navigateByUrl('/ratecards/' + result.id);
   }
 
   deleteRateCard(ratecard: RateCard) {

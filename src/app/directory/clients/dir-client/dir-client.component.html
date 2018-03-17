@@ -88,10 +88,10 @@
 
       <ion-item class="form-group">
         <ion-label floating for="state">State</ion-label>
-        <select id="state" name="state" [(ngModel)]="client.address.state" required #stateField="ngModel">
-          <option *ngFor="let state of stateApi.states" [value]="state">{{state}}</option>
-        </select>
-      </div>
+        <ion-select id="state" name="state" [(ngModel)]="client.address.state" required #stateField="ngModel">
+          <ion-option *ngFor="let state of stateApi.states" [value]="state">{{state}}</ion-option>
+        </ion-select>
+      </ion-item>
     
       <div *ngIf="stateField.invalid && (stateField.dirty || stateField.touched)" class="text-danger">
         <div *ngIf="stateField.errors.required">
@@ -125,7 +125,7 @@
         <ion-item class="form-group">
           <ion-label floating for="name">Name</ion-label>
           <ion-input type="text" id="name-{{i}}" name="s-{{i}}-name" [(ngModel)]="item.name" required #nameField="ngModel"></ion-input>
-        </div>
+        </ion-item>
 
         <div *ngIf="nameField.invalid && (nameField.dirty || nameField.touched)" class="text-danger">
           <div *ngIf="nameField.errors.required">
@@ -137,12 +137,12 @@
         <ion-item class="form-group">
           <ion-label floating for="designation">Designation</ion-label>
           <ion-input type="text" id="designation-{{i}}" name="s-{{i}}-designation" [(ngModel)]="item.designation" #designationField="ngModel"></ion-input>
-        </div>
+        </ion-item>
 
         <ion-item class="form-group">
           <ion-label floating for="department">Department</ion-label>
           <ion-input type="text" id="department-{{i}}" name="s-{{i}}-department" [(ngModel)]="item.department" required #departmentField="ngModel"></ion-input>
-        </div>
+        </ion-item>
 
         <div *ngIf="departmentField.invalid && (departmentField.dirty || departmentField.touched)" class="text-danger">
           <div *ngIf="departmentField.errors.required">
@@ -154,7 +154,7 @@
         <ion-item class="form-group">
           <ion-label floating for="personLandLine">Land Line</ion-label>
           <ion-input type="text" id="personLandLine-{{i}}" name="s-{{i}}-personLandLine" [(ngModel)]="item.personLandLine" required #personLandLineField="ngModel"></ion-input>
-        </div>
+        </ion-item>
 
         <div *ngIf="personLandLineField.invalid && (personLandLineField.dirty || personLandLineField.touched)" class="text-danger">
           <div *ngIf="personLandLineField.errors.required">
@@ -166,12 +166,12 @@
         <ion-item class="form-group">
           <ion-label floating for="mobileNo">Mobile Number</ion-label>
           <ion-input type="text" id="mobileNo-{{i}}" name="s-{{i}}-mobileNo" [(ngModel)]="item.mobileNo" #mobileNoField="ngModel"></ion-input>
-        </div>
+        </ion-item>
 
         <ion-item class="form-group">
           <ion-label floating for="email">E-mail</ion-label>
           <ion-input type="email" id="email-{{i}}" name="s-{{i}}-email" [(ngModel)]="item.email" required #emailField="ngModel" email></ion-input>
-        </div>
+        </ion-item>
 
         <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)" class="text-danger">
           <div *ngIf="emailField.errors.required">
@@ -185,13 +185,13 @@
 
         <ion-item class="form-group">
           <ion-label floating for="dob">Date of birth</ion-label>
-          <ion-input type="date" id="dob-{{i}}" name="dob-{{i}}" [(ngModel)]="item.dob" #dobField="ngModel"></ion-input>
-        </div>
+          <ion-datetime displayFormat="DD/MM/YYYY"  id="dob-{{i}}" name="dob-{{i}}" [(ngModel)]="item.dob" #dobField="ngModel"></ion-datetime>
+        </ion-item>
   
         <ion-item class="form-group">
           <ion-label floating for="anniversaryDate">Anniversary Date</ion-label>
-          <ion-input type="date" id="anniversaryDate-{{i}}" name="anniversaryDate-{{i}}" [(ngModel)]="item.anniversaryDate" #anniversaryDateField="ngModel"></ion-input>
-        </div>
+          <ion-datetime displayFormat="DD/MM/YYYY"  id="anniversaryDate-{{i}}" name="anniversaryDate-{{i}}" [(ngModel)]="item.anniversaryDate" #anniversaryDateField="ngModel"></ion-datetime>
+        </ion-item>
 
         <!-- Assign Ad Type, Assign Edition -->
       </div>
@@ -205,6 +205,6 @@
   <br><br>
 </div>
 
-  <button type="submit" class="btn btn-success" [disabled]="!dirForm.form.valid">Save</button>
-  <button class="btn btn-danger" (click)="cancel()">Cancel</button>
+  <button ion-button color="brand_success" type="submit" class="btn btn-success" [disabled]="!dirForm.form.valid">Save</button>
+  <button ion-button color="brand_danger" class="btn btn-danger" (click)="cancel()">Cancel</button>
 </form>

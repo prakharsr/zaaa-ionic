@@ -30,31 +30,34 @@ export class HomeComponent implements OnInit {
       //      <img [src]="this.profile.logo" class="img-fluid max-w-200" [alt]="this.profile.name">
       // </div>
 
-      presentLoadingCustom() {
-        let loading = this.loadingCtrl.create({
-          spinner: 'hide',
-          content: `<br>
+//       presentLoadingCustom() {
+//         let loading = this.loadingCtrl.create({
+//           spinner: 'hide',
+//           content: `<br>
       
-          <div class="text-center">
-            <h1>Advertising Agency Manager (AAMan)</h1>
-            <br>
-            <p>A complete solution for Advertising Agencies.</p>
-            <br>
-            <img src="assets/small_tux.png" width="150" height="150">
-          </div>`,
-          duration:3000
-        });
+//           <div class="text-center">
+//             <h1>Advertising Agency Manager (AAMan)</h1>
+//             <br>
+//             <p>A complete solution for Advertising Agencies.</p>
+//             <br>
+//             <img src="assets/small_tux.png" width="150" height="150">
+//           </div>`,
+//           duration:3000
+//         });
   
 
 
-  setTimeout(() => {
-    this.router.navigateByUrl("/dashboard");
-    loading.dismiss();
-  }, 1200);
+//   setTimeout(() => {
+//     this.router.navigateByUrl("/dashboard");
+//     loading.dismiss();
+//   }, 1200);
 
-  loading.present();
+//   loading.present();
+// }
+
+routeToDashboard() {
+  this.router.navigateByUrl("/dashboard");
 }
-
   ngOnInit() {
     // setTimeout(2000);
     this.goback.urlInit(); 
@@ -62,7 +65,9 @@ export class HomeComponent implements OnInit {
     if(this.api.isLoggedIn) 
     {
       this.api.getFirmProfile().subscribe(data => this.profile = data);
-      this.presentLoadingCustom();
+      setTimeout(this.routeToDashboard(),  {        
+      }, 5000);
+      // this.presentLoadingCustom();
     }
     else {
       this.router.navigateByUrl("/login");
