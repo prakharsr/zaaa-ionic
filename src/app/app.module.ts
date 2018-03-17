@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule }   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { IonicImageLoader } from 'ionic-image-loader';
 // import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 import { NgModule } from '@angular/core';

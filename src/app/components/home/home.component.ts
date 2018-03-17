@@ -16,6 +16,7 @@ import { Firm } from '../../models/firm';
 export class HomeComponent implements OnInit {
 
   profile = new Firm();
+  isLoaded = false;
 
   @HostBinding('@routeAnimation') routeAnimation = true;
 
@@ -25,39 +26,26 @@ export class HomeComponent implements OnInit {
      private router: Router,
      private loadingCtrl: LoadingController) {
    }
-      
-      // <div class="text-center">
-      //      <img [src]="this.profile.logo" class="img-fluid max-w-200" [alt]="this.profile.name">
-      // </div>
-
-//       presentLoadingCustom() {
-//         let loading = this.loadingCtrl.create({
-//           spinner: 'hide',
-//           content: `<br>
-      
-//           <div class="text-center">
-//             <h1>Advertising Agency Manager (AAMan)</h1>
-//             <br>
-//             <p>A complete solution for Advertising Agencies.</p>
-//             <br>
-//             <img src="assets/small_tux.png" width="150" height="150">
-//           </div>`,
-//           duration:3000
-//         });
+ 
+  presentLoadingDefault() {
+    let loading = this.loadingCtrl.create({
+      content: 'Logging In ...'
+    });
   
+    loading.present();
+  
+    setTimeout(() => {
+      loading.dismiss();
+      this.isLoaded = true;
+      setTimeout(() => {
+        this.routeToDashboard();
+      }, 2000);      
+    }, 4000);
+  }
 
-
-//   setTimeout(() => {
-//     this.router.navigateByUrl("/dashboard");
-//     loading.dismiss();
-//   }, 1200);
-
-//   loading.present();
-// }
-
-routeToDashboard() {
-  this.router.navigateByUrl("/dashboard");
-}
+  routeToDashboard() {
+    this.router.navigateByUrl("/dashboard");
+  }
   ngOnInit() {
     // setTimeout(2000);
     this.goback.urlInit(); 
@@ -65,9 +53,8 @@ routeToDashboard() {
     if(this.api.isLoggedIn) 
     {
       this.api.getFirmProfile().subscribe(data => this.profile = data);
-      setTimeout(this.routeToDashboard(),  {        
-      }, 5000);
-      // this.presentLoadingCustom();
+      this.presentLoadingDefault();
+      
     }
     else {
       this.router.navigateByUrl("/login");

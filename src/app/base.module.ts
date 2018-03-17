@@ -29,7 +29,7 @@ import { CanDeactiveGuard } from './guards/can-deactive-guard.service';
     NgbModule.forRoot(),
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [
     GobackService,
