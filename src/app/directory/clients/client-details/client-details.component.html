@@ -1,4 +1,6 @@
-<button class="fab bg-info" [routerLink]="['/dir/clients/edit', id]"><span class="fa fa-pencil-alt"></span></button>
+<button class="fab bg-info" [routerLink]="['/dir/clients/edit', client.id]">
+  <mat-icon>edit</mat-icon>
+</button>
 
 <div class="row">
   <div class="col-lg">
@@ -37,6 +39,12 @@
         </li>
         <li class="list-group-item">
           <div class="row">
+            <div class="col-md-4">STD</div>
+            <div class="col-md-8">{{client.stdNo}}</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
             <div class="col-md-4">Website</div>
             <div class="col-md-8">{{client.website}}</div>
           </div>
@@ -60,6 +68,12 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
           {{client.address.address}}
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-4">Pincode</div>
+            <div class="col-md-8">{{client.address.pincode}}</div>
+          </div>
         </li>
         <li class="list-group-item">
           <div class="row">
@@ -133,15 +147,6 @@
             Upload
         </label>
         <input type="file" id="profile-upload-{{i}}" class="hidden-file" accept="image/*" (change)="uploadProfilePicture($event.target.files)"/>
-
-        <div *ngIf="error || success">
-          <br>
-      
-          <ngb-alert *ngIf="error" type="danger" (close)="error = null">{{ error }}</ngb-alert>
-          <ngb-alert *ngIf="success" type="success" (close)="success = null">{{ success }}</ngb-alert>
-      
-          <br>
-        </div>
       </div>
     </div>
   </div>

@@ -1,49 +1,39 @@
-<div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-4">Change Password</h1>
-    </div>
-  </div>
-  
-  <div class="container">  
+<mat-toolbar>  
+  <mat-toolbar-row>
+    <div class="container">Change Password</div>
+  </mat-toolbar-row>
+</mat-toolbar>
 
+<br>
+
+<div class="container">
   <form (ngSubmit)="submit()" #changePswForm="ngForm">
-
-    <ion-item class="form-group">
-      <ion-label floating for="oldPassword">Old Password</ion-label>
-      <ion-input type="password" id="oldPassword" name="oldPassword" [(ngModel)]="oldPassword" required #oldPasswordField="ngModel"></ion-input>
-    </ion-item>
-  
-    <div *ngIf="oldPasswordField.invalid && (oldPasswordField.dirty || oldPasswordField.touched)" class="text-danger">
-      <div *ngIf="oldPasswordField.errors.required">
+    <mat-form-field>
+      <input matInput type="password" name="oldPassword" placeholder="Old Password" [(ngModel)]="oldPassword" required #oldPasswordField="ngModel">
+      <mat-error *ngIf="oldPasswordField.errors && oldPasswordField.errors.required">
         Old Password is required.
-      </div>
-      <br>
-    </div>
+      </mat-error>
+    </mat-form-field>
 
-    <ion-item class="form-group">
-      <ion-label floating for="password">New Password</ion-label>
-      <ion-input type="password" id="password" name="password" [(ngModel)]="password" required #passwordField="ngModel"></ion-input>
-    </ion-item>
-
-    <div *ngIf="passwordField.invalid && (passwordField.dirty || passwordField.touched)" class="text-danger">
-      <div *ngIf="passwordField.errors.required">
+    <mat-form-field>
+      <input matInput type="password" name="password" placeholder="New Password" [(ngModel)]="password" required #passwordField="ngModel">
+      <mat-error *ngIf="passwordField.errors && passwordField.errors.required">
         New Password is required.
-      </div>
-      <br>
-    </div>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="password" name="cpassword" [verify-equals]="password" placeholder="Confirm New Password" [(ngModel)]="cpassword" required #cpasswordField="ngModel">
+      <mat-error *ngIf="cpasswordField.errors && cpasswordField.errors.required">
+        Password confirmation is required.
+      </mat-error> 
+      <mat-error *ngIf="cpasswordField.errors && cpasswordField.errors.equals">
+        Passwords don't match.
+      </mat-error>
+    </mat-form-field>
 
     <br>
 
-    <div class="text-danger" *ngIf="error">
-      {{error}}
-
-      <br><br>
-    </div>
-    <div class="text-success" *ngIf="success">
-      Password changed successfully.
-
-      <br><br>
-    </div>
-    <button ion-button type="submit" color="brand_success" class="btn btn-success" [disabled]="!changePswForm.form.valid">Change</button>
+    <button type="submit" class="btn btn-success" [disabled]="!changePswForm.form.valid">Change</button>
   </form>
-  </div>
+</div>

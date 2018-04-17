@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { DirExecutive } from '../dirExecutive';
+import { Executive } from '../executive';
 import { ExecutiveApiService } from '../executive-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
+import { NotificationService } from '../../../services/notification.service';
 import { GobackService } from '../../../services/goback.service';
 
 @Component({
@@ -12,46 +13,39 @@ import { GobackService } from '../../../services/goback.service';
 })
 export class ExecutiveDetailsComponent implements OnInit {
 
-  executive = new DirExecutive();
-  error: string;
-  success: string;
-  id: string;
+  executive = new Executive();
 
   constructor(private api: ExecutiveApiService,
     private route: ActivatedRoute,
     private router: Router,
-    private goback: GobackService) { }
+    private notifications: NotificationService, 
+    public goback: GobackService) { }
 
   ngOnInit() {
     this.goback.urlInit();
-    this.route.paramMap.subscribe(params => {
-      this.id = params.get('id');
-
-      this.api.getExecutive(this.id).subscribe(data => this.executive = data);
+    this.route.data.subscribe((data: { executive: Executive }) => {
+      this.executive = data.executive;
     });
   }
 
   uploadProfilePicture(files: FileList) {
-    this.error = '';
-    this.success = '';
-
-    this.api.uploadProfilePicture(this.id, files.item(0)).subscribe(
+    this.api.uploadProfilePicture(this.executive.id, files.item(0)).subscribe(
       data => {
         if (data.success) {
-          this.success = 'Profile Photo uploaded successfully';
+          this.notifications.show('Profile Photo uploaded successfully');
 
           this.executive.photo = environment.uploadsBaseUrl + data.photo;
         }
         else {
           console.log(data);
 
-          this.error = data.msg;
+          this.notifications.show(data.msg);
         }
       },
       err => {
         console.log(err);
 
-        this.error = "Connection failed";
+        this.notifications.show("Connection failed");
       }
     );
   }

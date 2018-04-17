@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
+import { NotificationService } from '../../services/notification.service';
 import { GobackService } from '../../services/goback.service';
 
 @Component({
@@ -12,34 +13,29 @@ export class ChangePswComponent implements OnInit {
   oldPassword: string;
   password: string;
   cpassword: string;
-  error: string;
-  success: boolean;
 
-  constructor(private api: ApiService, private goback: GobackService) { }
+  constructor(private api: ApiService, private notifications: NotificationService, public goback: GobackService) { }
 
   ngOnInit() {
     this.goback.urlInit();
   }
 
   submit() {
-    this.error = '';
-    this.success = false;
-
     this.api.changePassword(this.oldPassword, this.password).subscribe(
       data => {
         if (data.success) {
-          this.success = true;
+          this.notifications.show('Password changed successfully');
         }
         else {
           console.log(data);
 
-          this.error = data.msg;
+          this.notifications.show(data.msg);
         }
       },
       err => {
         console.log(err);
 
-        this.error = 'Connection failed';
+        this.notifications.show('Connection failed');
       }
     );
   }

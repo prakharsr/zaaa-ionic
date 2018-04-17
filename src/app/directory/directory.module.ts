@@ -5,31 +5,34 @@ import { DirRoutingModule } from './dir-routing.module';
 import { DirComponent } from './dir/dir.component';
 
 import { ClientApiService } from './clients/client-api.service';
-import { DirClientComponent } from './clients/dir-client/dir-client.component';
+import { ClientComponent } from './clients/client/client.component';
 import { ClientListComponent } from './clients/client-list/client-list.component';
 import { ClientDetailsComponent } from './clients/client-details/client-details.component';
+import { ClientResolver } from './clients/client-resolver.service';
 
 import { ExecutiveApiService } from './executives/executive-api.service';
-import { DirExecutiveComponent } from './executives/dir-executive/dir-executive.component';
+import { ExecutiveComponent } from './executives/executive/executive.component';
 import { ExecutiveListComponent } from './executives/executive-list/executive-list.component';
 import { ExecutiveDetailsComponent } from './executives/executive-details/executive-details.component';
+import { ExecutiveResolver } from './executives/executive-resolver.service';
 
 import { MediaHouseApiService } from './media-houses/media-house-api.service';
-import { DirMediaHouseComponent } from './media-houses/dir-media-house/dir-media-house.component';
+import { MediaHouseComponent } from './media-houses/media-house/media-house.component';
 import { MediaHouseListComponent } from './media-houses/media-house-list/media-house-list.component';
 import { MediaHouseDetailsComponent } from './media-houses/media-house-details/media-house-details.component';
+import { MediaHouseResolver } from './media-houses/media-house-resolver.service';
 import { IonicModule } from 'ionic-angular';
 
 @NgModule({
   imports: [
+    IonicModule.forRoot(DirectoryModule),
     BaseModule,
-    DirRoutingModule,
-    IonicModule.forRoot(DirectoryModule)
+    DirRoutingModule
   ],
   declarations: [
-    DirClientComponent,
-    DirExecutiveComponent,
-    DirMediaHouseComponent,
+    ClientComponent,
+    ExecutiveComponent,
+    MediaHouseComponent,
     DirComponent,
     ClientListComponent,
     ClientDetailsComponent,
@@ -41,7 +44,10 @@ import { IonicModule } from 'ionic-angular';
   providers: [
     ClientApiService,
     ExecutiveApiService,
-    MediaHouseApiService
+    MediaHouseApiService,
+    ClientResolver,
+    ExecutiveResolver,
+    MediaHouseResolver
   ]
 })
 export class DirectoryModule { }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DirMediaHouse } from '../dirMediaHouse';
+import { MediaHouse } from '../media-house';
 import { MediaHouseApiService } from '../media-house-api.service';
 import { DialogService } from '../../../services/dialog.service';
 import {of} from 'rxjs/observable/of';
@@ -19,13 +19,13 @@ import { GobackService } from '../../../services/goback.service';
 })
 export class MediaHouseListComponent implements OnInit {
 
-  mediaHouses: DirMediaHouse[] = [];
-  globalMediaHouses: DirMediaHouse[] = [];
+  mediaHouses: MediaHouse[] = [];
+  globalMediaHouses: MediaHouse[] = [];
 
   query: string;
   searchFailed = false;
 
-  constructor(private api: MediaHouseApiService, private dialog: DialogService, private router: Router, private goback: GobackService) { }
+  constructor(private api: MediaHouseApiService, private dialog: DialogService, private router: Router, public goback: GobackService) { }
 
   ngOnInit() {
     this.goback.urlInit();
@@ -44,12 +44,12 @@ export class MediaHouseListComponent implements OnInit {
             return of([]);
           }));
 
-  inputFormatter = (result: DirMediaHouse) => {
+  inputFormatter = (result: MediaHouse) => {
     this.router.navigateByUrl('/dir/media_houses/' + result.id);
   }
 
-  deleteMediaHouse(mediaHouse: DirMediaHouse) {
-    this.dialog.confirm("Are you sure you want to delete this Media House?").subscribe(confirm => {
+  deleteMediaHouse(mediaHouse: MediaHouse) {
+    this.dialog.confirmDeletion("Are you sure you want to delete this Media House?").subscribe(confirm => {
       if (!confirm)
         return;
 

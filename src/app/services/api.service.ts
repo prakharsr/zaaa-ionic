@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { map } from 'rxjs/operators/map';
+import 'rxjs/add/operator/finally';
 
 import { Plan } from '../models/plan';
 import { Template } from '../models/template';
@@ -11,9 +12,10 @@ import { Template } from '../models/template';
 import { WindowService } from './window.service';
 
 import { environment } from '../../environments/environment';
-import { UserProfile } from '../models/userProfile';
+import { UserProfile } from '../models/user-profile';
 import { Firm } from '../models/firm';
 import { Address } from '../models/address';
+import { LoaderService } from './loader.service';
 
 @Injectable()
 export class ApiService {
@@ -49,7 +51,7 @@ export class ApiService {
     }
   }
 
-  constructor(private http: HttpClient, private windowService: WindowService) { }
+  constructor(private http: HttpClient, private windowService: WindowService, private loaderService: LoaderService) { }
 
   private get headers() {
     return { headers: { Authorization: this.authToken }};
@@ -57,52 +59,90 @@ export class ApiService {
 
   post(url: string, body: any) : Observable<any> {
 
+    this.loaderService.show();
+
     if (this.authToken)
     {
-        return this.http.post(environment.apiUrl + url, body, this.headers);
+        return this.http.post(environment.apiUrl + url, body, this.headers)
+          .finally(() => this.loaderService.hide());
     }
-    else return this.http.post(environment.apiUrl + url, body);
+    else {
+      return this.http.post(environment.apiUrl + url, body)
+        .finally(() => this.loaderService.hide());
+    }
   }
 
   patch(url: string, body: any) : Observable<any> {
 
+    this.loaderService.show();
+
     if (this.authToken)
     {
-        return this.http.patch(environment.apiUrl + url, body, this.headers);
+        return this.http.patch(environment.apiUrl + url, body, this.headers)
+          .finally(() => this.loaderService.hide());
     }
-    else return this.http.patch(environment.apiUrl + url, body);
+    else {
+      return this.http.patch(environment.apiUrl + url, body)
+        .finally(() => this.loaderService.hide());
+    }
   }
 
   get(url: string) : Observable<any> {
+    
+    this.loaderService.show();
 
     if (this.authToken)
     {
-        return this.http.get(environment.apiUrl + url, this.headers);
+        return this.http.get(environment.apiUrl + url, this.headers)
+          .finally(() => this.loaderService.hide());
     }
-    else return this.http.get(environment.apiUrl + url);
+    else {
+      return this.http.get(environment.apiUrl + url)
+        .finally(() => this.loaderService.hide());
+    }
   }
 
   delete(url: string) : Observable<any> {
-    return this.http.delete(environment.apiUrl + url, this.headers);
+
+    this.loaderService.show();
+
+    return this.http.delete(environment.apiUrl + url, this.headers)
+      .finally(() => this.loaderService.hide());
   }
 
   fileUpload(url: string, key: string, fileToUpload: File) : Observable<any> {
+
+    this.loaderService.show();
+
     const formData = new FormData();
     formData.append(key, fileToUpload, fileToUpload.name);
 
-    return this.http.post(environment.apiUrl + url, formData, this.headers);
+    return this.http.post(environment.apiUrl + url, formData, this.headers)
+      .finally(() => this.loaderService.hide());
   }
 
   uploadProfilePicture(fileToUpload: File) : Observable<any> {
     return this.fileUpload("/user/image", "user", fileToUpload);
   }
 
+  deleteProfilePicture() : Observable<any> {
+    return this.delete('/user/image');
+  }
+
   uploadSign(fileToUpload: File) : Observable<any> {
     return this.fileUpload("/user/sign", "sign", fileToUpload);
+  }
+
+  deleteSign() : Observable<any> {
+    return this.delete('/user/sign');
   }
   
   uploadFirmLogo(fileToUpload: File) : Observable<any> {
     return this.fileUpload("/firm/logo", "logo", fileToUpload);
+  }
+
+  deleteFirmLogo() : Observable<any> {
+    return this.delete('/firm/logo');
   }
 
   private extractToken(base: Observable<any>) : Observable<any> {
@@ -164,6 +204,7 @@ export class ApiService {
 
     return this.post('/user/plan', {
       planID: plan.id,
+      cost: plan.cost,
       paymentID: payment,
       firmName: firmName,
       billingAddress: billingAddress,
@@ -223,9 +264,16 @@ export class ApiService {
     });
   }
 
-  resetPsw(email: string): Observable<any> {
-    return this.post('/user/resetpassword', {
+  forgotPsw(email: string): Observable<any> {
+    return this.post('/user/forgotPassword', {
       email: email
+    });
+  }
+
+  resetPsw(token: string, password: string): Observable<any> {
+    return this.post('/user/resetPassword', {
+      token: token,
+      password: password
     });
   }
   
@@ -246,6 +294,7 @@ export class ApiService {
           profile.nickname = data.firm.DisplayName;
           profile.fax = data.firm.Fax;
           profile.landlineNo = data.firm.Landline;
+          profile.stdNo = data.firm.stdNo;
           profile.website = data.firm.Website;
           profile.panNo = data.firm.PanNo;
           profile.gstNo = data.firm.GSTIN;
@@ -299,6 +348,7 @@ export class ApiService {
       officeAddress: firm.officeAddress,
       fax: firm.fax,
       landline: firm.landlineNo,
+      stdNo: firm.stdNo,
       website: firm.website,
       pan: firm.panNo,
       gst: firm.gstNo,
@@ -326,5 +376,9 @@ export class ApiService {
       oldPassword: oldPassword,
       newPassword: newPassword
     });
+  }
+
+  generatePaymentInvoice() {
+    return this.post('/user/plan/invoice', {});
   }
 }

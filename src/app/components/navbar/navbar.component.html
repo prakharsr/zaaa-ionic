@@ -55,6 +55,8 @@
         Directory
        </button><button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('ratecards')" menuClose>
         Rate Cards
+    </button><button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('releaseorders')" menuClose>
+        Release Orders
         </button><button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('templates')" menuClose>
         Templates
         </button><button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('changePassword')" menuClose>

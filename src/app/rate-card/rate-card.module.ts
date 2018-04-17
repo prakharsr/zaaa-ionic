@@ -1,25 +1,31 @@
 import { NgModule } from '@angular/core';
 import { BaseModule } from '../base.module';
 import { RateCardRoutingModule } from './rate-card-routing.module';
+import { DirectoryModule } from '../directory/directory.module';
 
 import { RateCardApiService } from './rate-card-api.service';
+import { RateCardResolver } from './rate-card-resolver.service';
 
-import { CreateRateCardComponent } from './create-rate-card/create-rate-card.component';
+import { RateCardComponent } from './rate-card/rate-card.component';
 import { RateCardListComponent } from './rate-card-list/rate-card-list.component';
 import { RateCardDetailsComponent } from './rate-card-details/rate-card-details.component';
 import { IonicModule } from 'ionic-angular';
 
 @NgModule({
   imports: [
+    IonicModule.forRoot(RateCardModule),
     BaseModule,
-    RateCardRoutingModule,
-    IonicModule.forRoot(RateCardModule)
+    DirectoryModule,
+    RateCardRoutingModule
   ],
   declarations: [
-    CreateRateCardComponent,
+    RateCardComponent,
     RateCardListComponent,
     RateCardDetailsComponent
   ],
-  providers: [RateCardApiService]
+  providers: [
+    RateCardApiService,
+    RateCardResolver
+  ]
 })
 export class RateCardModule { }

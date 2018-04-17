@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, Renderer } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Address } from '../../models/address';
 import { StateApiService } from '../../services/state-api.service';
 import { GobackService } from '../../services/goback.service';
@@ -16,11 +16,7 @@ export class BillingDetailsComponent implements OnInit {
   
   @Output() done = new EventEmitter();
 
-  error: string;
-
-  constructor(
-    private goback: GobackService, public stateApi: StateApiService) {
-     }
+  constructor(public stateApi: StateApiService, public goback: GobackService) { }
 
   ngOnInit() {
     this.goback.urlInit();

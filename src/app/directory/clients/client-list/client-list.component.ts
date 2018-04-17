@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DirClient } from '../dirClient';
+import { Client } from '../client';
 import { ClientApiService } from '../client-api.service';
 import { DialogService } from '../../../services/dialog.service';
 import { Observable } from 'rxjs/Observable';
@@ -19,12 +19,12 @@ import { GobackService } from '../../../services/goback.service';
 })
 export class ClientListComponent implements OnInit {
 
-  clients: DirClient[] = [];
+  clients: Client[] = [];
 
   query: string;
   searchFailed = false;
 
-  constructor(private api: ClientApiService, private dialog: DialogService, private router: Router, private goback:GobackService) { }
+  constructor(private api: ClientApiService, private dialog: DialogService, private router: Router, public goback: GobackService) { }
 
   ngOnInit() {
     this.goback.urlInit();
@@ -42,12 +42,12 @@ export class ClientListComponent implements OnInit {
             return of([]);
           }));
 
-  inputFormatter = (result: DirClient) => {
+  inputFormatter = (result: Client) => {
     this.router.navigateByUrl('/dir/clients/' + result.id);
   }
 
-  deleteClient(client: DirClient) {
-    this.dialog.confirm("Are you sure you want to delete this client?").subscribe(confirm => {
+  deleteClient(client: Client) {
+    this.dialog.confirmDeletion("Are you sure you want to delete this client?").subscribe(confirm => {
       if (!confirm)
         return;
 

@@ -1,0 +1,50 @@
+<mat-toolbar>  
+  <mat-toolbar-row>
+    <div class="container">Release Orders</div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<br>
+
+<div class="container">
+  <button class="fab" (click)="this.goback.gotoComponent('releaseorders/new')">
+    <mat-icon>add</mat-icon>
+  </button>
+
+  <br>
+  <p *ngIf="releaseOrders.length == 0" class="text-muted">
+    No Release Orders
+  </p>
+
+  <div class="card mb-3" *ngFor="let releaseOrder of releaseOrders">
+    <div class="card-header"><a [routerLink]="['/releaseorders', releaseOrder.id]">{{releaseOrder.releaseOrderNO}}</a></div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          {{releaseOrder.publicationName}}<br>
+          {{releaseOrder.clientName}}
+        </div>
+        <div class="col-auto">
+          <mat-menu #releaseOrderMenu="matMenu">
+            <button mat-menu-item [routerLink]="['/releaseorders/new', releaseOrder.id]">
+              <mat-icon>add</mat-icon> Copy into New
+            </button>
+            <button mat-menu-item [routerLink]="['/releaseorders/edit', releaseOrder.id]">
+              <mat-icon>edit</mat-icon> Edit
+            </button>
+            <button mat-menu-item (click)="sendMsg()">
+              <mat-icon>mail</mat-icon> Mail
+            </button>
+            <button mat-menu-item class="text-danger" (click)="deleteReleaseOrder(releaseOrder)">
+              <mat-icon>delete</mat-icon> Delete
+            </button>
+          </mat-menu>
+          
+          <button mat-icon-button [matMenuTriggerFor]="releaseOrderMenu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

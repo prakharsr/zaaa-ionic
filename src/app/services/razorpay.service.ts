@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { WindowService } from './window.service';
-import { environment } from '../../environments/environment';
-import { DashboardComponent } from '../components/dashboard/dashboard.component';
 
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class RazorPayService {
@@ -31,20 +30,7 @@ export class RazorPayService {
         handler: callback
       };
 
-      // var successCallback = function(success) {
-      //   callback(success)
-      //   payment_id => {this.navCtrl.push(DashboardComponent)}
-      // }
-      var successCallback = function(success) {
-        callback(success)
-      }
-
-      var cancelCallback = function(error) {
-        callback(error)
-      }
-      
-      RazorpayCheckout.open(options);
-      RazorpayCheckout.on('payment.success', successCallback);
-      // RazorpayCheckout.on('payment.cancel', cancelCallback);
+      let rzp = new this.windowService.window.Razorpay(options);
+      rzp.open();
     }
 }

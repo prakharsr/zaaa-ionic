@@ -8,6 +8,7 @@ import { GobackService } from '../../services/goback.service';
   templateUrl: './phone-verify.component.html',
   // styleUrls: ['./phone-verify.component.css']
 })
+
 export class PhoneVerifyComponent implements OnInit {
 
   otpSent : boolean;
@@ -17,9 +18,10 @@ export class PhoneVerifyComponent implements OnInit {
   sendError : string;
   verifyError: string;
 
-  constructor(private api: ApiService, private router: Router, private goback:GobackService) { }
+  constructor(private api: ApiService, private router: Router, public goback: GobackService) { }
 
   ngOnInit() {
+    this.goback.urlInit();
     this.api.getUser().subscribe(data => {
       if (!this.number && data.success && data.user.phone) {
         this.number = data.user.phone;

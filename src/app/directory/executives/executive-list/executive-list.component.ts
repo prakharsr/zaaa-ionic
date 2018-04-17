@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DirExecutive } from '../dirExecutive';
+import { Executive } from '../executive';
 import { ExecutiveApiService } from '../executive-api.service';
 import { DialogService } from '../../../services/dialog.service';
 import {of} from 'rxjs/observable/of';
@@ -19,12 +19,12 @@ import { GobackService } from '../../../services/goback.service';
 })
 export class ExecutiveListComponent implements OnInit {
 
-  executives: DirExecutive[] = [];
+  executives: Executive[] = [];
 
   query: string;
   searchFailed = false;
 
-  constructor(private api: ExecutiveApiService, private dialog: DialogService, private router: Router, private goback: GobackService) { }
+  constructor(private api: ExecutiveApiService, private dialog: DialogService, private router: Router, public goback: GobackService) { }
 
   ngOnInit() {
     this.goback.urlInit();
@@ -42,12 +42,12 @@ export class ExecutiveListComponent implements OnInit {
             return of([]);
           }));
 
-  inputFormatter = (result: DirExecutive) => {
+  inputFormatter = (result: Executive) => {
     this.router.navigateByUrl('/dir/executives/' + result.id);
   }
 
-  deleteExecutive(executive: DirExecutive) {
-    this.dialog.confirm("Are you sure you want to delete this executive?").subscribe(confirm => {
+  deleteExecutive(executive: Executive) {
+    this.dialog.confirmDeletion("Are you sure you want to delete this executive?").subscribe(confirm => {
       if (!confirm)
         return;
 

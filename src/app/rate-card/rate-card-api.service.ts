@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../services/api.service';
-import { RateCard, FixSize, Remark } from './rateCard';
+import { RateCard, FixSize, Remark } from './rate-card';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
@@ -13,7 +13,6 @@ export class RateCardApiService {
   createRateCard(rateCard: RateCard): Observable<any> {
     let fixSizes = [],
       schemes = [],
-      premiums = [],
       covered = [],
       tax = [];
 
@@ -30,13 +29,6 @@ export class RateCardApiService {
         paid: element.paid,
         Free: element.Free,
         TimeLimit: element.timeLimit
-      });
-    });
-
-    rateCard.premiums.forEach(element => {
-      premiums.push({
-        Type: element.premType,
-        Amount: element.premAmount
       });
     });
 
@@ -57,15 +49,12 @@ export class RateCardApiService {
     return this.api.post('/user/ratecard', {
       mediaType: rateCard.mediaType,
       adType: rateCard.adType,
+      adTime: rateCard.adTime,
       rateCardType: rateCard.rateCardType,
       bookingCenter: {
         MediaHouseName: rateCard.mediaHouseName,
         Edition: rateCard.bookingEdition,
         PulloutName: rateCard.pullOutName
-      },
-      frequency: {
-        Period: rateCard.freqPeriod,
-        Remark: rateCard.freqRemark
       },
       categories: {
         SubCategory1: rateCard.categories[0],
@@ -92,12 +81,20 @@ export class RateCardApiService {
       },
       fixSize: fixSizes,
       scheme: schemes,
-      premium: premiums,
       tax: tax,
       validFrom: rateCard.validFrom,
       validTill: rateCard.validTill,
       remarks: rateCard.remarks,
-      covered: covered
+      covered: covered,
+      AdWordsMax: rateCard.AdWordsMax,
+
+      PremiumCustom: rateCard.PremiumCustom,
+      PremiumBox: rateCard.PremiumBox,
+      PremiumBaseColour: rateCard.PremiumBaseColour,
+      PremiumCheckMark: rateCard.PremiumCheckMark,
+      PremiumEmailId: rateCard.PremiumEmailId,
+      PremiumWebsite: rateCard.PremiumWebsite,
+      PremiumExtraWords: rateCard.PremiumExtraWords,
     });
   }
 
@@ -109,6 +106,7 @@ export class RateCardApiService {
 
     rateCard.mediaType = body.MediaType;
     rateCard.adType = body.AdType;
+    rateCard.adTime = body.AdTime;
     rateCard.rateCardType = body.RateCardType;
 
     if (body.BookingCenter) {
@@ -117,13 +115,6 @@ export class RateCardApiService {
       rateCard.mediaHouseName = bookingCenter.MediaHouseName;
       rateCard.bookingEdition = bookingCenter.Edition;
       rateCard.pullOutName = bookingCenter.PulloutName;
-    }
-
-    if (body.Frequency) {
-      let freq : {Period: string, Remark: string} = body.Frequency;
-
-      rateCard.freqPeriod = freq.Period;
-      rateCard.freqRemark = freq.Remark;
     }
 
     if (body.Category) {
@@ -148,6 +139,15 @@ export class RateCardApiService {
 
     rateCard.position = body.Position;
     rateCard.hue = body.Hue;
+    rateCard.AdWordsMax = body.AdWordsMax;
+
+    rateCard.PremiumCustom = body.PremiumCustom;
+    rateCard.PremiumBox = body.PremiumBox;
+    rateCard.PremiumBaseColour = body.PremiumBaseColour;
+    rateCard.PremiumCheckMark = body.PremiumCheckMark;
+    rateCard.PremiumEmailId = body.PremiumEmailId;
+    rateCard.PremiumWebsite = body.PremiumWebsite;
+    rateCard.PremiumExtraWords = body.PremiumExtraWords;
 
     if (body.MaxSizeLimit) {
       let size : {Length: number, Width: number} = body.MaxSizeLimit;
@@ -183,17 +183,6 @@ export class RateCardApiService {
           paid: element.paid,
           Free: element.Free,
           timeLimit: element.TimeLimit
-        });
-      });
-    }
-
-    if (body.Premium) {
-      let premiums : {Type: string, Amount: number}[] = body.Premium;
-
-      premiums.forEach(element => {
-        rateCard.premiums.push({
-          premType: element.Type,
-          premAmount: element.Amount
         });
       });
     }
@@ -279,7 +268,6 @@ export class RateCardApiService {
   editRateCard(rateCard: RateCard): Observable<any> {
     let fixSizes = [],
       schemes = [],
-      premiums = [],
       covered = [],
       tax = [];
 
@@ -296,13 +284,6 @@ export class RateCardApiService {
         paid: element.paid,
         Free: element.Free,
         TimeLimit: element.timeLimit
-      });
-    });
-
-    rateCard.premiums.forEach(element => {
-      premiums.push({
-        Type: element.premType,
-        Amount: element.premAmount
       });
     });
 
@@ -324,17 +305,14 @@ export class RateCardApiService {
       id: rateCard.id,
       MediaType: rateCard.mediaType,
       AdType: rateCard.adType,
+      AdTime: rateCard.adTime,
       RateCardType: rateCard.rateCardType,
       BookingCenter: {
         MediaHouseName: rateCard.mediaHouseName,
         Edition: rateCard.bookingEdition,
         PulloutName: rateCard.pullOutName
       },
-      Frequency: {
-        Period: rateCard.freqPeriod,
-        Remark: rateCard.freqRemark
-      },
-      Categories: {
+      Category: {
         SubCategory1: rateCard.categories[0],
         SubCategory2: rateCard.categories[1],
         SubCategory3: rateCard.categories[2],
@@ -359,28 +337,20 @@ export class RateCardApiService {
       },
       FixSize: fixSizes,
       Scheme: schemes,
-      Premium: premiums,
       Tax: tax,
       ValidFrom: rateCard.validFrom,
       ValidTill: rateCard.validTill,
       Remarks: rateCard.remarks,
-      Covered: covered
+      Covered: covered,
+      AdWordsMax: rateCard.AdWordsMax,
+
+      PremiumCustom: rateCard.PremiumCustom,
+      PremiumBox: rateCard.PremiumBox,
+      PremiumBaseColour: rateCard.PremiumBaseColour,
+      PremiumCheckMark: rateCard.PremiumCheckMark,
+      PremiumEmailId: rateCard.PremiumEmailId,
+      PremiumWebsite: rateCard.PremiumWebsite,
+      PremiumExtraWords: rateCard.PremiumExtraWords
     });
-  }
-
-  searchMediaHouseNames(query: string) : Observable<string[]> {
-    return this.api.get('/user/mediahouses/' + query).pipe(
-      map(data => {
-        let mediaHouseNames : string[] = [];
-
-        if (data.success && data.mediahouses) {
-          data.mediahouses.forEach(element => {
-            mediaHouseNames.push(element.OrganizationName);
-          });
-        }
-
-        return mediaHouseNames;
-      })
-    );
   }
 }

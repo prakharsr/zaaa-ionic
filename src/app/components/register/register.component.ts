@@ -1,52 +1,45 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
-import { routerAnimation } from '../../animations';
 import { Router } from '@angular/router';
+import { NotificationService } from '../../services/notification.service';
 import { GobackService } from '../../services/goback.service';
 
 @Component({
   selector: 'app-register',
-  animations: [routerAnimation],
   templateUrl: './register.component.html',
   // styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
 
-  @HostBinding('@routeAnimation') routeAnimation = true;
-
   name: string;
   email: string;
-  password: string;
-  cpassword: string;
-  error: string;
+  acceptTnC: boolean;
 
-  constructor(private api: ApiService, private router: Router, private goback:GobackService) { }
+  constructor(private api: ApiService, private router: Router, private notifications: NotificationService, public goback: GobackService) { }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.goback.urlInit();
-  }
+   }
 
   GoToDashboard() : void {
-    this.goback.gotoComponent('dashboard');
+    this.router.navigateByUrl('/dashboard');
   }
 
   submit()
   {
-    this.error = '';
-
     this.api.signup(this.name, this.email).subscribe(
       data => {
         if (data.success) {
-          this.router.navigateByUrl('dashboard');
+          this.GoToDashboard();
         }
         else {
           console.log(data);
 
-          this.error = data.msg;
+          this.notifications.show(data.msg);
         }
       },
       err => {
-        this.error = "Connection failed";
+        this.notifications.show("Connection failed");
         console.log(err);
       }
     );

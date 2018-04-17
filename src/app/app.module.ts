@@ -13,11 +13,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 import { NgModule } from '@angular/core';
+
 import { BaseModule } from './base.module';
 import { AdminModule } from './admin/admin.module';
 import { AppRoutingModule } from './/app-routing.module';
 import { DirectoryModule } from './directory/directory.module';
 import { CoUsersModule } from './co-users/co-users.module';
+import { RateCardModule } from './rate-card/rate-card.module';
+import { ReleaseOrderModule } from './release-order/release-order.module';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
@@ -30,7 +33,8 @@ import { FirmProfileViewComponent } from './components/firm-profile-view/firm-pr
 import { ChangePswComponent } from './components/change-psw/change-psw.component';
 import { ForgotPswComponent } from './components/forgot-psw/forgot-psw.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { RateCardModule } from './rate-card/rate-card.module';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +52,8 @@ import { RateCardModule } from './rate-card/rate-card.module';
     ChangePswComponent,
     ForgotPswComponent,
     NotFoundComponent,
+    ResetPasswordComponent,
+    LoaderComponent
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -55,12 +61,15 @@ import { RateCardModule } from './rate-card/rate-card.module';
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-      
+
+    BrowserModule,
+    BrowserAnimationsModule,
     BaseModule,
     AdminModule,
     DirectoryModule,
     CoUsersModule,
     RateCardModule,
+    ReleaseOrderModule,
     AppRoutingModule
   ],
   bootstrap: [IonicApp],
@@ -78,6 +87,8 @@ import { RateCardModule } from './rate-card/rate-card.module';
     ChangePswComponent,
     ForgotPswComponent,
     NotFoundComponent,
+    ResetPasswordComponent,
+    LoaderComponent
   ],
   providers: [
     StatusBar,

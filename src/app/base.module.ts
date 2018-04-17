@@ -5,9 +5,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, Validator }   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MaterialModule } from './material.module';
 
 import { ApiService } from './services/api.service';
 import { RazorPayService } from './services/razorpay.service';
@@ -20,16 +22,36 @@ import { AuthGuard } from './guards/auth-guard.service';
 import { PhoneVerifyGuard } from './guards/phone-verify-guard.service';
 import { AdminGuard } from './guards/admin-guard.service';
 import { PlanGuard } from './guards/plan-guard.service';
-import { CanDeactiveGuard } from './guards/can-deactive-guard.service';
+
+import { MailingDetailsComponent } from './components/mailing-details/mailing-details.component';
+import { DialogComponent } from './components/dialog/dialog.component';
+
+import { LoaderService } from './services/loader.service';
+import { NotificationService } from './services/notification.service';
+
+import { VerifyEmailDirective } from './validators/verify-email.directive';
+import { VerifyMinDirective } from './validators/verify-min.directive';
+import { VerifyMaxDirective } from './validators/verify-max.directive';
+import { VerifyLengthDirective } from './validators/verify-fix-length.directive';
+import { VerifyMultipleOfDirective } from './validators/verify-multiple-of.directive';
+import { VerifyEqualsDirective } from './validators/verify-equals.directive';
+
+const validators = [
+  VerifyEmailDirective,
+  VerifyMinDirective,
+  VerifyMaxDirective,
+  VerifyLengthDirective,
+  VerifyMultipleOfDirective,
+  VerifyEqualsDirective
+];
 
 @NgModule({
   imports: [
     CommonModule,
-    BrowserModule,
     NgbModule.forRoot(),
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [
     GobackService,
@@ -44,16 +66,26 @@ import { CanDeactiveGuard } from './guards/can-deactive-guard.service';
     PhoneVerifyGuard,
     AdminGuard,
     PlanGuard,
-    CanDeactiveGuard
+    LoaderService,
+    NotificationService
   ],
-  declarations: [],
+  declarations: [
+    MailingDetailsComponent,
+    DialogComponent,
+    validators
+  ],
   exports: [
     CommonModule,
-    BrowserModule,
     NgbModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    MaterialModule,
+    MailingDetailsComponent,
+    validators
+  ],
+  entryComponents: [
+    DialogComponent,
+    MailingDetailsComponent
   ]
 })
 export class BaseModule { }

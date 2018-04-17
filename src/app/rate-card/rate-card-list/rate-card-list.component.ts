@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RateCard } from '../rateCard';
+import { RateCard } from '../rate-card';
 import { RateCardApiService } from '../rate-card-api.service';
 import { DialogService } from '../../services/dialog.service';
 import { Observable } from 'rxjs/Observable';
@@ -25,9 +25,10 @@ export class RateCardListComponent implements OnInit {
   query: string;
   searchFailed = false;
 
-  constructor(private api: RateCardApiService, private dialog: DialogService, private router: Router, private goback: GobackService) { }
+  constructor(private api: RateCardApiService, private dialog: DialogService, private router: Router, public goback: GobackService) { }
 
   ngOnInit() {
+    this.goback.urlInit();
     this.api.getRateCards().subscribe(data => this.ratecards = data);
 
     this.api.getRateCards(true).subscribe(data => this.globalRateCards = data);
@@ -49,7 +50,7 @@ export class RateCardListComponent implements OnInit {
   }
 
   deleteRateCard(ratecard: RateCard) {
-    this.dialog.confirm("Are you sure you want to delete this Rate Card?").subscribe(confirm => {
+    this.dialog.confirmDeletion("Are you sure you want to delete this Rate Card?").subscribe(confirm => {
       if (!confirm)
         return;
 

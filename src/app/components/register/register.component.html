@@ -6,63 +6,40 @@
 </div>
 
 <div class="container">
+  <form (ngSubmit)="submit()" #signUpForm="ngForm">
+    <mat-form-field>
+      <input matInput placeholder="Name" [(ngModel)]="name" name="name" required #nameField="ngModel">
+      <mat-error *ngIf="nameField.errors && nameField.errors.required">
+        Name is required.
+      </mat-error>
+    </mat-form-field>
 
-<form (ngSubmit)="submit()" #signUpForm="ngForm">
-
-  <ion-item class="form-group">
-    <ion-label for="name" floating>Name</ion-label>
-    <ion-input type="text" id="name" name="name" [(ngModel)]="name" required #nameField="ngModel"></ion-input>
-  </ion-item> 
-
-  <div *ngIf="nameField.invalid && (nameField.dirty || nameField.touched)" class="text-danger">
-    <div *ngIf="nameField.errors.required">
-      Name is required.
-    </div>
-    <br>
-  </div>
-  
-  <ion-item class="form-group">
-    <ion-label floating for="email">Email address</ion-label>
-    <ion-input type="email" id="email" name="email" [(ngModel)]="email" required #emailField="ngModel" email></ion-input>
-  </ion-item>
-  <small class="form-text text-muted">
-    <br>An auto-generated password will be sent to this Email.<br>
-</small>
-
-  <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)" class="text-danger">
-    <div *ngIf="emailField.errors.required">
-      Email is required.
-    </div>
-    <div *ngIf="!emailField.errors.required && emailField.errors.email">
-      Invalid Email.
-    </div>
-    <br>
-  </div>
-
-<br><br>
-
-  <ion-item class="form-group">
-      <ion-label for="acceptTnC">Accept Terms and Conditions</ion-label>
-    <ion-checkbox id="acceptTnC" name="acceptTnC" [(ngModel)]="acceptTnC" required #acceptTnCField="ngModel"></ion-checkbox>
-  </ion-item>
-
-   <div *ngIf="acceptTnCField.invalid && (acceptTnCField.dirty || acceptTnCField.touched)" class="text-danger">
-    <div *ngIf="acceptTnCField.errors.required">
-        Accept Terms and Conditions to continue.
-    </div>
-    <br>
-  </div>
-
-  <br>
-
-  <div class="text-danger" *ngIf="error">
-    {{error}}
+    <mat-form-field>
+      <input matInput placeholder="Email" [(ngModel)]="email" name="email" required verify-email #emailField="ngModel">
+      <mat-hint>An auto-generated password will be sent to this Email.</mat-hint>
+      <mat-error *ngIf="emailField.errors && emailField.errors.required">
+        Email is required.
+      </mat-error>
+      <mat-error *ngIf="emailField.errors && emailField.errors.email">
+        Invalid Email.
+      </mat-error>
+    </mat-form-field>
 
     <br><br>
-  </div>
-  <button ion-button type="submit" color="brand_success" [disabled]="!signUpForm.form.valid">Sign Up</button>
-</form>
 
-<br>
-<p>Already have an account, <a routerLink="/login">Login</a>.</p>
+    <mat-checkbox class="my-2" name="acceptTnC" [(ngModel)]="acceptTnC" required #acceptTnCField="ngModel">Accept Terms and Conditions</mat-checkbox>
+
+    <div *ngIf="acceptTnCField.invalid && (acceptTnCField.dirty || acceptTnCField.touched)" class="text-danger">
+      <div *ngIf="acceptTnCField.errors.required">
+        Accept Terms and Conditions to continue.
+      </div>
+    </div>
+
+    <br><br>
+
+    <button type="submit" class="btn btn-success" [disabled]="!signUpForm.form.valid">Sign Up</button>
+  </form>
+
+  <br>
+  <p>Already have an account, <a routerLink="/login">Login</a>.</p>
 </div>

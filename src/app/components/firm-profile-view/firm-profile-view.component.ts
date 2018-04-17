@@ -1,28 +1,23 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Firm } from '../../models/firm';
-import { routerAnimation } from '../../animations';
 import { ApiService } from '../../services/api.service';
-import { GobackService } from '../../services/goback.service';
 import { environment } from '../../../environments/environment';
+import { NotificationService } from '../../services/notification.service';
+import { DialogService } from '../../services/dialog.service';
+import { GobackService } from '../../services/goback.service';
 
 @Component({
   selector: 'app-firm-profile-view',
-  animations: [routerAnimation],
   templateUrl: './firm-profile-view.component.html',
   // styleUrls: ['./firm-profile-view.component.css']
 })
 export class FirmProfileViewComponent implements OnInit {
 
   admin: boolean;
-  error: string;
-  success: string;
-
-  @HostBinding('@routeAnimation') routeAnimation = true;
 
   profile = new Firm();
 
-  constructor(private api: ApiService, private goback: GobackService) {
-  }
+  constructor(private api: ApiService, private dialog: DialogService, private notifications: NotificationService, public goback: GobackService) {}
 
   ngOnInit() {
     this.goback.urlInit();
@@ -36,26 +31,54 @@ export class FirmProfileViewComponent implements OnInit {
   }
 
   uploadLogo(files: FileList) {
-    this.error = '';
-    this.success = '';
 
     this.api.uploadFirmLogo(files.item(0)).subscribe(
       data => {
         if (data.success) {
-          this.success = 'Logo uploaded successfully';
+          this.notifications.show('Logo uploaded successfully');
 
           this.profile.logo = environment.uploadsBaseUrl + data.photo;
         }
         else {
           console.log(data);
 
-          this.error = data.msg;
+          this.notifications.show(data.msg);
         }
       },
       err => {
         console.log(err);
 
-        this.error = "Connection failed";
+        this.notifications.show("Connection failed");
+      }
+    );
+  }
+
+  removeLogo() {
+    this.dialog.confirmDeletion("Are you sure want to delete the firm logo?").subscribe(
+      confirm => {
+        if (!confirm) {
+          return;
+        }
+
+        this.api.deleteFirmLogo().subscribe(
+          data => {
+            if (data.success) {
+              this.notifications.show('Logo removed successfully');
+    
+              this.profile.logo = environment.uploadsBaseUrl + data.photo;
+            }
+            else {
+              console.log(data);
+    
+              this.notifications.show(data.msg);
+            }
+          },
+          err => {
+            console.log(err);
+    
+            this.notifications.show("Connection failed");
+          }
+        )
       }
     );
   }

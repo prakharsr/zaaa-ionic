@@ -7,7 +7,7 @@ export class StateApiService {
 
   get states() : string[] {
     return [
-      "Andra Pradesh",
+      "Andhra Pradesh",
       "Arunachal Pradesh",
       "Assam",
       "Bihar",
@@ -20,27 +20,29 @@ export class StateApiService {
       "Jharkhand",
       "Karnataka",
       "Kerala",
-      "Madya Pradesh",
+      "Madhya Pradesh",
       "Maharashtra",
       "Manipur",
       "Meghalaya",
       "Mizoram",
       "Nagaland",
-      "Orissa",
+      "Odisha",
       "Punjab",
       "Rajasthan",
       "Sikkim",
       "Tamil Nadu",
+      "Telangana",
       "Tripura",
-      "Uttaranchal",
+      "Uttarakhand",
       "Uttar Pradesh",
       "West Bengal",
       "Andaman and Nicobar Islands",
-      "Dadar and Nagar Haveli",
+      "Chandigarh",
+      "Dadra and Nagar Haveli",
       "Daman and Diu",
       "Delhi",
-      "Lakshadeep",
-      "Pondicherry"
+      "Lakshadweep",
+      "Puducherry"
     ];
   }
 

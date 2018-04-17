@@ -1,39 +1,23 @@
 <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-4">Forgot Password</h1>
-      <p class="lead">A password reset email will be sent to your email account.</p>
-    </div>
-  </div>
-  
   <div class="container">
-    <form (ngSubmit)="submit()" #forgotPswForm="ngForm">
-      <ion-item class="form-group">
-        <ion-label floating for="email">Email address</ion-label>
-        <ion-input type="email" id="email" name="email" [(ngModel)]="email" required #emailField="ngModel" email></ion-input>
-      </ion-item>
-  
-      <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)" class="text-danger">
-        <div *ngIf="emailField.errors.required">
-          Email is required.
-        </div>
-        <div *ngIf="!emailField.errors.required && emailField.errors.email">
-          Invalid Email.
-        </div>
-        <br>
-      </div>
-  
-      <div *ngIf="error" class="text-danger">
-        {{error}}
-        
-        <br>
-      </div>
-      <div *ngIf="success" class="text-success">
-        Password Reset Email sent.
-        
-        <br>
-      </div>
-  
-      <br>
-      <button ion-button color="brand_success" class="btn btn-success" [disabled]="!forgotPswForm.form.valid">Send</button>
-    </form>
+    <h1 class="display-4">Forgot Password</h1>
+    <p class="lead">A password reset email will be sent to your email account.</p>
   </div>
+</div>
+
+<div class="container">
+  <form (ngSubmit)="submit()" #forgotPswForm="ngForm">
+    <mat-form-field>
+      <input matInput placeholder="Email Address" [(ngModel)]="email" name="email" required verify-email #emailField="ngModel">
+      <mat-error *ngIf="emailField.errors && emailField.errors.required">
+        Email is required.
+      </mat-error>
+      <mat-error *ngIf="emailField.errors && emailField.errors.email">
+        Invalid Email.
+      </mat-error>
+    </mat-form-field>
+
+    <br><br>
+    <button class="btn btn-success" [disabled]="!forgotPswForm.form.valid">Send</button>
+  </form>
+</div>

@@ -26,22 +26,28 @@ import { TemplateSelectorComponent } from './admin/template-selector/template-se
 import { PlanSelectorComponent } from './admin/plan-selector/plan-selector.component';
 import { RoleEditComponent } from './admin/role-edit/role-edit.component';
 import { EmptyComponent } from './admin/empty/empty.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 const routes: Routes = [
   { path: 'empty', component: EmptyComponent},
 
   { path: '', component: HomeComponent },  
+  {
+    path: 'superadmin',
+    loadChildren: 'app/super-admin/super-admin.module#SuperAdminModule'
+  },
   { path: 'login', component: LoginComponent },
   { path: "register", component: RegisterComponent },
   { path: 'forgotPassword', component: ForgotPswComponent },
   { path: "verify/mobile", component: PhoneVerifyComponent, canActivate: [AuthGuard] },
   { path: "profile", component: ProfileViewComponent, canActivate: [AuthGuard, PhoneVerifyGuard, PlanGuard] },
   { path: "firm", component: FirmProfileViewComponent, canActivate: [AuthGuard, PhoneVerifyGuard, PlanGuard] },
-  { path: "firm/edit", component: FirmProfileEditComponent, canActivate: [AdminGuard, PhoneVerifyGuard, PlanGuard], canDeactivate: [CanDeactiveGuard] },
+  { path: "firm/edit", component: FirmProfileEditComponent, canActivate: [AdminGuard, PhoneVerifyGuard, PlanGuard] },
   { path: 'templates', component: TemplateSelectorComponent, canActivate: [AdminGuard, PhoneVerifyGuard, PlanGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard, PhoneVerifyGuard, PlanGuard] },
   { path: 'plan', component: PlanSelectorComponent, canActivate: [AuthGuard, AdminGuard] },
   { path: 'changePassword', component: ChangePswComponent, canActivate: [AuthGuard] },
+  { path: 'reset_password/:token', component: ResetPasswordComponent },
   { path: '**', component: NotFoundComponent }
 ];
 

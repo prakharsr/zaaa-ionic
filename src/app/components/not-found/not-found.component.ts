@@ -8,7 +8,7 @@ import { GobackService } from '../../services/goback.service';
 })
 export class NotFoundComponent implements OnInit {
 
-  constructor(private goback:GobackService) { }
+  constructor(public goback: GobackService) { }
 
   ngOnInit() {
     this.goback.urlInit();

@@ -1,77 +1,134 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
-import { UserProfile } from '../../models/userProfile';
-import { routerAnimation } from '../../animations';
+import { Component, OnInit } from '@angular/core';
+import { UserProfile } from '../../models/user-profile';
 import { ApiService } from '../../services/api.service';
+import { environment } from '../../../environments/environment';
+import { NotificationService } from '../../services/notification.service';
+import { DialogService } from '../../services/dialog.service';
 import { GobackService } from '../../services/goback.service';
-import { environment } from '../../../environments/environment'
 
 @Component({
   selector: 'app-profile-view',
-  animations: [routerAnimation],
   templateUrl: './profile-view.component.html',
   // styleUrls: ['./profile-view.component.css']
 })
 export class ProfileViewComponent implements OnInit {
 
-  @HostBinding('@routeAnimation') routeAnimation = true;
-
   profile = new UserProfile();
-  error: string;
-  success: string;
+  isAdmin: boolean;
 
-  constructor(private api: ApiService, private goback:GobackService) { }
+  constructor(private api: ApiService, private dialog: DialogService, private notifications: NotificationService, public goback: GobackService) { }
 
   ngOnInit() {
     this.goback.urlInit();
     this.api.getUserProfile().subscribe(data => this.profile = data);
+
+    this.api.getUser().subscribe(data => {
+      if (data.success) {
+        this.isAdmin = data.user.isAdmin;
+      }
+    });
   }
 
   uploadProfilePicture(files: FileList) {
-    this.error = '';
-    this.success = '';
-
     this.api.uploadProfilePicture(files.item(0)).subscribe(
       data => {
         if (data.success) {
-          this.success = 'Profile Photo uploaded successfully';
+          this.notifications.show('Profile Photo uploaded successfully');
 
           this.profile.photo = environment.uploadsBaseUrl + data.photo;
         }
         else {
           console.log(data);
 
-          this.error = data.msg;
+          this.notifications.show(data.msg);
         }
       },
       err => {
         console.log(err);
 
-        this.error = "Connection failed";
+        this.notifications.show("Connection failed");
+      }
+    );
+  }
+
+  removeProfilePicture() {
+    this.dialog.confirmDeletion("Are you sure want to delete your Profile Picture?").subscribe(
+      confirm => {
+        if (!confirm) {
+          return;
+        }
+
+        this.api.deleteProfilePicture().subscribe(
+          data => {
+            if (data.success) {
+              this.notifications.show('Profile Picture removed successfully');
+    
+              this.profile.photo = environment.uploadsBaseUrl + data.photo;
+            }
+            else {
+              console.log(data);
+    
+              this.notifications.show(data.msg);
+            }
+          },
+          err => {
+            console.log(err);
+    
+            this.notifications.show("Connection failed");
+          }
+        )
       }
     );
   }
 
   uploadSign(files: FileList) {
-    this.error = '';
-    this.success = '';
-
     this.api.uploadSign(files.item(0)).subscribe(
       data => {
         if (data.success) {
-          this.success = 'Signature uploaded successfully';
+          this.notifications.show('Signature uploaded successfully');
 
           this.profile.sign = environment.uploadsBaseUrl + data.photo;
         }
         else {
           console.log(data);
 
-          this.error = data.msg;
+          this.notifications.show(data.msg);
         }
       },
       err => {
         console.log(err);
 
-        this.error = "Connection failed";
+        this.notifications.show("Connection failed");
+      }
+    );
+  }
+
+  removeSign() {
+    this.dialog.confirmDeletion("Are you sure want to delete your Signature?").subscribe(
+      confirm => {
+        if (!confirm) {
+          return;
+        }
+
+        this.api.deleteSign().subscribe(
+          data => {
+            if (data.success) {
+              this.notifications.show('Signature removed successfully');
+    
+              this.profile.sign = environment.uploadsBaseUrl + data.photo;
+            }
+            else {
+              console.log(data);
+    
+              this.notifications.show(data.msg);
+            }
+          },
+          err => {
+            console.log(err);
+    
+            this.notifications.show("Connection failed");
+          }
+        )
       }
     );
   }

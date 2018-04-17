@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RateCard } from '../rateCard';
+import { RateCard } from '../rate-card';
 import { RateCardApiService } from '../rate-card-api.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { GobackService } from '../../services/goback.service';
 
 @Component({
@@ -12,19 +12,50 @@ import { GobackService } from '../../services/goback.service';
 export class RateCardDetailsComponent implements OnInit {
 
   ratecard = new RateCard();
-  id: string;
 
   constructor(private api: RateCardApiService,
-    private route: ActivatedRoute,
-    private router: Router,
-    private goback: GobackService) { }
+    private route: ActivatedRoute, 
+    public goback: GobackService) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      this.id = params.get('id');
-
-      this.api.getRateCard(this.id).subscribe(data => this.ratecard = data);
+    this.goback.urlInit();
+    this.route.data.subscribe((data: { rateCard: RateCard }) => {
+      this.ratecard = data.rateCard;
     });
   }
 
+  get isTypeWords() {
+
+    if (this.ratecard.mediaType == 'Print' && this.ratecard.adType == 'Text Classified') {
+      return true;
+    }
+
+    if (this.ratecard.mediaType == 'Electronic' && this.ratecard.adType == 'Scroll') {
+      return true;
+    }
+
+    return false;
+  }
+
+  get isTypeLen() {
+
+    if (this.ratecard.mediaType == 'Print' && this.ratecard.adType != 'Text Classified') {
+      return true;
+    }
+
+    return false;
+  }
+
+  get isTypeTime() {
+
+    if (this.ratecard.mediaType == 'Air') {
+      return true;
+    }
+
+    if (this.ratecard.mediaType == 'Electronic' && this.ratecard.adType != 'Scroll') {
+      return true;
+    }
+
+    return false;
+  }
 }

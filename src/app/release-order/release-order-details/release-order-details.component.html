@@ -1,0 +1,257 @@
+<mat-toolbar>  
+  <mat-toolbar-row>
+    <div class="container">Release Order: {{releaseOrder.releaseOrderNO}}</div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<br>
+
+<div class="container">
+  <button class="fab bg-info" [routerLink]="['/releaseorders/edit', releaseOrder.id]">
+    <mat-icon>edit</mat-icon>
+  </button>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card mb-3">
+        <div class="card-header">Publication Details</div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">Name</div>
+              <div class="col-md-8">{{releaseOrder.publicationName}}</div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">Edition</div>
+              <div class="col-md-8">{{releaseOrder.publicationEdition}}</div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">State</div>
+              <div class="col-md-8">{{releaseOrder.publicationState}}</div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">GSTIN</div>
+              <div class="col-md-8">{{releaseOrder.publicationGSTIN}}</div>
+            </div>
+          </li>          
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">Media Type</div>
+              <div class="col-md-8">{{releaseOrder.mediaType}}</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="card mb-3">
+        <div class="card-header">Client Details</div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">Name</div>
+              <div class="col-md-8">{{releaseOrder.clientName}}</div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">State</div>
+              <div class="col-md-8">{{releaseOrder.clientState}}</div>
+            </div>
+          </li>          
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">GSTIN</div>
+              <div class="col-md-8">{{releaseOrder.clientGSTIN}}</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="card mb-3">
+        <div class="card-header">Ad Details</div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">Ad Type</div>
+              <div class="col-md-8">{{releaseOrder.adType}}</div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">Rate</div>
+              <div class="col-md-8">{{releaseOrder.rate}} {{releaseOrder.unit}}</div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">Size</div>
+              <div class="col-md-8">{{releaseOrder.adSizeL}} x {{releaseOrder.adSizeW}}</div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">Total Space</div>
+              <div class="col-md-8">{{releaseOrder.adTotalSpace}}</div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">Hue</div>
+              <div class="col-md-8">{{releaseOrder.adHue}}</div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">Edition</div>
+              <div class="col-md-8">{{releaseOrder.adEdition}}</div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">Position</div>
+              <div class="col-md-8">{{releaseOrder.adPosition}}</div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">Total No of Ads</div>
+              <div class="col-md-8">{{releaseOrder.adTotal}}</div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">Ad Gross Amount</div>
+              <div class="col-md-8">{{releaseOrder.adGrossAmount}}</div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">Publication Discount</div>
+              <div class="col-md-8">{{releaseOrder.publicationDiscount}}</div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">Agency Discount 1</div>
+              <div class="col-md-8">{{releaseOrder.agencyDiscount1}}</div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">Agency Discount 2</div>
+              <div class="col-md-8">{{releaseOrder.agencyDiscount2}}</div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">Tax Amount</div>
+              <div class="col-md-8">{{releaseOrder.taxAmount}}</div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">Net Amount in Figures</div>
+              <div class="col-md-8">{{releaseOrder.netAmountFigures}}</div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">Net Amount in Words</div>
+              <div class="col-md-8">{{releaseOrder.netAmountWords}}</div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">Caption</div>
+              <div class="col-md-8">{{releaseOrder.caption}}</div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">Remark</div>
+              <div class="col-md-8">{{releaseOrder.remark}}</div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">Payment Details</div>
+              <div class="col-md-8"></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="card mb-3">
+        <div class="card-header">Insertions</div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let item of releaseOrder.insertions" [class.bg-success]="item.marked" [class.text-light]="item.marked">
+            {{toDate(item.date) | date}}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="card mb-3">
+        <div class="card-header">Categories</div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngIf="releaseOrder.adCategory1">{{releaseOrder.adCategory1}}</li>
+          <li class="list-group-item" *ngIf="releaseOrder.adCategory2">{{releaseOrder.adCategory2}}</li>
+          <li class="list-group-item" *ngIf="releaseOrder.adCategory3">{{releaseOrder.adCategory3}}</li>
+          <li class="list-group-item" *ngIf="releaseOrder.adCategory4">{{releaseOrder.adCategory4}}</li>
+          <li class="list-group-item" *ngIf="releaseOrder.adCategory5">{{releaseOrder.adCategory5}}</li>
+          <li class="list-group-item" *ngIf="releaseOrder.adCategory6">{{releaseOrder.adCategory6}}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="card mb-3">
+        <div class="card-header">Other Details</div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">Executive Name</div>
+              <div class="col-md-8">{{releaseOrder.executiveName}}</div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div>Other Charges</div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" *ngFor="let item of releaseOrder.otherCharges">
+                <div class="row">
+                    <div class="col-md-8">{{item.chargeType}}</div>
+                  <div class="col-md-4">{{item.amount}}</div>                  
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">Remark</div>
+              <div class="col-md-8">{{releaseOrder.otherRemark}}</div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">Client Payment</div>
+              <div class="col-md-8">{{releaseOrder.clientPayment}}</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

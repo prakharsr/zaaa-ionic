@@ -1,38 +1,31 @@
-import { Component, OnInit, HostBinding, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IfscService } from '../../services/ifsc.service';
-import { routerAnimation } from '../../animations';
 import { Firm } from '../../models/firm';
 import { ApiService } from '../../services/api.service';
 import { NgForm } from '@angular/forms';
-import { CanComponentDeactivate } from '../../guards/canComponentDeactivate';
 import { StateApiService } from '../../services/state-api.service';
 import { Router } from '@angular/router';
+import { NotificationService } from '../../services/notification.service';
 import { GobackService } from '../../services/goback.service';
 
 @Component({
   selector: 'app-firm-profile-edit',
-  animations: [routerAnimation],
   templateUrl: './firm-profile-edit.component.html',
   // styleUrls: ['./firm-profile-edit.component.css']
 })
-export class FirmProfileEditComponent implements OnInit, CanComponentDeactivate {
-
-  @HostBinding('@routeAnimation') routeAnimation = true;
-
-  @ViewChild('profileForm') profileForm: NgForm;
-
+export class FirmProfileEditComponent implements OnInit {
   profile = new Firm();
-  error: string;
 
-  constructor(private ifscService: IfscService, private api: ApiService, public stateApi: StateApiService, private router: Router, private goback: GobackService) { }
+  constructor(private ifscService: IfscService,
+    private api: ApiService,
+    public stateApi: StateApiService,
+    private router: Router,
+    private notifications: NotificationService, 
+    private goback:GobackService) { }
 
   ngOnInit() {
     this.goback.urlInit();
     this.api.getFirmProfile().subscribe(data => this.profile = data);
-  }
-
-  canDeactivate() {
-    return !this.profileForm.dirty;
   }
 
   ifscChanged() {
@@ -54,6 +47,7 @@ export class FirmProfileEditComponent implements OnInit, CanComponentDeactivate 
     this.profile.officeAddress.address = this.profile.registeredAddress.address;
     this.profile.officeAddress.city = this.profile.registeredAddress.city;
     this.profile.officeAddress.state = this.profile.registeredAddress.state;
+    this.profile.officeAddress.pincode = this.profile.registeredAddress.pincode;
   }
 
   private goBack() {
@@ -61,8 +55,6 @@ export class FirmProfileEditComponent implements OnInit, CanComponentDeactivate 
   }
 
   submit() {
-    this.error = '';
-
     this.api.setFirmProfile(this.profile).subscribe(
       data => {
         if (data.success) {
@@ -71,13 +63,13 @@ export class FirmProfileEditComponent implements OnInit, CanComponentDeactivate 
         else {
           console.log(data);
 
-          this.error = data.msg;
+          this.notifications.show(data.msg);
         }
       },
       err => {
         console.log(err);
 
-        this.error = 'Connection failed';
+        this.notifications.show('Connection failed');
       }
     );
   }

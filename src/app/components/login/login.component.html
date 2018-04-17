@@ -5,45 +5,30 @@
 </div>
 
 <div class="container">
+  <form (ngSubmit)="submit()" #loginForm="ngForm">
+    <mat-form-field>
+      <input matInput placeholder="Email Address or Phone" name="emailPhone" [(ngModel)]="emailOrPhone" type='text' required #emailOrPhoneField="ngModel">
+      <mat-error *ngIf="emailOrPhoneField.errors && emailOrPhoneField.errors.required">
+        Email or Phone is required.
+      </mat-error>
+    </mat-form-field>
 
-<form (ngSubmit)="submit()" #loginForm="ngForm">
-  <ion-item class="form-group">
-    <ion-label floating for="emailPhone">Email address or Phone</ion-label>
-    <ion-input type="text" id="emailPhone" [(ngModel)]="emailOrPhone" name="emailPhone" required #emailOrPhoneField="ngModel"></ion-input>
-  </ion-item>
-
-
-  <div *ngIf="emailOrPhoneField.invalid && (emailOrPhoneField.dirty || emailOrPhoneField.touched)" class="text-danger">
-    <div *ngIf="emailOrPhoneField.errors.required">
-      Email or Phone is required.
+    <div class="form-group">
+      <p class="float-right"><a tabindex="-1" routerLink="/forgotPassword">Forgot Password</a></p>
     </div>
-    <br>
-  </div>
 
-  <ion-item class="form-group">
-    <ion-label floating for="password">Password</ion-label>
-    <ion-input type="password" id="password"  [(ngModel)]="password" name="password" required #passwordField="ngModel"></ion-input>
-  </ion-item>
+    <mat-form-field>
+      <input matInput placeholder="Password" name="password" [(ngModel)]="password" [type]="hidePassword ? 'password' : 'text'" required #passwordField="ngModel">
+      <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility' : 'visibility_off'}}</mat-icon>
+      <mat-error *ngIf="passwordField.errors && passwordField.errors.required">
+        Password is required.
+      </mat-error>
+    </mat-form-field>
 
-  <div *ngIf="passwordField.invalid && (passwordField.dirty || passwordField.touched)" class="text-danger">
-    <div *ngIf="passwordField.errors.required">
-      Password is required.
-    </div>
-    <br>
-  </div>
+    <br><br>
+    <button class="btn btn-success" [disabled]="!loginForm.form.valid">Login</button>
+  </form>
 
-  <div *ngIf="error" class="text-danger">
-    {{error}}
-    
-    <br>
-  </div>
-
-  <p class="float-right"><a (click)="this.goback.gotoComponent('forgotPassword')"><span>Forgot Password</span></a></p>
-  
   <br>
-  <button ion-button color="brand_success" [disabled]="!loginForm.form.valid">Login</button>
-</form>
-
-<br>
-<p>Don't have an account? Create <a (click)="this.goback.gotoComponent('register')"><span>one</span></a>.</p>
+  <p>Don't have an account, create <a routerLink="/register">one</a>.</p>
 </div>

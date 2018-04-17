@@ -3,7 +3,7 @@ import { BaseModule } from '../base.module';
 import { CoUsersRoutingModule } from './co-users-routing.module';
 
 import { CoUsersComponent } from './co-users/co-users.component';
-import { NewCoUserComponent } from './new-co-user/new-co-user.component';
+import { CoUserComponent } from './co-user/co-user.component';
 import { RoleControlComponent } from './role-control/role-control.component';
 import { RoleEditComponent } from './role-edit/role-edit.component';
 import { CoUserApiService } from './co-user-api.service';
@@ -11,13 +11,13 @@ import { IonicModule } from 'ionic-angular';
 
 @NgModule({
   imports: [
+    IonicModule.forRoot(CoUsersModule),
     BaseModule,
     CoUsersRoutingModule,
-    IonicModule.forRoot(CoUsersModule)
   ],
   declarations: [
     CoUsersComponent,
-    NewCoUserComponent,
+    CoUserComponent,
     RoleControlComponent,
     RoleEditComponent
   ],

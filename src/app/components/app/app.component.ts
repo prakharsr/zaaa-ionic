@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GobackService } from '../../services/goback.service';
 
 @Component({
   selector: 'app-app',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-  constructor() { }
+  constructor(public goback: GobackService) { }
 
   ngOnInit() {
+    this.goback.urlInit();
   }
 
 }

@@ -1,15 +1,17 @@
-<div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <h1 class="display-4">Templates</h1>
-    </div>
-</div>
+<mat-toolbar>  
+  <mat-toolbar-row>
+    <div class="container">Templates</div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<br>
 
 <div class="container">
   <form>
-    <ion-item class="form-group form-row">
-      <ion-label floating for="jurisdiction" class="col-md-3 col-form-label">Jurisdiction</ion-label>
-      <ion-input type="text" name="jurisdiction" id="jurisdiction" [(ngModel)]="jurisdiction"></ion-input>
-    </ion-item>
+    <div class="form-group form-row">
+      <label for="jurisdiction" class="col-md-3 col-form-label">Jurisdiction</label>
+      <input type="text" class="form-control col-md-9" name="jurisdiction" id="jurisdiction" [(ngModel)]="jurisdiction" placeholder="Enter jurisdiction">
+    </div>
   </form>
 
   <br><br>
@@ -27,6 +29,6 @@
   </div>
 
   <div class="text-center">
-    <button ion-button class="btn btn-success" (click)="submit()">Submit</button>
+    <button class="btn btn-success" (click)="submit()">Submit</button>
   </div>
 </div>

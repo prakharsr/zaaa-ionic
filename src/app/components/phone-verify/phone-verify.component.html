@@ -1,46 +1,42 @@
-<div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-4">Verify Phone Number</h1>
-    </div>
-  </div>
-  
-  <div class="container">
+<mat-toolbar>  
+  <mat-toolbar-row>
+    <div class="container">Verify Phone Number</div>
+  </mat-toolbar-row>
+</mat-toolbar>
 
-<form (ngSubmit)="sendOtp()" #phoneNumberForm="ngForm">
-    <ion-item class="form-group">
-      <ion-label floating for="phone">Phone Number</ion-label>
-      <ion-input type="tel" [(ngModel)]="number" required id="phone" name="phone"></ion-input>
-    </ion-item>
+<br>
+
+<div class="container">
+  <form (ngSubmit)="sendOtp()" #phoneNumberForm="ngForm">
+    <mat-form-field>
+      <span matPrefix>+91 &nbsp;</span>
+      <input type="tel" matInput placeholder="Phone Number" [(ngModel)]="number" pattern="^\d{10}$" maxlength="10" minlength="10" required name="phone">
+    </mat-form-field>
 
     <div *ngIf="sendError" class="text-danger">
-      <br>
-
       {{sendError}}
       
       <br>
     </div>
 
     <div class="text-right">
-      <button ion-button type="submit" color="brand_primary" class="btn btn-primary" [disabled]="!number || otpSent">Send Code</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!phoneNumberForm.form.valid || otpSent">Send Code</button>
     </div>
-</form>
+  </form>
 
-<form *ngIf="otpSent" (ngSubmit)="verifyOtp()" #otpForm="ngForm">
-    <ion-item class="form-group">
-      <ion-label floating for="otp">Verification Code</ion-label>
-      <ion-input type="text" [(ngModel)]="otp" required name="otp" id="otp"></ion-input>
-    </ion-item>
-    <small class="form-text text-muted">Enter the Verification code received on your mobile.</small>
+  <form *ngIf="otpSent" (ngSubmit)="verifyOtp()" #otpForm="ngForm">
+    <mat-form-field>
+      <input type="text" matInput placeholder="Verification Code" [(ngModel)]="otp" required name="otp">
+      <mat-hint>Enter the Verification code received on your mobile.</mat-hint>
+    </mat-form-field>
 
     <div *ngIf="verifyError" class="text-danger">
-      <br>
-
       {{verifyError}}
       
       <br>
     </div>
 
-    <br>
-    <button ion-button type="submit" color="brand_success" class="btn btn-success" [disabled]="!otp">Verify Code</button>
-</form>
+    <br><br>
+    <button type="submit" class="btn btn-success" [disabled]="!otpForm.form.valid">Verify Code</button>
+  </form>
 </div>

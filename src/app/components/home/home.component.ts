@@ -1,5 +1,4 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
-import { routerAnimation } from '../../animations';
 import { ApiService } from '../../services/api.service';
 import { Platform, LoadingController, Spinner } from 'ionic-angular';
 import { GobackService } from '../../services/goback.service';
@@ -9,7 +8,6 @@ import { Firm } from '../../models/firm';
 
 @Component({
   selector: 'app-home',
-  animations: [routerAnimation],
   templateUrl: './home.component.html',
   // styleUrls: ['./home.component.css']
 })
@@ -18,10 +16,8 @@ export class HomeComponent implements OnInit {
   profile = new Firm();
   isLoaded = false;
 
-  @HostBinding('@routeAnimation') routeAnimation = true;
-
   constructor(platform: Platform,
-     private goback: GobackService,
+     public goback: GobackService,
      public api: ApiService,
      private router: Router,
      private loadingCtrl: LoadingController) {

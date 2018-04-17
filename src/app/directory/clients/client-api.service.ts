@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { Observable } from 'rxjs/Observable';
-import { DirClient, ContactPerson } from './dirClient';
+import { Client, ContactPerson } from './client';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { of } from 'rxjs/observable/of';
@@ -11,7 +11,7 @@ export class ClientApiService {
 
   constructor(private api: ApiService) { }
 
-  createClient(client: DirClient) : Observable<any> {
+  createClient(client: Client) : Observable<any> {
     let contactPersons = [];
 
     client.contactpersons.forEach(element => contactPersons.push(this.contactPersonToBody(element)));
@@ -23,6 +23,7 @@ export class ClientApiService {
       categoryType: client.category,
       address: client.address,
       landline: client.landLine,
+      stdNo: client.stdNo,
       website: client.website,
       panNo: client.panNo,
       gstin: client.gstNo,
@@ -40,7 +41,8 @@ export class ClientApiService {
       dob: body.DateOfBirth,
       anniversaryDate: body.Anniversary,
       photo: body.Photo,
-      personLandLine: body.Landline
+      personLandLine: body.Landline,
+      personStdNo: body.stdNo
     };
   }
 
@@ -54,12 +56,13 @@ export class ClientApiService {
       DateOfBirth: contactPerson.dob,
       Anniversary: contactPerson.anniversaryDate,
       Photo: contactPerson.photo,
-      Landline: contactPerson.personLandLine
+      Landline: contactPerson.personLandLine,
+      stdNo: contactPerson.personStdNo
     }
   }
 
-  private bodyToClient(data: any) : DirClient {
-    let client = new DirClient();
+  private bodyToClient(data: any) : Client {
+    let client = new Client();
 
     client.id = data._id;
 
@@ -69,6 +72,7 @@ export class ClientApiService {
     client.category = data.CategoryType;
     client.address = data.Address;
     client.landLine = data.Landline;
+    client.stdNo = data.stdNo;
     client.website = data.Website;
     client.panNo = data.PanNO;
     client.gstNo = data.GSTNo;
@@ -86,7 +90,7 @@ export class ClientApiService {
     return client;
   }
 
-  editClient(client: DirClient) : Observable<any> {
+  editClient(client: Client) : Observable<any> {
     let contactPersons = [];
 
     client.contactpersons.forEach(element => contactPersons.push(this.contactPersonToBody(element)));
@@ -99,6 +103,7 @@ export class ClientApiService {
       CategoryType: client.category,
       Address: client.address,
       Landline: client.landLine,
+      stdNo: client.stdNo,
       Website: client.website,
       PanNO: client.panNo,
       GSTNo: client.gstNo,
@@ -106,16 +111,16 @@ export class ClientApiService {
     });
   }
 
-  getClient(id: string) : Observable<DirClient> {
+  getClient(id: string) : Observable<Client> {
     return this.api.get('/user/client/' + id).pipe(
-      map(data => data.success ? this.bodyToClient(data.client) : new DirClient())
+      map(data => data.success ? this.bodyToClient(data.client) : null)
     );
   }
 
-  getClients() : Observable<DirClient[]> {
+  getClients() : Observable<Client[]> {
     return this.api.get('/user/clients').pipe(
       map(data => {
-        let clients : DirClient[] = [];
+        let clients : Client[] = [];
 
         if (data.success) {
           data.clients.forEach(element => {
@@ -128,11 +133,11 @@ export class ClientApiService {
     );
   }
 
-  searchClients(query: string) : Observable<DirClient[]> {
+  searchClients(query: string) : Observable<Client[]> {
     if (query) {
       return this.api.get('/user/clients/' + query).pipe(
         map(data => {
-          let clients : DirClient[] = [];
+          let clients : Client[] = [];
 
           if (data.success) {
             data.clients.forEach(element => {
@@ -148,7 +153,7 @@ export class ClientApiService {
     return of([]);
   }
 
-  deleteClient(client: DirClient) : Observable<any> {
+  deleteClient(client: Client) : Observable<any> {
     return this.api.delete('/user/client/' + client.id);
   }
 
