@@ -34,8 +34,7 @@ export class RateCardComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private mediaHouseApi: MediaHouseApiService,
-    private notifications: NotificationService, 
-    public goback: GobackService) { }
+    private notifications: NotificationService, public goback: GobackService) { }
 
   rateCard = new RateCard();
   selectedCategories: Category[] = [null, null, null, null, null, null];

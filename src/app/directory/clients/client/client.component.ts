@@ -23,8 +23,7 @@ export class ClientComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     public stateApi: StateApiService,
-    private notifications: NotificationService, 
-    public goback: GobackService) { }
+    private notifications: NotificationService, public goback: GobackService) { }
 
   ngOnInit() {
     this.goback.urlInit();

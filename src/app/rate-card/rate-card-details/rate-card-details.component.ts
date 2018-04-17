@@ -14,8 +14,7 @@ export class RateCardDetailsComponent implements OnInit {
   ratecard = new RateCard();
 
   constructor(private api: RateCardApiService,
-    private route: ActivatedRoute, 
-    public goback: GobackService) { }
+    private route: ActivatedRoute, public goback: GobackService) { }
 
   ngOnInit() {
     this.goback.urlInit();

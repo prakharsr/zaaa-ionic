@@ -46,8 +46,7 @@ export class ReleaseOrderComponent implements OnInit {
     private executiveApi: ExecutiveApiService,
     private rateCardApi: RateCardApiService,
     public stateApi: StateApiService,
-    private notifications: NotificationService, 
-    public goback: GobackService) { }
+    private notifications: NotificationService, public goback: GobackService) { }
 
   get isTypeWords() {
 
@@ -123,6 +122,8 @@ export class ReleaseOrderComponent implements OnInit {
     this.route.data.subscribe((data: { releaseOrder: ReleaseOrder }) => {
       this.releaseorder = data.releaseOrder;
 
+      let insertionBkp = this.releaseorder.insertions;
+
       this.buildCategoryTree([
         this.releaseorder.adCategory1,
         this.releaseorder.adCategory2,
@@ -152,7 +153,7 @@ export class ReleaseOrderComponent implements OnInit {
       this.customFree = this.releaseorder.adSchemeFree;
       this.customPaid = this.releaseorder.adSchemePaid;
 
-      this.adCountPaid = (this.releaseorder.adTotal * this.customPaid) / (this.customPaid + this.customFree);
+      this.adCountPaid = (+this.releaseorder.adTotal * +this.customPaid) / (+this.customPaid + +this.customFree);
 
       this.selectedTax = this.taxes.find(element => element.primary == this.releaseorder.taxAmount.primary
         && element.secondary == this.releaseorder.taxAmount.secondary);
@@ -175,6 +176,8 @@ export class ReleaseOrderComponent implements OnInit {
       dirExecutive.executiveName = this.releaseorder.executiveName;
       dirExecutive.orgName = this.releaseorder.executiveOrg;
       this.executive = dirExecutive;
+
+      this.releaseorder.insertions = insertionBkp;
     });
   }
 
@@ -192,6 +195,14 @@ export class ReleaseOrderComponent implements OnInit {
 
       this.releaseorder.paymentType = this.paymentTypes[0];
       this.selectedTax = this.taxes[0];
+
+      this.releaseorder.PremiumCustom = rateCard.PremiumCustom;
+      this.releaseorder.PremiumBox.Amount = rateCard.PremiumBox;
+      this.releaseorder.PremiumBaseColour.Amount = rateCard.PremiumBaseColour;
+      this.releaseorder.PremiumEmailId.Amount = rateCard.PremiumEmailId;
+      this.releaseorder.PremiumCheckMark.Amount = rateCard.PremiumCheckMark;
+      this.releaseorder.PremiumWebsite.Amount = rateCard.PremiumWebsite;
+      this.releaseorder.PremiumExtraWords.Amount = rateCard.PremiumExtraWords;
 
       if (rateCard.fixSizes.length > 0) {
         this.fixSizes = rateCard.fixSizes;
@@ -616,7 +627,7 @@ export class ReleaseOrderComponent implements OnInit {
         && date.after(new NgbDate(now.getFullYear(), now.getMonth() + 1, now.getDate()));
     }
 
-    return false;
+    return true;
   }
 
   addInsertion(date: NgbDate) {
@@ -715,7 +726,7 @@ export class ReleaseOrderComponent implements OnInit {
     else return this.selectedSize.length * this.selectedSize.width;
   }
 
-  get grossAmount() {
+  get grossAmountWithoutPremium() {
     if (this.isTypeLen) {
       if (this.customSize) {
         return (this.releaseorder.rate * this.totalSpace) * this.adCountPaid;
@@ -731,6 +742,42 @@ export class ReleaseOrderComponent implements OnInit {
       return this.releaseorder.rate * this.releaseorder.AdWords * this.adCountPaid;
     }
     else return 0;
+  }
+
+  get grossAmount() {
+    let amount = this.grossAmountWithoutPremium;
+
+    if (this.isTypeWords) {
+      if (this.releaseorder.PremiumBox.Included) {
+        amount += this.releaseorder.PremiumBox.Amount;
+      }
+
+      if (this.releaseorder.PremiumBaseColour.Included) {
+        amount += this.releaseorder.PremiumBaseColour.Amount;
+      }
+      
+      if (this.releaseorder.PremiumCheckMark.Included) {
+        amount += this.releaseorder.PremiumCheckMark.Amount;
+      }
+      
+      if (this.releaseorder.PremiumEmailId.Included) {
+        amount += this.releaseorder.PremiumEmailId.Amount * this.releaseorder.PremiumEmailId.Quantity;
+      }
+      
+      if (this.releaseorder.PremiumWebsite.Included) {
+        amount += this.releaseorder.PremiumWebsite.Amount * this.releaseorder.PremiumWebsite.Quantity;
+      }
+      
+      if (this.releaseorder.PremiumExtraWords.Included) {
+        amount += this.releaseorder.PremiumExtraWords.Amount * this.releaseorder.PremiumExtraWords.Quantity;
+      }
+    }
+    else if (this.releaseorder.PremiumCustom.Percentage) {
+      amount += (this.releaseorder.PremiumCustom.Amount * amount) / 100;
+    }
+    else amount += this.releaseorder.PremiumCustom.Amount;
+
+    return amount;
   }
 
   get netAmount() {

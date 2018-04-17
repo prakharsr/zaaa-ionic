@@ -25,8 +25,8 @@ import { IonicModule } from 'ionic-angular';
 
 @NgModule({
   imports: [
-    IonicModule.forRoot(DirectoryModule),
     BaseModule,
+    IonicModule.forRoot(DirectoryModule),
     DirRoutingModule
   ],
   declarations: [

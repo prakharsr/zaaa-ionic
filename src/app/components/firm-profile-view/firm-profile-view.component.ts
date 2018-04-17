@@ -5,6 +5,8 @@ import { environment } from '../../../environments/environment';
 import { NotificationService } from '../../services/notification.service';
 import { DialogService } from '../../services/dialog.service';
 import { GobackService } from '../../services/goback.service';
+import { ActivatedRoute } from '@angular/router';
+import { UserProfile } from '../../models/user-profile';
 
 @Component({
   selector: 'app-firm-profile-view',
@@ -17,16 +19,13 @@ export class FirmProfileViewComponent implements OnInit {
 
   profile = new Firm();
 
-  constructor(private api: ApiService, private dialog: DialogService, private notifications: NotificationService, public goback: GobackService) {}
+  constructor(private api: ApiService, private dialog: DialogService, private notifications: NotificationService, public goback: GobackService, private route: ActivatedRoute ) {}
 
   ngOnInit() {
     this.goback.urlInit();
-    this.api.getFirmProfile().subscribe(data => this.profile = data);
-
-    this.api.getUser().subscribe(data => {
-      if (data.success) {
-        this.admin = data.user.isAdmin;
-      }
+    this.route.data.subscribe((data: { firm: Firm, user: UserProfile }) => {
+      this.profile = data.firm;
+      this.admin = data.user.isAdmin;
     });
   }
 

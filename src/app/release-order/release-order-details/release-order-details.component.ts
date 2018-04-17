@@ -15,8 +15,7 @@ export class ReleaseOrderDetailsComponent implements OnInit {
   releaseOrder = new ReleaseOrder();
 
   constructor(private api: ReleaseOrderApiService,
-    private route: ActivatedRoute, 
-    public goback: GobackService) { }
+    private route: ActivatedRoute, public goback: GobackService) { }
 
   ngOnInit() {
     this.goback.urlInit();

@@ -35,6 +35,8 @@ import { VerifyMaxDirective } from './validators/verify-max.directive';
 import { VerifyLengthDirective } from './validators/verify-fix-length.directive';
 import { VerifyMultipleOfDirective } from './validators/verify-multiple-of.directive';
 import { VerifyEqualsDirective } from './validators/verify-equals.directive';
+import { FirmResolver } from './services/firm-resolver.service';
+import { UserProfileResolver } from './services/user-profile-resolver.service';
 
 const validators = [
   VerifyEmailDirective,
@@ -67,7 +69,9 @@ const validators = [
     AdminGuard,
     PlanGuard,
     LoaderService,
-    NotificationService
+    NotificationService,
+    FirmResolver,
+    UserProfileResolver
   ],
   declarations: [
     MailingDetailsComponent,

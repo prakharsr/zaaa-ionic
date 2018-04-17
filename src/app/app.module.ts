@@ -35,6 +35,7 @@ import { ForgotPswComponent } from './components/forgot-psw/forgot-psw.component
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { InvoiceModule } from './invoice/invoice.module';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     BrowserAnimationsModule,
 
     BrowserModule,
+    InvoiceModule,
     BrowserAnimationsModule,
     BaseModule,
     AdminModule,

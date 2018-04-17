@@ -23,8 +23,7 @@ export class ExecutiveComponent implements OnInit {
   constructor(private api: ExecutiveApiService,
     private route: ActivatedRoute,
     private router: Router,
-    private notifications: NotificationService, 
-    public goback: GobackService) { }
+    private notifications: NotificationService, public goback: GobackService) { }
 
   ngOnInit() {
     this.goback.urlInit();

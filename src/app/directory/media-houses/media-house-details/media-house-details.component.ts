@@ -16,8 +16,7 @@ export class MediaHouseDetailsComponent implements OnInit {
 
   constructor(private api: MediaHouseApiService,
     private route: ActivatedRoute,
-    private router: Router, 
-    public goback: GobackService) { }
+    private router: Router, public goback: GobackService) { }
 
   ngOnInit() {
     this.goback.urlInit();

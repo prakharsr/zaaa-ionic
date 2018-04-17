@@ -4,7 +4,7 @@ import { Firm } from '../../models/firm';
 import { ApiService } from '../../services/api.service';
 import { NgForm } from '@angular/forms';
 import { StateApiService } from '../../services/state-api.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NotificationService } from '../../services/notification.service';
 import { GobackService } from '../../services/goback.service';
 
@@ -21,11 +21,14 @@ export class FirmProfileEditComponent implements OnInit {
     public stateApi: StateApiService,
     private router: Router,
     private notifications: NotificationService, 
-    private goback:GobackService) { }
+    private goback:GobackService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.goback.urlInit();
-    this.api.getFirmProfile().subscribe(data => this.profile = data);
+    this.route.data.subscribe((data: { firm: Firm }) => {
+            this.profile = data.firm;
+          });
   }
 
   ifscChanged() {

@@ -4,6 +4,7 @@ import { DialogService } from '../../services/dialog.service';
 import { ReleaseOrder } from '../release-order';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MailingDetails } from '../../models/mailing-details';
+import { MatTableDataSource } from '@angular/material';
 import { GobackService } from '../../services/goback.service';
 
 @Component({
@@ -15,11 +16,18 @@ export class ReleaseOrderListComponent implements OnInit {
 
   releaseOrders = [];
 
+  displayedColumns = ['number', 'publication', 'client', 'action'];
+  dataSource = new MatTableDataSource();
+
   constructor(private api: ReleaseOrderApiService, private dialog: DialogService, public goback: GobackService) { }
 
   ngOnInit() {
     this.goback.urlInit();
-    this.api.getReleaseOrders().subscribe(data => this.releaseOrders = data);
+    this.api.getReleaseOrders().subscribe(data => {
+      this.releaseOrders = data;
+
+      this.dataSource.data = data;
+    });
   }
 
   deleteReleaseOrder(releaseOrder: ReleaseOrder) {

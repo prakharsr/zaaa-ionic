@@ -13,8 +13,8 @@ import { IonicModule } from 'ionic-angular';
 
 @NgModule({
   imports: [
-    IonicModule.forRoot(RateCardModule),
     BaseModule,
+    IonicModule.forRoot(RateCardModule),
     DirectoryModule,
     RateCardRoutingModule
   ],
