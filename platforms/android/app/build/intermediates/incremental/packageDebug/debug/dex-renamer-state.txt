@@ -1,0 +1,4 @@
+#Fri May 18 21:51:01 IST 2018
+base.0=/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0
+renamed.0=classes.dex
+file.0=/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0/classes.dex

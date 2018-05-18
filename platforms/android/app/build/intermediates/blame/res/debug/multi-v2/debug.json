@@ -1,0 +1,118 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/values-sw600dp-v13_values-sw600dp-v13.arsc.flat",
+            "map": [
+                {
+                    "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/d47ff6f492a5f0bb3b61f39c27a4006d/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,93",
+                        "endLines": "2,13",
+                        "endColumns": "37,12",
+                        "endOffsets": "88,745"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "/home/linux/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/850ad8fdb3966399aecbaf9bb19bf366/res/values/values.xml",
+                    "from": {
+                        "startLines": "2,4",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,165",
+                        "endLines": "2,5",
+                        "endColumns": "38,12",
+                        "endOffsets": "89,206"
+                    },
+                    "to": {
+                        "startLines": "2,6",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,260",
+                        "endLines": "2,7",
+                        "endColumns": "38,12",
+                        "endOffsets": "89,301"
+                    }
+                },
+                {
+                    "source": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "4,2,3",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "157,55,98",
+                        "endColumns": "63,42,58",
+                        "endOffsets": "216,93,152"
+                    },
+                    "to": {
+                        "startLines": "3,4,5",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "94,158,201",
+                        "endColumns": "63,42,58",
+                        "endOffsets": "153,196,255"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "4,2,3",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "157,55,98",
+                        "endColumns": "63,42,58",
+                        "endOffsets": "216,93,152"
+                    },
+                    "to": {
+                        "startLines": "3,4,5",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "94,158,201",
+                        "endColumns": "63,42,58",
+                        "endOffsets": "153,196,255"
+                    }
+                },
+                {
+                    "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/d47ff6f492a5f0bb3b61f39c27a4006d/res/values/values.xml",
+                    "from": {
+                        "startLines": "2,4",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,165",
+                        "endLines": "2,5",
+                        "endColumns": "38,12",
+                        "endOffsets": "89,206"
+                    },
+                    "to": {
+                        "startLines": "2,6",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,260",
+                        "endLines": "2,7",
+                        "endColumns": "38,12",
+                        "endOffsets": "89,301"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/values-sw600dp-v13_values-sw600dp-v13.arsc.flat",
+            "map": [
+                {
+                    "source": "/home/linux/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/850ad8fdb3966399aecbaf9bb19bf366/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,93",
+                        "endLines": "2,13",
+                        "endColumns": "37,12",
+                        "endOffsets": "88,745"
+                    }
+                }
+            ]
+        }
+    ]
+}
