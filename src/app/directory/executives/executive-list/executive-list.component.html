@@ -1,4 +1,4 @@
-<button class="fab" (click)="this.goback.gotoComponent('dir/executives/new')">
+<button class="fab" routerLink="/dir/executives/new">
   <mat-icon>add</mat-icon>
 </button>
 
@@ -41,3 +41,5 @@
     </div>
   </div>
 </div>
+
+<app-pagination [pageCount]="pageCount" [page]="page" (navigate)="navigate($event)"></app-pagination>

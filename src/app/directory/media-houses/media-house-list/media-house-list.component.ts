@@ -1,36 +1,48 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit } from '@angular/core';
-import { MediaHouse } from '../media-house';
-import { MediaHouseApiService } from '../media-house-api.service';
-import { DialogService } from '../../../services/dialog.service';
 import {of} from 'rxjs/observable/of';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/switchMap';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { GobackService } from '../../../services/goback.service';
+import { MediaHouse } from '@aaman/dir/media-houses/media-house';
+import { MediaHouseApiService } from '@aaman/dir/media-houses/media-house-api.service';
+import { DialogService } from '@aaman/main/dialog.service';
+import { PageData } from '@aaman/main/page-data';
 
 @Component({
   selector: 'app-media-house-list',
   templateUrl: './media-house-list.component.html',
-  // styleUrls: ['./media-house-list.component.css']
+  
 })
 export class MediaHouseListComponent implements OnInit {
 
   mediaHouses: MediaHouse[] = [];
-  globalMediaHouses: MediaHouse[] = [];
+
+  global: boolean;
+
+  pageCount: number;
+  page: number;
 
   query: string;
   searchFailed = false;
 
-  constructor(private api: MediaHouseApiService, private dialog: DialogService, private router: Router, public goback: GobackService) { }
+  constructor(public goback: GobackService, private api: MediaHouseApiService,
+    private dialog: DialogService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.goback.urlInit();
-    this.api.getMediaHouses().subscribe(data => this.mediaHouses = data);
-    this.api.getMediaHouses(true).subscribe(data => this.globalMediaHouses = data);
+    this.route.data.subscribe((data: { list: PageData<MediaHouse>, global: boolean }) => {
+      this.global = data.global;
+      this.mediaHouses = data.list.list;
+      this.pageCount = data.list.pageCount;
+      this.page = data.list.page;
+    });
   }
 
   search = (text: Observable<string>) =>
@@ -65,5 +77,9 @@ export class MediaHouseListComponent implements OnInit {
         err => console.log(err)
       );
     });
+  }
+
+  navigate(i: number) {
+    this.router.navigate(['/dir/media_houses/list', i]);
   }
 }

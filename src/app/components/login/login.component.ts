@@ -1,13 +1,13 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../services/api.service';
 import { Router } from '@angular/router';
-import { NotificationService } from '../../services/notification.service';
-import { GobackService } from '../../services/goback.service';
+import { ApiService } from '@aaman/main/api.service';
+import { NotificationService } from '@aaman/main/notification.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  // styleUrls: ['./login.component.css']
+  
 })
 export class LoginComponent implements OnInit {
 
@@ -16,7 +16,9 @@ export class LoginComponent implements OnInit {
 
   hidePassword = true;
 
-  constructor(private api: ApiService, private router: Router, private notifications: NotificationService, public goback: GobackService) { }
+  constructor(public goback: GobackService, private api: ApiService,
+    private router: Router,
+    private notifications: NotificationService) { }
 
   ngOnInit() {
     this.goback.urlInit();
@@ -33,11 +35,6 @@ export class LoginComponent implements OnInit {
 
           this.notifications.show(data.msg);
         }
-      },
-      err => {
-        console.log(err);
-
-        this.notifications.show('Connection failed');
       }
     );
   }

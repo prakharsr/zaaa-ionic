@@ -1,4 +1,4 @@
-import { Address } from "./address";
+import { Address } from "@aaman/main/address";
 
 export class Firm {
     name: string;
@@ -12,8 +12,14 @@ export class Firm {
     email: string;
     phone: string;
 
+    OtherMobile: string;
+
     panNo : string;
-    gstNo : string;
+    
+    GSTIN = {
+        GSTType: "URD",
+        GSTNo: ""
+    }
 
     incDate: Date;
 

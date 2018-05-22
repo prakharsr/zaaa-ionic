@@ -1,7 +1,7 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { Platform, LoadingController, Spinner } from 'ionic-angular';
-import { GobackService } from '../../services/goback.service';
 import { Router } from '@angular/router';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Firm } from '../../models/firm';
@@ -9,15 +9,14 @@ import { Firm } from '../../models/firm';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  // styleUrls: ['./home.component.css']
+  // 
 })
 export class HomeComponent implements OnInit {
 
   profile = new Firm();
   isLoaded = false;
 
-  constructor(platform: Platform,
-     public goback: GobackService,
+  constructor(public goback: GobackService, platform: Platform,
      public api: ApiService,
      private router: Router,
      private loadingCtrl: LoadingController) {
@@ -43,8 +42,8 @@ export class HomeComponent implements OnInit {
     this.router.navigateByUrl("/dashboard");
   }
   ngOnInit() {
+    this.goback.urlInit();
     // setTimeout(2000);
-    this.goback.urlInit(); 
 
     if(this.api.isLoggedIn) 
     {

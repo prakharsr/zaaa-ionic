@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from '../../services/api.service';
 import { Observable } from 'rxjs/Observable';
-import { Client, ContactPerson } from './client';
 import { map } from 'rxjs/operators';
-import { environment } from '../../../environments/environment';
 import { of } from 'rxjs/observable/of';
+import { ApiService } from '@aaman/main/api.service';
+import { Client, ContactPerson } from '@aaman/dir/clients/client';
+import { PageData } from '@aaman/main/page-data';
 
 @Injectable()
 export class ClientApiService {
@@ -21,13 +21,16 @@ export class ClientApiService {
       companyName: client.companyName,
       nickName: client.nickName,
       categoryType: client.category,
+      SubCategoryType: client.SubCategoryType,
       address: client.address,
       landline: client.landLine,
       stdNo: client.stdNo,
       website: client.website,
       panNo: client.panNo,
-      gstin: client.gstNo,
-      contactPerson: contactPersons
+      GSTIN: client.GSTIN,
+      contactPerson: contactPersons,
+      Remark: client.Remark,
+      IncorporationDate: client.IncorporationDate
     });
   }
 
@@ -61,7 +64,7 @@ export class ClientApiService {
     }
   }
 
-  private bodyToClient(data: any) : Client {
+  bodyToClient(data: any) : Client {
     let client = new Client();
 
     client.id = data._id;
@@ -70,12 +73,15 @@ export class ClientApiService {
     client.companyName = data.CompanyName;
     client.nickName = data.NickName;
     client.category = data.CategoryType;
+    client.SubCategoryType = data.SubCategoryType;
     client.address = data.Address;
     client.landLine = data.Landline;
     client.stdNo = data.stdNo;
     client.website = data.Website;
     client.panNo = data.PanNO;
-    client.gstNo = data.GSTNo;
+    client.GSTIN = data.GSTIN;
+    client.Remark = data.Remark;
+    client.IncorporationDate = data.IncorporationDate;
 
     let contactPersons : ContactPerson[] = [];
 
@@ -101,13 +107,16 @@ export class ClientApiService {
       CompanyName: client.companyName,
       NickName: client.nickName,
       CategoryType: client.category,
+      SubCategoryType: client.SubCategoryType,
       Address: client.address,
       Landline: client.landLine,
       stdNo: client.stdNo,
       Website: client.website,
       PanNO: client.panNo,
-      GSTNo: client.gstNo,
-      ContactPerson: contactPersons
+      GSTIN: client.GSTIN,
+      ContactPerson: contactPersons,
+      Remark: client.Remark,
+      IncorporationDate: client.IncorporationDate
     });
   }
 
@@ -117,8 +126,8 @@ export class ClientApiService {
     );
   }
 
-  getClients() : Observable<Client[]> {
-    return this.api.get('/user/clients').pipe(
+  getClients(page: number) : Observable<PageData<Client>> {
+    return this.api.get('/user/clients/' + page).pipe(
       map(data => {
         let clients : Client[] = [];
 
@@ -128,14 +137,14 @@ export class ClientApiService {
           });
         }
 
-        return clients;
+        return new PageData<Client>(clients, data.perPage, data.page, data.pageCount);
       })
     );
   }
 
   searchClients(query: string) : Observable<Client[]> {
     if (query) {
-      return this.api.get('/user/clients/' + query).pipe(
+      return this.api.get('/user/clients/search/' + query).pipe(
         map(data => {
           let clients : Client[] = [];
 

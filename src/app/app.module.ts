@@ -36,6 +36,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { InvoiceModule } from './invoice/invoice.module';
+import { ReceiptsModule } from '@aaman/receipts/receipts.module';
+import { AccountsModule } from '@aaman/accounts/accounts.module';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,6 @@ import { InvoiceModule } from './invoice/invoice.module';
     BrowserAnimationsModule,
 
     BrowserModule,
-    InvoiceModule,
     BrowserAnimationsModule,
     BaseModule,
     AdminModule,
@@ -72,6 +73,9 @@ import { InvoiceModule } from './invoice/invoice.module';
     CoUsersModule,
     RateCardModule,
     ReleaseOrderModule,
+    InvoiceModule,
+    ReceiptsModule,
+    AccountsModule,
     AppRoutingModule
   ],
   bootstrap: [IonicApp],

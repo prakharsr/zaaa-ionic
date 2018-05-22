@@ -1,13 +1,13 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../services/api.service';
 import { ActivatedRoute } from '@angular/router';
-import { NotificationService } from '../../services/notification.service';
-import { GobackService } from '../../services/goback.service';
+import { ApiService } from '@aaman/main/api.service';
+import { NotificationService } from '@aaman/main/notification.service';
 
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
-  // styleUrls: ['./reset-password.component.css']
+  
 })
 export class ResetPasswordComponent implements OnInit {
 
@@ -15,7 +15,9 @@ export class ResetPasswordComponent implements OnInit {
   cpassword: string;
   token: string;
 
-  constructor(private api: ApiService, private route: ActivatedRoute, private notifications: NotificationService, public goback: GobackService) { }
+  constructor(public goback: GobackService, private api: ApiService,
+    private route: ActivatedRoute,
+    private notifications: NotificationService) { }
 
   ngOnInit() {
     this.goback.urlInit();
@@ -34,10 +36,6 @@ export class ResetPasswordComponent implements OnInit {
           console.log(data);
           this.notifications.show(data.msg);
         }
-      },
-      err => {
-        console.log(err);
-        this.notifications.show('Connection failed');
       }
     );
   }

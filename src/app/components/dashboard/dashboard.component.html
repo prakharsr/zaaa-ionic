@@ -7,25 +7,34 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-3 col-md-4 col-sm-6">
-            <button ion-button block color="brand_primary" class="btn btn-primary" (click)="this.goback.gotoComponent('profile')"><span class="fa fa-lg fa-user-circle"></span> User Profile</button>
+            <button ion-button block color="brand_primary" class="btn btn-primary" (click)="this.goback.gotoComponent('profile')"> User Profile</button>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6">
-            <button ion-button block color="brand_success"  class="btn btn-success" (click)="this.goback.gotoComponent('firm')"><span class="fa fa-lg fa-building"></span> Firm Profile</button>
+            <button ion-button block color="brand_success"  class="btn btn-success" (click)="this.goback.gotoComponent('firm')">< Firm Profile</button>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6">
-            <button ion-button block color="brand_warning" class="btn btn-warning" (click)="this.goback.gotoComponent('coUsers')"><span class="fa fa-lg fa-users"></span> Co-Users</button>
+            <button ion-button block color="brand_warning" class="btn btn-warning" (click)="this.goback.gotoComponent('coUsers')"> Co-Users</button>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6">
-            <button ion-button block color="brand_info" class="btn btn-info" (click)="this.goback.gotoComponent('dir')"><span class="fa fa-lg fa-address-book"></span> Directory</button>
+            <button ion-button block color="brand_info" class="btn btn-info" (click)="this.goback.gotoComponent('dir')"> Directory</button>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6">
-            <button ion-button block color="brand_danger" class="btn btn-danger" (click)="this.goback.gotoComponent('ratecards')"><span class="fa fa-lg fa-dollar-sign"></span> Rate Cards</button>
+            <button ion-button block color="brand_danger" class="btn btn-danger" (click)="this.goback.gotoComponent('ratecards')"> Rate Cards</button>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6">
-            <button ion-button block color="dark" class="btn btn-danger" (click)="this.goback.gotoComponent('releaseorders')"><span class="fa fa-lg fa-file-alt"></span> Release Orders</button>
+            <button ion-button block color="brand_primary" class="btn btn-primary" (click)="this.goback.gotoComponent('releaseorders')"> Release Orders</button>
         </div>
         <div class="col-lg-3 col-md-4 col-sm-6" *ngIf="admin">
-            <button ion-button block color="brand_secondary" class="btn btn-secondary" (click)="this.goback.gotoComponent('templates')"><span class="fa fa-lg fa-file-alt"></span> Templates</button>
+            <button ion-button block color="brand_success" class="btn btn-success" (click)="this.goback.gotoComponent('releaseorders/check')">Insertion Check</button>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6" *ngIf="admin">
+            <button ion-button block color="brand_warning" class="btn btn-warning" (click)="this.goback.gotoComponent('invoices')">Invoices</button>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6" *ngIf="admin">
+            <button ion-button block color="brand_info" class="btn btn-info" (click)="this.goback.gotoComponent('receipts')">Payment Receipts</button>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6" *ngIf="admin">
+            <button ion-button block color="brand_danger" class="btn btn-danger" (click)="this.goback.gotoComponent('templates')">Templates</button>
         </div>
     </div>
 </div>

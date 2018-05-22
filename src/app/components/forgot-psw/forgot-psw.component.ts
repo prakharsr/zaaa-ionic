@@ -1,18 +1,19 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../services/api.service';
-import { NotificationService } from '../../services/notification.service';
-import { GobackService } from '../../services/goback.service';
+import { ApiService } from '@aaman/main/api.service';
+import { NotificationService } from '@aaman/main/notification.service';
 
 @Component({
   selector: 'app-forgot-psw',
   templateUrl: './forgot-psw.component.html',
-  // styleUrls: ['./forgot-psw.component.css']
+  
 })
 export class ForgotPswComponent implements OnInit {
 
   email: string;
 
-  constructor(private api: ApiService, private notifications: NotificationService, public goback: GobackService) { }
+  constructor(public goback: GobackService, private api: ApiService,
+    private notifications: NotificationService) { }
 
   ngOnInit() {
     this.goback.urlInit();
@@ -28,10 +29,6 @@ export class ForgotPswComponent implements OnInit {
           console.log(data);
           this.notifications.show(data.msg);
         }
-      },
-      err => {
-        console.log(err);
-        this.notifications.show('Connection failed');
       }
     );
   }

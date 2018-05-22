@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from '../services/api.service';
-import { RateCard, FixSize, Remark } from './rate-card';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
+import { ApiService } from '@aaman/main/api.service';
+import { RateCard } from '@aaman/ratecard/rate-card';
+import { PageData } from '@aaman/main/page-data';
 
 @Injectable()
 export class RateCardApiService {
@@ -49,7 +50,7 @@ export class RateCardApiService {
     return this.api.post('/user/ratecard', {
       mediaType: rateCard.mediaType,
       adType: rateCard.adType,
-      adTime: rateCard.adTime,
+      AdTime: rateCard.AdTime,
       rateCardType: rateCard.rateCardType,
       bookingCenter: {
         MediaHouseName: rateCard.mediaHouseName,
@@ -106,7 +107,7 @@ export class RateCardApiService {
 
     rateCard.mediaType = body.MediaType;
     rateCard.adType = body.AdType;
-    rateCard.adTime = body.AdTime;
+    rateCard.AdTime = body.AdTime;
     rateCard.rateCardType = body.RateCardType;
 
     if (body.BookingCenter) {
@@ -229,8 +230,8 @@ export class RateCardApiService {
     );
   }
 
-  getRateCards(global: boolean = false) : Observable<RateCard[]> {
-    return this.api.get(global ? '/user/ratecards/global' : '/user/ratecards').pipe(
+  getRateCards(page: number, global: boolean = false) : Observable<PageData<RateCard>> {
+    return this.api.get((global ? '/user/ratecards/global/' : '/user/ratecards/') + page).pipe(
       map(data => {
         let ratecards : RateCard[] = [];
 
@@ -240,14 +241,14 @@ export class RateCardApiService {
           });
         }
 
-        return ratecards;
+        return new PageData<RateCard>(ratecards, data.perPage, data.page, data.pageCount);
       })
     );
   }
 
   searchRateCards(query: string) : Observable<RateCard[]> {
     if (query) {
-      return this.api.get('/user/ratecards/' + query).pipe(
+      return this.api.get('/user/ratecards/search/' + query).pipe(
         map(data => {
           let ratecards : RateCard[] = [];
 
@@ -305,7 +306,7 @@ export class RateCardApiService {
       id: rateCard.id,
       MediaType: rateCard.mediaType,
       AdType: rateCard.adType,
-      AdTime: rateCard.adTime,
+      AdTime: rateCard.AdTime,
       RateCardType: rateCard.rateCardType,
       BookingCenter: {
         MediaHouseName: rateCard.mediaHouseName,

@@ -1,25 +1,24 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit, Input, Output } from '@angular/core';
-import { UserRoles } from '../user-roles';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CoUserApiService } from '../co-user-api.service';
-import { NotificationService } from '../../services/notification.service';
-import { GobackService } from '../../services/goback.service';
+import { UserRoles } from '@aaman/couser/user-roles';
+import { CoUserApiService } from '@aaman/couser/co-user-api.service';
+import { NotificationService } from '@aaman/main/notification.service';
 
 @Component({
   selector: 'app-role-edit',
   templateUrl: './role-edit.component.html',
-  // styleUrls: ['./role-edit.component.css']
+  
 })
 export class RoleEditComponent implements OnInit {
 
   @Input() @Output() roles = new UserRoles();
   id: string;
 
-  constructor(private api: CoUserApiService,
+  constructor(public goback: GobackService, private api: CoUserApiService,
     private route: ActivatedRoute,
     private router: Router,
-    private notifications: NotificationService, 
-    private goback:GobackService) { }
+    private notifications: NotificationService) { }
 
   ngOnInit() {
     this.goback.urlInit();
@@ -44,11 +43,6 @@ export class RoleEditComponent implements OnInit {
 
         this.notifications.show(data.msg);
       }
-    },
-    err => {
-      console.log(err);
-
-      this.notifications.show('Connection failed');
     });
   }
 

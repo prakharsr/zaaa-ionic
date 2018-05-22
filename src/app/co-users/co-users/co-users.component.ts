@@ -1,13 +1,15 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit } from '@angular/core';
-import { DialogService } from '../../services/dialog.service';
-import { CoUserApiService } from '../co-user-api.service';
-import { CoUser } from '../co-user';
-import { GobackService } from '../../services/goback.service';
+import { ActivatedRoute } from '@angular/router';
+import { CoUser } from '@aaman/couser/co-user';
+import { CoUserApiService } from '@aaman/couser/co-user-api.service';
+import { DialogService } from '@aaman/main/dialog.service';
+import { UserProfile } from '@aaman/main/user-profile';
 
 @Component({
   selector: 'app-co-users',
   templateUrl: './co-users.component.html',
-  // styleUrls: ['./co-users.component.css']
+  
 })
 export class CoUsersComponent implements OnInit {
 
@@ -16,18 +18,18 @@ export class CoUsersComponent implements OnInit {
 
   coUsers: CoUser[] = [];
 
-  constructor(private api: CoUserApiService, private dialog: DialogService, private goback:GobackService) { }
+  constructor(public goback: GobackService, private api: CoUserApiService,
+    private dialog: DialogService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.goback.urlInit();
-    this.api.coUsers.subscribe(data => this.coUsers = data);
+    this.route.data.subscribe((data: { coUsers: CoUser[], user: UserProfile }) => {
+      this.coUsers = data.coUsers;
 
-    this.api.getUser().subscribe(data => {
-      if (data.success) {
-        this.admin = data.user.isAdmin;
-        this.myId = data.user._id;
-      }
-    })
+      this.admin = data.user.isAdmin;
+      this.myId = data.user.id;
+    });
   }
 
   delete(coUser: CoUser) {

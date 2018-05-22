@@ -1,5 +1,5 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit } from '@angular/core';
-import { ReleaseOrder, Insertion, TaxValues, OtherCharges } from '../release-order';
 import { Observable } from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
 import 'rxjs/add/operator/catch';
@@ -8,24 +8,25 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 import { map } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MediaHouseApiService } from '../../directory/media-houses/media-house-api.service';
-import { ClientApiService } from '../../directory/clients/client-api.service';
-import { MediaHouse } from '../../directory/media-houses/media-house';
-import { Client } from '../../directory/clients/client';
-import { Executive } from '../../directory/executives/executive';
-import { ExecutiveApiService } from '../../directory/executives/executive-api.service';
-import { StateApiService } from '../../services/state-api.service';
-import { ReleaseOrderApiService } from '../release-order-api.service';
-import { RateCard, Category, FixSize, Scheme } from '../../rate-card/rate-card';
-import { RateCardApiService } from '../../rate-card/rate-card-api.service';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-date';
-import { NotificationService } from '../../services/notification.service';
-import { GobackService } from '../../services/goback.service';
+import { ReleaseOrder, Insertion, TaxValues, OtherCharges } from '@aaman/releaseorder/release-order';
+import { Category, RateCard, FixSize, Scheme } from '@aaman/ratecard/rate-card';
+import { ReleaseOrderApiService } from '@aaman/releaseorder/release-order-api.service';
+import { ClientApiService } from '@aaman/dir/clients/client-api.service';
+import { MediaHouseApiService } from '@aaman/dir/media-houses/media-house-api.service';
+import { ExecutiveApiService } from '@aaman/dir/executives/executive-api.service';
+import { RateCardApiService } from '@aaman/ratecard/rate-card-api.service';
+import { StateApiService } from '@aaman/main/state-api.service';
+import { NotificationService } from '@aaman/main/notification.service';
+import { OptionsService } from '@aaman/main/options.service';
+import { MediaHouse } from '@aaman/dir/media-houses/media-house';
+import { Client } from '@aaman/dir/clients/client';
+import { Executive } from '@aaman/dir/executives/executive';
 
 @Component({
   selector: 'app-release-order',
   templateUrl: './release-order.component.html',
-  // styleUrls: ['./release-order.component.css']
+  
 })
 export class ReleaseOrderComponent implements OnInit {
 
@@ -38,7 +39,7 @@ export class ReleaseOrderComponent implements OnInit {
 
   selectedCategories: Category[] = [null, null, null, null, null, null];
 
-  constructor(private route: ActivatedRoute,
+  constructor(public goback: GobackService, private route: ActivatedRoute,
     private router: Router,
     private api: ReleaseOrderApiService,
     private mediaHouseApi: MediaHouseApiService,
@@ -46,7 +47,8 @@ export class ReleaseOrderComponent implements OnInit {
     private executiveApi: ExecutiveApiService,
     private rateCardApi: RateCardApiService,
     public stateApi: StateApiService,
-    private notifications: NotificationService, public goback: GobackService) { }
+    private notifications: NotificationService,
+    public options: OptionsService) { }
 
   get isTypeWords() {
 
@@ -85,6 +87,8 @@ export class ReleaseOrderComponent implements OnInit {
 
   ngOnInit() {
     this.goback.urlInit();
+    this.categories = this.options.categories;
+
     this.route.paramMap.subscribe(params => {
       if (params.has('id')) {
         this.id = params.get('id');
@@ -109,7 +113,7 @@ export class ReleaseOrderComponent implements OnInit {
     this.customSize = true;
     this.customScheme = true;
 
-    this.releaseorder.adTime = this.adTimes[0];
+    this.releaseorder.AdTime = this.adTimes[0];
     this.mediaType = this.mediaTypes[0];
     this.releaseorder.adHue = this.hues[0];
     this.releaseorder.unit = this.units[0];
@@ -159,7 +163,7 @@ export class ReleaseOrderComponent implements OnInit {
         && element.secondary == this.releaseorder.taxAmount.secondary);
 
       let dirMediaHouse = new MediaHouse();
-      dirMediaHouse.orgName = this.releaseorder.publicationName;
+      dirMediaHouse.pubName = this.releaseorder.publicationName;
       dirMediaHouse.address.edition = this.releaseorder.publicationEdition;
       dirMediaHouse.address.state = this.releaseorder.publicationState;
       dirMediaHouse.GSTIN = this.releaseorder.publicationGSTIN;
@@ -169,7 +173,7 @@ export class ReleaseOrderComponent implements OnInit {
       let dirClient = new Client();
       dirClient.orgName = this.releaseorder.clientName;
       dirClient.address.state = this.releaseorder.clientState;
-      dirClient.gstNo = this.releaseorder.clientGSTIN;
+      dirClient.GSTIN = this.releaseorder.clientGSTIN;
       this.client = dirClient;
 
       let dirExecutive = new Executive();
@@ -185,8 +189,9 @@ export class ReleaseOrderComponent implements OnInit {
 
   private initFromRateCard(rateCard: RateCard) {
     if (rateCard) {
+      this.releaseorder.mediaType = rateCard.mediaType;
       this.releaseorder.adType = rateCard.adType;
-      this.releaseorder.adTime = rateCard.adTime;
+      this.releaseorder.AdTime = rateCard.AdTime;
       this.releaseorder.rate = rateCard.rate;
       this.releaseorder.unit = rateCard.unit;
       this.releaseorder.adHue = rateCard.hue;
@@ -342,28 +347,7 @@ export class ReleaseOrderComponent implements OnInit {
     return formatted;
   }
 
-  categories = [
-    new Category('Property'),
-    new Category('Education'),
-    new Category('Medical', [
-      new Category('Surgery', [
-        new Category('C', [
-          new Category('Heart Surgery', [
-            new Category('Transplant', [
-              new Category('Deepest')
-            ])
-          ])
-        ]),
-        new Category('R', [
-          new Category('S', [
-            new Category('Deepest')
-          ])
-        ])
-      ])
-    ]),
-    new Category('Women'),
-    new Category('Real Estate')
-  ];
+  categories: Category[];
 
   getCategory(index: number) {
     return this.selectedCategories[index];
@@ -414,11 +398,6 @@ export class ReleaseOrderComponent implements OnInit {
 
           this.notifications.show(data.msg);
         }
-      },
-      err => {
-        console.log(err);
-
-        this.notifications.show('Connection failed');
       }
     );
   }
@@ -432,11 +411,6 @@ export class ReleaseOrderComponent implements OnInit {
         else {
           this.notifications.show(data.msg);
         }
-      },
-      err => {
-        console.log(err);
-
-        this.notifications.show('Connection failed');
       }
     )
   }
@@ -446,7 +420,7 @@ export class ReleaseOrderComponent implements OnInit {
     this.releaseorder.adTotalSpace = this.totalSpace;
     this.releaseorder.adGrossAmount = this.grossAmount;
     this.releaseorder.netAmountFigures = this.netAmount;
-    this.releaseorder.netAmountWords = this.amountToWords(this.netAmount);
+    this.releaseorder.netAmountWords = this.options.amountToWords(this.netAmount);
 
     this.releaseorder.taxAmount = this.selectedTax;
     
@@ -469,7 +443,7 @@ export class ReleaseOrderComponent implements OnInit {
       this.releaseorder.adCategory6 = this.selectedCategories[5].name;
     }
 
-    this.releaseorder.publicationName = this.mediaHouse.orgName ? this.mediaHouse.orgName : this.mediaHouse;
+    this.releaseorder.publicationName = this.mediaHouse.pubName ? this.mediaHouse.pubName : this.mediaHouse;
     this.releaseorder.clientName = this.client.orgName ? this.client.orgName : this.client;
     this.releaseorder.executiveName = this.executive.executiveName ? this.executive.executiveName : this.executive;
 
@@ -565,10 +539,18 @@ export class ReleaseOrderComponent implements OnInit {
   get units() {
     let result = [];
 
-    if (this.releaseorder.adType == 'Text Classified') {
-      result.push('Words');
+    if (this.isTypeLen) {
+      result.push('Sqcm');
     }
-    else result.push(this.releaseorder.mediaType == 'Print' ? 'Sqcm' : 'sec');
+
+    if (this.isTypeWords) {
+      result.push('Words');
+      result.push('Lines');
+    }
+
+    if (this.isTypeTime) {
+      result.push('sec');
+    }
 
     return result;
   }
@@ -576,10 +558,10 @@ export class ReleaseOrderComponent implements OnInit {
   mediaHouseInputFormatter = (result: MediaHouse) => {
     this.initMediaHouse(result);
 
-    return result.orgName;
+    return result.pubName;
   }
 
-  mediaHouseResultFormatter = (result: MediaHouse) => result.orgName + " - " + result.address.edition;
+  mediaHouseResultFormatter = (result: MediaHouse) => result.pubName + " - " + result.address.edition;
 
   client;
 
@@ -592,7 +574,7 @@ export class ReleaseOrderComponent implements OnInit {
 
   clientInputFormatter = (result: Client) => {
     this.releaseorder.clientState = result.address.state;
-    this.releaseorder.clientGSTIN = result.gstNo;
+    this.releaseorder.clientGSTIN = result.GSTIN;
 
     return result.orgName;
   }
@@ -729,22 +711,22 @@ export class ReleaseOrderComponent implements OnInit {
   get grossAmountWithoutPremium() {
     if (this.isTypeLen) {
       if (this.customSize) {
-        return (this.releaseorder.rate * this.totalSpace) * this.adCountPaid;
+        return this.releaseorder.rate * this.totalSpace;
       }
       else {
-        return this.selectedSize.amount * this.adCountPaid;
+        return this.selectedSize.amount;
       }
     }
     else if (this.isTypeTime) {
-      return this.releaseorder.rate * this.releaseorder.AdDuration * this.adCountPaid;
+      return this.releaseorder.rate * this.releaseorder.AdDuration;
     }
     else if (this.isTypeWords) {
-      return this.releaseorder.rate * this.releaseorder.AdWords * this.adCountPaid;
+      return this.releaseorder.rate;
     }
     else return 0;
   }
 
-  get grossAmount() {
+  get grossAmountSingle() {
     let amount = this.grossAmountWithoutPremium;
 
     if (this.isTypeWords) {
@@ -780,6 +762,10 @@ export class ReleaseOrderComponent implements OnInit {
     return amount;
   }
 
+  get grossAmount() {
+    return this.grossAmountSingle * this.adCountPaid;
+  }
+
   get netAmount() {
     let amount = this.grossAmount;
 
@@ -802,44 +788,6 @@ export class ReleaseOrderComponent implements OnInit {
     let multiplier = this.adCountPaid / this.selectedScheme.paid;
 
     return +this.adCountPaid + this.selectedScheme.Free * multiplier;
-  }
-
-  amountToWords(num) {
-    if (!num) {
-      return "Zero Only";
-    }
-
-    let a = [
-      '',
-      'One ', 'Two ', 'Three ', 'Four ', 'Five ', 'Six ', 'Seven ', 'Eight ', 'Nine ',
-      'Ten ',
-      'Eleven ', 'Twelve ', 'Thirteen ', 'Fourteen ', 'Fifteen ', 'Sixteen ', 'Seventeen ', 'Eighteen ', 'Nineteen '
-    ];
-    
-    let b = [
-      '', '',
-      'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'
-    ];
-    
-    let c = ['Crore ', 'Lakh ', 'Thousand ', 'Hundred '];
-  
-    if ((num = num.toString()).length > 9)
-      return 'overflow';
-
-    let n : any = ('000000000' + num).substr(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
-    
-    if (!n)
-      return;
-      
-    let str = '';
-
-    for (let i = 0; i < 4; ++i) {
-      str += (n[i + 1] != 0) ? (a[Number(n[i + 1])] || b[n[i + 1][0]] + ' ' + a[n[i + 1][1]]) + c[i] : '';
-    }
-
-    str += (n[5] != 0) ? ((str != '') ? 'and ' : '') + (a[Number(n[5])] || b[n[5][0]] + ' ' + a[n[5][1]]) + 'Only' : '';
-    
-    return str;
   }
 
   taxes: TaxValues[] = [
@@ -873,12 +821,12 @@ export class ReleaseOrderComponent implements OnInit {
 
   otherChargesTypes = ['Designing Charges', 'Extra Copy/Newspaper Charges', 'Certificate Charges'];
 
-  paymentTypes = ['Cash', 'Cheque', 'NEFT'];
+  paymentTypes = ['Cash', 'Credit', 'Cheque', 'NEFT'];
 
   addMediaHouse() {
     let obj = new MediaHouse();
 
-    obj.orgName = this.mediaHouse.orgName ? this.mediaHouse.orgName : this.mediaHouse;
+    obj.pubName = this.mediaHouse.pubName ? this.mediaHouse.pubName : this.mediaHouse;
     obj.address.edition = this.releaseorder.publicationEdition;
     obj.address.state = this.releaseorder.publicationState;
     obj.GSTIN = this.releaseorder.publicationGSTIN;
@@ -893,11 +841,6 @@ export class ReleaseOrderComponent implements OnInit {
 
         this.notifications.show(data.msg);
       }
-    },
-    err => {
-      console.log(err);
-
-      this.notifications.show('Connection failed');
     });
   }
 
@@ -906,7 +849,7 @@ export class ReleaseOrderComponent implements OnInit {
 
     obj.orgName = this.client.orgName ? this.client.orgName : this.client;
     obj.address.state = this.releaseorder.clientState;
-    obj.gstNo = this.releaseorder.clientGSTIN;
+    obj.GSTIN = this.releaseorder.clientGSTIN;
     
     this.clientApi.createClient(obj).subscribe(data => {
       if (data.success) {
@@ -917,11 +860,6 @@ export class ReleaseOrderComponent implements OnInit {
 
         this.notifications.show(data.msg);
       }
-    },
-    err => {
-      console.log(err);
-
-      this.notifications.show('Connection failed');
     });
   }
   
@@ -951,11 +889,6 @@ export class ReleaseOrderComponent implements OnInit {
 
         this.notifications.show(data.msg);
       }
-    },
-    err => {
-      console.log(err);
-
-      this.notifications.show('Connection failed');
     });
   }
 }

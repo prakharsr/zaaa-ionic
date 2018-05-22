@@ -1,20 +1,20 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit } from '@angular/core';
-import { RateCard } from '../rate-card';
-import { RateCardApiService } from '../rate-card-api.service';
 import { ActivatedRoute } from '@angular/router';
-import { GobackService } from '../../services/goback.service';
+import { RateCard } from '@aaman/ratecard/rate-card';
+import { RateCardApiService } from '@aaman/ratecard/rate-card-api.service';
 
 @Component({
   selector: 'app-rate-card-details',
   templateUrl: './rate-card-details.component.html',
-  // styleUrls: ['./rate-card-details.component.css']
+  
 })
 export class RateCardDetailsComponent implements OnInit {
 
   ratecard = new RateCard();
 
-  constructor(private api: RateCardApiService,
-    private route: ActivatedRoute, public goback: GobackService) { }
+  constructor(public goback: GobackService, private api: RateCardApiService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.goback.urlInit();

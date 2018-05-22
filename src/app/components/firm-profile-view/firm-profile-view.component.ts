@@ -1,17 +1,17 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit } from '@angular/core';
-import { Firm } from '../../models/firm';
-import { ApiService } from '../../services/api.service';
-import { environment } from '../../../environments/environment';
-import { NotificationService } from '../../services/notification.service';
-import { DialogService } from '../../services/dialog.service';
-import { GobackService } from '../../services/goback.service';
 import { ActivatedRoute } from '@angular/router';
-import { UserProfile } from '../../models/user-profile';
+import { Firm } from '@aaman/main/firm';
+import { ApiService } from '@aaman/main/api.service';
+import { DialogService } from '@aaman/main/dialog.service';
+import { NotificationService } from '@aaman/main/notification.service';
+import { UserProfile } from '@aaman/main/user-profile';
+import { environment } from 'environments/environment.prod';
 
 @Component({
   selector: 'app-firm-profile-view',
   templateUrl: './firm-profile-view.component.html',
-  // styleUrls: ['./firm-profile-view.component.css']
+  
 })
 export class FirmProfileViewComponent implements OnInit {
 
@@ -19,10 +19,14 @@ export class FirmProfileViewComponent implements OnInit {
 
   profile = new Firm();
 
-  constructor(private api: ApiService, private dialog: DialogService, private notifications: NotificationService, public goback: GobackService, private route: ActivatedRoute ) {}
+  constructor(public goback: GobackService, private api: ApiService,
+    private dialog: DialogService,
+    private notifications: NotificationService,
+    private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.goback.urlInit();
+
     this.route.data.subscribe((data: { firm: Firm, user: UserProfile }) => {
       this.profile = data.firm;
       this.admin = data.user.isAdmin;
@@ -43,11 +47,6 @@ export class FirmProfileViewComponent implements OnInit {
 
           this.notifications.show(data.msg);
         }
-      },
-      err => {
-        console.log(err);
-
-        this.notifications.show("Connection failed");
       }
     );
   }
@@ -71,11 +70,6 @@ export class FirmProfileViewComponent implements OnInit {
     
               this.notifications.show(data.msg);
             }
-          },
-          err => {
-            console.log(err);
-    
-            this.notifications.show("Connection failed");
           }
         )
       }

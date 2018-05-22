@@ -24,6 +24,7 @@ import { PlanSelectorComponent } from './admin/plan-selector/plan-selector.compo
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { UserProfileResolver } from './services/user-profile-resolver.service';
 import { EmptyComponent } from './admin/empty/empty.component';
+import { ProfileEditComponent } from '@aaman/main/profile-edit/profile-edit.component';
 
 const routes: Routes = [
   { path: 'empty', component: EmptyComponent},
@@ -46,6 +47,14 @@ const routes: Routes = [
     }
   },
   {
+    path: "profile/edit",
+    component: ProfileEditComponent,
+    canActivate: [AdminGuard, PhoneVerifyGuard, PlanGuard],
+    resolve: {
+      user: UserProfileResolver
+    }
+  },
+  {
     path: "firm",
     component: FirmProfileViewComponent,
     canActivate: [AuthGuard, PhoneVerifyGuard, PlanGuard],
@@ -59,7 +68,8 @@ const routes: Routes = [
     component: FirmProfileEditComponent,
     canActivate: [AdminGuard, PhoneVerifyGuard, PlanGuard],
     resolve: {
-      firm: FirmResolver
+      firm: FirmResolver,
+      user: UserProfileResolver
     }
   },
   { path: 'templates', component: TemplateSelectorComponent, canActivate: [AdminGuard, PhoneVerifyGuard, PlanGuard] },
@@ -76,7 +86,6 @@ const routes: Routes = [
   { path: 'reset_password/:token', component: ResetPasswordComponent },
   { path: '**', component: NotFoundComponent }
 ];
-
 
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],

@@ -1,7 +1,5 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit } from '@angular/core';
-import { Client } from '../client';
-import { ClientApiService } from '../client-api.service';
-import { DialogService } from '../../../services/dialog.service';
 import { Observable } from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
 import 'rxjs/add/operator/catch';
@@ -9,26 +7,39 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/switchMap';
-import { Router } from '@angular/router';
-import { GobackService } from '../../../services/goback.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Client } from '@aaman/dir/clients/client';
+import { ClientApiService } from '@aaman/dir/clients/client-api.service';
+import { DialogService } from '@aaman/main/dialog.service';
+import { PageData } from '@aaman/main/page-data';
 
 @Component({
   selector: 'app-client-list',
   templateUrl: './client-list.component.html',
-  // styleUrls: ['./client-list.component.css']
+  
 })
 export class ClientListComponent implements OnInit {
 
   clients: Client[] = [];
 
+  pageCount: number;
+  page: number;
+
   query: string;
   searchFailed = false;
 
-  constructor(private api: ClientApiService, private dialog: DialogService, private router: Router, public goback: GobackService) { }
+  constructor(public goback: GobackService, private api: ClientApiService,
+    private dialog: DialogService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.goback.urlInit();
-    this.api.getClients().subscribe(data => this.clients = data);
+    this.route.data.subscribe((data: { list: PageData<Client> }) => {
+      this.clients = data.list.list;
+      this.pageCount = data.list.pageCount;
+      this.page = data.list.page;
+    });
   }
 
   search = (text: Observable<string>) =>
@@ -63,5 +74,9 @@ export class ClientListComponent implements OnInit {
         err => console.log(err)
       );
     });
+  }
+
+  navigate(i: number) {
+    this.router.navigate(['/dir/clients/list', i]);
   }
 }

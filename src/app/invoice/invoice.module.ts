@@ -1,21 +1,35 @@
 import { NgModule } from '@angular/core';
 import { BaseModule } from '../base.module';
-import { InvoiceRoutingModule } from './invoice-routing.module';
-import { ReleaseOrderModule } from '../release-order/release-order.module';
 
-import { InvoiceApiService } from './invoice-api.service';
+import { ReleaseOrderModule } from '@aaman/releaseorder/release-order.module';
+import { InvoiceRoutingModule } from '@aaman/invoice/invoice-routing.module';
 
-import { InvoiceComponent } from './invoice/invoice.component';
+import { InvoiceApiService } from '@aaman/invoice/invoice-api.service';
+import { InvoiceResolver } from '@aaman/invoice/invoice-resolver.service';
+import { InvoiceListResolver } from '@aaman/invoice/invoice-list-resolver.service';
+import { InvoiceDirResolver } from '@aaman/invoice/invoice-dir-resolver.service';
+import { InvoiceComponent } from '@aaman/invoice/invoice/invoice.component';
+import { InvoiceDetailsComponent } from '@aaman/invoice/invoice-details/invoice-details.component';
+import { InvoiceListComponent } from '@aaman/invoice/invoice-list/invoice-list.component';
 import { IonicModule } from 'ionic-angular';
 
 @NgModule({
   imports: [
-    BaseModule,
     IonicModule.forRoot(InvoiceModule),
+    BaseModule,
     ReleaseOrderModule,
     InvoiceRoutingModule
   ],
-  declarations: [InvoiceComponent],
-  providers: [InvoiceApiService]
+  declarations: [
+    InvoiceComponent,
+    InvoiceDetailsComponent,
+    InvoiceListComponent
+  ],
+  providers: [
+    InvoiceApiService,
+    InvoiceResolver,
+    InvoiceListResolver,
+    InvoiceDirResolver
+  ]
 })
 export class InvoiceModule { }

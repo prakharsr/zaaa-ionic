@@ -1,12 +1,12 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../services/api.service';
-import { NotificationService } from '../../services/notification.service';
-import { GobackService } from '../../services/goback.service';
+import { ApiService } from '@aaman/main/api.service';
+import { NotificationService } from '@aaman/main/notification.service';
 
 @Component({
   selector: 'app-change-psw',
   templateUrl: './change-psw.component.html',
-  // styleUrls: ['./change-psw.component.css']
+  
 })
 export class ChangePswComponent implements OnInit {
 
@@ -14,7 +14,8 @@ export class ChangePswComponent implements OnInit {
   password: string;
   cpassword: string;
 
-  constructor(private api: ApiService, private notifications: NotificationService, public goback: GobackService) { }
+  constructor(public goback: GobackService, private api: ApiService,
+    private notifications: NotificationService) { }
 
   ngOnInit() {
     this.goback.urlInit();
@@ -31,11 +32,6 @@ export class ChangePswComponent implements OnInit {
 
           this.notifications.show(data.msg);
         }
-      },
-      err => {
-        console.log(err);
-
-        this.notifications.show('Connection failed');
       }
     );
   }

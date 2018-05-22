@@ -1,3 +1,4 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit, ApplicationRef } from '@angular/core';
 import { Plan } from '../../models/plan';
 import { ApiService } from '../../services/api.service';
@@ -8,14 +9,15 @@ import { WindowService } from '../../services/window.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Firm } from '../../models/firm';
 import { Address } from '../../models/address';
-import { GobackService } from '../../services/goback.service';
 import { EmptyComponent } from '../empty/empty.component';
 import { NavController, NavParams } from 'ionic-angular';
+import { BillingDetails } from '@aaman/main/billing-details/billing-details.component';
+import { DialogService } from '@aaman/main/dialog.service';
 
 @Component({
   selector: 'app-plan-selector',
   templateUrl: './plan-selector.component.html',
-  // styleUrls: ['./plan-selector.component.css']
+  // 
 })
 export class PlanSelectorComponent implements OnInit {
 
@@ -28,17 +30,18 @@ export class PlanSelectorComponent implements OnInit {
   private email: string;
   private phone: string;
 
-  constructor(private api: ApiService,
+  constructor(public goback: GobackService, private api: ApiService,
     private razorPay: RazorPayService,
     private appRef: ApplicationRef,
     private router: Router,
     private winRef: WindowService,
     private modalService: NgbModal,
-    private goback: GobackService,
     public navCtrl: NavController,
-    public navParams: NavParams) { }
+    public navParams: NavParams,
+    private dialog: DialogService) { }
 
   ngOnInit() {
+    this.goback.urlInit();
     this.api.plans.subscribe(data => {
       this.plans = [];
 
@@ -57,11 +60,11 @@ export class PlanSelectorComponent implements OnInit {
     this.api.getFirmProfile().subscribe(data => this.firm = data);
   }
 
-  private openPay(firmName: string, billingAddress: Address, gstNo: string) {
+  private openPay(details: BillingDetails) {
     this.razorPay.initPay(this.phone,
       this.email,
       this.selectedPlan.cost,
-      "ZAAA " + this.selectedPlan.name,
+      "AAMan " + this.selectedPlan.name,
       response => {
         console.log(response.razorpay_payment_id);
 
@@ -69,13 +72,11 @@ export class PlanSelectorComponent implements OnInit {
 
         this.api.setPlan(this.selectedPlan,
           response.razorpay_payment_id,
-          firmName,
-          billingAddress,
-          gstNo
+          details
         ).subscribe(
           data => {
             this.api.generatePaymentInvoice().subscribe(data => {
-            // redirect
+              // redirect
             this.navCtrl.push(EmptyComponent);
             
             this.appRef.tick();
@@ -86,11 +87,12 @@ export class PlanSelectorComponent implements OnInit {
       });
   }
 
-  billingDetails(param: { firmName: string, billingAddress: Address, gstNo: string }) {
-    this.openPay(param.firmName, param.billingAddress, param.gstNo);
+ 
+  billingDetails(param: BillingDetails) {
+    this.openPay(param);
   }
 
-  selectPlan(plan: Plan, modalContent)
+  selectPlan(plan: Plan)
   {
     if (this.paid)
       return;
@@ -98,17 +100,23 @@ export class PlanSelectorComponent implements OnInit {
     if (plan.cost != 0) {
       this.selectedPlan = plan;
 
-      if (this.firm && this.firm.name && this.firm.registeredAddress && this.firm.gstNo) {
-        this.openPay(this.firm.name, this.firm.registeredAddress, this.firm.gstNo);
+      if (this.firm && this.firm.name && this.firm.registeredAddress) {
+        this.openPay({
+          firmName: this.firm.name,
+          billingAddress: this.firm.registeredAddress,
+          GSTIN: this.firm.GSTIN
+        });
       }
       else {
-        this.modalService.open(modalContent);
+        this.dialog.getBillingDetails().subscribe(data => {
+          this.billingDetails(data);
+        });
       }
     }
     else {
       this.paid = true;
       
-      this.api.setPlan(plan, '', '', new Address(), '').subscribe(
+      this.api.setPlan(plan, '', new BillingDetails()).subscribe(
         data => {
           this.router.navigateByUrl('/');
         },

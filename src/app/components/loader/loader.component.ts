@@ -1,16 +1,18 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit } from '@angular/core';
-import { LoaderService } from '../../services/loader.service';
+import { LoaderService } from '@aaman/main/loader.service';
 
 @Component({
   selector: 'app-loader',
   templateUrl: './loader.component.html',
-  // styleUrls: ['./loader.component.css']
+  
 })
 export class LoaderComponent implements OnInit {
 
-  constructor(public loaderService: LoaderService) { }
+  constructor(public goback: GobackService, public loaderService: LoaderService) { }
 
   ngOnInit() {
+    this.goback.urlInit();
   }
 
 }

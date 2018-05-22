@@ -1,12 +1,12 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../services/api.service';
 import { Router } from '@angular/router';
-import { GobackService } from '../../services/goback.service';
+import { ApiService } from '@aaman/main/api.service';
 
 @Component({
   selector: 'app-phone-verify',
   templateUrl: './phone-verify.component.html',
-  // styleUrls: ['./phone-verify.component.css']
+  
 })
 
 export class PhoneVerifyComponent implements OnInit {
@@ -18,7 +18,8 @@ export class PhoneVerifyComponent implements OnInit {
   sendError : string;
   verifyError: string;
 
-  constructor(private api: ApiService, private router: Router, public goback: GobackService) { }
+  constructor(public goback: GobackService, private api: ApiService,
+    private router: Router) { }
 
   ngOnInit() {
     this.goback.urlInit();
@@ -43,13 +44,6 @@ export class PhoneVerifyComponent implements OnInit {
 
           this.sendError = data.msg;
         }
-      },
-      err => {
-        this.otpSent = false;
-
-        console.log(err)
-
-        this.sendError = 'Connection failed';
       }
     )
   }
@@ -68,11 +62,6 @@ export class PhoneVerifyComponent implements OnInit {
 
           this.verifyError = data.msg;
         }
-      },
-      err => {
-        console.log(err)
-
-        this.verifyError = 'Connection failed';
       }
     );
   }

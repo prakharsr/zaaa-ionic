@@ -1,34 +1,45 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit } from '@angular/core';
-import { Executive } from '../executive';
-import { ExecutiveApiService } from '../executive-api.service';
-import { DialogService } from '../../../services/dialog.service';
 import {of} from 'rxjs/observable/of';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/switchMap';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { GobackService } from '../../../services/goback.service';
+import { Executive } from '@aaman/dir/executives/executive';
+import { ExecutiveApiService } from '@aaman/dir/executives/executive-api.service';
+import { DialogService } from '@aaman/main/dialog.service';
+import { PageData } from '@aaman/main/page-data';
 
 @Component({
   selector: 'app-executive-list',
   templateUrl: './executive-list.component.html',
-  // styleUrls: ['./executive-list.component.css']
+  
 })
 export class ExecutiveListComponent implements OnInit {
 
   executives: Executive[] = [];
 
+  pageCount: number;
+  page: number;
+  
   query: string;
   searchFailed = false;
 
-  constructor(private api: ExecutiveApiService, private dialog: DialogService, private router: Router, public goback: GobackService) { }
+constructor(public goback: GobackService, private api: ExecutiveApiService,
+    private dialog: DialogService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.goback.urlInit();
-    this.api.getExecutives().subscribe(data => this.executives = data);
+    this.route.data.subscribe((data: { list: PageData<Executive> }) => {
+        this.executives = data.list.list;
+        this.pageCount = data.list.pageCount;
+        this.page = data.list.page;
+      });
   }
 
   search = (text: Observable<string>) =>
@@ -63,5 +74,9 @@ export class ExecutiveListComponent implements OnInit {
         err => console.log(err)
       );
     });
+  }
+
+  navigate(i: number) {
+    this.router.navigate(['/dir/executives/list', i]);
   }
 }

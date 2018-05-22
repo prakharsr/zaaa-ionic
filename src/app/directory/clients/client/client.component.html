@@ -13,26 +13,42 @@
       </mat-expansion-panel-header>
 
       <mat-form-field>
-        <input matInput type="text" name="orgName" placeholder="Organisation / Individual Name" [(ngModel)]="client.orgName" required #orgNameField="ngModel">
+        <input matInput type="text" name="orgName" placeholder="Client Name" [(ngModel)]="client.orgName" required #orgNameField="ngModel">
         <mat-error *ngIf="orgNameField.errors && orgNameField.errors.required">
-          Organisation / Individual Name is required.
+          Client Name is required.
         </mat-error>
       </mat-form-field>
-    
-      <mat-form-field>
-        <input matInput type="text" name="companyName" placeholder="Company Name" [(ngModel)]="client.companyName" required #companyNameField="ngModel">
-        <mat-error *ngIf="companyNameField.errors && companyNameField.errors.required">
-          Company Name is required.
-        </mat-error>
-      </mat-form-field>
+
+      <div class="form-row">
+        <div class="col">
+          <mat-form-field>
+            <input matInput type="text" name="companyName" placeholder="Company Name" [(ngModel)]="client.companyName" required #companyNameField="ngModel">
+            <mat-error *ngIf="companyNameField.errors && companyNameField.errors.required">
+              Company Name is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-auto align-self-center">
+          <button class="btn btn-sm btn-outline-info" type="button" (click)="client.companyName = client.orgName">Copy from above</button>
+        </div>
+      </div>
     
       <mat-form-field>
         <input matInput type="text" name="nickName" placeholder="Nick Name" [(ngModel)]="client.nickName" #nickNameField="ngModel">
       </mat-form-field>
-    
-      <mat-form-field>
-        <input matInput type="text" name="category" placeholder="Category" [(ngModel)]="client.category" #categoryField="ngModel">
-      </mat-form-field>
+
+      <div class="form-row">
+        <div class="col">
+          <mat-form-field>
+            <input matInput type="text" name="category" placeholder="Category" [(ngModel)]="client.category" #categoryField="ngModel">
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field>
+            <input matInput type="text" name="subcategory" placeholder="Sub Category" [(ngModel)]="client.SubCategoryType" #subCategoryField="ngModel">
+          </mat-form-field>
+        </div>
+      </div>
 
       <div class="form-row">
         <div class="col-4">
@@ -46,17 +62,45 @@
           </mat-form-field>
         </div>
       </div>
+
+      <mat-form-field>
+        <input matInput [matDatepicker]="incDateField" placeholder="Incorporation Date" [(ngModel)]="client.IncorporationDate" name="incDate" disabled>
+        <mat-datepicker-toggle matSuffix [for]="incDateField"></mat-datepicker-toggle>
+        <mat-datepicker #incDateField disabled="false"></mat-datepicker>
+      </mat-form-field>
     
       <mat-form-field>
         <input matInput type="text" name="website" placeholder="Website" [(ngModel)]="client.website" #websiteField="ngModel">
       </mat-form-field>
     
       <mat-form-field>
-        <input matInput type="text" name="panNo" placeholder="PAN Number" [(ngModel)]="client.panNo" #panNoField="ngModel">
+        <input matInput type="text" name="panNo" placeholder="PAN Number" minlength="10" maxlength="10" [(ngModel)]="client.panNo" #panNoField="ngModel">
       </mat-form-field>
-    
+
+      <div class="form-row">
+        <div class="{{client.GSTIN.GSTType != 'URD' ? 'col-auto' : 'col'}}">
+          <mat-form-field>
+            <mat-select placeholder="GST Type" name="gstType" [(ngModel)]="client.GSTIN.GSTType">
+              <mat-option value="URD">URD</mat-option>
+              <mat-option value="RD">RD</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col" *ngIf="client.GSTIN.GSTType != 'URD'">
+          <mat-form-field>
+            <input matInput type="text" name="gstNo" placeholder="GST Number" [(ngModel)]="client.GSTIN.GSTNo" required minlength="15" maxlength="15" #gstNoField="ngModel">
+            <mat-error *ngIf="gstNoField.errors && gstNoField.errors.required">
+              GSTIN is required.
+            </mat-error>
+            <mat-error *ngIf="gstNoField.errors && (gstNoField.errors.minlength || gstNoField.errors.maxlength)">
+              GSTIN should be 15 characters long.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
       <mat-form-field>
-        <input matInput type="text" name="gstNo" placeholder="GST Number" [(ngModel)]="client.gstNo" #gstNoField="ngModel">
+        <input matInput type="text" name="remark" placeholder="Remark" [(ngModel)]="client.Remark" #remarkField="ngModel">
       </mat-form-field>
     </mat-expansion-panel>
     <mat-expansion-panel>
@@ -66,14 +110,11 @@
       </mat-expansion-panel-header>
 
       <mat-form-field>
-        <input matInput type="text" name="address" placeholder="Address" [(ngModel)]="client.address.address" required #addressField="ngModel">
-        <mat-error *ngIf="addressField.errors && addressField.errors.required">
-          Address is required.
-        </mat-error>
+        <input matInput type="text" name="address" placeholder="Address" [(ngModel)]="client.address.address" #addressField="ngModel">
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput type="tel" minlength="6" maxlength="6" name="pincode" placeholder="Pincode" [(ngModel)]="client.address.pincode" required #pincodeField="ngModel">
+        <input matInput type="tel" minlength="6" maxlength="6" name="pincode" placeholder="Pincode" [(ngModel)]="client.address.pincode" #pincodeField="ngModel">
         <mat-error *ngIf="pincodeField.errors && pincodeField.errors.required">
           Pincode is required.
         </mat-error>
@@ -203,11 +244,15 @@
           </mat-expansion-panel-header>
 
           <mat-form-field>
-            <input matInput type="date" name="dob-{{i}}" placeholder="DOB" [(ngModel)]="item.dob" #dobField="ngModel">
+            <input matInput [matDatepicker]="dobField" placeholder="DOB" [(ngModel)]="item.dob" name="dob-{{i}}" disabled>
+            <mat-datepicker-toggle matSuffix [for]="dobField"></mat-datepicker-toggle>
+            <mat-datepicker #dobField disabled="false"></mat-datepicker>
           </mat-form-field>
     
           <mat-form-field>
-            <input matInput type="date" name="anniversaryDate-{{i}}" placeholder="Anniversary Date" [(ngModel)]="item.anniversaryDate" #anniversaryDateField="ngModel">
+            <input matInput [matDatepicker]="anniversaryDateField" placeholder="Anniversary Date" [(ngModel)]="item.anniversaryDate" name="anniversaryDate-{{i}}" disabled>
+            <mat-datepicker-toggle matSuffix [for]="anniversaryDateField"></mat-datepicker-toggle>
+            <mat-datepicker #anniversaryDateField disabled="false"></mat-datepicker>
           </mat-form-field>
         </mat-expansion-panel>
       </mat-accordion>

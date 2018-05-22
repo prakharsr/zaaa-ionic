@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from '../../services/api.service';
 import { Observable } from 'rxjs/Observable';
-import { MediaHouse, MediaHouseScheduling, Pullout } from './media-house';
 import { map, elementAt } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
+import { ApiService } from '@aaman/main/api.service';
+import { MediaHouse, MediaHouseScheduling } from '@aaman/dir/media-houses/media-house';
+import { PageData } from '@aaman/main/page-data';
 
 @Injectable()
 export class MediaHouseApiService {
@@ -12,19 +13,13 @@ export class MediaHouseApiService {
 
   createMediaHouse(mediaHouse: MediaHouse) : Observable<any> {
     let scheduling = [];
-    let pullouts = [];
-
-
+    
     if (mediaHouse.scheduling) {
       mediaHouse.scheduling.forEach(element => scheduling.push(this.schedulingToBody(element)));
     }
 
-    if (mediaHouse.pullouts) {
-      mediaHouse.pullouts.forEach(element => pullouts.push(element.name));
-    }
-
     return this.api.post('/user/mediahouse', {
-      pullouts: pullouts,
+      pullouts: mediaHouse.pullouts,
       organizationName: mediaHouse.orgName,
       publicationName: mediaHouse.pubName,
       nickName: mediaHouse.nickName,
@@ -34,10 +29,8 @@ export class MediaHouseApiService {
       officeStdNo: mediaHouse.officeStdNo,
       scheduling: scheduling,
       GSTIN: mediaHouse.GSTIN,
-      frequency: {
-        Period: mediaHouse.freqPeriod,
-        Remark: mediaHouse.freqRemark
-      },
+      Remark: mediaHouse.Remark,
+      Language: mediaHouse.Language
     });
   }
 
@@ -63,7 +56,7 @@ export class MediaHouseApiService {
     };
   }
 
-  private bodyToMediaHouse(body: any) : MediaHouse {
+  bodyToMediaHouse(body: any) : MediaHouse {
     let mediaHouse = new MediaHouse();
 
     mediaHouse.id = body._id;
@@ -77,13 +70,8 @@ export class MediaHouseApiService {
     mediaHouse.officeLandLine = body.OfficeLandline;
     mediaHouse.officeStdNo = body.officeStdNo;
     mediaHouse.GSTIN = body.GSTIN;
-
-    if (body.Frequency) {
-      let freq : {Period: string, Remark: string} = body.Frequency;
-
-      mediaHouse.freqPeriod = freq.Period;
-      mediaHouse.freqRemark = freq.Remark;
-    }
+    mediaHouse.Remark = body.Remark;
+    mediaHouse.Language = body.Language;
 
     let scheduling : MediaHouseScheduling[] = [];
 
@@ -96,9 +84,7 @@ export class MediaHouseApiService {
     mediaHouse.scheduling = scheduling;
     
     if(body.pullouts) {
-      body.pullouts.forEach(element => {
-        mediaHouse.pullouts.push(new Pullout(element));
-      })
+      mediaHouse.pullouts = body.pullouts;
     }
 
     return mediaHouse;
@@ -106,19 +92,14 @@ export class MediaHouseApiService {
 
   editMediaHouse(mediaHouse: MediaHouse) : Observable<any> {
     let scheduling = [];
-    let pullouts = [];
-   
+
     if (mediaHouse.scheduling) {
       mediaHouse.scheduling.forEach(element => scheduling.push(this.schedulingToBody(element)));
     }
     
-    if (mediaHouse.pullouts) {
-      mediaHouse.pullouts.forEach(element => pullouts.push(element.name));
-    }
-    
     return this.api.patch('/user/mediahouse/', {
       id: mediaHouse.id,
-      pullouts: pullouts,
+      pullouts: mediaHouse.pullouts,
       OrganizationName: mediaHouse.orgName,
       PublicationName: mediaHouse.pubName,
       NickName: mediaHouse.nickName,
@@ -127,13 +108,9 @@ export class MediaHouseApiService {
       OfficeLandline: mediaHouse.officeLandLine,
       officeStdNo: mediaHouse.officeStdNo,
       GSTIN: mediaHouse.GSTIN,
-      
-      Frequency: {
-        Period: mediaHouse.freqPeriod,
-        Remark: mediaHouse.freqRemark
-      },
-
-      Scheduling: scheduling
+      Scheduling: scheduling,
+      Remark: mediaHouse.Remark,
+      Language: mediaHouse.Language
     })
   }
 
@@ -143,8 +120,8 @@ export class MediaHouseApiService {
     );
   }
 
-  getMediaHouses(global: boolean = false) : Observable<MediaHouse[]> {
-    return this.api.get(global ? '/user/mediahouses/global' : '/user/mediahouses').pipe(
+  getMediaHouses(page: number, global: boolean = false) : Observable<PageData<MediaHouse>> {
+    return this.api.get((global ? '/user/mediahouses/global/' : '/user/mediahouses/') + page).pipe(
       map(data => {
         let mediaHouses : MediaHouse[] = [];
 
@@ -154,14 +131,34 @@ export class MediaHouseApiService {
           });
         }
 
-        return mediaHouses;
+        return new PageData<MediaHouse>(mediaHouses, data.perPage, data.page, data.pageCount);
       })
     );
   }
 
   searchMediaHouses(query: string) : Observable<MediaHouse[]> {
     if (query) {
-      return this.api.get('/user/mediahouses/' + query).pipe(
+      return this.api.get('/user/mediahouses/search/' + query).pipe(
+        map(data => {
+          let mediaHouses : MediaHouse[] = [];
+
+          if (data.success) {
+            data.mediahouses.forEach(element => {
+              mediaHouses.push(this.bodyToMediaHouse(element));            
+            });
+          }
+
+          return mediaHouses;
+        })
+      );
+    }
+
+    return of([]);
+  }
+
+  searchMediaHousesByEdition(query: string, mediaHouseName: string) : Observable<MediaHouse[]> {
+    if (query && mediaHouseName) {
+      return this.api.get('/user/mediahouses/search/' + mediaHouseName + "/" + query).pipe(
         map(data => {
           let mediaHouses : MediaHouse[] = [];
 

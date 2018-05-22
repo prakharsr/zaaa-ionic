@@ -1,16 +1,16 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { WindowService } from '../../services/window.service';
-import { GobackService } from '../../services/goback.service';
 
 @Component({
   selector: 'app-empty',
   templateUrl: './empty.component.html',
-  // styleUrls: ['./empty.component.css']
+  // 
 })
 export class EmptyComponent implements OnInit {
 
-  constructor(public navCtrl: NavController, private winRef: WindowService, public navParams: NavParams, public goback:GobackService) { }
+  constructor(public goback: GobackService, public navCtrl: NavController, private winRef: WindowService, public navParams: NavParams) { }
 
   ngOnInit() {
     this.goback.urlInit();

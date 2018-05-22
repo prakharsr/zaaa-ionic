@@ -1,13 +1,13 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../services/api.service';
 import { Router } from '@angular/router';
-import { NotificationService } from '../../services/notification.service';
-import { GobackService } from '../../services/goback.service';
+import { ApiService } from '@aaman/main/api.service';
+import { NotificationService } from '@aaman/main/notification.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  // styleUrls: ['./register.component.css']
+  
 })
 export class RegisterComponent implements OnInit {
 
@@ -15,11 +15,12 @@ export class RegisterComponent implements OnInit {
   email: string;
   acceptTnC: boolean;
 
-  constructor(private api: ApiService, private router: Router, private notifications: NotificationService, public goback: GobackService) { }
+  constructor(public goback: GobackService, private api: ApiService,
+    private router: Router,
+    private notifications: NotificationService) { }
 
   ngOnInit() {
-    this.goback.urlInit();
-   }
+    this.goback.urlInit(); }
 
   GoToDashboard() : void {
     this.router.navigateByUrl('/dashboard');
@@ -37,10 +38,6 @@ export class RegisterComponent implements OnInit {
 
           this.notifications.show(data.msg);
         }
-      },
-      err => {
-        this.notifications.show("Connection failed");
-        console.log(err);
       }
     );
   }

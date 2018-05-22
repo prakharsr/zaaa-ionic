@@ -1,7 +1,7 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { Platform } from 'ionic-angular';
-import { ApiService } from './api.service';
+import { ApiService } from '@aaman/main/api.service';
 
 @Injectable()
 

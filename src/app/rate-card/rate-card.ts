@@ -1,7 +1,7 @@
 export class RateCard {
     mediaType = "";
     adType = "";
-    adTime = "";
+    AdTime = "";
     rateCardType = "";
     
     mediaHouseName = "";
@@ -31,7 +31,7 @@ export class RateCard {
     rate = 0;
     global: boolean;
 
-    AdWordsMax = 50;
+    AdWordsMax = 0;
 
     PremiumCustom = {
         PremiumType: "",

@@ -6,7 +6,7 @@
 
 <div class="container">
 
-<button class="fab bg-info" *ngIf="admin" (click)="this.goback.gotoComponent('firm/edit')">
+<button class="fab bg-info" *ngIf="admin" routerLink="/firm/edit">
   <mat-icon>edit</mat-icon>
 </button>
 
@@ -49,10 +49,16 @@
         </li>
         <li class="list-group-item">
           <div class="row">
-            <div class="col-md-4">Phone</div>
+            <div class="col-md-4">Mobile 1</div>
             <div class="col-md-8">{{profile.phone}}</div>
           </div>
-        </li>     
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-4">Mobile 2</div>
+            <div class="col-md-8">{{profile.OtherMobile}}</div>
+          </div>
+        </li>
         <li class="list-group-item">
           <div class="row">
             <div class="col-md-4">STD Number</div>
@@ -85,8 +91,8 @@
         </li>    
         <li class="list-group-item">
           <div class="row">
-            <div class="col-md-4">GST No.</div>
-            <div class="col-md-8">{{profile.gstNo}}</div>
+            <div class="col-md-4">GSTIN</div>
+            <div class="col-md-8">{{profile.GSTIN.GSTType}} {{profile.GSTIN.GSTNo}}</div>
           </div>
         </li>
       </ul>

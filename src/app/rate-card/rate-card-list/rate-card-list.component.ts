@@ -1,7 +1,5 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit } from '@angular/core';
-import { RateCard } from '../rate-card';
-import { RateCardApiService } from '../rate-card-api.service';
-import { DialogService } from '../../services/dialog.service';
 import { Observable } from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
 import 'rxjs/add/operator/catch';
@@ -9,29 +7,46 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/switchMap';
-import { Router } from '@angular/router';
-import { GobackService } from '../../services/goback.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { RateCard } from '@aaman/ratecard/rate-card';
+import { RateCardApiService } from '@aaman/ratecard/rate-card-api.service';
+import { DialogService } from '@aaman/main/dialog.service';
+import { PageData } from '@aaman/main/page-data';
 
 @Component({
   selector: 'app-rate-card-list',
   templateUrl: './rate-card-list.component.html',
-  // styleUrls: ['./rate-card-list.component.css']
+  
 })
 export class RateCardListComponent implements OnInit {
 
   ratecards: RateCard[] = [];
-  globalRateCards: RateCard[] = [];
+  global: boolean;
+
+  pageCount: number;
+  page: number;
+
+  dummyArray;
 
   query: string;
   searchFailed = false;
 
-  constructor(private api: RateCardApiService, private dialog: DialogService, private router: Router, public goback: GobackService) { }
+  constructor(public goback: GobackService, private api: RateCardApiService,
+    private dialog: DialogService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.goback.urlInit();
-    this.api.getRateCards().subscribe(data => this.ratecards = data);
-
-    this.api.getRateCards(true).subscribe(data => this.globalRateCards = data);
+    this.route.data.subscribe((data: { list: PageData<RateCard>, global: boolean }) => {
+        this.global = data.global;
+        this.ratecards = data.list.list;
+        this.pageCount = data.list.pageCount;
+        this.page = data.list.page;
+  
+        this.dummyArray = Array(this.pageCount);
+      });
+      
   }
 
   search = (text: Observable<string>) =>
@@ -47,6 +62,28 @@ export class RateCardListComponent implements OnInit {
 
   inputFormatter = (result: RateCard) => {
     this.router.navigateByUrl('/ratecards/' + result.id);
+  }
+
+  private navigateToReleaseOrder(ratecard: RateCard) {
+    this.router.navigateByUrl('/releaseorders/fromRateCard/' + ratecard.id);
+  }
+
+  createReleaseOrder(ratecard: RateCard) {
+    if (ratecard.validTill && ratecard.validTill < new Date()) {
+      this.dialog.showYesNo('Rate Card Expired', 'This Rate Card has expired, Do you wish to continue?').subscribe(result => {
+        if (result) {
+          this.navigateToReleaseOrder(ratecard);
+        }
+      });
+    }
+    else if (ratecard.validTill && new Date(ratecard.validTill).setDate(-30) < Date.now()) {
+      this.dialog.showYesNo('Rate Card Expired', 'This Rate Card is about to expire, Do you wish to continue?').subscribe(result => {
+        if (result) {
+          this.navigateToReleaseOrder(ratecard);
+        }
+      });
+    }
+    else this.navigateToReleaseOrder(ratecard);
   }
 
   deleteRateCard(ratecard: RateCard) {
@@ -66,5 +103,9 @@ export class RateCardListComponent implements OnInit {
         err => console.log(err)
       );
     });
+  }
+
+  navigate(i: number) {
+    this.router.navigate(['/ratecards/list', i]);
   }
 }

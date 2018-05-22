@@ -10,19 +10,25 @@ export class MediaHouse {
         state: "",
         pincode: ""
     };
+
     officeLandLine: string;
     officeStdNo: string;
+
     scheduling: MediaHouseScheduling[] = [];
 
-    freqPeriod = "";
-    freqRemark = "";
-
-    GSTIN: string;
+    GSTIN = {
+        GSTType: "RD",
+        GSTNo: ""
+    }
 
     global: boolean;
 
+    Remark: string;
+
     id: string;
     pullouts: Pullout[] = [];
+
+    Language: string;
 }
 
 export class MediaHouseScheduling {
@@ -34,8 +40,8 @@ export class MediaHouseScheduling {
 }
 
 export class Pullout {
-
-    constructor(public name: string) {
-
-    }
+    Name: string;
+    Language: string;
+    Frequency: string;
+    Remark: string;
 }

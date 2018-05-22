@@ -1,18 +1,20 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit } from '@angular/core';
-import { Executive } from '../executive';
-import { ExecutiveApiService } from '../executive-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NotificationService } from '../../../services/notification.service';
-import { GobackService } from '../../../services/goback.service';
+import { Executive } from '@aaman/dir/executives/executive';
+import { Firm } from '@aaman/main/firm';
+import { ExecutiveApiService } from '@aaman/dir/executives/executive-api.service';
+import { NotificationService } from '@aaman/main/notification.service';
 
 @Component({
   selector: 'app-executive',
   templateUrl: './executive.component.html',
-  // styleUrls: ['./executive.component.css']
+  
 })
 export class ExecutiveComponent implements OnInit {
 
   executive = new Executive();
+  firm: Firm;
 
   // dobModel;
 
@@ -20,10 +22,10 @@ export class ExecutiveComponent implements OnInit {
 
   edit = false;
   
-  constructor(private api: ExecutiveApiService,
+  constructor(public goback: GobackService, private api: ExecutiveApiService,
     private route: ActivatedRoute,
     private router: Router,
-    private notifications: NotificationService, public goback: GobackService) { }
+    private notifications: NotificationService) { }
 
   ngOnInit() {
     this.goback.urlInit();
@@ -33,8 +35,14 @@ export class ExecutiveComponent implements OnInit {
 
         this.edit = true;
 
-        this.route.data.subscribe((data: { executive: Executive }) => {
+        this.route.data.subscribe((data: { executive: Executive, firm: Firm }) => {
           this.executive = data.executive;
+          this.firm = data.firm;
+        });
+      }
+      else {
+        this.route.data.subscribe((data: { firm: Firm }) => {
+          this.firm = data.firm;
         });
       }
     });
@@ -53,11 +61,6 @@ export class ExecutiveComponent implements OnInit {
         else {
           this.notifications.show(data.msg);
         }
-      },
-      err => {
-        console.log(err);
-
-        this.notifications.show('Connection failed');
       }
     )
   }
@@ -71,11 +74,6 @@ export class ExecutiveComponent implements OnInit {
         else {
           this.notifications.show(data.msg);
         }
-      },
-      err => {
-        console.log(err);
-
-        this.notifications.show('Connection failed');
       }
     )
   }

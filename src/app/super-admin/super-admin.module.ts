@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BaseModule } from '../base.module';
-import { SuperAdminRoutingModule } from './super-admin-routing.module';
-import { AdCategoriesComponent } from './ad-categories/ad-categories.component';
-import { IonicModule } from 'ionic-angular';
+import { SuperAdminRoutingModule } from '@aaman/superadmin/super-admin-routing.module';
+import { AdCategoriesComponent } from '@aaman/superadmin/ad-categories/ad-categories.component';
 
 @NgModule({
   imports: [
-    IonicModule.forRoot(SuperAdminModule),
     BaseModule,
     SuperAdminRoutingModule
   ],

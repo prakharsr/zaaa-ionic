@@ -1,15 +1,15 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit } from '@angular/core';
-import { MediaHouse, MediaHouseScheduling, Pullout } from '../media-house';
-import { MediaHouseApiService } from '../media-house-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { StateApiService } from '../../../services/state-api.service';
-import { NotificationService } from '../../../services/notification.service';
-import { GobackService } from '../../../services/goback.service';
+import { MediaHouse, MediaHouseScheduling, Pullout } from '@aaman/dir/media-houses/media-house';
+import { MediaHouseApiService } from '@aaman/dir/media-houses/media-house-api.service';
+import { StateApiService } from '@aaman/main/state-api.service';
+import { NotificationService } from '@aaman/main/notification.service';
 
 @Component({
   selector: 'app-media-house',
   templateUrl: './media-house.component.html',
-  // styleUrls: ['./media-house.component.css']
+  
 })
 export class MediaHouseComponent implements OnInit {
 
@@ -22,11 +22,11 @@ export class MediaHouseComponent implements OnInit {
   periods = ['Daily', 'Weekly', 'BiWeekly', 'Monthly'];
   mediaTypes = ['Print', 'Air', 'Electronic'];
 
-  constructor(private api: MediaHouseApiService,
+  constructor(public goback: GobackService, private api: MediaHouseApiService,
     private route: ActivatedRoute,
     private router: Router,
     public stateApi: StateApiService,
-    private notifications: NotificationService, public goback: GobackService) { }
+    private notifications: NotificationService) { }
 
   ngOnInit() {
     this.goback.urlInit();
@@ -42,9 +42,6 @@ export class MediaHouseComponent implements OnInit {
       }
       else {
         this.mediaHouse.mediaType = this.mediaTypes[0];
-        this.mediaHouse.scheduling = [new MediaHouseScheduling()];
-        this.mediaHouse.pullouts = [new Pullout('Main')];
-        this.mediaHouse.freqPeriod = this.periods[0];
       }
     });
   }
@@ -54,7 +51,7 @@ export class MediaHouseComponent implements OnInit {
   }
 
   addPullouts() {
-    this.mediaHouse.pullouts.push(new Pullout(''));
+    this.mediaHouse.pullouts.push(new Pullout());
   }
 
   removePullouts(i: number) {
@@ -78,11 +75,6 @@ export class MediaHouseComponent implements OnInit {
         else {
           this.notifications.show(data.msg);
         }
-      },
-      err => {
-        console.log(err);
-
-        this.notifications.show('Connection failed');
       }
     )
   }
@@ -96,11 +88,6 @@ export class MediaHouseComponent implements OnInit {
         else {
           this.notifications.show(data.msg);
         }
-      },
-      err => {
-        console.log(err);
-
-        this.notifications.show('Connection failed');
       }
     )
   }

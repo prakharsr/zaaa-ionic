@@ -1,14 +1,16 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Template } from '../../models/template';
+import { Template } from '@aaman/main/template';
 
 @Component({
   selector: 'app-template-selector-item',
   templateUrl: './template-selector-item.component.html',
-  // styleUrls: ['./template-selector-item.component.css']
+  
 })
 export class TemplateSelectorItemComponent implements OnInit {
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.goback.urlInit(); }
 
   @Input() name: string;
 
@@ -32,7 +34,7 @@ export class TemplateSelectorItemComponent implements OnInit {
 
   @Output() @Input() selectedTemplate: Template;
 
-  constructor() { }
+  constructor(public goback: GobackService, ) { }
 
   private updateTemplate() {
     this.selectedTemplate = this.templates[this.selectedIndex];

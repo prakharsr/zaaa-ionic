@@ -1,18 +1,26 @@
-import { Address } from "../../models/address";
+import { Address } from "@aaman/main/address";
 
 export class Client {
     orgName: string;
     companyName: string;
     nickName: string;
     category: string;
+    SubCategoryType: string;
     address = new Address();
     landLine: string;
     stdNo: string;
     website: string;
     panNo: string;
-    gstNo: string;
+    
+    GSTIN = {
+        GSTType: "RD",
+        GSTNo: ""
+    }
+
     id: string;
     contactpersons: ContactPerson[] = []; 
+    Remark: string;
+    IncorporationDate: Date;
 }
 
 export class ContactPerson {

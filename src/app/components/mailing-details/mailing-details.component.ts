@@ -1,28 +1,21 @@
-import { Component, OnInit, Output, EventEmitter, Inject } from '@angular/core';
-import { MailingDetails } from '../../models/mailing-details';
+import { GobackService } from '@aaman/main/goback.service';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
-import { GobackService } from '../../services/goback.service';
+import { MailingDetails } from '@aaman/main/mailing-details';
 
 @Component({
   selector: 'app-mailing-details',
   templateUrl: './mailing-details.component.html',
-  // styleUrls: ['./mailing-details.component.css']
+  
 })
 export class MailingDetailsComponent implements OnInit {
 
   details = new MailingDetails();
 
-  @Output() done = new EventEmitter<MailingDetails>();
-
-  constructor(@Inject(MAT_DIALOG_DATA) private data: any , public goback: GobackService) { }
+  constructor(public goback: GobackService, @Inject(MAT_DIALOG_DATA) private data: any) { }
 
   ngOnInit() {
     this.goback.urlInit();
     this.details.to = this.data.to;
   }
-
-  submit() {
-    this.done.emit(this.details);
-  }
-
 }

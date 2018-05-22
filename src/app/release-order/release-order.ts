@@ -1,7 +1,9 @@
 import { NgbDate } from "@ng-bootstrap/ng-bootstrap/datepicker/ngb-date";
 
 export class Insertion {
-    constructor(public date: NgbDate, public marked = false) {}
+    constructor(public date: NgbDate, public marked = false, public state = 0) {}
+
+    _id = "";
 }
 
 export class TaxValues
@@ -18,7 +20,10 @@ export class ReleaseOrder {
     
     agencyName = "";
     agencyAddress = "";
-    agencyGSTIN = "";
+    agencyGSTIN = {
+        GSTType: "URD",
+        GSTNo: ""
+    }
     agencyPerson = "";
     
     signature = "";
@@ -26,13 +31,19 @@ export class ReleaseOrder {
     publicationName = "";
     publicationEdition = "";
     publicationState = "";
-    publicationGSTIN = "";
+    publicationGSTIN = {
+        GSTType: "URD",
+        GSTNo: ""
+    }
     
     mediaType = "";
     
     clientName = "";
     clientState = "";
-    clientGSTIN = "";
+    clientGSTIN = {
+        GSTType: "URD",
+        GSTNo: ""
+    }
     
     adType = "";
     rate = 0;
@@ -56,7 +67,7 @@ export class ReleaseOrder {
     
     adEdition = "";
     adPosition = "";
-    adTime = ""
+    AdTime = ""
     
     adSchemePaid = 0;
     adSchemeFree = 0;
@@ -137,6 +148,8 @@ export class ReleaseOrder {
     };
     
     clientPayment = 0;
+
+    generated = false;
 }
 
 export class OtherCharges {

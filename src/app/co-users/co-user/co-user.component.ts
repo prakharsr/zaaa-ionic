@@ -1,22 +1,23 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { CoUser } from '../co-user';
-import { UserRoles } from '../user-roles';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { CoUserApiService } from '../co-user-api.service';
-import { NotificationService } from '../../services/notification.service';
-import { GobackService } from '../../services/goback.service';
+import { CoUser } from '@aaman/couser/co-user';
+import { CoUserApiService } from '@aaman/couser/co-user-api.service';
+import { NotificationService } from '@aaman/main/notification.service';
 
 @Component({
   selector: 'app-co-user',
   templateUrl: './co-user.component.html',
-  // styleUrls: ['./co-user.component.css']
+  
 })
 export class CoUserComponent implements OnInit {
 
   coUser = new CoUser();
 
-  constructor(private api: CoUserApiService, private router: Router, private notifications: NotificationService, private goback:GobackService) { }
+  constructor(public goback: GobackService, private api: CoUserApiService,
+    private router: Router,
+    private notifications: NotificationService) { }
 
   ngOnInit() {
     this.goback.urlInit();
@@ -43,11 +44,6 @@ export class CoUserComponent implements OnInit {
 
                 this.notifications.show(d.msg);
               }
-            },
-            err => {
-              console.log(err);
-
-              this.notifications.show('Connection failed');
             });
           }
           else this.navigateBack();
@@ -57,11 +53,6 @@ export class CoUserComponent implements OnInit {
 
           this.notifications.show(data.msg);
         }
-      },
-      err => {
-        console.log(err);
-
-        this.notifications.show('Connection failed');
       }
     );
   }

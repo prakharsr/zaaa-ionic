@@ -1,6 +1,5 @@
 export class Executive {
     orgName: string;
-    companyName: string;
     executiveName: string;
     designation: string;
     department: string;
@@ -9,6 +8,7 @@ export class Executive {
     photo: string;
     dob: string;
     anniversaryDate: string;
+    Remark: string;
 
     id: string;
 }

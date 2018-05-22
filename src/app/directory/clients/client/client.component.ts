@@ -1,15 +1,15 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit } from '@angular/core';
-import { Client, ContactPerson } from '../client';
-import { ClientApiService } from '../client-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { StateApiService } from '../../../services/state-api.service';
-import { NotificationService } from '../../../services/notification.service';
-import { GobackService } from '../../../services/goback.service';
+import { Client, ContactPerson } from '@aaman/dir/clients/client';
+import { ClientApiService } from '@aaman/dir/clients/client-api.service';
+import { StateApiService } from '@aaman/main/state-api.service';
+import { NotificationService } from '@aaman/main/notification.service';
 
 @Component({
   selector: 'app-client',
   templateUrl: './client.component.html',
-  // styleUrls: ['./client.component.css']
+  
 })
 export class ClientComponent implements OnInit {
 
@@ -19,11 +19,11 @@ export class ClientComponent implements OnInit {
 
   edit = false;
 
-  constructor(private api: ClientApiService,
+  constructor(public goback: GobackService, private api: ClientApiService,
     private route: ActivatedRoute,
     private router: Router,
     public stateApi: StateApiService,
-    private notifications: NotificationService, public goback: GobackService) { }
+    private notifications: NotificationService) { }
 
   ngOnInit() {
     this.goback.urlInit();
@@ -54,11 +54,6 @@ export class ClientComponent implements OnInit {
         else {
           this.notifications.show(data.msg);
         }
-      },
-      err => {
-        console.log(err);
-
-        this.notifications.show('Connection failed');
       }
     )
   }
@@ -72,11 +67,6 @@ export class ClientComponent implements OnInit {
         else {
           this.notifications.show(data.msg);
         }
-      },
-      err => {
-        console.log(err);
-
-        this.notifications.show('Connection failed');
       }
     )
   }

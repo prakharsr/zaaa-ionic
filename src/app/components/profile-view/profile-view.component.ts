@@ -1,25 +1,25 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit } from '@angular/core';
-import { UserProfile } from '../../models/user-profile';
-import { ApiService } from '../../services/api.service';
-import { environment } from '../../../environments/environment';
-import { NotificationService } from '../../services/notification.service';
-import { DialogService } from '../../services/dialog.service';
 import { ActivatedRoute } from '@angular/router';
-import { GobackService } from '../../services/goback.service';
+import { UserProfile } from '@aaman/main/user-profile';
+import { ApiService } from '@aaman/main/api.service';
+import { DialogService } from '@aaman/main/dialog.service';
+import { NotificationService } from '@aaman/main/notification.service';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-profile-view',
   templateUrl: './profile-view.component.html',
-  // styleUrls: ['./profile-view.component.css']
+  
 })
 export class ProfileViewComponent implements OnInit {
 
   profile = new UserProfile();
 
-  constructor(private api: ApiService,
+  constructor(public goback: GobackService, private api: ApiService,
     private dialog: DialogService,
     private notifications: NotificationService,
-    private route: ActivatedRoute, public goback: GobackService) { }
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.goback.urlInit();
@@ -41,11 +41,6 @@ export class ProfileViewComponent implements OnInit {
 
           this.notifications.show(data.msg);
         }
-      },
-      err => {
-        console.log(err);
-
-        this.notifications.show("Connection failed");
       }
     );
   }
@@ -69,11 +64,6 @@ export class ProfileViewComponent implements OnInit {
     
               this.notifications.show(data.msg);
             }
-          },
-          err => {
-            console.log(err);
-    
-            this.notifications.show("Connection failed");
           }
         )
       }
@@ -93,11 +83,6 @@ export class ProfileViewComponent implements OnInit {
 
           this.notifications.show(data.msg);
         }
-      },
-      err => {
-        console.log(err);
-
-        this.notifications.show("Connection failed");
       }
     );
   }
@@ -121,11 +106,6 @@ export class ProfileViewComponent implements OnInit {
     
               this.notifications.show(data.msg);
             }
-          },
-          err => {
-            console.log(err);
-    
-            this.notifications.show("Connection failed");
           }
         )
       }

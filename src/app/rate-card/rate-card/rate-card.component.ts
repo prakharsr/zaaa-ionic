@@ -1,6 +1,5 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit } from '@angular/core';
-import { RateCard, FixSize, Scheme, Covered, Remark, Category, Tax } from '../rate-card';
-import { RateCardApiService } from '../rate-card-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
@@ -9,15 +8,17 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 import { map } from 'rxjs/operators';
-import { MediaHouseApiService } from '../../directory/media-houses/media-house-api.service';
-import { MediaHouse, Pullout } from '../../directory/media-houses/media-house';
-import { NotificationService } from '../../services/notification.service';
-import { GobackService } from '../../services/goback.service';
+import { RateCardApiService } from '@aaman/ratecard/rate-card-api.service';
+import { MediaHouseApiService } from '@aaman/dir/media-houses/media-house-api.service';
+import { NotificationService } from '@aaman/main/notification.service';
+import { OptionsService } from '@aaman/main/options.service';
+import { RateCard, Category, FixSize, Scheme, Covered, Remark, Tax } from '@aaman/ratecard/rate-card';
+import { MediaHouse, Pullout } from '@aaman/dir/media-houses/media-house';
 
 @Component({
   selector: 'app-rate-card',
   templateUrl: './rate-card.component.html',
-  // styleUrls: ['./rate-card.component.css']
+  
 })
 export class RateCardComponent implements OnInit {
 
@@ -30,11 +31,12 @@ export class RateCardComponent implements OnInit {
   dropdownPullOutName: string;
   customPullOutName = 'Main';
 
-  constructor(private api: RateCardApiService,
+  constructor(public goback: GobackService, private api: RateCardApiService,
     private route: ActivatedRoute,
     private router: Router,
     private mediaHouseApi: MediaHouseApiService,
-    private notifications: NotificationService, public goback: GobackService) { }
+    private notifications: NotificationService,
+    private options: OptionsService) { }
 
   rateCard = new RateCard();
   selectedCategories: Category[] = [null, null, null, null, null, null];
@@ -80,7 +82,7 @@ export class RateCardComponent implements OnInit {
     this.rateCard.unit = this.units[0];
     this.rateCard.position = this.positions[0];
     this.rateCard.hue = this.hues[0];
-    this.rateCard.adTime = this.adTimes[0];
+    this.rateCard.AdTime = this.adTimes[0];
     this.dropdownPullOutName = this.others;
   }
 
@@ -89,9 +91,10 @@ export class RateCardComponent implements OnInit {
       this.rateCard = data;
 
       let dirMediaHouse = new MediaHouse();
-      dirMediaHouse.orgName = this.rateCard.mediaHouseName;
+      dirMediaHouse.pubName = this.rateCard.mediaHouseName;
       dirMediaHouse.address.edition = this.rateCard.bookingEdition;
       this.mediaHouse = dirMediaHouse;
+      this.edition = dirMediaHouse;
 
       this.dropdownPullOutName = this.others;
       this.customPullOutName = this.rateCard.pullOutName;
@@ -160,6 +163,7 @@ export class RateCardComponent implements OnInit {
   }
 
   mediaHouse;
+  edition;
 
   searchMediaHouse = (text: Observable<string>) => {
     return text.debounceTime(300)
@@ -168,19 +172,37 @@ export class RateCardComponent implements OnInit {
       .catch(() => of([]));
   }
 
+  searchEdition = (text: Observable<string>) => {
+    return text.debounceTime(300)
+      .distinctUntilChanged()
+      .switchMap(term => this.mediaHouseApi.searchMediaHousesByEdition(term,
+        this.mediaHouse ? (this.mediaHouse.pubName ? this.mediaHouse.pubName : this.mediaHouse) : null))
+      .catch(() => of([]));
+  }
+
   pullouts: Pullout[] = [];
   
   mediaHouseInputFormatter = (result: MediaHouse) => {
-    this.rateCard.bookingEdition = result.address.edition;
+    this.edition = result;
 
     if (result.pullouts) {
       this.pullouts = result.pullouts;
     }
 
-    return result.orgName;
+    return result.pubName;
   }
   
-  mediaHouseResultFormatter = (result: MediaHouse) => result.orgName + " - " + result.address.edition;
+  mediaHouseResultFormatter = (result: MediaHouse) => result.pubName + " - " + result.address.edition;
+
+  editionInputFormatter = (result: MediaHouse) => {
+    if (result.pullouts) {
+      this.pullouts = result.pullouts;
+    }
+
+    return result.address.edition;
+  }
+  
+  editionResultFormatter = (result: MediaHouse) => result.address.edition;
 
   categoryInputFormatter = (result: Category) => {
     let stack : Category[] = [];
@@ -218,6 +240,8 @@ export class RateCardComponent implements OnInit {
 
   ngOnInit() {
     this.goback.urlInit();
+    this.categories = this.options.categories;
+
     this.route.paramMap.subscribe(params => {
       if (params.has('id')) {
         this.id = params.get('id');
@@ -253,6 +277,7 @@ export class RateCardComponent implements OnInit {
     this.rateCard.mediaType = mediaType;
 
     this.rateCard.adType = this.adTypes[0];
+    this.rateCard.unit = this.units[0];
   }
 
   get adTypes() {
@@ -281,6 +306,7 @@ export class RateCardComponent implements OnInit {
 
     if (this.isTypeWords) {
       result.push('Words');
+      result.push('Lines');
     }
 
     if (this.isTypeTime) {
@@ -300,28 +326,7 @@ export class RateCardComponent implements OnInit {
     return result;
   }
   
-  categories = [
-    new Category('Property'),
-    new Category('Education'),
-    new Category('Medical', [
-      new Category('Surgery', [
-        new Category('C', [
-          new Category('Heart Surgery', [
-            new Category('Transplant', [
-              new Category('Deepest')
-            ])
-          ])
-        ]),
-        new Category('R', [
-          new Category('S', [
-            new Category('Deepest')
-          ])
-        ])
-      ])
-    ]),
-    new Category('Women'),
-    new Category('Real Estate')
-  ];
+  categories: Category[];
 
   getCategory(index: number) {
     return this.selectedCategories[index];
@@ -361,9 +366,7 @@ export class RateCardComponent implements OnInit {
     this.rateCard.fixSizes.splice(i, 1);
   }
 
-  get adTimes() {
-    return ['Any Time', 'Prime Time ', 'Evening', 'Morning'];
-  }
+  adTimes = ['Any Time', 'Prime Time ', 'Evening', 'Morning'];
 
   addScheme(){
     this.rateCard.schemes.push(new Scheme());
@@ -375,6 +378,18 @@ export class RateCardComponent implements OnInit {
 
   addCovered() {
     this.rateCard.covered.push(new Covered());
+  }
+
+  copyCovered() {
+    let covered = new Covered();
+
+    if (this.mediaHouse) {
+      covered.covMediaHouse = this.mediaHouse.pubName ? this.mediaHouse.pubName : this.mediaHouse;
+    }
+
+    covered.covEdition = this.rateCard.bookingEdition;
+
+    this.rateCard.covered.push(covered);
   }
 
   removeCovered(i: number) {
@@ -408,11 +423,6 @@ export class RateCardComponent implements OnInit {
 
           this.notifications.show(data.msg);
         }
-      },
-      err => {
-        console.log(err);
-
-        this.notifications.show('Connection failed');
       }
     );
   }
@@ -426,11 +436,6 @@ export class RateCardComponent implements OnInit {
         else {
           this.notifications.show(data.msg);
         }
-      },
-      err => {
-        console.log(err);
-
-        this.notifications.show('Connection failed');
       }
     )
   }
@@ -438,7 +443,10 @@ export class RateCardComponent implements OnInit {
   submit () {
     this.rateCard.categories = [];
 
-    this.rateCard.mediaHouseName = this.mediaHouse.orgName ? this.mediaHouse.orgName : this.mediaHouse;
+    this.rateCard.mediaHouseName = this.mediaHouse && this.mediaHouse.pubName ? this.mediaHouse.pubName : this.mediaHouse;
+
+    this.rateCard.bookingEdition = this.edition && this.edition.address && this.edition.address.edition
+      ? this.edition.address.edition : this.edition;
 
     this.selectedCategories.forEach(element => {
       if (element) {

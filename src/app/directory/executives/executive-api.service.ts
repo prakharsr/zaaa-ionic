@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from '../../services/api.service';
 import { Observable } from 'rxjs/Observable';
-import { Executive } from './executive';
 import { map } from 'rxjs/operators';
-import { environment } from '../../../environments/environment';
 import { of } from 'rxjs/observable/of';
+import { ApiService } from '@aaman/main/api.service';
+import { Executive } from '@aaman/dir/executives/executive';
+import { environment } from 'environments/environment';
+import { PageData } from '@aaman/main/page-data';
 
 @Injectable()
 export class ExecutiveApiService {
@@ -14,24 +15,23 @@ export class ExecutiveApiService {
   createExecutive(executive: Executive) : Observable<any> {
     return this.api.post('/user/executive', {
       organizationName: executive.orgName,
-      companyName: executive.companyName,
       executiveName: executive.executiveName,
       designation: executive.designation,
       department: executive.department,
       mobileNo: executive.mobileNo,
       email: executive.email,
       dob: executive.dob,
-      anniversary: executive.anniversaryDate
+      anniversary: executive.anniversaryDate,
+      Remark: executive.Remark
     });
   }
 
-  private bodyToExecutive(body: any) : Executive {
+  bodyToExecutive(body: any) : Executive {
     let executive = new Executive();
 
     executive.id = body._id;
 
     executive.orgName = body.OrganizationName;
-    executive.companyName = body.CompanyName;
     executive.executiveName = body.ExecutiveName;
     executive.designation = body.Designation;
     executive.department = body.Department;
@@ -45,6 +45,8 @@ export class ExecutiveApiService {
     executive.dob = body.DateOfBirth;
     executive.anniversaryDate = body.Anniversary;
 
+    executive.Remark = body.Remark;
+
     return executive;
   }
 
@@ -54,8 +56,8 @@ export class ExecutiveApiService {
     );
   }
 
-  getExecutives() : Observable<Executive[]> {
-    return this.api.get('/user/executives').pipe(
+  getExecutives(page: number) : Observable<PageData<Executive>> {
+    return this.api.get('/user/executives/' + page).pipe(
       map(data => {
         let executives : Executive[] = [];
 
@@ -65,14 +67,14 @@ export class ExecutiveApiService {
           });
         }
 
-        return executives;
+        return new PageData<Executive>(executives, data.perPage, data.page, data.pageCount);
       })
     );
   }
 
   searchExecutives(query: string) : Observable<Executive[]> {
     if (query) {
-      return this.api.get('/user/executives/' + query).pipe(
+      return this.api.get('/user/executives/search/' + query).pipe(
         map(data => {
           let executives : Executive[] = [];
 
@@ -90,18 +92,38 @@ export class ExecutiveApiService {
     return of([]);
   }
 
+  searchExecutivesByOrg(org: string, query: string) : Observable<Executive[]> {
+    if (query) {
+      return this.api.get('/user/executives/search/' + org + '/' + query).pipe(
+        map(data => {
+          let executives : Executive[] = [];
+
+          if (data.success) {
+            data.executives.forEach(element => {
+              executives.push(this.bodyToExecutive(element));     
+            });
+          }
+
+          return executives;
+        })
+      );
+    }
+
+    return of([]);
+  }
+
   editExecutive(executive: Executive) : Observable<any> {
     return this.api.patch('/user/executive', {
       id: executive.id,
       OrganizationName: executive.orgName,
-      CompanyName: executive.companyName,
       ExecutiveName: executive.executiveName,
       Designation: executive.designation,
       Department: executive.department,
       MobileNo: executive.mobileNo,
-      EmailId: executive.mobileNo,
+      EmailId: executive.email,
       DateOfBirth: executive.dob,
-      Anniversary: executive.anniversaryDate
+      Anniversary: executive.anniversaryDate,
+      Remark: executive.Remark
     });
   }
 

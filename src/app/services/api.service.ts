@@ -1,21 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { map } from 'rxjs/operators/map';
+import { retry } from 'rxjs/operators';
 import 'rxjs/add/operator/finally';
-
-import { Plan } from '../models/plan';
-import { Template } from '../models/template';
-
-import { WindowService } from './window.service';
-
-import { environment } from '../../environments/environment';
-import { UserProfile } from '../models/user-profile';
-import { Firm } from '../models/firm';
-import { Address } from '../models/address';
-import { LoaderService } from './loader.service';
+import 'rxjs/add/observable/throw';
+import { WindowService } from '@aaman/main/window.service';
+import { LoaderService } from '@aaman/main/loader.service';
+import { NotificationService } from '@aaman/main/notification.service';
+import { environment } from 'environments/environment';
+import { Template } from '@aaman/main/template';
+import { Plan } from '@aaman/main/plan';
+import { BillingDetails } from '@aaman/main/billing-details/billing-details.component';
+import { UserProfile } from '@aaman/main/user-profile';
+import { Firm } from '@aaman/main/firm';
 
 @Injectable()
 export class ApiService {
@@ -51,24 +50,41 @@ export class ApiService {
     }
   }
 
-  constructor(private http: HttpClient, private windowService: WindowService, private loaderService: LoaderService) { }
+  constructor(private http: HttpClient,
+    private windowService: WindowService,
+    private loaderService: LoaderService,
+    private notifications: NotificationService) { }
 
   private get headers() {
     return { headers: { Authorization: this.authToken }};
   }
 
-  post(url: string, body: any) : Observable<any> {
+  private apply(obj: Observable<any>) {
+    return obj.pipe(
+      retry(2)
+    ).catch(err => {
+      console.log(err);
+
+      this.notifications.show('Connection to ther server failed!');
+
+      return Observable.throw(err);
+    })
+    .finally(() => this.loaderService.hide())  
+  }
+
+  post(url: string, body: any, extra = {}) : Observable<any> {
 
     this.loaderService.show();
 
     if (this.authToken)
     {
-        return this.http.post(environment.apiUrl + url, body, this.headers)
-          .finally(() => this.loaderService.hide());
+        return this.apply(this.http.post(environment.apiUrl + url, body, {
+          ...this.headers,
+          ...extra
+        }));
     }
     else {
-      return this.http.post(environment.apiUrl + url, body)
-        .finally(() => this.loaderService.hide());
+      return this.apply(this.http.post(environment.apiUrl + url, body));
     }
   }
 
@@ -78,12 +94,10 @@ export class ApiService {
 
     if (this.authToken)
     {
-        return this.http.patch(environment.apiUrl + url, body, this.headers)
-          .finally(() => this.loaderService.hide());
+        return this.apply(this.http.patch(environment.apiUrl + url, body, this.headers));
     }
     else {
-      return this.http.patch(environment.apiUrl + url, body)
-        .finally(() => this.loaderService.hide());
+      return this.apply(this.http.patch(environment.apiUrl + url, body));
     }
   }
 
@@ -93,12 +107,10 @@ export class ApiService {
 
     if (this.authToken)
     {
-        return this.http.get(environment.apiUrl + url, this.headers)
-          .finally(() => this.loaderService.hide());
+        return this.apply(this.http.get(environment.apiUrl + url, this.headers));
     }
     else {
-      return this.http.get(environment.apiUrl + url)
-        .finally(() => this.loaderService.hide());
+      return this.apply(this.http.get(environment.apiUrl + url));
     }
   }
 
@@ -106,8 +118,7 @@ export class ApiService {
 
     this.loaderService.show();
 
-    return this.http.delete(environment.apiUrl + url, this.headers)
-      .finally(() => this.loaderService.hide());
+    return this.apply(this.http.delete(environment.apiUrl + url, this.headers));
   }
 
   fileUpload(url: string, key: string, fileToUpload: File) : Observable<any> {
@@ -117,8 +128,7 @@ export class ApiService {
     const formData = new FormData();
     formData.append(key, fileToUpload, fileToUpload.name);
 
-    return this.http.post(environment.apiUrl + url, formData, this.headers)
-      .finally(() => this.loaderService.hide());
+    return this.apply(this.http.post(environment.apiUrl + url, formData, this.headers));
   }
 
   uploadProfilePicture(fileToUpload: File) : Observable<any> {
@@ -196,19 +206,15 @@ export class ApiService {
     ]);
   }
 
-  setPlan(plan: Plan,
-    payment: string,
-    firmName: string,
-    billingAddress: Address,
-    gstNo: string) : Observable<any> {
+  setPlan(plan: Plan, payment: string, details: BillingDetails) : Observable<any> {
 
     return this.post('/user/plan', {
       planID: plan.id,
       cost: plan.cost,
       paymentID: payment,
-      firmName: firmName,
-      billingAddress: billingAddress,
-      gstNo: gstNo
+      firmName: details.firmName,
+      billingAddress: details.billingAddress,
+      gstNo: details.GSTIN
     });
   }
 
@@ -250,6 +256,7 @@ export class ApiService {
           }
 
           profile.isAdmin = data.user.isAdmin;
+          profile.id = data.user._id;
         }
 
         return profile;
@@ -299,7 +306,11 @@ export class ApiService {
           profile.stdNo = data.firm.stdNo;
           profile.website = data.firm.Website;
           profile.panNo = data.firm.PanNo;
-          profile.gstNo = data.firm.GSTIN;
+
+          if (data.firm.GSTIN)
+            profile.GSTIN = data.firm.GSTIN;
+          
+          profile.OtherMobile = data.firm.OtherMobile;
 
           if (data.firm.RegisteredAddress)
             profile.registeredAddress = data.firm.RegisteredAddress;
@@ -353,7 +364,8 @@ export class ApiService {
       stdNo: firm.stdNo,
       website: firm.website,
       pan: firm.panNo,
-      gst: firm.gstNo,
+      GSTIN: firm.GSTIN,
+      OtherMobile: firm.OtherMobile,
 
       incorporationDate: firm.incDate,
 

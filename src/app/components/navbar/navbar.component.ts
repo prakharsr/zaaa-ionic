@@ -1,20 +1,26 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
-import { GobackService } from '../../services/goback.service';
+import { ActivatedRoute } from '@angular/router';
+import { UserProfile } from '@aaman/main/user-profile';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  // styleUrls: ['./navbar.component.css']
+  // 
 })
 export class NavbarComponent implements OnInit {
 
   isNavbarCollapsed = true;
+  admin: boolean;
 
-  constructor(public api: ApiService, public goback: GobackService) { }
+  constructor(public goback: GobackService,private route: ActivatedRoute, public api: ApiService) { }
 
   ngOnInit() {
     this.goback.urlInit();
+    this.route.data.subscribe((data: { user: UserProfile }) => {
+      this.admin = data.user.isAdmin;
+    });
   }
 
   collapseNavbar() {

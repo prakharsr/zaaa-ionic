@@ -1,24 +1,24 @@
+import { GobackService } from '@aaman/main/goback.service';
 import { Component, OnInit } from '@angular/core';
-import { Executive } from '../executive';
-import { ExecutiveApiService } from '../executive-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { environment } from '../../../../environments/environment';
-import { NotificationService } from '../../../services/notification.service';
-import { GobackService } from '../../../services/goback.service';
+import { Executive } from '@aaman/dir/executives/executive';
+import { ExecutiveApiService } from '@aaman/dir/executives/executive-api.service';
+import { NotificationService } from '@aaman/main/notification.service';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-executive-details',
   templateUrl: './executive-details.component.html',
-  // styleUrls: ['./executive-details.component.css']
+  
 })
 export class ExecutiveDetailsComponent implements OnInit {
 
   executive = new Executive();
 
-  constructor(private api: ExecutiveApiService,
+  constructor(public goback: GobackService, private api: ExecutiveApiService,
     private route: ActivatedRoute,
     private router: Router,
-    private notifications: NotificationService, public goback: GobackService) { }
+    private notifications: NotificationService) { }
 
   ngOnInit() {
     this.goback.urlInit();
@@ -40,11 +40,6 @@ export class ExecutiveDetailsComponent implements OnInit {
 
           this.notifications.show(data.msg);
         }
-      },
-      err => {
-        console.log(err);
-
-        this.notifications.show("Connection failed");
       }
     );
   }
