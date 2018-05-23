@@ -11,6 +11,10 @@
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve"
   },
+  "config": {
+    "ionic_source_map_type": "source-map",
+    "ionic_webpack": "./webpack.config.js"
+  },
   "dependencies": {
     "@angular/animations": "^5.0.0",
     "@angular/cdk": "^5.2.4",
@@ -50,6 +54,7 @@
     "on-headers": "^1.0.1",
     "rxjs": "5.5.2",
     "sw-toolbox": "3.6.0",
+    "webpack": "^4.8.3",
     "zone.js": "0.8.18"
   },
   "devDependencies": {

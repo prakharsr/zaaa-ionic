@@ -6,18 +6,16 @@
     "experimentalDecorators": true,
     "lib": [
       "dom",
-      "es2015"
+      "es2017"
     ],
     "baseUrl": "./src",
     "paths": {
-      "@aaman/main/*": [
-        "app/admin/*",
-        "app/components/*",
-        "app/guards/*",
-        "app/validators/*",
-        "app/services/*",
-        "app/models/*"
-      ],
+      "@aaman/main/admin/*": ["app/admin/*"],
+      "@aaman/main/components/*": ["app/components/*"],
+      "@aaman/main/guards/*": ["app/guards/*"],
+      "@aaman/main/validators/*": ["app/validators/*"],
+      "@aaman/main/services/*": ["app/services/*"],
+      "@aaman/main/models/*": ["app/models/*"],
       "@aaman/accounts/*": ["app/accounts/*"],
       "@aaman/couser/*": ["app/co-users/*"],
       "@aaman/dir/*": ["app/directory/*"],
