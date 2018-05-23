@@ -7,7 +7,7 @@
 <br>
 
 <div class="container">
-  <button class="fab" *ngIf="admin" routerLink="/coUsers/new">
+  <button class="fab" *ngIf="admin" (click)="this.goback.gotoComponent('coUsers/new')">
     <mat-icon>add</mat-icon>
   </button>
 

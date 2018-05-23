@@ -6,7 +6,7 @@
 
 <div class="container">
 
-<button class="fab bg-info" *ngIf="admin" routerLink="/firm/edit">
+<button class="fab bg-info" *ngIf="admin" (click)="this.goback.gotoComponent('firm/edit')">
   <mat-icon>edit</mat-icon>
 </button>
 
