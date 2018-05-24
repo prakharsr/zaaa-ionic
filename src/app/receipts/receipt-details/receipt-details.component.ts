@@ -1,8 +1,8 @@
-import { GobackService } from '@aaman/main/goback.service';
+import { GobackService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PaymentReceipt } from '@aaman/receipts/payment-receipt';
-import { ReceiptsApiService } from '@aaman/receipts/receipts-api.service';
+import { PaymentReceipt } from '../payment-receipt';
+import { ReceiptsApiService } from '../receipts-api.service';
 
 @Component({
   selector: 'app-receipt-details',

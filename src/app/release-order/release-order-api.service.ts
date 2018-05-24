@@ -2,16 +2,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
-import { ApiService } from '@aaman/main/api.service';
-import { ClientApiService } from '@aaman/dir/clients/client-api.service';
-import { MediaHouseApiService } from '@aaman/dir/media-houses/media-house-api.service';
-import { ExecutiveApiService } from '@aaman/dir/executives/executive-api.service';
-import { ReleaseOrder } from '@aaman/releaseorder/release-order';
-import { ReleaseOrderDir } from '@aaman/releaseorder/release-order-dir-resolver.service';
-import { PageData } from '@aaman/main/page-data';
-import { InsertionCheckItem } from '@aaman/releaseorder/insertion-check-item';
-import { ReleaseOrderSearchParams } from '@aaman/releaseorder/release-order-search-params';
-import { MailingDetails } from '@aaman/main/mailing-details';
+import { ApiService } from 'app/services';
+import { ClientApiService, MediaHouseApiService, ExecutiveApiService } from 'app/directory';
+import { ReleaseOrder } from './release-order';
+import { ReleaseOrderDir } from './release-order-dir-resolver.service';
+import { InsertionCheckItem } from './insertion-check-item';
+import { ReleaseOrderSearchParams } from './release-order-search-params';
+import { PageData, MailingDetails } from 'app/models';
 
 @Injectable()
 export class ReleaseOrderApiService {

@@ -9,22 +9,6 @@
       "es2017"
     ],
     "baseUrl": "./src",
-    "paths": {
-      "@aaman/main/admin/*": ["app/admin/*"],
-      "@aaman/main/components/*": ["app/components/*"],
-      "@aaman/main/guards/*": ["app/guards/*"],
-      "@aaman/main/validators/*": ["app/validators/*"],
-      "@aaman/main/services/*": ["app/services/*"],
-      "@aaman/main/models/*": ["app/models/*"],
-      "@aaman/accounts/*": ["app/accounts/*"],
-      "@aaman/couser/*": ["app/co-users/*"],
-      "@aaman/dir/*": ["app/directory/*"],
-      "@aaman/invoice/*": ["app/invoice/*"],
-      "@aaman/ratecard/*": ["app/rate-card/*"],
-      "@aaman/receipts/*": ["app/receipts/*"],
-      "@aaman/releaseorder/*": ["app/release-order/*"],
-      "@aaman/superadmin/*": ["app/super-admin/*"]
-    },
     "module": "es2015",
     "moduleResolution": "node",
     "sourceMap": true,

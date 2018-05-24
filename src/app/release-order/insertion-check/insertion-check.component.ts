@@ -1,22 +1,24 @@
-import { GobackService } from '@aaman/main/goback.service';
+import { GobackService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-date';
 import { Observable } from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
 import { MatTableDataSource } from '@angular/material';
-import { InsertionCheckItem } from '@aaman/releaseorder/insertion-check-item';
-import { DialogService } from '@aaman/main/dialog.service';
-import { ReleaseOrderApiService } from '@aaman/releaseorder/release-order-api.service';
-import { NotificationService } from '@aaman/main/notification.service';
-import { ClientApiService } from '@aaman/dir/clients/client-api.service';
-import { MediaHouseApiService } from '@aaman/dir/media-houses/media-house-api.service';
-import { ExecutiveApiService } from '@aaman/dir/executives/executive-api.service';
-import { PageData } from '@aaman/main/page-data';
-import { ReleaseOrderSearchParams } from '@aaman/releaseorder/release-order-search-params';
-import { MediaHouse } from '@aaman/dir/media-houses/media-house';
-import { Client } from '@aaman/dir/clients/client';
-import { Executive } from '@aaman/dir/executives/executive';
+import { InsertionCheckItem } from '../insertion-check-item';
+import { ReleaseOrderApiService } from '../release-order-api.service';
+import { NotificationService, DialogService } from 'app/services';
+import { PageData } from 'app/models';
+import { ReleaseOrderSearchParams } from '../release-order-search-params';
+
+import {
+  Client,
+  MediaHouse,
+  Executive,
+  ClientApiService,
+  MediaHouseApiService,
+  ExecutiveApiService
+} from 'app/directory';
 
 @Component({
   selector: 'app-insertion-check',
@@ -27,16 +29,11 @@ export class InsertionCheckComponent implements OnInit {
 
   insertions: InsertionCheckItem[] = [];
 
-  displayedColumns = ['data', 'action'];
-  dataSource = new MatTableDataSource();
-
   page: number;
   pageCount: number;
 
   pastDays = 0;
   
-  dummyArray;
-
   mediaHouse;
   edition;
   client;
@@ -81,12 +78,8 @@ export class InsertionCheckComponent implements OnInit {
   private init(data: PageData<InsertionCheckItem>) {
     this.insertions = data.list;
 
-    this.dataSource.data = this.insertions;
-
     this.pageCount = data.pageCount;
     this.page = data.page;
-
-    this.dummyArray = Array(this.pageCount);
   }
 
   searchClient = (text: Observable<string>) => {

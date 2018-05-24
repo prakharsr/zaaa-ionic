@@ -1,4 +1,4 @@
-import { GobackService } from '@aaman/main/goback.service';
+import { GobackService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
@@ -9,19 +9,26 @@ import 'rxjs/add/operator/switchMap';
 import { map } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-date';
-import { ReleaseOrder, Insertion, TaxValues, OtherCharges } from '@aaman/releaseorder/release-order';
-import { Category, RateCard, FixSize, Scheme } from '@aaman/ratecard/rate-card';
-import { ReleaseOrderApiService } from '@aaman/releaseorder/release-order-api.service';
-import { ClientApiService } from '@aaman/dir/clients/client-api.service';
-import { MediaHouseApiService } from '@aaman/dir/media-houses/media-house-api.service';
-import { ExecutiveApiService } from '@aaman/dir/executives/executive-api.service';
-import { RateCardApiService } from '@aaman/ratecard/rate-card-api.service';
-import { StateApiService } from '@aaman/main/state-api.service';
-import { NotificationService } from '@aaman/main/notification.service';
-import { OptionsService } from '@aaman/main/options.service';
-import { MediaHouse } from '@aaman/dir/media-houses/media-house';
-import { Client } from '@aaman/dir/clients/client';
-import { Executive } from '@aaman/dir/executives/executive';
+import { ReleaseOrder, Insertion, TaxValues, OtherCharges } from '../release-order';
+import { ReleaseOrderApiService } from '../release-order-api.service';
+import { StateApiService, NotificationService, OptionsService } from 'app/services';
+
+import {
+  Category,
+  RateCard,
+  FixSize,
+  Scheme,
+  RateCardApiService
+} from 'app/rate-card';
+
+import {
+  Client,
+  MediaHouse,
+  Executive,
+  ClientApiService,
+  MediaHouseApiService,
+  ExecutiveApiService
+} from 'app/directory';
 
 @Component({
   selector: 'app-release-order',

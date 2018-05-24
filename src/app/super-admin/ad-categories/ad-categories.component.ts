@@ -1,8 +1,7 @@
-import { GobackService } from '@aaman/main/goback.service';
+import { GobackService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
-import { DialogService } from '@aaman/main/dialog.service';
-import { OptionsService } from '@aaman/main/options.service';
-import { Category } from '@aaman/ratecard/rate-card';
+import { DialogService, OptionsService } from 'app/services';
+import { Category } from 'app/rate-card';
 
 @Component({
   selector: 'app-ad-categories',

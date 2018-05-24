@@ -1,26 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sw600dp-v13/values-sw600dp-v13.xml",
+            "outputFile": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sw600dp-v13/values-sw600dp-v13.xml",
             "map": [
                 {
-                    "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/d47ff6f492a5f0bb3b61f39c27a4006d/res/values-sw600dp-v13/values-sw600dp-v13.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,93",
-                        "endLines": "2,13",
-                        "endColumns": "37,12",
-                        "endOffsets": "88,745"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sw600dp-v13/values-sw600dp-v13.xml",
-            "map": [
-                {
-                    "source": "/home/linux/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/850ad8fdb3966399aecbaf9bb19bf366/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/b26bf04ccca2a7edf3fa367d5411344b/res/values-sw600dp-v13/values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

@@ -1,30 +1,37 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuard } from './guards/auth-guard.service';
-import { PhoneVerifyGuard } from './guards/phone-verify-guard.service';
-import { AdminGuard } from './guards/admin-guard.service';
-import { PlanGuard } from './guards/plan-guard.service';
+import {
+  AuthGuard,
+  AdminGuard,
+  PhoneVerifyGuard,
+  PlanGuard
+} from 'app/guards';
 
-import { FirmResolver } from './services/firm-resolver.service';
+import { FirmResolver, UserProfileResolver } from 'app/services';
 
-import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { ProfileViewComponent } from './components/profile-view/profile-view.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { FirmProfileViewComponent } from './components/firm-profile-view/firm-profile-view.component';
-import { PhoneVerifyComponent } from './components/phone-verify/phone-verify.component';
-import { ChangePswComponent } from './components/change-psw/change-psw.component';
-import { ForgotPswComponent } from './components/forgot-psw/forgot-psw.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { FirmProfileEditComponent } from './admin/firm-profile-edit/firm-profile-edit.component';
-import { TemplateSelectorComponent } from './admin/template-selector/template-selector.component';
-import { PlanSelectorComponent } from './admin/plan-selector/plan-selector.component';
-import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
-import { UserProfileResolver } from './services/user-profile-resolver.service';
-import { EmptyComponent } from './admin/empty/empty.component';
-import { ProfileEditComponent } from '@aaman/main/profile-edit/profile-edit.component';
+import {
+  HomeComponent,
+  LoginComponent,
+  RegisterComponent,
+  ForgotPswComponent,
+  PhoneVerifyComponent,
+  ProfileViewComponent,
+  FirmProfileViewComponent,
+  DashboardComponent,
+  ChangePswComponent,
+  ResetPasswordComponent,
+  NotFoundComponent
+} from './components';
+
+import {
+  EmptyComponent,
+
+  ProfileEditComponent,
+  FirmProfileEditComponent,
+  TemplateSelectorComponent,
+  PlanSelectorComponent
+} from 'app/admin';
 
 const routes: Routes = [
   { path: 'empty', component: EmptyComponent},

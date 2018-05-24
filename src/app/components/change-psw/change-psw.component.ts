@@ -1,7 +1,6 @@
-import { GobackService } from '@aaman/main/goback.service';
+import { GobackService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '@aaman/main/api.service';
-import { NotificationService } from '@aaman/main/notification.service';
+import { ApiService, NotificationService } from 'app/services';
 
 @Component({
   selector: 'app-change-psw',

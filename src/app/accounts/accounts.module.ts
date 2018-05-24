@@ -1,12 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BaseModule } from '../base.module';
-import { AccountsRoutingModule } from '@aaman/accounts/accounts-routing.module';
+import { ReceiptsModule } from 'app/receipts/receipts.module';
+import { AccountsRoutingModule } from './accounts-routing.module';
+
+import {
+  AccountsApiService,
+  MediaHouseInvoiceComponent,
+  MediaHouseInvoiceDialogComponent
+} from '.';
 
 @NgModule({
   imports: [
     BaseModule,
+    ReceiptsModule,
     AccountsRoutingModule
   ],
-  declarations: []
+  declarations: [
+    MediaHouseInvoiceComponent,
+    MediaHouseInvoiceDialogComponent
+  ],
+  entryComponents: [MediaHouseInvoiceDialogComponent],
+  providers: [AccountsApiService]
 })
 export class AccountsModule { }

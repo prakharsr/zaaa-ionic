@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators/map';
-import { ApiService } from '@aaman/main/api.service';
-import { CoUser } from '@aaman/couser/co-user';
-import { UserRoles } from '@aaman/couser/user-roles';
+import { ApiService } from 'app/services';
+import { CoUser } from './co-user';
+import { UserRoles } from './user-roles';
 
 @Injectable()
 export class CoUserApiService {

@@ -1,8 +1,9 @@
-import { GobackService } from '@aaman/main/goback.service';
+import { GobackService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { ActivatedRoute } from '@angular/router';
-import { UserProfile } from '@aaman/main/user-profile';
+import { UserProfile } from '../../models';
+import { DashboardComponent } from '..';
 
 @Component({
   selector: 'app-navbar',
@@ -11,23 +12,10 @@ import { UserProfile } from '@aaman/main/user-profile';
 })
 export class NavbarComponent implements OnInit {
 
-  isNavbarCollapsed = true;
-  admin: boolean;
-
-  constructor(public goback: GobackService,private route: ActivatedRoute, public api: ApiService) { }
+  constructor(public goback: GobackService, public api: ApiService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.goback.urlInit();
-    this.route.data.subscribe((data: { user: UserProfile }) => {
-      this.admin = data.user.isAdmin;
-    });
   }
 
-  collapseNavbar() {
-    this.isNavbarCollapsed = true;
-  }
-
-  toggleNavbar() {
-    this.isNavbarCollapsed = !this.isNavbarCollapsed;
-  }
 }

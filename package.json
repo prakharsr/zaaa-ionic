@@ -37,6 +37,7 @@
     "bootstrap": "^4.0.0-alpha.6",
     "com.razorpay.cordova": "https://github.com/razorpay/razorpay-cordova.git",
     "cordova-android": "7.1.0",
+    "cordova-browser": "5.0.3",
     "cordova-ios": "4.5.4",
     "cordova-osx": "4.0.1",
     "cordova-plugin-device": "^2.0.2",
@@ -93,10 +94,9 @@
       "cordova-plugin-file": {}
     },
     "platforms": [
-      "android",
-      "browser",
       "ios",
-      "osx"
+      "osx",
+      "android"
     ]
   }
 }

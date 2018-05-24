@@ -1,4 +1,4 @@
-import { GobackService } from '@aaman/main/goback.service';
+import { GobackService } from 'app/services';
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { Platform, LoadingController, Spinner } from 'ionic-angular';
@@ -42,6 +42,7 @@ export class HomeComponent implements OnInit {
     this.router.navigateByUrl("/dashboard");
   }
   ngOnInit() {
+    this.goback.urlInit();
     this.goback.urlInit();
     // setTimeout(2000);
 

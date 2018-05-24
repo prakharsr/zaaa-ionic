@@ -1,266 +1,134 @@
 [
     {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_rzp_logo.png.flat",
-        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/d47ff6f492a5f0bb3b61f39c27a4006d/res/drawable-xxxhdpi-v4/rzp_logo.png"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-hdpi_screen.png.flat",
+        "source": "/home/lambo/zaaa-ionic/platforms/android/app/src/main/res/drawable-land-hdpi/screen.png"
     },
     {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable_rzp_border.xml.flat",
-        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/d47ff6f492a5f0bb3b61f39c27a4006d/res/drawable/rzp_border.xml"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-xxxhdpi_screen.png.flat",
+        "source": "/home/lambo/zaaa-ionic/platforms/android/app/src/main/res/drawable-land-xxxhdpi/screen.png"
     },
     {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-ldpi_screen.png.flat",
-        "source": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/drawable-land-ldpi/screen.png"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/mipmap-hdpi_icon.png.flat",
+        "source": "/home/lambo/zaaa-ionic/platforms/android/app/src/main/res/mipmap-hdpi/icon.png"
     },
     {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-xxhdpi_screen.png.flat",
-        "source": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/drawable-port-xxhdpi/screen.png"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-mdpi_screen.png.flat",
+        "source": "/home/lambo/zaaa-ionic/platforms/android/app/src/main/res/drawable-land-mdpi/screen.png"
     },
     {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-xhdpi_screen.png.flat",
-        "source": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/drawable-port-xhdpi/screen.png"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-xhdpi_screen.png.flat",
+        "source": "/home/lambo/zaaa-ionic/platforms/android/app/src/main/res/drawable-land-xhdpi/screen.png"
     },
     {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/mipmap-hdpi_icon.png.flat",
-        "source": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/mipmap-hdpi/icon.png"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-ldpi_screen.png.flat",
+        "source": "/home/lambo/zaaa-ionic/platforms/android/app/src/main/res/drawable-port-ldpi/screen.png"
     },
     {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/mipmap-hdpi_icon.png.flat",
-        "source": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/mipmap-hdpi/icon.png"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_rzp_logo.png.flat",
+        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/b26bf04ccca2a7edf3fa367d5411344b/res/drawable-mdpi-v4/rzp_logo.png"
     },
     {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/layout_rzp_loader.xml.flat",
-        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/d47ff6f492a5f0bb3b61f39c27a4006d/res/layout/rzp_loader.xml"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable_rzp_loader_circle.xml.flat",
+        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/b26bf04ccca2a7edf3fa367d5411344b/res/drawable/rzp_loader_circle.xml"
     },
     {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-xxhdpi_screen.png.flat",
-        "source": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/drawable-port-xxhdpi/screen.png"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable_rzp_green_button.xml.flat",
+        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/b26bf04ccca2a7edf3fa367d5411344b/res/drawable/rzp_green_button.xml"
     },
     {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable_rzp_loader_circle.xml.flat",
-        "source": "/home/linux/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/850ad8fdb3966399aecbaf9bb19bf366/res/drawable/rzp_loader_circle.xml"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable_rzp_border.xml.flat",
+        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/b26bf04ccca2a7edf3fa367d5411344b/res/drawable/rzp_border.xml"
     },
     {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/mipmap-mdpi_icon.png.flat",
-        "source": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/mipmap-mdpi/icon.png"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/layout_rzp_magic_base.xml.flat",
+        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/b26bf04ccca2a7edf3fa367d5411344b/res/layout/rzp_magic_base.xml"
     },
     {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-xxxhdpi_screen.png.flat",
-        "source": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/drawable-land-xxxhdpi/screen.png"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable_rzp_secured_by_bg.xml.flat",
+        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/b26bf04ccca2a7edf3fa367d5411344b/res/drawable/rzp_secured_by_bg.xml"
     },
     {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable_rzp_white_border_black_bg.xml.flat",
-        "source": "/home/linux/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/850ad8fdb3966399aecbaf9bb19bf366/res/drawable/rzp_white_border_black_bg.xml"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-xhdpi_screen.png.flat",
+        "source": "/home/lambo/zaaa-ionic/platforms/android/app/src/main/res/drawable-port-xhdpi/screen.png"
     },
     {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/xml_config.xml.flat",
-        "source": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/xml/config.xml"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-xxxhdpi_screen.png.flat",
+        "source": "/home/lambo/zaaa-ionic/platforms/android/app/src/main/res/drawable-port-xxxhdpi/screen.png"
     },
     {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_rzp_logo.png.flat",
-        "source": "/home/linux/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/850ad8fdb3966399aecbaf9bb19bf366/res/drawable-hdpi-v4/rzp_logo.png"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-xxhdpi_screen.png.flat",
+        "source": "/home/lambo/zaaa-ionic/platforms/android/app/src/main/res/drawable-land-xxhdpi/screen.png"
     },
     {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-xxxhdpi_screen.png.flat",
-        "source": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/drawable-port-xxxhdpi/screen.png"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_rzp_logo.png.flat",
+        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/b26bf04ccca2a7edf3fa367d5411344b/res/drawable-xhdpi-v4/rzp_logo.png"
     },
     {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-xxhdpi_screen.png.flat",
-        "source": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/drawable-land-xxhdpi/screen.png"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-ldpi_screen.png.flat",
+        "source": "/home/lambo/zaaa-ionic/platforms/android/app/src/main/res/drawable-land-ldpi/screen.png"
     },
     {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_rzp_logo.png.flat",
-        "source": "/home/linux/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/850ad8fdb3966399aecbaf9bb19bf366/res/drawable-xhdpi-v4/rzp_logo.png"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_rzp_logo.png.flat",
+        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/b26bf04ccca2a7edf3fa367d5411344b/res/drawable-hdpi-v4/rzp_logo.png"
     },
     {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-xxxhdpi_screen.png.flat",
-        "source": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/drawable-land-xxxhdpi/screen.png"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_rzp_logo.png.flat",
+        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/b26bf04ccca2a7edf3fa367d5411344b/res/drawable-xxhdpi-v4/rzp_logo.png"
     },
     {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable_rzp_loader_circle.xml.flat",
-        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/d47ff6f492a5f0bb3b61f39c27a4006d/res/drawable/rzp_loader_circle.xml"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_rzp_logo.png.flat",
+        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/b26bf04ccca2a7edf3fa367d5411344b/res/drawable-xxxhdpi-v4/rzp_logo.png"
     },
     {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_icon.png.flat",
-        "source": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/mipmap-xxhdpi/icon.png"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_icon.png.flat",
+        "source": "/home/lambo/zaaa-ionic/platforms/android/app/src/main/res/mipmap-xxhdpi/icon.png"
     },
     {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable_rzp_poweredby.png.flat",
-        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/d47ff6f492a5f0bb3b61f39c27a4006d/res/drawable/rzp_poweredby.png"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-xxhdpi_screen.png.flat",
+        "source": "/home/lambo/zaaa-ionic/platforms/android/app/src/main/res/drawable-port-xxhdpi/screen.png"
     },
     {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable_rzp_green_button.xml.flat",
-        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/d47ff6f492a5f0bb3b61f39c27a4006d/res/drawable/rzp_green_button.xml"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/mipmap-mdpi_icon.png.flat",
+        "source": "/home/lambo/zaaa-ionic/platforms/android/app/src/main/res/mipmap-mdpi/icon.png"
     },
     {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-hdpi_screen.png.flat",
-        "source": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/drawable-port-hdpi/screen.png"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/layout_rzp_loader.xml.flat",
+        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/b26bf04ccca2a7edf3fa367d5411344b/res/layout/rzp_loader.xml"
     },
     {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/mipmap-mdpi_icon.png.flat",
-        "source": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/mipmap-mdpi/icon.png"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable_rzp_poweredby.png.flat",
+        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/b26bf04ccca2a7edf3fa367d5411344b/res/drawable/rzp_poweredby.png"
     },
     {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-mdpi_screen.png.flat",
-        "source": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/drawable-land-mdpi/screen.png"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-mdpi_screen.png.flat",
+        "source": "/home/lambo/zaaa-ionic/platforms/android/app/src/main/res/drawable-port-mdpi/screen.png"
     },
     {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-hdpi_screen.png.flat",
-        "source": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/drawable-land-hdpi/screen.png"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-hdpi_screen.png.flat",
+        "source": "/home/lambo/zaaa-ionic/platforms/android/app/src/main/res/drawable-port-hdpi/screen.png"
     },
     {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/layout_rzp_loader.xml.flat",
-        "source": "/home/linux/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/850ad8fdb3966399aecbaf9bb19bf366/res/layout/rzp_loader.xml"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi_icon.png.flat",
+        "source": "/home/lambo/zaaa-ionic/platforms/android/app/src/main/res/mipmap-xhdpi/icon.png"
     },
     {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable_rzp_border_bottom.xml.flat",
-        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/d47ff6f492a5f0bb3b61f39c27a4006d/res/drawable/rzp_border_bottom.xml"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable_rzp_white_border_black_bg.xml.flat",
+        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/b26bf04ccca2a7edf3fa367d5411344b/res/drawable/rzp_white_border_black_bg.xml"
     },
     {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable_rzp_poweredby.png.flat",
-        "source": "/home/linux/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/850ad8fdb3966399aecbaf9bb19bf366/res/drawable/rzp_poweredby.png"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/xml_config.xml.flat",
+        "source": "/home/lambo/zaaa-ionic/platforms/android/app/src/main/res/xml/config.xml"
     },
     {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-xxhdpi_screen.png.flat",
-        "source": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/drawable-land-xxhdpi/screen.png"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable_rzp_border_bottom.xml.flat",
+        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/b26bf04ccca2a7edf3fa367d5411344b/res/drawable/rzp_border_bottom.xml"
     },
     {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_icon.png.flat",
-        "source": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/mipmap-xxxhdpi/icon.png"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/mipmap-ldpi_icon.png.flat",
+        "source": "/home/lambo/zaaa-ionic/platforms/android/app/src/main/res/mipmap-ldpi/icon.png"
     },
     {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_rzp_logo.png.flat",
-        "source": "/home/linux/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/850ad8fdb3966399aecbaf9bb19bf366/res/drawable-mdpi-v4/rzp_logo.png"
-    },
-    {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-ldpi_screen.png.flat",
-        "source": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/drawable-port-ldpi/screen.png"
-    },
-    {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable_rzp_white_border_black_bg.xml.flat",
-        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/d47ff6f492a5f0bb3b61f39c27a4006d/res/drawable/rzp_white_border_black_bg.xml"
-    },
-    {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/layout_rzp_magic_base.xml.flat",
-        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/d47ff6f492a5f0bb3b61f39c27a4006d/res/layout/rzp_magic_base.xml"
-    },
-    {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/xml_config.xml.flat",
-        "source": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/xml/config.xml"
-    },
-    {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi_icon.png.flat",
-        "source": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/mipmap-xhdpi/icon.png"
-    },
-    {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_rzp_logo.png.flat",
-        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/d47ff6f492a5f0bb3b61f39c27a4006d/res/drawable-hdpi-v4/rzp_logo.png"
-    },
-    {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi_icon.png.flat",
-        "source": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/mipmap-xhdpi/icon.png"
-    },
-    {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable_rzp_border_bottom.xml.flat",
-        "source": "/home/linux/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/850ad8fdb3966399aecbaf9bb19bf366/res/drawable/rzp_border_bottom.xml"
-    },
-    {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_rzp_logo.png.flat",
-        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/d47ff6f492a5f0bb3b61f39c27a4006d/res/drawable-xxhdpi-v4/rzp_logo.png"
-    },
-    {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_icon.png.flat",
-        "source": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/mipmap-xxxhdpi/icon.png"
-    },
-    {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-xxxhdpi_screen.png.flat",
-        "source": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/drawable-port-xxxhdpi/screen.png"
-    },
-    {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-hdpi_screen.png.flat",
-        "source": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/drawable-land-hdpi/screen.png"
-    },
-    {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-mdpi_screen.png.flat",
-        "source": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/drawable-land-mdpi/screen.png"
-    },
-    {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_rzp_logo.png.flat",
-        "source": "/home/linux/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/850ad8fdb3966399aecbaf9bb19bf366/res/drawable-xxhdpi-v4/rzp_logo.png"
-    },
-    {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-hdpi_screen.png.flat",
-        "source": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/drawable-port-hdpi/screen.png"
-    },
-    {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-mdpi_screen.png.flat",
-        "source": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/drawable-port-mdpi/screen.png"
-    },
-    {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_rzp_logo.png.flat",
-        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/d47ff6f492a5f0bb3b61f39c27a4006d/res/drawable-xhdpi-v4/rzp_logo.png"
-    },
-    {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-xhdpi_screen.png.flat",
-        "source": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/drawable-land-xhdpi/screen.png"
-    },
-    {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-xhdpi_screen.png.flat",
-        "source": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/drawable-port-xhdpi/screen.png"
-    },
-    {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable_rzp_secured_by_bg.xml.flat",
-        "source": "/home/linux/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/850ad8fdb3966399aecbaf9bb19bf366/res/drawable/rzp_secured_by_bg.xml"
-    },
-    {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/mipmap-ldpi_icon.png.flat",
-        "source": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/mipmap-ldpi/icon.png"
-    },
-    {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-ldpi_screen.png.flat",
-        "source": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/drawable-land-ldpi/screen.png"
-    },
-    {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable_rzp_secured_by_bg.xml.flat",
-        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/d47ff6f492a5f0bb3b61f39c27a4006d/res/drawable/rzp_secured_by_bg.xml"
-    },
-    {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable_rzp_border.xml.flat",
-        "source": "/home/linux/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/850ad8fdb3966399aecbaf9bb19bf366/res/drawable/rzp_border.xml"
-    },
-    {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_rzp_logo.png.flat",
-        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/d47ff6f492a5f0bb3b61f39c27a4006d/res/drawable-mdpi-v4/rzp_logo.png"
-    },
-    {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-mdpi_screen.png.flat",
-        "source": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/drawable-port-mdpi/screen.png"
-    },
-    {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-xhdpi_screen.png.flat",
-        "source": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/drawable-land-xhdpi/screen.png"
-    },
-    {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/layout_rzp_magic_base.xml.flat",
-        "source": "/home/linux/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/850ad8fdb3966399aecbaf9bb19bf366/res/layout/rzp_magic_base.xml"
-    },
-    {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_icon.png.flat",
-        "source": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/mipmap-xxhdpi/icon.png"
-    },
-    {
-        "merged": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-ldpi_screen.png.flat",
-        "source": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/drawable-port-ldpi/screen.png"
-    },
-    {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable_rzp_green_button.xml.flat",
-        "source": "/home/linux/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/850ad8fdb3966399aecbaf9bb19bf366/res/drawable/rzp_green_button.xml"
-    },
-    {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/mipmap-ldpi_icon.png.flat",
-        "source": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/mipmap-ldpi/icon.png"
-    },
-    {
-        "merged": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_rzp_logo.png.flat",
-        "source": "/home/linux/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/850ad8fdb3966399aecbaf9bb19bf366/res/drawable-xxxhdpi-v4/rzp_logo.png"
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_icon.png.flat",
+        "source": "/home/lambo/zaaa-ionic/platforms/android/app/src/main/res/mipmap-xxxhdpi/icon.png"
     }
 ]

@@ -1,4 +1,4 @@
-#Fri May 18 21:51:01 IST 2018
-base.0=/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0
+#Thu May 24 13:14:13 IST 2018
+base.0=/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
 renamed.0=classes.dex
-file.0=/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0/classes.dex

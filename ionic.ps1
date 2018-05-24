@@ -11,7 +11,7 @@ gci -Filter *.component.ts -Recurse | % {
 
 gci -Filter *.component.ts -Recurse | % {
     $content = Get-Content $_.FullName
-    $content = @("import { GobackService } from '@aaman/main/goback.service';") + $content
+    $content = @("import { GobackService } from 'app/services';") + $content
     $replaced = $content -replace 'ngOnInit\(\) {', "ngOnInit() {`n    this.goback.urlInit();";
     Set-Content $_.FullName $replaced
 }

@@ -1,9 +1,9 @@
-import { GobackService } from '@aaman/main/goback.service';
+import { GobackService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Client } from '@aaman/dir/clients/client';
-import { ClientApiService } from '@aaman/dir/clients/client-api.service';
-import { NotificationService } from '@aaman/main/notification.service';
+import { Client } from '../client';
+import { ClientApiService } from '../client-api.service';
+import { NotificationService } from 'app/services';
 import { environment } from 'environments/environment.prod';
 
 @Component({

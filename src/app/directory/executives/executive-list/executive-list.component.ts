@@ -1,4 +1,4 @@
-import { GobackService } from '@aaman/main/goback.service';
+import { GobackService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
 import {of} from 'rxjs/observable/of';
 import 'rxjs/add/operator/catch';
@@ -8,10 +8,10 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/switchMap';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { Executive } from '@aaman/dir/executives/executive';
-import { ExecutiveApiService } from '@aaman/dir/executives/executive-api.service';
-import { DialogService } from '@aaman/main/dialog.service';
-import { PageData } from '@aaman/main/page-data';
+import { Executive } from '../executive';
+import { ExecutiveApiService } from '../executive-api.service';
+import { DialogService } from 'app/services';
+import { PageData } from 'app/models';
 
 @Component({
   selector: 'app-executive-list',

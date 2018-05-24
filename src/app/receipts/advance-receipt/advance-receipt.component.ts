@@ -1,18 +1,20 @@
-import { GobackService } from '@aaman/main/goback.service';
+import { GobackService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import { AdvanceReceipt } from '@aaman/receipts/payment-receipt';
-import { ReceiptsApiService } from '@aaman/receipts/receipts-api.service';
-import { MediaHouseApiService } from '@aaman/dir/media-houses/media-house-api.service';
-import { ClientApiService } from '@aaman/dir/clients/client-api.service';
-import { ExecutiveApiService } from '@aaman/dir/executives/executive-api.service';
-import { NotificationService } from '@aaman/main/notification.service';
-import { StateApiService } from '@aaman/main/state-api.service';
-import { MediaHouse } from '@aaman/dir/media-houses/media-house';
-import { Client } from '@aaman/dir/clients/client';
-import { Executive } from '@aaman/dir/executives/executive';
+import { AdvanceReceipt } from '../payment-receipt';
+import { ReceiptsApiService } from '../receipts-api.service';
+import { NotificationService, StateApiService } from 'app/services';
+
+import {
+  Client,
+  MediaHouse,
+  Executive,
+  ClientApiService,
+  MediaHouseApiService,
+  ExecutiveApiService
+} from 'app/directory';
 
 @Component({
   selector: 'app-advance-receipt',

@@ -1,4 +1,4 @@
-import { GobackService } from '@aaman/main/goback.service';
+import { GobackService } from 'app/services';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({

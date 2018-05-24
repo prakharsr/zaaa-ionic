@@ -1,7 +1,9 @@
-import { GobackService } from '@aaman/main/goback.service';
+import { GobackService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
-import { Address } from '@aaman/main/address';
-import { StateApiService } from '@aaman/main/state-api.service';
+import { Address } from 'app/models';
+
+// Prevent circular dependency
+import { StateApiService } from 'app/services/state-api.service';
 
 export class BillingDetails {
   firmName: string;
@@ -21,10 +23,9 @@ export class BillingDetailsComponent implements OnInit {
 
   details = new BillingDetails();
   
-  constructor(public goback: GobackService, public stateApi: StateApiService) { }
+  constructor( public stateApi: StateApiService) { }
 
   ngOnInit() {
-    this.goback.urlInit();
   }
 
 }

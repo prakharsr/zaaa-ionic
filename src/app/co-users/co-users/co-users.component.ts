@@ -1,10 +1,10 @@
-import { GobackService } from '@aaman/main/goback.service';
+import { GobackService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CoUser } from '@aaman/couser/co-user';
-import { CoUserApiService } from '@aaman/couser/co-user-api.service';
-import { DialogService } from '@aaman/main/dialog.service';
-import { UserProfile } from '@aaman/main/user-profile';
+import { CoUser } from '../co-user';
+import { CoUserApiService } from '../co-user-api.service';
+import { DialogService } from 'app/services';
+import { UserProfile } from 'app/models';
 
 @Component({
   selector: 'app-co-users',

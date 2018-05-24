@@ -1,4 +1,4 @@
-import { GobackService } from '@aaman/main/goback.service';
+import { GobackService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
@@ -8,12 +8,10 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 import { map } from 'rxjs/operators';
-import { RateCardApiService } from '@aaman/ratecard/rate-card-api.service';
-import { MediaHouseApiService } from '@aaman/dir/media-houses/media-house-api.service';
-import { NotificationService } from '@aaman/main/notification.service';
-import { OptionsService } from '@aaman/main/options.service';
-import { RateCard, Category, FixSize, Scheme, Covered, Remark, Tax } from '@aaman/ratecard/rate-card';
-import { MediaHouse, Pullout } from '@aaman/dir/media-houses/media-house';
+import { RateCardApiService } from '../rate-card-api.service';
+import { MediaHouseApiService, MediaHouse, Pullout } from 'app/directory';
+import { NotificationService, OptionsService } from 'app/services';
+import { RateCard, Category, FixSize, Scheme, Covered, Remark, Tax } from '../rate-card';
 
 @Component({
   selector: 'app-rate-card',

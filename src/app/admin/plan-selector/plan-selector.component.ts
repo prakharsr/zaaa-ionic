@@ -1,4 +1,4 @@
-import { GobackService } from '@aaman/main/goback.service';
+import { GobackService, DialogService } from 'app/services';
 import { Component, OnInit, ApplicationRef } from '@angular/core';
 import { Plan } from '../../models/plan';
 import { ApiService } from '../../services/api.service';
@@ -11,8 +11,7 @@ import { Firm } from '../../models/firm';
 import { Address } from '../../models/address';
 import { EmptyComponent } from '../empty/empty.component';
 import { NavController, NavParams } from 'ionic-angular';
-import { BillingDetails } from '@aaman/main/billing-details/billing-details.component';
-import { DialogService } from '@aaman/main/dialog.service';
+import { BillingDetails } from '../../components';
 
 @Component({
   selector: 'app-plan-selector',

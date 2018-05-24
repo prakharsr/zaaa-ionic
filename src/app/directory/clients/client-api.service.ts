@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
-import { ApiService } from '@aaman/main/api.service';
-import { Client, ContactPerson } from '@aaman/dir/clients/client';
-import { PageData } from '@aaman/main/page-data';
+import { ApiService } from 'app/services';
+import { Client, ContactPerson } from './client';
+import { PageData } from 'app/models';
 
 @Injectable()
 export class ClientApiService {

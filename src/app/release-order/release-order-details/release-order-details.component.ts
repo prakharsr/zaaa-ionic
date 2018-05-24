@@ -1,9 +1,9 @@
-import { GobackService } from '@aaman/main/goback.service';
+import { GobackService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-date';
-import { ReleaseOrder } from '@aaman/releaseorder/release-order';
-import { ReleaseOrderApiService } from '@aaman/releaseorder/release-order-api.service';
+import { ReleaseOrder } from '../release-order';
+import { ReleaseOrderApiService } from '../release-order-api.service';
 
 @Component({
   selector: 'app-release-order-details',

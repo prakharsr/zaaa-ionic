@@ -1,6 +1,6 @@
-import { GobackService } from '@aaman/main/goback.service';
+import { GobackService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
-import { LoaderService } from '@aaman/main/loader.service';
+import { LoaderService } from 'app/services';
 
 @Component({
   selector: 'app-loader',

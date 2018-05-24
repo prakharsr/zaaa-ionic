@@ -1,4 +1,4 @@
-import { GobackService } from '@aaman/main/goback.service';
+import { GobackService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
@@ -8,10 +8,10 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/switchMap';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Client } from '@aaman/dir/clients/client';
-import { ClientApiService } from '@aaman/dir/clients/client-api.service';
-import { DialogService } from '@aaman/main/dialog.service';
-import { PageData } from '@aaman/main/page-data';
+import { Client } from '../client';
+import { ClientApiService } from '../client-api.service';
+import { DialogService } from 'app/services';
+import { PageData } from 'app/models';
 
 @Component({
   selector: 'app-client-list',

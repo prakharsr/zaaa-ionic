@@ -1,23 +1,24 @@
-import { GobackService } from '@aaman/main/goback.service';
+import { GobackService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MatTableDataSource } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import {of} from 'rxjs/observable/of';
-import { ReleaseOrder } from '@aaman/releaseorder/release-order';
-import { ReleaseOrderApiService } from '@aaman/releaseorder/release-order-api.service';
-import { DialogService } from '@aaman/main/dialog.service';
-import { NotificationService } from '@aaman/main/notification.service';
-import { ClientApiService } from '@aaman/dir/clients/client-api.service';
-import { MediaHouseApiService } from '@aaman/dir/media-houses/media-house-api.service';
-import { ExecutiveApiService } from '@aaman/dir/executives/executive-api.service';
-import { WindowService } from '@aaman/main/window.service';
-import { PageData } from '@aaman/main/page-data';
-import { ReleaseOrderSearchParams } from '@aaman/releaseorder/release-order-search-params';
-import { MediaHouse } from '@aaman/dir/media-houses/media-house';
-import { Executive } from '@aaman/dir/executives/executive';
-import { Client } from '@aaman/dir/clients/client';
+import { ReleaseOrder } from '../release-order';
+import { ReleaseOrderApiService } from '../release-order-api.service';
+import { DialogService, NotificationService, WindowService } from 'app/services';
+import { PageData } from 'app/models';
+import { ReleaseOrderSearchParams } from '../release-order-search-params';
+
+import {
+  Client,
+  MediaHouse,
+  Executive,
+  ClientApiService,
+  MediaHouseApiService,
+  ExecutiveApiService
+} from 'app/directory';
 
 @Component({
   selector: 'app-release-order-list',

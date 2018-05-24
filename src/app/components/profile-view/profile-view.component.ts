@@ -1,10 +1,8 @@
-import { GobackService } from '@aaman/main/goback.service';
+import { GobackService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UserProfile } from '@aaman/main/user-profile';
-import { ApiService } from '@aaman/main/api.service';
-import { DialogService } from '@aaman/main/dialog.service';
-import { NotificationService } from '@aaman/main/notification.service';
+import { UserProfile } from 'app/models';
+import { ApiService, DialogService, NotificationService } from 'app/services';
 import { environment } from 'environments/environment';
 
 @Component({

@@ -1,4 +1,4 @@
-import { GobackService } from '@aaman/main/goback.service';
+import { GobackService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
@@ -8,10 +8,10 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/switchMap';
 import { Router, ActivatedRoute } from '@angular/router';
-import { RateCard } from '@aaman/ratecard/rate-card';
-import { RateCardApiService } from '@aaman/ratecard/rate-card-api.service';
-import { DialogService } from '@aaman/main/dialog.service';
-import { PageData } from '@aaman/main/page-data';
+import { RateCard } from '../rate-card';
+import { RateCardApiService } from '../rate-card-api.service';
+import { DialogService } from 'app/services';
+import { PageData } from 'app/models';
 
 @Component({
   selector: 'app-rate-card-list',

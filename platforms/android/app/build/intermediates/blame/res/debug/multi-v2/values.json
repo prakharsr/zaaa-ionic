@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+            "outputFile": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
             "map": [
                 {
-                    "source": "/home/linux/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/850ad8fdb3966399aecbaf9bb19bf366/res/values/values.xml",
+                    "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/b26bf04ccca2a7edf3fa367d5411344b/res/values/values.xml",
                     "from": {
                         "startLines": "2,4",
                         "startColumns": "4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/values/strings.xml",
+                    "source": "/home/lambo/zaaa-ionic/platforms/android/app/src/main/res/values/strings.xml",
                     "from": {
                         "startLines": "4,2,3",
                         "startColumns": "4,4,4",
@@ -37,47 +37,6 @@
                         "startOffsets": "94,158,201",
                         "endColumns": "63,42,58",
                         "endOffsets": "153,196,255"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
-            "map": [
-                {
-                    "source": "/Mint/home/linux/codedamn/zaaa-ionic/platforms/android/app/src/main/res/values/strings.xml",
-                    "from": {
-                        "startLines": "4,2,3",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "157,55,98",
-                        "endColumns": "63,42,58",
-                        "endOffsets": "216,93,152"
-                    },
-                    "to": {
-                        "startLines": "3,4,5",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "94,158,201",
-                        "endColumns": "63,42,58",
-                        "endOffsets": "153,196,255"
-                    }
-                },
-                {
-                    "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.6.aar/d47ff6f492a5f0bb3b61f39c27a4006d/res/values/values.xml",
-                    "from": {
-                        "startLines": "2,4",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,165",
-                        "endLines": "2,5",
-                        "endColumns": "38,12",
-                        "endOffsets": "89,206"
-                    },
-                    "to": {
-                        "startLines": "2,6",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,260",
-                        "endLines": "2,7",
-                        "endColumns": "38,12",
-                        "endOffsets": "89,301"
                     }
                 }
             ]

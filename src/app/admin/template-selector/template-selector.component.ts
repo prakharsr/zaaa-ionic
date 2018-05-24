@@ -1,7 +1,7 @@
-import { GobackService } from '@aaman/main/goback.service';
+import { GobackService } from 'app/services';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Template } from '@aaman/main/template';
-import { ApiService } from '@aaman/main/api.service';
+import { Template } from 'app/models';
+import { ApiService } from 'app/services';
 
 @Component({
   selector: 'app-template-selector',

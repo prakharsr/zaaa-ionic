@@ -1,4 +1,4 @@
-import { GobackService } from '@aaman/main/goback.service';
+import { GobackService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
 import {of} from 'rxjs/observable/of';
 import 'rxjs/add/operator/catch';
@@ -8,10 +8,10 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/switchMap';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { MediaHouse } from '@aaman/dir/media-houses/media-house';
-import { MediaHouseApiService } from '@aaman/dir/media-houses/media-house-api.service';
-import { DialogService } from '@aaman/main/dialog.service';
-import { PageData } from '@aaman/main/page-data';
+import { MediaHouse } from '../media-house';
+import { MediaHouseApiService } from '../media-house-api.service';
+import { DialogService } from 'app/services';
+import { PageData } from 'app/models';
 
 @Component({
   selector: 'app-media-house-list',

@@ -1,15 +1,11 @@
-import { GobackService } from '@aaman/main/goback.service';
+import { GobackService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PaymentReceipt } from '@aaman/receipts/payment-receipt';
-import { Invoice } from '@aaman/invoice/invoice';
-import { MediaHouse } from '@aaman/dir/media-houses/media-house';
-import { Client } from '@aaman/dir/clients/client';
-import { Executive } from '@aaman/dir/executives/executive';
-import { ReceiptsApiService } from '@aaman/receipts/receipts-api.service';
-import { NotificationService } from '@aaman/main/notification.service';
-import { OptionsService } from '@aaman/main/options.service';
-import { InvoiceDir } from '@aaman/invoice/invoice-dir-resolver.service';
+import { PaymentReceipt } from '../payment-receipt';
+import { Invoice, InvoiceDir } from 'app/invoice';
+import { MediaHouse, Client, Executive } from 'app/directory';
+import { ReceiptsApiService } from '../receipts-api.service';
+import { NotificationService, OptionsService } from 'app/services';
 
 @Component({
   selector: 'app-receipt',

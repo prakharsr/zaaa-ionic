@@ -1,8 +1,8 @@
-import { GobackService } from '@aaman/main/goback.service';
+import { GobackService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MediaHouse } from '@aaman/dir/media-houses/media-house';
-import { MediaHouseApiService } from '@aaman/dir/media-houses/media-house-api.service';
+import { MediaHouse } from '../media-house';
+import { MediaHouseApiService } from '../media-house-api.service';
 
 @Component({
   selector: 'app-media-house-details',

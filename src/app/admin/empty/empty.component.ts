@@ -1,4 +1,4 @@
-import { GobackService } from '@aaman/main/goback.service';
+import { GobackService } from 'app/services';
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { WindowService } from '../../services/window.service';

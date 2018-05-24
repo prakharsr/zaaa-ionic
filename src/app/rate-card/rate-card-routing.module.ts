@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuard } from '@aaman/main/auth-guard.service';
-import { RateCardListResolver } from '@aaman/ratecard/rate-card-list-resolver.service';
-import { RateCardResolver } from '@aaman/ratecard/rate-card-resolver.service';
+import { AuthGuard } from 'app/guards';
 
-import { RateCardListComponent } from '@aaman/ratecard/rate-card-list/rate-card-list.component';
-import { RateCardComponent } from '@aaman/ratecard/rate-card/rate-card.component';
-import { RateCardDetailsComponent } from '@aaman/ratecard/rate-card-details/rate-card-details.component';
+import {
+  RateCardListResolver,
+  RateCardResolver,
+  RateCardListComponent,
+  RateCardComponent,
+  RateCardDetailsComponent
+} from '.';
 
 const routes: Routes = [
   {
