@@ -16,6 +16,7 @@ npm-debug.log*
 .sourcemaps/
 .sass-cache/
 .tmp/
+.gradle/
 .versions/
 node_modules/
 .DS_Store

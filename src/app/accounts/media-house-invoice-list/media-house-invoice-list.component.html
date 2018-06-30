@@ -15,7 +15,7 @@
 </ng-template>
 
 <div class="container">
-  <button class="fab" routerLink="/accounts/mediahouseinvoice/new">
+  <button class="fab" (click)="this.goback.gotoComponent('/accounts/mediahouseinvoice/new')">
     <mat-icon>add</mat-icon>
   </button>
 

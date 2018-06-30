@@ -18,9 +18,9 @@
           </button>
 
           <mat-menu #settings="matMenu">
-            <button mat-menu-item routerLink="/profile">Manage Profile</button>
-            <button mat-menu-item routerLink="/">Settings</button>
-            <button mat-menu-item routerLink="/" (click)="api.logout()">Log Out</button>
+            <button mat-menu-item (click)="this.goback.gotoComponent('/profile')">Manage Profile</button>
+            <button mat-menu-item (click)="this.goback.gotoComponent('/')'">Settings</button>
+            <button mat-menu-item (click)="this.goback.gotoComponent('/')'" (click)="api.logout()">Log Out</button>
           </mat-menu>
           
           <button ion-button icon-only (click)=" this.api.logout(); this.goback.gotoComponent('')" class="hamburger">
@@ -33,9 +33,9 @@
           </button>
 
           <mat-menu #settings="matMenu">
-              <button mat-menu-item routerLink="/">Home</button>
-              <button mat-menu-item routerLink="/">Settings</button>
-              <button mat-menu-item routerLink="/login">Log In</button>
+              <button mat-menu-item (click)="this.goback.gotoComponent('/')">Home</button>
+              <button mat-menu-item (click)="this.goback.gotoComponent('/')">Settings</button>
+              <button mat-menu-item (click)="this.goback.gotoComponent('/login')">Log In</button>
           </mat-menu>
 
           <button ion-button icon-only (click)="this.goback.gotoComponent('login')" class="hamburger">

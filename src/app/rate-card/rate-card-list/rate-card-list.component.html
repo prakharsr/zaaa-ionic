@@ -14,7 +14,7 @@
 </ng-template>
 
 <div class="container">
-  <button class="fab" routerLink="/ratecards/new" *ngIf="!global">
+  <button class="fab" (click)="this.goback.gotoComponent('/ratecards/new')" *ngIf="!global">
     <mat-icon>add</mat-icon>
   </button>
 
