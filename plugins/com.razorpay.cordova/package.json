@@ -2,7 +2,7 @@
   "_from": "git+https://github.com/razorpay/razorpay-cordova.git",
   "_id": "com.razorpay.cordova@1.3.8",
   "_inBundle": false,
-  "_integrity": "sha1-IiRU17brUKdFLZN/A2/PgY4ShmM=",
+  "_integrity": "sha1-5QBrRZRErJK0MiLwjKtkb5rHWDc=",
   "_location": "/com.razorpay.cordova",
   "_phantomChildren": {},
   "_requested": {
@@ -17,9 +17,9 @@
     "#USER",
     "/"
   ],
-  "_resolved": "git+https://github.com/razorpay/razorpay-cordova.git#3aa9c532e7882e4cec385649daad8f5e8885666d",
+  "_resolved": "git+https://github.com/razorpay/razorpay-cordova.git#34b89c1227e3952b935de2534c4d719b6609398c",
   "_spec": "https://github.com/razorpay/razorpay-cordova.git",
-  "_where": "/Users/prakharsharma/zaaa-ionic",
+  "_where": "/Users/prakharsharma/Desktop/zaaa-ionic",
   "author": {
     "name": "Razorpay Developers",
     "email": "developers@razorpay.com",
