@@ -4,11 +4,11 @@ import { Observable } from 'rxjs/Observable';
 import { Router, Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { PageData } from 'app/models';
 import { ReleaseOrderSearchParams, ReleaseOrderApiService } from 'app/release-order';
-import { MediaHouseInvoiceItem } from './media-house-invoice-item';
 import { AccountsApiService } from './accounts-api.service';
+import { MediaHouseInvoice } from './media-house-invoice';
 
 class Result {
-  list: PageData<MediaHouseInvoiceItem>;
+  list: PageData<MediaHouseInvoice>;
   search: ReleaseOrderSearchParams;
 }
 
@@ -21,12 +21,10 @@ export class MediaHouseInvoiceListResolver implements Resolve<Result> {
 
     let searchParams = new ReleaseOrderSearchParams(route.queryParamMap.get('mediaHouse'),
       route.queryParamMap.get('edition'),
-      route.queryParamMap.get('client'),
-      route.queryParamMap.get('executive'),
-      route.queryParamMap.get('executiveOrg'),
+      null, null, null,
       +route.queryParamMap.get('past'));
 
-    return this.api.searchMediaHouseInvoice(page, searchParams).map(mediahouseinvoices => {
+    return this.api.searchMediaHouseInvoices(page, searchParams).map(mediahouseinvoices => {
       if (mediahouseinvoices) {
         return {
           list: mediahouseinvoices,

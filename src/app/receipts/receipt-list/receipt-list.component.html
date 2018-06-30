@@ -27,7 +27,7 @@
 </ng-template>
 
 <div class="container">
-  <button class="fab" (click)="this.goback.gotoComponent('receipts/new')" *ngIf="advance">
+  <button class="fab" routerLink="/receipts/new" *ngIf="advance">
     <mat-icon>add</mat-icon>
   </button>
 
@@ -80,11 +80,11 @@
     No Receipts
   </p>
 
-  <div class="card mb-3" *ngFor="let receipt of receipts">
+  <div class="card mb-3 mat-elevation-z3" *ngFor="let receipt of receipts">
     <div class="card-body">
       <div class="row">
         <div class="col">
-          <a [routerLink]="['/receipts', receipt.id]">Dummy</a>
+          <a [routerLink]="['/receipts', receipt.id]">{{receipt.receiptNO}}</a>
         </div>
         <div class="col-auto">
           <mat-menu #receiptMenu="matMenu">

@@ -24,6 +24,7 @@ import { ReceiptsModule } from './receipts/receipts.module';
 import { AccountsModule } from './accounts/accounts.module';
 import { AppRoutingModule } from './app-routing.module';
 
+
 import {
   AppComponent,
 
@@ -33,7 +34,8 @@ import {
   ForgotPswComponent,
   PhoneVerifyComponent,
   ProfileViewComponent,
-  FirmProfileViewComponent,
+  AccountDetailsComponent,
+  BusinessDetailsComponent,
   DashboardComponent,
   ChangePswComponent,
   ResetPasswordComponent,
@@ -41,6 +43,10 @@ import {
   NavbarComponent,
   LoaderComponent
 } from './components';
+
+import { ReportsModule } from './reports/reports.module';
+import { TicketListComponent } from './components/ticket-list/ticket-list.component';
+import { CreateTicketComponent } from './components/create-ticket/create-ticket.component';
 
 @NgModule({
   declarations: [
@@ -54,12 +60,15 @@ import {
     RegisterComponent,
     ProfileViewComponent,
     DashboardComponent,
-    FirmProfileViewComponent,
+    AccountDetailsComponent,
+    BusinessDetailsComponent,
     ChangePswComponent,
     ForgotPswComponent,
     NotFoundComponent,
     ResetPasswordComponent,
-    LoaderComponent
+    LoaderComponent,
+    TicketListComponent,
+    CreateTicketComponent
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -79,6 +88,7 @@ import {
     InvoiceModule,
     ReceiptsModule,
     AccountsModule,
+    ReportsModule,
     AppRoutingModule
   ],
   bootstrap: [IonicApp],
@@ -92,12 +102,15 @@ import {
     RegisterComponent,
     ProfileViewComponent,
     DashboardComponent,
-    FirmProfileViewComponent,
+    AccountDetailsComponent,
+    BusinessDetailsComponent,
     ChangePswComponent,
     ForgotPswComponent,
     NotFoundComponent,
     ResetPasswordComponent,
-    LoaderComponent
+    LoaderComponent,
+    TicketListComponent,
+    CreateTicketComponent
   ],
   providers: [
     StatusBar,

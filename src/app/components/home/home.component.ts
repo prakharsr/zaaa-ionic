@@ -43,7 +43,6 @@ export class HomeComponent implements OnInit {
   }
   ngOnInit() {
     this.goback.urlInit();
-    this.goback.urlInit();
     // setTimeout(2000);
 
     if(this.api.isLoggedIn) 

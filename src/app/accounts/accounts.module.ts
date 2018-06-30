@@ -6,20 +6,57 @@ import { AccountsRoutingModule } from './accounts-routing.module';
 import {
   AccountsApiService,
   MediaHouseInvoiceComponent,
-  MediaHouseInvoiceDialogComponent
+  MediaHouseInvoiceDialogComponent,
+  SummarySheetListResolver,
+  AccountsHomeComponent,
+  ClientReceiptsComponent,
+  ClientInvoicePaymentsComponent,
+  ExecutiveInvoicePaymentsComponent,
+  CreditDebitNotesComponent,
+  AccountsGstComponent
 } from '.';
+
+import { ClientReceiptsListResolver } from './client-receipts-list-resolver.service';
+import { ClientPaymentsListResolver } from './client-payments-list-resolver.service';
+import { ExecutivePaymentsListResolver } from './executive-payments-list-resolver.service';
+import { CreateNoteComponent } from './create-note/create-note.component';
+import { NotesListResolver } from './notes-list-resolver.service';
+import { InvoiceTaxListResolver } from './invoice-tax-list-resolver.service';
+import { SummarySheetComponent } from './summary-sheet/summary-sheet.component';
+import { MediaHouseInvoiceListComponent } from './media-house-invoice-list/media-house-invoice-list.component';
+import { MediaHouseInvoiceListResolver } from './media-house-invoice-list-resolver.service';
+import { IonicModule } from 'ionic-angular';
 
 @NgModule({
   imports: [
+    IonicModule.forRoot(AccountsModule),
     BaseModule,
     ReceiptsModule,
     AccountsRoutingModule
   ],
   declarations: [
     MediaHouseInvoiceComponent,
-    MediaHouseInvoiceDialogComponent
+    MediaHouseInvoiceDialogComponent,
+    AccountsHomeComponent,
+    ClientReceiptsComponent,
+    ClientInvoicePaymentsComponent,
+    ExecutiveInvoicePaymentsComponent,
+    CreditDebitNotesComponent,
+    AccountsGstComponent,
+    CreateNoteComponent,
+    SummarySheetComponent,
+    MediaHouseInvoiceListComponent
   ],
   entryComponents: [MediaHouseInvoiceDialogComponent],
-  providers: [AccountsApiService]
+  providers: [
+    AccountsApiService,
+    SummarySheetListResolver,
+    ClientReceiptsListResolver,
+    ClientPaymentsListResolver,
+    ExecutivePaymentsListResolver,
+    NotesListResolver,
+    InvoiceTaxListResolver,
+    MediaHouseInvoiceListResolver
+  ]
 })
 export class AccountsModule { }

@@ -23,6 +23,7 @@ const routes: Routes = [
       {
         path: 'list/:page',
         component: InvoiceListComponent,
+        runGuardsAndResolvers: 'paramsOrQueryParamsChange',
         resolve: {
           resolved: InvoiceListResolver
         }
@@ -33,6 +34,10 @@ const routes: Routes = [
         resolve: {
           resolved: ReleaseOrderDirResolver
         }
+      },
+      {
+        path: 'new',
+        component: InvoiceComponent
       },
       {
         path: ':id',

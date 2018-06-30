@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialModule } from './material.module';
+import { LivechatWidgetModule } from '@livechat/angular-widget';
 
 import {
   GobackService,
@@ -21,7 +22,8 @@ import {
   NotificationService,
   OptionsService,
   FirmResolver,
-  UserProfileResolver
+  UserProfileResolver,
+  FirmUsersResolver
 } from './services';
 
 import {
@@ -46,7 +48,7 @@ import {
   VerifyMultipleOfDirective,
   VerifyEqualsDirective
 } from './validators';
-
+import { CategoriesDetailsComponent, InsertionDetailsComponent } from './release-order';
 
 const validators = [
   VerifyEmailDirective,
@@ -63,7 +65,8 @@ const validators = [
     NgbModule.forRoot(),
     FormsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    LivechatWidgetModule
   ],
   providers: [
     GobackService,
@@ -82,7 +85,8 @@ const validators = [
     NotificationService,
     FirmResolver,
     UserProfileResolver,
-    OptionsService
+    OptionsService,
+    FirmUsersResolver
   ],
   declarations: [
     MailingDetailsComponent,
@@ -99,12 +103,15 @@ const validators = [
     MaterialModule,
     MailingDetailsComponent,
     validators,
-    PaginationComponent
+    PaginationComponent,
+    LivechatWidgetModule
   ],
   entryComponents: [
     DialogComponent,
+    CategoriesDetailsComponent,
     MailingDetailsComponent,
-    BillingDetailsComponent
+    BillingDetailsComponent,
+    InsertionDetailsComponent
   ]
 })
 export class BaseModule { }

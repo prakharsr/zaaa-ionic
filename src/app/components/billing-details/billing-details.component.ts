@@ -1,4 +1,3 @@
-import { GobackService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
 import { Address } from 'app/models';
 
@@ -23,7 +22,7 @@ export class BillingDetailsComponent implements OnInit {
 
   details = new BillingDetails();
   
-  constructor( public stateApi: StateApiService) { }
+  constructor(public stateApi: StateApiService) { }
 
   ngOnInit() {
   }

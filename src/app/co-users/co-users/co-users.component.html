@@ -7,7 +7,7 @@
 <br>
 
 <div class="container">
-  <button class="fab" *ngIf="admin" (click)="this.goback.gotoComponent('coUsers/new')">
+  <button class="fab" *ngIf="admin" routerLink="/coUsers/new">
     <mat-icon>add</mat-icon>
   </button>
 
@@ -17,7 +17,7 @@
 
   <br>
 
-  <div *ngFor="let coUser of coUsers" class="card mb-4">
+  <div *ngFor="let coUser of coUsers" class="card mb-4 mat-elevation-z3">
     <div class="card-header">
       <div class="row">
         <div class="col">{{coUser.name}}</div>

@@ -1,4 +1,4 @@
-<button class="fab" (click)="this.goback.gotoComponent('dir/executives/new')">
+<button class="fab" routerLink="/dir/executives/new">
   <mat-icon>add</mat-icon>
 </button>
 
@@ -16,7 +16,7 @@
   No Executives
 </p>
 
-<div class="card mb-3" *ngFor="let executive of executives">
+<div class="card mb-3 mat-elevation-z3" *ngFor="let executive of executives">
   <div class="card-body">
     <div class="row">
       <div class="col">

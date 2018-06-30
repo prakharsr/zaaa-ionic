@@ -1,0 +1,79 @@
+<mat-toolbar>  
+  <mat-toolbar-row>
+    <div class="container">Client Receipts</div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<br>
+
+<div class="container">
+
+  <ng-template #rtClient let-r="result">
+    {{r.orgName}}
+  </ng-template>
+
+  <div class="form-row">
+    <div class="form-group col-md">
+      <input type="text" class="form-control mt-3" [(ngModel)]="client" [ngbTypeahead]="searchClient" placeholder="Client" [resultTemplate]="rtClient" [inputFormatter]="clientNameFormatter" />
+    </div>
+
+    <div class="col-md">
+      <mat-form-field>
+        <mat-select placeholder="User" [(ngModel)]="selectedUser">
+          <mat-option *ngFor="let user of users" [value]="user">{{user.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md">
+      <mat-form-field>
+        <mat-select placeholder="Period" [(ngModel)]="pastDays">
+          <mat-option [value]="0">Any Time</mat-option>
+          <mat-option [value]="7">Past 7 days</mat-option>
+          <mat-option [value]="15">Past 15 days</mat-option>
+          <mat-option [value]="30">Past 30 days</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-auto">
+      <button class="btn btn-info mt-3" (click)="search(1)">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <br>
+
+  <p *ngIf="receipts.length == 0" class="text-muted">
+    No Receipts
+  </p>
+
+  <div class="card mb-3 mat-elevation-z2" *ngFor="let receipt of receipts">
+    <div class="card-body">
+      <div class="row">
+        <div class="col">
+          {{receipt.receiptNO}}
+        </div>
+        <div class="col">
+          <strong>Client:</strong> {{receipt.clientName}}<br>
+          <strong>Media House:</strong> {{receipt.publicationName}} - {{receipt.publicationEdition}}<br>
+          <strong>Executive:</strong> {{receipt.executiveName}} - {{receipt.executiveOrg}}
+        </div>
+        <div class="col-auto">          
+          <span *ngIf="receipt.status == 0" class="text-muted">Collected</span>
+          <span *ngIf="receipt.status == 1" class="text-success">Accepted</span>
+          <span *ngIf="receipt.status == 2" class="text-danger">Rejected</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer text-right">
+      <button (click)="mark(receipt, 1)" class="btn btn-success">Accept</button>
+      <button (click)="mark(receipt, 2)" class="btn btn-danger">Reject</button>
+    </div>
+  </div>
+    
+  <br>
+
+  <app-pagination [pageCount]="pageCount" [page]="page" (navigate)="search($event)"></app-pagination>
+</div>

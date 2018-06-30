@@ -28,6 +28,7 @@ const routes: Routes = [
           {
             path: 'list/:page',
             component: InsertionCheckComponent,
+            runGuardsAndResolvers: 'paramsOrQueryParamsChange',
             resolve: {
               resolved: InsertionListResolver
             }
@@ -35,8 +36,29 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'generated',
+        data: {
+          generated: true,
+        },
+        children: [
+          { path: '', redirectTo: 'list/1', pathMatch: 'full' },
+          {
+            path: 'list/:page',
+            component: ReleaseOrderListComponent,
+            runGuardsAndResolvers: 'paramsOrQueryParamsChange',
+            resolve: {
+              resolved: ReleaseOrderListResolver
+            }
+          }
+        ]
+      },
+      {
         path: 'list/:page',
         component: ReleaseOrderListComponent,
+        data: {
+          generated: false
+        },
+        runGuardsAndResolvers: 'paramsOrQueryParamsChange',
         resolve: {
           resolved: ReleaseOrderListResolver
         }

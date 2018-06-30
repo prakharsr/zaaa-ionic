@@ -1,0 +1,68 @@
+<mat-toolbar>  
+  <mat-toolbar-row>
+    <div class="container">Executive Payments</div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<br>
+
+<ng-template #rtExecutive let-r="result">
+  {{r.executiveName}} - {{r.orgName}}
+</ng-template>
+
+<ng-template #rtExecutiveOrg let-r="result">
+  {{r.orgName}}
+</ng-template>
+
+<div class="container">
+  <div class="form-row">
+    <div class="form-group col-sm-6 col-md-4 col-xl">
+      <input type="text" class="form-control" [(ngModel)]="executive" [ngbTypeahead]="searchExecutive" placeholder="Executive" [resultTemplate]="rtExecutive" [inputFormatter]="executiveNameFormatter" />
+    </div>
+
+    <div class="form-group col-sm-6 col-md-4 col-xl">
+      <input type="text" class="form-control" [(ngModel)]="executiveOrg" [ngbTypeahead]="searchExecutiveOrg" placeholder="Executive Organisation" [resultTemplate]="rtExecutiveOrg" [inputFormatter]="executiveOrgFormatter" />
+    </div>
+
+    <div class="col-auto">
+      <button class="btn btn-info" (click)="search(1)">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="card mb-3 mat-elevation-z3" *ngFor="let item of list">
+    <div class="card-body">
+      <h4 style="font-weight: lighter">{{item.invoiceNO}}</h4>
+      <br>
+
+      <div class="row">
+        <div class="col-md">
+          <strong>Client:</strong> {{item.clientName}}<br>
+          <strong>Media House:</strong> {{item.publicationName}} - {{item.publicationEdition}}<br>
+          <strong>Executive:</strong> {{item.executiveName}} - {{item.executiveOrg}}<br><br>
+        </div>
+        <div class="col-md">
+          <strong>Balance:</strong> ₹ {{item.balance}}<br>
+          <strong>Shadow:</strong> ₹ {{item.shadow}}<br>
+          <strong>Total Balance:</strong> ₹ {{item.totalBalance}}
+        </div>
+      </div>
+    </div>
+  </div>
+    
+  <br>
+
+  <app-pagination [pageCount]="pageCount" [page]="page" (navigate)="search($event)"></app-pagination>
+
+  <div class="card mt-5">
+    <div class="card-header">Total</div>
+    <div class="card-body">
+      <strong>Balance:</strong> ₹ {{balance}}<br>
+      <strong>Shadow:</strong> ₹ {{shadow}}<br>
+      <strong>Total Balance:</strong> ₹ {{totalBalance}}
+    </div>
+  </div>
+</div>

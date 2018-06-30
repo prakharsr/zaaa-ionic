@@ -91,7 +91,7 @@ export class ReleaseOrderApiService {
     return this.api.delete('/user/releaseorder/' + releaseOrder.id);
   }
 
-  searchReleaseOrders(page: number, params: ReleaseOrderSearchParams) : Observable<PageData<ReleaseOrder>> {
+  searchReleaseOrders(page: number, params: ReleaseOrderSearchParams, generated: boolean, releaseOrderNO = "") : Observable<PageData<ReleaseOrder>> {
     return this.api.post('/user/releaseorders/search', {
       page: page,
       publicationName: params.mediaHouse,
@@ -99,7 +99,9 @@ export class ReleaseOrderApiService {
       clientName: params.client,
       executiveName: params.executive,
       executiveOrg: params.executiveOrg,
-      creationPeriod: params.past
+      creationPeriod: params.past,
+      generated: generated,
+      releaseOrderNO: releaseOrderNO
     }).pipe(
       map(data => {
         let releaseOrders : ReleaseOrder[] = [];
@@ -115,7 +117,23 @@ export class ReleaseOrderApiService {
     );
   }
 
-  searchInsertions(page: number, params: ReleaseOrderSearchParams) : Observable<PageData<InsertionCheckItem>> {
+  searchByNo(keyword: string) : Observable<ReleaseOrder[]> {
+    return this.api.get('/user/releaseorders/searchByNo/' + keyword).pipe(
+      map(data => {
+        let releaseOrders: ReleaseOrder[] = [];
+
+        if (data.success) {
+          data.releaseOrders.forEach(element => {
+            releaseOrders.push(this.bodyToReleaseOrder(element));
+          });
+        }
+
+        return releaseOrders;
+      })
+    );
+  }
+
+  searchInsertions(page: number, params: ReleaseOrderSearchParams, releaseOrderNO?: string) : Observable<PageData<InsertionCheckItem>> {
     return this.api.post('/user/releaseorders/insertions/search', {
       page: page,
       publicationName: params.mediaHouse,
@@ -123,7 +141,8 @@ export class ReleaseOrderApiService {
       clientName: params.client,
       executiveName: params.executive,
       executiveOrg: params.executiveOrg,
-      insertionPeriod: params.past
+      insertionPeriod: params.past,
+      releaseOrderNO: releaseOrderNO
     }).pipe(
       map(data => {
         let insertions : InsertionCheckItem[] = [];
@@ -151,9 +170,15 @@ export class ReleaseOrderApiService {
     });
   }
 
-  generate(releaseOrder: ReleaseOrder) {
+  generatePdf(releaseOrder: ReleaseOrder) {
     return this.api.post('/user/releaseorder/download', {
       id: releaseOrder.id
     }, { responseType: 'blob' });
+  }
+
+  generate(releaseOrder: ReleaseOrder) {
+    return this.api.post('/user/releaseorder/generate', {
+      id: releaseOrder.id
+    });
   }
 }

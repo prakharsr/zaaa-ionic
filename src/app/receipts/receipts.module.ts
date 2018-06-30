@@ -14,11 +14,9 @@ import {
   ReceiptComponent,
   ReceiptDetailsComponent
 } from '.';
-import { IonicModule } from 'ionic-angular';
 
 @NgModule({
   imports: [
-    IonicModule.forRoot(ReceiptsModule),
     BaseModule,
     InvoiceModule,
     ReceiptsRoutingModule

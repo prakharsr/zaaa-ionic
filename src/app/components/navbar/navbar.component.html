@@ -6,14 +6,42 @@
                 <ion-icon name="arrow-back"></ion-icon>
             </button>
         </ion-buttons>
-        <ion-buttons right>
-          <button ion-button icon-only *ngIf="!this.api.isLoggedIn" (click)="this.goback.gotoComponent('login')" class="hamburger">
-              <ion-icon name="log-in"></ion-icon>
+        <ion-buttons right *ngIf="this.api.isLoggedIn">
+          <button ion-button icon-only (click)="this.goback.gotoComponent('')" class="hamburger">
+            <ion-icon name="help"></ion-icon>
           </button>
-          <button ion-button icon-only *ngIf="this.api.isLoggedIn" (click)=" this.api.logout(); this.goback.gotoComponent('')" class="hamburger">
+          <button ion-button icon-only (click)="this.goback.gotoComponent('')" class="hamburger">
+            <ion-icon name="notifications"></ion-icon>
+          </button>
+          <button ion-button icon-only [matMenuTriggerFor]="settings" class="hamburger">
+            <ion-icon name="settings"></ion-icon>
+          </button>
+
+          <mat-menu #settings="matMenu">
+            <button mat-menu-item routerLink="/profile">Manage Profile</button>
+            <button mat-menu-item routerLink="/">Settings</button>
+            <button mat-menu-item routerLink="/" (click)="api.logout()">Log Out</button>
+          </mat-menu>
+          
+          <button ion-button icon-only (click)=" this.api.logout(); this.goback.gotoComponent('')" class="hamburger">
             <ion-icon name="log-out"></ion-icon>
-        </button>
+          </button>
       </ion-buttons>
+      <ion-buttons right *ngIf="!this.api.isLoggedIn">
+          <button ion-button icon-only [matMenuTriggerFor]="settings" class="hamburger">
+            <ion-icon name="settings"></ion-icon>
+          </button>
+
+          <mat-menu #settings="matMenu">
+              <button mat-menu-item routerLink="/">Home</button>
+              <button mat-menu-item routerLink="/">Settings</button>
+              <button mat-menu-item routerLink="/login">Log In</button>
+          </mat-menu>
+
+          <button ion-button icon-only (click)="this.goback.gotoComponent('login')" class="hamburger">
+            <ion-icon name="log-in"></ion-icon>
+          </button>
+    </ion-buttons>
         <button class="hamburger" ion-button menuToggle left>
             <ion-icon name="menu"></ion-icon>
         </button>
@@ -72,6 +100,15 @@
        </button>
        <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('templates')" menuClose>
         Templates
+       </button>
+       <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('accounts')" menuClose>
+        Accounts
+       </button>
+       <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('reports')" menuClose>
+        Reports
+       </button>
+       <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('tickets')" menuClose>
+        Tickets
        </button>
        <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('changePassword')" menuClose>
         Change Password

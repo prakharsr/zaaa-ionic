@@ -1,4 +1,4 @@
-<button class="fab" (click)="this.goback.gotoComponent('dir/clients/new')">
+<button class="fab" routerLink="/dir/clients/new">
   <mat-icon>add</mat-icon>
 </button>
 
@@ -18,7 +18,7 @@
   No Clients
 </p>
 
-<div class="card mb-3" *ngFor="let client of clients">
+<div class="card mb-3 mat-elevation-z3" *ngFor="let client of clients">
   <div class="card-body">
     <div class="row">
       <div class="col">

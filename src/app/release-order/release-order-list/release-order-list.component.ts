@@ -29,9 +29,6 @@ export class ReleaseOrderListComponent implements OnInit {
 
   releaseOrders: ReleaseOrder[] = [];
 
-  displayedColumns = ['data', 'action'];
-  dataSource = new MatTableDataSource();
-
   pageCount: number;
   page: number;
 
@@ -81,8 +78,6 @@ export class ReleaseOrderListComponent implements OnInit {
 
   private init(data: PageData<ReleaseOrder>) {
     this.releaseOrders = data.list;
-
-    this.dataSource.data = this.releaseOrders;
 
     this.pageCount = data.pageCount;
     this.page = data.page;
@@ -173,7 +168,7 @@ export class ReleaseOrderListComponent implements OnInit {
       this.api.deleteReleaseOrder(releaseOrder).subscribe(
         data => {
           if (data.success) {
-            this.dataSource.data = this.releaseOrders = this.releaseOrders.filter(c => c.id !== releaseOrder.id);
+            this.releaseOrders = this.releaseOrders.filter(c => c.id !== releaseOrder.id);
           }
           else {
             console.log(data);
@@ -185,10 +180,10 @@ export class ReleaseOrderListComponent implements OnInit {
     });
   }
 
-  gen(releaseOrder: ReleaseOrder) {
+  pdf(releaseOrder: ReleaseOrder) {
     this.confirmGeneration(releaseOrder).subscribe(confirm => {
       if (confirm) {
-        this.api.generate(releaseOrder).subscribe(data => {
+        this.api.generatePdf(releaseOrder).subscribe(data => {
           if (data.msg) {
             this.notifications.show(data.msg);
     
@@ -273,5 +268,16 @@ export class ReleaseOrderListComponent implements OnInit {
     }
 
     this.router.navigate(['/invoices/new', releaseorder.id]);
+  }
+
+  generate(releaseOrder: ReleaseOrder) {
+    this.api.generate(releaseOrder).subscribe(data => {
+      if (data.success) {
+        this.router.navigateByUrl('/releaseorders/generated');
+      }
+      else {
+        this.notifications.show('Failed to Generate');
+      }
+    });
   }
 }

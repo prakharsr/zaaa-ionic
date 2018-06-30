@@ -1,0 +1,31 @@
+<mat-toolbar>  
+  <mat-toolbar-row>
+    <div class="container">Accounts</div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<br>
+
+<div class="container">
+  <div>
+    <a routerLink="mediahouseinvoice">Media House Invoice</a>
+  </div>
+  <div>
+    <a routerLink="clientreceipts">Client Receipts</a>
+  </div>
+  <div>
+    <a routerLink="clientinvoicepayments">Client Invoice Payments</a>
+  </div>
+  <div>
+    <a routerLink="executiveinvoicepayments">Executive Invoice Payments</a>
+  </div>
+  <div>
+    <a routerLink="notes">Credit / Debit Notes</a>
+  </div>
+  <div>
+    <a routerLink="gst" *ngIf="firm.GSTIN.GSTType == 'RD'">GST</a>
+  </div>  
+  <div>
+    <a routerLink="summarysheet">Summary Sheet</a>
+  </div>
+</div>

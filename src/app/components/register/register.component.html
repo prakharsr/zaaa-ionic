@@ -27,13 +27,7 @@
 
     <br><br>
 
-    <mat-checkbox class="my-2" name="acceptTnC" [(ngModel)]="acceptTnC" required #acceptTnCField="ngModel">Accept Terms and Conditions</mat-checkbox>
-
-    <div *ngIf="acceptTnCField.invalid && (acceptTnCField.dirty || acceptTnCField.touched)" class="text-danger">
-      <div *ngIf="acceptTnCField.errors.required">
-        Accept Terms and Conditions to continue.
-      </div>
-    </div>
+    <p class="small">By clicking Sign Up, you agree to our <a routerLink="">Terms and Conditions</a>.</p>
 
     <br><br>
 
@@ -42,4 +36,6 @@
 
   <br>
   <p>Already have an account, <a routerLink="/login">Login</a>.</p>
+  <br>
+  <p class="small">Click to view our <a routerLink="">Subscription plans</a>.</p>
 </div>

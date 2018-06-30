@@ -7,6 +7,13 @@ class Amount {
 export class Invoice {
     id = "";
 
+    invoiceNO = "";
+
+    GSTIN = {
+        GSTType: "RD",
+        GSTNo: ""
+    }
+
     date: Date;
     releaseOrderId = "";
 
@@ -32,6 +39,8 @@ export class Invoice {
     otherRemark = '';
     netAmountFigures = 0;
     netAmountWords = '';
+
+    FinalTaxAmount = 0;
 
     /*for payment reciept */
     clearedAmount = 0;

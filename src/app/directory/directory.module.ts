@@ -26,11 +26,9 @@ import {
   MediaHouseListResolver,
   MediaHouseApiService
 } from '.';
-import { IonicModule } from 'ionic-angular';
 
 @NgModule({
   imports: [
-    IonicModule.forRoot(DirectoryModule),
     BaseModule,
     DirRoutingModule
   ],

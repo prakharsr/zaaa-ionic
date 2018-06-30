@@ -1,4 +1,4 @@
-<button class="fab" (click)="this.goback.gotoComponent('dir/media_houses/new')" *ngIf="!global">
+<button class="fab" routerLink="/dir/media_houses/new" *ngIf="!global">
   <mat-icon>add</mat-icon>
 </button>
 
@@ -20,7 +20,7 @@
   No Media Houses
 </p>
 
-<div class="card mb-3" *ngFor="let mediaHouse of mediaHouses">
+<div class="card mb-3 mat-elevation-z3" *ngFor="let mediaHouse of mediaHouses">
   <div class="card-body">
     <div class="row">
       <div class="col">

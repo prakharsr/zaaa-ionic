@@ -4,7 +4,7 @@ export class Insertion {
     constructor(public date: NgbDate, public marked = false, public state = 0) {}
 
     mediaHouseInvoiceID: string;
-    _id = "";
+    _id = null;
 }
 
 export class TaxValues
@@ -36,6 +36,8 @@ export class ReleaseOrder {
         GSTType: "URD",
         GSTNo: ""
     }
+
+    pulloutName = "";
     
     mediaType = "";
     
@@ -47,6 +49,8 @@ export class ReleaseOrder {
     }
     
     adType = "";
+
+    fixRate = false;
     rate = 0;
     unit = "";
     

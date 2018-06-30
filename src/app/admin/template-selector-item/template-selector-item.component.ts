@@ -1,4 +1,3 @@
-import { GobackService } from 'app/services';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Template } from 'app/models';
 
@@ -9,8 +8,7 @@ import { Template } from 'app/models';
 })
 export class TemplateSelectorItemComponent implements OnInit {
 
-  ngOnInit() {
-    this.goback.urlInit(); }
+  ngOnInit() { }
 
   @Input() name: string;
 
@@ -34,7 +32,7 @@ export class TemplateSelectorItemComponent implements OnInit {
 
   @Output() @Input() selectedTemplate: Template;
 
-  constructor(public goback: GobackService, ) { }
+  constructor() { }
 
   private updateTemplate() {
     this.selectedTemplate = this.templates[this.selectedIndex];

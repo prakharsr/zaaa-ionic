@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BaseModule } from '../base.module';
 
 import {
-  FirmProfileEditComponent,
   PlanSelectorComponent,
   TemplateSelectorItemComponent,
   TemplateSelectorComponent,
@@ -18,8 +17,6 @@ import { IonicModule } from 'ionic-angular';
   ],
   declarations: [
     EmptyComponent,
-
-    FirmProfileEditComponent,
     PlanSelectorComponent,
     TemplateSelectorItemComponent,
     TemplateSelectorComponent,

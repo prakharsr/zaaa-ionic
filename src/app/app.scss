@@ -14,18 +14,6 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
-.mat-icon {
-    margin-top: -4.5px;
-}
-
-.mat-toolbar {
-    margin-top: 10px;
-}
-
-.toolbar:focus {
-    outline: none;
-}
-
 .max-w-200 {
     max-width: 200px;
 }
@@ -57,8 +45,8 @@
 
 .fab .fa {
     position: absolute;
-    top: calc(50% - 7px);
-    left: calc(50% - 7px);
+    top: calc(50% - 8px);
+    left: calc(50% - 8px);
 }
 
 .fab:hover {
@@ -93,7 +81,7 @@ input.ng-valid.form-control, select.ng-valid {
 
 mat-form-field, mat-slide-toggle {
     width: 100%;
-    margin: 10px 0;
+    margin: 0px 0;
 }
 
 mat-icon {

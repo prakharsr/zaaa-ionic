@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-date';
 import { Invoice } from '../invoice';
 import { MediaHouse, Client, Executive } from 'app/directory';
-import { NotificationService, OptionsService } from 'app/services';
+import { NotificationService, OptionsService, DialogService } from 'app/services';
 import { InvoiceApiService } from '../invoice-api.service';
 
 import {
@@ -12,8 +12,10 @@ import {
   ReleaseOrder,
   OtherCharges,
   TaxValues,
-  ReleaseOrderDir
+  ReleaseOrderDir,
+  ReleaseOrderApiService
 } from 'app/release-order';
+import { SelectReleaseOrderComponent } from '../select-release-order/select-release-order.component';
 
 class AvailableInsertion {
   constructor(public insertion: Insertion, public checked = false) { }
@@ -38,37 +40,85 @@ export class InvoiceComponent implements OnInit {
     private notifications: NotificationService,
     private router: Router,
     private api: InvoiceApiService,
-    public options: OptionsService) { }
+    public options: OptionsService,
+    private dialog: DialogService,
+    private roApi: ReleaseOrderApiService) { }
 
   ngOnInit() {
     this.goback.urlInit();
     this.route.data.subscribe((data: { resolved: ReleaseOrderDir }) => {
-      this.releaseOrder = data.resolved.releaseorder;
-      this.mediaHouse = data.resolved.mediaHouse;
-      this.client = data.resolved.client;
-      this.executive = data.resolved.executive;
-
-      this.invoice.releaseOrderId = this.releaseOrder.id;
-      this.invoice.otherCharges = this.releaseOrder.otherCharges;
-      this.invoice.publicationDiscount.amount = this.releaseOrder.publicationDiscount;
-      this.invoice.agencyDiscount1.amount = this.releaseOrder.agencyDiscount1;
-
-      this.taxes.forEach(element => {
-        if (element.primary == this.releaseOrder.taxAmount.primary && element.secondary == this.releaseOrder.taxAmount.secondary) {
-          this.invoice.taxAmount = element;
-        }
-      });
-      
-      this.invoice.taxIncluded = this.releaseOrder.taxIncluded;
-
-      this.invoice.taxType = this.mediaHouse.address.state == this.client.address.state ? 'SGST + CGST' : 'IGST';
-
-      this.releaseOrder.insertions.forEach(element => {
-        if (!element.marked) {
-          this.availableInsertions.push(new AvailableInsertion(element));
-        }
-      });
+      if (data.resolved) {
+        this.init(data.resolved);
+      }
     });
+  }
+
+  init(resolved: ReleaseOrderDir) {
+    this.releaseOrder = resolved.releaseorder;
+    this.mediaHouse = resolved.mediaHouse;
+    this.client = resolved.client;
+    this.executive = resolved.executive;
+
+    this.invoice.releaseOrderId = this.releaseOrder.id;
+    this.invoice.otherCharges = this.releaseOrder.otherCharges;
+    this.invoice.publicationDiscount.amount = this.releaseOrder.publicationDiscount;
+    this.invoice.agencyDiscount1.amount = this.releaseOrder.agencyDiscount1;
+
+    this.invoice.GSTIN = this.client.GSTIN;
+
+    this.taxes.forEach(element => {
+      if (element.primary == this.releaseOrder.taxAmount.primary && element.secondary == this.releaseOrder.taxAmount.secondary) {
+        this.invoice.taxAmount = element;
+      }
+    });
+    
+    this.invoice.taxIncluded = this.releaseOrder.taxIncluded;
+
+    this.invoice.taxType = this.mediaHouse.address.state == this.client.address.state ? 'SGST + CGST' : 'IGST';
+
+    this.releaseOrder.insertions.forEach(element => {
+      this.availableInsertions = [];
+
+      if (!element.marked) {
+        this.availableInsertions.push(new AvailableInsertion(element));
+      }
+    });
+  }
+
+  get roDiscountedAmount() {
+    let amount = this.releaseOrder.adGrossAmount;
+
+    amount -= (this.releaseOrder.agencyDiscount1 * this.releaseOrder.adGrossAmount) / 100;
+    amount -= (this.releaseOrder.agencyDiscount2 * this.releaseOrder.adGrossAmount) / 100;
+
+    return amount;
+  }
+
+  get finalRoAmount() {
+    let amount = this.roDiscountedAmount;
+
+    amount += this.finalRoTaxAmount;
+
+    return amount;
+  }
+
+  get finalRoTaxAmount() {
+    let taxAmount = 0;
+
+    taxAmount += (this.releaseOrder.taxAmount.primary * this.roDiscountedAmount) / 100;
+    taxAmount += (this.releaseOrder.taxAmount.secondary * taxAmount) / 100;
+
+    return taxAmount;
+  }
+
+  get roTaxDisplay() {
+    let tax = this.releaseOrder.taxAmount.primary + "%";
+
+    if (this.releaseOrder.taxAmount.secondary != 0) {
+      tax += " + " + this.releaseOrder.taxAmount.secondary + "%"
+    }
+
+    return tax;
   }
 
   toDate(date: NgbDate) {
@@ -90,6 +140,7 @@ export class InvoiceComponent implements OnInit {
     this.invoice.netAmountFigures = this.netAmount;
     this.invoice.netAmountWords = this.options.amountToWords(this.invoice.netAmountFigures);
     this.invoice.pendingAmount = this.invoice.netAmountFigures;
+    this.invoice.FinalTaxAmount = this.finalTaxAmount;
     this.invoice.insertions = this.availableInsertions.filter(insertion => insertion.checked).map(insertion => insertion.insertion);
 
     this.api.createInvoice(this.invoice).subscribe(data => {
@@ -128,30 +179,9 @@ export class InvoiceComponent implements OnInit {
     return this.availableInsertions.filter(insertion => insertion.checked).length;
   }
 
-  get toPay() {
-    let adCountPaid = (+this.releaseOrder.adTotal * +this.releaseOrder.adSchemePaid) / (+this.releaseOrder.adSchemePaid + +this.releaseOrder.adSchemeFree);
-
-    if (adCountPaid == this.releaseOrder.insertions.length) {
-      return this.insertionCount;
-    }
-
-    let marked = this.releaseOrder.insertions.filter(insertion => insertion.marked).length;  
-
-    if (marked >= adCountPaid) {
-      return 0;
-    }
-
-    let residue = marked + this.insertionCount - adCountPaid;
-
-    if (residue >= 0) {
-      return this.insertionCount - residue;
-    }
-    else return this.insertionCount;
-  }
-
   get grossAmount() {
-    let grossSingle = this.releaseOrder.adGrossAmount / this.releaseOrder.adSchemePaid;
-    return Math.ceil(grossSingle * this.toPay);
+    let grossSingle = this.releaseOrder.adGrossAmount / this.releaseOrder.insertions.length;
+    return Math.ceil(grossSingle * this.insertionCount);
   }
 
   get netAmount() {
@@ -183,17 +213,25 @@ export class InvoiceComponent implements OnInit {
   }
 
   get finalTaxAmount() {
-    let amount = 0;
-    let finalAmount = this.netAmount;
+    let taxAmount = this.netAmount;
 
-    amount += (this.invoice.taxAmount.primary * finalAmount) / 100;
-    amount += (this.invoice.taxAmount.secondary * finalAmount) / 100;
+    taxAmount += (this.invoice.taxAmount.primary * taxAmount) / 100;
+    taxAmount += (this.invoice.taxAmount.secondary * taxAmount) / 100;
 
-    return amount;
+    return taxAmount;
   }
 
   removeOtherCharge(i: number) {
     this.invoice.otherCharges.splice(i, 1);
   }
 
+  selectRO() {
+    this.dialog.show(SelectReleaseOrderComponent).subscribe((data: ReleaseOrder) => {
+      if (data) {
+        this.roApi.getReleaseOrderDir(data.id).subscribe(dir => {
+          this.init(dir);
+        });
+      }
+    });
+  }
 }
