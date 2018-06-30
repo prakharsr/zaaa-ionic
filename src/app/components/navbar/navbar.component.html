@@ -19,8 +19,8 @@
 
           <mat-menu #settings="matMenu">
             <button mat-menu-item (click)="this.goback.gotoComponent('/profile')">Manage Profile</button>
-            <button mat-menu-item (click)="this.goback.gotoComponent('/')'">Settings</button>
-            <button mat-menu-item (click)="this.goback.gotoComponent('/')'" (click)="api.logout()">Log Out</button>
+            <button mat-menu-item (click)="this.goback.gotoComponent('/')">Settings</button>
+            <button mat-menu-item (click)="this.goback.gotoComponent('/')" (click)="api.logout()">Log Out</button>
           </mat-menu>
           
           <button ion-button icon-only (click)=" this.api.logout(); this.goback.gotoComponent('')" class="hamburger">
