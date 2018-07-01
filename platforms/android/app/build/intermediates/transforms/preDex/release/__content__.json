@@ -1,0 +1,1 @@
+[{"name":"ed6dd8015d7e8181bd14f1ba3be32663323777d3","index":0,"scopes":["PROJECT"],"types":["DEX"],"format":"JAR","present":true},{"name":":CordovaLib","index":1,"scopes":["SUB_PROJECTS"],"types":["DEX"],"format":"JAR","present":true},{"name":"com.razorpay:checkout:1.4.7","index":2,"scopes":["EXTERNAL_LIBRARIES"],"types":["DEX"],"format":"JAR","present":true}]
