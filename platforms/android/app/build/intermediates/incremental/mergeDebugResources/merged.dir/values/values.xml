@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <bool name="isTablet">false</bool>
-    <string name="activity_name">@string/launcher_name</string>
-    <string name="app_name">AAMan</string>
-    <string name="launcher_name">@string/app_name</string>
-    <style name="CheckoutTheme">
-    </style>
-</resources>
