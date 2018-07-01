@@ -57840,8 +57840,8 @@ ion-navbar.toolbar {
     bottom: 30px;
   }
   .fab .fa {
-    top: calc(50% - 7px);
-    left: calc(50% - 7px);
+    top: calc(50% - 8px);
+    left: calc(50% - 8px);
   }
 }
 
@@ -57866,7 +57866,7 @@ button[mat-icon-button] {
   outline: none !important;
 }
 
-app-plan-selector app-plan-selector .planContainer {
+app-plan-selector .planContainer {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -57891,7 +57891,7 @@ app-plan-selector app-plan-selector .planContainer {
   justify-content: center;
 }
 
-app-plan-selector app-plan-selector .plan {
+app-plan-selector .plan {
   background: #efefef;
   width: 16em;
   -webkit-box-sizing: border-box;
@@ -57901,18 +57901,18 @@ app-plan-selector app-plan-selector .plan {
   margin-bottom: 1em;
 }
 
-app-plan-selector app-plan-selector .plan .titleContainer {
+app-plan-selector .plan .titleContainer {
   padding: 1.4em;
 }
 
-app-plan-selector app-plan-selector .plan .titleContainer .title {
+app-plan-selector .plan .titleContainer .title {
   font-size: 1.7em;
   text-transform: uppercase;
   color: white;
   font-weight: 700;
 }
 
-app-plan-selector app-plan-selector .plan .titleContainer .price {
+app-plan-selector .plan .titleContainer .price {
   font-size: 1em;
   padding-top: 1em;
   padding-bottom: 0.25em;
@@ -57923,47 +57923,47 @@ app-plan-selector app-plan-selector .plan .titleContainer .price {
   width: 80%;
 }
 
-app-plan-selector app-plan-selector .plan .titleContainer .price p {
+app-plan-selector .plan .titleContainer .price p {
   font-size: 1.45em;
   display: inline-block;
   margin: 0;
 }
 
-app-plan-selector app-plan-selector .plan .titleContainer .price span {
+app-plan-selector .plan .titleContainer .price span {
   font-size: 1.0875em;
   display: inline-block;
 }
 
-app-plan-selector app-plan-selector .plan .infoContainer {
+app-plan-selector .plan .infoContainer {
   padding: 1em;
   color: #2d3b48;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-app-plan-selector app-plan-selector .plan .infoContainer .desc {
+app-plan-selector .plan .infoContainer .desc {
   padding: 1em 0;
   border-bottom: 2px solid #efefef;
   margin: 0 auto;
   width: 90%;
 }
 
-app-plan-selector app-plan-selector .plan .infoContainer .desc em {
+app-plan-selector .plan .infoContainer .desc em {
   font-size: 1em;
   font-weight: 500;
 }
 
-app-plan-selector app-plan-selector .plan .infoContainer .features {
+app-plan-selector .plan .infoContainer .features {
   font-size: 1em;
   list-style: none;
   padding-left: 0;
 }
 
-app-plan-selector app-plan-selector .plan .infoContainer .features li {
+app-plan-selector .plan .infoContainer .features li {
   padding: 0.5em;
 }
 
-app-plan-selector app-plan-selector .plan .infoContainer .selectPlan {
+app-plan-selector .plan .infoContainer .selectPlan {
   border: 2px solid #17a2b8;
   padding: 0.75em 1em;
   border-radius: 2.5em;
@@ -57978,16 +57978,16 @@ app-plan-selector app-plan-selector .plan .infoContainer .selectPlan {
   font-weight: 700;
 }
 
-app-plan-selector app-plan-selector .plan .infoContainer .selectPlan:hover {
+app-plan-selector .plan .infoContainer .selectPlan:hover {
   background-color: #17a2b8;
   color: white;
 }
 
 @media screen and (max-width: 25em) {
-  app-plan-selector app-plan-selector .planContainer {
+  app-plan-selector .planContainer {
     margin: 0;
   }
-  app-plan-selector app-plan-selector .planContainer .plan {
+  app-plan-selector .planContainer .plan {
     width: 100%;
     margin: 1em 0;
   }
@@ -58156,20 +58156,19 @@ app-insertion-details .selected {
   color: white;
 }
 
-app-release-order {
-  /* @media (max-width: 991px) {     #calculations {         position: fixed;         top: 105px;         z-index: 30;         right: -17px;         border-radius: 0;         width: auto;         left: -17px;     }      mat-toolbar {         margin-top: 260px;     } } */
-  /* #calculations {     z-index: 30; } */
-}
-
 app-release-order .list-group-item div:first-child {
   font-style: italic;
 }
 
-app-release-order mat-sidenav {
-  padding-right: 25px;
-  position: fixed;
-  z-index: 30;
-  top: 150px;
+@media (max-width: 991px) {
+  app-release-order #calculations {
+    position: fixed;
+    z-index: 30;
+    right: -17px;
+    border-radius: 0;
+    width: auto;
+    left: -17px;
+  }
 }
 
 app-release-order mat-toolbar {
