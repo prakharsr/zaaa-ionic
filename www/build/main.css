@@ -58156,20 +58156,19 @@ app-insertion-details .selected {
   color: white;
 }
 
-app-release-order {
-  /* @media (max-width: 991px) {     #calculations {         position: fixed;         top: 105px;         z-index: 30;         right: -17px;         border-radius: 0;         width: auto;         left: -17px;     }      mat-toolbar {         margin-top: 260px;     } } */
-  /* #calculations {     z-index: 30; } */
-}
-
 app-release-order .list-group-item div:first-child {
   font-style: italic;
 }
 
-app-release-order mat-sidenav {
-  padding-right: 25px;
-  position: fixed;
-  z-index: 30;
-  top: 150px;
+@media (max-width: 991px) {
+  app-release-order #calculations {
+    position: fixed;
+    z-index: 30;
+    right: -17px;
+    border-radius: 0;
+    width: auto;
+    left: -17px;
+  }
 }
 
 app-release-order mat-toolbar {
