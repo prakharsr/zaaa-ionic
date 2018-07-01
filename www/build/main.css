@@ -57840,8 +57840,8 @@ ion-navbar.toolbar {
     bottom: 30px;
   }
   .fab .fa {
-    top: calc(50% - 7px);
-    left: calc(50% - 7px);
+    top: calc(50% - 8px);
+    left: calc(50% - 8px);
   }
 }
 

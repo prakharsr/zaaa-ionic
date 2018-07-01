@@ -4313,7 +4313,7 @@ var AppComponent = (function () {
     };
     AppComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'app-app',template:/*ion-inline-start:"/home/lambo/zaaa-ionic/src/app/components/app/app.component.html"*/'<app-loader></app-loader>\n<app-navbar></app-navbar>\n<ion-content>\n<br><br>\n    <router-outlet></router-outlet>\n<br><br>\n</ion-content>'/*ion-inline-end:"/home/lambo/zaaa-ionic/src/app/components/app/app.component.html"*/,
+            selector: 'app-app',template:/*ion-inline-start:"/home/lambo/zaaa-ionic/src/app/components/app/app.component.html"*/'<app-loader></app-loader>\n<app-navbar></app-navbar>\n<ion-content>\n<br><br><br>\n    <router-outlet></router-outlet>\n<br><br>\n</ion-content>'/*ion-inline-end:"/home/lambo/zaaa-ionic/src/app/components/app/app.component.html"*/,
         }),
         __metadata("design:paramtypes", [])
     ], AppComponent);
