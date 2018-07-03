@@ -66,8 +66,8 @@
     }
 
     .fab .fa {
-        top: calc(50% - 8px);
-        left: calc(50% - 8px);
+        top: calc(50% - 6px);
+        left: calc(50% - 7px);
     }
 }
 
@@ -81,7 +81,7 @@ input.ng-valid.form-control, select.ng-valid {
 
 mat-form-field, mat-slide-toggle {
     width: 100%;
-    margin: 0px 0;
+    margin: -5px;
 }
 
 mat-icon {
