@@ -57840,8 +57840,8 @@ ion-navbar.toolbar {
     bottom: 30px;
   }
   .fab .fa {
-    top: calc(50% - 8px);
-    left: calc(50% - 8px);
+    top: calc(50% - 5px);
+    left: calc(50% - 7px);
   }
 }
 
@@ -57855,7 +57855,7 @@ input.ng-valid.form-control, select.ng-valid {
 
 mat-form-field, mat-slide-toggle {
   width: 100%;
-  margin: 0px 0;
+  margin: -5px;
 }
 
 mat-icon {
@@ -57864,6 +57864,10 @@ mat-icon {
 
 button[mat-icon-button] {
   outline: none !important;
+}
+
+ion-navbar:focus {
+  outline: none;
 }
 
 app-plan-selector .planContainer {
@@ -58059,6 +58063,11 @@ app-navbar .toolbar .toolbar-title, app-navbar .toolbar .bar-button-default {
 
 app-navbar .toolbar:focus {
   outline: none;
+}
+
+app-navbar #menuButton {
+  padding: 0;
+  margin: 0;
 }
 
 app-profile-view .list-group-item div:first-child {

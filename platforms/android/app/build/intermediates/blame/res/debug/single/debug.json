@@ -20,12 +20,12 @@
         "source": "/home/lambo/zaaa-ionic/platforms/android/app/src/main/res/drawable-land-xhdpi/screen.png"
     },
     {
-        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_rzp_logo.png.flat",
-        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/b26bf04ccca2a7edf3fa367d5411344b/res/drawable-mdpi-v4/rzp_logo.png"
-    },
-    {
         "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-ldpi_screen.png.flat",
         "source": "/home/lambo/zaaa-ionic/platforms/android/app/src/main/res/drawable-port-ldpi/screen.png"
+    },
+    {
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_rzp_logo.png.flat",
+        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/b26bf04ccca2a7edf3fa367d5411344b/res/drawable-mdpi-v4/rzp_logo.png"
     },
     {
         "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable_rzp_loader_circle.xml.flat",
