@@ -1,51 +1,20 @@
 <ion-header>
     <ion-navbar>
+      <button ion-button id="menuButton" menuToggle left>
+        <ion-icon name="menu"></ion-icon>
+      </button>
         <ion-buttons left>
-          <!-- *ngIf="!this.isLoginComponent"  -->
-            <button ion-button icon-only (click)="this.goback.goBack()" class="hamburger">
-                <ion-icon name="arrow-back"></ion-icon>
-            </button>
+          <img src="assets/zenedo.jpeg" width="50" height="50">&nbsp;&nbsp;
         </ion-buttons>
         <ion-buttons right *ngIf="this.api.isLoggedIn">
-          <button ion-button icon-only (click)="this.goback.gotoComponent('')" class="hamburger">
-            <ion-icon name="help"></ion-icon>
-          </button>
-          <button ion-button icon-only (click)="this.goback.gotoComponent('')" class="hamburger">
+          <button ion-button icon-only (click)="this.goback.gotoComponent('')">
             <ion-icon name="notifications"></ion-icon>
           </button>
-          <button ion-button icon-only [matMenuTriggerFor]="settings" class="hamburger">
-            <ion-icon name="settings"></ion-icon>
-          </button>
-
-          <mat-menu #settings="matMenu">
-            <button mat-menu-item (click)="this.goback.gotoComponent('/profile')">Manage Profile</button>
-            <button mat-menu-item (click)="this.goback.gotoComponent('/')">Settings</button>
-            <button mat-menu-item (click)="this.goback.gotoComponent('/')" (click)="api.logout()">Log Out</button>
-          </mat-menu>
-          
-          <button ion-button icon-only (click)=" this.api.logout(); this.goback.gotoComponent('')" class="hamburger">
-            <ion-icon name="log-out"></ion-icon>
-          </button>
-      </ion-buttons>
-      <ion-buttons right *ngIf="!this.api.isLoggedIn">
-          <button ion-button icon-only [matMenuTriggerFor]="settings" class="hamburger">
-            <ion-icon name="settings"></ion-icon>
-          </button>
-
-          <mat-menu #settings="matMenu">
-              <button mat-menu-item (click)="this.goback.gotoComponent('/')">Home</button>
-              <button mat-menu-item (click)="this.goback.gotoComponent('/')">Settings</button>
-              <button mat-menu-item (click)="this.goback.gotoComponent('/login')">Log In</button>
-          </mat-menu>
-
-          <button ion-button icon-only (click)="this.goback.gotoComponent('login')" class="hamburger">
-            <ion-icon name="log-in"></ion-icon>
-          </button>
-    </ion-buttons>
-        <button class="hamburger" ion-button menuToggle left>
-            <ion-icon name="menu"></ion-icon>
-        </button>
-        <ion-title>AAMan</ion-title>
+        </ion-buttons>
+        <div class="row">
+          <ion-title>AAMan</ion-title>
+          <img *ngIf="profile.logo" [src]="profile.logo" width="50" height="50">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
     </ion-navbar>
   </ion-header>
   <ion-menu [content]="content">
@@ -56,9 +25,6 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <!-- <button ion-item *ngIf="!api.isLoggedIn" routerLink="/" menuClose>
-        Home
-        </button> -->
         <button class="hamburger" ion-item routerLinkActive="active" *ngIf="!api.isLoggedIn" (click)="this.goback.gotoComponent('login')" menuClose>
         Login
         </button>
@@ -72,13 +38,7 @@
         Dashboard
         </button>
         <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('profile')" menuClose>
-        User Profile
-        </button>
-        <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('firm')" menuClose>
-        Firm Profile
-        </button>
-        <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('coUsers')" menuClose>
-        Co-Users
+        Manage Profile
         </button>
         <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('dir')" menuClose>
         Directory
@@ -98,9 +58,6 @@
        <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('receipts')" menuClose>
         Payment Receipts
        </button>
-       <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('templates')" menuClose>
-        Templates
-       </button>
        <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('accounts')" menuClose>
         Accounts
        </button>
@@ -108,13 +65,10 @@
         Reports
        </button>
        <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('tickets')" menuClose>
-        Tickets
-       </button>
-       <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('changePassword')" menuClose>
-        Change Password
+        Support
        </button>
        <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent(''); api.logout()" menuClose>
-          Logout
+        Logout
        </button>
         
       </ion-list>

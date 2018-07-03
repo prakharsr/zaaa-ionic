@@ -91,3 +91,7 @@ mat-icon {
 button[mat-icon-button] {
     outline: none !important;
 }
+
+ion-navbar:focus {
+    outline: none;
+}

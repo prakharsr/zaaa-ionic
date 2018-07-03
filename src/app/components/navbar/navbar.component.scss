@@ -1,1 +1,15 @@
-app-navbar {     .toolbar-background {         background-color: $brand_info;     }     .toolbar .toolbar-title, .toolbar .bar-button-default {         color: mintcream;       }     .toolbar:focus {     outline: none; } }
+app-navbar {     
+    .toolbar-background {         
+        background-color: $brand_info;
+         }     
+    .toolbar .toolbar-title, .toolbar .bar-button-default {         
+        color: mintcream;
+        }     
+    .toolbar:focus {     
+        outline: none;
+     }
+    #menuButton {
+        padding: 0;
+        margin: 0;
+    }
+}

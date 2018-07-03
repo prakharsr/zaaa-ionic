@@ -57866,6 +57866,10 @@ button[mat-icon-button] {
   outline: none !important;
 }
 
+ion-navbar:focus {
+  outline: none;
+}
+
 app-plan-selector .planContainer {
   display: -webkit-box;
   display: -webkit-flex;
@@ -58059,6 +58063,11 @@ app-navbar .toolbar .toolbar-title, app-navbar .toolbar .bar-button-default {
 
 app-navbar .toolbar:focus {
   outline: none;
+}
+
+app-navbar #menuButton {
+  padding: 0;
+  margin: 0;
 }
 
 app-profile-view .list-group-item div:first-child {
