@@ -17,7 +17,7 @@
           <p>To view and edit Account Details</p>
         </div>
         <div class="col-auto align-self-end">
-          <a class="btn btn-outline-info col-auto mr-3" (click)="this.goback.gotoComponent('/account')">View</a>
+          <a class="btn btn-outline-info col-auto mr-3" routerLink="/account">View</a>
         </div>
       </div>
     </div>
@@ -33,7 +33,7 @@
           <p>To view and edit Firm Details</p>
         </div>
         <div class="col-auto align-self-end">
-          <a class="btn btn-outline-info col-auto mr-3" (click)="this.goback.gotoComponent('/firm')">View</a>
+          <a class="btn btn-outline-info col-auto mr-3" routerLink="/firm">View</a>
         </div>
       </div>
     </div>
@@ -49,41 +49,9 @@
           <p>To view and edit Firm Details</p>
         </div>
         <div class="col-auto align-self-end">
-          <a class="btn btn-outline-info col-auto mr-3" (click)="this.goback.gotoComponent('/coUsers')">View</a>
+          <a class="btn btn-outline-info col-auto mr-3" routerLink="/coUsers">View</a>
         </div>
       </div>
     </div>
   </div>
-  <div class="card mb-3 mat-elevation-z1">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-auto text-primary mr-5">
-            <mat-icon style="font-size: 300%">phone_android</mat-icon>
-          </div>
-          <div class="col">
-            <h5>Templates</h5>
-            <p>To view and choose Templates</p>
-          </div>
-          <div class="col-auto align-self-end">
-            <a class="btn btn-outline-info col-auto mr-3" (click)="this.goback.gotoComponent('/templates')">View</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card mb-3 mat-elevation-z1">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-auto text-primary mr-5">
-              <mat-icon style="font-size: 300%">settings</mat-icon>
-            </div>
-            <div class="col">
-              <h5>Settings</h5>
-              <p>To view and edit Settings</p>
-            </div>
-            <div class="col-auto align-self-end">
-              <a class="btn btn-outline-info col-auto mr-3" (click)="this.goback.gotoComponent('/')">View</a>
-            </div>
-          </div>
-        </div>
-      </div>
 </div>

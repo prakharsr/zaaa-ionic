@@ -47,6 +47,7 @@ import {
 import { ReportsModule } from './reports/reports.module';
 import { TicketListComponent } from './components/ticket-list/ticket-list.component';
 import { CreateTicketComponent } from './components/create-ticket/create-ticket.component';
+import { DashboardApiService } from './services/dashboard-api.service';
 
 @NgModule({
   declarations: [
@@ -115,6 +116,7 @@ import { CreateTicketComponent } from './components/create-ticket/create-ticket.
   providers: [
     StatusBar,
     SplashScreen,
+    DashboardApiService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     // {
     //   provide: LocationStrategy,

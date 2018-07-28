@@ -30,6 +30,8 @@ export class MediaHouseListComponent implements OnInit {
   query: string;
   searchFailed = false;
 
+  isSuperAdmin = false;
+
   constructor(public goback: GobackService, private api: MediaHouseApiService,
     private dialog: DialogService,
     private router: Router,
@@ -37,11 +39,12 @@ export class MediaHouseListComponent implements OnInit {
 
   ngOnInit() {
     this.goback.urlInit();
-    this.route.data.subscribe((data: { list: PageData<MediaHouse>, global: boolean }) => {
+    this.route.data.subscribe((data: { list: PageData<MediaHouse>, global: boolean, superAdmin: boolean }) => {
       this.global = data.global;
       this.mediaHouses = data.list.list;
       this.pageCount = data.list.pageCount;
       this.page = data.list.page;
+      this.isSuperAdmin = data.superAdmin;
     });
   }
 
@@ -57,7 +60,7 @@ export class MediaHouseListComponent implements OnInit {
           }));
 
   inputFormatter = (result: MediaHouse) => {
-    this.router.navigateByUrl('/dir/media_houses/' + result.id);
+    this.router.navigate([this.isSuperAdmin ? '/superadmin' : '/dir', 'media_houses', result.id]);
   }
 
   deleteMediaHouse(mediaHouse: MediaHouse) {
@@ -80,6 +83,6 @@ export class MediaHouseListComponent implements OnInit {
   }
 
   navigate(i: number) {
-    this.router.navigate(['/dir/media_houses/list', i]);
+    this.router.navigate([this.isSuperAdmin ? '/superadmin' : '/dir', 'media_houses', 'list', i]);
   }
 }

@@ -6,8 +6,7 @@
 export const environment = {
   production: false,
   razorPay: "rzp_test_86QLf2LFy65g2j",
-  // apiUrl: "http://localhost:8080/api",
-  // uploadsBaseUrl: "http://localhost:8080"
-  apiUrl:  "https://aaman-208409.appspot.com/api",
-  uploadsBaseUrl:  "https://aaman-208409.appspot.com",
+  apiUrl: "http://localhost:8080/api",
+  adminApiUrl: "http://localhost:880/adminapi",
+  uploadsBaseUrl: "http://localhost:8080"
 };

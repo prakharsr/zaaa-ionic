@@ -15,12 +15,12 @@ import {
   ReleaseOrderComponent,
   ReleaseOrderDetailsComponent,
   ReleaseOrderListComponent,
-  CategoriesDetailsComponent,
-  InsertionDetailsComponent
 } from '.';
+import { IonicModule } from 'ionic-angular';
 
 @NgModule({
   imports: [
+    IonicModule.forRoot(ReleaseOrderModule),
     BaseModule,
     DirectoryModule,
     RateCardModule,
@@ -37,9 +37,7 @@ import {
     ReleaseOrderComponent,
     ReleaseOrderListComponent,
     ReleaseOrderDetailsComponent,
-    InsertionCheckComponent,
-    CategoriesDetailsComponent,
-    InsertionDetailsComponent
+    InsertionCheckComponent
   ]
 })
 export class ReleaseOrderModule { }

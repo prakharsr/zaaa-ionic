@@ -1,3 +1,4 @@
+import { GobackService } from 'app/services';
 import { Component, OnInit, Inject } from '@angular/core';
 import { Address } from 'app/models';
 
@@ -30,12 +31,12 @@ export class InsertionDetailsComponent implements OnInit {
 
   injected = new InsertionInjection();
   
-  constructor(@Inject(MAT_DIALOG_DATA) public data: InsertionInjection, private notifications: NotificationService) {
+  constructor(public goback: GobackService, @Inject(MAT_DIALOG_DATA) public data: InsertionInjection, private notifications: NotificationService) {
     this.injected = data;
   }
 
   ngOnInit() {
-  }
+    this.goback.urlInit(); }
 
   isInsertionTimeLimitValid(date: NgbDate) {
     if (this.injected.timeLimit) {

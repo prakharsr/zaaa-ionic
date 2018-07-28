@@ -15,9 +15,11 @@ import {
   InvoiceListComponent
 } from '.';
 import { SelectReleaseOrderComponent } from './select-release-order/select-release-order.component';
+import { IonicModule } from 'ionic-angular';
 
 @NgModule({
   imports: [
+    IonicModule.forRoot(InvoiceModule),
     BaseModule,
     ReleaseOrderModule,
     InvoiceRoutingModule

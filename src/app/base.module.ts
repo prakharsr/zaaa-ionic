@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialModule } from './material.module';
 import { LivechatWidgetModule } from '@livechat/angular-widget';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import {
   GobackService,
@@ -49,6 +50,8 @@ import {
   VerifyEqualsDirective
 } from './validators';
 import { CategoriesDetailsComponent, InsertionDetailsComponent } from './release-order';
+import { AuthTokenManager } from './services/auth-token-manager.service';
+import { SuperAdminApiService } from './super-admin/super-admin-api.service';
 
 const validators = [
   VerifyEmailDirective,
@@ -66,11 +69,13 @@ const validators = [
     FormsModule,
     HttpClientModule,
     MaterialModule,
-    LivechatWidgetModule
+    LivechatWidgetModule,
+    NgxChartsModule
   ],
   providers: [
     GobackService,
 
+    AuthTokenManager,
     ApiService,
     WindowService,
     RazorPayService,
@@ -86,12 +91,15 @@ const validators = [
     FirmResolver,
     UserProfileResolver,
     OptionsService,
-    FirmUsersResolver
+    FirmUsersResolver,
+    SuperAdminApiService
   ],
   declarations: [
     MailingDetailsComponent,
     DialogComponent,
     BillingDetailsComponent,
+    CategoriesDetailsComponent,
+    InsertionDetailsComponent,
     validators,
     PaginationComponent
   ],
@@ -104,7 +112,8 @@ const validators = [
     MailingDetailsComponent,
     validators,
     PaginationComponent,
-    LivechatWidgetModule
+    LivechatWidgetModule,
+    NgxChartsModule
   ],
   entryComponents: [
     DialogComponent,

@@ -1,5 +1,5 @@
+import { GobackService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
-import { Address } from 'app/models';
 
 // Prevent circular dependency
 import { StateApiService } from 'app/services/state-api.service';
@@ -29,9 +29,10 @@ export class CategoriesDetailsComponent implements OnInit {
   edit = false;
   id: string;
   
-  constructor( public options: OptionsService, public stateApi: StateApiService, private route: ActivatedRoute) { }
+  constructor(public goback: GobackService, public options: OptionsService, public stateApi: StateApiService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.goback.urlInit();
     this.categories = this.options.categories;
 
     this.route.paramMap.subscribe(params => {

@@ -7,7 +7,7 @@ import { MediaHouse, Client, ClientApiService, MediaHouseApiService } from 'app/
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { AccountsApiService } from '../accounts-api.service';
-import { NotificationService, WindowService, DialogService } from 'app/services';
+import { NotificationService, DialogService } from 'app/services';
 
 @Component({
   selector: 'app-credit-debit-notes',
@@ -34,7 +34,6 @@ export class CreditDebitNotesComponent implements OnInit {
     private mediaHouseApi: MediaHouseApiService,
     private api: AccountsApiService,
     private notifications: NotificationService,
-    private windowService: WindowService,
     private dialog: DialogService) { }
 
   ngOnInit() {
@@ -143,11 +142,11 @@ export class CreditDebitNotesComponent implements OnInit {
         console.log(data);
         
         let blob = new Blob([data], { type: 'application/pdf' });
-        let url = this.windowService.window.URL.createObjectURL(blob);
+        let url = URL.createObjectURL(blob);
 
-        let a = this.windowService.window.document.createElement('a');
+        let a = document.createElement('a');
         a.setAttribute('style', 'display:none;');
-        this.windowService.window.document.body.appendChild(a);
+        document.body.appendChild(a);
         a.download = 'note.pdf';
         a.href = url;
         a.click();

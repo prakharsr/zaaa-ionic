@@ -1,5 +1,11 @@
 import { GobackService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
+import { map } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-date';
 import { Invoice } from '../invoice';
@@ -76,11 +82,86 @@ export class InvoiceComponent implements OnInit {
 
     this.invoice.taxType = this.mediaHouse.address.state == this.client.address.state ? 'SGST + CGST' : 'IGST';
 
+    this.availableInsertions = [];
+    
     this.releaseOrder.insertions.forEach(element => {
-      this.availableInsertions = [];
-
       if (!element.marked) {
         this.availableInsertions.push(new AvailableInsertion(element));
+      }
+    });
+  }
+
+  save() {
+    this.submit().subscribe(data => {
+      if (data.success) {
+        this.goBack();
+      }
+    });
+  }
+
+  saveAndGen() {
+    this.submit().subscribe(data => {
+      if (data.success) {
+        this.gen(this.invoice);
+      }
+    });
+  }
+
+  saveAndSendMsg() {
+    this.submit().subscribe(data => {
+      if (data.success) {
+        this.sendMsg(this.invoice);
+      }
+    });
+  }
+  
+  preview() {
+    this.submit().subscribe(data => {
+      if (data.success) {
+        this.gen(this.invoice, true);
+      }
+    });
+  }
+
+  gen(invoice: Invoice, preview = false) {
+    this.api.generate(invoice).subscribe(data => {
+      if (data.msg) {
+        this.notifications.show(data.msg);
+      }
+      else {
+        console.log(data);
+        
+        let blob = new Blob([data], { type: 'application/pdf' });
+        let url = URL.createObjectURL(blob);
+
+        let a = document.createElement('a');
+        a.setAttribute('style', 'display:none;');
+        document.body.appendChild(a);
+        a.href = url;
+        if (preview) {
+          a.setAttribute("target", "_blank");
+        }
+        else {
+          a.download = 'invoice.pdf';
+        }
+        a.click();
+      }
+    });
+  }
+
+  sendMsg(invoice: Invoice) {
+    this.dialog.getMailingDetails().subscribe(mailingDetails => {
+      if (mailingDetails) {
+        this.api.sendMail(invoice, mailingDetails).subscribe(data => {
+          if (data.success) {
+            this.notifications.show("Sent Successfully");
+          }
+          else {
+            console.log(data);
+
+            this.notifications.show(data.msg);
+          }
+        });
       }
     });
   }
@@ -111,6 +192,16 @@ export class InvoiceComponent implements OnInit {
     return taxAmount;
   }
 
+  get roDiscountDisplay() {
+    let tax = this.releaseOrder.agencyDiscount1 + "%";
+
+    if (this.releaseOrder.agencyDiscount2 != 0) {
+      tax += " + " + this.releaseOrder.agencyDiscount2 + "%"
+    }
+
+    return tax;
+  }
+
   get roTaxDisplay() {
     let tax = this.releaseOrder.taxAmount.primary + "%";
 
@@ -129,7 +220,7 @@ export class InvoiceComponent implements OnInit {
     this.router.navigateByUrl('/invoices');
   }
 
-  submit() {
+  submit() : Observable<any> {
     if (!this.availableInsertions.some(val => val.checked)) {
       this.notifications.show('No Insertions selected');
 
@@ -139,20 +230,31 @@ export class InvoiceComponent implements OnInit {
     this.invoice.adGrossAmount = this.grossAmount;
     this.invoice.netAmountFigures = this.netAmount;
     this.invoice.netAmountWords = this.options.amountToWords(this.invoice.netAmountFigures);
-    this.invoice.pendingAmount = this.invoice.netAmountFigures;
     this.invoice.FinalTaxAmount = this.finalTaxAmount;
+    this.invoice.FinalAmount = this.finalAmount;
+    this.invoice.pendingAmount = this.invoice.FinalAmount + this.invoice.FinalTaxAmount;
     this.invoice.insertions = this.availableInsertions.filter(insertion => insertion.checked).map(insertion => insertion.insertion);
 
-    this.api.createInvoice(this.invoice).subscribe(data => {
-      if (data.success) {
-        this.goBack();
-      }
-      else {
-        console.log(data);
+    let base: Observable<any> = this.createInvoice();
 
-        this.notifications.show(data.msg);
-      }
-    });
+    return base;
+  }
+
+  private createInvoice() {
+    return this.api.createInvoice(this.invoice).pipe(
+      map(data => {
+        if (data.success) {
+          this.invoice.id = data.msg;
+        }
+        else {
+          console.log(data);
+
+          this.notifications.show(data.msg);
+        }
+
+        return data;
+      })
+    );
   }
 
   cancel() {
@@ -179,15 +281,13 @@ export class InvoiceComponent implements OnInit {
     return this.availableInsertions.filter(insertion => insertion.checked).length;
   }
 
-  get grossAmount() {
+  get insertionAmount() {
     let grossSingle = this.releaseOrder.adGrossAmount / this.releaseOrder.insertions.length;
     return Math.ceil(grossSingle * this.insertionCount);
   }
 
-  get netAmount() {
-    let result = this.grossAmount;
-
-    this.invoice.otherCharges.forEach(otherCharge => result += +otherCharge.amount);
+  get grossAmount() {
+    let result = this.insertionAmount;
 
     if (this.invoice.additionalCharges.percentage) {
       result += +(result * this.invoice.additionalCharges.amount) / 100;
@@ -199,6 +299,12 @@ export class InvoiceComponent implements OnInit {
     }
     else result += +this.invoice.extraCharges.amount;
 
+    return result;
+  }
+
+  get netAmount() {
+    let result = this.grossAmount;    
+
     if (this.invoice.publicationDiscount.percentage) {
       result -= +(result * this.invoice.publicationDiscount.amount) / 100;
     }
@@ -208,6 +314,8 @@ export class InvoiceComponent implements OnInit {
       result -= (result * this.invoice.agencyDiscount1.amount) / 100;
     }
     else result -= this.invoice.agencyDiscount1.amount;
+
+    this.invoice.otherCharges.forEach(otherCharge => result += +otherCharge.amount);
 
     return Math.ceil(result);
   }
@@ -219,6 +327,10 @@ export class InvoiceComponent implements OnInit {
     taxAmount += (this.invoice.taxAmount.secondary * taxAmount) / 100;
 
     return taxAmount;
+  }
+
+  get finalAmount() {
+    return this.finalTaxAmount;
   }
 
   removeOtherCharge(i: number) {
@@ -233,5 +345,9 @@ export class InvoiceComponent implements OnInit {
         });
       }
     });
+  }
+
+  selectAllInsertions() {
+    this.availableInsertions.forEach(insertion => insertion.checked = true);
   }
 }

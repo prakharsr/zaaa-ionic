@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-date';
 import { ReleaseOrder, Insertion, TaxValues, OtherCharges } from '../release-order';
 import { ReleaseOrderApiService } from '../release-order-api.service';
-import { StateApiService, NotificationService, OptionsService, DialogService, WindowService } from 'app/services';
+import { StateApiService, NotificationService, OptionsService, DialogService } from 'app/services';
 import { CategoriesDetails } from '../categories-details/categories-details.component';
 
 import {
@@ -44,8 +44,6 @@ export class ReleaseOrderComponent implements OnInit {
   edit = false;
   id: string;
 
-  releaseOrder = new ReleaseOrder();
-
   selectedCategories: Category[] = [null, null, null, null, null, null];
   categories: Category[];
   fixedCategoriesLevel = -1;
@@ -65,8 +63,7 @@ export class ReleaseOrderComponent implements OnInit {
     public stateApi: StateApiService,
     private notifications: NotificationService,
     public options: OptionsService,
-    private dialog: DialogService,
-    private windowService: WindowService) { }
+    private dialog: DialogService) { }
 
   get isTypeWords() {
 
@@ -139,33 +136,24 @@ export class ReleaseOrderComponent implements OnInit {
       }
     });
   }
-  
-  preview() {
-    this.submit().subscribe(data => {
-      if (data.success) {
-        this.gen(this.releaseorder, true);
-      }
-    });
-  }
 
   gen(releaseOrder: ReleaseOrder, preview = false) {
     this.confirmGeneration(releaseOrder).subscribe(confirm => {
       if (confirm) {
-        this.api.generate(releaseOrder).subscribe(data => {
+        this.api.generatePdf(releaseOrder).subscribe(data => {
           if (data.msg) {
-            this.notifications.show(data.msg);
-    
-            releaseOrder.generated = true;
+            this.notifications.show(data.msg);    
           }
           else {
+            releaseOrder.generated = true;
             console.log(data);
             
             let blob = new Blob([data], { type: 'application/pdf' });
-            let url = this.windowService.window.URL.createObjectURL(blob);
+            let url = URL.createObjectURL(blob);
     
-            let a = this.windowService.window.document.createElement('a');
+            let a = document.createElement('a');
             a.setAttribute('style', 'display:none;');
-            this.windowService.window.document.body.appendChild(a);
+            document.body.appendChild(a);
             a.href = url;
 
             if (preview) {
@@ -180,6 +168,33 @@ export class ReleaseOrderComponent implements OnInit {
         });
       }
     })
+  }
+
+  genPreview() {
+    console.log(this.releaseorder);
+
+    this.presave();
+
+    console.log(this.releaseorder);
+
+    this.api.previewROPdf(this.releaseorder).subscribe(data => {
+      if (data.msg) {
+        this.notifications.show(data.msg);
+      }
+      else {
+        let blob = new Blob([data], { type: 'application/pdf' });
+        let url = URL.createObjectURL(blob);
+
+        let a = document.createElement('a');
+        a.setAttribute('style', 'display:none;');
+        document.body.appendChild(a);
+        a.href = url;
+
+        a.setAttribute("target", "_blank");
+
+        a.click();
+      }
+    });
   }
 
   sendMsg(releaseOrder: ReleaseOrder) {
@@ -557,7 +572,7 @@ export class ReleaseOrderComponent implements OnInit {
     )
   }
 
-  submit () : Observable<any> {
+  private presave() {
     this.releaseorder.adTotal = this.availableAds;
     this.releaseorder.adTotalSpace = this.totalSpace;
     this.releaseorder.adGrossAmount = this.grossAmount;
@@ -599,6 +614,10 @@ export class ReleaseOrderComponent implements OnInit {
       this.releaseorder.adSchemeFree = this.selectedScheme.Free;
       this.releaseorder.adSchemePaid = this.selectedScheme.paid;
     }
+  }
+
+  submit () : Observable<any> {
+    this.presave();
 
     let base: Observable<any> = this.edit ? this.editReleaseOrder() : this.createReleaseOrder();
 
@@ -859,6 +878,9 @@ export class ReleaseOrderComponent implements OnInit {
     if (this.isTypeLen) {
       if (this.customSize && !this.releaseorder.fixRate) {
         return this.releaseorder.rate * this.totalSpace;
+      }
+      else if (this.customSize && this.releaseorder.fixRate) {
+        return this.releaseorder.rate;
       }
       else {
         return this.selectedSize.amount;

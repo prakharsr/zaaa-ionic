@@ -1,1 +1,13 @@
-app-dashboard {     .btn {         margin-bottom: 25px;         padding: 25px 10px;         padding: 20px 0;     }      .fa {         padding: 5px;     } } 
+app-dashboard { 
+    .links .btn {
+        margin-bottom: 15px;
+        margin-right: 10px;
+        padding: 0 5px;
+    }
+    
+    @media (min-width: 768px) {
+        .card {
+            height: 100%;
+        }
+    }
+}
