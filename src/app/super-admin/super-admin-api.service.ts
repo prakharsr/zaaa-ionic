@@ -87,24 +87,24 @@ export class SuperAdminApiService {
     return this.post('/globalmediahouse/update', this.mediaHouseApi.editPostArgs(mediaHouse));
   }
 
-  // getCategories(level: number, parent: AdCategory) : Observable<AdCategory[]> {
-  //   return this.post('/categories', {
-  //     level: level,
-  //     parent: parent._id
-  //   }).pipe(
-  //     map(data => {
-  //       let result: AdCategory[] = [];
+  getCategories(level: number, parent: AdCategory) : Observable<AdCategory[]> {
+    return this.post('/categories', {
+      level: level,
+      parent: parent._id
+    }).pipe(
+      map(data => {
+        let result: AdCategory[] = [];
 
-  //       if (data.success) {
-  //         result = data.categories;
-  //       }
+        if (data.success) {
+          result = data.categories;
+        }
 
-  //       return result;
-  //     })
-  //   );
-  // }
+        return result;
+      })
+    );
+  }
 
-  // createCategory(category: AdCategory) {
-  //   return this.post('/category', category);
-  // }
+  createCategory(category: AdCategory) {
+    return this.post('/category', category);
+  }
 }
