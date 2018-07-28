@@ -31,12 +31,12 @@ export class InsertionDetailsComponent implements OnInit {
 
   injected = new InsertionInjection();
   
-  constructor(public goback: GobackService, @Inject(MAT_DIALOG_DATA) public data: InsertionInjection, private notifications: NotificationService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: InsertionInjection, private notifications: NotificationService) {
     this.injected = data;
   }
 
   ngOnInit() {
-    this.goback.urlInit(); }
+   }
 
   isInsertionTimeLimitValid(date: NgbDate) {
     if (this.injected.timeLimit) {

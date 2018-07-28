@@ -29,10 +29,9 @@ export class CategoriesDetailsComponent implements OnInit {
   edit = false;
   id: string;
   
-  constructor(public goback: GobackService, public options: OptionsService, public stateApi: StateApiService, private route: ActivatedRoute) { }
+  constructor(public options: OptionsService, public stateApi: StateApiService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.goback.urlInit();
     this.categories = this.options.categories;
 
     this.route.paramMap.subscribe(params => {
