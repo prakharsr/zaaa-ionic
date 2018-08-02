@@ -178,9 +178,24 @@
       </div>
     </div>
 
-    <ng-container *ngIf="new">
-      <button type="submit" class="btn btn-success" [disabled]="!dirForm.form.valid">Save</button>
-      <button class="btn btn-danger" type="button" (click)="cancelCreate()">Cancel</button>
-    </ng-container>
   </form>
 </div>
+
+<ng-container *ngIf="new">
+  <ion-footer>
+    <ion-toolbar>
+      <div class="container-fluid">
+        <div class="row">
+          <button class="btn btn-light btn-lg text-success col" type="button" (click)="submit()" [disabled]="!dirForm.form.valid">
+            <ion-icon name="add"></ion-icon>
+            <p class="small">Add</p>
+          </button>
+          <button class="btn btn-light btn-lg text-danger col" type="button" (click)="cancelCreate()">
+            <ion-icon name="close"></ion-icon>
+            <p class="small">Cancel</p>
+          </button>
+        </div>
+      </div>
+    </ion-toolbar>
+  </ion-footer>
+</ng-container>

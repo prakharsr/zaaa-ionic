@@ -548,7 +548,22 @@
      
     <br><br>
 
-    <button type="submit" class="btn btn-success" [disabled]="!rateCardForm.form.valid">Save</button>
-    <button class="btn btn-danger" type="button" (click)="cancel()">Cancel</button>
   </form>
 </div>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="container-fluid">
+      <div class="row">
+        <button class="btn btn-light btn-lg text-success col" type="button" (click)="submit()" [disabled]="!rateCardForm.form.valid">
+          <ion-icon name="add"></ion-icon>
+          <p class="small">Save</p>
+        </button>
+        <button class="btn btn-light btn-lg text-danger col" type="button" (click)="cancel()">
+          <ion-icon name="close"></ion-icon>
+          <p class="small">Cancel</p>
+        </button>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>

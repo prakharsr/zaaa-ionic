@@ -212,6 +212,48 @@ module.exports = [
     "clobbers": [
       "window.StatusBar"
     ]
+  },
+  {
+    "id": "cordova-plugin-inappbrowser.inappbrowser",
+    "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+    "pluginId": "cordova-plugin-inappbrowser",
+    "clobbers": [
+      "cordova.InAppBrowser.open",
+      "window.open"
+    ]
+  },
+  {
+    "id": "cordova-plugin-file-transfer.FileTransferError",
+    "file": "plugins/cordova-plugin-file-transfer/www/FileTransferError.js",
+    "pluginId": "cordova-plugin-file-transfer",
+    "clobbers": [
+      "window.FileTransferError"
+    ]
+  },
+  {
+    "id": "cordova-plugin-file-transfer.FileTransfer",
+    "file": "plugins/cordova-plugin-file-transfer/www/FileTransfer.js",
+    "pluginId": "cordova-plugin-file-transfer",
+    "clobbers": [
+      "window.FileTransfer"
+    ]
+  },
+  {
+    "id": "cordova-plugin-document-viewer.SitewaertsDocumentViewer",
+    "file": "plugins/cordova-plugin-document-viewer/www/sitewaertsdocumentviewer.js",
+    "pluginId": "cordova-plugin-document-viewer",
+    "clobbers": [
+      "cordova.plugins.SitewaertsDocumentViewer",
+      "SitewaertsDocumentViewer"
+    ]
+  },
+  {
+    "id": "com-darryncampbell-cordova-plugin-intent.IntentShim",
+    "file": "plugins/com-darryncampbell-cordova-plugin-intent/www/IntentShim.js",
+    "pluginId": "com-darryncampbell-cordova-plugin-intent",
+    "clobbers": [
+      "intentShim"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -224,7 +266,11 @@ module.exports.metadata =
   "cordova-plugin-ionic-webview": "1.2.1",
   "cordova-plugin-splashscreen": "5.0.2",
   "cordova-plugin-statusbar": "2.4.2",
-  "cordova-plugin-whitelist": "1.3.3"
+  "cordova-plugin-whitelist": "1.3.3",
+  "cordova-plugin-inappbrowser": "3.0.0",
+  "cordova-plugin-file-transfer": "1.7.1",
+  "cordova-plugin-document-viewer": "0.9.10",
+  "com-darryncampbell-cordova-plugin-intent": "1.1.0"
 };
 // BOTTOM OF METADATA
 });

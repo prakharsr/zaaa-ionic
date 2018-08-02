@@ -8,6 +8,11 @@ import { FormsModule }   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 // import { IonicImageLoader } from 'ionic-image-loader';
 // import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { File } from '@ionic-native/file';
+import { FileTransfer } from '@ionic-native/file-transfer';
+import { DocumentViewer } from '@ionic-native/document-viewer';
+import { WebIntent } from '@ionic-native/web-intent';
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -118,6 +123,11 @@ import { DashboardApiService } from './services/dashboard-api.service';
     SplashScreen,
     DashboardApiService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    InAppBrowser,
+    File,
+    DocumentViewer,
+    FileTransfer,
+    WebIntent
     // {
     //   provide: LocationStrategy,
     //   useClass: PathLocationStrategy

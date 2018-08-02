@@ -31,6 +31,13 @@ import {
   ExecutiveApiService,
   Pullout
 } from 'app/directory';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { NavController, Platform } from 'ionic-angular';
+import { DocumentViewer } from '@ionic-native/document-viewer';
+import { FileTransfer } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+import { ENETRESET } from 'constants';
+import { WebIntent } from '@ionic-native/web-intent';
 
 @Component({
   selector: 'app-release-order',
@@ -63,7 +70,14 @@ export class ReleaseOrderComponent implements OnInit {
     public stateApi: StateApiService,
     private notifications: NotificationService,
     public options: OptionsService,
-    private dialog: DialogService) { }
+    private dialog: DialogService,
+    private iab: InAppBrowser,
+    public navCtrl: NavController,
+    private document: DocumentViewer,
+    private file: File,
+    private transfer: FileTransfer,
+    private platform: Platform,
+    private webIntent: WebIntent) { }
 
   get isTypeWords() {
 
@@ -150,20 +164,32 @@ export class ReleaseOrderComponent implements OnInit {
             
             let blob = new Blob([data], { type: 'application/pdf' });
             let url = URL.createObjectURL(blob);
+            console.log(url);
     
             let a = document.createElement('a');
             a.setAttribute('style', 'display:none;');
             document.body.appendChild(a);
             a.href = url;
+            a.download = 'releaseorder.pdf';
 
-            if (preview) {
-              a.setAttribute("target", "_blank");
+            let path = null;
+        
+            url = url.replace('file:///', '').replace("file://", "");
+    
+            const transfer = this.transfer.create();
+     
+            if (this.platform.is('ios')) {
+              path = this.file.documentsDirectory;
+            } else if (this.platform.is('android')) {
+              path = this.file.dataDirectory;
             }
-            else {
-              a.download = 'releaseorder.pdf';
-            }
+         
+            transfer.download(url, path + 'myfile.pdf').then(entry => {
+              let url = entry.toURL();
+              this.document.viewDocument(url, 'application/pdf', {});
+            });
+              
 
-            a.click();
           }
         });
       }
@@ -175,26 +201,64 @@ export class ReleaseOrderComponent implements OnInit {
 
     this.presave();
 
-    console.log(this.releaseorder);
-
     this.api.previewROPdf(this.releaseorder).subscribe(data => {
       if (data.msg) {
         this.notifications.show(data.msg);
       }
       else {
         let blob = new Blob([data], { type: 'application/pdf' });
-        let url = URL.createObjectURL(blob);
+        let url2 = URL.createObjectURL(blob);
+        // url = url.replace('file:///', 'http://').replace("file://", "http://");
 
-        let a = document.createElement('a');
-        a.setAttribute('style', 'display:none;');
-        document.body.appendChild(a);
-        a.href = url;
+        console.log(url2);
+    
+        // let a = document.createElement('a');
+        // a.setAttribute('style', 'display:none;');
+        // document.body.appendChild(a);
+        // a.href = url;
 
-        a.setAttribute("target", "_blank");
+        // a.setAttribute("target", "_blank");
 
-        a.click();
+        // a.click();
+
+        // let path = null;
+        
+        // url = url.replace('file:///', 'http://').replace("file://", "http://");
+
+        // const transfer = this.transfer.create();
+ 
+        // if (this.platform.is('ios')) {
+        //   path = this.file.documentsDirectory;
+        // } else if (this.platform.is('android')) {
+        //   path = this.file.dataDirectory;
+        // }
+     
+        // transfer.download(url, path + 'myfile.pdf').then(entry => {
+        //   let url = entry.toURL();
+        //   this.document.viewDocument(url, 'application/pdf', {});
+        // });
+
+        const options = {
+          action: this.webIntent.ACTION_VIEW,
+          url: 'https://www.google.com/'
+          // type: 'application/pdf'
+        };
+
+        this.webIntent.startActivity(options);
+        
+
       }
     });
+  }
+
+  test()  {
+    const options = {
+      action: this.webIntent.ACTION_VIEW,
+      url: 'https://www.google.com/'
+      // type: 'application/pdf'
+    };
+
+    this.webIntent.startActivity(options);
   }
 
   sendMsg(releaseOrder: ReleaseOrder) {
@@ -222,6 +286,12 @@ export class ReleaseOrderComponent implements OnInit {
 
   ngOnInit() {
     this.goback.urlInit();
+
+    document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        console.log("device ready");
+    }
+
     this.categories = this.options.categories;
     this.dropdownPullOutName = this.others;
 

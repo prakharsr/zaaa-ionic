@@ -19,9 +19,22 @@
       <textarea matInput class="form-control" id="details" placeholder="Enter Details" [(ngModel)]="ticket.details" name="details" #detailsField="ngModel"></textarea>
     </mat-form-field>
 
-    <br><br>
-
-    <button class="btn btn-success" type="submit" [disabled]="!ticketForm.form.valid">Submit</button>
-    <button class="btn btn-danger" type="button" (click)="cancel()">Cancel</button>
   </form>
 </div>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="container-fluid">
+      <div class="row">
+        <button class="btn btn-light btn-lg text-success col" type="button" (click)="submit()" [disabled]="!ticketForm.form.valid">
+          <ion-icon name="add"></ion-icon>
+          <p class="small">Submit</p>
+        </button>
+        <button class="btn btn-light btn-lg text-danger col" type="button" (click)="cancel()">
+          <ion-icon name="close"></ion-icon>
+          <p class="small">Cancel</p>
+        </button>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>

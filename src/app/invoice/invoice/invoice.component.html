@@ -312,14 +312,35 @@
           </div>
         </div>
       </div>
-
-      <br>
-
-      <button class="btn btn-success" (click)="save()" type="button" [disabled]="!invoiceForm.form.valid">Save</button>
-      <button class="btn btn-danger" type="button" (click)="cancel()">Cancel</button>
-      <button type="button" (click)="preview()"  class="btn btn-primary" [disabled]="!invoiceForm.form.valid">Preview</button>
-      <button type="button" class="btn btn-success" (click)="saveAndGen()" [disabled]="!invoiceForm.form.valid">Download</button>
-      <button type="button" class="btn btn-primary" (click)="saveAndSendMsg()" [disabled]="!invoiceForm.form.valid">Send Email</button>
     </ng-container>
   </div>
 </form>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="container-fluid">
+      <div class="row">
+        <button class="btn btn-light btn-lg text-success col" type="button" (click)="save()" [disabled]="!invoiceForm.form.valid">
+          <ion-icon name="add"></ion-icon>
+          <p class="small">Save</p>
+        </button>
+        <button class="btn btn-light btn-lg text-danger col" type="button" (click)="cancel()">
+          <ion-icon name="close"></ion-icon>
+          <p class="small">Cancel</p>
+        </button>
+        <button class="btn btn-light btn-lg text-warning col" type="button" (click)="preview()"  [disabled]="!invoiceForm.form.valid">
+          <ion-icon name="clipboard"></ion-icon>
+          <p class="small">Preview</p>
+        </button>
+        <button class="btn btn-light btn-lg text-info col" type="button" (click)="saveAndGen()" [disabled]="!invoiceForm.form.valid">
+          <ion-icon name="download"></ion-icon>
+          <p class="small">Download</p>
+        </button>
+        <button class="btn btn-light btn-lg text-primary col" type="button" (click)="saveAndSendMsg()" [disabled]="!invoiceForm.form.valid">
+          <ion-icon name="mail"></ion-icon>
+          <p class="small">Send Email</p>
+        </button>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>

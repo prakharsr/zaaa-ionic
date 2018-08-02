@@ -729,15 +729,39 @@
 
         <br><br>
 
-        <button type="button" (click)="save()" class="btn btn-success" [disabled]="!roForm.form.valid">Save</button>
-        <button class="btn btn-danger" type="button" (click)="cancel()">Cancel</button>
-        <button type="button" (click)="genPreview()"  class="btn btn-primary" [disabled]="!roForm.form.valid">Preview</button>
-        <button type="button" class="btn btn-success" (click)="saveAndGen()" [disabled]="!roForm.form.valid">Download</button>
-        <button type="button" class="btn btn-primary" (click)="saveAndSendMsg()" [disabled]="!roForm.form.valid">Send Email</button>
       </form>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="container-fluid">
+      <div class="row">
+        <button class="btn btn-light btn-lg text-success col" type="button" (click)="save()" [disabled]="!roForm.form.valid">
+          <ion-icon name="add"></ion-icon>
+          <p class="small">Save</p>
+        </button>
+        <button class="btn btn-light btn-lg text-danger col" type="button" (click)="cancel()">
+          <ion-icon name="close"></ion-icon>
+          <p class="small">Cancel</p>
+        </button>
+        <button class="btn btn-light btn-lg text-warning col" type="button" (click)="genPreview()"  [disabled]="!roForm.form.valid">
+          <ion-icon name="clipboard"></ion-icon>
+          <p class="small">Preview</p>
+        </button>
+        <button class="btn btn-light btn-lg text-info col" type="button" (click)="saveAndGen()" [disabled]="!roForm.form.valid">
+          <ion-icon name="download"></ion-icon>
+          <p class="small">Download</p>
+        </button>
+        <button class="btn btn-light btn-lg text-primary col" type="button" (click)="saveAndSendMsg()" [disabled]="!roForm.form.valid">
+          <ion-icon name="mail"></ion-icon>
+          <p class="small">Send Email</p>
+        </button>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>
 
   <!-- <div class="col-lg-2 order-lg-last" id="calculations">
     <div class="card bg-info mt-3 mb-5 sticky-top" style="top: 150px">

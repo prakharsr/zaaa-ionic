@@ -113,7 +113,7 @@ const validators = [
     validators,
     PaginationComponent,
     LivechatWidgetModule,
-    NgxChartsModule
+    NgxChartsModule,
   ],
   entryComponents: [
     DialogComponent,

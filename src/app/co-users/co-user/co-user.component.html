@@ -1,3 +1,5 @@
+
+
 <mat-toolbar>  
   <mat-toolbar-row>
     <div class="container">Add New Co-Users</div>
@@ -58,7 +60,33 @@
     </div>
     <br><br>
 
-    <button type="submit" class="btn btn-success" [disabled]="!newCoUserForm.form.valid">Add</button>
-    <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
   </form>
 </div>
+
+<ion-footer no-border>
+  <ion-toolbar>
+    <div class="container-fluid">
+      <div class="row">
+        <button ion-button round icon-start (click)="submit()" color="brand_success" class="col" id="footer_buttons" [disabled]="!newCoUserForm.form.valid"><ion-icon name="add"></ion-icon>Add</button>
+        <button ion-button round icon-start type="button" color="brand_danger" class="col" id="footer_buttons" (click)="onCancel()"><ion-icon name="close"></ion-icon>Cancel</button>
+        </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="container-fluid">
+      <div class="row">
+        <button class="btn btn-light btn-lg text-success col" type="button" (click)="submit()" [disabled]="!newCoUserForm.form.valid">
+          <ion-icon name="add"></ion-icon>
+          <p class="small">Add</p>
+        </button>
+        <button class="btn btn-light btn-lg text-danger col" type="button" (click)="onCancel()">
+          <ion-icon name="close"></ion-icon>
+          <p class="small">Cancel</p>
+        </button>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>

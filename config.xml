@@ -11,6 +11,10 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <allow-intent href="blob:*" />
+    <allow-intent href="intent://" />
+    <allow-intent href="*" />
+    <allow-intent href="blob:http://*/*" />
     <preference name="ScrollEnabled" value="true" />
     <preference name="android-minSdkVersion" value="19" />
     <preference name="BackupWebStorage" value="none" />
@@ -84,9 +88,9 @@
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-statusbar" spec="~2.4.1" />
-    <plugin name="cordova-plugin-file" spec="^6.0.1" />
     <plugin name="com.razorpay.cordova" spec="https://github.com/razorpay/razorpay-cordova.git" />
     <allow-navigation href="http://192.168.43.128:8100" />
+    <plugin name="cordova-plugin-file" spec="^6.0.1" />
     <engine name="ios" spec="4.5.4" />
     <engine name="osx" spec="4.0.1" />
     <engine name="android" spec="7.1.0" />

@@ -81,7 +81,7 @@ input.ng-valid.form-control, select.ng-valid {
 
 mat-form-field, mat-slide-toggle {
     width: 100%;
-    margin: -5px;
+    margin: -3px;
 }
 
 mat-icon {
@@ -94,4 +94,13 @@ button[mat-icon-button] {
 
 ion-navbar:focus {
     outline: none;
+}
+
+.card {
+    padding: 10px;
+}
+
+ion-footer {
+    position: fixed;
+    margin-bottom: -9px;
 }

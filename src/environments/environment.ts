@@ -6,7 +6,7 @@
 export const environment = {
   production: false,
   razorPay: "rzp_test_86QLf2LFy65g2j",
-  apiUrl:  "https://adagencymanager.com/api",
-  adminApiUrl: "https://adagencymanager.com/adminapi",
-  uploadsBaseUrl:  "https://adagencymanager.com"
+  apiUrl:  "http://localhost:8080/api",
+  adminApiUrl: "http://localhost:8080/adminapi",
+  uploadsBaseUrl:  "http://localhost:8080"
 };
