@@ -21,6 +21,8 @@ export class MediaHouseInvoiceListComponent implements OnInit {
 
   pastDays = 0;
 
+  filter = false;
+
   page: number;
   pageCount: number;
 
@@ -46,6 +48,16 @@ export class MediaHouseInvoiceListComponent implements OnInit {
 
       this.pastDays = data.resolved.search.past;
     });
+  }
+
+  showFilters() {
+    if(this.filter) {
+      this.filter = false;
+    }
+    
+    else {
+      this.filter = true;
+    }
   }
 
   searchMediaHouse = (text: Observable<string>) => {

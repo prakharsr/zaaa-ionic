@@ -10,18 +10,18 @@ import { Conditional } from '@angular/compiler';
 })
 export class AppComponent implements OnInit {
 
-  roNewOrEdit : boolean;
+  // roNewOrEdit : boolean;
 
   constructor(private router: Router) { }
 
   ngOnInit() {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        console.log(event);
-        this.roNewOrEdit = event.urlAfterRedirects.startsWith("/releaseorders/new")
-          || event.urlAfterRedirects.startsWith("/releaseorders/edit");
-      } 
-    });
+    // this.router.events.subscribe(event => {
+    //   if (event instanceof NavigationEnd) {
+    //     console.log(event);
+    //     this.roNewOrEdit = event.urlAfterRedirects.startsWith("/releaseorders/new")
+    //       || event.urlAfterRedirects.startsWith("/releaseorders/edit");
+    //   } 
+    // });
   }
 
 }

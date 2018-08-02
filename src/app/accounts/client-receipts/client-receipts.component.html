@@ -1,6 +1,13 @@
 <mat-toolbar>  
   <mat-toolbar-row>
-    <div class="container">Client Receipts</div>
+    <div class="container">
+      <div class="row">
+        <div class="col">Client Receipts</div>
+        <div class="col-auto">
+            <mat-icon (click)="showFilters()">filter_list</mat-icon>
+        </div>
+      </div>
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -12,7 +19,7 @@
     {{r.orgName}}
   </ng-template>
 
-  <div class="form-row">
+  <div class="form-row" *ngIf="filter">
     <div class="form-group col-md">
       <input type="text" class="form-control mt-3" [(ngModel)]="client" [ngbTypeahead]="searchClient" placeholder="Client" [resultTemplate]="rtClient" [inputFormatter]="clientNameFormatter" />
     </div>

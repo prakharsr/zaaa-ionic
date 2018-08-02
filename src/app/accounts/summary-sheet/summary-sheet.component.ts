@@ -30,6 +30,8 @@ export class SummarySheetComponent implements OnInit {
 
   insertions: InsertionWithAmount[] = [];
 
+  filter = false;
+
   mediaHouse;
   edition;
 
@@ -75,6 +77,17 @@ export class SummarySheetComponent implements OnInit {
 
       this.mediaHouse = this.edition = pub;
     });
+  }
+
+
+  showFilters() {
+    if(this.filter) {
+      this.filter = false;
+    }
+    
+    else {
+      this.filter = true;
+    }
   }
 
   search(pageNo: number) {

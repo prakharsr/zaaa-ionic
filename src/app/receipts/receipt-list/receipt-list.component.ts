@@ -32,6 +32,8 @@ export class ReceiptListComponent implements OnInit {
 
   advance = false;
 
+  filter = false;
+
   mediaHouse;
   edition;
   client;
@@ -77,6 +79,16 @@ export class ReceiptListComponent implements OnInit {
 
       this.pastDays = data.resolved.search.past;
     });
+  }
+
+  showFilters() {
+    if(this.filter) {
+      this.filter = false;
+    }
+    
+    else {
+      this.filter = true;
+    }
   }
 
   searchClient = (text: Observable<string>) => {

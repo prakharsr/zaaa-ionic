@@ -30,6 +30,8 @@ export class ReleaseOrderListComponent implements OnInit {
   pageCount: number;
   page: number;
 
+  filter = false;;
+
   mediaHouse;
   edition;
   client;
@@ -78,6 +80,16 @@ export class ReleaseOrderListComponent implements OnInit {
 
     this.pageCount = data.pageCount;
     this.page = data.page;
+  }
+
+  showFilters() {
+    if(this.filter) {
+      this.filter = false;
+    }
+    
+    else {
+      this.filter = true;
+    }
   }
 
   searchClient = (text: Observable<string>) => {

@@ -1,6 +1,13 @@
 <mat-toolbar>  
   <mat-toolbar-row>
-    <div class="container">Invoices</div>
+    <div class="container">
+      <div class="row">
+        <div class="col">Invoices</div>
+        <div class="col-auto">
+            <mat-icon (click)="showFilters()">filter_list</mat-icon>
+        </div>
+      </div>
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -27,7 +34,7 @@
 </ng-template>
 
 <div class="container">
-  <div class="form-row">
+  <div class="form-row" *ngIf="filter">
     <div class="form-group col-sm-6 col-md-4 col-xl">
       <input type="text" class="form-control" [(ngModel)]="mediaHouse" [ngbTypeahead]="searchMediaHouse" placeholder="Media House" [resultTemplate]="rtMediaHouse" [inputFormatter]="mediaHouseNameFormatter"/>
     </div>

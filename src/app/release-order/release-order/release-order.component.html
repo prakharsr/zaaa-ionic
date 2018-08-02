@@ -1,4 +1,3 @@
-<ion-content>
 <mat-toolbar>  
   <mat-toolbar-row>
     <div class="container-fluid">
@@ -16,7 +15,7 @@
 <mat-sidenav-container>
  
   <mat-sidenav #sidenav mode="over" opened="false" position="end">
-     <ion-scroll scrollY="false">
+
     <div class="card bg-info sticky-top" style="top: 50px">
       <div class="card-header text-light small">
         Calculations
@@ -66,10 +65,10 @@
         </li>
       </ul>
     </div>
-  </ion-scroll>
+
   </mat-sidenav>
   <mat-sidenav-content>
-      <ion-scroll scrollY="true">
+    
     <div class="container-fluid">
       <form (ngSubmit)="submit()" #roForm="ngForm">
         <div class="row">
@@ -736,7 +735,7 @@
 
       </form>
     </div>
-    </ion-scroll>
+ 
   </mat-sidenav-content>
 </mat-sidenav-container>
 
@@ -768,4 +767,3 @@
     </div>
   </ion-toolbar>
 </ion-footer>
-</ion-content>

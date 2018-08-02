@@ -23,6 +23,8 @@ export class CreditDebitNotesComponent implements OnInit {
   edition;
   client;
 
+  filter = false;
+
   notes: CreditDebitNote[] = [];
 
   page: number;
@@ -67,6 +69,17 @@ export class CreditDebitNotesComponent implements OnInit {
 
       this.client = cl;
     });
+  }
+
+
+  showFilters() {
+    if(this.filter) {
+      this.filter = false;
+    }
+    
+    else {
+      this.filter = true;
+    }
   }
 
   searchClient = (text: Observable<string>) => {
