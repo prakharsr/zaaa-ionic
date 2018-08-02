@@ -1,3 +1,4 @@
+<ion-content>
 <mat-toolbar>  
   <mat-toolbar-row>
     <div class="container-fluid">
@@ -13,7 +14,9 @@
 <br><br>
 
 <mat-sidenav-container>
-  <mat-sidenav #sidenav mode="over" opened="true" position="end">
+ 
+  <mat-sidenav #sidenav mode="over" opened="false" position="end">
+     <ion-scroll scrollY="false">
     <div class="card bg-info sticky-top" style="top: 50px">
       <div class="card-header text-light small">
         Calculations
@@ -63,8 +66,10 @@
         </li>
       </ul>
     </div>
+  </ion-scroll>
   </mat-sidenav>
   <mat-sidenav-content>
+      <ion-scroll scrollY="true">
     <div class="container-fluid">
       <form (ngSubmit)="submit()" #roForm="ngForm">
         <div class="row">
@@ -731,6 +736,7 @@
 
       </form>
     </div>
+    </ion-scroll>
   </mat-sidenav-content>
 </mat-sidenav-container>
 
@@ -762,56 +768,4 @@
     </div>
   </ion-toolbar>
 </ion-footer>
-
-  <!-- <div class="col-lg-2 order-lg-last" id="calculations">
-    <div class="card bg-info mt-3 mb-5 sticky-top" style="top: 150px">
-      <div class="card-header text-light small">
-        Calculations
-      </div>
-      <ul class="list-group list-group-flush small">
-        <li class="list-group-item">
-          <div class="row">
-            <div class="col-md-4">Net Amount</div>
-            <div class="col-md-8 text-muted">{{netAmount}} ({{taxDisplay}})</div>
-          </div>
-        </li>
-        <li class="list-group-item">
-          <div class="row">
-            <div class="col-md-4">Net Amount in Words</div>
-            <div class="col-md-8 text-muted">{{options.amountToWords(netAmount)}} ({{taxDisplay}})</div>
-          </div>
-        </li>
-        <li class="list-group-item">
-          <div class="row">
-            <div class="col-md-4">Client Payment</div>
-            <div class="col-md-8 text-muted">{{clientPayment}}</div>
-          </div>
-        </li>
-      </ul>
-      <div class="card-header text-light small d-none d-lg-block" *ngIf="selectedCategories[0]">
-        Categories
-      </div>
-      <ul class="list-group list-group-flush small d-none d-lg-block">
-        <li class="list-group-item" *ngIf="selectedCategories[0]">{{selectedCategories[0].name}}</li>
-        <li class="list-group-item" *ngIf="selectedCategories[1]">{{selectedCategories[1].name}}</li>
-        <li class="list-group-item" *ngIf="selectedCategories[2]">{{selectedCategories[2].name}}</li>
-        <li class="list-group-item" *ngIf="selectedCategories[3]">{{selectedCategories[3].name}}</li>
-        <li class="list-group-item" *ngIf="selectedCategories[4]">{{selectedCategories[4].name}}</li>
-        <li class="list-group-item" *ngIf="selectedCategories[5]">{{selectedCategories[5].name}}</li>
-      </ul>
-      <div class="card-header text-light small d-none d-lg-block" *ngIf="releaseorder.insertions.length">
-        Insertions
-      </div>
-      <ul class="list-group list-group-flush small d-none d-lg-block"  *ngIf="releaseorder.insertions.length">
-        <li class="list-group-item" *ngFor="let item of releaseorder.insertions">
-          <div class="row">
-            <div class="col">{{toDate(item.date) | date}}</div>
-            <div class="col-auto text-success" *ngIf="item.marked">
-              <mat-icon>check</mat-icon>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>  
-</div> -->
+</ion-content>

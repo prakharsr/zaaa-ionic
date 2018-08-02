@@ -1,8 +1,15 @@
 <livechat-widget licenseId="9872505"></livechat-widget>
 <app-loader></app-loader>
 <app-navbar></app-navbar>
-<ion-content>
-<br><br><br>
+
+<ion-content *ngIf="!roNewOrEdit">
+    <br><br><br>
     <router-outlet></router-outlet>
-<br><br>
+    <br><br>
 </ion-content>
+
+<ng-container *ngIf="roNewOrEdit">
+    <br><br><br>
+    <router-outlet></router-outlet>
+    <br><br>
+</ng-container>
