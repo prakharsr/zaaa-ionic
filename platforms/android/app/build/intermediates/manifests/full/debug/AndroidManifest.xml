@@ -7,7 +7,7 @@
 
     <uses-sdk
         android:minSdkVersion="19"
-        android:targetSdkVersion="27" />
+        android:targetSdkVersion="26" />
 
     <supports-screens
         android:anyDensity="true"
@@ -20,8 +20,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -42,32 +40,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <intent-filter>
-                <action android:name="com.darryncampbell.cordova.plugin.intent.ACTION" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
         </activity>
-
-        <provider
-            android:name="de.sitewaerts.cordova.documentviewer.FileProvider"
-            android:authorities="io.ionic.starter.DocumentViewerPlugin.fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true" >
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/documentviewer_file_paths" />
-        </provider>
-        <provider
-            android:name="android.support.v4.content.FileProvider"
-            android:authorities="io.ionic.starter.provider"
-            android:exported="false"
-            android:grantUriPermissions="true" >
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths" />
-        </provider>
-
         <activity
             android:name="com.razorpay.CheckoutActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"

@@ -1,4 +1,4 @@
-#Wed Aug 01 00:26:55 IST 2018
-base.0=/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/transforms/dexMerger/debug/76
-path.0=classes.dex
+#Sat Aug 04 11:32:40 IST 2018
+base.0=/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0
 renamed.0=classes.dex
+file.0=/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0/classes.dex

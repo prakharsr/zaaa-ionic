@@ -42,7 +42,7 @@
     "bootstrap": "^4.1.0",
     "com-darryncampbell-cordova-plugin-intent": "^1.1.0",
     "com.razorpay.cordova": "https://github.com/razorpay/razorpay-cordova.git",
-    "cordova-android": "7.1.0",
+    "cordova-android": "7.0.0",
     "cordova-browser": "5.0.3",
     "cordova-ios": "4.5.4",
     "cordova-osx": "4.0.1",

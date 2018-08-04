@@ -1,4 +1,0 @@
-#Sun Jul 29 00:00:02 IST 2018
-base.0=/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/transforms/dex/release/0
-path.0=classes.dex
-renamed.0=classes.dex

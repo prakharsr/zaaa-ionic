@@ -4,7 +4,7 @@
             "outputFile": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sw600dp-v13/values-sw600dp-v13.xml",
             "map": [
                 {
-                    "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/b26bf04ccca2a7edf3fa367d5411344b/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/21930036018100a76b0f34ab11142e74/res/values-sw600dp-v13/values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

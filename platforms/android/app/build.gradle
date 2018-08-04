@@ -29,7 +29,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:3.0.0'
     }
 }
 
@@ -260,8 +260,6 @@ dependencies {
     // SUB-PROJECT DEPENDENCIES START
     implementation(project(path: ":CordovaLib"))
     compile "com.razorpay:checkout:1.4.7"
-    compile "com.android.support:support-v4:27+"
-    compile "com.android.support:support-v4:27.1.0"
     // SUB-PROJECT DEPENDENCIES END
 }
 
