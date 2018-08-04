@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "819270317444",
+    "firebase_url": "https://fcm-ionic-f0e59.firebaseio.com",
+    "project_id": "fcm-ionic-f0e59",
+    "storage_bucket": "fcm-ionic-f0e59.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:819270317444:android:2f5ad8368a7f3b76",
+        "android_client_info": {
+          "package_name": "com.zenedo.aaman"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "819270317444-p35bsanr14ao89tqt7b9odmqnp759ljn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_cM5DgpXlzldHA2YLLH-Z1fpGWNEZt8I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

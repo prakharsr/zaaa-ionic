@@ -7,29 +7,32 @@
     "files": {}
   },
   "installed_plugins": {
+    "com.razorpay.cordova": {
+      "PACKAGE_NAME": "com.zenedo.aaman"
+    },
     "cordova-plugin-device": {
-      "PACKAGE_NAME": "io.ionic.starter"
+      "PACKAGE_NAME": "com.zenedo.aaman"
+    },
+    "cordova-plugin-fcm": {
+      "PACKAGE_NAME": "com.zenedo.aaman"
     },
     "cordova-plugin-file": {
-      "PACKAGE_NAME": "io.ionic.starter"
+      "PACKAGE_NAME": "com.zenedo.aaman"
     },
     "cordova-plugin-ionic-keyboard": {
-      "PACKAGE_NAME": "io.ionic.starter"
+      "PACKAGE_NAME": "com.zenedo.aaman"
     },
     "cordova-plugin-ionic-webview": {
-      "PACKAGE_NAME": "io.ionic.starter"
+      "PACKAGE_NAME": "com.zenedo.aaman"
     },
     "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "io.ionic.starter"
+      "PACKAGE_NAME": "com.zenedo.aaman"
     },
     "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "io.ionic.starter"
+      "PACKAGE_NAME": "com.zenedo.aaman"
     },
     "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
-    "com.razorpay.cordova": {
-      "PACKAGE_NAME": "io.ionic.starter"
+      "PACKAGE_NAME": "com.zenedo.aaman"
     }
   },
   "dependent_plugins": {}

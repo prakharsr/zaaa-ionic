@@ -29,6 +29,7 @@
     "@angular/router": "^5.0.0",
     "@ionic-native/core": "4.4.0",
     "@ionic-native/document-viewer": "^4.11.0",
+    "@ionic-native/fcm": "^4.11.0",
     "@ionic-native/file": "^4.11.0",
     "@ionic-native/file-transfer": "^4.11.0",
     "@ionic-native/in-app-browser": "^4.11.0",
@@ -43,11 +44,11 @@
     "com-darryncampbell-cordova-plugin-intent": "^1.1.0",
     "com.razorpay.cordova": "https://github.com/razorpay/razorpay-cordova.git",
     "cordova-android": "7.0.0",
-    "cordova-browser": "5.0.3",
-    "cordova-ios": "4.5.4",
+    "cordova-ios": "4.5.5",
     "cordova-osx": "4.0.1",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-document-viewer": "^0.9.10",
+    "cordova-plugin-fcm": "^2.1.2",
     "cordova-plugin-file": "^6.0.1",
     "cordova-plugin-file-transfer": "^1.7.1",
     "cordova-plugin-inappbrowser": "^3.0.0",
@@ -101,12 +102,13 @@
       "cordova-plugin-ionic-keyboard": {},
       "com.razorpay.cordova": {},
       "cordova-plugin-statusbar": {},
-      "cordova-plugin-file": {}
+      "cordova-plugin-file": {},
+      "cordova-plugin-fcm": {}
     },
     "platforms": [
+      "android",
       "ios",
-      "osx",
-      "android"
+      "osx"
     ]
   }
 }

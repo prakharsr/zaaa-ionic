@@ -13,6 +13,7 @@ import { File } from '@ionic-native/file';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { DocumentViewer } from '@ionic-native/document-viewer';
 import { WebIntent } from '@ionic-native/web-intent';
+import { FCM } from '@ionic-native/fcm';
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -127,7 +128,8 @@ import { DashboardApiService } from './services/dashboard-api.service';
     File,
     DocumentViewer,
     FileTransfer,
-    WebIntent
+    WebIntent,
+    FCM
     // {
     //   provide: LocationStrategy,
     //   useClass: PathLocationStrategy
