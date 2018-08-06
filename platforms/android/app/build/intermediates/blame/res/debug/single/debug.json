@@ -156,12 +156,12 @@
         "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/play-services-base-15.0.1.aar/d32add39ee4da203d334d443922dad7e/res/drawable-mdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
     },
     {
-        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-v21_notification_action_background.xml.flat",
-        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/4996d29aa333acf873fb1cf8d39df1dd/res/drawable-v21/notification_action_background.xml"
-    },
-    {
         "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable_rzp_secured_by_bg.xml.flat",
         "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/21930036018100a76b0f34ab11142e74/res/drawable/rzp_secured_by_bg.xml"
+    },
+    {
+        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-v21_notification_action_background.xml.flat",
+        "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/4996d29aa333acf873fb1cf8d39df1dd/res/drawable-v21/notification_action_background.xml"
     },
     {
         "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",

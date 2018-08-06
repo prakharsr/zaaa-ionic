@@ -47,6 +47,8 @@ export class ReleaseOrderComponent implements OnInit {
   edit = false;
   id: string;
 
+  showCalculations = false;
+
   selectedCategories: Category[] = [null, null, null, null, null, null];
   categories: Category[];
   fixedCategoriesLevel = -1;
@@ -68,6 +70,15 @@ export class ReleaseOrderComponent implements OnInit {
     private notifications: NotificationService,
     public options: OptionsService,
     private dialog: DialogService) { }
+
+    calc() {
+      if(this.showCalculations) {
+        this.showCalculations = false;
+      }
+      else {
+        this.showCalculations = true;
+      }
+    }
 
   get isTypeWords() {
 

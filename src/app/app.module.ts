@@ -48,6 +48,7 @@ import { ReportsModule } from './reports/reports.module';
 import { TicketListComponent } from './components/ticket-list/ticket-list.component';
 import { CreateTicketComponent } from './components/create-ticket/create-ticket.component';
 import { DashboardApiService } from './services/dashboard-api.service';
+import { FCM } from '@ionic-native/fcm';
 
 @NgModule({
   declarations: [
@@ -117,7 +118,8 @@ import { DashboardApiService } from './services/dashboard-api.service';
     StatusBar,
     SplashScreen,
     DashboardApiService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    FCM
     // {
     //   provide: LocationStrategy,
     //   useClass: PathLocationStrategy
