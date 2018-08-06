@@ -22,9 +22,6 @@
     "cordova-plugin-ionic-keyboard": {
       "PACKAGE_NAME": "com.zenedo.aaman"
     },
-    "cordova-plugin-ionic-webview": {
-      "PACKAGE_NAME": "com.zenedo.aaman"
-    },
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "com.zenedo.aaman"
     },
@@ -32,6 +29,9 @@
       "PACKAGE_NAME": "com.zenedo.aaman"
     },
     "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.zenedo.aaman"
+    },
+    "cordova-pdf-generator": {
       "PACKAGE_NAME": "com.zenedo.aaman"
     }
   },

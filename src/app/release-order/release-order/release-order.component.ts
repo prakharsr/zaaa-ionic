@@ -12,7 +12,7 @@ import { ReleaseOrder, Insertion, TaxValues, OtherCharges } from '../release-ord
 import { ReleaseOrderApiService } from '../release-order-api.service';
 import { StateApiService, NotificationService, OptionsService, DialogService, GobackService } from 'app/services';
 import { CategoriesDetails } from '../categories-details/categories-details.component';
-
+declare var cordova:any;
 import {
   Category,
   RateCard,
@@ -31,6 +31,10 @@ import {
   Pullout
 } from 'app/directory';
 import { PreviewComponent } from '../../components/preview/preview.component';
+import { NavController, Platform } from 'ionic-angular';
+import { DocumentViewer } from '@ionic-native/document-viewer';
+import { FileTransfer } from '@ionic-native/file-transfer';
+import { WebIntent } from '@ionic-native/web-intent';
 
 @Component({
   selector: 'app-release-order',
@@ -140,61 +144,32 @@ export class ReleaseOrderComponent implements OnInit {
   gen(releaseOrder: ReleaseOrder, preview = false) {
     this.confirmGeneration(releaseOrder).subscribe(confirm => {
       if (confirm) {
-        this.api.generatePdf(releaseOrder).subscribe(data => {
+        this.api.previewROhtml(this.releaseorder).subscribe(data => {
           if (data.msg) {
             this.notifications.show(data.msg);    
           }
           else {
-            releaseOrder.generated = true;
-            console.log(data);
-            
-            let blob = new Blob([data], { type: 'application/pdf' });
-            let url = URL.createObjectURL(blob);
+   
+            document.addEventListener('deviceready', () => {
+              console.log('DEVICE READY FIRED AFTER');
+              cordova.plugins.pdf.htmlToPDF({
+                data: data.content,
+                documentSize: "A4",
+                type: "share",
+                fileName: 'releaseorder.pdf'
+            },
+            (sucess) => console.log('sucess: ', sucess),
+            (error) => console.log('error:', error));
     
-            let a = document.createElement('a');
-            a.setAttribute('style', 'display:none;');
-            document.body.appendChild(a);
-            a.href = url;
-
-            if (preview) {
-              a.setAttribute("target", "_blank");
-            }
-            else {
-              a.download = 'releaseorder.pdf';
-            }
-
-            a.click();
-          }
         });
       }
     })
-  }
+  }});
+}
 
   genPreview() {
-    console.log(this.releaseorder);
 
     this.presave();
-
-    console.log(this.releaseorder);
-
-    // this.api.previewROPdf(this.releaseorder).subscribe(data => {
-    //   if (data.msg) {
-    //     this.notifications.show(data.msg);
-    //   }
-    //   else {
-    //     let blob = new Blob([data], { type: 'application/pdf' });
-    //     let url = URL.createObjectURL(blob);
-
-    //     let a = document.createElement('a');
-    //     a.setAttribute('style', 'display:none;');
-    //     document.body.appendChild(a);
-    //     a.href = url;
-
-    //     a.setAttribute("target", "_blank");
-
-    //     a.click();
-    //   }
-    // });
 
     this.api.previewROhtml(this.releaseorder).subscribe(data => {
       this.dialog.show(PreviewComponent, { width: '100%', height: '100%', maxWidth: '100%', data: data.content }).subscribe();

@@ -4,13 +4,13 @@ webpackJsonp([0],{
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_service__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_service__ = __webpack_require__(80);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__api_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dialog_service__ = __webpack_require__(731);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dialog_service__ = __webpack_require__(730);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__dialog_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__firm_resolver_service__ = __webpack_require__(756);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__firm_resolver_service__ = __webpack_require__(755);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_2__firm_resolver_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ifsc_service__ = __webpack_require__(757);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ifsc_service__ = __webpack_require__(756);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_3__ifsc_service__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__loader_service__ = __webpack_require__(402);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_4__loader_service__["a"]; });
@@ -22,13 +22,13 @@ webpackJsonp([0],{
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "j", function() { return __WEBPACK_IMPORTED_MODULE_7__razorpay_service__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__state_api_service__ = __webpack_require__(248);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "k", function() { return __WEBPACK_IMPORTED_MODULE_8__state_api_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__user_profile_resolver_service__ = __webpack_require__(758);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__user_profile_resolver_service__ = __webpack_require__(757);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "l", function() { return __WEBPACK_IMPORTED_MODULE_9__user_profile_resolver_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__window_service__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__window_service__ = __webpack_require__(156);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "m", function() { return __WEBPACK_IMPORTED_MODULE_10__window_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__firm_users_resolver_service__ = __webpack_require__(759);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__firm_users_resolver_service__ = __webpack_require__(758);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_11__firm_users_resolver_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__goback_service__ = __webpack_require__(760);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__goback_service__ = __webpack_require__(759);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_12__goback_service__["a"]; });
 
 
@@ -47,238 +47,7 @@ webpackJsonp([0],{
 
 /***/ }),
 
-/***/ 1001:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminGuard; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators_map__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_services__ = __webpack_require__(1);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-var AdminGuard = (function () {
-    function AdminGuard(api, router) {
-        this.api = api;
-        this.router = router;
-    }
-    AdminGuard.prototype.goToDashboard = function () {
-        this.router.navigateByUrl('/dashboard');
-    };
-    AdminGuard.prototype.canActivate = function (route, state) {
-        var _this = this;
-        return this.api.getUser().pipe(Object(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators_map__["map"])(function (data) {
-            var result = data.success && data.user.isAdmin;
-            if (!result) {
-                _this.goToDashboard();
-            }
-            return result;
-        }, Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["catchError"])(function (err) {
-            _this.goToDashboard();
-            return Object(__WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of__["of"])(false);
-        })));
-    };
-    AdminGuard = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5_app_services__["a" /* ApiService */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
-    ], AdminGuard);
-    return AdminGuard;
-}());
-
-//# sourceMappingURL=admin-guard.service.js.map
-
-/***/ }),
-
-/***/ 1002:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthGuard; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services__ = __webpack_require__(1);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var AuthGuard = (function () {
-    function AuthGuard(api, router) {
-        this.api = api;
-        this.router = router;
-    }
-    AuthGuard.prototype.canActivate = function (route, state) {
-        if (this.api.isLoggedIn) {
-            return true;
-        }
-        var url = state.url;
-        this.router.navigateByUrl('/login');
-        return true;
-    };
-    AuthGuard = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_app_services__["a" /* ApiService */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
-    ], AuthGuard);
-    return AuthGuard;
-}());
-
-//# sourceMappingURL=auth-guard.service.js.map
-
-/***/ }),
-
-/***/ 1003:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PhoneVerifyGuard; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators_map__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_services__ = __webpack_require__(1);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-var PhoneVerifyGuard = (function () {
-    function PhoneVerifyGuard(api, router) {
-        this.api = api;
-        this.router = router;
-    }
-    PhoneVerifyGuard.prototype.goToMobileVerify = function () {
-        this.router.navigateByUrl('/verify/mobile');
-    };
-    PhoneVerifyGuard.prototype.canActivate = function (route, state) {
-        var _this = this;
-        return this.api.getUser().pipe(Object(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators_map__["map"])(function (data) {
-            var result = data.success && data.user.phone && data.user.mobile_verified;
-            if (!result) {
-                _this.goToMobileVerify();
-            }
-            return result;
-        }, Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["catchError"])(function (err) {
-            _this.goToMobileVerify();
-            return Object(__WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of__["of"])(false);
-        })));
-    };
-    PhoneVerifyGuard = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5_app_services__["a" /* ApiService */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
-    ], PhoneVerifyGuard);
-    return PhoneVerifyGuard;
-}());
-
-//# sourceMappingURL=phone-verify-guard.service.js.map
-
-/***/ }),
-
-/***/ 1004:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PlanGuard; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators_map__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_services__ = __webpack_require__(1);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-var PlanGuard = (function () {
-    function PlanGuard(api, router) {
-        this.api = api;
-        this.router = router;
-    }
-    PlanGuard.prototype.goToPlan = function () {
-        this.router.navigateByUrl('/plan');
-    };
-    PlanGuard.prototype.canActivate = function (route, state) {
-        var _this = this;
-        return this.api.getFirm().pipe(Object(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators_map__["map"])(function (data) {
-            var result = data.success && data.firm.plan != null;
-            if (!result) {
-                _this.goToPlan();
-            }
-            return result;
-        }), Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["catchError"])(function (err) {
-            _this.goToPlan();
-            return Object(__WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of__["of"])(false);
-        }));
-    };
-    PlanGuard = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5_app_services__["a" /* ApiService */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
-    ], PlanGuard);
-    return PlanGuard;
-}());
-
-//# sourceMappingURL=plan-guard.service.js.map
-
-/***/ }),
-
-/***/ 1005:
+/***/ 1000:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -332,7 +101,7 @@ var ChangePswComponent = (function () {
 
 /***/ }),
 
-/***/ 1006:
+/***/ 1001:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -340,7 +109,7 @@ var ChangePswComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_services__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_dashboard_api_service__ = __webpack_require__(553);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_dashboard_api_service__ = __webpack_require__(552);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -448,7 +217,7 @@ var DashboardComponent = (function () {
 
 /***/ }),
 
-/***/ 1007:
+/***/ 1002:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -457,7 +226,7 @@ var DashboardComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_models__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_environments_environment__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_environments_environment__ = __webpack_require__(96);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -590,7 +359,7 @@ var AccountDetailsComponent = (function () {
 
 /***/ }),
 
-/***/ 1008:
+/***/ 1003:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -599,7 +368,7 @@ var AccountDetailsComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_models__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_environments_environment_prod__ = __webpack_require__(1009);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_environments_environment_prod__ = __webpack_require__(1004);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -749,7 +518,7 @@ var BusinessDetailsComponent = (function () {
 
 /***/ }),
 
-/***/ 1009:
+/***/ 1004:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -765,7 +534,7 @@ var environment = {
 
 /***/ }),
 
-/***/ 1010:
+/***/ 1005:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -819,14 +588,14 @@ var ForgotPswComponent = (function () {
 
 /***/ }),
 
-/***/ 1011:
+/***/ 1006:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_services__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_api_service__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_api_service__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_firm__ = __webpack_require__(399);
@@ -899,7 +668,7 @@ var HomeComponent = (function () {
 
 /***/ }),
 
-/***/ 1012:
+/***/ 1007:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -939,7 +708,7 @@ var LoaderComponent = (function () {
 
 /***/ }),
 
-/***/ 1013:
+/***/ 1008:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -998,14 +767,14 @@ var LoginComponent = (function () {
 
 /***/ }),
 
-/***/ 1014:
+/***/ 1009:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NavbarComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_services__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_api_service__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_api_service__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models__ = __webpack_require__(25);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1049,7 +818,7 @@ var NavbarComponent = (function () {
 
 /***/ }),
 
-/***/ 1015:
+/***/ 1010:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1087,7 +856,7 @@ var NotFoundComponent = (function () {
 
 /***/ }),
 
-/***/ 1016:
+/***/ 1011:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1153,7 +922,7 @@ var PaginationComponent = (function () {
 
 /***/ }),
 
-/***/ 1017:
+/***/ 1012:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1228,7 +997,7 @@ var PhoneVerifyComponent = (function () {
 
 /***/ }),
 
-/***/ 1018:
+/***/ 1013:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1237,7 +1006,7 @@ var PhoneVerifyComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_models__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_environments_environment__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_environments_environment__ = __webpack_require__(96);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1347,7 +1116,7 @@ var ProfileViewComponent = (function () {
 
 /***/ }),
 
-/***/ 1019:
+/***/ 1014:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1408,7 +1177,7 @@ var RegisterComponent = (function () {
 
 /***/ }),
 
-/***/ 1020:
+/***/ 1015:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1470,21 +1239,21 @@ var ResetPasswordComponent = (function () {
 
 /***/ }),
 
-/***/ 1021:
+/***/ 1016:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__verify_email_directive__ = __webpack_require__(1022);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__verify_email_directive__ = __webpack_require__(1017);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__verify_email_directive__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__verify_equals_directive__ = __webpack_require__(1023);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__verify_equals_directive__ = __webpack_require__(1018);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__verify_equals_directive__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__verify_fix_length_directive__ = __webpack_require__(1024);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__verify_fix_length_directive__ = __webpack_require__(1019);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_2__verify_fix_length_directive__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__verify_max_directive__ = __webpack_require__(1025);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__verify_max_directive__ = __webpack_require__(1020);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_3__verify_max_directive__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__verify_min_directive__ = __webpack_require__(1026);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__verify_min_directive__ = __webpack_require__(1021);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_4__verify_min_directive__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__verify_multiple_of_directive__ = __webpack_require__(1027);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__verify_multiple_of_directive__ = __webpack_require__(1022);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_5__verify_multiple_of_directive__["a"]; });
 
 
@@ -1496,7 +1265,7 @@ var ResetPasswordComponent = (function () {
 
 /***/ }),
 
-/***/ 1022:
+/***/ 1017:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1536,7 +1305,7 @@ var VerifyEmailDirective = (function () {
 
 /***/ }),
 
-/***/ 1023:
+/***/ 1018:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1585,7 +1354,7 @@ var VerifyEqualsDirective = (function () {
 
 /***/ }),
 
-/***/ 1024:
+/***/ 1019:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1634,239 +1403,7 @@ var VerifyLengthDirective = (function () {
 
 /***/ }),
 
-/***/ 1025:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VerifyMaxDirective; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(11);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var VerifyMaxDirective = (function () {
-    function VerifyMaxDirective() {
-    }
-    VerifyMaxDirective_1 = VerifyMaxDirective;
-    VerifyMaxDirective.prototype.validate = function (control) {
-        if (control.value && control.value > this.max) {
-            return { 'max': { value: control.value } };
-        }
-        return null;
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])('verify-max'),
-        __metadata("design:type", Number)
-    ], VerifyMaxDirective.prototype, "max", void 0);
-    VerifyMaxDirective = VerifyMaxDirective_1 = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"])({
-            selector: '[verify-max]',
-            providers: [{ provide: __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* NG_VALIDATORS */], useExisting: VerifyMaxDirective_1, multi: true }]
-        })
-    ], VerifyMaxDirective);
-    return VerifyMaxDirective;
-    var VerifyMaxDirective_1;
-}());
-
-//# sourceMappingURL=verify-max.directive.js.map
-
-/***/ }),
-
-/***/ 1026:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VerifyMinDirective; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(11);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var VerifyMinDirective = (function () {
-    function VerifyMinDirective() {
-    }
-    VerifyMinDirective_1 = VerifyMinDirective;
-    VerifyMinDirective.prototype.validate = function (control) {
-        if (control.value && control.value < this.min) {
-            return { 'min': { value: control.value } };
-        }
-        return null;
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])('verify-min'),
-        __metadata("design:type", Number)
-    ], VerifyMinDirective.prototype, "min", void 0);
-    VerifyMinDirective = VerifyMinDirective_1 = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"])({
-            selector: '[verify-min]',
-            providers: [{ provide: __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* NG_VALIDATORS */], useExisting: VerifyMinDirective_1, multi: true }]
-        })
-    ], VerifyMinDirective);
-    return VerifyMinDirective;
-    var VerifyMinDirective_1;
-}());
-
-//# sourceMappingURL=verify-min.directive.js.map
-
-/***/ }),
-
-/***/ 1027:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VerifyMultipleOfDirective; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(11);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var VerifyMultipleOfDirective = (function () {
-    function VerifyMultipleOfDirective() {
-    }
-    VerifyMultipleOfDirective_1 = VerifyMultipleOfDirective;
-    VerifyMultipleOfDirective.prototype.validate = function (control) {
-        if (control.value && control.value % this.multipleOf != 0) {
-            return { 'multipleOf': { value: control.value } };
-        }
-        return null;
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])('verify-multiple-of'),
-        __metadata("design:type", Number)
-    ], VerifyMultipleOfDirective.prototype, "multipleOf", void 0);
-    VerifyMultipleOfDirective = VerifyMultipleOfDirective_1 = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"])({
-            selector: '[verify-multiple-of]',
-            providers: [{ provide: __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* NG_VALIDATORS */], useExisting: VerifyMultipleOfDirective_1, multi: true }]
-        })
-    ], VerifyMultipleOfDirective);
-    return VerifyMultipleOfDirective;
-    var VerifyMultipleOfDirective_1;
-}());
-
-//# sourceMappingURL=verify-multiple-of.directive.js.map
-
-/***/ }),
-
-/***/ 1028:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InsertionCheckItem; });
-var InsertionCheckItem = (function () {
-    function InsertionCheckItem() {
-        this._id = "";
-        this.clientName = "";
-        this.publicationName = "";
-        this.publicationEdition = "";
-        this.insertions = {
-            date: {
-                year: 0,
-                month: 0,
-                day: 0
-            },
-            marked: false,
-            state: 0,
-            _id: "",
-            ISODate: ""
-        };
-        this.executiveName = "";
-        this.executiveOrg = "";
-        this.checked = false;
-    }
-    return InsertionCheckItem;
-}());
-
-//# sourceMappingURL=insertion-check-item.js.map
-
-/***/ }),
-
-/***/ 1029:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InsertionListResolver; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__release_order_search_params__ = __webpack_require__(132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__release_order_api_service__ = __webpack_require__(71);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var Result = (function () {
-    function Result() {
-    }
-    return Result;
-}());
-var InsertionListResolver = (function () {
-    function InsertionListResolver(api, router) {
-        this.api = api;
-        this.router = router;
-    }
-    InsertionListResolver.prototype.resolve = function (route, state) {
-        var page = route.paramMap.get('page');
-        var searchParams = new __WEBPACK_IMPORTED_MODULE_3__release_order_search_params__["a" /* ReleaseOrderSearchParams */](route.queryParamMap.get('mediaHouse'), route.queryParamMap.get('edition'), route.queryParamMap.get('client'), route.queryParamMap.get('executive'), route.queryParamMap.get('executiveOrg'), +route.queryParamMap.get('past'));
-        return this.api.searchInsertions(page, searchParams).map(function (insertion) {
-            if (insertion) {
-                return {
-                    list: insertion,
-                    search: searchParams
-                };
-            }
-            else {
-                return null;
-            }
-        });
-    };
-    InsertionListResolver = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__release_order_api_service__["a" /* ReleaseOrderApiService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]])
-    ], InsertionListResolver);
-    return InsertionListResolver;
-}());
-
-//# sourceMappingURL=insertion-list-resolver.service.js.map
-
-/***/ }),
-
-/***/ 103:
+/***/ 102:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2053,7 +1590,239 @@ var MediaHouseApiService = (function () {
 
 /***/ }),
 
-/***/ 1030:
+/***/ 1020:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VerifyMaxDirective; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(11);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var VerifyMaxDirective = (function () {
+    function VerifyMaxDirective() {
+    }
+    VerifyMaxDirective_1 = VerifyMaxDirective;
+    VerifyMaxDirective.prototype.validate = function (control) {
+        if (control.value && control.value > this.max) {
+            return { 'max': { value: control.value } };
+        }
+        return null;
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])('verify-max'),
+        __metadata("design:type", Number)
+    ], VerifyMaxDirective.prototype, "max", void 0);
+    VerifyMaxDirective = VerifyMaxDirective_1 = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"])({
+            selector: '[verify-max]',
+            providers: [{ provide: __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* NG_VALIDATORS */], useExisting: VerifyMaxDirective_1, multi: true }]
+        })
+    ], VerifyMaxDirective);
+    return VerifyMaxDirective;
+    var VerifyMaxDirective_1;
+}());
+
+//# sourceMappingURL=verify-max.directive.js.map
+
+/***/ }),
+
+/***/ 1021:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VerifyMinDirective; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(11);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var VerifyMinDirective = (function () {
+    function VerifyMinDirective() {
+    }
+    VerifyMinDirective_1 = VerifyMinDirective;
+    VerifyMinDirective.prototype.validate = function (control) {
+        if (control.value && control.value < this.min) {
+            return { 'min': { value: control.value } };
+        }
+        return null;
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])('verify-min'),
+        __metadata("design:type", Number)
+    ], VerifyMinDirective.prototype, "min", void 0);
+    VerifyMinDirective = VerifyMinDirective_1 = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"])({
+            selector: '[verify-min]',
+            providers: [{ provide: __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* NG_VALIDATORS */], useExisting: VerifyMinDirective_1, multi: true }]
+        })
+    ], VerifyMinDirective);
+    return VerifyMinDirective;
+    var VerifyMinDirective_1;
+}());
+
+//# sourceMappingURL=verify-min.directive.js.map
+
+/***/ }),
+
+/***/ 1022:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VerifyMultipleOfDirective; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(11);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var VerifyMultipleOfDirective = (function () {
+    function VerifyMultipleOfDirective() {
+    }
+    VerifyMultipleOfDirective_1 = VerifyMultipleOfDirective;
+    VerifyMultipleOfDirective.prototype.validate = function (control) {
+        if (control.value && control.value % this.multipleOf != 0) {
+            return { 'multipleOf': { value: control.value } };
+        }
+        return null;
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])('verify-multiple-of'),
+        __metadata("design:type", Number)
+    ], VerifyMultipleOfDirective.prototype, "multipleOf", void 0);
+    VerifyMultipleOfDirective = VerifyMultipleOfDirective_1 = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"])({
+            selector: '[verify-multiple-of]',
+            providers: [{ provide: __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* NG_VALIDATORS */], useExisting: VerifyMultipleOfDirective_1, multi: true }]
+        })
+    ], VerifyMultipleOfDirective);
+    return VerifyMultipleOfDirective;
+    var VerifyMultipleOfDirective_1;
+}());
+
+//# sourceMappingURL=verify-multiple-of.directive.js.map
+
+/***/ }),
+
+/***/ 1023:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InsertionCheckItem; });
+var InsertionCheckItem = (function () {
+    function InsertionCheckItem() {
+        this._id = "";
+        this.clientName = "";
+        this.publicationName = "";
+        this.publicationEdition = "";
+        this.insertions = {
+            date: {
+                year: 0,
+                month: 0,
+                day: 0
+            },
+            marked: false,
+            state: 0,
+            _id: "",
+            ISODate: ""
+        };
+        this.executiveName = "";
+        this.executiveOrg = "";
+        this.checked = false;
+    }
+    return InsertionCheckItem;
+}());
+
+//# sourceMappingURL=insertion-check-item.js.map
+
+/***/ }),
+
+/***/ 1024:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InsertionListResolver; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__release_order_search_params__ = __webpack_require__(131);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__release_order_api_service__ = __webpack_require__(71);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var Result = (function () {
+    function Result() {
+    }
+    return Result;
+}());
+var InsertionListResolver = (function () {
+    function InsertionListResolver(api, router) {
+        this.api = api;
+        this.router = router;
+    }
+    InsertionListResolver.prototype.resolve = function (route, state) {
+        var page = route.paramMap.get('page');
+        var searchParams = new __WEBPACK_IMPORTED_MODULE_3__release_order_search_params__["a" /* ReleaseOrderSearchParams */](route.queryParamMap.get('mediaHouse'), route.queryParamMap.get('edition'), route.queryParamMap.get('client'), route.queryParamMap.get('executive'), route.queryParamMap.get('executiveOrg'), +route.queryParamMap.get('past'));
+        return this.api.searchInsertions(page, searchParams).map(function (insertion) {
+            if (insertion) {
+                return {
+                    list: insertion,
+                    search: searchParams
+                };
+            }
+            else {
+                return null;
+            }
+        });
+    };
+    InsertionListResolver = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__release_order_api_service__["a" /* ReleaseOrderApiService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]])
+    ], InsertionListResolver);
+    return InsertionListResolver;
+}());
+
+//# sourceMappingURL=insertion-list-resolver.service.js.map
+
+/***/ }),
+
+/***/ 1025:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2091,7 +1860,7 @@ var DirComponent = (function () {
 
 /***/ }),
 
-/***/ 1031:
+/***/ 1026:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2102,7 +1871,7 @@ var DirComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__client_api_service__ = __webpack_require__(133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__client_api_service__ = __webpack_require__(132);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2146,7 +1915,7 @@ var ClientResolver = (function () {
 
 /***/ }),
 
-/***/ 1033:
+/***/ 1028:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2157,7 +1926,7 @@ var ClientResolver = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__executive_api_service__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__executive_api_service__ = __webpack_require__(133);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2201,7 +1970,7 @@ var ExecutiveResolver = (function () {
 
 /***/ }),
 
-/***/ 1034:
+/***/ 1029:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2212,7 +1981,7 @@ var ExecutiveResolver = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__media_house_api_service__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__media_house_api_service__ = __webpack_require__(102);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2256,456 +2025,7 @@ var MediaHouseResolver = (function () {
 
 /***/ }),
 
-/***/ 1035:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ClientListResolver; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__client_api_service__ = __webpack_require__(133);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var ClientListResolver = (function () {
-    function ClientListResolver(api, router) {
-        this.api = api;
-        this.router = router;
-    }
-    ClientListResolver.prototype.resolve = function (route, state) {
-        var _this = this;
-        var page = route.paramMap.get('page');
-        return this.api.getClients(page).map(function (client) {
-            if (client) {
-                return client;
-            }
-            else {
-                _this.router.navigateByUrl('/dir/clients');
-                return null;
-            }
-        });
-    };
-    ClientListResolver = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__client_api_service__["a" /* ClientApiService */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]])
-    ], ClientListResolver);
-    return ClientListResolver;
-}());
-
-//# sourceMappingURL=client-list-resolver.service.js.map
-
-/***/ }),
-
-/***/ 1036:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExecutiveListResolver; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__executive_api_service__ = __webpack_require__(134);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var ExecutiveListResolver = (function () {
-    function ExecutiveListResolver(api, router) {
-        this.api = api;
-        this.router = router;
-    }
-    ExecutiveListResolver.prototype.resolve = function (route, state) {
-        var _this = this;
-        var page = route.paramMap.get('page');
-        return this.api.getExecutives(page).map(function (client) {
-            if (client) {
-                return client;
-            }
-            else {
-                _this.router.navigateByUrl('/dir/executives');
-                return null;
-            }
-        });
-    };
-    ExecutiveListResolver = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__executive_api_service__["a" /* ExecutiveApiService */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]])
-    ], ExecutiveListResolver);
-    return ExecutiveListResolver;
-}());
-
-//# sourceMappingURL=executive-list-resolver.service.js.map
-
-/***/ }),
-
-/***/ 1037:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MediaHouseListResolver; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__media_house_api_service__ = __webpack_require__(103);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var MediaHouseListResolver = (function () {
-    function MediaHouseListResolver(api, router) {
-        this.api = api;
-        this.router = router;
-    }
-    MediaHouseListResolver.prototype.resolve = function (route, state) {
-        var _this = this;
-        var page = route.paramMap.get('page');
-        var global = route.data.global;
-        return this.api.getMediaHouses(page, global).map(function (mediaHouse) {
-            if (mediaHouse) {
-                return mediaHouse;
-            }
-            else {
-                _this.router.navigateByUrl('/dir/media_houses');
-                return null;
-            }
-        });
-    };
-    MediaHouseListResolver = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__media_house_api_service__["a" /* MediaHouseApiService */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]])
-    ], MediaHouseListResolver);
-    return MediaHouseListResolver;
-}());
-
-//# sourceMappingURL=media-house-list-resolver.service.js.map
-
-/***/ }),
-
-/***/ 1038:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ClientComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_services__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__client__ = __webpack_require__(297);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__client_api_service__ = __webpack_require__(133);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-var ClientComponent = (function () {
-    function ClientComponent(goback, api, route, router, stateApi, notifications) {
-        this.goback = goback;
-        this.api = api;
-        this.route = route;
-        this.router = router;
-        this.stateApi = stateApi;
-        this.notifications = notifications;
-        this.client = new __WEBPACK_IMPORTED_MODULE_3__client__["a" /* Client */]();
-        this.backup = new __WEBPACK_IMPORTED_MODULE_3__client__["a" /* Client */]();
-        this.backupContactPersons = [];
-        this.new = false;
-        this.editClientDetails = false;
-        this.editContactDetails = false;
-        this.editContactPersonDetails = false;
-        this.moreClientDetails = false;
-        this.moreContactDetails = false;
-        this.moreContactPersonDetails = false;
-    }
-    ClientComponent.prototype.makeBackup = function () {
-        var _this = this;
-        Object.assign(this.backup, this.client);
-        this.backupContactPersons = [];
-        this.client.contactpersons.forEach(function (person) {
-            var item = new __WEBPACK_IMPORTED_MODULE_3__client__["b" /* ContactPerson */]();
-            Object.assign(item, person);
-            _this.backupContactPersons.push(item);
-        });
-    };
-    ClientComponent.prototype.restoreBackup = function () {
-        var _this = this;
-        Object.assign(this.client, this.backup);
-        this.client.contactpersons = [];
-        this.backupContactPersons.forEach(function (person) {
-            var item = new __WEBPACK_IMPORTED_MODULE_3__client__["b" /* ContactPerson */]();
-            Object.assign(item, person);
-            _this.client.contactpersons.push(item);
-        });
-    };
-    ClientComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.goback.urlInit();
-        this.route.paramMap.subscribe(function (params) {
-            if (params.has('id')) {
-                _this.id = params.get('id');
-                _this.route.data.subscribe(function (data) {
-                    _this.client = data.client;
-                    _this.makeBackup();
-                });
-            }
-            else {
-                _this.new = true;
-                _this.client.contactpersons = [new __WEBPACK_IMPORTED_MODULE_3__client__["b" /* ContactPerson */]()];
-                _this.editClientDetails = _this.editContactDetails = _this.editContactPersonDetails = true;
-                _this.makeBackup();
-            }
-        });
-    };
-    ClientComponent.prototype.stopEditing = function () {
-        this.editClientDetails = false;
-        this.editContactDetails = false;
-        this.editContactPersonDetails = false;
-    };
-    Object.defineProperty(ClientComponent.prototype, "editing", {
-        get: function () {
-            return this.editClientDetails
-                || this.editContactDetails
-                || this.editContactPersonDetails;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    ClientComponent.prototype.goToList = function () {
-        this.router.navigateByUrl('/dir/clients/');
-    };
-    ClientComponent.prototype.submit = function () {
-        var _this = this;
-        if (this.new) {
-            this.api.createClient(this.client).subscribe(function (data) {
-                if (data.success) {
-                    _this.goToList();
-                }
-                else {
-                    console.log(data);
-                    _this.notifications.show(data.msg);
-                }
-            });
-        }
-        else {
-            this.api.editClient(this.client).subscribe(function (data) {
-                if (data.success) {
-                    _this.notifications.show("Saved");
-                    _this.stopEditing();
-                    _this.makeBackup();
-                }
-                else {
-                    console.log(data);
-                    _this.notifications.show(data.msg);
-                }
-            });
-        }
-    };
-    ClientComponent.prototype.cancel = function () {
-        this.stopEditing();
-        this.restoreBackup();
-    };
-    ClientComponent.prototype.cancelCreate = function () {
-        this.goToList();
-    };
-    ClientComponent.prototype.addContactPerson = function () {
-        this.client.contactpersons.push(new __WEBPACK_IMPORTED_MODULE_3__client__["b" /* ContactPerson */]());
-    };
-    ClientComponent.prototype.removeContactPerson = function (i) {
-        this.client.contactpersons.splice(i, 1);
-    };
-    ClientComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-            selector: 'app-client',template:/*ion-inline-start:"/home/lambo/zaaa-ionic/src/app/directory/clients/client/client.component.html"*/'<div class="container">\n  <br>\n\n  <form (ngSubmit)="submit()" #dirForm="ngForm">\n    <div class="row">\n      <div class="col-lg col-md-6">\n        <div class="card mb-5 mat-elevation-z3">\n          <div class="card-body" [class.h-limit]="!moreClientDetails && !editClientDetails">\n            <div class="row">\n              <div class="col align-self-center">\n                <h5>Client Details</h5>\n              </div>\n              <div class="col-auto" *ngIf="!editClientDetails && !editing">\n                <button mat-icon-button (click)="editClientDetails = true"><mat-icon>edit</mat-icon></button>\n              </div>\n              <ng-container *ngIf="editClientDetails && !new">\n                <div class="col-auto">\n                  <button mat-icon-button class="text-success" type="submit" [disabled]="!dirForm.form.valid"><mat-icon>check</mat-icon></button>\n                  <button mat-icon-button class="text-danger" type="button" (click)="cancel()"><mat-icon>close</mat-icon></button>\n                </div>\n              </ng-container>\n            </div>\n\n            <br>\n\n            <ng-container *ngIf="!editClientDetails">\n              <div class="mb-3">\n                <div class="text-muted small">Organization Name</div>\n                <div>{{client.orgName || \'--\'}}</div>\n              </div>          \n              <div class="mb-3">\n                <div class="text-muted small">Company Name</div>\n                <div>{{client.companyName || \'--\'}}</div>\n              </div>\n              <div class="mb-3">\n                <div class="text-muted small">Nick Name</div>\n                <div>{{client.nickName || \'--\'}}</div>\n              </div>\n              <div class="mb-3">\n                <div class="text-muted small">Category</div>\n                <div>{{client.category || \'--\'}}</div>\n              </div>              \n              <div class="mb-3">\n                <div class="text-muted small">Sub Category</div>\n                <div>{{client.SubCategoryType || \'--\'}}</div>    \n              </div>\n              <div class="mb-3">\n                <div class="text-muted small">Website</div>\n                <div>{{client.website || \'--\'}}</div>    \n              </div>  \n              <div class="mb-3">\n                <div class="text-muted small">PAN</div>\n                <div>{{client.panNo || \'--\'}}</div>    \n              </div>  \n              <div class="mb-3">\n                <div class="text-muted small">GSTIN</div>\n                <div>{{client.GSTIN.GSTType || \'--\'}} {{client.GSTIN.GSTNo}}</div>    \n              </div>  \n              <div class="mb-3">\n                <div class="text-muted small">Remark</div>\n                <div>{{client.Remark || \'--\'}}</div>    \n              </div>   \n            </ng-container>\n\n            <ng-container *ngIf="editClientDetails">\n              <mat-form-field>\n                <input matInput type="text" name="orgName" placeholder="Client Name" [(ngModel)]="client.orgName" required #orgNameField="ngModel">\n                <mat-error *ngIf="orgNameField.errors && orgNameField.errors.required">\n                  Client Name is required.\n                </mat-error>\n              </mat-form-field>\n        \n              <div class="form-row">\n                <div class="col">\n                  <mat-form-field>\n                    <input matInput type="text" name="companyName" placeholder="Company Name" [(ngModel)]="client.companyName" required #companyNameField="ngModel">\n                    <mat-error *ngIf="companyNameField.errors && companyNameField.errors.required">\n                      Company Name is required.\n                    </mat-error>\n                  </mat-form-field>\n                </div>\n                <div class="col-auto align-self-center">\n                  <button class="btn btn-sm btn-outline-info" type="button" (click)="client.companyName = client.orgName">Copy from above</button>\n                </div>\n              </div>\n            \n              <mat-form-field>\n                <input matInput type="text" name="nickName" placeholder="Nick Name" [(ngModel)]="client.nickName" #nickNameField="ngModel">\n              </mat-form-field>\n        \n              <div class="form-row">\n                <div class="col">\n                  <mat-form-field>\n                    <input matInput type="text" name="category" placeholder="Category" [(ngModel)]="client.category" #categoryField="ngModel">\n                  </mat-form-field>\n                </div>\n                <div class="col">\n                  <mat-form-field>\n                    <input matInput type="text" name="subcategory" placeholder="Sub Category" [(ngModel)]="client.SubCategoryType" #subCategoryField="ngModel">\n                  </mat-form-field>\n                </div>\n              </div>\n        \n              <mat-form-field>\n                <input matInput [matDatepicker]="incDateField" placeholder="Incorporation Date" [(ngModel)]="client.IncorporationDate" name="incDate" disabled>\n                <mat-datepicker-toggle matSuffix [for]="incDateField"></mat-datepicker-toggle>\n                <mat-datepicker #incDateField disabled="false"></mat-datepicker>\n              </mat-form-field>\n            \n              <mat-form-field>\n                <input matInput type="text" name="website" placeholder="Website" [(ngModel)]="client.website" #websiteField="ngModel">\n              </mat-form-field>\n            \n              <mat-form-field>\n                <input matInput type="text" name="panNo" placeholder="PAN Number" minlength="10" maxlength="10" [(ngModel)]="client.panNo" #panNoField="ngModel">\n              </mat-form-field>\n        \n              <div class="form-row">\n                <div class="{{client.GSTIN.GSTType != \'URD\' ? \'col-auto\' : \'col\'}}">\n                  <mat-form-field>\n                    <mat-select placeholder="GST Type" name="gstType" [(ngModel)]="client.GSTIN.GSTType">\n                      <mat-option value="URD">URD</mat-option>\n                      <mat-option value="RD">RD</mat-option>\n                    </mat-select>\n                  </mat-form-field>\n                </div>\n                <div class="col" *ngIf="client.GSTIN.GSTType != \'URD\'">\n                  <mat-form-field>\n                    <input matInput type="text" name="gstNo" placeholder="GST Number" [(ngModel)]="client.GSTIN.GSTNo" required minlength="15" maxlength="15" #gstNoField="ngModel">\n                    <mat-error *ngIf="gstNoField.errors && gstNoField.errors.required">\n                      GSTIN is required.\n                    </mat-error>\n                    <mat-error *ngIf="gstNoField.errors && (gstNoField.errors.minlength || gstNoField.errors.maxlength)">\n                      GSTIN should be 15 characters long.\n                    </mat-error>\n                  </mat-form-field>\n                </div>\n              </div>\n        \n            </ng-container>\n          </div>\n\n          <button type="button" class="btn btn-light btn-sm text-info" *ngIf="!editClientDetails" (click)="moreClientDetails = !moreClientDetails">\n            <span><mat-icon [class.rotate180]="moreClientDetails">expand_more</mat-icon></span> {{moreClientDetails ? \'Less\' : \'More\'}}\n          </button>\n        </div>\n      </div>\n\n      <div class="col-lg col-md-6">\n        <div class="card mb-5 mat-elevation-z3">\n          <div class="card-body" [class.h-limit]="!moreContactDetails && !editContactDetails">\n            <div class="row">\n              <div class="col align-self-center">\n                <h5>Contact Details</h5>\n              </div>\n              <div class="col-auto" *ngIf="!editContactDetails && !editing">\n                <button mat-icon-button (click)="editContactDetails = true"><mat-icon>edit</mat-icon></button>\n              </div>\n              <ng-container *ngIf="editContactDetails && !new">\n                <div class="col-auto">\n                  <button mat-icon-button class="text-success" type="submit" [disabled]="!dirForm.form.valid"><mat-icon>check</mat-icon></button>\n                  <button mat-icon-button class="text-danger" type="button" (click)="cancel()"><mat-icon>close</mat-icon></button>\n                </div>\n              </ng-container>\n            </div>\n\n            <br>\n\n            <ng-container *ngIf="!editContactDetails">\n              <div class="mb-3">\n                <div class="text-muted small">Address</div>\n                <div>{{client.address.address || \'--\'}}</div>\n              </div>          \n              <div class="mb-3">\n                <div class="text-muted small">Pincode</div>\n                <div>{{client.address.pincode || \'--\'}}</div>\n              </div>\n              <div class="mb-3">\n                <div class="text-muted small">City</div>\n                <div>{{client.address.city || \'--\'}}</div>\n              </div>\n              <div class="mb-3">\n                <div class="text-muted small">State</div>\n                <div>{{client.address.state || \'--\'}}</div>\n              </div>              \n              <div class="mb-3">\n                <div class="text-muted small">Landline</div>\n                <div>{{client.landLine || \'--\'}}</div>    \n              </div>\n              <div class="mb-3">\n                <div class="text-muted small">STD</div>\n                <div>{{client.stdNo || \'--\'}}</div>    \n              </div>  \n            </ng-container>\n  \n            <ng-container *ngIf="editContactDetails">\n              <mat-form-field>\n                <textarea matInput type="text" name="address" placeholder="Address" [(ngModel)]="client.address.address" #addressField="ngModel"></textarea>\n              </mat-form-field>\n        \n              <mat-form-field>\n                <input matInput type="tel" minlength="6" maxlength="6" name="pincode" placeholder="Pincode" [(ngModel)]="client.address.pincode" #pincodeField="ngModel">\n                <mat-error *ngIf="pincodeField.errors && pincodeField.errors.required">\n                  Pincode is required.\n                </mat-error>\n                <mat-error *ngIf="pincodeField.errors && (pincodeField.errors.minlength || pincodeField.errors.maxlength)">\n                  Pincode should be 6 characters long.\n                </mat-error>\n              </mat-form-field>\n          \n              <mat-form-field>\n                <input matInput type="text" name="city" placeholder="City" [(ngModel)]="client.address.city" required #cityField="ngModel">\n                <mat-error *ngIf="cityField.errors && cityField.errors.required">\n                  City is required.\n                </mat-error>\n              </mat-form-field>\n        \n              <mat-form-field>\n                <mat-select placeholder = "State" name="state" [(ngModel)]="client.address.state" required #stateField="ngModel">\n                  <mat-option *ngFor="let state of stateApi.states" [value]="state">{{state}}</mat-option>\n                </mat-select>\n                <mat-error *ngIf="stateField.errors && stateField.errors.required">\n                  State is required.\n                </mat-error>\n              </mat-form-field>\n\n              <div class="form-row">\n                <div class="col-4">\n                  <mat-form-field>\n                    <input matInput type="tel" minlength="3" maxlength="5" name="stdNo" placeholder="STD No" [(ngModel)]="client.stdNo" #stdNoField="ngModel">\n                  </mat-form-field>\n                </div>\n                <div class="col-8">\n                  <mat-form-field>\n                    <input matInput type="tel" minlength="6" maxlength="8" name="landLine" placeholder="Landline Number" [(ngModel)]="client.landLine" #landLineField="ngModel">\n                  </mat-form-field>\n                </div>\n              </div>\n            </ng-container>\n          </div>\n\n          <button type="button" class="btn btn-light btn-sm text-info" *ngIf="!editContactDetails" (click)="moreContactDetails = !moreContactDetails">\n            <span><mat-icon [class.rotate180]="moreContactDetails">expand_more</mat-icon></span> {{moreContactDetails ? \'Less\' : \'More\'}}\n          </button>\n        </div>\n      </div>\n    </div>\n\n    <div class="card mb-5 mat-elevation-z3 h-extend">\n      <div class="card-body" [class.h-limit]="!moreContactPersonDetails && !editContactPersonDetails">\n        <div class="row">\n          <div class="col align-self-center">\n            <h5>Contact Persons</h5>\n          </div>\n          <div class="col-auto" *ngIf="!editContactPersonDetails && !editing">\n            <button mat-icon-button (click)="editContactPersonDetails = true"><mat-icon>edit</mat-icon></button>\n          </div>\n          <ng-container *ngIf="editContactPersonDetails && !new">\n            <div class="col-auto">\n              <button mat-icon-button class="text-success" type="submit" [disabled]="!dirForm.form.valid"><mat-icon>check</mat-icon></button>\n              <button mat-icon-button class="text-danger" type="button" (click)="cancel()"><mat-icon>close</mat-icon></button>\n            </div>\n          </ng-container>\n        </div>\n\n        <br>\n\n        <ng-container *ngIf="!editContactPersonDetails">\n          <div *ngIf="client.contactpersons.length == 0" class="text-muted">\n            No Contact Persons\n          </div>\n\n          <div *ngFor="let contactPerson of client.contactpersons; index as i">\n            <div class="mb-3">\n              <div class="text-muted small">Contact Person {{i + 1}}</div>\n            </div>\n            <div class="mb-3">\n              <div class="text-muted small">Name</div>\n              <div>{{contactPerson.Name || \'--\'}}</div>\n            </div>\n            <div class="mb-3">\n              <div class="text-muted small">Designation</div>\n              <div>{{contactPerson.designation || \'--\'}}</div>\n            </div>\n            <div class="mb-3">\n              <div class="text-muted small">Department</div>\n              <div>{{contactPerson.department || \'--\'}}</div>\n            </div>\n            <div class="mb-3">\n              <div class="text-muted small">Mobile</div>\n              <div>{{contactPerson.mobileNo || \'--\'}}</div>\n            </div>\n            <div class="mb-3">\n              <div class="text-muted small">Email</div>\n              <div>{{contactPerson.email || \'--\'}}</div>\n            </div>\n            <div class="mb-3">\n              <div class="text-muted small">Date of Birth</div>\n              <div>{{(contactPerson.dob | date) || \'--\'}}</div>\n            </div>\n            <div class="mb-3">\n              <div class="text-muted small">Anniversary</div>\n              <div>{{(contactPerson.anniversaryDate | date) || \'--\'}}</div>\n            </div>\n            <div class="mb-3">\n              <div class="text-muted small">Mobile</div>\n              <div>{{contactPerson.mobileNo || \'--\'}}</div>\n            </div>\n            <div class="mb-3">\n              <div class="text-muted small">Profile Picture</div>\n              <img [src]="contactPerson.photo" class="img-fluid max-w-200">\n\n              <br>\n    \n              <label for="profile-upload-{{i}}" class="btn btn-outline-info">\n                Upload\n              </label>\n              <input type="file" id="profile-upload-{{i}}" class="hidden-file" accept="image/*" (change)="uploadProfilePicture($event.target.files)"/>\n            </div>\n          </div>\n        </ng-container>\n\n        <ng-container *ngIf="editContactPersonDetails">\n          <div class="row">\n            <div class="col text-muted">\n              {{client.contactpersons.length || \'No\'}} Contact Person(s)\n            </div>\n            <div class="col-auto">\n              <button type="button" mat-raised-button color="primary" (click)="addContactPerson()">\n                <mat-icon>add</mat-icon> Add More\n              </button>\n            </div>\n          </div>\n  \n          <br>\n  \n          <div *ngFor="let item of client.contactpersons; index as i" class="card mb-4">\n            <div class="card-header">\n              <div class="row">\n                <div class="col-auto align-self-center text-muted">#{{i + 1}}</div>\n                <div class="col align-self-center">{{item.name}}</div>\n                <div class="col-auto">\n                  <button mat-icon-button color="warn" type="button" (click)="removeContactPerson(i)">\n                    <mat-icon>delete</mat-icon>\n                  </button>\n                </div>\n              </div>\n            </div>\n            <div class="card-body">\n              \n              <label>Business Details</label>\n        \n              <mat-form-field>\n                <input matInput type="text" name="s-{{i}}-name" placeholder="Name" [(ngModel)]="item.name" required #nameField="ngModel">\n                <mat-error *ngIf="nameField.errors && nameField.errors.required">\n                  Name is required.\n                </mat-error>\n              </mat-form-field>\n            \n              <mat-form-field>\n                <input matInput type="text" name="s-{{i}}-designation" placeholder="Designation" [(ngModel)]="item.designation" #designationField="ngModel">\n              </mat-form-field>\n        \n              <mat-form-field>\n                <input matInput type="text" name="s-{{i}}-department" placeholder="Department" [(ngModel)]="item.department" required #departmentField="ngModel">\n                <mat-error *ngIf="departmentField.errors && departmentField.errors.required">\n                  Department is required.\n                </mat-error>\n              </mat-form-field>\n\n              <label>Contact Details</label>\n        \n              <div class="form-row">\n                <div class="col-4">\n                  <mat-form-field>\n                    <input matInput type="tel" minlength="3" maxlength="5" name="s-{{i}}-personStdNo" placeholder="STD No" [(ngModel)]="item.personStdNo" required #personStdNoField="ngModel">\n                    <mat-error *ngIf="personStdNoField.errors && personStdNoField.errors.required">\n                      STD No is required.\n                    </mat-error>\n                  </mat-form-field>\n                </div>\n                <div class="col-8">\n                  <mat-form-field>\n                    <input matInput type="tel" minlength="6" maxlength="8" name="s-{{i}}-personLandLine" placeholder="Landline Number" [(ngModel)]="item.personLandLine" required #personLandLineField="ngModel">\n                    <mat-error *ngIf="personStdNoField.errors && personStdNoField.errors.required">\n                      Landline is required.\n                    </mat-error>\n                  </mat-form-field>\n                </div>\n              </div>\n            \n              <mat-form-field>\n                <input matInput type="tel" pattern="^\d{10}$" maxlength="10" minlength="10" name="s-{{i}}-mobileNo" placeholder="Mobile Number" [(ngModel)]="item.mobileNo" #mobileNoField="ngModel">\n              </mat-form-field>\n        \n              <mat-form-field>\n                <input matInput type="email" name="s-{{i}}-email" placeholder="Email" [(ngModel)]="item.email" required #emailField="ngModel" verify-email>\n                <mat-error *ngIf="emailField.errors && emailField.errors.required">\n                  Email is required.\n                </mat-error>\n                <mat-error *ngIf="emailField.errors && emailField.errors.email">\n                  Invalid Email.\n                </mat-error>\n              </mat-form-field>\n                \n              <label>Personal Details</label>\n\n              <mat-form-field>\n                <input matInput [matDatepicker]="dobField" placeholder="DOB" [(ngModel)]="item.dob" name="dob-{{i}}" disabled>\n                <mat-datepicker-toggle matSuffix [for]="dobField"></mat-datepicker-toggle>\n                <mat-datepicker #dobField disabled="false"></mat-datepicker>\n              </mat-form-field>\n        \n              <mat-form-field>\n                <input matInput [matDatepicker]="anniversaryDateField" placeholder="Anniversary Date" [(ngModel)]="item.anniversaryDate" name="anniversaryDate-{{i}}" disabled>\n                <mat-datepicker-toggle matSuffix [for]="anniversaryDateField"></mat-datepicker-toggle>\n                <mat-datepicker #anniversaryDateField disabled="false"></mat-datepicker>\n              </mat-form-field>\n                \n            </div>\n          </div>\n        </ng-container>\n      </div>\n\n      <button type="button" class="btn btn-light btn-sm text-info" *ngIf="!editContactPersonDetails" (click)="moreContactPersonDetails = !moreContactPersonDetails">\n        <span><mat-icon [class.rotate180]="moreContactPersonDetails">expand_more</mat-icon></span> {{moreContactPersonDetails ? \'Less\' : \'More\'}}\n      </button>\n    </div>   \n  </form>\n</div>\n\n<ng-container *ngIf="new">\n  <ion-footer>\n    <ion-toolbar>\n      <div class="container-fluid">\n        <div class="row">\n          <button class="btn btn-light btn-lg text-success col" type="button" (click)="submit()" [disabled]="!dirForm.form.valid">\n            <ion-icon name="add"></ion-icon>\n            <p class="small">Add</p>\n          </button>\n          <button class="btn btn-light btn-lg text-danger col" type="button" (click)="cancelCreate()">\n            <ion-icon name="close"></ion-icon>\n            <p class="small">Cancel</p>\n          </button>\n        </div>\n      </div>\n    </ion-toolbar>\n  </ion-footer>\n</ng-container>'/*ion-inline-end:"/home/lambo/zaaa-ionic/src/app/directory/clients/client/client.component.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0_app_services__["e" /* GobackService */], __WEBPACK_IMPORTED_MODULE_4__client_api_service__["a" /* ClientApiService */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */],
-            __WEBPACK_IMPORTED_MODULE_0_app_services__["k" /* StateApiService */],
-            __WEBPACK_IMPORTED_MODULE_0_app_services__["h" /* NotificationService */]])
-    ], ClientComponent);
-    return ClientComponent;
-}());
-
-//# sourceMappingURL=client.component.js.map
-
-/***/ }),
-
-/***/ 1039:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExecutiveComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_services__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__executive__ = __webpack_require__(298);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__executive_api_service__ = __webpack_require__(134);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-var ExecutiveComponent = (function () {
-    function ExecutiveComponent(goback, api, route, router, notifications) {
-        this.goback = goback;
-        this.api = api;
-        this.route = route;
-        this.router = router;
-        this.notifications = notifications;
-        this.executive = new __WEBPACK_IMPORTED_MODULE_3__executive__["a" /* Executive */]();
-        this.backup = new __WEBPACK_IMPORTED_MODULE_3__executive__["a" /* Executive */]();
-        this.new = false;
-        this.editExecutiveDetails = false;
-        this.editContactDetails = false;
-        this.moreExecutiveDetails = false;
-        this.moreContactDetails = false;
-    }
-    ExecutiveComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.goback.urlInit();
-        this.route.paramMap.subscribe(function (params) {
-            if (params.has('id')) {
-                _this.id = params.get('id');
-                _this.route.data.subscribe(function (data) {
-                    _this.executive = data.executive;
-                    _this.firm = data.firm;
-                    Object.assign(_this.backup, _this.executive);
-                });
-            }
-            else {
-                _this.new = true;
-                _this.editExecutiveDetails = _this.editContactDetails = true;
-                _this.route.data.subscribe(function (data) {
-                    _this.firm = data.firm;
-                });
-            }
-        });
-    };
-    ExecutiveComponent.prototype.stopEditing = function () {
-        this.editExecutiveDetails = false;
-        this.editContactDetails = false;
-    };
-    Object.defineProperty(ExecutiveComponent.prototype, "editing", {
-        get: function () {
-            return this.editExecutiveDetails
-                || this.editContactDetails;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    ExecutiveComponent.prototype.submit = function () {
-        var _this = this;
-        if (this.new) {
-            this.api.createExecutive(this.executive).subscribe(function (data) {
-                if (data.success) {
-                    _this.goToList();
-                }
-                else {
-                    console.log(data);
-                    _this.notifications.show(data.msg);
-                }
-            });
-        }
-        else {
-            this.api.editExecutive(this.executive).subscribe(function (data) {
-                if (data.success) {
-                    _this.notifications.show("Saved");
-                    _this.stopEditing();
-                    Object.assign(_this.backup, _this.executive);
-                }
-                else {
-                    console.log(data);
-                    _this.notifications.show(data.msg);
-                }
-            });
-        }
-    };
-    ExecutiveComponent.prototype.cancel = function () {
-        this.stopEditing();
-        Object.assign(this.executive, this.backup);
-    };
-    ExecutiveComponent.prototype.goToList = function () {
-        this.router.navigateByUrl('/dir/executives');
-    };
-    ExecutiveComponent.prototype.cancelCreate = function () {
-        this.goToList();
-    };
-    ExecutiveComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-            selector: 'app-executive',template:/*ion-inline-start:"/home/lambo/zaaa-ionic/src/app/directory/executives/executive/executive.component.html"*/'<div class="container">\n  <br>\n\n  <form (ngSubmit)="submit()" #dirForm="ngForm">\n    <div class="row">\n      <div class="col-lg col-md-6">\n        <div class="card mb-5 mat-elevation-z3">\n          <div class="card-body" [class.h-limit]="!moreExecutiveDetails && !editExecutiveDetails">\n            <div class="row">\n              <div class="col align-self-center">\n                <h5>Executive Details</h5>\n              </div>\n              <div class="col-auto" *ngIf="!editExecutiveDetails && !editing">\n                <button mat-icon-button (click)="editExecutiveDetails = true"><mat-icon>edit</mat-icon></button>\n              </div>\n              <ng-container *ngIf="editExecutiveDetails && !new">\n                <div class="col-auto">\n                  <button mat-icon-button class="text-success" type="submit" [disabled]="!dirForm.form.valid"><mat-icon>check</mat-icon></button>\n                  <button mat-icon-button class="text-danger" type="button" (click)="cancel()"><mat-icon>close</mat-icon></button>\n                </div>\n              </ng-container>\n            </div>\n\n            <br>\n\n            <ng-container *ngIf="!editExecutiveDetails">\n              <div class="mb-3">\n                <div class="text-muted small">Executive Name</div>\n                <div>{{executive.executiveName || \'--\'}}</div>\n              </div>\n              <div class="mb-3">\n                <div class="text-muted small">Organization Name</div>\n                <div>{{executive.orgName || \'--\'}}</div>\n              </div>\n              <div class="mb-3">\n                <div class="text-muted small">Designation</div>\n                <div>{{executive.designation || \'--\'}}</div>\n              </div>\n              <div class="mb-3">\n                <div class="text-muted small">Department</div>\n                <div>{{executive.department || \'--\'}}</div>\n              </div>              \n              <div class="mb-3">\n                <div class="text-muted small">Remark</div>\n                <div>{{executive.Remark || \'--\'}}</div>    \n              </div>   \n            </ng-container>\n\n            <ng-container *ngIf="editExecutiveDetails">\n              <mat-form-field>\n                <input matInput placeholder="Executive Name" name="executiveName" [(ngModel)]="executive.executiveName" required #executiveNameField="ngModel">\n                <mat-error *ngIf="executiveNameField.errors && executiveNameField.errors.required">\n                  Executive Name is required.\n                </mat-error>\n              </mat-form-field>\n        \n              <div class="form-row">\n                <div class="col">\n                  <mat-form-field>\n                    <input matInput placeholder="Organisation Name" name="orgName" [(ngModel)]="executive.orgName" required #orgNameField="ngModel">\n                    <mat-error *ngIf="orgNameField.errors && orgNameField.errors.required">\n                      Organisation Name is required.\n                    </mat-error>\n                  </mat-form-field>\n                </div>\n                <div class="col-auto align-self-center">\n                  <button class="btn btn-sm btn-outline-info" type="button" (click)="executive.orgName = firm.name">Copy Firm Name</button>\n                </div>\n              </div>\n        \n              <mat-form-field>\n                <input matInput placeholder="Designation" name="designation" [(ngModel)]="executive.designation">\n              </mat-form-field>\n        \n              <mat-form-field>\n                <input matInput placeholder="Department" name="department" [(ngModel)]="executive.department">\n              </mat-form-field>\n        \n              <mat-form-field>\n                <input matInput placeholder="Remark" name="remark" [(ngModel)]="executive.Remark">\n              </mat-form-field>\n        \n            </ng-container>\n          </div>\n\n          <button type="button" class="btn btn-light btn-sm text-info" *ngIf="!editExecutiveDetails" (click)="moreExecutiveDetails = !moreExecutiveDetails">\n            <span><mat-icon [class.rotate180]="moreExecutiveDetails">expand_more</mat-icon></span> {{moreExecutiveDetails ? \'Less\' : \'More\'}}\n          </button>\n        </div>\n      </div>\n\n      <div class="col-lg col-md-6">\n        <div class="card mb-5 mat-elevation-z3">\n          <div class="card-body" [class.h-limit]="!moreContactDetails && !editContactDetails">\n            <div class="row">\n              <div class="col align-self-center">\n                <h5>Contact &amp; Personal Details</h5>\n              </div>\n              <div class="col-auto" *ngIf="!editContactDetails && !editing">\n                <button mat-icon-button (click)="editContactDetails = true"><mat-icon>edit</mat-icon></button>\n              </div>\n              <ng-container *ngIf="editContactDetails && !new">\n                <div class="col-auto">\n                  <button mat-icon-button class="text-success" type="submit" [disabled]="!dirForm.form.valid"><mat-icon>check</mat-icon></button>\n                  <button mat-icon-button class="text-danger" type="button" (click)="cancel()"><mat-icon>close</mat-icon></button>\n                </div>\n              </ng-container>\n            </div>\n\n            <br>\n\n            <ng-container *ngIf="!editContactDetails">\n              <div class="mb-3">\n                <div class="text-muted small">Mobile</div>\n                <div>{{executive.mobileNo || \'--\'}}</div>    \n              </div>  \n              <div class="mb-3">\n                <div class="text-muted small">Email</div>\n                <div>{{executive.email || \'--\'}}</div>    \n              </div> \n              <div class="mb-3">\n                <div class="text-muted small">Date of Birth</div>\n                <div>{{(executive.dob | date) || \'--\'}}</div>\n              </div>\n              <div class="mb-3">\n                <div class="text-muted small">Anniversary</div>\n                <div>{{(executive.anniversaryDate | date) || \'--\'}}</div>\n              </div>              \n              <div class="mb-3">\n                <div class="text-muted small">Profile Picture</div>\n                <br>\n                <img [src]="executive.photo" class="img-fluid max-w-200">\n  \n                <br><br>\n                \n                <label for="profile-upload" class="btn btn-outline-info">\n                    Upload\n                </label>\n                <br>\n                <input type="file" id="profile-upload" class="hidden-file" accept="image/*" (change)="uploadProfilePicture($event.target.files)"/> \n              </div> \n            </ng-container>\n  \n            <ng-container *ngIf="editContactDetails">\n              <mat-form-field>\n                <span matPrefix>+91 &nbsp;</span>\n                <input type="tel" matInput placeholder="Mobile Number" [(ngModel)]="executive.mobileNo" pattern="^\d{10}$" maxlength="10" minlength="10" required name="mobileNo" #mobileNoField="ngModel">\n                <mat-error *ngIf="mobileNoField.errors">\n                  Mobile Number is empty or invalid.\n                </mat-error>\n              </mat-form-field>\n        \n              <mat-form-field>\n                <input matInput placeholder="Email" [(ngModel)]="executive.email" name="email" verify-email #emailField="ngModel">\n                <mat-error *ngIf="emailField.errors && emailField.errors.email">\n                  Invalid Email.\n                </mat-error>\n              </mat-form-field>\n          \n              <mat-form-field>\n                <input matInput [matDatepicker]="dobPicker" placeholder="Date of Birth" [(ngModel)]="executive.dob" name="dob" disabled>\n                <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>\n                <mat-datepicker #dobPicker disabled="false"></mat-datepicker>\n              </mat-form-field>\n        \n              <mat-form-field>\n                <input matInput [matDatepicker]="anniversaryPicker" placeholder="Anniversary Date" [(ngModel)]="executive.anniversaryDate" name="anniversaryDate" disabled>\n                <mat-datepicker-toggle matSuffix [for]="anniversaryPicker"></mat-datepicker-toggle>\n                <mat-datepicker #anniversaryPicker disabled="false"></mat-datepicker>\n              </mat-form-field>\n            </ng-container>\n          </div>\n\n          <button type="button" class="btn btn-light btn-sm text-info" *ngIf="!editContactDetails" (click)="moreContactDetails = !moreContactDetails">\n            <span><mat-icon [class.rotate180]="moreContactDetails">expand_more</mat-icon></span> {{moreContactDetails ? \'Less\' : \'More\'}}\n          </button>\n        </div>\n      </div>\n    </div>\n\n  </form>\n</div>\n\n<ng-container *ngIf="new">\n  <ion-footer>\n    <ion-toolbar>\n      <div class="container-fluid">\n        <div class="row">\n          <button class="btn btn-light btn-lg text-success col" type="button" (click)="submit()" [disabled]="!dirForm.form.valid">\n            <ion-icon name="add"></ion-icon>\n            <p class="small">Add</p>\n          </button>\n          <button class="btn btn-light btn-lg text-danger col" type="button" (click)="cancelCreate()">\n            <ion-icon name="close"></ion-icon>\n            <p class="small">Cancel</p>\n          </button>\n        </div>\n      </div>\n    </ion-toolbar>\n  </ion-footer>\n</ng-container>'/*ion-inline-end:"/home/lambo/zaaa-ionic/src/app/directory/executives/executive/executive.component.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0_app_services__["e" /* GobackService */], __WEBPACK_IMPORTED_MODULE_4__executive_api_service__["a" /* ExecutiveApiService */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */],
-            __WEBPACK_IMPORTED_MODULE_0_app_services__["h" /* NotificationService */]])
-    ], ExecutiveComponent);
-    return ExecutiveComponent;
-}());
-
-//# sourceMappingURL=executive.component.js.map
-
-/***/ }),
-
-/***/ 104:
+/***/ 103:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2716,7 +2036,7 @@ var ExecutiveComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_of__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_observable_of__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__rate_card__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__rate_card__ = __webpack_require__(120);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_models__ = __webpack_require__(25);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3033,7 +2353,456 @@ var RateCardApiService = (function () {
 
 /***/ }),
 
-/***/ 1040:
+/***/ 1030:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ClientListResolver; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__client_api_service__ = __webpack_require__(132);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var ClientListResolver = (function () {
+    function ClientListResolver(api, router) {
+        this.api = api;
+        this.router = router;
+    }
+    ClientListResolver.prototype.resolve = function (route, state) {
+        var _this = this;
+        var page = route.paramMap.get('page');
+        return this.api.getClients(page).map(function (client) {
+            if (client) {
+                return client;
+            }
+            else {
+                _this.router.navigateByUrl('/dir/clients');
+                return null;
+            }
+        });
+    };
+    ClientListResolver = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__client_api_service__["a" /* ClientApiService */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]])
+    ], ClientListResolver);
+    return ClientListResolver;
+}());
+
+//# sourceMappingURL=client-list-resolver.service.js.map
+
+/***/ }),
+
+/***/ 1031:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExecutiveListResolver; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__executive_api_service__ = __webpack_require__(133);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var ExecutiveListResolver = (function () {
+    function ExecutiveListResolver(api, router) {
+        this.api = api;
+        this.router = router;
+    }
+    ExecutiveListResolver.prototype.resolve = function (route, state) {
+        var _this = this;
+        var page = route.paramMap.get('page');
+        return this.api.getExecutives(page).map(function (client) {
+            if (client) {
+                return client;
+            }
+            else {
+                _this.router.navigateByUrl('/dir/executives');
+                return null;
+            }
+        });
+    };
+    ExecutiveListResolver = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__executive_api_service__["a" /* ExecutiveApiService */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]])
+    ], ExecutiveListResolver);
+    return ExecutiveListResolver;
+}());
+
+//# sourceMappingURL=executive-list-resolver.service.js.map
+
+/***/ }),
+
+/***/ 1032:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MediaHouseListResolver; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__media_house_api_service__ = __webpack_require__(102);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var MediaHouseListResolver = (function () {
+    function MediaHouseListResolver(api, router) {
+        this.api = api;
+        this.router = router;
+    }
+    MediaHouseListResolver.prototype.resolve = function (route, state) {
+        var _this = this;
+        var page = route.paramMap.get('page');
+        var global = route.data.global;
+        return this.api.getMediaHouses(page, global).map(function (mediaHouse) {
+            if (mediaHouse) {
+                return mediaHouse;
+            }
+            else {
+                _this.router.navigateByUrl('/dir/media_houses');
+                return null;
+            }
+        });
+    };
+    MediaHouseListResolver = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__media_house_api_service__["a" /* MediaHouseApiService */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]])
+    ], MediaHouseListResolver);
+    return MediaHouseListResolver;
+}());
+
+//# sourceMappingURL=media-house-list-resolver.service.js.map
+
+/***/ }),
+
+/***/ 1033:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ClientComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_services__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__client__ = __webpack_require__(297);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__client_api_service__ = __webpack_require__(132);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var ClientComponent = (function () {
+    function ClientComponent(goback, api, route, router, stateApi, notifications) {
+        this.goback = goback;
+        this.api = api;
+        this.route = route;
+        this.router = router;
+        this.stateApi = stateApi;
+        this.notifications = notifications;
+        this.client = new __WEBPACK_IMPORTED_MODULE_3__client__["a" /* Client */]();
+        this.backup = new __WEBPACK_IMPORTED_MODULE_3__client__["a" /* Client */]();
+        this.backupContactPersons = [];
+        this.new = false;
+        this.editClientDetails = false;
+        this.editContactDetails = false;
+        this.editContactPersonDetails = false;
+        this.moreClientDetails = false;
+        this.moreContactDetails = false;
+        this.moreContactPersonDetails = false;
+    }
+    ClientComponent.prototype.makeBackup = function () {
+        var _this = this;
+        Object.assign(this.backup, this.client);
+        this.backupContactPersons = [];
+        this.client.contactpersons.forEach(function (person) {
+            var item = new __WEBPACK_IMPORTED_MODULE_3__client__["b" /* ContactPerson */]();
+            Object.assign(item, person);
+            _this.backupContactPersons.push(item);
+        });
+    };
+    ClientComponent.prototype.restoreBackup = function () {
+        var _this = this;
+        Object.assign(this.client, this.backup);
+        this.client.contactpersons = [];
+        this.backupContactPersons.forEach(function (person) {
+            var item = new __WEBPACK_IMPORTED_MODULE_3__client__["b" /* ContactPerson */]();
+            Object.assign(item, person);
+            _this.client.contactpersons.push(item);
+        });
+    };
+    ClientComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.goback.urlInit();
+        this.route.paramMap.subscribe(function (params) {
+            if (params.has('id')) {
+                _this.id = params.get('id');
+                _this.route.data.subscribe(function (data) {
+                    _this.client = data.client;
+                    _this.makeBackup();
+                });
+            }
+            else {
+                _this.new = true;
+                _this.client.contactpersons = [new __WEBPACK_IMPORTED_MODULE_3__client__["b" /* ContactPerson */]()];
+                _this.editClientDetails = _this.editContactDetails = _this.editContactPersonDetails = true;
+                _this.makeBackup();
+            }
+        });
+    };
+    ClientComponent.prototype.stopEditing = function () {
+        this.editClientDetails = false;
+        this.editContactDetails = false;
+        this.editContactPersonDetails = false;
+    };
+    Object.defineProperty(ClientComponent.prototype, "editing", {
+        get: function () {
+            return this.editClientDetails
+                || this.editContactDetails
+                || this.editContactPersonDetails;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ClientComponent.prototype.goToList = function () {
+        this.router.navigateByUrl('/dir/clients/');
+    };
+    ClientComponent.prototype.submit = function () {
+        var _this = this;
+        if (this.new) {
+            this.api.createClient(this.client).subscribe(function (data) {
+                if (data.success) {
+                    _this.goToList();
+                }
+                else {
+                    console.log(data);
+                    _this.notifications.show(data.msg);
+                }
+            });
+        }
+        else {
+            this.api.editClient(this.client).subscribe(function (data) {
+                if (data.success) {
+                    _this.notifications.show("Saved");
+                    _this.stopEditing();
+                    _this.makeBackup();
+                }
+                else {
+                    console.log(data);
+                    _this.notifications.show(data.msg);
+                }
+            });
+        }
+    };
+    ClientComponent.prototype.cancel = function () {
+        this.stopEditing();
+        this.restoreBackup();
+    };
+    ClientComponent.prototype.cancelCreate = function () {
+        this.goToList();
+    };
+    ClientComponent.prototype.addContactPerson = function () {
+        this.client.contactpersons.push(new __WEBPACK_IMPORTED_MODULE_3__client__["b" /* ContactPerson */]());
+    };
+    ClientComponent.prototype.removeContactPerson = function (i) {
+        this.client.contactpersons.splice(i, 1);
+    };
+    ClientComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
+            selector: 'app-client',template:/*ion-inline-start:"/home/lambo/zaaa-ionic/src/app/directory/clients/client/client.component.html"*/'<div class="container">\n  <br>\n\n  <form (ngSubmit)="submit()" #dirForm="ngForm">\n    <div class="row">\n      <div class="col-lg col-md-6">\n        <div class="card mb-5 mat-elevation-z3">\n          <div class="card-body" [class.h-limit]="!moreClientDetails && !editClientDetails">\n            <div class="row">\n              <div class="col align-self-center">\n                <h5>Client Details</h5>\n              </div>\n              <div class="col-auto" *ngIf="!editClientDetails && !editing">\n                <button mat-icon-button (click)="editClientDetails = true"><mat-icon>edit</mat-icon></button>\n              </div>\n              <ng-container *ngIf="editClientDetails && !new">\n                <div class="col-auto">\n                  <button mat-icon-button class="text-success" type="submit" [disabled]="!dirForm.form.valid"><mat-icon>check</mat-icon></button>\n                  <button mat-icon-button class="text-danger" type="button" (click)="cancel()"><mat-icon>close</mat-icon></button>\n                </div>\n              </ng-container>\n            </div>\n\n            <br>\n\n            <ng-container *ngIf="!editClientDetails">\n              <div class="mb-3">\n                <div class="text-muted small">Organization Name</div>\n                <div>{{client.orgName || \'--\'}}</div>\n              </div>          \n              <div class="mb-3">\n                <div class="text-muted small">Company Name</div>\n                <div>{{client.companyName || \'--\'}}</div>\n              </div>\n              <div class="mb-3">\n                <div class="text-muted small">Nick Name</div>\n                <div>{{client.nickName || \'--\'}}</div>\n              </div>\n              <div class="mb-3">\n                <div class="text-muted small">Category</div>\n                <div>{{client.category || \'--\'}}</div>\n              </div>              \n              <div class="mb-3">\n                <div class="text-muted small">Sub Category</div>\n                <div>{{client.SubCategoryType || \'--\'}}</div>    \n              </div>\n              <div class="mb-3">\n                <div class="text-muted small">Website</div>\n                <div>{{client.website || \'--\'}}</div>    \n              </div>  \n              <div class="mb-3">\n                <div class="text-muted small">PAN</div>\n                <div>{{client.panNo || \'--\'}}</div>    \n              </div>  \n              <div class="mb-3">\n                <div class="text-muted small">GSTIN</div>\n                <div>{{client.GSTIN.GSTType || \'--\'}} {{client.GSTIN.GSTNo}}</div>    \n              </div>  \n              <div class="mb-3">\n                <div class="text-muted small">Remark</div>\n                <div>{{client.Remark || \'--\'}}</div>    \n              </div>   \n            </ng-container>\n\n            <ng-container *ngIf="editClientDetails">\n              <mat-form-field>\n                <input matInput type="text" name="orgName" placeholder="Client Name" [(ngModel)]="client.orgName" required #orgNameField="ngModel">\n                <mat-error *ngIf="orgNameField.errors && orgNameField.errors.required">\n                  Client Name is required.\n                </mat-error>\n              </mat-form-field>\n        \n              <div class="form-row">\n                <div class="col">\n                  <mat-form-field>\n                    <input matInput type="text" name="companyName" placeholder="Company Name" [(ngModel)]="client.companyName" required #companyNameField="ngModel">\n                    <mat-error *ngIf="companyNameField.errors && companyNameField.errors.required">\n                      Company Name is required.\n                    </mat-error>\n                  </mat-form-field>\n                </div>\n                <div class="col-auto align-self-center">\n                  <button class="btn btn-sm btn-outline-info" type="button" (click)="client.companyName = client.orgName">Copy from above</button>\n                </div>\n              </div>\n            \n              <mat-form-field>\n                <input matInput type="text" name="nickName" placeholder="Nick Name" [(ngModel)]="client.nickName" #nickNameField="ngModel">\n              </mat-form-field>\n        \n              <div class="form-row">\n                <div class="col">\n                  <mat-form-field>\n                    <input matInput type="text" name="category" placeholder="Category" [(ngModel)]="client.category" #categoryField="ngModel">\n                  </mat-form-field>\n                </div>\n                <div class="col">\n                  <mat-form-field>\n                    <input matInput type="text" name="subcategory" placeholder="Sub Category" [(ngModel)]="client.SubCategoryType" #subCategoryField="ngModel">\n                  </mat-form-field>\n                </div>\n              </div>\n        \n              <mat-form-field>\n                <input matInput [matDatepicker]="incDateField" placeholder="Incorporation Date" [(ngModel)]="client.IncorporationDate" name="incDate" disabled>\n                <mat-datepicker-toggle matSuffix [for]="incDateField"></mat-datepicker-toggle>\n                <mat-datepicker #incDateField disabled="false"></mat-datepicker>\n              </mat-form-field>\n            \n              <mat-form-field>\n                <input matInput type="text" name="website" placeholder="Website" [(ngModel)]="client.website" #websiteField="ngModel">\n              </mat-form-field>\n            \n              <mat-form-field>\n                <input matInput type="text" name="panNo" placeholder="PAN Number" minlength="10" maxlength="10" [(ngModel)]="client.panNo" #panNoField="ngModel">\n              </mat-form-field>\n        \n              <div class="form-row">\n                <div class="{{client.GSTIN.GSTType != \'URD\' ? \'col-auto\' : \'col\'}}">\n                  <mat-form-field>\n                    <mat-select placeholder="GST Type" name="gstType" [(ngModel)]="client.GSTIN.GSTType">\n                      <mat-option value="URD">URD</mat-option>\n                      <mat-option value="RD">RD</mat-option>\n                    </mat-select>\n                  </mat-form-field>\n                </div>\n                <div class="col" *ngIf="client.GSTIN.GSTType != \'URD\'">\n                  <mat-form-field>\n                    <input matInput type="text" name="gstNo" placeholder="GST Number" [(ngModel)]="client.GSTIN.GSTNo" required minlength="15" maxlength="15" #gstNoField="ngModel">\n                    <mat-error *ngIf="gstNoField.errors && gstNoField.errors.required">\n                      GSTIN is required.\n                    </mat-error>\n                    <mat-error *ngIf="gstNoField.errors && (gstNoField.errors.minlength || gstNoField.errors.maxlength)">\n                      GSTIN should be 15 characters long.\n                    </mat-error>\n                  </mat-form-field>\n                </div>\n              </div>\n        \n            </ng-container>\n          </div>\n\n          <button type="button" class="btn btn-light btn-sm text-info" *ngIf="!editClientDetails" (click)="moreClientDetails = !moreClientDetails">\n            <span><mat-icon [class.rotate180]="moreClientDetails">expand_more</mat-icon></span> {{moreClientDetails ? \'Less\' : \'More\'}}\n          </button>\n        </div>\n      </div>\n\n      <div class="col-lg col-md-6">\n        <div class="card mb-5 mat-elevation-z3">\n          <div class="card-body" [class.h-limit]="!moreContactDetails && !editContactDetails">\n            <div class="row">\n              <div class="col align-self-center">\n                <h5>Contact Details</h5>\n              </div>\n              <div class="col-auto" *ngIf="!editContactDetails && !editing">\n                <button mat-icon-button (click)="editContactDetails = true"><mat-icon>edit</mat-icon></button>\n              </div>\n              <ng-container *ngIf="editContactDetails && !new">\n                <div class="col-auto">\n                  <button mat-icon-button class="text-success" type="submit" [disabled]="!dirForm.form.valid"><mat-icon>check</mat-icon></button>\n                  <button mat-icon-button class="text-danger" type="button" (click)="cancel()"><mat-icon>close</mat-icon></button>\n                </div>\n              </ng-container>\n            </div>\n\n            <br>\n\n            <ng-container *ngIf="!editContactDetails">\n              <div class="mb-3">\n                <div class="text-muted small">Address</div>\n                <div>{{client.address.address || \'--\'}}</div>\n              </div>          \n              <div class="mb-3">\n                <div class="text-muted small">Pincode</div>\n                <div>{{client.address.pincode || \'--\'}}</div>\n              </div>\n              <div class="mb-3">\n                <div class="text-muted small">City</div>\n                <div>{{client.address.city || \'--\'}}</div>\n              </div>\n              <div class="mb-3">\n                <div class="text-muted small">State</div>\n                <div>{{client.address.state || \'--\'}}</div>\n              </div>              \n              <div class="mb-3">\n                <div class="text-muted small">Landline</div>\n                <div>{{client.landLine || \'--\'}}</div>    \n              </div>\n              <div class="mb-3">\n                <div class="text-muted small">STD</div>\n                <div>{{client.stdNo || \'--\'}}</div>    \n              </div>  \n            </ng-container>\n  \n            <ng-container *ngIf="editContactDetails">\n              <mat-form-field>\n                <textarea matInput type="text" name="address" placeholder="Address" [(ngModel)]="client.address.address" #addressField="ngModel"></textarea>\n              </mat-form-field>\n        \n              <mat-form-field>\n                <input matInput type="tel" minlength="6" maxlength="6" name="pincode" placeholder="Pincode" [(ngModel)]="client.address.pincode" #pincodeField="ngModel">\n                <mat-error *ngIf="pincodeField.errors && pincodeField.errors.required">\n                  Pincode is required.\n                </mat-error>\n                <mat-error *ngIf="pincodeField.errors && (pincodeField.errors.minlength || pincodeField.errors.maxlength)">\n                  Pincode should be 6 characters long.\n                </mat-error>\n              </mat-form-field>\n          \n              <mat-form-field>\n                <input matInput type="text" name="city" placeholder="City" [(ngModel)]="client.address.city" required #cityField="ngModel">\n                <mat-error *ngIf="cityField.errors && cityField.errors.required">\n                  City is required.\n                </mat-error>\n              </mat-form-field>\n        \n              <mat-form-field>\n                <mat-select placeholder = "State" name="state" [(ngModel)]="client.address.state" required #stateField="ngModel">\n                  <mat-option *ngFor="let state of stateApi.states" [value]="state">{{state}}</mat-option>\n                </mat-select>\n                <mat-error *ngIf="stateField.errors && stateField.errors.required">\n                  State is required.\n                </mat-error>\n              </mat-form-field>\n\n              <div class="form-row">\n                <div class="col-4">\n                  <mat-form-field>\n                    <input matInput type="tel" minlength="3" maxlength="5" name="stdNo" placeholder="STD No" [(ngModel)]="client.stdNo" #stdNoField="ngModel">\n                  </mat-form-field>\n                </div>\n                <div class="col-8">\n                  <mat-form-field>\n                    <input matInput type="tel" minlength="6" maxlength="8" name="landLine" placeholder="Landline Number" [(ngModel)]="client.landLine" #landLineField="ngModel">\n                  </mat-form-field>\n                </div>\n              </div>\n            </ng-container>\n          </div>\n\n          <button type="button" class="btn btn-light btn-sm text-info" *ngIf="!editContactDetails" (click)="moreContactDetails = !moreContactDetails">\n            <span><mat-icon [class.rotate180]="moreContactDetails">expand_more</mat-icon></span> {{moreContactDetails ? \'Less\' : \'More\'}}\n          </button>\n        </div>\n      </div>\n    </div>\n\n    <div class="card mb-5 mat-elevation-z3 h-extend">\n      <div class="card-body" [class.h-limit]="!moreContactPersonDetails && !editContactPersonDetails">\n        <div class="row">\n          <div class="col align-self-center">\n            <h5>Contact Persons</h5>\n          </div>\n          <div class="col-auto" *ngIf="!editContactPersonDetails && !editing">\n            <button mat-icon-button (click)="editContactPersonDetails = true"><mat-icon>edit</mat-icon></button>\n          </div>\n          <ng-container *ngIf="editContactPersonDetails && !new">\n            <div class="col-auto">\n              <button mat-icon-button class="text-success" type="submit" [disabled]="!dirForm.form.valid"><mat-icon>check</mat-icon></button>\n              <button mat-icon-button class="text-danger" type="button" (click)="cancel()"><mat-icon>close</mat-icon></button>\n            </div>\n          </ng-container>\n        </div>\n\n        <br>\n\n        <ng-container *ngIf="!editContactPersonDetails">\n          <div *ngIf="client.contactpersons.length == 0" class="text-muted">\n            No Contact Persons\n          </div>\n\n          <div *ngFor="let contactPerson of client.contactpersons; index as i">\n            <div class="mb-3">\n              <div class="text-muted small">Contact Person {{i + 1}}</div>\n            </div>\n            <div class="mb-3">\n              <div class="text-muted small">Name</div>\n              <div>{{contactPerson.Name || \'--\'}}</div>\n            </div>\n            <div class="mb-3">\n              <div class="text-muted small">Designation</div>\n              <div>{{contactPerson.designation || \'--\'}}</div>\n            </div>\n            <div class="mb-3">\n              <div class="text-muted small">Department</div>\n              <div>{{contactPerson.department || \'--\'}}</div>\n            </div>\n            <div class="mb-3">\n              <div class="text-muted small">Mobile</div>\n              <div>{{contactPerson.mobileNo || \'--\'}}</div>\n            </div>\n            <div class="mb-3">\n              <div class="text-muted small">Email</div>\n              <div>{{contactPerson.email || \'--\'}}</div>\n            </div>\n            <div class="mb-3">\n              <div class="text-muted small">Date of Birth</div>\n              <div>{{(contactPerson.dob | date) || \'--\'}}</div>\n            </div>\n            <div class="mb-3">\n              <div class="text-muted small">Anniversary</div>\n              <div>{{(contactPerson.anniversaryDate | date) || \'--\'}}</div>\n            </div>\n            <div class="mb-3">\n              <div class="text-muted small">Mobile</div>\n              <div>{{contactPerson.mobileNo || \'--\'}}</div>\n            </div>\n            <div class="mb-3">\n              <div class="text-muted small">Profile Picture</div>\n              <img [src]="contactPerson.photo" class="img-fluid max-w-200">\n\n              <br>\n    \n              <label for="profile-upload-{{i}}" class="btn btn-outline-info">\n                Upload\n              </label>\n              <input type="file" id="profile-upload-{{i}}" class="hidden-file" accept="image/*" (change)="uploadProfilePicture($event.target.files)"/>\n            </div>\n          </div>\n        </ng-container>\n\n        <ng-container *ngIf="editContactPersonDetails">\n          <div class="row">\n            <div class="col text-muted">\n              {{client.contactpersons.length || \'No\'}} Contact Person(s)\n            </div>\n            <div class="col-auto">\n              <button type="button" mat-raised-button color="primary" (click)="addContactPerson()">\n                <mat-icon>add</mat-icon> Add More\n              </button>\n            </div>\n          </div>\n  \n          <br>\n  \n          <div *ngFor="let item of client.contactpersons; index as i" class="card mb-4">\n            <div class="card-header">\n              <div class="row">\n                <div class="col-auto align-self-center text-muted">#{{i + 1}}</div>\n                <div class="col align-self-center">{{item.name}}</div>\n                <div class="col-auto">\n                  <button mat-icon-button color="warn" type="button" (click)="removeContactPerson(i)">\n                    <mat-icon>delete</mat-icon>\n                  </button>\n                </div>\n              </div>\n            </div>\n            <div class="card-body">\n              \n              <label>Business Details</label>\n        \n              <mat-form-field>\n                <input matInput type="text" name="s-{{i}}-name" placeholder="Name" [(ngModel)]="item.name" required #nameField="ngModel">\n                <mat-error *ngIf="nameField.errors && nameField.errors.required">\n                  Name is required.\n                </mat-error>\n              </mat-form-field>\n            \n              <mat-form-field>\n                <input matInput type="text" name="s-{{i}}-designation" placeholder="Designation" [(ngModel)]="item.designation" #designationField="ngModel">\n              </mat-form-field>\n        \n              <mat-form-field>\n                <input matInput type="text" name="s-{{i}}-department" placeholder="Department" [(ngModel)]="item.department" required #departmentField="ngModel">\n                <mat-error *ngIf="departmentField.errors && departmentField.errors.required">\n                  Department is required.\n                </mat-error>\n              </mat-form-field>\n\n              <label>Contact Details</label>\n        \n              <div class="form-row">\n                <div class="col-4">\n                  <mat-form-field>\n                    <input matInput type="tel" minlength="3" maxlength="5" name="s-{{i}}-personStdNo" placeholder="STD No" [(ngModel)]="item.personStdNo" required #personStdNoField="ngModel">\n                    <mat-error *ngIf="personStdNoField.errors && personStdNoField.errors.required">\n                      STD No is required.\n                    </mat-error>\n                  </mat-form-field>\n                </div>\n                <div class="col-8">\n                  <mat-form-field>\n                    <input matInput type="tel" minlength="6" maxlength="8" name="s-{{i}}-personLandLine" placeholder="Landline Number" [(ngModel)]="item.personLandLine" required #personLandLineField="ngModel">\n                    <mat-error *ngIf="personStdNoField.errors && personStdNoField.errors.required">\n                      Landline is required.\n                    </mat-error>\n                  </mat-form-field>\n                </div>\n              </div>\n            \n              <mat-form-field>\n                <input matInput type="tel" pattern="^\d{10}$" maxlength="10" minlength="10" name="s-{{i}}-mobileNo" placeholder="Mobile Number" [(ngModel)]="item.mobileNo" #mobileNoField="ngModel">\n              </mat-form-field>\n        \n              <mat-form-field>\n                <input matInput type="email" name="s-{{i}}-email" placeholder="Email" [(ngModel)]="item.email" required #emailField="ngModel" verify-email>\n                <mat-error *ngIf="emailField.errors && emailField.errors.required">\n                  Email is required.\n                </mat-error>\n                <mat-error *ngIf="emailField.errors && emailField.errors.email">\n                  Invalid Email.\n                </mat-error>\n              </mat-form-field>\n                \n              <label>Personal Details</label>\n\n              <mat-form-field>\n                <input matInput [matDatepicker]="dobField" placeholder="DOB" [(ngModel)]="item.dob" name="dob-{{i}}" disabled>\n                <mat-datepicker-toggle matSuffix [for]="dobField"></mat-datepicker-toggle>\n                <mat-datepicker #dobField disabled="false"></mat-datepicker>\n              </mat-form-field>\n        \n              <mat-form-field>\n                <input matInput [matDatepicker]="anniversaryDateField" placeholder="Anniversary Date" [(ngModel)]="item.anniversaryDate" name="anniversaryDate-{{i}}" disabled>\n                <mat-datepicker-toggle matSuffix [for]="anniversaryDateField"></mat-datepicker-toggle>\n                <mat-datepicker #anniversaryDateField disabled="false"></mat-datepicker>\n              </mat-form-field>\n                \n            </div>\n          </div>\n        </ng-container>\n      </div>\n\n      <button type="button" class="btn btn-light btn-sm text-info" *ngIf="!editContactPersonDetails" (click)="moreContactPersonDetails = !moreContactPersonDetails">\n        <span><mat-icon [class.rotate180]="moreContactPersonDetails">expand_more</mat-icon></span> {{moreContactPersonDetails ? \'Less\' : \'More\'}}\n      </button>\n    </div>   \n  </form>\n</div>\n\n<ng-container *ngIf="new">\n  <ion-footer>\n    <ion-toolbar>\n      <div class="container-fluid">\n        <div class="row">\n          <button class="btn btn-light btn-lg text-success col" type="button" (click)="submit()" [disabled]="!dirForm.form.valid">\n            <ion-icon name="add"></ion-icon>\n            <p class="small">Add</p>\n          </button>\n          <button class="btn btn-light btn-lg text-danger col" type="button" (click)="cancelCreate()">\n            <ion-icon name="close"></ion-icon>\n            <p class="small">Cancel</p>\n          </button>\n        </div>\n      </div>\n    </ion-toolbar>\n  </ion-footer>\n</ng-container>'/*ion-inline-end:"/home/lambo/zaaa-ionic/src/app/directory/clients/client/client.component.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0_app_services__["e" /* GobackService */], __WEBPACK_IMPORTED_MODULE_4__client_api_service__["a" /* ClientApiService */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_0_app_services__["k" /* StateApiService */],
+            __WEBPACK_IMPORTED_MODULE_0_app_services__["h" /* NotificationService */]])
+    ], ClientComponent);
+    return ClientComponent;
+}());
+
+//# sourceMappingURL=client.component.js.map
+
+/***/ }),
+
+/***/ 1034:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExecutiveComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_services__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__executive__ = __webpack_require__(298);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__executive_api_service__ = __webpack_require__(133);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var ExecutiveComponent = (function () {
+    function ExecutiveComponent(goback, api, route, router, notifications) {
+        this.goback = goback;
+        this.api = api;
+        this.route = route;
+        this.router = router;
+        this.notifications = notifications;
+        this.executive = new __WEBPACK_IMPORTED_MODULE_3__executive__["a" /* Executive */]();
+        this.backup = new __WEBPACK_IMPORTED_MODULE_3__executive__["a" /* Executive */]();
+        this.new = false;
+        this.editExecutiveDetails = false;
+        this.editContactDetails = false;
+        this.moreExecutiveDetails = false;
+        this.moreContactDetails = false;
+    }
+    ExecutiveComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.goback.urlInit();
+        this.route.paramMap.subscribe(function (params) {
+            if (params.has('id')) {
+                _this.id = params.get('id');
+                _this.route.data.subscribe(function (data) {
+                    _this.executive = data.executive;
+                    _this.firm = data.firm;
+                    Object.assign(_this.backup, _this.executive);
+                });
+            }
+            else {
+                _this.new = true;
+                _this.editExecutiveDetails = _this.editContactDetails = true;
+                _this.route.data.subscribe(function (data) {
+                    _this.firm = data.firm;
+                });
+            }
+        });
+    };
+    ExecutiveComponent.prototype.stopEditing = function () {
+        this.editExecutiveDetails = false;
+        this.editContactDetails = false;
+    };
+    Object.defineProperty(ExecutiveComponent.prototype, "editing", {
+        get: function () {
+            return this.editExecutiveDetails
+                || this.editContactDetails;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ExecutiveComponent.prototype.submit = function () {
+        var _this = this;
+        if (this.new) {
+            this.api.createExecutive(this.executive).subscribe(function (data) {
+                if (data.success) {
+                    _this.goToList();
+                }
+                else {
+                    console.log(data);
+                    _this.notifications.show(data.msg);
+                }
+            });
+        }
+        else {
+            this.api.editExecutive(this.executive).subscribe(function (data) {
+                if (data.success) {
+                    _this.notifications.show("Saved");
+                    _this.stopEditing();
+                    Object.assign(_this.backup, _this.executive);
+                }
+                else {
+                    console.log(data);
+                    _this.notifications.show(data.msg);
+                }
+            });
+        }
+    };
+    ExecutiveComponent.prototype.cancel = function () {
+        this.stopEditing();
+        Object.assign(this.executive, this.backup);
+    };
+    ExecutiveComponent.prototype.goToList = function () {
+        this.router.navigateByUrl('/dir/executives');
+    };
+    ExecutiveComponent.prototype.cancelCreate = function () {
+        this.goToList();
+    };
+    ExecutiveComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
+            selector: 'app-executive',template:/*ion-inline-start:"/home/lambo/zaaa-ionic/src/app/directory/executives/executive/executive.component.html"*/'<div class="container">\n  <br>\n\n  <form (ngSubmit)="submit()" #dirForm="ngForm">\n    <div class="row">\n      <div class="col-lg col-md-6">\n        <div class="card mb-5 mat-elevation-z3">\n          <div class="card-body" [class.h-limit]="!moreExecutiveDetails && !editExecutiveDetails">\n            <div class="row">\n              <div class="col align-self-center">\n                <h5>Executive Details</h5>\n              </div>\n              <div class="col-auto" *ngIf="!editExecutiveDetails && !editing">\n                <button mat-icon-button (click)="editExecutiveDetails = true"><mat-icon>edit</mat-icon></button>\n              </div>\n              <ng-container *ngIf="editExecutiveDetails && !new">\n                <div class="col-auto">\n                  <button mat-icon-button class="text-success" type="submit" [disabled]="!dirForm.form.valid"><mat-icon>check</mat-icon></button>\n                  <button mat-icon-button class="text-danger" type="button" (click)="cancel()"><mat-icon>close</mat-icon></button>\n                </div>\n              </ng-container>\n            </div>\n\n            <br>\n\n            <ng-container *ngIf="!editExecutiveDetails">\n              <div class="mb-3">\n                <div class="text-muted small">Executive Name</div>\n                <div>{{executive.executiveName || \'--\'}}</div>\n              </div>\n              <div class="mb-3">\n                <div class="text-muted small">Organization Name</div>\n                <div>{{executive.orgName || \'--\'}}</div>\n              </div>\n              <div class="mb-3">\n                <div class="text-muted small">Designation</div>\n                <div>{{executive.designation || \'--\'}}</div>\n              </div>\n              <div class="mb-3">\n                <div class="text-muted small">Department</div>\n                <div>{{executive.department || \'--\'}}</div>\n              </div>              \n              <div class="mb-3">\n                <div class="text-muted small">Remark</div>\n                <div>{{executive.Remark || \'--\'}}</div>    \n              </div>   \n            </ng-container>\n\n            <ng-container *ngIf="editExecutiveDetails">\n              <mat-form-field>\n                <input matInput placeholder="Executive Name" name="executiveName" [(ngModel)]="executive.executiveName" required #executiveNameField="ngModel">\n                <mat-error *ngIf="executiveNameField.errors && executiveNameField.errors.required">\n                  Executive Name is required.\n                </mat-error>\n              </mat-form-field>\n        \n              <div class="form-row">\n                <div class="col">\n                  <mat-form-field>\n                    <input matInput placeholder="Organisation Name" name="orgName" [(ngModel)]="executive.orgName" required #orgNameField="ngModel">\n                    <mat-error *ngIf="orgNameField.errors && orgNameField.errors.required">\n                      Organisation Name is required.\n                    </mat-error>\n                  </mat-form-field>\n                </div>\n                <div class="col-auto align-self-center">\n                  <button class="btn btn-sm btn-outline-info" type="button" (click)="executive.orgName = firm.name">Copy Firm Name</button>\n                </div>\n              </div>\n        \n              <mat-form-field>\n                <input matInput placeholder="Designation" name="designation" [(ngModel)]="executive.designation">\n              </mat-form-field>\n        \n              <mat-form-field>\n                <input matInput placeholder="Department" name="department" [(ngModel)]="executive.department">\n              </mat-form-field>\n        \n              <mat-form-field>\n                <input matInput placeholder="Remark" name="remark" [(ngModel)]="executive.Remark">\n              </mat-form-field>\n        \n            </ng-container>\n          </div>\n\n          <button type="button" class="btn btn-light btn-sm text-info" *ngIf="!editExecutiveDetails" (click)="moreExecutiveDetails = !moreExecutiveDetails">\n            <span><mat-icon [class.rotate180]="moreExecutiveDetails">expand_more</mat-icon></span> {{moreExecutiveDetails ? \'Less\' : \'More\'}}\n          </button>\n        </div>\n      </div>\n\n      <div class="col-lg col-md-6">\n        <div class="card mb-5 mat-elevation-z3">\n          <div class="card-body" [class.h-limit]="!moreContactDetails && !editContactDetails">\n            <div class="row">\n              <div class="col align-self-center">\n                <h5>Contact &amp; Personal Details</h5>\n              </div>\n              <div class="col-auto" *ngIf="!editContactDetails && !editing">\n                <button mat-icon-button (click)="editContactDetails = true"><mat-icon>edit</mat-icon></button>\n              </div>\n              <ng-container *ngIf="editContactDetails && !new">\n                <div class="col-auto">\n                  <button mat-icon-button class="text-success" type="submit" [disabled]="!dirForm.form.valid"><mat-icon>check</mat-icon></button>\n                  <button mat-icon-button class="text-danger" type="button" (click)="cancel()"><mat-icon>close</mat-icon></button>\n                </div>\n              </ng-container>\n            </div>\n\n            <br>\n\n            <ng-container *ngIf="!editContactDetails">\n              <div class="mb-3">\n                <div class="text-muted small">Mobile</div>\n                <div>{{executive.mobileNo || \'--\'}}</div>    \n              </div>  \n              <div class="mb-3">\n                <div class="text-muted small">Email</div>\n                <div>{{executive.email || \'--\'}}</div>    \n              </div> \n              <div class="mb-3">\n                <div class="text-muted small">Date of Birth</div>\n                <div>{{(executive.dob | date) || \'--\'}}</div>\n              </div>\n              <div class="mb-3">\n                <div class="text-muted small">Anniversary</div>\n                <div>{{(executive.anniversaryDate | date) || \'--\'}}</div>\n              </div>              \n              <div class="mb-3">\n                <div class="text-muted small">Profile Picture</div>\n                <br>\n                <img [src]="executive.photo" class="img-fluid max-w-200">\n  \n                <br><br>\n                \n                <label for="profile-upload" class="btn btn-outline-info">\n                    Upload\n                </label>\n                <br>\n                <input type="file" id="profile-upload" class="hidden-file" accept="image/*" (change)="uploadProfilePicture($event.target.files)"/> \n              </div> \n            </ng-container>\n  \n            <ng-container *ngIf="editContactDetails">\n              <mat-form-field>\n                <span matPrefix>+91 &nbsp;</span>\n                <input type="tel" matInput placeholder="Mobile Number" [(ngModel)]="executive.mobileNo" pattern="^\d{10}$" maxlength="10" minlength="10" required name="mobileNo" #mobileNoField="ngModel">\n                <mat-error *ngIf="mobileNoField.errors">\n                  Mobile Number is empty or invalid.\n                </mat-error>\n              </mat-form-field>\n        \n              <mat-form-field>\n                <input matInput placeholder="Email" [(ngModel)]="executive.email" name="email" verify-email #emailField="ngModel">\n                <mat-error *ngIf="emailField.errors && emailField.errors.email">\n                  Invalid Email.\n                </mat-error>\n              </mat-form-field>\n          \n              <mat-form-field>\n                <input matInput [matDatepicker]="dobPicker" placeholder="Date of Birth" [(ngModel)]="executive.dob" name="dob" disabled>\n                <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>\n                <mat-datepicker #dobPicker disabled="false"></mat-datepicker>\n              </mat-form-field>\n        \n              <mat-form-field>\n                <input matInput [matDatepicker]="anniversaryPicker" placeholder="Anniversary Date" [(ngModel)]="executive.anniversaryDate" name="anniversaryDate" disabled>\n                <mat-datepicker-toggle matSuffix [for]="anniversaryPicker"></mat-datepicker-toggle>\n                <mat-datepicker #anniversaryPicker disabled="false"></mat-datepicker>\n              </mat-form-field>\n            </ng-container>\n          </div>\n\n          <button type="button" class="btn btn-light btn-sm text-info" *ngIf="!editContactDetails" (click)="moreContactDetails = !moreContactDetails">\n            <span><mat-icon [class.rotate180]="moreContactDetails">expand_more</mat-icon></span> {{moreContactDetails ? \'Less\' : \'More\'}}\n          </button>\n        </div>\n      </div>\n    </div>\n\n  </form>\n</div>\n\n<ng-container *ngIf="new">\n  <ion-footer>\n    <ion-toolbar>\n      <div class="container-fluid">\n        <div class="row">\n          <button class="btn btn-light btn-lg text-success col" type="button" (click)="submit()" [disabled]="!dirForm.form.valid">\n            <ion-icon name="add"></ion-icon>\n            <p class="small">Add</p>\n          </button>\n          <button class="btn btn-light btn-lg text-danger col" type="button" (click)="cancelCreate()">\n            <ion-icon name="close"></ion-icon>\n            <p class="small">Cancel</p>\n          </button>\n        </div>\n      </div>\n    </ion-toolbar>\n  </ion-footer>\n</ng-container>'/*ion-inline-end:"/home/lambo/zaaa-ionic/src/app/directory/executives/executive/executive.component.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0_app_services__["e" /* GobackService */], __WEBPACK_IMPORTED_MODULE_4__executive_api_service__["a" /* ExecutiveApiService */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_0_app_services__["h" /* NotificationService */]])
+    ], ExecutiveComponent);
+    return ExecutiveComponent;
+}());
+
+//# sourceMappingURL=executive.component.js.map
+
+/***/ }),
+
+/***/ 1035:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3042,8 +2811,8 @@ var RateCardApiService = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__media_house__ = __webpack_require__(299);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__media_house_api_service__ = __webpack_require__(103);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__super_admin_super_admin_api_service__ = __webpack_require__(554);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__media_house_api_service__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__super_admin_super_admin_api_service__ = __webpack_require__(553);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3267,7 +3036,7 @@ var MediaHouseComponent = (function () {
 
 /***/ }),
 
-/***/ 1041:
+/***/ 1036:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3276,18 +3045,18 @@ var MediaHouseComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_of__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_debounceTime__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_debounceTime__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_debounceTime___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_debounceTime__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_distinctUntilChanged__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_distinctUntilChanged__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_distinctUntilChanged___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_distinctUntilChanged__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__ = __webpack_require__(174);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__ = __webpack_require__(173);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_switchMap__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_switchMap__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_switchMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_switchMap__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__client_api_service__ = __webpack_require__(133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__client_api_service__ = __webpack_require__(132);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3377,7 +3146,7 @@ var ClientListComponent = (function () {
 
 /***/ }),
 
-/***/ 1044:
+/***/ 1039:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3386,18 +3155,18 @@ var ClientListComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_of__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_debounceTime__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_debounceTime__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_debounceTime___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_debounceTime__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_distinctUntilChanged__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_distinctUntilChanged__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_distinctUntilChanged___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_distinctUntilChanged__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__ = __webpack_require__(174);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__ = __webpack_require__(173);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_switchMap__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_switchMap__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_switchMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_switchMap__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__executive_api_service__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__executive_api_service__ = __webpack_require__(133);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3487,7 +3256,40 @@ var ExecutiveListComponent = (function () {
 
 /***/ }),
 
-/***/ 1045:
+/***/ 104:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__invoice__ = __webpack_require__(175);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__invoice__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__invoice_api_service__ = __webpack_require__(105);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__invoice_api_service__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__invoice_resolver_service__ = __webpack_require__(1069);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_2__invoice_resolver_service__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__invoice_list_resolver_service__ = __webpack_require__(1070);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_3__invoice_list_resolver_service__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__invoice_dir_resolver_service__ = __webpack_require__(1071);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_4__invoice_dir_resolver_service__["a"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_4__invoice_dir_resolver_service__["b"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__invoice_invoice_component__ = __webpack_require__(1072);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_5__invoice_invoice_component__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__invoice_list_invoice_list_component__ = __webpack_require__(1073);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_6__invoice_list_invoice_list_component__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__invoice_details_invoice_details_component__ = __webpack_require__(1074);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_7__invoice_details_invoice_details_component__["a"]; });
+
+
+
+
+
+
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ 1040:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3496,18 +3298,18 @@ var ExecutiveListComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_of__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_debounceTime__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_debounceTime__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_debounceTime___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_debounceTime__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_distinctUntilChanged__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_distinctUntilChanged__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_distinctUntilChanged___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_distinctUntilChanged__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__ = __webpack_require__(174);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__ = __webpack_require__(173);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_switchMap__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_switchMap__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_switchMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_switchMap__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__media_house_api_service__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__media_house_api_service__ = __webpack_require__(102);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3600,7 +3402,7 @@ var MediaHouseListComponent = (function () {
 
 /***/ }),
 
-/***/ 1046:
+/***/ 1041:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3611,7 +3413,7 @@ var MediaHouseListComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__release_order_search_params__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__release_order_search_params__ = __webpack_require__(131);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__release_order_api_service__ = __webpack_require__(71);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3664,7 +3466,7 @@ var ReleaseOrderListResolver = (function () {
 
 /***/ }),
 
-/***/ 1047:
+/***/ 1042:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3719,7 +3521,7 @@ var ReleaseOrderResolver = (function () {
 
 /***/ }),
 
-/***/ 1048:
+/***/ 1043:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3779,7 +3581,7 @@ var ReleaseOrderDirResolver = (function () {
 
 /***/ }),
 
-/***/ 1049:
+/***/ 1044:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3790,7 +3592,7 @@ var ReleaseOrderDirResolver = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_observable_of__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_observable_of__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__release_order_api_service__ = __webpack_require__(71);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__release_order_search_params__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__release_order_search_params__ = __webpack_require__(131);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_app_directory__ = __webpack_require__(22);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3981,40 +3783,7 @@ var InsertionCheckComponent = (function () {
 
 /***/ }),
 
-/***/ 105:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__invoice__ = __webpack_require__(176);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__invoice__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__invoice_api_service__ = __webpack_require__(106);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__invoice_api_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__invoice_resolver_service__ = __webpack_require__(1074);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_2__invoice_resolver_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__invoice_list_resolver_service__ = __webpack_require__(1075);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_3__invoice_list_resolver_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__invoice_dir_resolver_service__ = __webpack_require__(1076);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_4__invoice_dir_resolver_service__["a"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_4__invoice_dir_resolver_service__["b"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__invoice_invoice_component__ = __webpack_require__(1077);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_5__invoice_invoice_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__invoice_list_invoice_list_component__ = __webpack_require__(1078);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_6__invoice_list_invoice_list_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__invoice_details_invoice_details_component__ = __webpack_require__(1079);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_7__invoice_details_invoice_details_component__["a"]; });
-
-
-
-
-
-
-
-
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ 1050:
+/***/ 1045:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4022,24 +3791,24 @@ var InsertionCheckComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_observable_of__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_catch__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_catch__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_catch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_debounceTime__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_debounceTime__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_debounceTime___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_debounceTime__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_distinctUntilChanged__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_distinctUntilChanged__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_distinctUntilChanged___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_distinctUntilChanged__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_switchMap__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_switchMap__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_switchMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_switchMap__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_operators__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_operators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_operators__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_router__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ng_bootstrap_ng_bootstrap_datepicker_ngb_date__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__release_order__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__release_order__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__release_order_api_service__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_app_services__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_app_rate_card__ = __webpack_require__(175);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_app_rate_card__ = __webpack_require__(174);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_app_directory__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_preview_preview_component__ = __webpack_require__(555);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_preview_preview_component__ = __webpack_require__(554);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4248,26 +4017,20 @@ var ReleaseOrderComponent = (function () {
         if (preview === void 0) { preview = false; }
         this.confirmGeneration(releaseOrder).subscribe(function (confirm) {
             if (confirm) {
-                _this.api.generatePdf(releaseOrder).subscribe(function (data) {
+                _this.api.previewROhtml(_this.releaseorder).subscribe(function (data) {
                     if (data.msg) {
                         _this.notifications.show(data.msg);
                     }
                     else {
-                        releaseOrder.generated = true;
-                        console.log(data);
-                        var blob = new Blob([data], { type: 'application/pdf' });
-                        var url = URL.createObjectURL(blob);
-                        var a = document.createElement('a');
-                        a.setAttribute('style', 'display:none;');
-                        document.body.appendChild(a);
-                        a.href = url;
-                        if (preview) {
-                            a.setAttribute("target", "_blank");
-                        }
-                        else {
-                            a.download = 'releaseorder.pdf';
-                        }
-                        a.click();
+                        document.addEventListener('deviceready', function () {
+                            console.log('DEVICE READY FIRED AFTER');
+                            cordova.plugins.pdf.htmlToPDF({
+                                data: data.content,
+                                documentSize: "A4",
+                                type: "share",
+                                fileName: 'releaseorder.pdf'
+                            }, function (sucess) { return console.log('sucess: ', sucess); }, function (error) { return console.log('error:', error); });
+                        });
                     }
                 });
             }
@@ -4275,26 +4038,9 @@ var ReleaseOrderComponent = (function () {
     };
     ReleaseOrderComponent.prototype.genPreview = function () {
         var _this = this;
-        console.log(this.releaseorder);
         this.presave();
-        console.log(this.releaseorder);
-        // this.api.previewROPdf(this.releaseorder).subscribe(data => {
-        //   if (data.msg) {
-        //     this.notifications.show(data.msg);
-        //   }
-        //   else {
-        //     let blob = new Blob([data], { type: 'application/pdf' });
-        //     let url = URL.createObjectURL(blob);
-        //     let a = document.createElement('a');
-        //     a.setAttribute('style', 'display:none;');
-        //     document.body.appendChild(a);
-        //     a.href = url;
-        //     a.setAttribute("target", "_blank");
-        //     a.click();
-        //   }
-        // });
         this.api.previewROhtml(this.releaseorder).subscribe(function (data) {
-            _this.dialog.show(__WEBPACK_IMPORTED_MODULE_14__components_preview_preview_component__["a" /* PreviewComponent */], { width: '100%', data: data.content }).subscribe();
+            _this.dialog.show(__WEBPACK_IMPORTED_MODULE_14__components_preview_preview_component__["a" /* PreviewComponent */], { width: '100%', height: '100%', maxWidth: '100%', data: data.content }).subscribe();
         });
     };
     ReleaseOrderComponent.prototype.sendMsg = function (releaseOrder) {
@@ -4997,7 +4743,7 @@ var ReleaseOrderComponent = (function () {
     });
     ReleaseOrderComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'app-release-order',template:/*ion-inline-start:"/home/lambo/zaaa-ionic/src/app/release-order/release-order/release-order.component.html"*/'<mat-toolbar>  \n  <mat-toolbar-row>\n    <div class="container-fluid">\n      <div class="row">\n        <div class="col" *ngIf="!edit">Create Release Order</div>\n        <div class="col" *ngIf="edit">Edit Release Order</div>\n        <button mat-icon-button class="col-auto" (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>\n      </div>\n    </div>\n  </mat-toolbar-row>\n</mat-toolbar>\n\n<br><br>\n\n<mat-sidenav-container>\n \n  <mat-sidenav #sidenav mode="over" opened="false" position="end">\n\n    <div class="card bg-info sticky-top" style="top: 50px">\n      <div class="card-header text-light small">\n        Calculations\n      </div>\n      <ul class="list-group list-group-flush small">\n        <li class="list-group-item">\n          <div class="row">\n            <div class="col-md-4">Net Amount</div>\n            <div class="col-md-8 text-muted">{{netAmount}} ({{taxDisplay}})</div>\n          </div>\n        </li>\n        <li class="list-group-item">\n          <div class="row">\n            <div class="col-md-4">Net Amount in Words</div>\n            <div class="col-md-8 text-muted">{{options.amountToWords(netAmount)}} ({{taxDisplay}})</div>\n          </div>\n        </li>\n        <li class="list-group-item">\n          <div class="row">\n            <div class="col-md-4">Client Payment</div>\n            <div class="col-md-8 text-muted">{{clientPayment}}</div>\n          </div>\n        </li>\n      </ul>\n      <div class="card-header text-light small d-none d-lg-block" *ngIf="selectedCategories[0]">\n        Categories\n      </div>\n      <ul class="list-group list-group-flush small d-none d-lg-block">\n        <li class="list-group-item" *ngIf="selectedCategories[0]">{{selectedCategories[0].name}}</li>\n        <li class="list-group-item" *ngIf="selectedCategories[1]">{{selectedCategories[1].name}}</li>\n        <li class="list-group-item" *ngIf="selectedCategories[2]">{{selectedCategories[2].name}}</li>\n        <li class="list-group-item" *ngIf="selectedCategories[3]">{{selectedCategories[3].name}}</li>\n        <li class="list-group-item" *ngIf="selectedCategories[4]">{{selectedCategories[4].name}}</li>\n        <li class="list-group-item" *ngIf="selectedCategories[5]">{{selectedCategories[5].name}}</li>\n      </ul>\n      <div class="card-header text-light small d-none d-lg-block" *ngIf="releaseorder.insertions.length">\n        Insertions\n      </div>\n      <ul class="list-group list-group-flush small d-none d-lg-block"  *ngIf="releaseorder.insertions.length">\n        <li class="list-group-item" *ngFor="let item of releaseorder.insertions">\n          <div class="row">\n            <div class="col">{{toDate(item.date) | date}}</div>\n            <div class="col-auto text-success" *ngIf="item.marked">\n              <mat-icon>check</mat-icon>\n            </div>\n          </div>\n        </li>\n      </ul>\n    </div>\n\n  </mat-sidenav>\n  <mat-sidenav-content>\n    \n    <div class="container-fluid">\n      <form (ngSubmit)="submit()" #roForm="ngForm">\n        <div class="row">\n          <div class="col-lg col-md-6">\n            <br>\n            <mat-card>\n              <mat-card-title>Publication Details</mat-card-title>\n              \n              <mat-form-field>\n                <input matInput type="text" [ngbTypeahead]="searchMediaHouse" id="mediaHouseName" placeholder="Media House Name" [(ngModel)]="mediaHouse" name="mediaHouseName" required #publicationNameField="ngModel" [resultFormatter]="mediaHouseResultFormatter" [inputFormatter]="mediaHouseInputFormatter">\n                <mat-error *ngIf="publicationNameField.errors && publicationNameField.errors.required">\n                  Media House Name is required.\n                </mat-error>\n              </mat-form-field>\n                  \n              <div class="row">\n                <mat-form-field class="col-md">\n                  <input matInput type="text" id="publicationEdition" name="publicationEdition" placeholder="Edition" [(ngModel)]="releaseorder.publicationEdition" required #publicationEditionField="ngModel">\n                  <mat-error *ngIf="publicationEditionField.errors && publicationEditionField.errors.required">\n                    Edition Name is required.\n                  </mat-error>\n                </mat-form-field>\n            \n                <mat-form-field class="col-md">\n                  <mat-select name="mediaType" [(ngModel)]="releaseorder.mediaType" id="mediaType" #mediaTypeField="ngModel" required>\n                    <mat-option *ngFor="let item of mediaTypes" [value]="item">{{item}}</mat-option>\n                  </mat-select>\n                  <mat-error *ngIf="mediaTypeField.errors && mediaTypeField.errors.required">\n                    Media type is required.\n                  </mat-error>\n                </mat-form-field>\n              </div>\n              \n              <div class="row">\n                <mat-form-field class="col-md">\n                  <mat-select id="publicationState" name="publicationState" placeholder="State" [(ngModel)]="releaseorder.publicationState" required #publicationStateField="ngModel">\n                    <mat-option *ngFor="let state of stateApi.states" [value]="state">{{state}}</mat-option>\n                  </mat-select>\n                  <mat-error *ngIf="publicationStateField.errors && publicationStateField.errors.required">\n                    State is required.\n                  </mat-error>\n                </mat-form-field>\n\n                <mat-form-field class="col-md">\n                  <input matInput type="text" id="publicationGSTIN" name="publicationGSTIN" placeholder="GST" [(ngModel)]="releaseorder.publicationGSTIN.GSTNo" required minlength="15" maxlength="15" #publicationGSTINField="ngModel">\n                  <mat-error *ngIf="publicationGSTINField.errors && publicationGSTINField.errors.required">\n                    GSTIN is required.\n                  </mat-error>\n                  <mat-error *ngIf="publicationGSTINField.errors && (publicationGSTINField.errors.minlength || publicationGSTINField.errors.maxlength)">\n                    GSTIN should be 15 characters long.\n                  </mat-error>\n                </mat-form-field>\n              </div>\n\n              <ng-container *ngIf="mediaType == \'Print\'">\n                <div class="form-row">\n                  <div class="col">\n                    <mat-form-field>\n                      <mat-select placeholder="Pullout Name" name="pullOutName" [(ngModel)]="dropdownPullOutName" id="pullOutName" #pullOutNameField="ngModel" required>\n                        <mat-option *ngFor="let item of pullouts" [value]="item.Name">{{item.Name}}</mat-option>\n                        <mat-option [value]="others">{{others}}</mat-option>\n                      </mat-select>\n                      <mat-error *ngIf="pullOutNameField.errors && pullOutNameField.errors.required">\n                          Pullout Name is required.\n                      </mat-error>\n                    </mat-form-field>\n                  </div>\n                  <div class="col" *ngIf="dropdownPullOutName == others">\n                    <mat-form-field>\n                      <input matInput type="text" id="specPullOutName" placeholder="Enter Pullout Name" [(ngModel)]="customPullOutName" required name="specPullOutName" #specPullOutNameField="ngModel">\n                      <mat-error *ngIf="specPullOutNameField.errors && specPullOutNameField.errors.required">\n                        Pullout Name is required.\n                      </mat-error>\n                    </mat-form-field>\n                  </div>\n                </div>\n              </ng-container>\n\n              <mat-card-actions>\n                <button mat-button type="button" color="primary" (click)="addMediaHouse()">Add to Directory</button>\n              </mat-card-actions>\n            </mat-card>\n          </div>\n\n          <div class="col-lg col-md-6">\n            <br>\n            <mat-card>\n              <mat-card-title>Client Details</mat-card-title>\n  \n             <div class="row">\n              <mat-form-field class="col-lg col-md-6">\n                <input matInput type="text" [ngbTypeahead]="searchClient" id="clientName" placeholder="Client Name" [(ngModel)]="client" name="clientName" required #clientNameField="ngModel" [resultFormatter]="clientResultFormatter" [inputFormatter]="clientInputFormatter">\n                <mat-error *ngIf="clientNameField.errors && clientNameField.errors.required">\n                  Name is required.\n                </mat-error>\n              </mat-form-field>\n              \n              <mat-form-field class="col-lg col-md-6">\n                <mat-select id="clientState" name="clientState" placeholder="State" [(ngModel)]="releaseorder.clientState" required #clientStateField="ngModel">\n                  <mat-option *ngFor="let state of stateApi.states" [value]="state">{{state}}</mat-option>\n                </mat-select>\n                <mat-error *ngIf="clientStateField.errors && clientStateField.errors.required">\n                  State is required.\n                </mat-error>\n              </mat-form-field>\n             </div>\n  \n              <div class="form-row">\n                <div class="{{releaseorder.clientGSTIN.GSTType != \'URD\' ? \'col-auto\' : \'col\'}}">\n                  <mat-form-field class="col-lg col-md-6">\n                    <mat-select placeholder="GST Type" name="gstType" [(ngModel)]="releaseorder.clientGSTIN.GSTType">\n                      <mat-option value="URD">URD</mat-option>\n                      <mat-option value="RD">RD</mat-option>\n                    </mat-select>\n                  </mat-form-field>\n                </div>\n                <div class="col" *ngIf="releaseorder.clientGSTIN.GSTType != \'URD\'">\n                  <mat-form-field class="col-lg col-md-6">\n                    <input matInput type="text" name="gstNo" placeholder="GST Number" [(ngModel)]="releaseorder.clientGSTIN.GSTNo" required minlength="15" maxlength="15" #gstNoField="ngModel">\n                    <mat-error *ngIf="gstNoField.errors && gstNoField.errors.required">\n                      GSTIN is required.\n                    </mat-error>\n                    <mat-error *ngIf="gstNoField.errors && (gstNoField.errors.minlength || gstNoField.errors.maxlength)">\n                      GSTIN should be 15 characters long.\n                    </mat-error>\n                  </mat-form-field>\n                </div>\n              </div>\n  \n              <mat-card-actions>\n                <button mat-button type="button" color="primary" (click)="addClient()">Add to Directory</button>\n              </mat-card-actions>\n          </mat-card>\n          </div>\n        </div>\n\n        <br>\n          \n        <div class="row">\n          <div class="col-lg col-md-6">\n            <br>\n            <mat-card>\n              <mat-card-title>Ad Details</mat-card-title>\n\n              <div class="row">\n                <mat-form-field class="col-lg col-md-6">\n                  <mat-select matInput name="adType" [(ngModel)]="releaseorder.adType" id="adType" #adTypeField="ngModel" required>\n                    <mat-option *ngFor="let item of adTypes" [value]="item">{{item}}</mat-option>\n                  </mat-select>\n                </mat-form-field>\n\n                <mat-form-field class="col-lg col-md-6" *ngIf="mediaType == \'Print\'">\n                  <mat-select matInput name="position" [(ngModel)]="releaseorder.adPosition" id="position" #positionField="ngModel" required>\n                    <mat-option *ngFor="let item of positions" [value]="item">{{item}}</mat-option>\n                  </mat-select>\n                  <mat-error *ngIf="positionField.errors && positionField.errors.required">\n                    Position is required.\n                  </mat-error>\n                </mat-form-field>\n\n                <mat-form-field class="col-lg col-md-6" *ngIf="isTypeLen">\n                  <mat-select matInput name="hue" [(ngModel)]="releaseorder.adHue" id="hue" #hueField="ngModel" required>\n                    <mat-option *ngFor="let hue of hues" [value]="hue">{{hue}}</mat-option>\n                  </mat-select>\n                  <mat-error *ngIf="hueField.errors && hueField.errors.required">\n                    Hue is required.\n                  </mat-error>\n                </mat-form-field>\n              </div>\n\n              <div class="row">\n                <mat-form-field class="col">\n                  <input type="text" matInput id="caption" name="caption" placeholder="Caption" [(ngModel)]="releaseorder.caption" #captionField="ngModel">\n                </mat-form-field>\n\n                <button type="button" mat-raised-button class="col-auto" (click)="getCategories()">Categories *</button>\n                \n                <mat-form-field class="col"> \n                  <input type="text" matInput id="adEdition" name="adEdition" placeholder="Edition" [(ngModel)]="releaseorder.adEdition" required #adEditionField="ngModel">\n                  <mat-error *ngIf="adEditionField.errors && adEditionField.errors.required">\n                    Edition is required.\n                  </mat-error>\n                </mat-form-field>\n              </div>\n\n              <!-- <div class="row small" id="small_cat" *ngIf="selectedCategories[0]">\n                &nbsp;&nbsp;&nbsp;Categories :\n                <div *ngIf="selectedCategories[0]">  {{selectedCategories[0].name}}</div>\n                <div *ngIf="selectedCategories[1]">, {{selectedCategories[1].name}}</div>\n                <div *ngIf="selectedCategories[2]">, {{selectedCategories[2].name}}</div>\n                <div *ngIf="selectedCategories[3]">, {{selectedCategories[3].name}}</div>\n                <div *ngIf="selectedCategories[4]">, {{selectedCategories[4].name}}</div>\n                <div *ngIf="selectedCategories[5]">, {{selectedCategories[5].name}}</div>\n              </div> -->\n              \n              <br>\n\n              <div class="row">\n                <h6 class="col-lg-2 col-md-6">Scheme</h6>\n                \n                <mat-slide-toggle class="col-lg-2 col-md-6" [(ngModel)]="customScheme" name="customScheme" [disabled]="schemes.length == 0">Custom</mat-slide-toggle>\n                \n                <div class="col-lg-3 col-md-6" *ngIf="!customScheme">\n                  <select class="form-control" name="scheme" [(ngModel)]="selectedScheme" id="scheme" #schemeField="ngModel" required>\n                    <option *ngFor="let scheme of schemes" [ngValue]="scheme">Paid: {{scheme.paid}}, Free: {{scheme.Free}}, Time Limit: {{scheme.timeLimit}}</option>\n                  </select>\n                </div>\n    \n                <div class="col-lg-2 col-md-6" *ngIf="customScheme">\n                  <mat-form-field>\n                    <input matInput type="number" id="customPaid" placeholder="Paid" [(ngModel)]="customPaid" name="customPaid" required #customPaidField="ngModel">\n                    <mat-error *ngIf="customPaidField.errors && customPaidField.errors.required">\n                      Paid is required.\n                    </mat-error>\n                  </mat-form-field>          \n                </div>\n\n                <div class="col-lg-2 col-md-6">\n                  <mat-form-field>\n                    <input matInput type="number" id="customFree" placeholder="Free" [(ngModel)]="customFree" name="customFree" required #customFreeField="ngModel">\n                    <mat-error *ngIf="customFreeField.errors && customFreeField.errors.required">\n                      Free is required.\n                    </mat-error>\n                  </mat-form-field>          \n                </div>\n\n                <button type="button" class="col-lg-3 col-md-6" mat-button color="primary" (click)="getInsertions()">Insertions *</button>\n              </div>\n\n              <ng-container *ngIf="isTypeLen">\n                <div class="row">\n                  <label class="col-auto">Ad Size</label>\n                  \n                  <mat-slide-toggle class="col-auto" [(ngModel)]="customSize" name="customSize" [disabled]="fixSizes.length == 0">Custom</mat-slide-toggle>\n\n                  <mat-slide-toggle class="col-auto" [(ngModel)]="releaseorder.fixRate" name="fixedRate" *ngIf="customSize">Fixed Rate</mat-slide-toggle>\n                </div>\n                <div class="row">\n                  <div class="col" *ngIf="!customSize">\n                    <select class="form-control" name="fixSize" [(ngModel)]="selectedSize" id="fixSize" #fixSizeField="ngModel" required>\n                      <option *ngFor="let fixSize of fixSizes" [ngValue]="fixSize">Length: {{fixSize.length}}, Width: {{fixSize.width}}, Amount: {{fixSize.amount}}</option>\n                    </select>\n                  </div>\n\n                  <ng-container *ngIf="customSize">\n                    <mat-form-field class="col">\n                      <input matInput type="number" id="customL" placeholder="Length" [(ngModel)]="customSizeL" name="customL" required #customLField="ngModel">\n                      <mat-error *ngIf="customLField.errors && customLField.errors.required">\n                        Length is required.\n                      </mat-error>\n                    </mat-form-field>        \n                    \n                    <div class="col-auto align-self-center">&times;</div>\n                    \n                    <mat-form-field class="col">\n                      <input matInput type="number" id="customW" placeholder="Width" [(ngModel)]="customSizeW" name="customW" required #customWField="ngModel">\n                      <mat-error *ngIf="customWField.errors && customWField.errors.required">\n                        Width is required.\n                      </mat-error>\n                    </mat-form-field>\n                  </ng-container>\n                </div>\n\n                <div> \n                  Total Space = {{totalSpace}}\n                </div>\n              </ng-container>\n\n              <div class="row">\n                <div class="col-md-6">\n                  <mat-form-field> \n                    <input matInput type="number" id="adCountPaid" name="adCountPaid" [verify-multiple-of]="customScheme ? customPaid : selectedScheme.paid" placeholder="No of Paid Ads" [(ngModel)]="adCountPaid" required #adCountPaidField="ngModel">\n                    <mat-error *ngIf="adCountPaidField.errors && adCountPaidField.errors.required">\n                      No of Paid Ads is required.\n                    </mat-error>\n                    <mat-error *ngIf="adCountPaidField.errors && adCountPaidField.errors.multipleOf">\n                      No of Paid Ads should be multiple of Paid Ads in Scheme.\n                    </mat-error>\n                  </mat-form-field>                  \n                </div>\n\n                <mat-form-field class="col-md-6"> \n                  <input type="text" matInput id="remark" name="remark" placeholder="Remark" [(ngModel)]="releaseorder.remark" #remarkField="ngModel">\n                </mat-form-field>\n              </div>\n\n              <br>\n\n              <div class="d-lg-none">\n                <label>Insertions</label>\n                <div *ngIf="releaseorder.insertions">\n                  <ul class="list-group list-group-flush small">\n                    <li class="list-group-item" *ngFor="let item of releaseorder.insertions">\n                      <div class="row">\n                        <div class="col">{{toDate(item.date) | date}}</div>\n                        <div class="col-auto text-success" *ngIf="item.marked">\n                          <mat-icon>check</mat-icon>\n                        </div>\n                      </div>\n                    </li>\n                  </ul>\n                </div>\n              </div>\n\n              <div *ngIf="adCountPaidField.valid">\n                <p>Total Ads = {{availableAds}} ({{adCountPaid}} Paid + {{availableAds - adCountPaid}} Free)</p>\n              </div>\n\n              <div class="row">      \n                <ng-container *ngIf="isTypeWords" class="row">\n                  <mat-form-field class="col-lg-3 col-md-6">\n                    <input type="number" matInput id="maxWords" placeholder="Maximum Words / Lines" [(ngModel)]="releaseorder.AdWordsMax" name="maxWords" required #maxWordsField="ngModel">\n                    <mat-error *ngIf="maxWordsField.errors && maxWordsField.errors.required">\n                      Maximum Words / Lines is empty or invalid.\n                    </mat-error>\n                  </mat-form-field>\n            \n                  <mat-form-field class="col-lg-3 col-md-6">\n                    <input type="number" matInput id="words" placeholder="No of Words / Lines" [(ngModel)]="releaseorder.AdWords" name="words" required #wordsField="ngModel">\n                    <mat-error *ngIf="wordsField.errors && wordsField.errors.required">\n                      No of Words / Lines is empty or invalid.\n                    </mat-error>\n                  </mat-form-field>            \n                </ng-container>\n    \n                <ng-container *ngIf="isTypeTime" class="row">\n                  <mat-form-field class="col-lg-3 col-md-6">\n                    <input type="number" matInput id="duration" placeholder="Duration" [(ngModel)]="releaseorder.AdDuration" name="duration" required #durationField="ngModel">\n                    <mat-error *ngIf="durationField.errors && durationField.errors.required">\n                      Duration is required.\n                    </mat-error>\n                  </mat-form-field>\n            \n                  <mat-form-field class="col-lg-3 col-md-6">\n                    <mat-select matInput name="adTime" [(ngModel)]="releaseorder.AdTime" id="adTime" #adTimeField="ngModel" required>\n                      <mat-option *ngFor="let item of adTimes" [value]="item">{{item}}</mat-option>\n                    </mat-select>\n                  </mat-form-field>\n                </ng-container>\n              </div>            \n            </mat-card>\n          </div>\n\n          <div class="col-lg col-md-6">\n            <br>\n            <mat-card>\n              <mat-card-title>Premiums</mat-card-title>\n              <ng-container *ngIf="isTypeWords">\n                <div class="row">\n                  <div class="col-lg col-md-6">\n                    <div class="form-row">\n                      <div class="col-auto align-self-center">\n                        <mat-checkbox name="cBox" [(ngModel)]="releaseorder.PremiumBox.Included"></mat-checkbox>\n                      </div>\n                      <div class="col">\n                        <mat-form-field>\n                          <input type="number" matInput placeholder="Box" name="premiumBox" [(ngModel)]="releaseorder.PremiumBox.Amount" required #premiumBoxField="ngModel">\n                          <mat-error *ngIf="premiumBoxField.errors && premiumBoxField.errors.required">\n                            Box Premium Amount is required.\n                          </mat-error>\n                        </mat-form-field>\n                      </div>\n                    </div>\n                  </div>\n                  <div class="col-lg col-md-6">\n                    <div class="form-row">\n                      <div class="col-auto align-self-center">\n                        <mat-checkbox name="cBaseColour" [(ngModel)]="releaseorder.PremiumBaseColour.Included"></mat-checkbox>\n                      </div>\n                      <div class="col">\n                        <mat-form-field>\n                          <input type="number" matInput placeholder="Base Colour" name="premiumBaseColour" [(ngModel)]="releaseorder.PremiumBaseColour.Amount" required #premiumBaseColourField="ngModel">\n                          <mat-error *ngIf="premiumBaseColourField.errors && premiumBaseColourField.errors.required">\n                            Base Colour Premium Amount is required.\n                          </mat-error>\n                        </mat-form-field>\n                      </div>\n                    </div>\n                  </div>\n                  <div class="col-lg col-md-6">\n                    <div class="form-row">\n                      <div class="col-auto align-self-center">\n                        <mat-checkbox name="cCheckMark" [(ngModel)]="releaseorder.PremiumCheckMark.Included"></mat-checkbox>\n                      </div>\n                      <div class="col">\n                        <mat-form-field>\n                          <input type="number" matInput placeholder="Check Mark" name="premiumCheckMark" [(ngModel)]="releaseorder.PremiumCheckMark.Amount" required #premiumCheckMarkField="ngModel">\n                          <mat-error *ngIf="premiumCheckMarkField.errors && premiumCheckMarkField.errors.required">\n                            Check Mark Premium Amount is required.\n                          </mat-error>\n                        </mat-form-field>\n                      </div>\n                    </div>\n                  </div>\n                </div>\n                \n                <div class="form-row">\n                  <div class="col-auto align-self-center">\n                    <mat-checkbox name="cEmailId" [(ngModel)]="releaseorder.PremiumEmailId.Included"></mat-checkbox>\n                  </div>\n                  <div class="col">\n                    <mat-form-field>\n                      <input type="number" matInput placeholder="Email" name="premiumEmailId" [(ngModel)]="releaseorder.PremiumEmailId.Amount" required #premiumEmailIdField="ngModel">\n                      <mat-error *ngIf="premiumEmailIdField.errors && premiumEmailIdField.errors.required">\n                        Email Premium Amount is required.\n                      </mat-error>\n                    </mat-form-field>\n                  </div>\n                  <div class="col">\n                    <mat-form-field>\n                      <input type="number" matInput placeholder="Quantity" name="premiumEmailIdQuantity" [(ngModel)]="releaseorder.PremiumEmailId.Quantity" required #premiumEmailIdQuantityField="ngModel">\n                      <mat-error *ngIf="premiumEmailIdQuantityField.errors && premiumEmailIdQuantityField.errors.required">\n                        Email Premium Quantity is required.\n                      </mat-error>\n                    </mat-form-field>\n                  </div>\n                </div>\n                <div class="form-row">\n                  <div class="col-auto align-self-center">\n                    <mat-checkbox name="cWebsite" [(ngModel)]="releaseorder.PremiumWebsite.Included"></mat-checkbox>\n                  </div>\n                  <div class="col">\n                    <mat-form-field>\n                      <input type="number" matInput placeholder="Website" name="premiumWebsite" [(ngModel)]="releaseorder.PremiumWebsite.Amount" required #premiumWebsiteField="ngModel">\n                      <mat-error *ngIf="premiumWebsiteField.errors && premiumWebsiteField.errors.required">\n                        Website Premium Amount is required.\n                      </mat-error>\n                    </mat-form-field>\n                  </div>\n                  <div class="col">\n                    <mat-form-field>\n                      <input type="number" matInput placeholder="Quantity" name="premiumWebsiteQuantity" [(ngModel)]="releaseorder.PremiumWebsite.Quantity" required #premiumWebsiteQuantityField="ngModel">\n                      <mat-error *ngIf="premiumWebsiteQuantityField.errors && premiumWebsiteQuantityField.errors.required">\n                        Website Premium Quantity is required.\n                      </mat-error>\n                    </mat-form-field>\n                  </div>\n                </div>\n                <div class="form-row">\n                  <div class="col-auto align-self-center">\n                    <mat-checkbox name="cExtraWords" [(ngModel)]="releaseorder.PremiumExtraWords.Included"></mat-checkbox>\n                  </div>\n                  <div class="col">\n                    <mat-form-field>\n                      <input type="number" matInput placeholder="Extra Words / Lines" name="premiumExtraWords" [(ngModel)]="releaseorder.PremiumExtraWords.Amount" required #premiumExtraWordsField="ngModel">\n                      <mat-error *ngIf="premiumExtraWordsField.errors && premiumExtraWordsField.errors.required">\n                        Extra Words / Lines Premium Amount is required.\n                      </mat-error>\n                    </mat-form-field>\n                  </div>\n                  <div class="col">\n                    <mat-form-field>\n                      <input type="number" matInput placeholder="Quantity" name="premiumExtraWordsQuantity" [(ngModel)]="releaseorder.PremiumExtraWords.Quantity" required #premiumExtraWordsQuantityField="ngModel">\n                      <mat-error *ngIf="premiumExtraWordsQuantityField.errors && premiumExtraWordsQuantityField.errors.required">\n                        Extra Words / Lines Premium Quantity is required.\n                      </mat-error>\n                    </mat-form-field>\n                  </div>\n                </div>\n              </ng-container>\n              <ng-container *ngIf="!isTypeWords">\n                <div class="row">\n                  <div class="col">\n                    <mat-form-field>\n                      <input matInput placeholder="Type" name="premiumType" [(ngModel)]="releaseorder.PremiumCustom.PremiumType" #premiumTypeField="ngModel">\n                    </mat-form-field>\n                  </div>\n                  <div class="col">\n                    <mat-form-field>\n                      <input type="number" matInput placeholder="Amount" name="premiumAmount" [(ngModel)]="releaseorder.PremiumCustom.Amount" required #premiumAmountField="ngModel">\n                      <span matSuffix>{{releaseorder.PremiumCustom.Percentage ? \'%\' : \'\'}}</span>\n                      <mat-error *ngIf="premiumAmountField.errors && premiumAmountField.errors.required">\n                        Premium Amount is required.\n                      </mat-error>\n                    </mat-form-field>\n                  </div>\n                </div>\n                <mat-checkbox class="my-2" name="premiumPercent" [(ngModel)]="releaseorder.PremiumCustom.Percentage">Amount in Percentage</mat-checkbox>\n              </ng-container>\n            \n            </mat-card>\n          </div>\n        </div>\n\n        <br>\n\n        <div class="row">\n          <div class="col-lg col-md-6">\n            <br>\n            <mat-card>\n              <mat-card-title>Ad Rate and Discounts</mat-card-title>\n\n              <div class="row">\n                <mat-form-field class="col-lg-3 col-md-6">\n                  <input type="number" matInput id="rate" placeholder="Rate" [(ngModel)]="releaseorder.rate" name="rate" required #rateField="ngModel">\n                  <mat-error *ngIf="rateField.errors && rateField.errors.required">\n                    Rate is required.\n                  </mat-error>\n                </mat-form-field>\n                <mat-form-field class="col-lg-3 col-md-6"> \n                  <mat-select matInput name="unit" [(ngModel)]="releaseorder.unit" id="unit" #unitField="ngModel" required>\n                    <mat-option *ngFor="let item of units" [value]="item">{{item}}</mat-option>\n                  </mat-select>\n                </mat-form-field>\n              </div>  \n              <div class="row">\n                <mat-form-field class="col-lg-4 col-md-6">\n                  <input matInput type="number" id="publicationDiscount" name="publicationDiscount" placeholder="Publication Discount" [(ngModel)]="releaseorder.publicationDiscount" required #publicationDiscountField="ngModel">\n                  <mat-error *ngIf="publicationDiscountField.errors && publicationDiscountField.errors.required">\n                    Publication Discount is required.\n                  </mat-error>\n                </mat-form-field>\n                \n                <mat-form-field class="col-lg-4 col-md-6">\n                  <input matInput type="number" id="agencyDiscount1" name="agencyDiscount1" placeholder="Agency Discount 1" [(ngModel)]="releaseorder.agencyDiscount1" required #agencyDiscount1Field="ngModel">\n                  <mat-error *ngIf="agencyDiscount1Field.errors && agencyDiscount1Field.errors.required">\n                    Agency Discount 1 is required.\n                  </mat-error>\n                </mat-form-field>\n            \n                <mat-form-field class="col-lg-4 col-md-6">\n                  <input matInput type="number" id="agencyDiscount2" name="agencyDiscount2" placeholder="Agency Discount 2" [(ngModel)]="releaseorder.agencyDiscount2" required #agencyDiscount2Field="ngModel">\n                  <mat-error *ngIf="agencyDiscount2Field.errors && agencyDiscount2Field.errors.required">\n                    Agency Discount 2 is required.\n                  </mat-error>\n                </mat-form-field>\n              </div>\n\n              <div class="form-row">\n                <label class="col-3 col-form-label">Tax</label>\n                <div class="col-auto col-form-label">\n                  <div class="form-check">\n                    <mat-checkbox class="my-2" name="taxIncluded" [(ngModel)]="releaseorder.taxIncluded" >Included</mat-checkbox>\n                  </div>\n                </div>\n                <div class="col">\n                  <mat-form-field>\n                    <mat-select name="tax" [(ngModel)]="selectedTax" id="tax" #taxField="ngModel" required>\n                      <mat-option *ngFor="let item of taxes" [value]="item">{{item.primary}}% <span *ngIf="item.secondary">+ {{item.secondary}}%</span></mat-option>\n                    </mat-select>\n                    <mat-error *ngIf="taxField.errors && taxField.errors.required">\n                      Tax is required.\n                    </mat-error>\n                  </mat-form-field>\n                </div>\n              </div>\n\n              <label id="add_details">Additional Details</label>\n\n              <div class="row">\n                <mat-form-field class="col-lg-4 col-md-6">\n                  <mat-select name="paymentType" placeholder="Type" [(ngModel)]="releaseorder.paymentType" id="paymentType" #paymentTypeField="ngModel" required>\n                    <mat-option *ngFor="let item of paymentTypes" [value]="item">{{item}}</mat-option>\n                  </mat-select>\n                </mat-form-field>\n            \n                <ng-container *ngIf="releaseorder.paymentType != \'Cash\' && releaseorder.paymentType != \'Credit\'">\n                <div class="row">\n                  <mat-form-field  class="col-lg col-md-6">\n                    <input matInput [matDatepicker]="paymentDateField" name="paymentDate" placeholder="Date" [(ngModel)]="releaseorder.paymentDate" required disabled>\n                    <mat-datepicker-toggle matSuffix [for]="paymentDateField"></mat-datepicker-toggle>\n                    <mat-datepicker #paymentDateField disabled="false"></mat-datepicker>\n                    <mat-error *ngIf="paymentDateField.errors && paymentDateField.errors.required">\n                      Date is required.\n                    </mat-error>\n                  </mat-form-field>\n            \n                  <mat-form-field  class="col-lg col-md-6">\n                    <input matInput type="text" id="paymentCheque" name="paymentCheque" placeholder="No" [(ngModel)]="releaseorder.paymentNo" required #paymentChequeField="ngModel">\n                    <mat-error *ngIf="paymentChequeField.errors && paymentChequeField.errors.required">\n                      No is required.\n                    </mat-error>\n                  </mat-form-field>\n                </div>\n                <div class="row">\n                  <mat-form-field  class="col-lg col-md-6">\n                    <input type="number" matInput id="paymentAmount" name="paymentAmount" placeholder="Enter Amount" [(ngModel)]="releaseorder.paymentAmount" required #paymentAmountField="ngModel">\n                    <mat-error *ngIf="paymentAmountField.errors && paymentAmountField.errors.required">\n                      Amount is required.\n                    </mat-error>\n                  </mat-form-field>\n            \n                  <ng-container *ngIf="releaseorder.paymentType == \'Cheque\'">\n                    <mat-form-field  class="col-lg col-md-6">\n                      <input type="text" matInput id="bankName" name="bankName" placeholder="Bank Name" [(ngModel)]="releaseorder.paymentBankName" required #bankNameField="ngModel">\n                      <mat-error *ngIf="bankNameField.errors && bankNameField.errors.required">\n                        Bank Name is required.\n                      </mat-error>\n                    </mat-form-field>\n                  </ng-container>\n                </div>\n              </ng-container>\n            </div>\n            </mat-card>\n          </div>\n\n          <div class="col-lg col-md-6">\n            <br>\n            <mat-card>\n              <mat-card-title>Other Charges</mat-card-title>\n\n              <div class="text-muted" *ngIf="releaseorder.otherCharges.length == 0">\n                No Other Charges\n              </div>\n\n              <div class="row">\n                <mat-form-field class="col-lg col-md-6">\n                  <input type="text" matInput [ngbTypeahead]="searchExecutive" id="executiveName" placeholder="Executive Name" [(ngModel)]="executive" name="executiveName" required #executiveNameField="ngModel" [resultFormatter]="executiveResultFormatter" [inputFormatter]="executiveInputFormatter">\n                  <mat-error *ngIf="executiveNameField.errors && executiveNameField.errors.required">\n                    Executive Name is required.\n                  </mat-error>\n                </mat-form-field>\n                \n                <mat-form-field class="col-lg col-md-6">\n                  <input type="text" matInput id="executiveOrg" placeholder="Executive Organisation" [(ngModel)]="releaseorder.executiveOrg" name="executiveOrg" required #executiveOrgField="ngModel">\n                  <mat-error *ngIf="executiveOrgField.errors && executiveOrgField.errors.required">\n                    Executive Organisation is required.\n                  </mat-error>\n                </mat-form-field>\n\n                <button mat-button type="button" color="primary" (click)="addExecutive()">Add to Directory</button>\n              </div>\n\n              <div *ngFor="let item of releaseorder.otherCharges; index as i" class="mb-1">\n                <div class="form-row">\n                  <div class="col">\n                    <mat-form-field>\n                      <input matInput placeholder="Type" name="otherChargesType-{{i}}" [(ngModel)]="item.chargeType" required #otherChargesTypeField="ngModel">\n                      <mat-error *ngIf="otherChargesTypeField.errors && otherChargesTypeField.errors.required">\n                        Type is required.\n                      </mat-error>\n                    </mat-form-field>\n                  </div>\n                  <div class="col">\n                    <mat-form-field>\n                      <input type="number" matInput placeholder="Amount" name="otherCharges-{{i}}" [(ngModel)]="item.amount" required #otherChargesField="ngModel">\n                      <mat-error *ngIf="otherChargesField.errors && otherChargesField.errors.required">\n                        Amount is required.\n                      </mat-error>\n                    </mat-form-field>\n                  </div>\n                  <div class="col-auto col-form-label">\n                    <button mat-icon-button color="warn" type="button" (click)="removeOtherCharge(i)">\n                      <mat-icon>delete</mat-icon>\n                    </button>\n                  </div>\n                </div>\n              </div>\n              \n              <br>           \n              <mat-form-field>\n                <input matInput placeholder="Remark" name="otherRemark" [(ngModel)]="releaseorder.otherRemark">\n              </mat-form-field>\n\n              <mat-card-actions>\n                <button mat-button type="button" color="primary" (click)="addCharges()">Add More</button>\n              </mat-card-actions>\n\n            </mat-card>\n          </div>\n        </div>\n\n        <br><br>\n\n      </form>\n    </div>\n \n  </mat-sidenav-content>\n</mat-sidenav-container>\n\n<ion-footer>\n  <ion-toolbar>\n    <div class="container-fluid">\n      <div class="row">\n        <button class="btn btn-light btn-lg text-success col" type="button" (click)="save()" [disabled]="!roForm.form.valid">\n          <ion-icon name="add"></ion-icon>\n          <p class="small">Save</p>\n        </button>\n        <button class="btn btn-light btn-lg text-danger col" type="button" (click)="cancel()">\n          <ion-icon name="close"></ion-icon>\n          <p class="small">Cancel</p>\n        </button>\n        <button class="btn btn-light btn-lg text-warning col" type="button" (click)="genPreview()"  [disabled]="!roForm.form.valid">\n          <ion-icon name="clipboard"></ion-icon>\n          <p class="small">Preview</p>\n        </button>\n        <button class="btn btn-light btn-lg text-info col" type="button" (click)="saveAndGen()" [disabled]="!roForm.form.valid">\n          <ion-icon name="download"></ion-icon>\n          <p class="small">Download</p>\n        </button>\n        <button class="btn btn-light btn-lg text-primary col" type="button" (click)="saveAndSendMsg()" [disabled]="!roForm.form.valid">\n          <ion-icon name="mail"></ion-icon>\n          <p class="small">Send Email</p>\n        </button>\n      </div>\n    </div>\n  </ion-toolbar>\n</ion-footer>\n'/*ion-inline-end:"/home/lambo/zaaa-ionic/src/app/release-order/release-order/release-order.component.html"*/,
+            selector: 'app-release-order',template:/*ion-inline-start:"/home/lambo/zaaa-ionic/src/app/release-order/release-order/release-order.component.html"*/'<mat-toolbar>  \n  <mat-toolbar-row>\n    <div class="container-fluid">\n      <div class="row">\n        <div class="col" *ngIf="!edit">Create Release Order</div>\n        <div class="col" *ngIf="edit">Edit Release Order</div>\n        <button mat-icon-button class="col-auto" (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>\n      </div>\n    </div>\n  </mat-toolbar-row>\n</mat-toolbar>\n\n<br><br>\n\n<mat-sidenav-container>\n \n  <mat-sidenav #sidenav mode="over" opened="false" position="end">\n\n    <div class="card bg-info sticky-top" style="top: 50px">\n      <div class="card-header text-light small">\n        Calculations\n      </div>\n      <ul class="list-group list-group-flush small">\n        <li class="list-group-item">\n          <div class="row">\n            <div class="col-md-4">Net Amount</div>\n            <div class="col-md-8 text-muted">{{netAmount}} ({{taxDisplay}})</div>\n          </div>\n        </li>\n        <li class="list-group-item">\n          <div class="row">\n            <div class="col-md-4">Net Amount in Words</div>\n            <div class="col-md-8 text-muted">{{options.amountToWords(netAmount)}} ({{taxDisplay}})</div>\n          </div>\n        </li>\n        <li class="list-group-item">\n          <div class="row">\n            <div class="col-md-4">Client Payment</div>\n            <div class="col-md-8 text-muted">{{clientPayment}}</div>\n          </div>\n        </li>\n      </ul>\n      <div class="card-header text-light small d-none d-lg-block" *ngIf="selectedCategories[0]">\n        Categories\n      </div>\n      <ul class="list-group list-group-flush small d-none d-lg-block">\n        <li class="list-group-item" *ngIf="selectedCategories[0]">{{selectedCategories[0].name}}</li>\n        <li class="list-group-item" *ngIf="selectedCategories[1]">{{selectedCategories[1].name}}</li>\n        <li class="list-group-item" *ngIf="selectedCategories[2]">{{selectedCategories[2].name}}</li>\n        <li class="list-group-item" *ngIf="selectedCategories[3]">{{selectedCategories[3].name}}</li>\n        <li class="list-group-item" *ngIf="selectedCategories[4]">{{selectedCategories[4].name}}</li>\n        <li class="list-group-item" *ngIf="selectedCategories[5]">{{selectedCategories[5].name}}</li>\n      </ul>\n      <div class="card-header text-light small d-none d-lg-block" *ngIf="releaseorder.insertions.length">\n        Insertions\n      </div>\n      <ul class="list-group list-group-flush small d-none d-lg-block"  *ngIf="releaseorder.insertions.length">\n        <li class="list-group-item" *ngFor="let item of releaseorder.insertions">\n          <div class="row">\n            <div class="col">{{toDate(item.date) | date}}</div>\n            <div class="col-auto text-success" *ngIf="item.marked">\n              <mat-icon>check</mat-icon>\n            </div>\n          </div>\n        </li>\n      </ul>\n    </div>\n\n  </mat-sidenav>\n  <mat-sidenav-content>\n    \n    <div class="container-fluid">\n      <form (ngSubmit)="submit()" #roForm="ngForm">\n        <div class="row">\n          <div class="col-lg col-md-6">\n            <br>\n            <mat-card>\n              <mat-card-title>Publication Details</mat-card-title>\n            \n              <mat-form-field>\n                <input matInput type="text" [ngbTypeahead]="searchMediaHouse" id="mediaHouseName" placeholder="Media House Name" [(ngModel)]="mediaHouse" name="mediaHouseName" required #publicationNameField="ngModel" [resultFormatter]="mediaHouseResultFormatter" [inputFormatter]="mediaHouseInputFormatter">\n                <mat-error *ngIf="publicationNameField.errors && publicationNameField.errors.required">\n                  Media House Name is required.\n                </mat-error>\n              </mat-form-field>\n                  \n              <div class="row">\n                <mat-form-field class="col-md">\n                  <input matInput type="text" id="publicationEdition" name="publicationEdition" placeholder="Edition" [(ngModel)]="releaseorder.publicationEdition" required #publicationEditionField="ngModel">\n                  <mat-error *ngIf="publicationEditionField.errors && publicationEditionField.errors.required">\n                    Edition Name is required.\n                  </mat-error>\n                </mat-form-field>\n            \n                <mat-form-field class="col-md">\n                  <mat-select name="mediaType" [(ngModel)]="releaseorder.mediaType" id="mediaType" #mediaTypeField="ngModel" required>\n                    <mat-option *ngFor="let item of mediaTypes" [value]="item">{{item}}</mat-option>\n                  </mat-select>\n                  <mat-error *ngIf="mediaTypeField.errors && mediaTypeField.errors.required">\n                    Media type is required.\n                  </mat-error>\n                </mat-form-field>\n              </div>\n              \n              <div class="row">\n                <mat-form-field class="col-md">\n                  <mat-select id="publicationState" name="publicationState" placeholder="State" [(ngModel)]="releaseorder.publicationState" required #publicationStateField="ngModel">\n                    <mat-option *ngFor="let state of stateApi.states" [value]="state">{{state}}</mat-option>\n                  </mat-select>\n                  <mat-error *ngIf="publicationStateField.errors && publicationStateField.errors.required">\n                    State is required.\n                  </mat-error>\n                </mat-form-field>\n\n                <mat-form-field class="col-md">\n                  <input matInput type="text" id="publicationGSTIN" name="publicationGSTIN" placeholder="GST" [(ngModel)]="releaseorder.publicationGSTIN.GSTNo" required minlength="15" maxlength="15" #publicationGSTINField="ngModel">\n                  <mat-error *ngIf="publicationGSTINField.errors && publicationGSTINField.errors.required">\n                    GSTIN is required.\n                  </mat-error>\n                  <mat-error *ngIf="publicationGSTINField.errors && (publicationGSTINField.errors.minlength || publicationGSTINField.errors.maxlength)">\n                    GSTIN should be 15 characters long.\n                  </mat-error>\n                </mat-form-field>\n              </div>\n\n              <ng-container *ngIf="mediaType == \'Print\'">\n                <div class="form-row">\n                  <div class="col">\n                    <mat-form-field>\n                      <mat-select placeholder="Pullout Name" name="pullOutName" [(ngModel)]="dropdownPullOutName" id="pullOutName" #pullOutNameField="ngModel" required>\n                        <mat-option *ngFor="let item of pullouts" [value]="item.Name">{{item.Name}}</mat-option>\n                        <mat-option [value]="others">{{others}}</mat-option>\n                      </mat-select>\n                      <mat-error *ngIf="pullOutNameField.errors && pullOutNameField.errors.required">\n                          Pullout Name is required.\n                      </mat-error>\n                    </mat-form-field>\n                  </div>\n                  <div class="col" *ngIf="dropdownPullOutName == others">\n                    <mat-form-field>\n                      <input matInput type="text" id="specPullOutName" placeholder="Enter Pullout Name" [(ngModel)]="customPullOutName" required name="specPullOutName" #specPullOutNameField="ngModel">\n                      <mat-error *ngIf="specPullOutNameField.errors && specPullOutNameField.errors.required">\n                        Pullout Name is required.\n                      </mat-error>\n                    </mat-form-field>\n                  </div>\n                </div>\n              </ng-container>\n\n              <mat-card-actions>\n                <button mat-button type="button" color="primary" (click)="addMediaHouse()">Add to Directory</button>\n              </mat-card-actions>\n            </mat-card>\n          </div>\n\n          <div class="col-lg col-md-6">\n            <br>\n            <mat-card>\n              <mat-card-title>Client Details</mat-card-title>\n  \n             <div class="row">\n              <mat-form-field class="col-lg col-md-6">\n                <input matInput type="text" [ngbTypeahead]="searchClient" id="clientName" placeholder="Client Name" [(ngModel)]="client" name="clientName" required #clientNameField="ngModel" [resultFormatter]="clientResultFormatter" [inputFormatter]="clientInputFormatter">\n                <mat-error *ngIf="clientNameField.errors && clientNameField.errors.required">\n                  Name is required.\n                </mat-error>\n              </mat-form-field>\n              \n              <mat-form-field class="col-lg col-md-6">\n                <mat-select id="clientState" name="clientState" placeholder="State" [(ngModel)]="releaseorder.clientState" required #clientStateField="ngModel">\n                  <mat-option *ngFor="let state of stateApi.states" [value]="state">{{state}}</mat-option>\n                </mat-select>\n                <mat-error *ngIf="clientStateField.errors && clientStateField.errors.required">\n                  State is required.\n                </mat-error>\n              </mat-form-field>\n             </div>\n  \n              <div class="form-row">\n                <div class="{{releaseorder.clientGSTIN.GSTType != \'URD\' ? \'col-auto\' : \'col\'}}">\n                  <mat-form-field class="col-lg col-md-6">\n                    <mat-select placeholder="GST Type" name="gstType" [(ngModel)]="releaseorder.clientGSTIN.GSTType">\n                      <mat-option value="URD">URD</mat-option>\n                      <mat-option value="RD">RD</mat-option>\n                    </mat-select>\n                  </mat-form-field>\n                </div>\n                <div class="col" *ngIf="releaseorder.clientGSTIN.GSTType != \'URD\'">\n                  <mat-form-field class="col-lg col-md-6">\n                    <input matInput type="text" name="gstNo" placeholder="GST Number" [(ngModel)]="releaseorder.clientGSTIN.GSTNo" required minlength="15" maxlength="15" #gstNoField="ngModel">\n                    <mat-error *ngIf="gstNoField.errors && gstNoField.errors.required">\n                      GSTIN is required.\n                    </mat-error>\n                    <mat-error *ngIf="gstNoField.errors && (gstNoField.errors.minlength || gstNoField.errors.maxlength)">\n                      GSTIN should be 15 characters long.\n                    </mat-error>\n                  </mat-form-field>\n                </div>\n              </div>\n  \n              <mat-card-actions>\n                <button mat-button type="button" color="primary" (click)="addClient()">Add to Directory</button>\n              </mat-card-actions>\n          </mat-card>\n          </div>\n        </div>\n\n        <br>\n          \n        <div class="row">\n          <div class="col-lg col-md-6">\n            <br>\n            <mat-card>\n              <mat-card-title>Ad Details</mat-card-title>\n\n              <div class="row">\n                <mat-form-field class="col-lg col-md-6">\n                  <mat-select matInput name="adType" [(ngModel)]="releaseorder.adType" id="adType" #adTypeField="ngModel" required>\n                    <mat-option *ngFor="let item of adTypes" [value]="item">{{item}}</mat-option>\n                  </mat-select>\n                </mat-form-field>\n\n                <mat-form-field class="col-lg col-md-6" *ngIf="mediaType == \'Print\'">\n                  <mat-select matInput name="position" [(ngModel)]="releaseorder.adPosition" id="position" #positionField="ngModel" required>\n                    <mat-option *ngFor="let item of positions" [value]="item">{{item}}</mat-option>\n                  </mat-select>\n                  <mat-error *ngIf="positionField.errors && positionField.errors.required">\n                    Position is required.\n                  </mat-error>\n                </mat-form-field>\n\n                <mat-form-field class="col-lg col-md-6" *ngIf="isTypeLen">\n                  <mat-select matInput name="hue" [(ngModel)]="releaseorder.adHue" id="hue" #hueField="ngModel" required>\n                    <mat-option *ngFor="let hue of hues" [value]="hue">{{hue}}</mat-option>\n                  </mat-select>\n                  <mat-error *ngIf="hueField.errors && hueField.errors.required">\n                    Hue is required.\n                  </mat-error>\n                </mat-form-field>\n              </div>\n\n              <div class="row">\n                <mat-form-field class="col">\n                  <input type="text" matInput id="caption" name="caption" placeholder="Caption" [(ngModel)]="releaseorder.caption" #captionField="ngModel">\n                </mat-form-field>\n\n                <button type="button" mat-raised-button class="col-auto" (click)="getCategories()">Categories *</button>\n                \n                <mat-form-field class="col"> \n                  <input type="text" matInput id="adEdition" name="adEdition" placeholder="Edition" [(ngModel)]="releaseorder.adEdition" required #adEditionField="ngModel">\n                  <mat-error *ngIf="adEditionField.errors && adEditionField.errors.required">\n                    Edition is required.\n                  </mat-error>\n                </mat-form-field>\n              </div>\n\n              <!-- <div class="row small" id="small_cat" *ngIf="selectedCategories[0]">\n                &nbsp;&nbsp;&nbsp;Categories :\n                <div *ngIf="selectedCategories[0]">  {{selectedCategories[0].name}}</div>\n                <div *ngIf="selectedCategories[1]">, {{selectedCategories[1].name}}</div>\n                <div *ngIf="selectedCategories[2]">, {{selectedCategories[2].name}}</div>\n                <div *ngIf="selectedCategories[3]">, {{selectedCategories[3].name}}</div>\n                <div *ngIf="selectedCategories[4]">, {{selectedCategories[4].name}}</div>\n                <div *ngIf="selectedCategories[5]">, {{selectedCategories[5].name}}</div>\n              </div> -->\n              \n              <br>\n\n              <div class="row">\n                <h6 class="col-lg-2 col-md-6">Scheme</h6>\n                \n                <mat-slide-toggle class="col-lg-2 col-md-6" [(ngModel)]="customScheme" name="customScheme" [disabled]="schemes.length == 0">Custom</mat-slide-toggle>\n                \n                <div class="col-lg-3 col-md-6" *ngIf="!customScheme">\n                  <select class="form-control" name="scheme" [(ngModel)]="selectedScheme" id="scheme" #schemeField="ngModel" required>\n                    <option *ngFor="let scheme of schemes" [ngValue]="scheme">Paid: {{scheme.paid}}, Free: {{scheme.Free}}, Time Limit: {{scheme.timeLimit}}</option>\n                  </select>\n                </div>\n    \n                <div class="col-lg-2 col-md-6" *ngIf="customScheme">\n                  <mat-form-field>\n                    <input matInput type="number" id="customPaid" placeholder="Paid" [(ngModel)]="customPaid" name="customPaid" required #customPaidField="ngModel">\n                    <mat-error *ngIf="customPaidField.errors && customPaidField.errors.required">\n                      Paid is required.\n                    </mat-error>\n                  </mat-form-field>          \n                </div>\n\n                <div class="col-lg-2 col-md-6">\n                  <mat-form-field>\n                    <input matInput type="number" id="customFree" placeholder="Free" [(ngModel)]="customFree" name="customFree" required #customFreeField="ngModel">\n                    <mat-error *ngIf="customFreeField.errors && customFreeField.errors.required">\n                      Free is required.\n                    </mat-error>\n                  </mat-form-field>          \n                </div>\n\n                <button type="button" class="col-lg-3 col-md-6" mat-button color="primary" (click)="getInsertions()">Insertions *</button>\n              </div>\n\n              <ng-container *ngIf="isTypeLen">\n                <div class="row">\n                  <label class="col-auto">Ad Size</label>\n                  \n                  <mat-slide-toggle class="col-auto" [(ngModel)]="customSize" name="customSize" [disabled]="fixSizes.length == 0">Custom</mat-slide-toggle>\n\n                  <mat-slide-toggle class="col-auto" [(ngModel)]="releaseorder.fixRate" name="fixedRate" *ngIf="customSize">Fixed Rate</mat-slide-toggle>\n                </div>\n                <div class="row">\n                  <div class="col" *ngIf="!customSize">\n                    <select class="form-control" name="fixSize" [(ngModel)]="selectedSize" id="fixSize" #fixSizeField="ngModel" required>\n                      <option *ngFor="let fixSize of fixSizes" [ngValue]="fixSize">Length: {{fixSize.length}}, Width: {{fixSize.width}}, Amount: {{fixSize.amount}}</option>\n                    </select>\n                  </div>\n\n                  <ng-container *ngIf="customSize">\n                    <mat-form-field class="col">\n                      <input matInput type="number" id="customL" placeholder="Length" [(ngModel)]="customSizeL" name="customL" required #customLField="ngModel">\n                      <mat-error *ngIf="customLField.errors && customLField.errors.required">\n                        Length is required.\n                      </mat-error>\n                    </mat-form-field>        \n                    \n                    <div class="col-auto align-self-center">&times;</div>\n                    \n                    <mat-form-field class="col">\n                      <input matInput type="number" id="customW" placeholder="Width" [(ngModel)]="customSizeW" name="customW" required #customWField="ngModel">\n                      <mat-error *ngIf="customWField.errors && customWField.errors.required">\n                        Width is required.\n                      </mat-error>\n                    </mat-form-field>\n                  </ng-container>\n                </div>\n\n                <div> \n                  Total Space = {{totalSpace}}\n                </div>\n              </ng-container>\n\n              <div class="row">\n                <div class="col-md-6">\n                  <mat-form-field> \n                    <input matInput type="number" id="adCountPaid" name="adCountPaid" [verify-multiple-of]="customScheme ? customPaid : selectedScheme.paid" placeholder="No of Paid Ads" [(ngModel)]="adCountPaid" required #adCountPaidField="ngModel">\n                    <mat-error *ngIf="adCountPaidField.errors && adCountPaidField.errors.required">\n                      No of Paid Ads is required.\n                    </mat-error>\n                    <mat-error *ngIf="adCountPaidField.errors && adCountPaidField.errors.multipleOf">\n                      No of Paid Ads should be multiple of Paid Ads in Scheme.\n                    </mat-error>\n                  </mat-form-field>                  \n                </div>\n\n                <mat-form-field class="col-md-6"> \n                  <input type="text" matInput id="remark" name="remark" placeholder="Remark" [(ngModel)]="releaseorder.remark" #remarkField="ngModel">\n                </mat-form-field>\n              </div>\n\n              <br>\n\n              <div class="d-lg-none">\n                <label>Insertions</label>\n                <div *ngIf="releaseorder.insertions">\n                  <ul class="list-group list-group-flush small">\n                    <li class="list-group-item" *ngFor="let item of releaseorder.insertions">\n                      <div class="row">\n                        <div class="col">{{toDate(item.date) | date}}</div>\n                        <div class="col-auto text-success" *ngIf="item.marked">\n                          <mat-icon>check</mat-icon>\n                        </div>\n                      </div>\n                    </li>\n                  </ul>\n                </div>\n              </div>\n\n              <div *ngIf="adCountPaidField.valid">\n                <p>Total Ads = {{availableAds}} ({{adCountPaid}} Paid + {{availableAds - adCountPaid}} Free)</p>\n              </div>\n\n              <div class="row">      \n                <ng-container *ngIf="isTypeWords" class="row">\n                  <mat-form-field class="col-lg-3 col-md-6">\n                    <input type="number" matInput id="maxWords" placeholder="Maximum Words / Lines" [(ngModel)]="releaseorder.AdWordsMax" name="maxWords" required #maxWordsField="ngModel">\n                    <mat-error *ngIf="maxWordsField.errors && maxWordsField.errors.required">\n                      Maximum Words / Lines is empty or invalid.\n                    </mat-error>\n                  </mat-form-field>\n            \n                  <mat-form-field class="col-lg-3 col-md-6">\n                    <input type="number" matInput id="words" placeholder="No of Words / Lines" [(ngModel)]="releaseorder.AdWords" name="words" required #wordsField="ngModel">\n                    <mat-error *ngIf="wordsField.errors && wordsField.errors.required">\n                      No of Words / Lines is empty or invalid.\n                    </mat-error>\n                  </mat-form-field>            \n                </ng-container>\n    \n                <ng-container *ngIf="isTypeTime" class="row">\n                  <mat-form-field class="col-lg-3 col-md-6">\n                    <input type="number" matInput id="duration" placeholder="Duration" [(ngModel)]="releaseorder.AdDuration" name="duration" required #durationField="ngModel">\n                    <mat-error *ngIf="durationField.errors && durationField.errors.required">\n                      Duration is required.\n                    </mat-error>\n                  </mat-form-field>\n            \n                  <mat-form-field class="col-lg-3 col-md-6">\n                    <mat-select matInput name="adTime" [(ngModel)]="releaseorder.AdTime" id="adTime" #adTimeField="ngModel" required>\n                      <mat-option *ngFor="let item of adTimes" [value]="item">{{item}}</mat-option>\n                    </mat-select>\n                  </mat-form-field>\n                </ng-container>\n              </div>            \n            </mat-card>\n          </div>\n\n          <div class="col-lg col-md-6">\n            <br>\n            <mat-card>\n              <mat-card-title>Premiums</mat-card-title>\n              <ng-container *ngIf="isTypeWords">\n                <div class="row">\n                  <div class="col-lg col-md-6">\n                    <div class="form-row">\n                      <div class="col-auto align-self-center">\n                        <mat-checkbox name="cBox" [(ngModel)]="releaseorder.PremiumBox.Included"></mat-checkbox>\n                      </div>\n                      <div class="col">\n                        <mat-form-field>\n                          <input type="number" matInput placeholder="Box" name="premiumBox" [(ngModel)]="releaseorder.PremiumBox.Amount" required #premiumBoxField="ngModel">\n                          <mat-error *ngIf="premiumBoxField.errors && premiumBoxField.errors.required">\n                            Box Premium Amount is required.\n                          </mat-error>\n                        </mat-form-field>\n                      </div>\n                    </div>\n                  </div>\n                  <div class="col-lg col-md-6">\n                    <div class="form-row">\n                      <div class="col-auto align-self-center">\n                        <mat-checkbox name="cBaseColour" [(ngModel)]="releaseorder.PremiumBaseColour.Included"></mat-checkbox>\n                      </div>\n                      <div class="col">\n                        <mat-form-field>\n                          <input type="number" matInput placeholder="Base Colour" name="premiumBaseColour" [(ngModel)]="releaseorder.PremiumBaseColour.Amount" required #premiumBaseColourField="ngModel">\n                          <mat-error *ngIf="premiumBaseColourField.errors && premiumBaseColourField.errors.required">\n                            Base Colour Premium Amount is required.\n                          </mat-error>\n                        </mat-form-field>\n                      </div>\n                    </div>\n                  </div>\n                  <div class="col-lg col-md-6">\n                    <div class="form-row">\n                      <div class="col-auto align-self-center">\n                        <mat-checkbox name="cCheckMark" [(ngModel)]="releaseorder.PremiumCheckMark.Included"></mat-checkbox>\n                      </div>\n                      <div class="col">\n                        <mat-form-field>\n                          <input type="number" matInput placeholder="Check Mark" name="premiumCheckMark" [(ngModel)]="releaseorder.PremiumCheckMark.Amount" required #premiumCheckMarkField="ngModel">\n                          <mat-error *ngIf="premiumCheckMarkField.errors && premiumCheckMarkField.errors.required">\n                            Check Mark Premium Amount is required.\n                          </mat-error>\n                        </mat-form-field>\n                      </div>\n                    </div>\n                  </div>\n                </div>\n                \n                <div class="form-row">\n                  <div class="col-auto align-self-center">\n                    <mat-checkbox name="cEmailId" [(ngModel)]="releaseorder.PremiumEmailId.Included"></mat-checkbox>\n                  </div>\n                  <div class="col">\n                    <mat-form-field>\n                      <input type="number" matInput placeholder="Email" name="premiumEmailId" [(ngModel)]="releaseorder.PremiumEmailId.Amount" required #premiumEmailIdField="ngModel">\n                      <mat-error *ngIf="premiumEmailIdField.errors && premiumEmailIdField.errors.required">\n                        Email Premium Amount is required.\n                      </mat-error>\n                    </mat-form-field>\n                  </div>\n                  <div class="col">\n                    <mat-form-field>\n                      <input type="number" matInput placeholder="Quantity" name="premiumEmailIdQuantity" [(ngModel)]="releaseorder.PremiumEmailId.Quantity" required #premiumEmailIdQuantityField="ngModel">\n                      <mat-error *ngIf="premiumEmailIdQuantityField.errors && premiumEmailIdQuantityField.errors.required">\n                        Email Premium Quantity is required.\n                      </mat-error>\n                    </mat-form-field>\n                  </div>\n                </div>\n                <div class="form-row">\n                  <div class="col-auto align-self-center">\n                    <mat-checkbox name="cWebsite" [(ngModel)]="releaseorder.PremiumWebsite.Included"></mat-checkbox>\n                  </div>\n                  <div class="col">\n                    <mat-form-field>\n                      <input type="number" matInput placeholder="Website" name="premiumWebsite" [(ngModel)]="releaseorder.PremiumWebsite.Amount" required #premiumWebsiteField="ngModel">\n                      <mat-error *ngIf="premiumWebsiteField.errors && premiumWebsiteField.errors.required">\n                        Website Premium Amount is required.\n                      </mat-error>\n                    </mat-form-field>\n                  </div>\n                  <div class="col">\n                    <mat-form-field>\n                      <input type="number" matInput placeholder="Quantity" name="premiumWebsiteQuantity" [(ngModel)]="releaseorder.PremiumWebsite.Quantity" required #premiumWebsiteQuantityField="ngModel">\n                      <mat-error *ngIf="premiumWebsiteQuantityField.errors && premiumWebsiteQuantityField.errors.required">\n                        Website Premium Quantity is required.\n                      </mat-error>\n                    </mat-form-field>\n                  </div>\n                </div>\n                <div class="form-row">\n                  <div class="col-auto align-self-center">\n                    <mat-checkbox name="cExtraWords" [(ngModel)]="releaseorder.PremiumExtraWords.Included"></mat-checkbox>\n                  </div>\n                  <div class="col">\n                    <mat-form-field>\n                      <input type="number" matInput placeholder="Extra Words / Lines" name="premiumExtraWords" [(ngModel)]="releaseorder.PremiumExtraWords.Amount" required #premiumExtraWordsField="ngModel">\n                      <mat-error *ngIf="premiumExtraWordsField.errors && premiumExtraWordsField.errors.required">\n                        Extra Words / Lines Premium Amount is required.\n                      </mat-error>\n                    </mat-form-field>\n                  </div>\n                  <div class="col">\n                    <mat-form-field>\n                      <input type="number" matInput placeholder="Quantity" name="premiumExtraWordsQuantity" [(ngModel)]="releaseorder.PremiumExtraWords.Quantity" required #premiumExtraWordsQuantityField="ngModel">\n                      <mat-error *ngIf="premiumExtraWordsQuantityField.errors && premiumExtraWordsQuantityField.errors.required">\n                        Extra Words / Lines Premium Quantity is required.\n                      </mat-error>\n                    </mat-form-field>\n                  </div>\n                </div>\n              </ng-container>\n              <ng-container *ngIf="!isTypeWords">\n                <div class="row">\n                  <div class="col">\n                    <mat-form-field>\n                      <input matInput placeholder="Type" name="premiumType" [(ngModel)]="releaseorder.PremiumCustom.PremiumType" #premiumTypeField="ngModel">\n                    </mat-form-field>\n                  </div>\n                  <div class="col">\n                    <mat-form-field>\n                      <input type="number" matInput placeholder="Amount" name="premiumAmount" [(ngModel)]="releaseorder.PremiumCustom.Amount" required #premiumAmountField="ngModel">\n                      <span matSuffix>{{releaseorder.PremiumCustom.Percentage ? \'%\' : \'\'}}</span>\n                      <mat-error *ngIf="premiumAmountField.errors && premiumAmountField.errors.required">\n                        Premium Amount is required.\n                      </mat-error>\n                    </mat-form-field>\n                  </div>\n                </div>\n                <mat-checkbox class="my-2" name="premiumPercent" [(ngModel)]="releaseorder.PremiumCustom.Percentage">Amount in Percentage</mat-checkbox>\n              </ng-container>\n            \n            </mat-card>\n          </div>\n        </div>\n\n        <br>\n\n        <div class="row">\n          <div class="col-lg col-md-6">\n            <br>\n            <mat-card>\n              <mat-card-title>Ad Rate and Discounts</mat-card-title>\n\n              <div class="row">\n                <mat-form-field class="col-lg-3 col-md-6">\n                  <input type="number" matInput id="rate" placeholder="Rate" [(ngModel)]="releaseorder.rate" name="rate" required #rateField="ngModel">\n                  <mat-error *ngIf="rateField.errors && rateField.errors.required">\n                    Rate is required.\n                  </mat-error>\n                </mat-form-field>\n                <mat-form-field class="col-lg-3 col-md-6"> \n                  <mat-select matInput name="unit" [(ngModel)]="releaseorder.unit" id="unit" #unitField="ngModel" required>\n                    <mat-option *ngFor="let item of units" [value]="item">{{item}}</mat-option>\n                  </mat-select>\n                </mat-form-field>\n              </div>  \n              <div class="row">\n                <mat-form-field class="col-lg-4 col-md-6">\n                  <input matInput type="number" id="publicationDiscount" name="publicationDiscount" placeholder="Publication Discount" [(ngModel)]="releaseorder.publicationDiscount" required #publicationDiscountField="ngModel">\n                  <mat-error *ngIf="publicationDiscountField.errors && publicationDiscountField.errors.required">\n                    Publication Discount is required.\n                  </mat-error>\n                </mat-form-field>\n                \n                <mat-form-field class="col-lg-4 col-md-6">\n                  <input matInput type="number" id="agencyDiscount1" name="agencyDiscount1" placeholder="Agency Discount 1" [(ngModel)]="releaseorder.agencyDiscount1" required #agencyDiscount1Field="ngModel">\n                  <mat-error *ngIf="agencyDiscount1Field.errors && agencyDiscount1Field.errors.required">\n                    Agency Discount 1 is required.\n                  </mat-error>\n                </mat-form-field>\n            \n                <mat-form-field class="col-lg-4 col-md-6">\n                  <input matInput type="number" id="agencyDiscount2" name="agencyDiscount2" placeholder="Agency Discount 2" [(ngModel)]="releaseorder.agencyDiscount2" required #agencyDiscount2Field="ngModel">\n                  <mat-error *ngIf="agencyDiscount2Field.errors && agencyDiscount2Field.errors.required">\n                    Agency Discount 2 is required.\n                  </mat-error>\n                </mat-form-field>\n              </div>\n\n              <div class="form-row">\n                <label class="col-3 col-form-label">Tax</label>\n                <div class="col-auto col-form-label">\n                  <div class="form-check">\n                    <mat-checkbox class="my-2" name="taxIncluded" [(ngModel)]="releaseorder.taxIncluded" >Included</mat-checkbox>\n                  </div>\n                </div>\n                <div class="col">\n                  <mat-form-field>\n                    <mat-select name="tax" [(ngModel)]="selectedTax" id="tax" #taxField="ngModel" required>\n                      <mat-option *ngFor="let item of taxes" [value]="item">{{item.primary}}% <span *ngIf="item.secondary">+ {{item.secondary}}%</span></mat-option>\n                    </mat-select>\n                    <mat-error *ngIf="taxField.errors && taxField.errors.required">\n                      Tax is required.\n                    </mat-error>\n                  </mat-form-field>\n                </div>\n              </div>\n\n              <label id="add_details">Additional Details</label>\n\n              <div class="row">\n                <mat-form-field class="col-lg-4 col-md-6">\n                  <mat-select name="paymentType" placeholder="Type" [(ngModel)]="releaseorder.paymentType" id="paymentType" #paymentTypeField="ngModel" required>\n                    <mat-option *ngFor="let item of paymentTypes" [value]="item">{{item}}</mat-option>\n                  </mat-select>\n                </mat-form-field>\n            \n                <ng-container *ngIf="releaseorder.paymentType != \'Cash\' && releaseorder.paymentType != \'Credit\'">\n                <div class="row">\n                  <mat-form-field  class="col-lg col-md-6">\n                    <input matInput [matDatepicker]="paymentDateField" name="paymentDate" placeholder="Date" [(ngModel)]="releaseorder.paymentDate" required disabled>\n                    <mat-datepicker-toggle matSuffix [for]="paymentDateField"></mat-datepicker-toggle>\n                    <mat-datepicker #paymentDateField disabled="false"></mat-datepicker>\n                    <mat-error *ngIf="paymentDateField.errors && paymentDateField.errors.required">\n                      Date is required.\n                    </mat-error>\n                  </mat-form-field>\n            \n                  <mat-form-field  class="col-lg col-md-6">\n                    <input matInput type="text" id="paymentCheque" name="paymentCheque" placeholder="No" [(ngModel)]="releaseorder.paymentNo" required #paymentChequeField="ngModel">\n                    <mat-error *ngIf="paymentChequeField.errors && paymentChequeField.errors.required">\n                      No is required.\n                    </mat-error>\n                  </mat-form-field>\n                </div>\n                <div class="row">\n                  <mat-form-field  class="col-lg col-md-6">\n                    <input type="number" matInput id="paymentAmount" name="paymentAmount" placeholder="Enter Amount" [(ngModel)]="releaseorder.paymentAmount" required #paymentAmountField="ngModel">\n                    <mat-error *ngIf="paymentAmountField.errors && paymentAmountField.errors.required">\n                      Amount is required.\n                    </mat-error>\n                  </mat-form-field>\n            \n                  <ng-container *ngIf="releaseorder.paymentType == \'Cheque\'">\n                    <mat-form-field  class="col-lg col-md-6">\n                      <input type="text" matInput id="bankName" name="bankName" placeholder="Bank Name" [(ngModel)]="releaseorder.paymentBankName" required #bankNameField="ngModel">\n                      <mat-error *ngIf="bankNameField.errors && bankNameField.errors.required">\n                        Bank Name is required.\n                      </mat-error>\n                    </mat-form-field>\n                  </ng-container>\n                </div>\n              </ng-container>\n            </div>\n            </mat-card>\n          </div>\n\n          <div class="col-lg col-md-6">\n            <br>\n            <mat-card>\n              <mat-card-title>Other Charges</mat-card-title>\n\n              <div class="text-muted" *ngIf="releaseorder.otherCharges.length == 0">\n                No Other Charges\n              </div>\n\n              <div class="row">\n                <mat-form-field class="col-lg col-md-6">\n                  <input type="text" matInput [ngbTypeahead]="searchExecutive" id="executiveName" placeholder="Executive Name" [(ngModel)]="executive" name="executiveName" required #executiveNameField="ngModel" [resultFormatter]="executiveResultFormatter" [inputFormatter]="executiveInputFormatter">\n                  <mat-error *ngIf="executiveNameField.errors && executiveNameField.errors.required">\n                    Executive Name is required.\n                  </mat-error>\n                </mat-form-field>\n                \n                <mat-form-field class="col-lg col-md-6">\n                  <input type="text" matInput id="executiveOrg" placeholder="Executive Organisation" [(ngModel)]="releaseorder.executiveOrg" name="executiveOrg" required #executiveOrgField="ngModel">\n                  <mat-error *ngIf="executiveOrgField.errors && executiveOrgField.errors.required">\n                    Executive Organisation is required.\n                  </mat-error>\n                </mat-form-field>\n\n                <button mat-button type="button" color="primary" (click)="addExecutive()">Add to Directory</button>\n              </div>\n\n              <div *ngFor="let item of releaseorder.otherCharges; index as i" class="mb-1">\n                <div class="form-row">\n                  <div class="col">\n                    <mat-form-field>\n                      <input matInput placeholder="Type" name="otherChargesType-{{i}}" [(ngModel)]="item.chargeType" required #otherChargesTypeField="ngModel">\n                      <mat-error *ngIf="otherChargesTypeField.errors && otherChargesTypeField.errors.required">\n                        Type is required.\n                      </mat-error>\n                    </mat-form-field>\n                  </div>\n                  <div class="col">\n                    <mat-form-field>\n                      <input type="number" matInput placeholder="Amount" name="otherCharges-{{i}}" [(ngModel)]="item.amount" required #otherChargesField="ngModel">\n                      <mat-error *ngIf="otherChargesField.errors && otherChargesField.errors.required">\n                        Amount is required.\n                      </mat-error>\n                    </mat-form-field>\n                  </div>\n                  <div class="col-auto col-form-label">\n                    <button mat-icon-button color="warn" type="button" (click)="removeOtherCharge(i)">\n                      <mat-icon>delete</mat-icon>\n                    </button>\n                  </div>\n                </div>\n              </div>\n              \n              <br>           \n              <mat-form-field>\n                <input matInput placeholder="Remark" name="otherRemark" [(ngModel)]="releaseorder.otherRemark">\n              </mat-form-field>\n\n              <mat-card-actions>\n                <button mat-button type="button" color="primary" (click)="addCharges()">Add More</button>\n              </mat-card-actions>\n\n            </mat-card>\n          </div>\n        </div>\n\n        <br><br>\n\n      </form>\n    </div>\n \n  </mat-sidenav-content>\n</mat-sidenav-container>\n\n<ion-footer>\n  <ion-toolbar>\n    <div class="container-fluid">\n      <div class="row">\n        <button class="btn btn-light btn-lg text-success col" type="button" (click)="save()" [disabled]="!roForm.form.valid">\n          <ion-icon name="add"></ion-icon>\n          <p class="small">Save</p>\n        </button>\n        <button class="btn btn-light btn-lg text-danger col" type="button" (click)="cancel()">\n          <ion-icon name="close"></ion-icon>\n          <p class="small">Cancel</p>\n        </button>\n        <button class="btn btn-light btn-lg text-warning col" type="button" (click)="genPreview()"  [disabled]="!roForm.form.valid">\n          <ion-icon name="clipboard"></ion-icon>\n          <p class="small">Preview</p>\n        </button>\n        <button class="btn btn-light btn-lg text-info col" type="button" (click)="saveAndGen()" [disabled]="!roForm.form.valid">\n          <ion-icon name="download"></ion-icon>\n          <p class="small">Download</p>\n        </button>\n        <button class="btn btn-light btn-lg text-primary col" type="button" (click)="saveAndSendMsg()" [disabled]="!roForm.form.valid">\n          <ion-icon name="mail"></ion-icon>\n          <p class="small">Send Email</p>\n        </button>\n      </div>\n    </div>\n  </ion-toolbar>\n</ion-footer>\n'/*ion-inline-end:"/home/lambo/zaaa-ionic/src/app/release-order/release-order/release-order.component.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_7__angular_router__["a" /* ActivatedRoute */],
             __WEBPACK_IMPORTED_MODULE_11_app_services__["e" /* GobackService */],
@@ -5019,7 +4765,7 @@ var ReleaseOrderComponent = (function () {
 
 /***/ }),
 
-/***/ 1051:
+/***/ 1046:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5030,7 +4776,7 @@ var ReleaseOrderComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__rate_card_api_service__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__rate_card_api_service__ = __webpack_require__(103);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5082,7 +4828,7 @@ var RateCardResolver = (function () {
 
 /***/ }),
 
-/***/ 1052:
+/***/ 1047:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5093,7 +4839,7 @@ var RateCardResolver = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__rate_card_api_service__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__rate_card_api_service__ = __webpack_require__(103);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5138,7 +4884,7 @@ var RateCardListResolver = (function () {
 
 /***/ }),
 
-/***/ 1053:
+/***/ 1048:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5148,19 +4894,19 @@ var RateCardListResolver = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_observable_of__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_debounceTime__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_debounceTime__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_debounceTime___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_debounceTime__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_distinctUntilChanged__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_distinctUntilChanged__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_distinctUntilChanged___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_distinctUntilChanged__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_switchMap__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_switchMap__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_switchMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_switchMap__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_operators__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_operators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_rxjs_operators__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__rate_card_api_service__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__rate_card_api_service__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_app_directory__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__rate_card__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__rate_card__ = __webpack_require__(120);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5587,7 +5333,7 @@ var RateCardComponent = (function () {
 
 /***/ }),
 
-/***/ 1054:
+/***/ 1049:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5595,8 +5341,8 @@ var RateCardComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_services__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__rate_card__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__rate_card_api_service__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__rate_card__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__rate_card_api_service__ = __webpack_require__(103);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5675,7 +5421,113 @@ var RateCardDetailsComponent = (function () {
 
 /***/ }),
 
-/***/ 1055:
+/***/ 105:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InvoiceApiService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operators__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_operators__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_directory__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__invoice__ = __webpack_require__(175);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_models__ = __webpack_require__(25);
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var InvoiceApiService = (function () {
+    function InvoiceApiService(api, clientApi, mediaHouseApi, executiveApi) {
+        this.api = api;
+        this.clientApi = clientApi;
+        this.mediaHouseApi = mediaHouseApi;
+        this.executiveApi = executiveApi;
+    }
+    InvoiceApiService.prototype.bodyToInvoice = function (body) {
+        var result = new __WEBPACK_IMPORTED_MODULE_4__invoice__["a" /* Invoice */]();
+        Object.assign(result, body);
+        result.id = body._id;
+        return result;
+    };
+    InvoiceApiService.prototype.createInvoice = function (invoice) {
+        return this.api.post('/user/invoice', invoice);
+    };
+    InvoiceApiService.prototype.getInvoice = function (id) {
+        var _this = this;
+        return this.api.get('/user/invoice/' + id).map(function (data) { return data.success ? _this.bodyToInvoice(data.invoice) : null; });
+    };
+    InvoiceApiService.prototype.searchInvoices = function (page, params) {
+        var _this = this;
+        return this.api.post('/user/invoice/search', {
+            page: page,
+            publicationName: params.mediaHouse,
+            publicationEdition: params.edition,
+            clientName: params.client,
+            executiveName: params.executive,
+            executiveOrg: params.executiveOrg,
+            date: params.past
+        }).pipe(Object(__WEBPACK_IMPORTED_MODULE_1_rxjs_operators__["map"])(function (data) {
+            var invoices = [];
+            if (data.success) {
+                data.invoice.forEach(function (element) {
+                    invoices.push(_this.bodyToInvoice(element));
+                });
+            }
+            return new __WEBPACK_IMPORTED_MODULE_5_app_models__["d" /* PageData */](invoices, data.perPage, data.page, data.pageCount);
+        }));
+    };
+    InvoiceApiService.prototype.sendMail = function (invoice, mailingDetails) {
+        return this.api.post('/user/invoice/email', __assign({ id: invoice.id }, mailingDetails));
+    };
+    InvoiceApiService.prototype.generate = function (invoice) {
+        return this.api.post('/user/invoice/download', {
+            id: invoice.id
+        }, { responseType: 'blob' });
+    };
+    InvoiceApiService.prototype.getInvoiceDir = function (id) {
+        var _this = this;
+        return this.api.get('/user/invoice/' + id).pipe(Object(__WEBPACK_IMPORTED_MODULE_1_rxjs_operators__["map"])(function (data) { return data.success ? {
+            invoice: _this.bodyToInvoice(data.invoice),
+            mediaHouse: _this.mediaHouseApi.bodyToMediaHouse(data.mediahouse),
+            client: _this.clientApi.bodyToClient(data.client),
+            executive: _this.executiveApi.bodyToExecutive(data.executive)
+        } : null; }));
+    };
+    InvoiceApiService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_app_services__["a" /* ApiService */],
+            __WEBPACK_IMPORTED_MODULE_3_app_directory__["b" /* ClientApiService */],
+            __WEBPACK_IMPORTED_MODULE_3_app_directory__["o" /* MediaHouseApiService */],
+            __WEBPACK_IMPORTED_MODULE_3_app_directory__["i" /* ExecutiveApiService */]])
+    ], InvoiceApiService);
+    return InvoiceApiService;
+}());
+
+//# sourceMappingURL=invoice-api.service.js.map
+
+/***/ }),
+
+/***/ 1050:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5684,18 +5536,18 @@ var RateCardDetailsComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_of__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_debounceTime__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_debounceTime__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_debounceTime___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_debounceTime__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_distinctUntilChanged__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_distinctUntilChanged__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_distinctUntilChanged___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_distinctUntilChanged__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__ = __webpack_require__(174);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__ = __webpack_require__(173);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_do__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_switchMap__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_switchMap__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_switchMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_switchMap__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__rate_card_api_service__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__rate_card_api_service__ = __webpack_require__(103);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5809,7 +5661,7 @@ var RateCardListComponent = (function () {
 
 /***/ }),
 
-/***/ 1056:
+/***/ 1051:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5817,7 +5669,7 @@ var RateCardListComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_services__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__release_order__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__release_order__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__release_order_api_service__ = __webpack_require__(71);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -5911,7 +5763,7 @@ var ReleaseOrderDetailsComponent = (function () {
 
 /***/ }),
 
-/***/ 1057:
+/***/ 1052:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5922,7 +5774,7 @@ var ReleaseOrderDetailsComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_observable_of__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_observable_of__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__release_order_api_service__ = __webpack_require__(71);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__release_order_search_params__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__release_order_search_params__ = __webpack_require__(131);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_app_directory__ = __webpack_require__(22);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -6191,14 +6043,14 @@ var ReleaseOrderListComponent = (function () {
 
 /***/ }),
 
-/***/ 1058:
+/***/ 1053:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_module__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2____ = __webpack_require__(557);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2____ = __webpack_require__(556);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(31);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -6237,7 +6089,7 @@ var AdminModule = (function () {
 
 /***/ }),
 
-/***/ 1059:
+/***/ 1054:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6245,14 +6097,14 @@ var AdminModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_services__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_plan__ = __webpack_require__(400);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_api_service__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_api_service__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_razorpay_service__ = __webpack_require__(441);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_window_service__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_window_service__ = __webpack_require__(156);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ng_bootstrap_ng_bootstrap__ = __webpack_require__(249);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__empty_empty_component__ = __webpack_require__(558);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__empty_empty_component__ = __webpack_require__(557);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components__ = __webpack_require__(173);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components__ = __webpack_require__(172);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6365,113 +6217,7 @@ var PlanSelectorComponent = (function () {
 
 /***/ }),
 
-/***/ 106:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InvoiceApiService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operators__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_operators__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_directory__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__invoice__ = __webpack_require__(176);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_models__ = __webpack_require__(25);
-var __assign = (this && this.__assign) || Object.assign || function(t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-        s = arguments[i];
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-            t[p] = s[p];
-    }
-    return t;
-};
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-var InvoiceApiService = (function () {
-    function InvoiceApiService(api, clientApi, mediaHouseApi, executiveApi) {
-        this.api = api;
-        this.clientApi = clientApi;
-        this.mediaHouseApi = mediaHouseApi;
-        this.executiveApi = executiveApi;
-    }
-    InvoiceApiService.prototype.bodyToInvoice = function (body) {
-        var result = new __WEBPACK_IMPORTED_MODULE_4__invoice__["a" /* Invoice */]();
-        Object.assign(result, body);
-        result.id = body._id;
-        return result;
-    };
-    InvoiceApiService.prototype.createInvoice = function (invoice) {
-        return this.api.post('/user/invoice', invoice);
-    };
-    InvoiceApiService.prototype.getInvoice = function (id) {
-        var _this = this;
-        return this.api.get('/user/invoice/' + id).map(function (data) { return data.success ? _this.bodyToInvoice(data.invoice) : null; });
-    };
-    InvoiceApiService.prototype.searchInvoices = function (page, params) {
-        var _this = this;
-        return this.api.post('/user/invoice/search', {
-            page: page,
-            publicationName: params.mediaHouse,
-            publicationEdition: params.edition,
-            clientName: params.client,
-            executiveName: params.executive,
-            executiveOrg: params.executiveOrg,
-            date: params.past
-        }).pipe(Object(__WEBPACK_IMPORTED_MODULE_1_rxjs_operators__["map"])(function (data) {
-            var invoices = [];
-            if (data.success) {
-                data.invoice.forEach(function (element) {
-                    invoices.push(_this.bodyToInvoice(element));
-                });
-            }
-            return new __WEBPACK_IMPORTED_MODULE_5_app_models__["d" /* PageData */](invoices, data.perPage, data.page, data.pageCount);
-        }));
-    };
-    InvoiceApiService.prototype.sendMail = function (invoice, mailingDetails) {
-        return this.api.post('/user/invoice/email', __assign({ id: invoice.id }, mailingDetails));
-    };
-    InvoiceApiService.prototype.generate = function (invoice) {
-        return this.api.post('/user/invoice/download', {
-            id: invoice.id
-        }, { responseType: 'blob' });
-    };
-    InvoiceApiService.prototype.getInvoiceDir = function (id) {
-        var _this = this;
-        return this.api.get('/user/invoice/' + id).pipe(Object(__WEBPACK_IMPORTED_MODULE_1_rxjs_operators__["map"])(function (data) { return data.success ? {
-            invoice: _this.bodyToInvoice(data.invoice),
-            mediaHouse: _this.mediaHouseApi.bodyToMediaHouse(data.mediahouse),
-            client: _this.clientApi.bodyToClient(data.client),
-            executive: _this.executiveApi.bodyToExecutive(data.executive)
-        } : null; }));
-    };
-    InvoiceApiService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_app_services__["a" /* ApiService */],
-            __WEBPACK_IMPORTED_MODULE_3_app_directory__["b" /* ClientApiService */],
-            __WEBPACK_IMPORTED_MODULE_3_app_directory__["o" /* MediaHouseApiService */],
-            __WEBPACK_IMPORTED_MODULE_3_app_directory__["i" /* ExecutiveApiService */]])
-    ], InvoiceApiService);
-    return InvoiceApiService;
-}());
-
-//# sourceMappingURL=invoice-api.service.js.map
-
-/***/ }),
-
-/***/ 1060:
+/***/ 1055:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6544,7 +6290,7 @@ var ProfileEditComponent = (function () {
 
 /***/ }),
 
-/***/ 1061:
+/***/ 1056:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6597,7 +6343,7 @@ var TemplateSelectorComponent = (function () {
 
 /***/ }),
 
-/***/ 1062:
+/***/ 1057:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6684,7 +6430,7 @@ var TemplateSelectorItemComponent = (function () {
 
 /***/ }),
 
-/***/ 1063:
+/***/ 1058:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6819,15 +6565,15 @@ var DirRoutingModule = (function () {
 
 /***/ }),
 
-/***/ 1064:
+/***/ 1059:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoUsersModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_module__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__co_users_routing_module__ = __webpack_require__(1065);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3____ = __webpack_require__(559);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__co_users_routing_module__ = __webpack_require__(1060);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3____ = __webpack_require__(558);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(31);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -6871,7 +6617,7 @@ var CoUsersModule = (function () {
 
 /***/ }),
 
-/***/ 1065:
+/***/ 1060:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6880,7 +6626,7 @@ var CoUsersModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_guards__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4____ = __webpack_require__(559);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4____ = __webpack_require__(558);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6936,14 +6682,14 @@ var CoUsersRoutingModule = (function () {
 
 /***/ }),
 
-/***/ 1066:
+/***/ 1061:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoUsersResolver; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__co_user_api_service__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__co_user_api_service__ = __webpack_require__(135);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6975,7 +6721,7 @@ var CoUsersResolver = (function () {
 
 /***/ }),
 
-/***/ 1067:
+/***/ 1062:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6984,7 +6730,7 @@ var CoUsersResolver = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__co_user__ = __webpack_require__(301);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__co_user_api_service__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__co_user_api_service__ = __webpack_require__(135);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7057,7 +6803,7 @@ var CoUserComponent = (function () {
 
 /***/ }),
 
-/***/ 1068:
+/***/ 1063:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7065,7 +6811,7 @@ var CoUserComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_services__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__co_user_api_service__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__co_user_api_service__ = __webpack_require__(135);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7125,14 +6871,14 @@ var CoUsersComponent = (function () {
 
 /***/ }),
 
-/***/ 1069:
+/***/ 1064:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RoleControlComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_services__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_roles__ = __webpack_require__(135);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_roles__ = __webpack_require__(134);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7170,7 +6916,7 @@ var RoleControlComponent = (function () {
 
 /***/ }),
 
-/***/ 1070:
+/***/ 1065:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7178,8 +6924,8 @@ var RoleControlComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_services__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__user_roles__ = __webpack_require__(135);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__co_user_api_service__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__user_roles__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__co_user_api_service__ = __webpack_require__(135);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7250,7 +6996,7 @@ var RoleEditComponent = (function () {
 
 /***/ }),
 
-/***/ 1071:
+/***/ 1066:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7258,7 +7004,7 @@ var RoleEditComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_guards__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3____ = __webpack_require__(175);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3____ = __webpack_require__(174);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7342,7 +7088,7 @@ var RateCardRoutingModule = (function () {
 
 /***/ }),
 
-/***/ 1072:
+/***/ 1067:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7350,7 +7096,7 @@ var RateCardRoutingModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_guards__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_rate_card__ = __webpack_require__(175);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_rate_card__ = __webpack_require__(174);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4____ = __webpack_require__(27);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -7459,7 +7205,7 @@ var ReleaseOrderRoutingModule = (function () {
 
 /***/ }),
 
-/***/ 1073:
+/***/ 1068:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7467,7 +7213,7 @@ var ReleaseOrderRoutingModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_guards__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3____ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3____ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_release_order__ = __webpack_require__(27);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -7531,7 +7277,7 @@ var InvoiceRoutingModule = (function () {
 
 /***/ }),
 
-/***/ 1074:
+/***/ 1069:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7542,7 +7288,7 @@ var InvoiceRoutingModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__invoice_api_service__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__invoice_api_service__ = __webpack_require__(105);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7586,7 +7332,7 @@ var InvoiceResolver = (function () {
 
 /***/ }),
 
-/***/ 1075:
+/***/ 1070:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7598,7 +7344,7 @@ var InvoiceResolver = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_release_order__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__invoice_api_service__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__invoice_api_service__ = __webpack_require__(105);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7651,7 +7397,7 @@ var InvoiceListResolver = (function () {
 
 /***/ }),
 
-/***/ 1076:
+/***/ 1071:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7663,7 +7409,7 @@ var InvoiceListResolver = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__invoice_api_service__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__invoice_api_service__ = __webpack_require__(105);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7712,28 +7458,28 @@ var InvoiceDirResolver = (function () {
 
 /***/ }),
 
-/***/ 1077:
+/***/ 1072:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InvoiceComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_services__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_catch__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_catch__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_catch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_debounceTime__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_debounceTime__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_debounceTime___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_debounceTime__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_distinctUntilChanged__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_distinctUntilChanged__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_distinctUntilChanged___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_distinctUntilChanged__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_switchMap__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_switchMap__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_switchMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_switchMap__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_operators__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_operators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_operators__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__invoice__ = __webpack_require__(176);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__invoice_api_service__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__invoice__ = __webpack_require__(175);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__invoice_api_service__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_app_release_order__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__select_release_order_select_release_order_component__ = __webpack_require__(563);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__select_release_order_select_release_order_component__ = __webpack_require__(562);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8088,7 +7834,7 @@ var InvoiceComponent = (function () {
 
 /***/ }),
 
-/***/ 1078:
+/***/ 1073:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8098,7 +7844,7 @@ var InvoiceComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_observable_of__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__invoice_api_service__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__invoice_api_service__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_release_order__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_app_directory__ = __webpack_require__(22);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -8328,7 +8074,7 @@ var InvoiceListComponent = (function () {
 
 /***/ }),
 
-/***/ 1079:
+/***/ 1074:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8336,7 +8082,7 @@ var InvoiceListComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_services__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__invoice__ = __webpack_require__(176);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__invoice__ = __webpack_require__(175);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8393,7 +8139,7 @@ var InvoiceDetailsComponent = (function () {
 
 /***/ }),
 
-/***/ 1080:
+/***/ 1075:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8401,9 +8147,9 @@ var InvoiceDetailsComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_guards__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_invoice__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4____ = __webpack_require__(177);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__create_receipt_create_receipt_component__ = __webpack_require__(566);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_invoice__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4____ = __webpack_require__(176);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__create_receipt_create_receipt_component__ = __webpack_require__(565);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8500,7 +8246,7 @@ var ReceiptsRoutingModule = (function () {
 
 /***/ }),
 
-/***/ 1081:
+/***/ 1076:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8512,7 +8258,7 @@ var ReceiptsRoutingModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_release_order__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__receipts_api_service__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__receipts_api_service__ = __webpack_require__(84);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8564,7 +8310,7 @@ var ReceiptListResolver = (function () {
 
 /***/ }),
 
-/***/ 1082:
+/***/ 1077:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8575,7 +8321,7 @@ var ReceiptListResolver = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__receipts_api_service__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__receipts_api_service__ = __webpack_require__(84);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8619,7 +8365,7 @@ var ReceiptResolver = (function () {
 
 /***/ }),
 
-/***/ 1083:
+/***/ 1078:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8629,8 +8375,8 @@ var ReceiptResolver = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_observable_of__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__payment_receipt__ = __webpack_require__(137);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__receipts_api_service__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__payment_receipt__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__receipts_api_service__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_app_directory__ = __webpack_require__(22);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -8796,7 +8542,7 @@ var AdvanceReceiptComponent = (function () {
 
 /***/ }),
 
-/***/ 1084:
+/***/ 1079:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8804,8 +8550,8 @@ var AdvanceReceiptComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_services__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_invoice__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__receipts_api_service__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_invoice__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__receipts_api_service__ = __webpack_require__(84);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8871,7 +8617,7 @@ var LinkAdvanceComponent = (function () {
 
 /***/ }),
 
-/***/ 1085:
+/***/ 1080:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8879,10 +8625,10 @@ var LinkAdvanceComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_services__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__payment_receipt__ = __webpack_require__(137);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_invoice__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__receipts_api_service__ = __webpack_require__(85);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__select_invoice_select_invoice_component__ = __webpack_require__(565);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__payment_receipt__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_invoice__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__receipts_api_service__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__select_invoice_select_invoice_component__ = __webpack_require__(564);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8985,7 +8731,7 @@ var ReceiptComponent = (function () {
 
 /***/ }),
 
-/***/ 1086:
+/***/ 1081:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8993,8 +8739,8 @@ var ReceiptComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_services__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__payment_receipt__ = __webpack_require__(137);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__receipts_api_service__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__payment_receipt__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__receipts_api_service__ = __webpack_require__(84);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9037,7 +8783,7 @@ var ReceiptDetailsComponent = (function () {
 
 /***/ }),
 
-/***/ 1087:
+/***/ 1082:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9047,7 +8793,7 @@ var ReceiptDetailsComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_observable_of__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__receipts_api_service__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__receipts_api_service__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_release_order__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_app_directory__ = __webpack_require__(22);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -9265,25 +9011,25 @@ var ReceiptListComponent = (function () {
 
 /***/ }),
 
-/***/ 1088:
+/***/ 1083:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountsModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_module__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_receipts_receipts_module__ = __webpack_require__(564);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__accounts_routing_module__ = __webpack_require__(1089);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4____ = __webpack_require__(178);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__client_receipts_list_resolver_service__ = __webpack_require__(570);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__client_payments_list_resolver_service__ = __webpack_require__(571);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__executive_payments_list_resolver_service__ = __webpack_require__(572);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__create_note_create_note_component__ = __webpack_require__(573);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__notes_list_resolver_service__ = __webpack_require__(574);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__invoice_tax_list_resolver_service__ = __webpack_require__(575);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__summary_sheet_summary_sheet_component__ = __webpack_require__(576);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__media_house_invoice_list_media_house_invoice_list_component__ = __webpack_require__(577);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__media_house_invoice_list_resolver_service__ = __webpack_require__(578);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_receipts_receipts_module__ = __webpack_require__(563);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__accounts_routing_module__ = __webpack_require__(1084);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4____ = __webpack_require__(177);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__client_receipts_list_resolver_service__ = __webpack_require__(569);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__client_payments_list_resolver_service__ = __webpack_require__(570);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__executive_payments_list_resolver_service__ = __webpack_require__(571);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__create_note_create_note_component__ = __webpack_require__(572);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__notes_list_resolver_service__ = __webpack_require__(573);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__invoice_tax_list_resolver_service__ = __webpack_require__(574);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__summary_sheet_summary_sheet_component__ = __webpack_require__(575);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__media_house_invoice_list_media_house_invoice_list_component__ = __webpack_require__(576);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__media_house_invoice_list_resolver_service__ = __webpack_require__(577);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_ionic_angular__ = __webpack_require__(31);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9352,7 +9098,7 @@ var AccountsModule = (function () {
 
 /***/ }),
 
-/***/ 1089:
+/***/ 1084:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9360,17 +9106,17 @@ var AccountsModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_guards__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3____ = __webpack_require__(178);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3____ = __webpack_require__(177);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_services__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__client_receipts_list_resolver_service__ = __webpack_require__(570);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__client_payments_list_resolver_service__ = __webpack_require__(571);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__executive_payments_list_resolver_service__ = __webpack_require__(572);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__create_note_create_note_component__ = __webpack_require__(573);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__notes_list_resolver_service__ = __webpack_require__(574);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__invoice_tax_list_resolver_service__ = __webpack_require__(575);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__summary_sheet_summary_sheet_component__ = __webpack_require__(576);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__media_house_invoice_list_media_house_invoice_list_component__ = __webpack_require__(577);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__media_house_invoice_list_resolver_service__ = __webpack_require__(578);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__client_receipts_list_resolver_service__ = __webpack_require__(569);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__client_payments_list_resolver_service__ = __webpack_require__(570);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__executive_payments_list_resolver_service__ = __webpack_require__(571);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__create_note_create_note_component__ = __webpack_require__(572);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__notes_list_resolver_service__ = __webpack_require__(573);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__invoice_tax_list_resolver_service__ = __webpack_require__(574);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__summary_sheet_summary_sheet_component__ = __webpack_require__(575);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__media_house_invoice_list_media_house_invoice_list_component__ = __webpack_require__(576);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__media_house_invoice_list_resolver_service__ = __webpack_require__(577);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9579,7 +9325,7 @@ var AccountsRoutingModule = (function () {
 
 /***/ }),
 
-/***/ 1090:
+/***/ 1085:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9596,7 +9342,7 @@ var MediaHouseInvoiceItem = (function () {
 
 /***/ }),
 
-/***/ 1091:
+/***/ 1086:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9657,7 +9403,7 @@ var SummarySheetListResolver = (function () {
 
 /***/ }),
 
-/***/ 1092:
+/***/ 1087:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9667,7 +9413,7 @@ var SummarySheetListResolver = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_release_order__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__accounts_api_service__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__media_house_invoice_dialog_media_house_invoice_dialog_component__ = __webpack_require__(569);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__media_house_invoice_dialog_media_house_invoice_dialog_component__ = __webpack_require__(568);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_observable_of__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_observable_of__);
 var __assign = (this && this.__assign) || Object.assign || function(t) {
@@ -9769,7 +9515,7 @@ var MediaHouseInvoiceComponent = (function () {
 
 /***/ }),
 
-/***/ 1093:
+/***/ 1088:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9814,14 +9560,14 @@ var AccountsHomeComponent = (function () {
 
 /***/ }),
 
-/***/ 1094:
+/***/ 1089:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ClientReceiptsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_services__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_receipts__ = __webpack_require__(177);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_receipts__ = __webpack_require__(176);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_models__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_directory__ = __webpack_require__(22);
@@ -9943,7 +9689,7 @@ var ClientReceiptsComponent = (function () {
 
 /***/ }),
 
-/***/ 1095:
+/***/ 1090:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10038,7 +9784,7 @@ var ClientInvoicePaymentsComponent = (function () {
 
 /***/ }),
 
-/***/ 1096:
+/***/ 1091:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10164,7 +9910,7 @@ var ExecutiveInvoicePaymentsComponent = (function () {
 
 /***/ }),
 
-/***/ 1097:
+/***/ 1092:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10350,7 +10096,7 @@ var CreditDebitNotesComponent = (function () {
 
 /***/ }),
 
-/***/ 1098:
+/***/ 1093:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10477,7 +10223,7 @@ var AccountsGstComponent = (function () {
 
 /***/ }),
 
-/***/ 1099:
+/***/ 1094:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10486,11 +10232,11 @@ var AccountsGstComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_guards__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components__ = __webpack_require__(173);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_admin__ = __webpack_require__(557);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_ticket_list_ticket_list_component__ = __webpack_require__(579);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_create_ticket_create_ticket_component__ = __webpack_require__(580);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_testimonial_testimonial_component__ = __webpack_require__(556);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_admin__ = __webpack_require__(556);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_ticket_list_ticket_list_component__ = __webpack_require__(578);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_create_ticket_create_ticket_component__ = __webpack_require__(579);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_testimonial_testimonial_component__ = __webpack_require__(555);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10595,16 +10341,16 @@ var AppRoutingModule = (function () {
 
 /***/ }),
 
-/***/ 1100:
+/***/ 1095:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportsModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_module__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reports_routing_module__ = __webpack_require__(1101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__reports_home_reports_home_component__ = __webpack_require__(581);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__reports_api_service__ = __webpack_require__(582);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reports_routing_module__ = __webpack_require__(1096);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__reports_home_reports_home_component__ = __webpack_require__(580);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__reports_api_service__ = __webpack_require__(581);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ionic_angular__ = __webpack_require__(31);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10641,7 +10387,7 @@ var ReportsModule = (function () {
 
 /***/ }),
 
-/***/ 1101:
+/***/ 1096:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10649,7 +10395,7 @@ var ReportsModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_guards__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__reports_home_reports_home_component__ = __webpack_require__(581);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__reports_home_reports_home_component__ = __webpack_require__(580);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10688,7 +10434,7 @@ var ReportsRoutingModule = (function () {
 
 /***/ }),
 
-/***/ 121:
+/***/ 120:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10793,7 +10539,7 @@ var Category = (function () {
 
 /***/ }),
 
-/***/ 132:
+/***/ 131:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10814,7 +10560,7 @@ var ReleaseOrderSearchParams = (function () {
 
 /***/ }),
 
-/***/ 133:
+/***/ 132:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10991,7 +10737,7 @@ var ClientApiService = (function () {
 
 /***/ }),
 
-/***/ 134:
+/***/ 133:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11003,7 +10749,7 @@ var ClientApiService = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_observable_of__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_services__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__executive__ = __webpack_require__(298);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_environments_environment__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_environments_environment__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_app_models__ = __webpack_require__(25);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -11132,7 +10878,7 @@ var ExecutiveApiService = (function () {
 
 /***/ }),
 
-/***/ 135:
+/***/ 134:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11151,7 +10897,7 @@ var UserRoles = (function () {
 
 /***/ }),
 
-/***/ 136:
+/***/ 135:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11161,7 +10907,7 @@ var UserRoles = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operators_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_operators_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__co_user__ = __webpack_require__(301);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__user_roles__ = __webpack_require__(135);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__user_roles__ = __webpack_require__(134);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -11250,7 +10996,7 @@ var CoUserApiService = (function () {
 
 /***/ }),
 
-/***/ 137:
+/***/ 136:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11310,7 +11056,7 @@ var AdvanceReceipt = (function (_super) {
 
 /***/ }),
 
-/***/ 157:
+/***/ 156:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11346,46 +11092,46 @@ var WindowService = (function () {
 
 /***/ }),
 
-/***/ 173:
+/***/ 172:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__billing_details_billing_details_component__ = __webpack_require__(436);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_0__billing_details_billing_details_component__["a"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_0__billing_details_billing_details_component__["b"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__change_psw_change_psw_component__ = __webpack_require__(1005);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__change_psw_change_psw_component__ = __webpack_require__(1000);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_1__change_psw_change_psw_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dashboard_dashboard_component__ = __webpack_require__(1006);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dashboard_dashboard_component__ = __webpack_require__(1001);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_2__dashboard_dashboard_component__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dialog_dialog_component__ = __webpack_require__(422);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_3__dialog_dialog_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__account_details_account_details_component__ = __webpack_require__(1007);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__account_details_account_details_component__ = __webpack_require__(1002);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_4__account_details_account_details_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__business_details_business_details_component__ = __webpack_require__(1008);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__business_details_business_details_component__ = __webpack_require__(1003);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_5__business_details_business_details_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__forgot_psw_forgot_psw_component__ = __webpack_require__(1010);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__forgot_psw_forgot_psw_component__ = __webpack_require__(1005);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_6__forgot_psw_forgot_psw_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__home_home_component__ = __webpack_require__(1011);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__home_home_component__ = __webpack_require__(1006);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "j", function() { return __WEBPACK_IMPORTED_MODULE_7__home_home_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__loader_loader_component__ = __webpack_require__(1012);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__loader_loader_component__ = __webpack_require__(1007);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "k", function() { return __WEBPACK_IMPORTED_MODULE_8__loader_loader_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__login_login_component__ = __webpack_require__(1013);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__login_login_component__ = __webpack_require__(1008);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "l", function() { return __WEBPACK_IMPORTED_MODULE_9__login_login_component__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__mailing_details_mailing_details_component__ = __webpack_require__(435);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "m", function() { return __WEBPACK_IMPORTED_MODULE_10__mailing_details_mailing_details_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__navbar_navbar_component__ = __webpack_require__(1014);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__navbar_navbar_component__ = __webpack_require__(1009);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "n", function() { return __WEBPACK_IMPORTED_MODULE_11__navbar_navbar_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__not_found_not_found_component__ = __webpack_require__(1015);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__not_found_not_found_component__ = __webpack_require__(1010);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "o", function() { return __WEBPACK_IMPORTED_MODULE_12__not_found_not_found_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pagination_pagination_component__ = __webpack_require__(1016);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pagination_pagination_component__ = __webpack_require__(1011);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "p", function() { return __WEBPACK_IMPORTED_MODULE_13__pagination_pagination_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__phone_verify_phone_verify_component__ = __webpack_require__(1017);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__phone_verify_phone_verify_component__ = __webpack_require__(1012);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "q", function() { return __WEBPACK_IMPORTED_MODULE_14__phone_verify_phone_verify_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__profile_view_profile_view_component__ = __webpack_require__(1018);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__profile_view_profile_view_component__ = __webpack_require__(1013);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "r", function() { return __WEBPACK_IMPORTED_MODULE_15__profile_view_profile_view_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__register_register_component__ = __webpack_require__(1019);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__register_register_component__ = __webpack_require__(1014);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "s", function() { return __WEBPACK_IMPORTED_MODULE_16__register_register_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__reset_password_reset_password_component__ = __webpack_require__(1020);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__reset_password_reset_password_component__ = __webpack_require__(1015);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "t", function() { return __WEBPACK_IMPORTED_MODULE_17__reset_password_reset_password_component__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_app_component__ = __webpack_require__(442);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_18__app_app_component__["a"]; });
@@ -11412,23 +11158,23 @@ var WindowService = (function () {
 
 /***/ }),
 
-/***/ 175:
+/***/ 174:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__rate_card__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__rate_card__ = __webpack_require__(120);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__rate_card_api_service__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__rate_card_api_service__ = __webpack_require__(103);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1__rate_card_api_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__rate_card_resolver_service__ = __webpack_require__(1051);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__rate_card_resolver_service__ = __webpack_require__(1046);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_2__rate_card_resolver_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__rate_card_list_resolver_service__ = __webpack_require__(1052);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__rate_card_list_resolver_service__ = __webpack_require__(1047);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_3__rate_card_list_resolver_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__rate_card_rate_card_component__ = __webpack_require__(1053);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__rate_card_rate_card_component__ = __webpack_require__(1048);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_4__rate_card_rate_card_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__rate_card_details_rate_card_details_component__ = __webpack_require__(1054);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__rate_card_details_rate_card_details_component__ = __webpack_require__(1049);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_5__rate_card_details_rate_card_details_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__rate_card_list_rate_card_list_component__ = __webpack_require__(1055);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__rate_card_list_rate_card_list_component__ = __webpack_require__(1050);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_6__rate_card_list_rate_card_list_component__["a"]; });
 
 
@@ -11441,7 +11187,7 @@ var WindowService = (function () {
 
 /***/ }),
 
-/***/ 176:
+/***/ 175:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11494,28 +11240,28 @@ var Invoice = (function () {
 
 /***/ }),
 
-/***/ 177:
+/***/ 176:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__payment_receipt__ = __webpack_require__(137);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__payment_receipt__ = __webpack_require__(136);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__receipts_api_service__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__receipts_api_service__ = __webpack_require__(84);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_1__receipts_api_service__["a"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_1__receipts_api_service__["b"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__receipt_list_resolver_service__ = __webpack_require__(1081);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__receipt_list_resolver_service__ = __webpack_require__(1076);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_2__receipt_list_resolver_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__receipt_resolver_service__ = __webpack_require__(1082);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__receipt_resolver_service__ = __webpack_require__(1077);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_3__receipt_resolver_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__advance_receipt_advance_receipt_component__ = __webpack_require__(1083);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__advance_receipt_advance_receipt_component__ = __webpack_require__(1078);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_4__advance_receipt_advance_receipt_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__link_advance_link_advance_component__ = __webpack_require__(1084);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__link_advance_link_advance_component__ = __webpack_require__(1079);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_5__link_advance_link_advance_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__receipt_receipt_component__ = __webpack_require__(1085);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__receipt_receipt_component__ = __webpack_require__(1080);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_6__receipt_receipt_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__receipt_details_receipt_details_component__ = __webpack_require__(1086);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__receipt_details_receipt_details_component__ = __webpack_require__(1081);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_7__receipt_details_receipt_details_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__receipt_list_receipt_list_component__ = __webpack_require__(1087);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__receipt_list_receipt_list_component__ = __webpack_require__(1082);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_8__receipt_list_receipt_list_component__["a"]; });
 
 
@@ -11530,33 +11276,33 @@ var Invoice = (function () {
 
 /***/ }),
 
-/***/ 178:
+/***/ 177:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__media_house_invoice__ = __webpack_require__(567);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__media_house_invoice__ = __webpack_require__(566);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__media_house_invoice_item__ = __webpack_require__(1090);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__media_house_invoice_item__ = __webpack_require__(1085);
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__accounts_api_service__ = __webpack_require__(41);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_2__accounts_api_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__summary_sheet_list_resolver_service__ = __webpack_require__(1091);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__summary_sheet_list_resolver_service__ = __webpack_require__(1086);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "j", function() { return __WEBPACK_IMPORTED_MODULE_3__summary_sheet_list_resolver_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__media_house_invoice_media_house_invoice_component__ = __webpack_require__(1092);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__media_house_invoice_media_house_invoice_component__ = __webpack_require__(1087);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_4__media_house_invoice_media_house_invoice_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__media_house_invoice_dialog_media_house_invoice_dialog_component__ = __webpack_require__(569);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__media_house_invoice_dialog_media_house_invoice_dialog_component__ = __webpack_require__(568);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_5__media_house_invoice_dialog_media_house_invoice_dialog_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__accounts_home_accounts_home_component__ = __webpack_require__(1093);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__accounts_home_accounts_home_component__ = __webpack_require__(1088);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_6__accounts_home_accounts_home_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__client_receipts_client_receipts_component__ = __webpack_require__(1094);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__client_receipts_client_receipts_component__ = __webpack_require__(1089);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_7__client_receipts_client_receipts_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__client_invoice_payments_client_invoice_payments_component__ = __webpack_require__(1095);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__client_invoice_payments_client_invoice_payments_component__ = __webpack_require__(1090);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_8__client_invoice_payments_client_invoice_payments_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__executive_invoice_payments_executive_invoice_payments_component__ = __webpack_require__(1096);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__executive_invoice_payments_executive_invoice_payments_component__ = __webpack_require__(1091);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_9__executive_invoice_payments_executive_invoice_payments_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__credit_debit_notes_credit_debit_notes_component__ = __webpack_require__(1097);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__credit_debit_notes_credit_debit_notes_component__ = __webpack_require__(1092);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_10__credit_debit_notes_credit_debit_notes_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__accounts_gst_accounts_gst_component__ = __webpack_require__(1098);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__accounts_gst_accounts_gst_component__ = __webpack_require__(1093);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_11__accounts_gst_accounts_gst_component__["a"]; });
 
 
@@ -11578,7 +11324,7 @@ var Invoice = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dir_dir_component__ = __webpack_require__(1030);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dir_dir_component__ = __webpack_require__(1025);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_0__dir_dir_component__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__clients_client__ = __webpack_require__(297);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1__clients_client__["a"]; });
@@ -11586,35 +11332,35 @@ var Invoice = (function () {
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_2__executives_executive__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__media_houses_media_house__ = __webpack_require__(299);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "n", function() { return __WEBPACK_IMPORTED_MODULE_3__media_houses_media_house__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__clients_client_api_service__ = __webpack_require__(133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__clients_client_api_service__ = __webpack_require__(132);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_4__clients_client_api_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__executives_executive_api_service__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__executives_executive_api_service__ = __webpack_require__(133);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_5__executives_executive_api_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__media_houses_media_house_api_service__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__media_houses_media_house_api_service__ = __webpack_require__(102);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "o", function() { return __WEBPACK_IMPORTED_MODULE_6__media_houses_media_house_api_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__clients_client_resolver_service__ = __webpack_require__(1031);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__clients_client_resolver_service__ = __webpack_require__(1026);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_7__clients_client_resolver_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__executives_executive_resolver_service__ = __webpack_require__(1033);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__executives_executive_resolver_service__ = __webpack_require__(1028);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "m", function() { return __WEBPACK_IMPORTED_MODULE_8__executives_executive_resolver_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__media_houses_media_house_resolver_service__ = __webpack_require__(1034);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__media_houses_media_house_resolver_service__ = __webpack_require__(1029);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "s", function() { return __WEBPACK_IMPORTED_MODULE_9__media_houses_media_house_resolver_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__clients_client_list_resolver_service__ = __webpack_require__(1035);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__clients_client_list_resolver_service__ = __webpack_require__(1030);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_10__clients_client_list_resolver_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__executives_executive_list_resolver_service__ = __webpack_require__(1036);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__executives_executive_list_resolver_service__ = __webpack_require__(1031);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "l", function() { return __WEBPACK_IMPORTED_MODULE_11__executives_executive_list_resolver_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__media_houses_media_house_list_resolver_service__ = __webpack_require__(1037);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__media_houses_media_house_list_resolver_service__ = __webpack_require__(1032);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "r", function() { return __WEBPACK_IMPORTED_MODULE_12__media_houses_media_house_list_resolver_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__clients_client_client_component__ = __webpack_require__(1038);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__clients_client_client_component__ = __webpack_require__(1033);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_13__clients_client_client_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__executives_executive_executive_component__ = __webpack_require__(1039);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__executives_executive_executive_component__ = __webpack_require__(1034);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "j", function() { return __WEBPACK_IMPORTED_MODULE_14__executives_executive_executive_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__media_houses_media_house_media_house_component__ = __webpack_require__(1040);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__media_houses_media_house_media_house_component__ = __webpack_require__(1035);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "p", function() { return __WEBPACK_IMPORTED_MODULE_15__media_houses_media_house_media_house_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__clients_client_list_client_list_component__ = __webpack_require__(1041);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__clients_client_list_client_list_component__ = __webpack_require__(1036);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_16__clients_client_list_client_list_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__executives_executive_list_executive_list_component__ = __webpack_require__(1044);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__executives_executive_list_executive_list_component__ = __webpack_require__(1039);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "k", function() { return __WEBPACK_IMPORTED_MODULE_17__executives_executive_list_executive_list_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__media_houses_media_house_list_media_house_list_component__ = __webpack_require__(1045);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__media_houses_media_house_list_media_house_list_component__ = __webpack_require__(1040);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "q", function() { return __WEBPACK_IMPORTED_MODULE_18__media_houses_media_house_list_media_house_list_component__["a"]; });
 
 
@@ -11645,7 +11391,7 @@ var Invoice = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthTokenManager; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__loader_service__ = __webpack_require__(402);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__notification_service__ = __webpack_require__(235);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__ = __webpack_require__(8);
@@ -11882,19 +11628,19 @@ var StateApiService = (function () {
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__address__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__firm__ = __webpack_require__(399);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__firm__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ifsc_response__ = __webpack_require__(639);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ifsc_response__ = __webpack_require__(638);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mailing_details__ = __webpack_require__(640);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mailing_details__ = __webpack_require__(639);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_3__mailing_details__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__page_data__ = __webpack_require__(641);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__page_data__ = __webpack_require__(640);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_4__page_data__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__plan__ = __webpack_require__(400);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__template__ = __webpack_require__(642);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__template__ = __webpack_require__(641);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_6__template__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__user_profile__ = __webpack_require__(643);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__user_profile__ = __webpack_require__(642);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_7__user_profile__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ticket__ = __webpack_require__(644);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ticket__ = __webpack_require__(643);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_8__ticket__["a"]; });
 
 
@@ -11913,31 +11659,31 @@ var StateApiService = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__insertion_check_item__ = __webpack_require__(1028);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__insertion_check_item__ = __webpack_require__(1023);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_0__insertion_check_item__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__release_order__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__release_order__ = __webpack_require__(98);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__release_order__["a"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_1__release_order__["b"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "p", function() { return __WEBPACK_IMPORTED_MODULE_1__release_order__["d"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__release_order_search_params__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__release_order_search_params__ = __webpack_require__(131);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "o", function() { return __WEBPACK_IMPORTED_MODULE_2__release_order_search_params__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__insertion_list_resolver_service__ = __webpack_require__(1029);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__insertion_list_resolver_service__ = __webpack_require__(1024);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_3__insertion_list_resolver_service__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__release_order_api_service__ = __webpack_require__(71);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_4__release_order_api_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__release_order_list_resolver_service__ = __webpack_require__(1046);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__release_order_list_resolver_service__ = __webpack_require__(1041);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "m", function() { return __WEBPACK_IMPORTED_MODULE_5__release_order_list_resolver_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__release_order_resolver_service__ = __webpack_require__(1047);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__release_order_resolver_service__ = __webpack_require__(1042);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "n", function() { return __WEBPACK_IMPORTED_MODULE_6__release_order_resolver_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__release_order_dir_resolver_service__ = __webpack_require__(1048);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__release_order_dir_resolver_service__ = __webpack_require__(1043);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "k", function() { return __WEBPACK_IMPORTED_MODULE_7__release_order_dir_resolver_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__insertion_check_insertion_check_component__ = __webpack_require__(1049);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__insertion_check_insertion_check_component__ = __webpack_require__(1044);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_8__insertion_check_insertion_check_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__release_order_release_order_component__ = __webpack_require__(1050);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__release_order_release_order_component__ = __webpack_require__(1045);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_9__release_order_release_order_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__release_order_details_release_order_details_component__ = __webpack_require__(1056);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__release_order_details_release_order_details_component__ = __webpack_require__(1051);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "j", function() { return __WEBPACK_IMPORTED_MODULE_10__release_order_details_release_order_details_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__release_order_list_release_order_list_component__ = __webpack_require__(1057);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__release_order_list_release_order_list_component__ = __webpack_require__(1052);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "l", function() { return __WEBPACK_IMPORTED_MODULE_11__release_order_list_release_order_list_component__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__categories_details_categories_details_component__ = __webpack_require__(437);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_12__categories_details_categories_details_component__["a"]; });
@@ -12065,7 +11811,7 @@ var Pullout = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DirectoryModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_module__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dir_routing_module__ = __webpack_require__(1063);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dir_routing_module__ = __webpack_require__(1058);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3____ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(31);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -12128,7 +11874,7 @@ var DirectoryModule = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoUser; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__user_roles__ = __webpack_require__(135);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__user_roles__ = __webpack_require__(134);
 
 var CoUser = (function () {
     function CoUser() {
@@ -12295,7 +12041,7 @@ var LoaderService = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_operators__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_models__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__credit_debit_note__ = __webpack_require__(568);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__credit_debit_note__ = __webpack_require__(567);
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
         s = arguments[i];
@@ -12530,7 +12276,7 @@ var AccountsApiService = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DialogComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__(118);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -12571,7 +12317,7 @@ var DialogComponent = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MailingDetailsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__(118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_models__ = __webpack_require__(25);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -12671,7 +12417,7 @@ var BillingDetailsComponent = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CategoriesDetailsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_services_state_api_service__ = __webpack_require__(248);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__release_order__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__release_order__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_observable_of__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_observable_of__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_operators__ = __webpack_require__(29);
@@ -12901,7 +12647,7 @@ var CategoriesDetailsComponent = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OptionsService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_rate_card_rate_card__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_rate_card_rate_card__ = __webpack_require__(120);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -12986,10 +12732,10 @@ var OptionsService = (function () {
 /* unused harmony export InsertionInjection */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InsertionDetailsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__release_order__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__release_order__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ng_bootstrap_ng_bootstrap_datepicker_ngb_date__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_notification_service__ = __webpack_require__(235);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material__ = __webpack_require__(118);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -13083,8 +12829,8 @@ var InsertionDetailsComponent = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RazorPayService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__window_service__ = __webpack_require__(157);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_environments_environment__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__window_service__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_environments_environment__ = __webpack_require__(96);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -13175,7 +12921,7 @@ var AppComponent = (function () {
 
 /***/ }),
 
-/***/ 553:
+/***/ 552:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13184,7 +12930,7 @@ var AppComponent = (function () {
 /* unused harmony export MhiData */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DashboardApiService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_service__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_service__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -13276,17 +13022,17 @@ var DashboardApiService = (function () {
 
 /***/ }),
 
-/***/ 554:
+/***/ 553:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SuperAdminApiService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_services_auth_token_manager_service__ = __webpack_require__(232);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_environments_environment__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_environments_environment__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_directory_media_houses_media_house_api_service__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_directory_media_houses_media_house_api_service__ = __webpack_require__(102);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -13393,13 +13139,13 @@ var SuperAdminApiService = (function () {
 
 /***/ }),
 
-/***/ 555:
+/***/ 554:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PreviewComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__(118);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -13436,7 +13182,7 @@ var PreviewComponent = (function () {
 
 /***/ }),
 
-/***/ 556:
+/***/ 555:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13467,19 +13213,19 @@ var TestimonialComponent = (function () {
 
 /***/ }),
 
-/***/ 557:
+/***/ 556:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__plan_selector_plan_selector_component__ = __webpack_require__(1059);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__plan_selector_plan_selector_component__ = __webpack_require__(1054);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__plan_selector_plan_selector_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__profile_edit_profile_edit_component__ = __webpack_require__(1060);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__profile_edit_profile_edit_component__ = __webpack_require__(1055);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_1__profile_edit_profile_edit_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__template_selector_template_selector_component__ = __webpack_require__(1061);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__template_selector_template_selector_component__ = __webpack_require__(1056);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_2__template_selector_template_selector_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__template_selector_item_template_selector_item_component__ = __webpack_require__(1062);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__template_selector_item_template_selector_item_component__ = __webpack_require__(1057);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_3__template_selector_item_template_selector_item_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__empty_empty_component__ = __webpack_require__(558);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__empty_empty_component__ = __webpack_require__(557);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_4__empty_empty_component__["a"]; });
 
 
@@ -13490,7 +13236,7 @@ var TestimonialComponent = (function () {
 
 /***/ }),
 
-/***/ 558:
+/***/ 557:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13498,7 +13244,7 @@ var TestimonialComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_services__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_window_service__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_window_service__ = __webpack_require__(156);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -13541,25 +13287,25 @@ var EmptyComponent = (function () {
 
 /***/ }),
 
-/***/ 559:
+/***/ 558:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__co_user__ = __webpack_require__(301);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__user_roles__ = __webpack_require__(135);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__user_roles__ = __webpack_require__(134);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__co_user_api_service__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__co_user_api_service__ = __webpack_require__(135);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_2__co_user_api_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__co_user_resolver_service__ = __webpack_require__(1066);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__co_user_resolver_service__ = __webpack_require__(1061);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_3__co_user_resolver_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__co_user_co_user_component__ = __webpack_require__(1067);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__co_user_co_user_component__ = __webpack_require__(1062);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_4__co_user_co_user_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__co_users_co_users_component__ = __webpack_require__(1068);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__co_users_co_users_component__ = __webpack_require__(1063);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_5__co_users_co_users_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__role_control_role_control_component__ = __webpack_require__(1069);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__role_control_role_control_component__ = __webpack_require__(1064);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_6__role_control_role_control_component__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__role_edit_role_edit_component__ = __webpack_require__(1070);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__role_edit_role_edit_component__ = __webpack_require__(1065);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_7__role_edit_role_edit_component__["a"]; });
 
 
@@ -13573,7 +13319,7 @@ var EmptyComponent = (function () {
 
 /***/ }),
 
-/***/ 560:
+/***/ 559:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13581,8 +13327,8 @@ var EmptyComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_module__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__directory_directory_module__ = __webpack_require__(300);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__rate_card_routing_module__ = __webpack_require__(1071);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4____ = __webpack_require__(175);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__rate_card_routing_module__ = __webpack_require__(1066);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4____ = __webpack_require__(174);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ionic_angular__ = __webpack_require__(31);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -13628,7 +13374,7 @@ var RateCardModule = (function () {
 
 /***/ }),
 
-/***/ 561:
+/***/ 560:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13636,8 +13382,8 @@ var RateCardModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_module__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_directory_directory_module__ = __webpack_require__(300);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_rate_card_rate_card_module__ = __webpack_require__(560);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__release_order_routing_module__ = __webpack_require__(1072);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_rate_card_rate_card_module__ = __webpack_require__(559);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__release_order_routing_module__ = __webpack_require__(1067);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5____ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ionic_angular__ = __webpack_require__(31);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -13689,17 +13435,17 @@ var ReleaseOrderModule = (function () {
 
 /***/ }),
 
-/***/ 562:
+/***/ 561:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InvoiceModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_module__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_release_order_release_order_module__ = __webpack_require__(561);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__invoice_routing_module__ = __webpack_require__(1073);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4____ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__select_release_order_select_release_order_component__ = __webpack_require__(563);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_release_order_release_order_module__ = __webpack_require__(560);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__invoice_routing_module__ = __webpack_require__(1068);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4____ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__select_release_order_select_release_order_component__ = __webpack_require__(562);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ionic_angular__ = __webpack_require__(31);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -13751,7 +13497,7 @@ var InvoiceModule = (function () {
 
 /***/ }),
 
-/***/ 563:
+/***/ 562:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13867,18 +13613,18 @@ var SelectReleaseOrderComponent = (function () {
 
 /***/ }),
 
-/***/ 564:
+/***/ 563:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReceiptsModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_module__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_invoice_invoice_module__ = __webpack_require__(562);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__receipts_routing_module__ = __webpack_require__(1080);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4____ = __webpack_require__(177);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__create_receipt_create_receipt_component__ = __webpack_require__(566);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__select_invoice_select_invoice_component__ = __webpack_require__(565);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_invoice_invoice_module__ = __webpack_require__(561);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__receipts_routing_module__ = __webpack_require__(1075);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4____ = __webpack_require__(176);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__create_receipt_create_receipt_component__ = __webpack_require__(565);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__select_invoice_select_invoice_component__ = __webpack_require__(564);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ionic_angular__ = __webpack_require__(31);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -13933,14 +13679,14 @@ var ReceiptsModule = (function () {
 
 /***/ }),
 
-/***/ 565:
+/***/ 564:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SelectInvoiceComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_services__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_invoice__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_invoice__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_directory__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of__);
@@ -14051,7 +13797,7 @@ var SelectInvoiceComponent = (function () {
 
 /***/ }),
 
-/***/ 566:
+/***/ 565:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14098,7 +13844,7 @@ var CreateReceiptComponent = (function () {
 
 /***/ }),
 
-/***/ 567:
+/***/ 566:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14138,7 +13884,7 @@ var MediaHouseInvoice = (function () {
 
 /***/ }),
 
-/***/ 568:
+/***/ 567:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14172,14 +13918,14 @@ var CreditDebitNote = (function () {
 
 /***/ }),
 
-/***/ 569:
+/***/ 568:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MediaHouseInvoiceDialogComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_services__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__media_house_invoice__ = __webpack_require__(567);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__media_house_invoice__ = __webpack_require__(566);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -14213,7 +13959,7 @@ var MediaHouseInvoiceDialogComponent = (function () {
 
 /***/ }),
 
-/***/ 570:
+/***/ 569:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14224,7 +13970,7 @@ var MediaHouseInvoiceDialogComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_receipts__ = __webpack_require__(177);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_receipts__ = __webpack_require__(176);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -14276,7 +14022,7 @@ var ClientReceiptsListResolver = (function () {
 
 /***/ }),
 
-/***/ 571:
+/***/ 570:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14287,7 +14033,7 @@ var ClientReceiptsListResolver = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4____ = __webpack_require__(178);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4____ = __webpack_require__(177);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -14338,7 +14084,7 @@ var ClientPaymentsListResolver = (function () {
 
 /***/ }),
 
-/***/ 572:
+/***/ 571:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14349,7 +14095,7 @@ var ClientPaymentsListResolver = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_take__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4____ = __webpack_require__(178);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4____ = __webpack_require__(177);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -14402,14 +14148,14 @@ var ExecutivePaymentsListResolver = (function () {
 
 /***/ }),
 
-/***/ 573:
+/***/ 572:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateNoteComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_services__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__credit_debit_note__ = __webpack_require__(568);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__credit_debit_note__ = __webpack_require__(567);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_directory__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_observable_of__ = __webpack_require__(10);
@@ -14566,7 +14312,7 @@ var CreateNoteComponent = (function () {
 
 /***/ }),
 
-/***/ 574:
+/***/ 573:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14646,7 +14392,7 @@ var NotesListResolver = (function () {
 
 /***/ }),
 
-/***/ 575:
+/***/ 574:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14728,7 +14474,7 @@ var InvoiceTaxListResolver = (function () {
 
 /***/ }),
 
-/***/ 576:
+/***/ 575:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14916,7 +14662,7 @@ var SummarySheetComponent = (function () {
 
 /***/ }),
 
-/***/ 577:
+/***/ 576:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15037,7 +14783,7 @@ var MediaHouseInvoiceListComponent = (function () {
 
 /***/ }),
 
-/***/ 578:
+/***/ 577:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15098,7 +14844,7 @@ var MediaHouseInvoiceListResolver = (function () {
 
 /***/ }),
 
-/***/ 579:
+/***/ 578:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15158,7 +14904,7 @@ var TicketListComponent = (function () {
 
 /***/ }),
 
-/***/ 580:
+/***/ 579:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15225,14 +14971,14 @@ var CreateTicketComponent = (function () {
 
 /***/ }),
 
-/***/ 581:
+/***/ 580:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportsHomeComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_services__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reports_api_service__ = __webpack_require__(582);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reports_api_service__ = __webpack_require__(581);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -15324,7 +15070,7 @@ var ReportsHomeComponent = (function () {
 
 /***/ }),
 
-/***/ 582:
+/***/ 581:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15424,13 +15170,13 @@ var ReportsApiService = (function () {
 
 /***/ }),
 
-/***/ 583:
+/***/ 582:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(584);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(592);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(583);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(591);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -15438,7 +15184,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 592:
+/***/ 591:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15446,33 +15192,27 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__ = __webpack_require__(395);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(397);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(635);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(634);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ng_bootstrap_ng_bootstrap__ = __webpack_require__(249);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_common_http__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_in_app_browser__ = __webpack_require__(765);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_file__ = __webpack_require__(766);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_file_transfer__ = __webpack_require__(767);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_document_viewer__ = __webpack_require__(768);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_web_intent__ = __webpack_require__(769);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_fcm__ = __webpack_require__(443);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__angular_platform_browser__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__angular_platform_browser_animations__ = __webpack_require__(770);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__base_module__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__admin_admin_module__ = __webpack_require__(1058);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__directory_directory_module__ = __webpack_require__(300);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__co_users_co_users_module__ = __webpack_require__(1064);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__rate_card_rate_card_module__ = __webpack_require__(560);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__release_order_release_order_module__ = __webpack_require__(561);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__invoice_invoice_module__ = __webpack_require__(562);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__receipts_receipts_module__ = __webpack_require__(564);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__accounts_accounts_module__ = __webpack_require__(1088);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__app_routing_module__ = __webpack_require__(1099);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components__ = __webpack_require__(173);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__reports_reports_module__ = __webpack_require__(1100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_ticket_list_ticket_list_component__ = __webpack_require__(579);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_create_ticket_create_ticket_component__ = __webpack_require__(580);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__services_dashboard_api_service__ = __webpack_require__(553);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_common_http__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_platform_browser_animations__ = __webpack_require__(765);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__base_module__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__admin_admin_module__ = __webpack_require__(1053);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__directory_directory_module__ = __webpack_require__(300);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__co_users_co_users_module__ = __webpack_require__(1059);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__rate_card_rate_card_module__ = __webpack_require__(559);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__release_order_release_order_module__ = __webpack_require__(560);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__invoice_invoice_module__ = __webpack_require__(561);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__receipts_receipts_module__ = __webpack_require__(563);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__accounts_accounts_module__ = __webpack_require__(1083);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_routing_module__ = __webpack_require__(1094);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__reports_reports_module__ = __webpack_require__(1095);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_ticket_list_ticket_list_component__ = __webpack_require__(578);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_create_ticket_create_ticket_component__ = __webpack_require__(579);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__services_dashboard_api_service__ = __webpack_require__(552);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -15506,12 +15246,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-
-
-
-
-
 var AppModule = (function () {
     function AppModule() {
     }
@@ -15519,78 +15253,72 @@ var AppModule = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["NgModule"])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["b" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["n" /* NavbarComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["j" /* HomeComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["q" /* PhoneVerifyComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["l" /* LoginComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["s" /* RegisterComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["r" /* ProfileViewComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["g" /* DashboardComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["a" /* AccountDetailsComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["e" /* BusinessDetailsComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["f" /* ChangePswComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["i" /* ForgotPswComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["o" /* NotFoundComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["t" /* ResetPasswordComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["k" /* LoaderComponent */],
-                __WEBPACK_IMPORTED_MODULE_27__components_ticket_list_ticket_list_component__["a" /* TicketListComponent */],
-                __WEBPACK_IMPORTED_MODULE_28__components_create_ticket_create_ticket_component__["a" /* CreateTicketComponent */]
+                __WEBPACK_IMPORTED_MODULE_19__components__["b" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["n" /* NavbarComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["j" /* HomeComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["q" /* PhoneVerifyComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["l" /* LoginComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["s" /* RegisterComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["r" /* ProfileViewComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["g" /* DashboardComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["a" /* AccountDetailsComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["e" /* BusinessDetailsComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["f" /* ChangePswComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["i" /* ForgotPswComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["o" /* NotFoundComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["t" /* ResetPasswordComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["k" /* LoaderComponent */],
+                __WEBPACK_IMPORTED_MODULE_21__components_ticket_list_ticket_list_component__["a" /* TicketListComponent */],
+                __WEBPACK_IMPORTED_MODULE_22__components_create_ticket_create_ticket_component__["a" /* CreateTicketComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["c" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
                     links: []
                 }),
                 __WEBPACK_IMPORTED_MODULE_5__ng_bootstrap_ng_bootstrap__["b" /* NgbModule */].forRoot(),
-                __WEBPACK_IMPORTED_MODULE_13__angular_platform_browser__["BrowserModule"],
+                __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser__["BrowserModule"],
                 __WEBPACK_IMPORTED_MODULE_6__angular_common_http__["b" /* HttpClientModule */],
-                __WEBPACK_IMPORTED_MODULE_14__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
-                __WEBPACK_IMPORTED_MODULE_13__angular_platform_browser__["BrowserModule"],
-                __WEBPACK_IMPORTED_MODULE_14__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
-                __WEBPACK_IMPORTED_MODULE_15__base_module__["a" /* BaseModule */],
-                __WEBPACK_IMPORTED_MODULE_16__admin_admin_module__["a" /* AdminModule */],
-                __WEBPACK_IMPORTED_MODULE_17__directory_directory_module__["a" /* DirectoryModule */],
-                __WEBPACK_IMPORTED_MODULE_18__co_users_co_users_module__["a" /* CoUsersModule */],
-                __WEBPACK_IMPORTED_MODULE_19__rate_card_rate_card_module__["a" /* RateCardModule */],
-                __WEBPACK_IMPORTED_MODULE_20__release_order_release_order_module__["a" /* ReleaseOrderModule */],
-                __WEBPACK_IMPORTED_MODULE_21__invoice_invoice_module__["a" /* InvoiceModule */],
-                __WEBPACK_IMPORTED_MODULE_22__receipts_receipts_module__["a" /* ReceiptsModule */],
-                __WEBPACK_IMPORTED_MODULE_23__accounts_accounts_module__["a" /* AccountsModule */],
-                __WEBPACK_IMPORTED_MODULE_26__reports_reports_module__["a" /* ReportsModule */],
-                __WEBPACK_IMPORTED_MODULE_24__app_routing_module__["a" /* AppRoutingModule */]
+                __WEBPACK_IMPORTED_MODULE_8__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
+                __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser__["BrowserModule"],
+                __WEBPACK_IMPORTED_MODULE_8__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
+                __WEBPACK_IMPORTED_MODULE_9__base_module__["a" /* BaseModule */],
+                __WEBPACK_IMPORTED_MODULE_10__admin_admin_module__["a" /* AdminModule */],
+                __WEBPACK_IMPORTED_MODULE_11__directory_directory_module__["a" /* DirectoryModule */],
+                __WEBPACK_IMPORTED_MODULE_12__co_users_co_users_module__["a" /* CoUsersModule */],
+                __WEBPACK_IMPORTED_MODULE_13__rate_card_rate_card_module__["a" /* RateCardModule */],
+                __WEBPACK_IMPORTED_MODULE_14__release_order_release_order_module__["a" /* ReleaseOrderModule */],
+                __WEBPACK_IMPORTED_MODULE_15__invoice_invoice_module__["a" /* InvoiceModule */],
+                __WEBPACK_IMPORTED_MODULE_16__receipts_receipts_module__["a" /* ReceiptsModule */],
+                __WEBPACK_IMPORTED_MODULE_17__accounts_accounts_module__["a" /* AccountsModule */],
+                __WEBPACK_IMPORTED_MODULE_20__reports_reports_module__["a" /* ReportsModule */],
+                __WEBPACK_IMPORTED_MODULE_18__app_routing_module__["a" /* AppRoutingModule */]
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_0_ionic_angular__["a" /* IonicApp */]],
             entryComponents: [
                 __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["b" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["n" /* NavbarComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["j" /* HomeComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["q" /* PhoneVerifyComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["l" /* LoginComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["s" /* RegisterComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["r" /* ProfileViewComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["g" /* DashboardComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["a" /* AccountDetailsComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["e" /* BusinessDetailsComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["f" /* ChangePswComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["i" /* ForgotPswComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["o" /* NotFoundComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["t" /* ResetPasswordComponent */],
-                __WEBPACK_IMPORTED_MODULE_25__components__["k" /* LoaderComponent */],
-                __WEBPACK_IMPORTED_MODULE_27__components_ticket_list_ticket_list_component__["a" /* TicketListComponent */],
-                __WEBPACK_IMPORTED_MODULE_28__components_create_ticket_create_ticket_component__["a" /* CreateTicketComponent */]
+                __WEBPACK_IMPORTED_MODULE_19__components__["b" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["n" /* NavbarComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["j" /* HomeComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["q" /* PhoneVerifyComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["l" /* LoginComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["s" /* RegisterComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["r" /* ProfileViewComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["g" /* DashboardComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["a" /* AccountDetailsComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["e" /* BusinessDetailsComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["f" /* ChangePswComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["i" /* ForgotPswComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["o" /* NotFoundComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["t" /* ResetPasswordComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components__["k" /* LoaderComponent */],
+                __WEBPACK_IMPORTED_MODULE_21__components_ticket_list_ticket_list_component__["a" /* TicketListComponent */],
+                __WEBPACK_IMPORTED_MODULE_22__components_create_ticket_create_ticket_component__["a" /* CreateTicketComponent */]
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */],
                 __WEBPACK_IMPORTED_MODULE_1__ionic_native_splash_screen__["a" /* SplashScreen */],
-                __WEBPACK_IMPORTED_MODULE_29__services_dashboard_api_service__["a" /* DashboardApiService */],
-                { provide: __WEBPACK_IMPORTED_MODULE_4__angular_core__["ErrorHandler"], useClass: __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["b" /* IonicErrorHandler */] },
-                __WEBPACK_IMPORTED_MODULE_7__ionic_native_in_app_browser__["a" /* InAppBrowser */],
-                __WEBPACK_IMPORTED_MODULE_8__ionic_native_file__["a" /* File */],
-                __WEBPACK_IMPORTED_MODULE_10__ionic_native_document_viewer__["a" /* DocumentViewer */],
-                __WEBPACK_IMPORTED_MODULE_9__ionic_native_file_transfer__["a" /* FileTransfer */],
-                __WEBPACK_IMPORTED_MODULE_11__ionic_native_web_intent__["a" /* WebIntent */],
-                __WEBPACK_IMPORTED_MODULE_12__ionic_native_fcm__["a" /* FCM */]
+                __WEBPACK_IMPORTED_MODULE_23__services_dashboard_api_service__["a" /* DashboardApiService */],
+                { provide: __WEBPACK_IMPORTED_MODULE_4__angular_core__["ErrorHandler"], useClass: __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["b" /* IonicErrorHandler */] }
                 // {
                 //   provide: LocationStrategy,
                 //   useClass: PathLocationStrategy
@@ -15614,20 +15342,20 @@ var AppModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ng_bootstrap_ng_bootstrap__ = __webpack_require__(249);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common_http__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_module__ = __webpack_require__(772);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__livechat_angular_widget__ = __webpack_require__(773);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__swimlane_ngx_charts__ = __webpack_require__(776);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common_http__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_module__ = __webpack_require__(767);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__livechat_angular_widget__ = __webpack_require__(768);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__swimlane_ngx_charts__ = __webpack_require__(771);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__swimlane_ngx_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__swimlane_ngx_charts__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__guards__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components__ = __webpack_require__(173);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__validators__ = __webpack_require__(1021);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components__ = __webpack_require__(172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__validators__ = __webpack_require__(1016);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__release_order__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_auth_token_manager_service__ = __webpack_require__(232);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__super_admin_super_admin_api_service__ = __webpack_require__(554);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_preview_preview_component__ = __webpack_require__(555);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_testimonial_testimonial_component__ = __webpack_require__(556);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__super_admin_super_admin_api_service__ = __webpack_require__(553);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_preview_preview_component__ = __webpack_require__(554);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_testimonial_testimonial_component__ = __webpack_require__(555);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -15734,7 +15462,7 @@ var BaseModule = (function () {
 
 /***/ }),
 
-/***/ 635:
+/***/ 634:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15745,7 +15473,7 @@ var BaseModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_status_bar__ = __webpack_require__(397);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(395);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_app_app_component__ = __webpack_require__(442);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_fcm__ = __webpack_require__(443);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_fcm__ = __webpack_require__(760);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -15800,7 +15528,7 @@ var MyApp = (function () {
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* NavController */])
     ], MyApp.prototype, "navCtrl", void 0);
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({template:/*ion-inline-start:"/home/lambo/zaaa-ionic/src/app/app.html"*/'<ion-nav #myNav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/home/lambo/zaaa-ionic/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({template:/*ion-inline-start:"/home/lambo/zaaa-ionic/src/app/app.html"*/'<ion-nav #myNav [root]="rootPage"></ion-nav>\n<!--  -->'/*ion-inline-end:"/home/lambo/zaaa-ionic/src/app/app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0_app_services__["e" /* GobackService */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* Platform */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_fcm__["a" /* FCM */]])
     ], MyApp);
@@ -15811,7 +15539,7 @@ var MyApp = (function () {
 
 /***/ }),
 
-/***/ 639:
+/***/ 638:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15826,7 +15554,7 @@ var IfscResponse = (function () {
 
 /***/ }),
 
-/***/ 640:
+/***/ 639:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15846,7 +15574,7 @@ var MailingDetails = (function () {
 
 /***/ }),
 
-/***/ 641:
+/***/ 640:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15867,7 +15595,7 @@ var PageData = (function () {
 
 /***/ }),
 
-/***/ 642:
+/***/ 641:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15884,7 +15612,7 @@ var Template = (function () {
 
 /***/ }),
 
-/***/ 643:
+/***/ 642:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15899,7 +15627,7 @@ var UserProfile = (function () {
 
 /***/ }),
 
-/***/ 644:
+/***/ 643:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15923,13 +15651,13 @@ var Ticket = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__admin_guard_service__ = __webpack_require__(1001);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__admin_guard_service__ = __webpack_require__(996);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__admin_guard_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__auth_guard_service__ = __webpack_require__(1002);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__auth_guard_service__ = __webpack_require__(997);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__auth_guard_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__phone_verify_guard_service__ = __webpack_require__(1003);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__phone_verify_guard_service__ = __webpack_require__(998);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_2__phone_verify_guard_service__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__plan_guard_service__ = __webpack_require__(1004);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__plan_guard_service__ = __webpack_require__(999);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_3__plan_guard_service__["a"]; });
 
 
@@ -15949,7 +15677,7 @@ var Ticket = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_operators__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_directory__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__release_order__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__release_order__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_models__ = __webpack_require__(25);
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -16137,13 +15865,13 @@ var ReleaseOrderApiService = (function () {
 
 /***/ }),
 
-/***/ 731:
+/***/ 730:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DialogService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material_dialog__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material_dialog__ = __webpack_require__(155);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_dialog_dialog_component__ = __webpack_require__(422);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_mailing_details_mailing_details_component__ = __webpack_require__(435);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_billing_details_billing_details_component__ = __webpack_require__(436);
@@ -16229,14 +15957,14 @@ var DialogService = (function () {
 
 /***/ }),
 
-/***/ 756:
+/***/ 755:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FirmResolver; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_service__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_service__ = __webpack_require__(80);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -16268,13 +15996,13 @@ var FirmResolver = (function () {
 
 /***/ }),
 
-/***/ 757:
+/***/ 756:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IfscService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(113);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -16304,14 +16032,14 @@ var IfscService = (function () {
 
 /***/ }),
 
-/***/ 758:
+/***/ 757:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserProfileResolver; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_service__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_service__ = __webpack_require__(80);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -16343,14 +16071,14 @@ var UserProfileResolver = (function () {
 
 /***/ }),
 
-/***/ 759:
+/***/ 758:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FirmUsersResolver; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_service__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__api_service__ = __webpack_require__(80);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -16382,7 +16110,7 @@ var FirmUsersResolver = (function () {
 
 /***/ }),
 
-/***/ 760:
+/***/ 759:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16439,14 +16167,14 @@ var GobackService = (function () {
 
 /***/ }),
 
-/***/ 772:
+/***/ 767:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MaterialModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material_checkbox__ = __webpack_require__(423);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_material_form_field__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_material_form_field__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_material_input__ = __webpack_require__(245);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material_expansion__ = __webpack_require__(426);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_material_datepicker__ = __webpack_require__(424);
@@ -16455,14 +16183,14 @@ var GobackService = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_material_tabs__ = __webpack_require__(433);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_material_snack_bar__ = __webpack_require__(236);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_material_toolbar__ = __webpack_require__(434);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_material_dialog__ = __webpack_require__(156);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__angular_material_button__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_material_dialog__ = __webpack_require__(155);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__angular_material_button__ = __webpack_require__(119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__angular_material_slide_toggle__ = __webpack_require__(430);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__angular_material_icon__ = __webpack_require__(246);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__angular_material_menu__ = __webpack_require__(427);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__angular_material_select__ = __webpack_require__(247);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__angular_material_table__ = __webpack_require__(432);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__angular_material__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__angular_material__ = __webpack_require__(118);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -16527,7 +16255,7 @@ var MaterialModule = (function () {
 
 /***/ }),
 
-/***/ 81:
+/***/ 80:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16537,11 +16265,11 @@ var MaterialModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_observable_of__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators_map__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_finally__ = __webpack_require__(636);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_finally__ = __webpack_require__(635);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_finally___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_finally__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_throw__ = __webpack_require__(638);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_throw__ = __webpack_require__(637);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_throw___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_throw__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_environments_environment__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_environments_environment__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_app_models__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__auth_token_manager_service__ = __webpack_require__(232);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -16838,7 +16566,7 @@ var ApiService = (function () {
 
 /***/ }),
 
-/***/ 85:
+/***/ 84:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16848,7 +16576,7 @@ var ApiService = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operators__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_operators__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__payment_receipt__ = __webpack_require__(137);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__payment_receipt__ = __webpack_require__(136);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_release_order__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_models__ = __webpack_require__(25);
 var __extends = (this && this.__extends) || (function () {
@@ -16959,7 +16687,7 @@ var ReceiptsApiService = (function () {
 
 /***/ }),
 
-/***/ 97:
+/***/ 96:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16982,7 +16710,7 @@ var environment = {
 
 /***/ }),
 
-/***/ 99:
+/***/ 98:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17131,7 +16859,238 @@ var OtherCharges = (function () {
 
 //# sourceMappingURL=release-order.js.map
 
+/***/ }),
+
+/***/ 996:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminGuard; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators_map__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_services__ = __webpack_require__(1);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var AdminGuard = (function () {
+    function AdminGuard(api, router) {
+        this.api = api;
+        this.router = router;
+    }
+    AdminGuard.prototype.goToDashboard = function () {
+        this.router.navigateByUrl('/dashboard');
+    };
+    AdminGuard.prototype.canActivate = function (route, state) {
+        var _this = this;
+        return this.api.getUser().pipe(Object(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators_map__["map"])(function (data) {
+            var result = data.success && data.user.isAdmin;
+            if (!result) {
+                _this.goToDashboard();
+            }
+            return result;
+        }, Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["catchError"])(function (err) {
+            _this.goToDashboard();
+            return Object(__WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of__["of"])(false);
+        })));
+    };
+    AdminGuard = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5_app_services__["a" /* ApiService */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
+    ], AdminGuard);
+    return AdminGuard;
+}());
+
+//# sourceMappingURL=admin-guard.service.js.map
+
+/***/ }),
+
+/***/ 997:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthGuard; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_services__ = __webpack_require__(1);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AuthGuard = (function () {
+    function AuthGuard(api, router) {
+        this.api = api;
+        this.router = router;
+    }
+    AuthGuard.prototype.canActivate = function (route, state) {
+        if (this.api.isLoggedIn) {
+            return true;
+        }
+        var url = state.url;
+        this.router.navigateByUrl('/login');
+        return true;
+    };
+    AuthGuard = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_app_services__["a" /* ApiService */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
+    ], AuthGuard);
+    return AuthGuard;
+}());
+
+//# sourceMappingURL=auth-guard.service.js.map
+
+/***/ }),
+
+/***/ 998:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PhoneVerifyGuard; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators_map__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_services__ = __webpack_require__(1);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var PhoneVerifyGuard = (function () {
+    function PhoneVerifyGuard(api, router) {
+        this.api = api;
+        this.router = router;
+    }
+    PhoneVerifyGuard.prototype.goToMobileVerify = function () {
+        this.router.navigateByUrl('/verify/mobile');
+    };
+    PhoneVerifyGuard.prototype.canActivate = function (route, state) {
+        var _this = this;
+        return this.api.getUser().pipe(Object(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators_map__["map"])(function (data) {
+            var result = data.success && data.user.phone && data.user.mobile_verified;
+            if (!result) {
+                _this.goToMobileVerify();
+            }
+            return result;
+        }, Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["catchError"])(function (err) {
+            _this.goToMobileVerify();
+            return Object(__WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of__["of"])(false);
+        })));
+    };
+    PhoneVerifyGuard = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5_app_services__["a" /* ApiService */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
+    ], PhoneVerifyGuard);
+    return PhoneVerifyGuard;
+}());
+
+//# sourceMappingURL=phone-verify-guard.service.js.map
+
+/***/ }),
+
+/***/ 999:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PlanGuard; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators_map__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_app_services__ = __webpack_require__(1);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var PlanGuard = (function () {
+    function PlanGuard(api, router) {
+        this.api = api;
+        this.router = router;
+    }
+    PlanGuard.prototype.goToPlan = function () {
+        this.router.navigateByUrl('/plan');
+    };
+    PlanGuard.prototype.canActivate = function (route, state) {
+        var _this = this;
+        return this.api.getFirm().pipe(Object(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators_map__["map"])(function (data) {
+            var result = data.success && data.firm.plan != null;
+            if (!result) {
+                _this.goToPlan();
+            }
+            return result;
+        }), Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["catchError"])(function (err) {
+            _this.goToPlan();
+            return Object(__WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of__["of"])(false);
+        }));
+    };
+    PlanGuard = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5_app_services__["a" /* ApiService */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
+    ], PlanGuard);
+    return PlanGuard;
+}());
+
+//# sourceMappingURL=plan-guard.service.js.map
+
 /***/ })
 
-},[583]);
+},[582]);
 //# sourceMappingURL=main.js.map
