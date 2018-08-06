@@ -16,6 +16,8 @@ export class ReleaseOrder {
     id: string;
 
     date: Date;
+
+    cancelled = false;
     
     releaseOrderNO = "";
     

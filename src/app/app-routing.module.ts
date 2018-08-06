@@ -33,6 +33,7 @@ import {
 } from 'app/admin';
 import { TicketListComponent } from './components/ticket-list/ticket-list.component';
 import { CreateTicketComponent } from './components/create-ticket/create-ticket.component';
+import { TestimonialComponent } from './components/testimonial/testimonial.component';
 
 const routes: Routes = [
   { path: 'empty', component: EmptyComponent},
@@ -104,6 +105,7 @@ const routes: Routes = [
       }
     ]
   },
+  { path: 'testimonial', component: TestimonialComponent },
   { path: '**', component: NotFoundComponent }
 ];
 

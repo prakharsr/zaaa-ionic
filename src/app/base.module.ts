@@ -52,6 +52,8 @@ import {
 import { CategoriesDetailsComponent, InsertionDetailsComponent } from './release-order';
 import { AuthTokenManager } from './services/auth-token-manager.service';
 import { SuperAdminApiService } from './super-admin/super-admin-api.service';
+import { PreviewComponent } from './components/preview/preview.component';
+import { TestimonialComponent } from './components/testimonial/testimonial.component';
 
 const validators = [
   VerifyEmailDirective,
@@ -101,7 +103,9 @@ const validators = [
     CategoriesDetailsComponent,
     InsertionDetailsComponent,
     validators,
-    PaginationComponent
+    PaginationComponent,
+    TestimonialComponent,
+    PreviewComponent
   ],
   exports: [
     CommonModule,
@@ -120,7 +124,8 @@ const validators = [
     CategoriesDetailsComponent,
     MailingDetailsComponent,
     BillingDetailsComponent,
-    InsertionDetailsComponent
+    InsertionDetailsComponent,
+    PreviewComponent
   ]
 })
 export class BaseModule { }

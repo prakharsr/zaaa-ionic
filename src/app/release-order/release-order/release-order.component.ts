@@ -1,4 +1,3 @@
-import { GobackService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
@@ -11,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-date';
 import { ReleaseOrder, Insertion, TaxValues, OtherCharges } from '../release-order';
 import { ReleaseOrderApiService } from '../release-order-api.service';
-import { StateApiService, NotificationService, OptionsService, DialogService } from 'app/services';
+import { StateApiService, NotificationService, OptionsService, DialogService, GobackService } from 'app/services';
 import { CategoriesDetails } from '../categories-details/categories-details.component';
 
 import {
@@ -31,18 +30,12 @@ import {
   ExecutiveApiService,
   Pullout
 } from 'app/directory';
-import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { NavController, Platform } from 'ionic-angular';
-import { DocumentViewer } from '@ionic-native/document-viewer';
-import { FileTransfer } from '@ionic-native/file-transfer';
-import { File } from '@ionic-native/file';
-import { ENETRESET } from 'constants';
-import { WebIntent } from '@ionic-native/web-intent';
+import { PreviewComponent } from '../../components/preview/preview.component';
 
 @Component({
   selector: 'app-release-order',
   templateUrl: './release-order.component.html',
-  
+  styleUrls: ['./release-order.component.css']
 })
 export class ReleaseOrderComponent implements OnInit {
 
@@ -60,7 +53,8 @@ export class ReleaseOrderComponent implements OnInit {
   dropdownPullOutName: string;
   customPullOutName = 'Main';
 
-  constructor(public goback: GobackService, private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,
+    public goback: GobackService,
     private router: Router,
     private api: ReleaseOrderApiService,
     private mediaHouseApi: MediaHouseApiService,
@@ -70,14 +64,7 @@ export class ReleaseOrderComponent implements OnInit {
     public stateApi: StateApiService,
     private notifications: NotificationService,
     public options: OptionsService,
-    private dialog: DialogService,
-    private iab: InAppBrowser,
-    public navCtrl: NavController,
-    private document: DocumentViewer,
-    private file: File,
-    private transfer: FileTransfer,
-    private platform: Platform,
-    private webIntent: WebIntent) { }
+    private dialog: DialogService) { }
 
   get isTypeWords() {
 
@@ -164,32 +151,20 @@ export class ReleaseOrderComponent implements OnInit {
             
             let blob = new Blob([data], { type: 'application/pdf' });
             let url = URL.createObjectURL(blob);
-            console.log(url);
     
             let a = document.createElement('a');
             a.setAttribute('style', 'display:none;');
             document.body.appendChild(a);
             a.href = url;
-            a.download = 'releaseorder.pdf';
 
-            let path = null;
-        
-            url = url.replace('file:///', '').replace("file://", "");
-    
-            const transfer = this.transfer.create();
-     
-            if (this.platform.is('ios')) {
-              path = this.file.documentsDirectory;
-            } else if (this.platform.is('android')) {
-              path = this.file.dataDirectory;
+            if (preview) {
+              a.setAttribute("target", "_blank");
             }
-         
-            transfer.download(url, path + 'myfile.pdf').then(entry => {
-              let url = entry.toURL();
-              this.document.viewDocument(url, 'application/pdf', {});
-            });
-              
+            else {
+              a.download = 'releaseorder.pdf';
+            }
 
+            a.click();
           }
         });
       }
@@ -201,64 +176,30 @@ export class ReleaseOrderComponent implements OnInit {
 
     this.presave();
 
-    this.api.previewROPdf(this.releaseorder).subscribe(data => {
-      if (data.msg) {
-        this.notifications.show(data.msg);
-      }
-      else {
-        let blob = new Blob([data], { type: 'application/pdf' });
-        let url2 = URL.createObjectURL(blob);
-        // url = url.replace('file:///', 'http://').replace("file://", "http://");
+    console.log(this.releaseorder);
 
-        console.log(url2);
-    
-        // let a = document.createElement('a');
-        // a.setAttribute('style', 'display:none;');
-        // document.body.appendChild(a);
-        // a.href = url;
+    // this.api.previewROPdf(this.releaseorder).subscribe(data => {
+    //   if (data.msg) {
+    //     this.notifications.show(data.msg);
+    //   }
+    //   else {
+    //     let blob = new Blob([data], { type: 'application/pdf' });
+    //     let url = URL.createObjectURL(blob);
 
-        // a.setAttribute("target", "_blank");
+    //     let a = document.createElement('a');
+    //     a.setAttribute('style', 'display:none;');
+    //     document.body.appendChild(a);
+    //     a.href = url;
 
-        // a.click();
+    //     a.setAttribute("target", "_blank");
 
-        // let path = null;
-        
-        // url = url.replace('file:///', 'http://').replace("file://", "http://");
+    //     a.click();
+    //   }
+    // });
 
-        // const transfer = this.transfer.create();
- 
-        // if (this.platform.is('ios')) {
-        //   path = this.file.documentsDirectory;
-        // } else if (this.platform.is('android')) {
-        //   path = this.file.dataDirectory;
-        // }
-     
-        // transfer.download(url, path + 'myfile.pdf').then(entry => {
-        //   let url = entry.toURL();
-        //   this.document.viewDocument(url, 'application/pdf', {});
-        // });
-
-        const options = {
-          action: this.webIntent.ACTION_VIEW,
-          url: 'https://www.google.com/'
-          // type: 'application/pdf'
-        };
-
-        this.webIntent.startActivity(options);
-        
-
-      }
+    this.api.previewROhtml(this.releaseorder).subscribe(data => {
+      this.dialog.show(PreviewComponent, { data: data.content }).subscribe();
     });
-  }
-
-  test()  {
-    const options = {
-      action: this.webIntent.ACTION_VIEW,
-      url: 'https://www.google.com/'
-      // type: 'application/pdf'
-    };
-
-    this.webIntent.startActivity(options);
   }
 
   sendMsg(releaseOrder: ReleaseOrder) {
@@ -286,12 +227,6 @@ export class ReleaseOrderComponent implements OnInit {
 
   ngOnInit() {
     this.goback.urlInit();
-
-    document.addEventListener("deviceready", onDeviceReady, false);
-    function onDeviceReady() {
-        console.log("device ready");
-    }
-
     this.categories = this.options.categories;
     this.dropdownPullOutName = this.others;
 
@@ -1032,8 +967,7 @@ export class ReleaseOrderComponent implements OnInit {
   taxes: TaxValues[] = [
     new TaxValues(5),
     new TaxValues(10),
-    new TaxValues(14),
-    new TaxValues(28, 18)
+    new TaxValues(18)
   ];
 
   selectedTax: TaxValues;
@@ -1129,5 +1063,29 @@ export class ReleaseOrderComponent implements OnInit {
         this.notifications.show(data.msg);
       }
     });
+  }
+
+  private round2(num: number) {
+    return Math.round(num * 100) / 100
+  }
+
+  get displayAmount() {
+    let taxplus = this.selectedTax.primary + this.selectedTax.secondary;
+
+    return this.releaseorder.taxIncluded
+      ? this.round2(100 * this.netAmount / (100 + taxplus))
+      : this.netAmount;
+  }
+
+  get displayTax() {
+    let taxplus = this.selectedTax.primary + this.selectedTax.secondary;
+
+    return this.releaseorder.taxIncluded
+      ? this.round2(taxplus * this.netAmount / (100 + taxplus))
+      : this.round2(this.netAmount * taxplus / 100);
+  }
+
+  get displayTotal() {
+    return Math.ceil(this.displayAmount + this.displayTax);
   }
 }

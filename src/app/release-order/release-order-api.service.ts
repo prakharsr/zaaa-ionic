@@ -46,10 +46,28 @@ export class ReleaseOrderApiService {
     );
   }
 
+  cancel(releaseOrder: ReleaseOrder) {
+    return this.api.post('/user/releaseorder/cancel', { id: releaseOrder.id }).pipe(
+      map(data => {
+        if (data.success) {
+          releaseOrder.cancelled = true;
+        }
+
+        return data;
+      })
+    );
+  }
+
   previewROPdf(releaseOrder: ReleaseOrder) {
     return this.api.post('/user/releaseorders/preview', {
       releaseOrder: releaseOrder
     }, { responseType: 'blob' });
+  }
+
+  previewROhtml(releaseOrder: ReleaseOrder) {
+    return this.api.post('/user/releaseorders/previewHtml', {
+      releaseOrder: releaseOrder
+    });
   }
 
   getReleaseOrderDir(id: string): Observable<ReleaseOrderDir> {
