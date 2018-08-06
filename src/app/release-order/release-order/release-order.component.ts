@@ -35,7 +35,6 @@ import { PreviewComponent } from '../../components/preview/preview.component';
 @Component({
   selector: 'app-release-order',
   templateUrl: './release-order.component.html',
-  styleUrls: ['./release-order.component.css']
 })
 export class ReleaseOrderComponent implements OnInit {
 
@@ -198,7 +197,7 @@ export class ReleaseOrderComponent implements OnInit {
     // });
 
     this.api.previewROhtml(this.releaseorder).subscribe(data => {
-      this.dialog.show(PreviewComponent, { data: data.content }).subscribe();
+      this.dialog.show(PreviewComponent, { width: '100%', height: '100%', maxWidth: '100%', data: data.content }).subscribe();
     });
   }
 
