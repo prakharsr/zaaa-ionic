@@ -1,6 +1,6 @@
 import { GobackService } from 'app/services';
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { PaymentReceipt } from '../payment-receipt';
 import { Invoice, InvoiceDir, InvoiceApiService } from 'app/invoice';
 import { MediaHouse, Client, Executive } from 'app/directory';
@@ -21,6 +21,10 @@ export class ReceiptComponent implements OnInit {
   client: Client;
   executive: Executive;
 
+  pastReceipts: PaymentReceipt[] = [];
+
+  @Output() invoiceSelected = new EventEmitter();
+
   @Input() set invoiceDir(invoiceDir: InvoiceDir) {
     if (invoiceDir) {
       this.init(invoiceDir);
@@ -28,6 +32,8 @@ export class ReceiptComponent implements OnInit {
   }
 
   init(invoiceDir: InvoiceDir) {
+    this.invoiceSelected.emit();
+
     this.invoice = invoiceDir.invoice;
     this.mediaHouse = invoiceDir.mediaHouse;
     this.client = invoiceDir.client;
@@ -36,6 +42,8 @@ export class ReceiptComponent implements OnInit {
 
     this.receipt.paymentType = this.paymentTypes[0];
     this.receipt.paymentAmount = this.invoice.pendingAmount;
+
+    this.invoiceApi.getPayedReceipts(this.invoice).subscribe(data => this.pastReceipts = data);
   }
 
   ngOnInit() {

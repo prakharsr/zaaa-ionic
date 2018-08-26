@@ -1,13 +1,6 @@
 <mat-toolbar>  
   <mat-toolbar-row>
-    <div class="container">
-      <div class="row">
-        <div class="col">Client Receipts</div>
-        <div class="col-auto">
-            <mat-icon (click)="showFilters()">filter_list</mat-icon>
-        </div>
-      </div>
-    </div>
+    <div class="container">Client Receipts</div>
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -19,7 +12,7 @@
     {{r.orgName}}
   </ng-template>
 
-  <div class="form-row" *ngIf="filter">
+  <div class="form-row">
     <div class="form-group col-md">
       <input type="text" class="form-control mt-3" [(ngModel)]="client" [ngbTypeahead]="searchClient" placeholder="Client" [resultTemplate]="rtClient" [inputFormatter]="clientNameFormatter" />
     </div>
@@ -69,14 +62,16 @@
         </div>
         <div class="col-auto">          
           <span *ngIf="receipt.status == 0" class="text-muted">Collected</span>
-          <span *ngIf="receipt.status == 1" class="text-success">Accepted</span>
-          <span *ngIf="receipt.status == 2" class="text-danger">Rejected</span>
+          <span *ngIf="receipt.status == 1" class="text-success">Completed</span>
+          <span *ngIf="receipt.status == 2" class="text-danger">Cancelled</span>
+          <span *ngIf="receipt.status == 3" class="text-warning">Shadow</span>
         </div>
       </div>
     </div>
-    <div class="card-footer text-right">
-      <button (click)="mark(receipt, 1)" class="btn btn-success">Accept</button>
-      <button (click)="mark(receipt, 2)" class="btn btn-danger">Reject</button>
+    <div *ngIf="receipt.status == 3 || receipt.status == 0 " class="card-footer text-right">
+      <button (click)="mark(receipt, 1)" class="btn btn-success">Complete</button>
+      <button (click)="mark(receipt, 2)" class="btn btn-danger">Cancel</button>
+      <button (click)="mark(receipt, 3)" class="btn btn-warning">Shadow</button>
     </div>
   </div>
     

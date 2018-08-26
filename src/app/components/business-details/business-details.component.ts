@@ -11,7 +11,7 @@ import {
   IfscService
 } from 'app/services';
 
-import { environment } from 'environments/environment.prod';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-business-details',

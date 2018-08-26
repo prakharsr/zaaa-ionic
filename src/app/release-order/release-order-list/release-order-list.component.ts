@@ -17,6 +17,11 @@ import {
   MediaHouseApiService,
   ExecutiveApiService
 } from 'app/directory';
+import { NgbDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-date';
+
+class RoExpandable extends ReleaseOrder {
+  expanded = false;
+}
 
 @Component({
   selector: 'app-release-order-list',
@@ -25,12 +30,10 @@ import {
 })
 export class ReleaseOrderListComponent implements OnInit {
 
-  releaseOrders: ReleaseOrder[] = [];
+  releaseOrders: RoExpandable[] = [];
 
   pageCount: number;
   page: number;
-
-  filter = false;;
 
   mediaHouse;
   edition;
@@ -39,6 +42,8 @@ export class ReleaseOrderListComponent implements OnInit {
   executiveOrg;
 
   pastDays = 0;
+
+  collapsed = true;
 
   constructor(public goback: GobackService, private api: ReleaseOrderApiService,
     private dialog: DialogService,
@@ -76,20 +81,15 @@ export class ReleaseOrderListComponent implements OnInit {
   }
 
   private init(data: PageData<ReleaseOrder>) {
-    this.releaseOrders = data.list;
+    this.releaseOrders = data.list.map(item => {
+      return {
+        ...item,
+        expanded: false
+      };
+    });
 
     this.pageCount = data.pageCount;
     this.page = data.page;
-  }
-
-  showFilters() {
-    if(this.filter) {
-      this.filter = false;
-    }
-    
-    else {
-      this.filter = true;
-    }
   }
 
   searchClient = (text: Observable<string>) => {
@@ -288,5 +288,21 @@ export class ReleaseOrderListComponent implements OnInit {
         this.notifications.show('Failed to Generate');
       }
     });
+  }
+
+  cancel(releaseOrder: ReleaseOrder) {
+    this.dialog.showYesNo("Confirm Cancellation", "Do you want to cancel this Release Order? This cannot be undone. If any Media House Invoice or Invoice has been created for this Release Order, it can not be cancelled.").subscribe(confirm => {
+      if (confirm) {
+        this.api.cancel(releaseOrder).subscribe(data => {
+          if (!data.success) {
+            this.notifications.show(data.msg);
+          }
+        });
+      }
+    });
+  }
+
+  toDate(date: NgbDate) {
+    return new Date(date.year, date.month - 1, date.day);
   }
 }

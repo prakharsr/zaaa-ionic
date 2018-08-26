@@ -1,6 +1,7 @@
-import { GobackService } from 'app/services';
+import { GobackService, WindowService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import {of} from 'rxjs/observable/of';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
@@ -13,6 +14,8 @@ import { MediaHouse, Client, Executive } from 'app/directory';
 import { NotificationService, OptionsService, DialogService } from 'app/services';
 import { InvoiceApiService } from '../invoice-api.service';
 
+declare var cordova:any;
+
 import {
   Insertion,
   ReleaseOrder,
@@ -22,6 +25,8 @@ import {
   ReleaseOrderApiService
 } from 'app/release-order';
 import { SelectReleaseOrderComponent } from '../select-release-order/select-release-order.component';
+import { PreviewComponent } from '../../components/preview/preview.component';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 class AvailableInsertion {
   constructor(public insertion: Insertion, public checked = false) { }
@@ -40,7 +45,12 @@ export class InvoiceComponent implements OnInit {
   client: Client;
   executive: Executive;
 
+  creditDays = 0;
+
+  submitting = false;
+
   availableInsertions: AvailableInsertion[] = [];
+  markedInsertions: Date[] = [];
 
   constructor(public goback: GobackService, private route: ActivatedRoute,
     private notifications: NotificationService,
@@ -48,7 +58,9 @@ export class InvoiceComponent implements OnInit {
     private api: InvoiceApiService,
     public options: OptionsService,
     private dialog: DialogService,
-    private roApi: ReleaseOrderApiService) { }
+    private roApi: ReleaseOrderApiService,
+    private windowService: WindowService,
+    private socialSharing: SocialSharing) { }
 
   ngOnInit() {
     this.goback.urlInit();
@@ -67,8 +79,8 @@ export class InvoiceComponent implements OnInit {
 
     this.invoice.releaseOrderId = this.releaseOrder.id;
     this.invoice.otherCharges = this.releaseOrder.otherCharges;
-    this.invoice.publicationDiscount.amount = this.releaseOrder.publicationDiscount;
-    this.invoice.agencyDiscount1.amount = this.releaseOrder.agencyDiscount1;
+    // this.invoice.publicationDiscount.amount = this.releaseOrder.publicationDiscount;
+    // this.invoice.agencyDiscount1.amount = this.releaseOrder.agencyDiscount1;
 
     this.invoice.GSTIN = this.client.GSTIN;
 
@@ -88,6 +100,7 @@ export class InvoiceComponent implements OnInit {
       if (!element.marked) {
         this.availableInsertions.push(new AvailableInsertion(element));
       }
+      else this.markedInsertions.push(this.toDate(element.date));
     });
   }
 
@@ -96,81 +109,145 @@ export class InvoiceComponent implements OnInit {
       if (data.success) {
         this.goBack();
       }
+      else this.submitting = false;
     });
   }
 
-  saveAndGen() {
-    this.submit().subscribe(data => {
-      if (data.success) {
-        this.gen(this.invoice);
+  saveAndGen(share = false, callback?: () => void) {
+    // Confirm
+    this.confirmGeneration(this.invoice).subscribe(confirm => {
+      if (confirm) {
+        // Save
+        this.submit().subscribe(data => {
+          if (data.success) {
+            // Generate
+            this.api.generate(this.invoice).subscribe(data => {
+              if (data.msg) {
+                this.notifications.show(data.msg);    
+              }
+              else {
+
+              document.addEventListener('deviceready', () => {
+                console.log(cordova.file);
+
+              let folderpath = cordova.file.externalRootDirectory + "Download/";
+              let filename = "invoice.pdf";
+             
+              this.windowService.window.resolveLocalFileSystemURL(folderpath, dir => {
+                console.log("Access to the directory granted succesfully");
+                dir.getFile(filename, {create:true}, file => {
+                    console.log("File created succesfully.");
+                    file.createWriter(fileWriter => {
+                        console.log("Writing content to file");
+                        fileWriter.write(data);
+                        if(callback) {
+                          callback();
+                        }
+                        if(share == false) {
+                          this.notifications.show('Saved releaseorder.pdf in Download ');
+                        }
+                    }, confirm => {
+                        if(share == false) {
+                          this.notifications.show('Unable to save file in path '+ folderpath);
+                        }
+                        else {
+                          this.notifications.show('Unable to share file due to being unable to save file in path '+ folderpath);
+                        }
+                    });
+                });
+            });
+
+            });
+            
+              }
+            });
+          }
+          else this.submitting = false;
+        });
       }
-    });
+    })
   }
+
+  sharePdf() {
+    this.saveAndGen(true, () => {
+      this.socialSharing.share('Share Invoice PDF', 'Share', cordova.file.externalRootDirectory + "Download/invoice.pdf");
+    });
+
+  }
+
+  private confirmGeneration(invoice: Invoice) : Observable<boolean> {
+    if (1) {
+      return of(true);
+    }
+
+    return this.dialog.showYesNo('Confirm Generation', "Release Order will be generated. Once generated it cannot be edited or deleted. Are you sure you want to continue?");
+  }
+
 
   saveAndSendMsg() {
-    this.submit().subscribe(data => {
-      if (data.success) {
-        this.sendMsg(this.invoice);
-      }
-    });
-  }
-  
-  preview() {
-    this.submit().subscribe(data => {
-      if (data.success) {
-        this.gen(this.invoice, true);
-      }
-    });
-  }
+    // Confirm
+    this.confirmGeneration(this.invoice).subscribe(confirm => {
+      if (confirm) {
+        // Mailing Details
+        this.dialog.getMailingDetails().subscribe(mailingDetails => {
+          if (mailingDetails) {
+            // Save
+            this.submit().subscribe(data => {
+              if (data.success) {
+                // Mail
+                this.api.sendMail(this.invoice, mailingDetails).subscribe(data => {
+                  if (data.success) {
+                    this.notifications.show("Sent Successfully");
 
-  gen(invoice: Invoice, preview = false) {
-    this.api.generate(invoice).subscribe(data => {
-      if (data.msg) {
-        this.notifications.show(data.msg);
-      }
-      else {
-        console.log(data);
-        
-        let blob = new Blob([data], { type: 'application/pdf' });
-        let url = URL.createObjectURL(blob);
-
-        let a = document.createElement('a');
-        a.setAttribute('style', 'display:none;');
-        document.body.appendChild(a);
-        a.href = url;
-        if (preview) {
-          a.setAttribute("target", "_blank");
-        }
-        else {
-          a.download = 'invoice.pdf';
-        }
-        a.click();
-      }
-    });
-  }
-
-  sendMsg(invoice: Invoice) {
-    this.dialog.getMailingDetails().subscribe(mailingDetails => {
-      if (mailingDetails) {
-        this.api.sendMail(invoice, mailingDetails).subscribe(data => {
-          if (data.success) {
-            this.notifications.show("Sent Successfully");
-          }
-          else {
-            console.log(data);
-
-            this.notifications.show(data.msg);
+                  }
+                  else {
+                    console.log(data);
+    
+                    this.notifications.show(data.msg);
+                  }
+                });
+              }
+              else this.submitting = false;
+            });
           }
         });
       }
     });
   }
 
+  genPreview() {
+    this.presave();
+
+    this.api.previewInvoicehtml(this.invoice).subscribe(data => {
+      this.dialog.show(PreviewComponent, { width: '100%', height: '100%', maxWidth: '100%', data: data.content }).subscribe(response => {
+        switch (response) {
+          case 'save':
+            this.save();
+            break;
+
+          case 'dl':
+            this.saveAndGen();
+            break;
+
+          case 'mail':
+            this.saveAndSendMsg();
+            break;
+
+          case 'share':
+            this.sharePdf();
+            break;
+        }
+      });
+    });
+  }
+
   get roDiscountedAmount() {
     let amount = this.releaseOrder.adGrossAmount;
 
-    amount -= (this.releaseOrder.agencyDiscount1 * this.releaseOrder.adGrossAmount) / 100;
-    amount -= (this.releaseOrder.agencyDiscount2 * this.releaseOrder.adGrossAmount) / 100;
+    amount -= (this.releaseOrder.agencyDiscount1 * amount) / 100;
+    amount -= (this.releaseOrder.agencyDiscount2 * amount) / 100;
+
+    amount -= (this.releaseOrder.publicationDiscount * amount) / 100;
 
     return amount;
   }
@@ -202,6 +279,10 @@ export class InvoiceComponent implements OnInit {
     return tax;
   }
 
+  get pubDiscountDisplay() {
+    return this.releaseOrder.publicationDiscount + "%";
+  }
+
   get roTaxDisplay() {
     let tax = this.releaseOrder.taxAmount.primary + "%";
 
@@ -220,7 +301,7 @@ export class InvoiceComponent implements OnInit {
     this.router.navigateByUrl('/invoices');
   }
 
-  submit() : Observable<any> {
+  presave() {
     if (!this.availableInsertions.some(val => val.checked)) {
       this.notifications.show('No Insertions selected');
 
@@ -232,12 +313,18 @@ export class InvoiceComponent implements OnInit {
     this.invoice.netAmountWords = this.options.amountToWords(this.invoice.netAmountFigures);
     this.invoice.FinalTaxAmount = this.finalTaxAmount;
     this.invoice.FinalAmount = this.finalAmount;
-    this.invoice.pendingAmount = this.invoice.FinalAmount + this.invoice.FinalTaxAmount;
     this.invoice.insertions = this.availableInsertions.filter(insertion => insertion.checked).map(insertion => insertion.insertion);
+    this.invoice.paymentDate = new Date();
+    this.invoice.paymentDate.setDate(this.invoice.paymentDate.getDate() + this.creditDays);
+  }
 
-    let base: Observable<any> = this.createInvoice();
+  submit() : Observable<any> {
+    
+    this.submitting = true;
 
-    return base;
+    this.presave();
+
+    return this.createInvoice();
   }
 
   private createInvoice() {
@@ -273,8 +360,7 @@ export class InvoiceComponent implements OnInit {
   taxes: TaxValues[] = [
     new TaxValues(5),
     new TaxValues(10),
-    new TaxValues(14),
-    new TaxValues(28, 18)
+    new TaxValues(18)
   ];
 
   get insertionCount() {

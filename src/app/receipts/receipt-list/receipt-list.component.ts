@@ -8,6 +8,7 @@ import { NotificationService, DialogService } from 'app/services';
 import { ReceiptsApiService } from '../receipts-api.service';
 import { PageData } from 'app/models';
 import { ReleaseOrderSearchParams } from 'app/release-order';
+import * as receiptGen from '../receipt-gen';
 
 import {
   Client,
@@ -32,8 +33,6 @@ export class ReceiptListComponent implements OnInit {
 
   advance = false;
 
-  filter = false;
-
   mediaHouse;
   edition;
   client;
@@ -41,6 +40,8 @@ export class ReceiptListComponent implements OnInit {
   executiveOrg;
 
   pastDays = 0;
+
+  collapsed = true;
 
   constructor(public goback: GobackService, private route: ActivatedRoute,
     private clientApi: ClientApiService,
@@ -79,16 +80,6 @@ export class ReceiptListComponent implements OnInit {
 
       this.pastDays = data.resolved.search.past;
     });
-  }
-
-  showFilters() {
-    if(this.filter) {
-      this.filter = false;
-    }
-    
-    else {
-      this.filter = true;
-    }
   }
 
   searchClient = (text: Observable<string>) => {
@@ -161,41 +152,11 @@ export class ReceiptListComponent implements OnInit {
   }
 
   gen(receipt: PaymentReceipt) {
-    this.api.generate(receipt).subscribe(data => {
-      if (data.msg) {
-        this.notifications.show(data.msg);
-      }
-      else {
-        console.log(data);
-        
-        let blob = new Blob([data], { type: 'application/pdf' });
-        let url = URL.createObjectURL(blob);
-
-        let a = document.createElement('a');
-        a.setAttribute('style', 'display:none;');
-        document.body.appendChild(a);
-        a.download = 'receipt.pdf';
-        a.href = url;
-        a.click();
-      }
-    });
+    receiptGen.generate(receipt, this.api, this.notifications);
   }
 
   sendMsg(receipt: PaymentReceipt) {
-    this.dialog.getMailingDetails().subscribe(mailingDetails => {
-      if (mailingDetails) {
-        this.api.sendMail(receipt, mailingDetails).subscribe(data => {
-          if (data.success) {
-            this.notifications.show("Sent Successfully");
-          }
-          else {
-            console.log(data);
-
-            this.notifications.show(data.msg);
-          }
-        });
-      }
-    });
+    receiptGen.sendMsg(receipt, this.api, this.notifications, this.dialog);
   }
 
   private get editionName() {
@@ -226,5 +187,9 @@ export class ReceiptListComponent implements OnInit {
     this.router.navigate(['/receipts/list/', pageNo], {
       queryParams: new ReleaseOrderSearchParams(this.mediaHouseName, this.editionName, this.clientName, this.executiveName, this.exeOrg, this.pastDays)
     });
+  }
+
+  cancel(receipt: PaymentReceipt) {
+    receiptGen.cancel(receipt, this.api, this.notifications, this.dialog);
   }
 }

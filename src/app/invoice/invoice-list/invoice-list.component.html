@@ -4,7 +4,9 @@
       <div class="row">
         <div class="col">Invoices</div>
         <div class="col-auto">
-            <mat-icon (click)="showFilters()">filter_list</mat-icon>
+          <button mat-icon-button (click)="collapsed = !collapsed" class="d-md-none">
+            <mat-icon>filter_list</mat-icon>
+          </button>
         </div>
       </div>
     </div>
@@ -34,7 +36,7 @@
 </ng-template>
 
 <div class="container">
-  <div class="form-row" *ngIf="filter">
+  <div class="form-row" [class.mobile-collapse]="collapsed">
     <div class="form-group col-sm-6 col-md-4 col-xl">
       <input type="text" class="form-control" [(ngModel)]="mediaHouse" [ngbTypeahead]="searchMediaHouse" placeholder="Media House" [resultTemplate]="rtMediaHouse" [inputFormatter]="mediaHouseNameFormatter"/>
     </div>
@@ -71,7 +73,7 @@
     </div>
   </div>
 
-  <button class="fab" routerLink="/invoices/new">
+  <button class="fab" (click)="this.goback.gotoComponent('invoices/new')">
     <mat-icon>add</mat-icon>
   </button>
 
@@ -94,7 +96,7 @@
         <div class="col-auto">
           <mat-menu #invoiceMenu="matMenu">
             <button mat-menu-item (click)="gen(invoice)">
-              <mat-icon>save_alt</mat-icon> Download
+              <mat-icon>get_app</mat-icon> Download
             </button>
             <button mat-menu-item (click)="sendMsg(invoice)">
               <mat-icon>mail</mat-icon> Send Email

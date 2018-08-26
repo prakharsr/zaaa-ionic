@@ -19,8 +19,8 @@ import { IonicModule } from 'ionic-angular';
 
 @NgModule({
   imports: [
-    IonicModule.forRoot(InvoiceModule),
     BaseModule,
+    IonicModule.forRoot(InvoiceModule),
     ReleaseOrderModule,
     InvoiceRoutingModule
   ],

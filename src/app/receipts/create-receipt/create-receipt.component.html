@@ -6,12 +6,12 @@
 
 <br>
 
-<div class="container">
-  <mat-checkbox [(ngModel)]="advance" *ngIf="!invoiceDir">Advance</mat-checkbox>
+<div class="container" *ngIf="allowAdvance">
+  <mat-checkbox [(ngModel)]="advance">Advance</mat-checkbox>
 </div>
 
 <br>
 
 <app-advance-receipt *ngIf="advance"></app-advance-receipt>
 
-<app-receipt *ngIf="!advance" [invoiceDir]="invoiceDir"></app-receipt>
+<app-receipt *ngIf="!advance" [invoiceDir]="invoiceDir" (invoiceSelected)="allowAdvance = false"></app-receipt>

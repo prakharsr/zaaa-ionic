@@ -23,12 +23,13 @@ export class CreditDebitNotesComponent implements OnInit {
   edition;
   client;
 
-  filter = false;
-
   notes: CreditDebitNote[] = [];
 
   page: number;
   pageCount: number;
+
+
+  collapsed = true;
 
   constructor(public goback: GobackService, private route: ActivatedRoute,
     private router: Router,
@@ -69,17 +70,6 @@ export class CreditDebitNotesComponent implements OnInit {
 
       this.client = cl;
     });
-  }
-
-
-  showFilters() {
-    if(this.filter) {
-      this.filter = false;
-    }
-    
-    else {
-      this.filter = true;
-    }
   }
 
   searchClient = (text: Observable<string>) => {

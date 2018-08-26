@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-date';
 import { Invoice } from '../invoice';
+import { PaymentReceipt } from 'app/receipts';
+import { InvoiceApiService } from '../invoice-api.service';
 
 @Component({
   selector: 'app-invoice-details',
@@ -13,13 +15,18 @@ export class InvoiceDetailsComponent implements OnInit {
 
   invoice = new Invoice();
 
-  constructor(public goback: GobackService, private route: ActivatedRoute) { }
+  receipts: PaymentReceipt[] = [];
+
+  constructor(public goback: GobackService, private route: ActivatedRoute,
+    private api: InvoiceApiService) { }
 
   ngOnInit() {
     this.goback.urlInit();
     this.route.data.subscribe((data: { invoice: Invoice }) => {
       this.invoice = data.invoice;
     });
+
+    this.api.getPayedReceipts(this.invoice).subscribe(data => this.receipts = data);
   }
 
   toDate(date: NgbDate) {

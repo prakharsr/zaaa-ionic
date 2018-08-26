@@ -10,6 +10,13 @@
     "com.razorpay.cordova": {
       "PACKAGE_NAME": "com.zenedo.aaman"
     },
+    "cordova-android-support-gradle-release": {
+      "ANDROID_SUPPORT_VERSION": "27.+",
+      "PACKAGE_NAME": "com.zenedo.aaman"
+    },
+    "cordova-pdf-generator": {
+      "PACKAGE_NAME": "com.zenedo.aaman"
+    },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "com.zenedo.aaman"
     },
@@ -31,9 +38,13 @@
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.zenedo.aaman"
     },
-    "cordova-pdf-generator": {
+    "cordova-plugin-x-socialsharing": {
       "PACKAGE_NAME": "com.zenedo.aaman"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "com.zenedo.aaman"
+    }
+  }
 }

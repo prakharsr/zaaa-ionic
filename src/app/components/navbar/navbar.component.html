@@ -7,8 +7,8 @@
           <img src="assets/zenedo.jpeg" width="50" height="50">&nbsp;&nbsp;
         </ion-buttons>
         <ion-buttons right *ngIf="this.api.isLoggedIn">
-          <button ion-button icon-only (click)="this.goback.gotoComponent('')">
-            <ion-icon name="notifications"></ion-icon>
+          <button mat-icon-button (click)="openNotifications()" #notifyBtn>
+            <mat-icon>notifications</mat-icon>
           </button>
         </ion-buttons>
         <div class="row">

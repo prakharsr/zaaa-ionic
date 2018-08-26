@@ -6,6 +6,9 @@ import { map } from 'rxjs/operators';
 import { MediaHouse } from 'app/directory/media-houses/media-house';
 import { MediaHouseApiService } from 'app/directory/media-houses/media-house-api.service';
 import { AdCategory } from '../models/ad-category';
+import { RateCard } from 'app/rate-card/rate-card';
+import { RateCardApiService } from 'app/rate-card/rate-card-api.service';
+import { Ticket, PageData } from '../models';
 
 @Injectable()
 export class SuperAdminApiService {
@@ -16,7 +19,8 @@ export class SuperAdminApiService {
   }
 
   constructor(private authTokenManager: AuthTokenManager,
-    private mediaHouseApi: MediaHouseApiService) { }
+    private mediaHouseApi: MediaHouseApiService,
+    private rateCardApi: RateCardApiService) { }
 
   private makeUrl(url: string) {
     return environment.adminApiUrl + url;
@@ -44,13 +48,11 @@ export class SuperAdminApiService {
 
   signup(name: string, email: string, password: string) : Observable<any>
   {
-    const base = this.post('/signup', {
+    return this.post('/signup', {
       name: name,
       email: email,
       password: password
     });
-
-    return this.extractToken(base);
   }
 
   login(emailOrPhone: string, password: string): Observable<any> {
@@ -87,10 +89,22 @@ export class SuperAdminApiService {
     return this.post('/globalmediahouse/update', this.mediaHouseApi.editPostArgs(mediaHouse));
   }
 
+  createGlobalRateCard(rateCard: RateCard) {
+    return this.post('/globalratecard/create', this.rateCardApi.createPostArgs(rateCard));
+  }
+
+  updateGlobalRateCard(rateCard: RateCard) {
+    return this.post('/globalratecard/update', this.rateCardApi.editPostArgs(rateCard));
+  }
+
+  deleteGlobalRateCard(rateCard: RateCard) {
+    return this.delete('/globalratecard/delete/' + rateCard.id);
+  }
+
   getCategories(level: number, parent: AdCategory) : Observable<AdCategory[]> {
-    return this.post('/categories', {
+    return this.post('/category/list', {
       level: level,
-      parent: parent._id
+      parent: parent == null ? '' : parent._id
     }).pipe(
       map(data => {
         let result: AdCategory[] = [];
@@ -105,6 +119,72 @@ export class SuperAdminApiService {
   }
 
   createCategory(category: AdCategory) {
-    return this.post('/category', category);
+    return this.post('/category', category).pipe(
+      map(data => {
+        if (data.success) {
+          category._id = data.category._id;
+        }
+
+        return data;
+      })
+    );
+  }
+
+  ticketStatus(ticket: Ticket, status: number) {
+    return this.post('/ticket/status', {
+      id: ticket._id,
+      status: status
+    }).pipe(
+      map(data => {
+        if (data.success) {
+          ticket.status = status;
+        }
+
+        return data;
+      })
+    );
+  }
+
+  queryTickets(page: number, insertionPeriod: number, status: number) : Observable<PageData<Ticket>> {
+    return this.post('/ticket/list', {
+      insertionPeriod: insertionPeriod,
+      page: page,
+      status: status
+    }).map(data => {
+      let tickets: Ticket[] = [];
+
+      if (data.success) {
+        data.tickets.forEach(element => {
+          let ticket = new Ticket();
+
+          Object.assign(ticket, element);
+
+          tickets.push(ticket);
+        });
+      }
+
+      return new PageData<Ticket>(tickets, data.perPage, data.page, data.pageCount);
+    });
+  }
+
+  get admins(): Observable<any[]> {
+    return this.get('/admins').pipe(
+      map(data => {
+        let result = [];
+
+        if (data.success) {
+          result = data.admins;
+        }
+
+        return result;
+      })
+    );
+  }
+
+  sendNotification(title: string, body: string) {
+    return this.post('/notifications/send', {
+      title: title,
+      notifBody: body
+    });
   }
 }

@@ -35,8 +35,7 @@ export class InsertionDetailsComponent implements OnInit {
     this.injected = data;
   }
 
-  ngOnInit() {
-   }
+  ngOnInit() { }
 
   isInsertionTimeLimitValid(date: NgbDate) {
     if (this.injected.timeLimit) {

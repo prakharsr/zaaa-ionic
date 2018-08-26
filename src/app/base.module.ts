@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialModule } from './material.module';
 import { LivechatWidgetModule } from '@livechat/angular-widget';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { LineChartModule } from '@swimlane/ngx-charts';
 
 import {
   GobackService,
@@ -38,7 +38,8 @@ import {
   MailingDetailsComponent,
   DialogComponent,
   BillingDetailsComponent,
-  PaginationComponent
+  PaginationComponent,
+  LoginComponent
 } from './components';
 
 import {
@@ -54,6 +55,10 @@ import { AuthTokenManager } from './services/auth-token-manager.service';
 import { SuperAdminApiService } from './super-admin/super-admin-api.service';
 import { PreviewComponent } from './components/preview/preview.component';
 import { TestimonialComponent } from './components/testimonial/testimonial.component';
+import { RouterModule } from '@angular/router';
+import { SafeHtmlPipe } from './safe-html-pipe';
+import { TicketListComponent } from './components/ticket-list/ticket-list.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 
 const validators = [
   VerifyEmailDirective,
@@ -67,12 +72,13 @@ const validators = [
 @NgModule({
   imports: [
     CommonModule,
+    RouterModule,
     NgbModule.forRoot(),
     FormsModule,
     HttpClientModule,
     MaterialModule,
     LivechatWidgetModule,
-    NgxChartsModule
+    LineChartModule
   ],
   providers: [
     GobackService,
@@ -104,11 +110,16 @@ const validators = [
     InsertionDetailsComponent,
     validators,
     PaginationComponent,
+    LoginComponent,
+    TicketListComponent,
+    PreviewComponent,
     TestimonialComponent,
-    PreviewComponent
+    NotificationsComponent,
+    SafeHtmlPipe
   ],
   exports: [
     CommonModule,
+    RouterModule,
     NgbModule,
     FormsModule,
     HttpClientModule,
@@ -117,7 +128,8 @@ const validators = [
     validators,
     PaginationComponent,
     LivechatWidgetModule,
-    NgxChartsModule,
+    LineChartModule,
+    SafeHtmlPipe
   ],
   entryComponents: [
     DialogComponent,
@@ -125,7 +137,8 @@ const validators = [
     MailingDetailsComponent,
     BillingDetailsComponent,
     InsertionDetailsComponent,
-    PreviewComponent
+    PreviewComponent,
+    NotificationsComponent
   ]
 })
 export class BaseModule { }

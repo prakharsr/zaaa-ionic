@@ -9,6 +9,16 @@ module.exports = [
     ]
   },
   {
+    "id": "cordova-pdf-generator.pdf",
+    "file": "plugins/cordova-pdf-generator/www/pdf.js",
+    "pluginId": "cordova-pdf-generator",
+    "clobbers": [
+      "cordova.plugins.pdf",
+      "pugin.pdf",
+      "pdf"
+    ]
+  },
+  {
     "id": "cordova-plugin-device.device",
     "file": "plugins/cordova-plugin-device/www/device.js",
     "pluginId": "cordova-plugin-device",
@@ -198,6 +208,14 @@ module.exports = [
     "runs": true
   },
   {
+    "id": "cordova-plugin-file-opener2.FileOpener2",
+    "file": "plugins/cordova-plugin-file-opener2/www/plugins.FileOpener2.js",
+    "pluginId": "cordova-plugin-file-opener2",
+    "clobbers": [
+      "cordova.plugins.fileOpener2"
+    ]
+  },
+  {
     "id": "cordova-plugin-ionic-keyboard.keyboard",
     "file": "plugins/cordova-plugin-ionic-keyboard/www/android/keyboard.js",
     "pluginId": "cordova-plugin-ionic-keyboard",
@@ -222,13 +240,17 @@ module.exports = [
     ]
   },
   {
-    "id": "cordova-pdf-generator.pdf",
-    "file": "plugins/cordova-pdf-generator/www/pdf.js",
-    "pluginId": "cordova-pdf-generator",
+    "id": "es6-promise-plugin.Promise",
+    "file": "plugins/es6-promise-plugin/www/promise.js",
+    "pluginId": "es6-promise-plugin",
+    "runs": true
+  },
+  {
+    "id": "cordova-plugin-x-socialsharing.SocialSharing",
+    "file": "plugins/cordova-plugin-x-socialsharing/www/SocialSharing.js",
+    "pluginId": "cordova-plugin-x-socialsharing",
     "clobbers": [
-      "cordova.plugins.pdf",
-      "pugin.pdf",
-      "pdf"
+      "window.plugins.socialsharing"
     ]
   }
 ];
@@ -236,15 +258,18 @@ module.exports.metadata =
 // TOP OF METADATA
 {
   "com.razorpay.cordova": "0.16.1",
+  "cordova-android-support-gradle-release": "1.4.4",
+  "cordova-pdf-generator": "2.0.4",
   "cordova-plugin-device": "2.0.2",
   "cordova-plugin-fcm": "2.1.2",
   "cordova-plugin-file": "6.0.1",
+  "cordova-plugin-file-opener2": "2.0.19",
   "cordova-plugin-ionic-keyboard": "2.0.5",
-  "cordova-plugin-ionic-webview": "1.2.1",
   "cordova-plugin-splashscreen": "5.0.2",
   "cordova-plugin-statusbar": "2.4.2",
   "cordova-plugin-whitelist": "1.3.3",
-  "cordova-pdf-generator": "2.0.4"
+  "es6-promise-plugin": "4.2.2",
+  "cordova-plugin-x-socialsharing": "5.4.1"
 };
 // BOTTOM OF METADATA
 });

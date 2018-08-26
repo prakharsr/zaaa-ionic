@@ -30,8 +30,6 @@ export class InvoiceListComponent implements OnInit {
   pageCount: number;
   page: number;
 
-  filter = false;
-
   mediaHouse;
   edition;
   client;
@@ -39,6 +37,8 @@ export class InvoiceListComponent implements OnInit {
   executiveOrg;
 
   pastDays = 0;
+
+  collapsed = true;
 
   constructor(public goback: GobackService, private route: ActivatedRoute,
     private clientApi: ClientApiService,
@@ -76,16 +76,6 @@ export class InvoiceListComponent implements OnInit {
 
       this.pastDays = data.resolved.search.past;
     });
-  }
-
-  showFilters() {
-    if(this.filter) {
-      this.filter = false;
-    }
-    
-    else {
-      this.filter = true;
-    }
   }
 
   searchClient = (text: Observable<string>) => {

@@ -91,6 +91,7 @@ ext {
 }
 
 // PLUGIN GRADLE EXTENSIONS START
+apply from: "../cordova-android-support-gradle-release/aaman-cordova-android-support-gradle-release.gradle"
 apply from: "../cordova-plugin-fcm/aaman-FCMPlugin.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
@@ -263,6 +264,7 @@ dependencies {
     compile "com.razorpay:checkout:1.4.7"
     compile "com.google.firebase:firebase-core:+"
     compile "com.google.firebase:firebase-messaging:+"
+    compile "com.android.support:support-v4:24.1.1+"
     // SUB-PROJECT DEPENDENCIES END
 }
 

@@ -33,6 +33,9 @@
     },
     "cordova-pdf-generator": {
       "PACKAGE_NAME": "com.zenedo.aaman"
+    },
+    "cordova-android-support-gradle-release": {
+      "PACKAGE_NAME": "com.zenedo.aaman"
     }
   },
   "dependent_plugins": {}

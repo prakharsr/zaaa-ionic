@@ -11,10 +11,6 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <allow-intent href="blob:*" />
-    <allow-intent href="intent://" />
-    <allow-intent href="*" />
-    <allow-intent href="blob:http://*/*" />
     <preference name="ScrollEnabled" value="true" />
     <preference name="android-minSdkVersion" value="19" />
     <preference name="BackupWebStorage" value="none" />
@@ -25,6 +21,8 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="1000" />
     <preference name="loadUrlTimeoutValue" value="600000" />
+    <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+    <preference name="AndroidExtraFilesystems" value="files,cache, sdcard, cache-external, files-external" />
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
@@ -90,9 +88,12 @@
     <plugin name="com.razorpay.cordova" spec="https://github.com/razorpay/razorpay-cordova.git" />
     <plugin name="cordova-plugin-statusbar" spec="^2.4.2" />
     <plugin name="cordova-plugin-fcm" spec="^2.1.2" />
-    <engine name="android" spec="7.0.0" />
     <engine name="ios" spec="4.5.5" />
     <engine name="osx" spec="4.0.1" />
     <plugin name="cordova-pdf-generator" spec="^2.0.4" />
     <plugin name="cordova-plugin-file" spec="^6.0.1" />
+    <plugin name="cordova-android-support-gradle-release" spec="^1.4.4">
+        <variable name="ANDROID_SUPPORT_VERSION" value="27.+" />
+    </plugin>
+    <engine name="android" spec="~7.0.0" />
 </widget>

@@ -26,10 +26,9 @@ export class PaginationComponent implements OnInit {
 
   @Output() navigate = new EventEmitter<number>();
 
-  constructor(public goback: GobackService, ) { }
+  constructor() { }
 
   ngOnInit() {
-    this.goback.urlInit();
   }
 
 }

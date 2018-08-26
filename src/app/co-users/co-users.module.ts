@@ -14,8 +14,8 @@ import { IonicModule } from 'ionic-angular';
 
 @NgModule({
   imports: [
-    IonicModule.forRoot(CoUsersModule),
     BaseModule,
+    IonicModule.forRoot(CoUsersModule),
     CoUsersRoutingModule,
   ],
   declarations: [

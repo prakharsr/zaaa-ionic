@@ -230,6 +230,12 @@ module.exports = [
       "pugin.pdf",
       "pdf"
     ]
+  },
+  {
+    "id": "es6-promise-plugin.Promise",
+    "file": "plugins/es6-promise-plugin/www/promise.js",
+    "pluginId": "es6-promise-plugin",
+    "runs": true
   }
 ];
 module.exports.metadata = 
@@ -243,7 +249,9 @@ module.exports.metadata =
   "cordova-plugin-splashscreen": "5.0.2",
   "cordova-plugin-statusbar": "2.4.2",
   "cordova-plugin-whitelist": "1.3.3",
-  "cordova-pdf-generator": "2.0.4"
+  "cordova-pdf-generator": "2.0.4",
+  "es6-promise-plugin": "4.2.2",
+  "cordova-android-support-gradle-release": "1.4.4"
 };
 // BOTTOM OF METADATA
 });

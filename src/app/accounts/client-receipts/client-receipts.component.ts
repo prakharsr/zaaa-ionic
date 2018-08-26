@@ -22,8 +22,6 @@ export class ClientReceiptsComponent implements OnInit {
   page: number;
   pageCount: number;
 
-  filter = false;
-
   client;
   pastDays = 0;
   selectedUser;
@@ -60,17 +58,6 @@ export class ClientReceiptsComponent implements OnInit {
       this.pageCount = data.resolved.list.pageCount;
       this.page = data.resolved.list.page;
     });
-  }
-
-
-  showFilters() {
-    if(this.filter) {
-      this.filter = false;
-    }
-    
-    else {
-      this.filter = true;
-    }
   }
 
   searchClient = (text: Observable<string>) => {

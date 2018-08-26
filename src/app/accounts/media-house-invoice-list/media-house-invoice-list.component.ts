@@ -9,6 +9,10 @@ import { PageData } from 'app/models';
 import { ReleaseOrderSearchParams } from 'app/release-order';
 import { MediaHouseInvoice } from '../media-house-invoice';
 
+class MhiExpandable extends MediaHouseInvoice {
+  expanded = false;
+}
+
 @Component({
   selector: 'app-media-house-invoice-list',
   templateUrl: './media-house-invoice-list.component.html',
@@ -21,12 +25,12 @@ export class MediaHouseInvoiceListComponent implements OnInit {
 
   pastDays = 0;
 
-  filter = false;
-
   page: number;
   pageCount: number;
 
-  list: MediaHouseInvoice[] = [];
+  list: MhiExpandable[] = [];
+
+  collapsed = true;
 
   constructor(public goback: GobackService, private api: AccountsApiService,
     private route: ActivatedRoute,
@@ -36,7 +40,13 @@ export class MediaHouseInvoiceListComponent implements OnInit {
   ngOnInit() {
     this.goback.urlInit();
     this.route.data.subscribe((data: { resolved: { list: PageData<MediaHouseInvoice>, search: ReleaseOrderSearchParams } }) => {
-      this.list = data.resolved.list.list;
+      this.list = data.resolved.list.list.map(item => {
+        return {
+          ...item,
+          expanded: false
+        };
+      });
+
       this.page = data.resolved.list.page;
       this.pageCount = data.resolved.list.pageCount;
 
@@ -48,16 +58,6 @@ export class MediaHouseInvoiceListComponent implements OnInit {
 
       this.pastDays = data.resolved.search.past;
     });
-  }
-
-  showFilters() {
-    if(this.filter) {
-      this.filter = false;
-    }
-    
-    else {
-      this.filter = true;
-    }
   }
 
   searchMediaHouse = (text: Observable<string>) => {

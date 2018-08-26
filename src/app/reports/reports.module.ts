@@ -3,15 +3,23 @@ import { BaseModule } from '../base.module';
 import { ReportsRoutingModule } from './reports-routing.module';
 import { ReportsHomeComponent } from './reports-home/reports-home.component';
 import { ReportsApiService } from './reports-api.service';
+import { ImportExportComponent } from './import-export/import-export.component';
+import { ImportExportApiService } from './import-export-api.service';
 import { IonicModule } from 'ionic-angular';
 
 @NgModule({
   imports: [
-    IonicModule.forRoot(ReportsModule),
     BaseModule,
+    IonicModule.forRoot(ReportsModule),
     ReportsRoutingModule
   ],
-  declarations: [ReportsHomeComponent],
-  providers: [ReportsApiService]
+  declarations: [
+    ReportsHomeComponent,
+    ImportExportComponent
+  ],
+  providers: [
+    ReportsApiService,
+    ImportExportApiService
+  ]
 })
 export class ReportsModule { }

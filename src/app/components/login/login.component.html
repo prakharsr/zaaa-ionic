@@ -14,7 +14,7 @@
     </mat-form-field>
 
     <div class="form-group">
-      <p class="float-right"><a tabindex="-1" routerLink="/forgotPassword">Forgot Password</a></p>
+      <p class="float-right"><a tabindex="-1" (click)="this.goback.gotoComponent('forgotPassword')">Forgot Password</a></p>
     </div>
 
     <mat-form-field>
@@ -30,5 +30,5 @@
   </form>
 
   <br>
-  <p>Don't have an account, create <a routerLink="/register">one</a>.</p>
+  <p>Don't have an account, create <a (click)="this.goback.gotoComponent('register')">one</a>.</p>
 </div>

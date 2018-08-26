@@ -49,6 +49,10 @@ import { TicketListComponent } from './components/ticket-list/ticket-list.compon
 import { CreateTicketComponent } from './components/create-ticket/create-ticket.component';
 import { DashboardApiService } from './services/dashboard-api.service';
 import { FCM } from '@ionic-native/fcm';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { TncComponent } from './components/tnc/tnc.component';
+import { DirRoutingModule } from './directory/dir-routing.module';
+import { RateCardRoutingModule } from './rate-card/rate-card-routing.module';
 
 @NgModule({
   declarations: [
@@ -58,7 +62,6 @@ import { FCM } from '@ionic-native/fcm';
     NavbarComponent,
     HomeComponent,
     PhoneVerifyComponent,
-    LoginComponent,
     RegisterComponent,
     ProfileViewComponent,
     DashboardComponent,
@@ -69,8 +72,8 @@ import { FCM } from '@ionic-native/fcm';
     NotFoundComponent,
     ResetPasswordComponent,
     LoaderComponent,
-    TicketListComponent,
-    CreateTicketComponent
+    CreateTicketComponent,
+    TncComponent
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -91,6 +94,9 @@ import { FCM } from '@ionic-native/fcm';
     ReceiptsModule,
     AccountsModule,
     ReportsModule,
+
+    DirRoutingModule,
+    RateCardRoutingModule,
     AppRoutingModule
   ],
   bootstrap: [IonicApp],
@@ -119,7 +125,8 @@ import { FCM } from '@ionic-native/fcm';
     SplashScreen,
     DashboardApiService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    FCM
+    FCM,
+    SocialSharing
     // {
     //   provide: LocationStrategy,
     //   useClass: PathLocationStrategy

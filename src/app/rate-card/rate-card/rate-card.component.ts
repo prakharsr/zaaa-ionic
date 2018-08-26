@@ -12,6 +12,7 @@ import { RateCardApiService } from '../rate-card-api.service';
 import { MediaHouseApiService, MediaHouse, Pullout } from 'app/directory';
 import { NotificationService, OptionsService } from 'app/services';
 import { RateCard, Category, FixSize, Scheme, Covered, Remark, Tax } from '../rate-card';
+import { SuperAdminApiService } from '../../super-admin/super-admin-api.service';
 
 @Component({
   selector: 'app-rate-card',
@@ -29,12 +30,15 @@ export class RateCardComponent implements OnInit {
   dropdownPullOutName: string;
   customPullOutName = 'Main';
 
+  isSuperAdmin = false;
+
   constructor(public goback: GobackService, private api: RateCardApiService,
     private route: ActivatedRoute,
     private router: Router,
     private mediaHouseApi: MediaHouseApiService,
     private notifications: NotificationService,
-    private options: OptionsService) { }
+    private options: OptionsService,
+    private superAdminApi: SuperAdminApiService) { }
 
   rateCard = new RateCard();
   selectedCategories: Category[] = [null, null, null, null, null, null];
@@ -257,10 +261,14 @@ export class RateCardComponent implements OnInit {
       }
       else this.initNew();
     });
+
+    this.route.data.subscribe((data: { superAdmin: boolean }) => {
+      this.isSuperAdmin = data.superAdmin;
+    });
   }
 
   private goBack() {
-    this.router.navigateByUrl(this.edit ? '/ratecards/' + this.id : '/ratecards');
+    this.router.navigateByUrl((this.isSuperAdmin ? '/superadmin' : '') + (this.edit ? '/ratecards/' + this.id : '/ratecards'));
   }
 
   mediaTypes = ['Print', 'Air', 'Electronic'];
@@ -411,7 +419,14 @@ export class RateCardComponent implements OnInit {
   }
 
   private createRateCard() {
-    this.api.createRateCard(this.rateCard).subscribe(
+    let base : Observable<any>
+
+    if (this.isSuperAdmin) {
+      base = this.superAdminApi.createGlobalRateCard(this.rateCard);
+    }
+    else base = this.api.createRateCard(this.rateCard);
+
+    base.subscribe(
       data => {
         if (data.success) {
           this.goBack();
@@ -426,7 +441,14 @@ export class RateCardComponent implements OnInit {
   }
 
   private editRateCard() {
-    this.api.editRateCard(this.rateCard).subscribe(
+    let base : Observable<any>
+
+    if (this.isSuperAdmin) {
+      base = this.superAdminApi.updateGlobalRateCard(this.rateCard);
+    }
+    else base = this.api.editRateCard(this.rateCard);
+
+    base.subscribe(
       data => {
         if (data.success) {
           this.goBack();

@@ -13,6 +13,8 @@ export class CreateReceiptComponent implements OnInit {
   advance = false;
   invoiceDir: InvoiceDir;
 
+  allowAdvance = true;
+
   constructor(public goback: GobackService, private route: ActivatedRoute) { }
 
   ngOnInit() {

@@ -20,8 +20,8 @@ import { IonicModule } from 'ionic-angular';
 
 @NgModule({
   imports: [
-    IonicModule.forRoot(ReceiptsModule),
     BaseModule,
+    IonicModule.forRoot(ReceiptsModule),
     InvoiceModule,
     ReceiptsRoutingModule
   ],

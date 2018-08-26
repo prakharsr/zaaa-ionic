@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BaseModule } from '../base.module';
 
 import { DirectoryModule } from '../directory/directory.module';
-import { RateCardRoutingModule } from './rate-card-routing.module';
 
 import {
   RateCardApiService,
@@ -12,14 +11,15 @@ import {
   RateCardListComponent,
   RateCardDetailsComponent
 } from '.';
+
+import { RouterModule } from '@angular/router';
 import { IonicModule } from 'ionic-angular';
 
 @NgModule({
   imports: [
-    IonicModule.forRoot(RateCardModule),
     BaseModule,
-    DirectoryModule,
-    RateCardRoutingModule
+    IonicModule.forRoot(RateCardModule),
+    DirectoryModule
   ],
   declarations: [
     RateCardComponent,

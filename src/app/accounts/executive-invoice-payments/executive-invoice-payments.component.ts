@@ -21,12 +21,12 @@ export class ExecutiveInvoicePaymentsComponent implements OnInit {
   balance = 0;
   totalBalance = 0;
 
-  filter = false;
-
   executive;
   executiveOrg;
 
   list: PaymentsResponse[] = [];
+
+  collapsed = true;
 
   constructor(public goback: GobackService, private api: AccountsApiService,
     private executiveApi: ExecutiveApiService,
@@ -51,17 +51,6 @@ export class ExecutiveInvoicePaymentsComponent implements OnInit {
       this.page = data.resolved.total.list.page;
       this.pageCount = data.resolved.total.list.pageCount;
     });
-  }
-
-
-  showFilters() {
-    if(this.filter) {
-      this.filter = false;
-    }
-    
-    else {
-      this.filter = true;
-    }
   }
 
   search(pageNo: number) {

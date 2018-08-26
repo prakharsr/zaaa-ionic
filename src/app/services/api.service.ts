@@ -17,6 +17,15 @@ import {
 } from 'app/models';
 
 import { AuthTokenManager } from './auth-token-manager.service';
+import { AdCategory } from '../models/ad-category';
+
+export class TnC {
+  Jurisdiction = "";
+  ROterms: { content: string }[] = [];
+  INterms: { content: string }[] = [];
+  PRterms: { content: string }[] = [];
+  ARterms: { content: string }[] = [];
+}
 
 @Injectable()
 export class ApiService {
@@ -316,6 +325,10 @@ export class ApiService {
     });
   }
 
+  sendToken(token: string) : Observable<any> {
+    return this.post('/user/token', { token: token });
+  }
+
   changePassword(oldPassword: string, newPassword: string) : Observable<any> {
     return this.post('/user/changePassword', {
       oldPassword: oldPassword,
@@ -350,5 +363,79 @@ export class ApiService {
 
       return new PageData<Ticket>(tickets, data.perPage, data.page, data.pageCount);
     });
+  }
+
+  get notifications() {
+    return this.post('/user/notifications', {
+      page: 1
+    });
+  }
+
+  get tnc(): Observable<TnC> {
+    return this.get('/firm/terms').pipe(
+      map(data => {
+        let result = new TnC();
+
+        if (data.success) {
+          result.Jurisdiction = data.Jurisdiction;
+          
+          result.ROterms = data.ROterms.map(M => {
+            return { content: M };
+          })
+          result.INterms = data.INterms.map(M => {
+            return { content: M };
+          })
+          result.PRterms = data.PRterms.map(M => {
+            return { content: M };
+          })
+          result.ARterms = data.ARterms.map(M => {
+            return { content: M };
+          })
+        }
+
+        return result;
+      })
+    );
+  }
+
+  setTnc(tnc: TnC) {
+    return this.post('/firm/terms', {
+      Jurisdiction: tnc.Jurisdiction,
+      ROterms: tnc.ROterms.map(M => M.content),
+      INterms: tnc.INterms.map(M => M.content),
+      PRterms: tnc.PRterms.map(M => M.content),
+      ARterms: tnc.ARterms.map(M => M.content)
+    });
+  }
+
+  getCategories(level: number, parent: AdCategory) : Observable<AdCategory[]> {
+    return this.post('/user/releaseorder/categories', {
+      level: level,
+      parent: parent == null ? '' : parent._id
+    }).pipe(
+      map(data => {
+        let result: AdCategory[] = [];
+
+        if (data.success) {
+          result = data.categories;
+        }
+
+        return result;
+      })
+    );
+  }
+
+  searchCategories(keyword: string): Observable<AdCategory[][]> {
+    return keyword ? this.get('/category/search/' + keyword).pipe(
+      map(data => {
+        let result: AdCategory[][] = [];
+
+        if (data.success) {
+          result = data.categories;
+        }
+
+        return result;
+      })
+    ) : of([]);
   }
 }

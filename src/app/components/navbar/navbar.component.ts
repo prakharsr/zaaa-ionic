@@ -1,9 +1,12 @@
-import { GobackService } from 'app/services';
-import { Component, OnInit } from '@angular/core';
+import { GobackService, NotificationService } from 'app/services';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { UserProfile, Firm } from '../../models';
 import { DashboardComponent } from '..';
+import { Overlay, OverlayRef } from '@angular/cdk/overlay';
+import { NotificationsComponent } from '../notifications/notifications.component';
+import { ComponentPortal } from '@angular/cdk/portal';
 
 @Component({
   selector: 'app-navbar',
@@ -12,9 +15,19 @@ import { DashboardComponent } from '..';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public goback: GobackService, public api: ApiService, private route: ActivatedRoute) { }
+  @ViewChild('notifyBtn', {read: ElementRef}) notifyBtn: ElementRef;
+  
+  constructor(
+    public goback: GobackService, 
+    public api: ApiService,
+    private route: ActivatedRoute,
+    private notifications: NotificationService,
+    private overlay: Overlay) { }
 
   profile = new Firm();
+
+  overlayRef: OverlayRef;
+
 
   ngOnInit() {
     this.goback.urlInit();
@@ -22,6 +35,36 @@ export class NavbarComponent implements OnInit {
     {
       this.api.getFirmProfile().subscribe(data => this.profile = data);
     }
+  }
+
+  openNotifications() {
+    if (this.overlayRef) {
+      this.closeNotifications();
+    }
+    else {
+      this.overlayRef = this.overlay.create({
+        width: '300px',
+        height: '450px',
+        hasBackdrop: true,
+        backdropClass: 'mat-overlay-transparent-backdrop',
+        panelClass: ['mat-elevation-z8', 'bg-light'],
+        positionStrategy: this.overlay.position()
+          .connectedTo(this.notifyBtn,
+            { originX: 'start', originY: 'bottom' },
+            { overlayX: 'start', overlayY: 'top' }
+          ).withDirection('rtl')
+      });
+      let portal = new ComponentPortal(NotificationsComponent);
+      this.overlayRef.attach(portal);
+
+      this.overlayRef.backdropClick().subscribe(() => this.closeNotifications());
+    }
+  }
+
+  closeNotifications() {
+    this.overlayRef.dispose();
+
+    this.overlayRef = null;
   }
 
 }

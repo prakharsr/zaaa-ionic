@@ -66,10 +66,10 @@
                 <div class="col" *ngIf="invoice.GSTIN.GSTType != 'URD'">
                   <mat-form-field>
                     <input matInput type="text" name="gstNo" placeholder="Client GST Number" [(ngModel)]="invoice.GSTIN.GSTNo" required minlength="15" maxlength="15" #gstNoField="ngModel">
-                    <mat-error *ngIf="gstNoField.errors && gstNoField.errors.required">
+                    <mat-error *ngIf="gstNoField.errors?.required">
                       GSTIN is required.
                     </mat-error>
-                    <mat-error *ngIf="gstNoField.errors && (gstNoField.errors.minlength || gstNoField.errors.maxlength)">
+                    <mat-error *ngIf="gstNoField.errors?.minlength || gstNoField.errors?.maxlength">
                       GSTIN should be 15 characters long.
                     </mat-error>
                   </mat-form-field>
@@ -119,7 +119,7 @@
                 <span class="text-muted small">({{releaseOrder.adGrossAmount}} - {{releaseOrder.adGrossAmount - roDiscountedAmount}} + {{finalRoTaxAmount}})</span>
               </div>
               <div class="text-muted small">
-                <small>Gross Amount - ({{roDiscountDisplay}}) Agency Discount + ({{roTaxDisplay}}) Tax</small>
+                <small>Gross Amount - ({{pubDiscountDisplay}}) Publication Discount - ({{roDiscountDisplay}}) Agency Discount + ({{roTaxDisplay}}) Tax</small>
               </div>
 
               <br>
@@ -140,13 +140,19 @@
               <div class="col-auto">
                 <h6>Select Insertions</h6>
                 
-                <button mat-raised-button color="primary" type="button" (click)="selectAllInsertions()">Select All</button>
+                <button mat-raised-button color="primary" type="button" class="mb-3" (click)="selectAllInsertions()">Select All</button>
               </div>
               <div class="col">
                 <span class="mr-3 mb-3" *ngFor="let item of availableInsertions">
                   <mat-checkbox name="item-checked" [(ngModel)]="item.checked">
                     {{toDate(item.insertion.date) | date}}
                   </mat-checkbox>
+                </span>
+
+                <br>
+
+                <span class="mr-3 mb-3 text-muted" *ngFor="let item of markedInsertions">
+                  {{item | date}}
                 </span>
               </div>
             </div>
@@ -172,7 +178,7 @@
               <div class="row">
                 <mat-form-field class="col">
                   <input type="number" matInput placeholder="Commission" name="commission" [(ngModel)]="invoice.extraCharges.amount" required #commissionField="ngModel">
-                  <mat-error *ngIf="commissionField.errors && commissionField.errors.required">
+                  <mat-error *ngIf="commissionField.errors?.required">
                     Commission is required.
                   </mat-error>
                 </mat-form-field>
@@ -184,7 +190,7 @@
               <div class="row">
                 <mat-form-field class="col">
                   <input type="number" matInput placeholder="Additional Charges" name="additionalCharges" [(ngModel)]="invoice.additionalCharges.amount" required #additionalChargesField="ngModel">
-                  <mat-error *ngIf="additionalChargesField.errors && additionalChargesField.errors.required">
+                  <mat-error *ngIf="additionalChargesField.errors?.required">
                     Additional Charges is required.
                   </mat-error>
                 </mat-form-field>
@@ -204,7 +210,7 @@
               <div class="row">
                 <mat-form-field class="col">
                   <input type="number" matInput placeholder="Publication Discount" name="pubDiscount" [(ngModel)]="invoice.publicationDiscount.amount" required #pubDiscountField="ngModel">
-                  <mat-error *ngIf="pubDiscountField.errors && pubDiscountField.errors.required">
+                  <mat-error *ngIf="pubDiscountField.errors?.required">
                     Publication Discount is required.
                   </mat-error>
                 </mat-form-field>
@@ -216,7 +222,7 @@
               <div class="row">
                 <mat-form-field class="col">
                   <input type="number" matInput placeholder="Agency Discount" name="agencyDiscount" [(ngModel)]="invoice.agencyDiscount1.amount" required #agencyDiscountField="ngModel">
-                  <mat-error *ngIf="agencyDiscountField.errors && agencyDiscountField.errors.required">
+                  <mat-error *ngIf="agencyDiscountField.errors?.required">
                     Agency Discount is required.
                   </mat-error>
                 </mat-form-field>
@@ -245,7 +251,7 @@
                   <div class="col">
                     <mat-form-field>
                       <input matInput placeholder="Type" name="otherChargesType-{{i}}" [(ngModel)]="item.chargeType" required #otherChargesTypeField="ngModel">
-                      <mat-error *ngIf="otherChargesTypeField.errors && otherChargesTypeField.errors.required">
+                      <mat-error *ngIf="otherChargesTypeField.errors?.required">
                         Type is required.
                       </mat-error>
                     </mat-form-field>
@@ -253,7 +259,7 @@
                   <div class="col">
                     <mat-form-field>
                       <input type="number" matInput placeholder="Amount" name="otherCharges-{{i}}" [(ngModel)]="item.amount" required #otherChargesField="ngModel">
-                      <mat-error *ngIf="otherChargesField.errors && otherChargesField.errors.required">
+                      <mat-error *ngIf="otherChargesField.errors?.required">
                         Amount is required.
                       </mat-error>
                     </mat-form-field>
@@ -278,7 +284,7 @@
                     <mat-select name="tax" [(ngModel)]="invoice.taxAmount" id="tax" #taxField="ngModel" required>
                       <mat-option *ngFor="let item of taxes" [value]="item">{{item.primary}}% <span *ngIf="item.secondary">+ {{item.secondary}}%</span></mat-option>
                     </mat-select>
-                    <mat-error *ngIf="taxField.errors && taxField.errors.required">
+                    <mat-error *ngIf="taxField.errors?.required">
                       Tax is required.
                     </mat-error>
                   </mat-form-field>
@@ -298,6 +304,17 @@
         </div>
         <div class="col-lg">
           <div class="card mb-5 mat-elevation-z3">
+              <div class="card-header">
+                Other
+              </div>
+            <div class="card-body">
+              <mat-form-field>
+                <input type="number" matInput placeholder="Enter Credit Days" name="creditDays" [(ngModel)]="creditDays" required #creditDaysField="ngModel">
+                <mat-error *ngIf="creditDaysField.errors?.required">
+                  Credit Days is required.
+                </mat-error>
+              </mat-form-field>
+            </div>
             <div class="card-header">
               Remark
             </div>
@@ -312,35 +329,73 @@
           </div>
         </div>
       </div>
+
+      <br>
+
+      <div class="d-none d-md-block">
+        <button color="primary" type="submit" mat-raised-button class="bg-success" [disabled]="submitting || !invoiceForm.form.valid">
+          <mat-icon>check</mat-icon> Save
+        </button>
+    
+        <button type="button" mat-raised-button color="warn" (click)="cancel()">
+          <mat-icon>cancel</mat-icon> Cancel
+        </button>
+
+        <button color="primary" type="button" mat-raised-button [disabled]="submitting || !invoiceForm.form.valid" (click)="genPreview()" class="bg-warning">
+          <mat-icon>assignment</mat-icon> Preview
+        </button>
+
+        <button color="primary" type="button" mat-raised-button [disabled]="submitting || !invoiceForm.form.valid" (click)="saveAndGen()" class="bg-primary">
+          <mat-icon>get_app</mat-icon> Download
+        </button>
+
+        <button color="primary" type="button" mat-raised-button [disabled]="submitting || !invoiceForm.form.valid" (click)="saveAndSendMsg()" class="bg-info">
+          <mat-icon>mail</mat-icon> Send Mail
+        </button>        
+      </div>
     </ng-container>
   </div>
-</form>
 
-<ion-footer>
-  <ion-toolbar>
+  <mat-toolbar class="d-md-none fixed-bottom">
     <div class="container-fluid">
-      <div class="row">
-        <button class="btn btn-light btn-lg text-success col" type="button" (click)="save()" [disabled]="!invoiceForm.form.valid">
-          <ion-icon name="add"></ion-icon>
-          <p class="small">Save</p>
-        </button>
-        <button class="btn btn-light btn-lg text-danger col" type="button" (click)="cancel()">
-          <ion-icon name="close"></ion-icon>
-          <p class="small">Cancel</p>
-        </button>
-        <button class="btn btn-light btn-lg text-warning col" type="button" (click)="preview()"  [disabled]="!invoiceForm.form.valid">
-          <ion-icon name="clipboard"></ion-icon>
-          <p class="small">Preview</p>
-        </button>
-        <button class="btn btn-light btn-lg text-info col" type="button" (click)="saveAndGen()" [disabled]="!invoiceForm.form.valid">
-          <ion-icon name="download"></ion-icon>
-          <p class="small">Download</p>
-        </button>
-        <button class="btn btn-light btn-lg text-primary col" type="button" (click)="saveAndSendMsg()" [disabled]="!invoiceForm.form.valid">
-          <ion-icon name="mail"></ion-icon>
-          <p class="small">Send Email</p>
-        </button>
+      <div class="form-row">
+        <div class="col">
+          <button color="primary" type="submit" class="btn btn-block btn-outline-success border-0 btn-sm" [disabled]="submitting || !invoiceForm.form.valid" color="primary">
+            <mat-icon>check</mat-icon>
+            <div class="small">Save</div>
+          </button>
+        </div>
+        <div class="col">
+          <button type="button" class="btn btn-block btn-outline-danger border-0 btn-sm" (click)="cancel()">
+            <mat-icon>cancel</mat-icon>
+            <div class="small">Cancel</div>
+          </button>
+        </div>
+        <div class="col">
+          <button color="primary" type="button" class="btn btn-block btn-outline-warning border-0 btn-sm" [disabled]="submitting || !invoiceForm.form.valid" (click)="saveAndGen()">
+            <mat-icon>assignment</mat-icon>
+            <div class="small">Preview</div>
+          </button>
+        </div>
+        <div class="col">
+          <button color="primary" type="button" class="btn btn-block btn-outline-primary border-0 btn-sm" [disabled]="submitting || !invoiceForm.form.valid" (click)="saveAndGen()">
+            <mat-icon>get_app</mat-icon>
+            <div class="small">Download</div>
+          </button>
+        </div>
+        <div class="col">
+          <button color="primary" type="button" class="btn btn-block btn-outline-info border-0 btn-sm" [disabled]="submitting || !invoiceForm.form.valid" (click)="saveAndSendMsg()">
+            <mat-icon>mail</mat-icon>
+            <div class="small">Send Mail</div>
+          </button>
+        </div>    
+        <div class="col">
+          <button color="primary" type="button" class="btn btn-block btn-outline-success border-0 btn-sm" [disabled]="submitting  || !invoiceForm.form.valid" (click)="sharePdf()">
+            <mat-icon>share</mat-icon>
+            <div class="small">Share PDF</div>
+          </button>
+        </div>   
       </div>
     </div>
-  </ion-toolbar>
-</ion-footer>
+  </mat-toolbar>
+</form>

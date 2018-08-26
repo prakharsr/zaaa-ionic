@@ -11,10 +11,10 @@ export class InvoiceGenData {
 
 export class PaymentsData {
   shadow = 0;
-  collectedAmount = 0;
+  collected = 0;
   completed = 0;
-  totalAmount = 0;
-  pendingAmount = 0;
+  pending = 0;
+  received = 0;
 }
 
 export class MhiData {
@@ -23,17 +23,33 @@ export class MhiData {
   pendingAmount = 0;
 }
 
+export class DuesData {
+  count = 0;
+  OverDueAmount = 0;
+  DueAmount = 0;
+}
+
+export class PaidUnpaidData {
+  count = 0;
+  UnpaidAmount = 0;
+  PaidAmount = 0;
+}
+
 @Injectable()
 export class DashboardApiService {
 
   constructor(private api: ApiService) { }
 
-  getRoChartData() {
-    return this.api.post('/user/dashboard/releaseorder', { });
+  getRoChartData(filter = 1) {
+    return this.api.post('/user/dashboard/releaseorder', {
+      filter: filter
+    });
   }
 
-  getInvoiceData() : Observable<InvoiceGenData> {
-    return this.api.post('/user/dashboard/invoice', { }).pipe(
+  getInvoiceData(filter = 1) : Observable<InvoiceGenData> {
+    return this.api.post('/user/dashboard/invoice', {
+      filter: filter
+    }).pipe(
       map(data => {
         let result = new InvoiceGenData();
 
@@ -46,12 +62,26 @@ export class DashboardApiService {
     );
   }
 
-  getDuesData() {
-    return this.api.post('/user/dashboard/clientDues', { });
+  getDuesData(filter = 1): Observable<DuesData> {
+    return this.api.post('/user/dashboard/clientDues', {
+      filter: filter
+    }).pipe(
+      map(data => {
+        let result = new DuesData();
+
+        if (data.success) {
+          Object.assign(result, data.receipt[0]);
+        }
+
+        return result;
+      })
+    );
   }
 
-  getPaymentsData() : Observable<PaymentsData> {
-    return this.api.post('/user/dashboard/clientPayments', { }).pipe(
+  getPaymentsData(filter = 1) : Observable<PaymentsData> {
+    return this.api.post('/user/dashboard/clientPayments', {
+      filter: filter
+    }).pipe(
       map(data => {
         let result = new PaymentsData();
 
@@ -64,8 +94,10 @@ export class DashboardApiService {
     );
   }
 
-  getMhiData(): Observable<MhiData> {
-    return this.api.post('/user/dashboard/mediahouseinvoice', { }).pipe(
+  getMhiData(filter = 1): Observable<MhiData> {
+    return this.api.post('/user/dashboard/mediahouseinvoice', {
+      filter: filter
+    }).pipe(
       map(data => {
         let result = new MhiData();
 
@@ -77,4 +109,44 @@ export class DashboardApiService {
       })
     );
   }
+
+  getPaidUnpaid(filter = 1): Observable<PaidUnpaidData> {
+    return this.api.post('/user/dashboard/paidUnpaid', {
+      filter: filter
+    }).pipe(
+      map(data => {
+        let result = new PaidUnpaidData();
+
+        if (data.success) {
+          Object.assign(result, data.mhinvoices[0]);
+        }
+
+        return result;
+      })
+    );
+  }
+
+  getReceiptCheque(filter = 1) {
+    return this.api.post('/user/dashboard/receiptCheque', {
+      filter: filter
+    });
+  }
+
+  getReceiptChequeDetails(filter = 1) {
+    return this.api.post('/user/dashboard/receiptChequeDetails', {
+      filter: filter
+    });
+  }
+
+  getMhiChequeDetails(filter = 1) {
+    return this.api.post('/user/dashboard/mediahouseInvoiceChequeDetails', {
+      filter: filter
+    });
+  }
+
+  getMhiCheque(filter = 1) {
+    return this.api.post('/user/dashboard/mhiCheque', {
+      filter: filter
+    });
+  }  
 }

@@ -14,6 +14,11 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+body {
+    background-color: #fafafa;;
+}
+
 .max-w-200 {
     max-width: 200px;
 }
@@ -66,9 +71,13 @@
     }
 
     .fab .fa {
-        top: calc(50% - 5px);
+        top: calc(50% - 4px);
         left: calc(50% - 7px);
     }
+
+    .mobile-collapse {
+        display: none;
+}
 }
 
 input.ng-invalid.form-control, select.ng-invalid {
@@ -100,7 +109,16 @@ ion-navbar:focus {
     padding: 10px;
 }
 
-ion-footer {
-    position: fixed;
-    margin-bottom: -9px;
+.nav-toolbar {
+    background-color: #2196f3;
+    color: white;
+}
+
+.mat-toolbar {
+    background-color: #64b5f6;
+    color: white;
+}
+
+.mat-toolbar.fixed-bottom {
+    background-color: #f1edec;
 }

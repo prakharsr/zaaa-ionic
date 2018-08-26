@@ -1,4 +1,3 @@
-import { GobackService } from 'app/services';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { MailingDetails } from 'app/models';

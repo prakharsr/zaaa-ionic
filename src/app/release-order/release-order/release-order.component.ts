@@ -1,3 +1,4 @@
+import { GobackService, WindowService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
@@ -10,9 +11,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-date';
 import { ReleaseOrder, Insertion, TaxValues, OtherCharges } from '../release-order';
 import { ReleaseOrderApiService } from '../release-order-api.service';
-import { StateApiService, NotificationService, OptionsService, DialogService, GobackService } from 'app/services';
-import { CategoriesDetails } from '../categories-details/categories-details.component';
+import { StateApiService, NotificationService, OptionsService, DialogService } from 'app/services';
+
 declare var cordova:any;
+
 import {
   Category,
   RateCard,
@@ -30,36 +32,40 @@ import {
   ExecutiveApiService,
   Pullout
 } from 'app/directory';
-import { PreviewComponent } from '../../components/preview/preview.component';
-import { NavController, Platform } from 'ionic-angular';
-import { DocumentViewer } from '@ionic-native/document-viewer';
-import { FileTransfer } from '@ionic-native/file-transfer';
-import { WebIntent } from '@ionic-native/web-intent';
+import { PreviewComponent } from 'app/components/preview/preview.component';
+import { UserProfile, Firm } from '../../models';
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { Platform } from 'ionic-angular';
 
 @Component({
   selector: 'app-release-order',
   templateUrl: './release-order.component.html',
+  
 })
 export class ReleaseOrderComponent implements OnInit {
+
+  // Dummy variable
+  submitted = false;
 
   releaseorder = new ReleaseOrder();
   query: string;
   edit = false;
   id: string;
 
-  showCalculations = false;
-
-  selectedCategories: Category[] = [null, null, null, null, null, null];
+  selectedCategories: string[] = [null, null, null, null, null, null];
   categories: Category[];
   fixedCategoriesLevel = -1;
+
+  showCalculations = false;
+
+  submitting = false;
 
   others = "Others";
 
   dropdownPullOutName: string;
   customPullOutName = 'Main';
 
-  constructor(private route: ActivatedRoute,
-    public goback: GobackService,
+  constructor(public goback: GobackService, private route: ActivatedRoute,
     private router: Router,
     private api: ReleaseOrderApiService,
     private mediaHouseApi: MediaHouseApiService,
@@ -69,7 +75,10 @@ export class ReleaseOrderComponent implements OnInit {
     public stateApi: StateApiService,
     private notifications: NotificationService,
     public options: OptionsService,
-    private dialog: DialogService) { }
+    private dialog: DialogService,
+    private windowService: WindowService,
+    private socialSharing: SocialSharing,
+    public platform: Platform) { }
 
     calc() {
       if(this.showCalculations) {
@@ -78,7 +87,7 @@ export class ReleaseOrderComponent implements OnInit {
       else {
         this.showCalculations = true;
       }
-    }
+}
 
   get isTypeWords() {
 
@@ -133,76 +142,323 @@ export class ReleaseOrderComponent implements OnInit {
       if (data.success) {
         this.goBack();
       }
+      else this.submitting = false;
     });
   }
 
-  saveAndGen() {
-    this.submit().subscribe(data => {
-      if (data.success) {
-        this.gen(this.releaseorder);
-      }
-    });
-  }
-
-  saveAndSendMsg() {
-    this.submit().subscribe(data => {
-      if (data.success) {
-        this.sendMsg(this.releaseorder);
-      }
-    });
-  }
-
-  gen(releaseOrder: ReleaseOrder, preview = false) {
-    this.confirmGeneration(releaseOrder).subscribe(confirm => {
-      if (confirm) {
-        this.api.previewROhtml(this.releaseorder).subscribe(data => {
-          if (data.msg) {
-            this.notifications.show(data.msg);    
-          }
-          else {
-   
-            document.addEventListener('deviceready', () => {
-              console.log('DEVICE READY FIRED AFTER');
-              cordova.plugins.pdf.htmlToPDF({
-                data: data.content,
-                documentSize: "A4",
-                type: "share",
-                fileName: 'releaseorder.pdf'
-            },
-            (sucess) => console.log('sucess: ', sucess),
-            (error) => console.log('error:', error));
+  testRead() {
+    document.addEventListener('deviceready', onDeviceReady, false);  
+    function onDeviceReady() {  
+        function readFromFile(fileName, cb) {
+            var pathToFile = cordova.file.dataDirectory + fileName;
+            this.windowService.window.resolveLocalFileSystemURL(pathToFile, function (fileEntry) {
+                fileEntry.file(function (file) {
+                    var reader = new FileReader();
     
+                    reader.onloadend = function (e) {
+                        cb(JSON.parse(this.result));
+                    };
+    
+                    reader.readAsText(file);
+                }, errorHandler.bind(null, fileName));
+            }, errorHandler.bind(null, fileName));
+        }
+    
+        var fileData;
+        readFromFile('data.json', function (data) {
+            fileData = data;
+        });
+
+        var errorHandler = function (fileName, e) {  
+          var msg = '';
+      
+          switch (e.code) {
+              case cordova.FileError.QUOTA_EXCEEDED_ERR:
+                  msg = 'Storage quota exceeded';
+                  break;
+              case cordova.FileError.NOT_FOUND_ERR:
+                  msg = 'File not found';
+                  break;
+              case cordova.FileError.SECURITY_ERR:
+                  msg = 'Security error';
+                  break;
+              case cordova.FileError.INVALID_MODIFICATION_ERR:
+                  msg = 'Invalid modification';
+                  break;
+              case cordova.FileError.INVALID_STATE_ERR:
+                  msg = 'Invalid state';
+                  break;
+              default:
+                  msg = 'Unknown error';
+                  break;
+          };
+      
+          console.log('Error (' + fileName + '): ' + msg);
+      }
+
+
+    }
+  }
+
+    testWrite() {
+      document.addEventListener('deviceready', onDeviceReady, false);  
+      function onDeviceReady() {  
+          function writeToFile(fileName, data) {
+              data = JSON.stringify(data, null, '\t');
+              this.windowService.window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function (directoryEntry) {
+                  directoryEntry.getFile(fileName, { create: true }, function (fileEntry) {
+                      fileEntry.createWriter(function (fileWriter) {
+                          fileWriter.onwriteend = function (e) {
+                              // for real-world usage, you might consider passing a success callback
+                              console.log('Write of file "' + fileName + '"" completed.');
+                          };
+      
+                          fileWriter.onerror = function (e) {
+                              // you could hook this up with our global error handler, or pass in an error callback
+                              console.log('Write failed: ' + e.toString());
+                          };
+      
+                          var blob = new Blob([data], { type: 'text/plain' });
+                          fileWriter.write(blob);
+                      }, errorHandler.bind(null, fileName));
+                  }, errorHandler.bind(null, fileName));
+              }, errorHandler.bind(null, fileName));
+          }
+      
+          writeToFile('example.json', { foo: 'bar' });
+
+          var errorHandler = function (fileName, e) {  
+            var msg = '';
+        
+            switch (e.code) {
+                case cordova.FileError.QUOTA_EXCEEDED_ERR:
+                    msg = 'Storage quota exceeded';
+                    break;
+                case cordova.FileError.NOT_FOUND_ERR:
+                    msg = 'File not found';
+                    break;
+                case cordova.FileError.SECURITY_ERR:
+                    msg = 'Security error';
+                    break;
+                case cordova.FileError.INVALID_MODIFICATION_ERR:
+                    msg = 'Invalid modification';
+                    break;
+                case cordova.FileError.INVALID_STATE_ERR:
+                    msg = 'Invalid state';
+                    break;
+                default:
+                    msg = 'Unknown error';
+                    break;
+            };
+        
+            console.log('Error (' + fileName + '): ' + msg);
+        }
+      }
+    }
+    
+
+//   openPdf() {
+//     // cordova.plugins.fileOpener2.open(
+//     //   '/sdcard/Download/releaseorder.pdf', 
+//     //   'application/pdf', 
+//     //   { 
+//     //     error : function(e) { 
+//     //         console.log('Error status: ' + e.status + ' - Error message: ' + e.message);
+//     //     },
+//     //     success : function () {
+//     //         console.log('file opened successfully'); 				
+//     //     }
+//     // });
+
+//     let filepath = cordova.file.externalRootDirectory + "Download/releaseorder.pdf";
+
+//     checkIfFileExists(filepath);
+
+// function checkIfFileExists(path) {
+//     this.windowService.window.resolveLocalFileSystemURL(path, function (fileEntry) {
+//       this.windowService.window.resolveLocalFileSystemURL(cordova.file.tempDirectory, function (dirEntry) {
+//             dirEntry.getFile(fileEntry.name, {create : false}, function() {
+//                 openFile(fileEntry.nativeURL);
+//             }, function() {
+//                 fileEntry.copyTo(dirEntry, fileEntry.name, function (newFileEntry) {
+//                     openFile(newFileEntry.nativeURL);
+//                 });
+//             });
+            
+//         });
+//     });
+// }
+
+// function openFile(file) {
+//     console.log("Opening fileopener...", file);
+//     cordova.plugins.fileOpener2.showOpenWithDialog(file, 'application/pdf', {
+//         error: function (e) {
+//             console.log("file did not open");
+//             console.log(file);
+//             console.log(e);
+//             console.log(e.message);
+//         },
+//         success: function () {
+//             console.log("file opened successfully");
+//         }
+//     });
+// }
+
+//   }
+
+//   openPdf2() {
+//     let filepath = cordova.file.externalRootDirectory + "Download/releaseorder.pdf";
+
+//     window.open(filepath, '_blank', 'location=no,closebuttoncaption=Close,enableViewportScale=yes');
+//   }
+
+  saveAndGen(share = false, callback?: () => void) {
+    // Confirm
+    this.confirmGeneration(this.releaseorder).subscribe(confirm => {
+      if (confirm) {
+        // Save
+        this.submit().subscribe(data => {
+          if (data.success) {
+            // Generate
+            this.api.generatePdf(this.releaseorder).subscribe(data => {
+              if (data.msg) {
+                this.notifications.show(data.msg);    
+              }
+              else {
+                this.releaseorder.generated = true;
+
+              document.addEventListener('deviceready', () => {
+                console.log(cordova.file);
+
+                              let folderpath = cordova.file.externalRootDirectory + "Download/";
+              let filename = "releaseorder.pdf";
+             
+              this.windowService.window.resolveLocalFileSystemURL(folderpath, dir => {
+                console.log("Access to the directory granted succesfully");
+                dir.getFile(filename, {create:true}, file => {
+                    console.log("File created succesfully.");
+                    file.createWriter(fileWriter => {
+                        console.log("Writing content to file");
+                        fileWriter.write(data);
+                        if(callback) {
+                          callback();
+                        }
+                        if(share == false) {
+                          this.notifications.show('Saved releaseorder.pdf in Download ');
+                        }
+                    }, confirm => {
+                        if(share == false) {
+                          this.notifications.show('Unable to save file in path '+ folderpath);
+                        }
+                        else {
+                          this.notifications.show('Unable to share file due to being unable to save file in path '+ folderpath);
+                        }
+                    });
+                });
+            });
+
+              //   this.windowService.window.requestFileSystem(1, 0, function (fs) {
+
+              //     console.log('file system open: ' + fs.name);
+              //     fs.root.getFile("newPersistentFile.pdf", { create: true, exclusive: false }, function (fileEntry) {
+              
+              //         console.log("fileEntry is file?" + fileEntry.isFile.toString());
+              //         // fileEntry.name == 'someFile.txt'
+              //         // fileEntry.fullPath == '/someFile.txt'
+              //         writeFile(fileEntry, data);
+
+              //         function writeFile(fileEntry, dataObj) {
+              //           // Create a FileWriter object for our FileEntry (log.txt).
+              //           fileEntry.createWriter(function (fileWriter) {
+                    
+              //               fileWriter.onwriteend = function() {
+              //                   console.log("Successful file write...");
+              //                   this.readFile(fileEntry);
+              //               };
+                    
+              //               fileWriter.onerror = function (e) {
+              //                   console.log("Failed file write: " + e.toString());
+              //               };
+                    
+              //               // If data object is not passed in,
+              //               // create a new Blob instead.
+              //               if (!dataObj) {
+              //                   dataObj = new Blob(['some file data'], { type: 'text/plain' });
+              //               }
+                    
+              //               fileWriter.write(dataObj);
+              //           });
+              //       }
+                    
+              //       function readFile(fileEntry) {
+                    
+              //         fileEntry.file(function (file) {
+              //             var reader = new FileReader();
+                    
+              //             reader.onloadend = function() {
+              //                 console.log("Successful file read: " + this.result);
+              //                 displayFileData(fileEntry.fullPath + ": " + this.result);
+                    
+              //                 function displayFileData(data){
+              //                   alert(data);
+              //                   }
+              //             };
+                    
+              //             reader.readAsText(file);
+                    
+              //         });
+              //       }
+              
+              //     });
+              
+              // });
+
+      
+            });
+            
+              }
+            });
+          }
+          else this.submitting = false;
         });
       }
     })
-  }});
-}
-
-  genPreview() {
-
-    this.presave();
-
-    this.api.previewROhtml(this.releaseorder).subscribe(data => {
-      this.dialog.show(PreviewComponent, { width: '100%', height: '100%', maxWidth: '100%', data: data.content }).subscribe();
-    });
   }
 
-  sendMsg(releaseOrder: ReleaseOrder) {
-    this.confirmGeneration(releaseOrder).subscribe(confirm => {
+  sharePdf() {
+    this.saveAndGen(true, () => {
+      this.socialSharing.share('Share Release Order PDF', 'Share', cordova.file.externalRootDirectory + "Download/releaseorder.pdf");
+    });
+
+  }
+
+  saveAndSendMsg() {
+    // Confirm
+    this.confirmGeneration(this.releaseorder).subscribe(confirm => {
       if (confirm) {
+        // Mailing Details
         this.dialog.getMailingDetails().subscribe(mailingDetails => {
           if (mailingDetails) {
-            this.api.sendMail(releaseOrder, mailingDetails).subscribe(data => {
+            // Save
+            this.submit().subscribe(data => {
               if (data.success) {
-                this.notifications.show("Sent Successfully");
-
-                releaseOrder.generated = true;
+                // Mail
+                this.api.sendMail(this.releaseorder, mailingDetails).subscribe(data => {
+                  if (data.success) {
+                    this.notifications.show("Sent Successfully");
+    
+                    this.releaseorder.generated = true;
+    
+                    this.router.navigate(['/releaseorders', this.releaseorder.id]);
+                  }
+                  else {
+                    console.log(data);
+    
+                    this.notifications.show(data.msg);
+                  }
+                });
               }
-              else {
-                console.log(data);
-
-                this.notifications.show(data.msg);
-              }
+              else this.submitting = false;
             });
           }
         });
@@ -210,9 +466,34 @@ export class ReleaseOrderComponent implements OnInit {
     });
   }
 
+  genPreview() {
+    this.presave();
+
+    this.api.previewROhtml(this.releaseorder).subscribe(data => {
+      this.dialog.show(PreviewComponent, { width: '100%', height: '100%', maxWidth: '100%', data: data.content }).subscribe(response => {
+        switch (response) {
+          case 'save':
+            this.save();
+            break;
+
+          case 'dl':
+            this.saveAndGen();
+            break;
+
+          case 'mail':
+            this.saveAndSendMsg();
+            break;
+
+          case 'share':
+            this.sharePdf();
+            break;
+        }
+      });
+    });
+  }
+
   ngOnInit() {
     this.goback.urlInit();
-    this.categories = this.options.categories;
     this.dropdownPullOutName = this.others;
 
     this.route.paramMap.subscribe(params => {
@@ -229,6 +510,7 @@ export class ReleaseOrderComponent implements OnInit {
         this.releaseorder.releaseOrderNO = "";
         this.releaseorder.id = "";
         this.releaseorder.generated = false;
+        this.releaseorder.cancelled = false;
         this.releaseorder.date = new Date();
 
         this.releaseorder.insertions = this.releaseorder.insertions.map(insertion => new Insertion(insertion.date));
@@ -238,6 +520,16 @@ export class ReleaseOrderComponent implements OnInit {
       }
       else {
         this.initNew();
+
+        this.route.data.subscribe((data: { user: UserProfile, firm: Firm }) => {
+          this.releaseorder.paymentBankName = data.firm.bankName;
+
+          let exe = new Executive();
+          exe.executiveName = data.user.name;
+          exe.orgName = data.firm.name;
+
+          this.executive = exe;
+        });
       }
     });
   }
@@ -249,10 +541,10 @@ export class ReleaseOrderComponent implements OnInit {
     this.releaseorder.AdTime = this.adTimes[0];
     this.mediaType = this.mediaTypes[0];
     this.releaseorder.adHue = this.hues[0];
-    this.releaseorder.unit = this.units[0];
+    // this.releaseorder.unit = this.units[0];
     this.releaseorder.adPosition = this.positions[0];
-    this.selectedTax = this.taxes[0];
-    this.releaseorder.paymentType = this.paymentTypes[0];
+    this.selectedTax = this.taxes[1];
+    this.releaseorder.paymentType = 'Credit';
   }
 
   private initFromReleaseOrder() {
@@ -317,6 +609,9 @@ export class ReleaseOrderComponent implements OnInit {
       this.releaseorder.insertions = insertionBkp;
 
       this.customPullOutName = this.releaseorder.pulloutName;
+
+      // hack
+      this.releaseorder.rate = this.releaseorder.rate;
     });
   }
 
@@ -377,150 +672,20 @@ export class ReleaseOrderComponent implements OnInit {
   }
 
   private buildCategoryTree(categories: string[]) {
-    let c : Category = this.categories.find(p => p.name == categories[0]);
-
-    if (c) {
-      this.category1 = c;
-
-      let i = 1;
-
-      while (i < categories.length && c.subcategories.length > 0) {
-        c = c.subcategories.find(p => p.name == categories[i]);
-
-        if (c) {
-          this.setCategory(i, c);
-
-          ++i;
-        }
-        else break;
-      }
+    for (let i = 0; i < categories.length; ++i) {
+      this.selectedCategories[i] = categories[i];
     }
   }
-
-  findSubCategories(category: Category, query: string): Category[] {
-    let result : Category[] = [];
-
-    if (category.name.toLowerCase().indexOf(query.toLowerCase()) != -1) {
-      result.push(category);
-    }
-
-    if (category.subcategories) {
-      category.subcategories.forEach(subCategory => {
-        this.findSubCategories(subCategory, query).forEach(a => result.push(a));
-      });
-    }
-
-    return result;
-  }
-
-  findCategories(query: string): Category[]  {
-    let result : Category[] = [];
-
-    if (query) {
-      let base = this.categories;
-
-      if (this.fixedCategoriesLevel > -1) {
-        base = this.selectedCategories[this.fixedCategoriesLevel].subcategories;
-      }
-
-      base.forEach(element => {
-        this.findSubCategories(element, query).forEach(a => result.push(a));
-      });
-    }
-
-    return result;
-
-  }
-
-  searchCategories = (text: Observable<string>) => {
-    return text.debounceTime(300)
-      .distinctUntilChanged()
-      .pipe(
-        map(term => this.findCategories(term))
-      )
-      .catch(() => of([]));
-  }
-
-  categoryInputFormatter = (result: Category) => {
-    let stack : Category[] = [];
-
-    while (result) {
-      stack.push(result);
-      result = result.parent;
-    }
-
-    let j = this.fixedCategoriesLevel + 1;
-
-    while (j > 0) {
-      stack.pop();
-
-      --j;
-    }
-
-    let i = this.fixedCategoriesLevel + 1;
-
-    while (stack.length) {
-      this.setCategory(i, stack.pop());
-
-      ++i;
-    }
-  }
-
-  categoryResultFormatter = (result: Category) => {
-    let stack : Category[] = [];
-
-    while (result) {
-      stack.push(result);
-      result = result.parent;
-    }
-
-    let formatted = stack.pop().name;
-
-    while (stack.length) {
-      formatted += " > " + stack.pop().name;
-    }
-
-    return formatted;
-  }
-
-  getCategory(index: number) {
-    return this.selectedCategories[index];
-  }
-
-  setCategory(index: number, category: Category) {
-    if (this.selectedCategories[index] == category) {
-      return;
-    }
-
-    this.selectedCategories[index] = category;
-
-    for (let i = index + 1; i < this.selectedCategories.length; ++i) {
-      this.setCategory(i, null);
-    }
-  }
-
-  get category1() { return this.getCategory(0); }
-  get category2() { return this.getCategory(1); }
-  get category3() { return this.getCategory(2); }
-  get category4() { return this.getCategory(3); }
-  get category5() { return this.getCategory(4); }
-  get category6() { return this.getCategory(5); }
-
-  set category1(category: Category) { this.setCategory(0, category); }
-  set category2(category: Category) { this.setCategory(1, category); }
-  set category3(category: Category) { this.setCategory(2, category); }
-  set category4(category: Category) { this.setCategory(3, category); }
-  set category5(category: Category) { this.setCategory(4, category); }
-  set category6(category: Category) { this.setCategory(5, category); }
 
   getCategories() {
-    this.dialog.getCategoriesDetails().subscribe(data => {
-      this.setCategoriesDetails(data);
+    this.dialog.getCategoriesDetails({
+      categories: this.selectedCategories,
+      fixedLevel: this.fixedCategoriesLevel
+    }).subscribe(data => {
+      if (data) {
+        this.selectedCategories = data.selectedCategories.map(M => M ? M.name : null);
+      }
     });
-  }
-
-  setCategoriesDetails(details: CategoriesDetails) {
-    this.selectedCategories = details.selectedCategories;
   }
   
   private goBack() {
@@ -568,15 +733,16 @@ export class ReleaseOrderComponent implements OnInit {
     this.releaseorder.adGrossAmount = this.grossAmount;
     this.releaseorder.netAmountFigures = this.netAmount;
     this.releaseorder.netAmountWords = this.options.amountToWords(this.netAmount);
+    this.releaseorder.clientPayment = this.releaseorder.paymentAmount = this.clientPayment;
 
     this.releaseorder.taxAmount = this.selectedTax;
 
-    this.releaseorder.adCategory1 = this.selectedCategories[0] ? this.selectedCategories[0].name : null;
-    this.releaseorder.adCategory2 = this.selectedCategories[1] ? this.selectedCategories[1].name : null;
-    this.releaseorder.adCategory3 = this.selectedCategories[2] ? this.selectedCategories[2].name : null;
-    this.releaseorder.adCategory4 = this.selectedCategories[3] ? this.selectedCategories[3].name : null;
-    this.releaseorder.adCategory5 = this.selectedCategories[4] ? this.selectedCategories[4].name : null;
-    this.releaseorder.adCategory6 = this.selectedCategories[5] ? this.selectedCategories[5].name : null;
+    this.releaseorder.adCategory1 = this.selectedCategories[0];
+    this.releaseorder.adCategory2 = this.selectedCategories[1];
+    this.releaseorder.adCategory3 = this.selectedCategories[2];
+    this.releaseorder.adCategory4 = this.selectedCategories[3];
+    this.releaseorder.adCategory5 = this.selectedCategories[4];
+    this.releaseorder.adCategory6 = this.selectedCategories[5];
     
     this.releaseorder.publicationName = this.mediaHouse.pubName ? this.mediaHouse.pubName : this.mediaHouse;
     this.releaseorder.clientName = this.client.orgName ? this.client.orgName : this.client;
@@ -607,6 +773,14 @@ export class ReleaseOrderComponent implements OnInit {
   }
 
   submit () : Observable<any> {
+    if (this.releaseorder.insertions.length < this.availableAds) {
+      this.notifications.show(`Please select ${this.availableAds} insertion(s)`);
+
+      return of({});
+    }
+
+    this.submitting = true;
+
     this.presave();
 
     let base: Observable<any> = this.edit ? this.editReleaseOrder() : this.createReleaseOrder();
@@ -638,7 +812,9 @@ export class ReleaseOrderComponent implements OnInit {
       this.pullouts = result.pullouts;
     }
 
-    this.mediaType = result.mediaType;
+    if (this.mediaType != result.mediaType) {
+      this.mediaType = result.mediaType;
+    }
   }
 
   get mediaType() {
@@ -648,7 +824,16 @@ export class ReleaseOrderComponent implements OnInit {
   set mediaType(mediaType: string) {
     this.releaseorder.mediaType = mediaType;
 
-    this.releaseorder.adType = this.adTypes[0];
+    this.adType = this.adTypes[0];
+  }
+
+  get adType() {
+    return this.releaseorder.adType;
+  }
+
+  set adType(adType: string) {
+    this.releaseorder.adType = adType;
+    // this.releaseorder.unit = this.units[0];
   }
 
   mediaTypes = ['Print', 'Air', 'Electronic'];
@@ -668,37 +853,45 @@ export class ReleaseOrderComponent implements OnInit {
     return [];
   }
 
-  get adTimes() {
-    return ['Any Time', 'Prime Time ', 'Evening', 'Morning'];
-  }
+  adTimes = ['Any Time', 'Prime Time ', 'Evening', 'Morning'];
 
-  get positions() {
-    let result = ['Classified', 'Back Page', 'Jacket', 'Prime Time'];
+  positions= ['Any Page', 'Front Page', 'Front Inside Page', 'Back Page', 'Back Inside Page',
+             'Fixed Page', '2nd Page', '3rd Page', '5th Page', 'Sports','Bussiness','Regional',
+             'Entertainment','Automobile','Education','Health','Editorial','World','National',
+             'City Page','Appointment','Classified Page','Obituary Page','Matrimonial','Tender/Notice',
+             'Right Hand Side','Left Hand Side' ];
 
-    for (let i = 1; i <= 8; ++i) {
-      result.push('Page ' + i);
-    }
+  // get units() {
+  //   let result = [];
 
-    return result;
-  }
+  //   if (this.isTypeLen) {
+  //     result.push('Sqcm');
+  //   }
 
-  get units() {
-    let result = [];
+  //   if (this.isTypeWords) {
+  //     result.push('Words');
+  //     result.push('Lines');
+  //   }
 
+  //   if (this.isTypeTime) {
+  //     result.push('sec');
+  //   }
+
+  //   return result;
+  // }
+
+  get rateText() {
     if (this.isTypeLen) {
-      result.push('Sqcm');
+      return "Rate per sqcm";
     }
 
     if (this.isTypeWords) {
-      result.push('Words');
-      result.push('Lines');
+      return "Rate per insertion";
     }
 
     if (this.isTypeTime) {
-      result.push('sec');
+      return "Rate per sec";
     }
-
-    return result;
   }
 
   mediaHouseInputFormatter = (result: MediaHouse) => {
@@ -808,8 +1001,8 @@ export class ReleaseOrderComponent implements OnInit {
 
   selectedSize: FixSize;
 
-  customSizeL = 0;
-  customSizeW = 0;
+  customSizeL: number;
+  customSizeW: number;
 
   schemes: Scheme[] = [];
 
@@ -950,8 +1143,8 @@ export class ReleaseOrderComponent implements OnInit {
   }
 
   taxes: TaxValues[] = [
+    new TaxValues(0),
     new TaxValues(5),
-    new TaxValues(10),
     new TaxValues(18)
   ];
 
@@ -974,7 +1167,7 @@ export class ReleaseOrderComponent implements OnInit {
 
     amount -= (this.releaseorder.publicationDiscount * amount / 100);
 
-    return amount;
+    return Math.ceil(amount);
   }
 
   otherChargesTypes = ['Designing Charges', 'Extra Copy/Newspaper Charges', 'Certificate Charges'];
@@ -989,6 +1182,8 @@ export class ReleaseOrderComponent implements OnInit {
     obj.address.state = this.releaseorder.publicationState;
     obj.GSTIN = this.releaseorder.publicationGSTIN;
     obj.mediaType = this.releaseorder.mediaType;
+    let pullout = this.dropdownPullOutName == this.others ? this.customPullOutName : this.dropdownPullOutName;
+    obj.pullouts = [{ Name: pullout, Frequency: "Daily", Language: "", Remark: "" }];
 
     this.mediaHouseApi.createMediaHouse(obj).subscribe(data => {
       if (data.success) {
@@ -1072,5 +1267,28 @@ export class ReleaseOrderComponent implements OnInit {
 
   get displayTotal() {
     return Math.ceil(this.displayAmount + this.displayTax);
+  }
+
+  handleSubmit(valid: boolean, callbackName: string) {
+    if (valid) {
+      switch (callbackName) {
+        case 'save':
+          this.save();
+          break;
+        
+        case 'dl':
+          this.saveAndGen();
+          break;
+        
+        case 'preview':
+          this.genPreview();
+          break;
+
+        case 'mail':
+          this.saveAndSendMsg();
+          break;
+      }
+    }
+    else this.notifications.show('Fix errors before submitting');
   }
 }
