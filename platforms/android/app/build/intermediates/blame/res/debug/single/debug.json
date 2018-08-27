@@ -328,10 +328,6 @@
         "source": "/home/lambo/zaaa-ionic/platforms/android/app/src/main/res/mipmap-xxxhdpi/icon.png"
     },
     {
-        "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/xml_opener_paths.xml.flat",
-        "source": "/home/lambo/zaaa-ionic/platforms/android/app/src/main/res/xml/opener_paths.xml"
-    },
-    {
         "merged": "/home/lambo/zaaa-ionic/platforms/android/app/build/intermediates/res/merged/debug/layout_notification_template_media.xml.flat",
         "source": "/home/lambo/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/c9ab1097231c948aa72d6f328bdba6a5/res/layout/notification_template_media.xml"
     },

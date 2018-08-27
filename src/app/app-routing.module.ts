@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
 import {
   AuthGuard,
@@ -11,7 +11,6 @@ import {
 import { FirmResolver, UserProfileResolver } from 'app/services';
 
 import {
-  HomeComponent,
   LoginComponent,
   RegisterComponent,
   ForgotPswComponent,
@@ -22,19 +21,26 @@ import {
   DashboardComponent,
   ChangePswComponent,
   ResetPasswordComponent,
-  NotFoundComponent
+  NotFoundComponent,
+  HomeComponent
 } from './components';
 
 import {
   ProfileEditComponent,
-  TemplateSelectorComponent,
   PlanSelectorComponent,
   EmptyComponent
 } from 'app/admin';
+
 import { TicketListComponent } from './components/ticket-list/ticket-list.component';
 import { CreateTicketComponent } from './components/create-ticket/create-ticket.component';
 import { TestimonialComponent } from './components/testimonial/testimonial.component';
 import { TncComponent } from './components/tnc/tnc.component';
+import { DirRoutingModule } from './directory/dir-routing.module';
+import { RateCardRoutingModule } from './rate-card/rate-card-routing.module';
+import { ReleaseOrderRoutingModule } from './release-order/release-order-routing.module';
+import { InvoiceRoutingModule } from './invoice/invoice-routing.module';
+import { ReceiptsRoutingModule } from './receipts/receipts-routing.module';
+import { ReportsRoutingModule } from './reports/reports-routing.module';
 
 const routes: Routes = [
   { path: 'empty', component: EmptyComponent},
@@ -42,6 +48,14 @@ const routes: Routes = [
   {
     path: 'superadmin',
     loadChildren: 'app/super-admin/super-admin.module#SuperAdminModule'
+  },
+  {
+    path: 'accounts',
+    loadChildren: 'app/accounts/accounts.module#AccountsModule'
+  },
+  {
+    path: 'coUsers',
+    loadChildren: 'app/co-users/co-users.module#CoUsersModule'
   },
   { path: 'login', component: LoginComponent },
   { path: "register", component: RegisterComponent },
@@ -80,7 +94,6 @@ const routes: Routes = [
       user: UserProfileResolver
     }
   },
-  // { path: 'templates', component: TemplateSelectorComponent, canActivate: [AdminGuard, PhoneVerifyGuard, PlanGuard] },
   {
     path: 'tnc',
     component: TncComponent,
@@ -119,7 +132,17 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
+  imports: [
+    DirRoutingModule,
+    RateCardRoutingModule,
+    ReleaseOrderRoutingModule,
+    InvoiceRoutingModule,
+    ReceiptsRoutingModule,
+    ReportsRoutingModule,
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: PreloadAllModules
+    })
+  ],
   exports: [ RouterModule ]
 })
 export class AppRoutingModule { }

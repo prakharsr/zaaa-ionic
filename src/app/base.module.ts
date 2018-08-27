@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgBootstrapModule } from './ng-bootstrap.module';
 import { FormsModule, Validator }   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -73,7 +73,7 @@ const validators = [
   imports: [
     CommonModule,
     RouterModule,
-    NgbModule.forRoot(),
+    NgBootstrapModule,
     FormsModule,
     HttpClientModule,
     MaterialModule,
@@ -120,7 +120,7 @@ const validators = [
   exports: [
     CommonModule,
     RouterModule,
-    NgbModule,
+    NgBootstrapModule,
     FormsModule,
     HttpClientModule,
     MaterialModule,

@@ -330,7 +330,7 @@ export class ReleaseOrderComponent implements OnInit {
               document.addEventListener('deviceready', () => {
                 console.log(cordova.file);
 
-                              let folderpath = cordova.file.externalRootDirectory + "Download/";
+              let folderpath = cordova.file.externalRootDirectory + "Download/";
               let filename = "releaseorder.pdf";
              
               this.windowService.window.resolveLocalFileSystemURL(folderpath, dir => {
@@ -1286,6 +1286,9 @@ export class ReleaseOrderComponent implements OnInit {
 
         case 'mail':
           this.saveAndSendMsg();
+          break;
+        case 'share':
+          this.sharePdf();
           break;
       }
     }

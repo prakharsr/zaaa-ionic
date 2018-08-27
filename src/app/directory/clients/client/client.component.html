@@ -390,7 +390,7 @@
               </div>
             
               <mat-form-field>
-                <input matInput type="tel" pattern="^\d{10}$" maxlength="10" minlength="10" name="s-{{i}}-mobileNo" placeholder="Mobile Number" [(ngModel)]="item.mobileNo" #mobileNoField="ngModel">
+                <input matInput type="tel" pattern="\\d{10}" maxlength="10" minlength="10" name="s-{{i}}-mobileNo" placeholder="Mobile Number" [(ngModel)]="item.mobileNo" #mobileNoField="ngModel">
               </mat-form-field>
         
               <mat-form-field>

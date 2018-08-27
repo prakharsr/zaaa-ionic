@@ -28,7 +28,6 @@
     "@angular/platform-browser-dynamic": "^5.0.0",
     "@angular/router": "^5.0.0",
     "@ionic-native/core": "4.4.0",
-    "@ionic-native/document-viewer": "^4.11.0",
     "@ionic-native/fcm": "^4.11.0",
     "@ionic-native/file": "^4.11.0",
     "@ionic-native/social-sharing": "^4.12.0",
@@ -93,9 +92,9 @@
       }
     },
     "platforms": [
-      "ios",
+      "android",
       "osx",
-      "android"
+      "ios"
     ]
   }
 }

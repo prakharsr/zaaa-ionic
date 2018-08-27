@@ -1,6 +1,6 @@
 <mat-toolbar>  
   <mat-toolbar-row>
-    <div class="container"><a class="text-light" (click)="this.goback.gotoComponent('')">Home</a> <span class="text-muted mx-2">/</span> <a class="text-light" (click)="this.goback.gotoComponent('profile')">Manage Profile</a> <span class="text-muted mx-2">/</span> Business Details</div>
+    <div class="container">Business Details</div>
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -191,7 +191,7 @@
           
               <mat-form-field>
                 <span matPrefix>+91 &nbsp;</span>
-                <input matInput type="tel" [(ngModel)]="profile.phone" pattern="^\d{10}$" maxlength="10" minlength="10" name="phone" placeholder="Mobile 1" #phoneField="ngModel">
+                <input matInput type="tel" [(ngModel)]="profile.phone" pattern="\\d{10}" maxlength="10" minlength="10" name="phone" placeholder="Mobile 1" #phoneField="ngModel">
                 <mat-error *ngIf="phoneField.errors">
                   Mobile 1 is empty or invalid.
                 </mat-error>
@@ -199,7 +199,7 @@
       
               <mat-form-field>
                 <span matPrefix>+91 &nbsp;</span>
-                <input matInput type="tel" [(ngModel)]="profile.OtherMobile" pattern="^\d{10}$" maxlength="10" minlength="10" name="phone2" placeholder="Mobile 2" #phone2Field="ngModel">
+                <input matInput type="tel" [(ngModel)]="profile.OtherMobile" pattern="\\d{10}" maxlength="10" minlength="10" name="phone2" placeholder="Mobile 2" #phone2Field="ngModel">
                 <mat-error *ngIf="phone2Field.errors">
                   Mobile 2 is invalid.
                 </mat-error>

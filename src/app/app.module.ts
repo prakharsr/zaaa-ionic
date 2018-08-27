@@ -87,16 +87,11 @@ import { RateCardRoutingModule } from './rate-card/rate-card-routing.module';
     BaseModule,
     AdminModule,
     DirectoryModule,
-    CoUsersModule,
     RateCardModule,
     ReleaseOrderModule,
     InvoiceModule,
     ReceiptsModule,
-    AccountsModule,
     ReportsModule,
-
-    DirRoutingModule,
-    RateCardRoutingModule,
     AppRoutingModule
   ],
   bootstrap: [IonicApp],
@@ -106,7 +101,6 @@ import { RateCardRoutingModule } from './rate-card/rate-card-routing.module';
     NavbarComponent,
     HomeComponent,
     PhoneVerifyComponent,
-    LoginComponent,
     RegisterComponent,
     ProfileViewComponent,
     DashboardComponent,
@@ -117,8 +111,8 @@ import { RateCardRoutingModule } from './rate-card/rate-card-routing.module';
     NotFoundComponent,
     ResetPasswordComponent,
     LoaderComponent,
-    TicketListComponent,
-    CreateTicketComponent
+    CreateTicketComponent,
+    TncComponent
   ],
   providers: [
     StatusBar,

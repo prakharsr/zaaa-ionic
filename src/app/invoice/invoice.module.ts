@@ -22,7 +22,6 @@ import { IonicModule } from 'ionic-angular';
     BaseModule,
     IonicModule.forRoot(InvoiceModule),
     ReleaseOrderModule,
-    InvoiceRoutingModule
   ],
   declarations: [
     InvoiceComponent,

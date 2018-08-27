@@ -71,7 +71,7 @@ body {
     }
 
     .fab .fa {
-        top: calc(50% - 4px);
+        top: calc(50% - 3px);
         left: calc(50% - 7px);
     }
 
@@ -90,7 +90,7 @@ input.ng-valid.form-control, select.ng-valid {
 
 mat-form-field, mat-slide-toggle {
     width: 100%;
-    margin: -3px;
+    margin: -3px 0;
 }
 
 mat-icon {

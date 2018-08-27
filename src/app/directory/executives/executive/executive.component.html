@@ -144,7 +144,7 @@
             <ng-container *ngIf="editContactDetails">
               <mat-form-field>
                 <span matPrefix>+91 &nbsp;</span>
-                <input type="tel" matInput placeholder="Mobile Number" [(ngModel)]="executive.mobileNo" pattern="^\d{10}$" maxlength="10" minlength="10" required name="mobileNo" #mobileNoField="ngModel">
+                <input type="tel" matInput placeholder="Mobile Number" [(ngModel)]="executive.mobileNo" pattern="\\d{10}" maxlength="10" minlength="10" required name="mobileNo" #mobileNoField="ngModel">
                 <mat-error *ngIf="mobileNoField.errors">
                   Mobile Number is empty or invalid.
                 </mat-error>

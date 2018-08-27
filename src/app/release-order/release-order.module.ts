@@ -3,7 +3,6 @@ import { BaseModule } from '../base.module';
 
 import { DirectoryModule } from 'app/directory/directory.module';
 import { RateCardModule } from 'app/rate-card/rate-card.module';
-import { ReleaseOrderRoutingModule } from './release-order-routing.module';
 
 import {
   InsertionListResolver,
@@ -23,9 +22,7 @@ import { IonicModule } from 'ionic-angular';
     IonicModule.forRoot(ReleaseOrderModule),
     BaseModule,
     DirectoryModule,
-    RateCardModule,
-    ReleaseOrderRoutingModule
-  ],
+    RateCardModule  ],
   providers: [
     ReleaseOrderApiService,
     ReleaseOrderResolver,
