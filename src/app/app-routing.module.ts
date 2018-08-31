@@ -44,7 +44,8 @@ import { ReportsRoutingModule } from './reports/reports-routing.module';
 
 const routes: Routes = [
   { path: 'empty', component: EmptyComponent},
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'superadmin',
     loadChildren: 'app/super-admin/super-admin.module#SuperAdminModule'
