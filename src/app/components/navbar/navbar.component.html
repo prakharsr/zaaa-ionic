@@ -67,7 +67,7 @@
        <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('tickets')" menuClose>
         Support
        </button>
-       <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent(''); api.logout()" menuClose>
+       <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent(''); logout()" menuClose>
         Logout
        </button>
         

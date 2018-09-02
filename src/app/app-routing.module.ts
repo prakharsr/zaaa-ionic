@@ -41,6 +41,7 @@ import { ReleaseOrderRoutingModule } from './release-order/release-order-routing
 import { InvoiceRoutingModule } from './invoice/invoice-routing.module';
 import { ReceiptsRoutingModule } from './receipts/receipts-routing.module';
 import { ReportsRoutingModule } from './reports/reports-routing.module';
+import { CoUsersRoutingModule } from './co-users/co-users-routing.module';
 
 const routes: Routes = [
   { path: 'empty', component: EmptyComponent},
@@ -51,12 +52,12 @@ const routes: Routes = [
     loadChildren: 'app/super-admin/super-admin.module#SuperAdminModule'
   },
   {
-    path: 'accounts',
-    loadChildren: 'app/accounts/accounts.module#AccountsModule'
-  },
-  {
-    path: 'coUsers',
-    loadChildren: 'app/co-users/co-users.module#CoUsersModule'
+    path: "account",
+    component: AccountDetailsComponent,
+    canActivate: [AuthGuard, PhoneVerifyGuard, PlanGuard],
+    resolve: {
+      user: UserProfileResolver
+    }
   },
   { path: 'login', component: LoginComponent },
   { path: "register", component: RegisterComponent },
@@ -136,6 +137,7 @@ const routes: Routes = [
   imports: [
     DirRoutingModule,
     RateCardRoutingModule,
+    CoUsersRoutingModule,
     ReleaseOrderRoutingModule,
     InvoiceRoutingModule,
     ReceiptsRoutingModule,

@@ -53,6 +53,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { TncComponent } from './components/tnc/tnc.component';
 import { DirRoutingModule } from './directory/dir-routing.module';
 import { RateCardRoutingModule } from './rate-card/rate-card-routing.module';
+import { SuperAdminModule } from './super-admin/super-admin.module';
 
 @NgModule({
   declarations: [
@@ -87,6 +88,8 @@ import { RateCardRoutingModule } from './rate-card/rate-card-routing.module';
     BaseModule,
     AdminModule,
     DirectoryModule,
+    AccountsModule,
+    CoUsersModule,
     RateCardModule,
     ReleaseOrderModule,
     InvoiceModule,

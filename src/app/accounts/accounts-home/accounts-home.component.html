@@ -8,24 +8,24 @@
 
 <div class="container">
   <div>
-    <a (click)="this.goback.gotoComponent('mediahouseinvoice')">Media House Invoice</a>
+    <a routerLink="mediahouseinvoice">Media House Invoice</a>
   </div>
   <div>
-    <a (click)="this.goback.gotoComponent('clientreceipts')">Client Receipts</a>
+    <a routerLink="clientreceipts">Client Receipts</a>
   </div>
   <div>
-    <a (click)="this.goback.gotoComponent('clientinvoicepayments')">Client Invoice Payments</a>
+    <a routerLink="clientinvoicepayments">Client Invoice Payments</a>
   </div>
   <div>
-    <a (click)="this.goback.gotoComponent('executiveinvoicepayments')">Executive Invoice Payments</a>
+    <a routerLink="executiveinvoicepayments">Executive Invoice Payments</a>
   </div>
   <div>
-    <a (click)="this.goback.gotoComponent('notes')">Credit / Debit Notes</a>
+    <a routerLink="notes">Credit / Debit Notes</a>
   </div>
   <div>
-    <a (click)="this.goback.gotoComponent('gst')" *ngIf="firm.GSTIN.GSTType == 'RD'">GST</a>
+    <a routerLink="gst" *ngIf="firm.GSTIN.GSTType == 'RD'">GST</a>
   </div>  
   <div>
-    <a (click)="this.goback.gotoComponent('summarysheet')">Summary Sheet</a>
+    <a routerLink="summarysheet">Summary Sheet</a>
   </div>
 </div>

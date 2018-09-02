@@ -5,6 +5,7 @@ import { Platform, LoadingController, Spinner } from 'ionic-angular';
 import { Router } from '@angular/router';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Firm } from '../../models/firm';
+import { FCM } from '@ionic-native/fcm';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,7 @@ export class HomeComponent implements OnInit {
   constructor(public goback: GobackService, platform: Platform,
      public api: ApiService,
      private router: Router,
-     private loadingCtrl: LoadingController) {
+     private loadingCtrl: LoadingController, public fcm: FCM) {
    }
  
   presentLoadingDefault() {
@@ -48,6 +49,17 @@ export class HomeComponent implements OnInit {
     if(this.api.isLoggedIn) 
     {
       this.api.getFirmProfile().subscribe(data => this.profile = data);
+      this.fcm.getToken().then(token => {
+        this.api.sendToken(token).subscribe( data => {
+          if(data.success) {
+            console.log("token sent successfully, token: "+ data);
+          }
+          else {
+            console.log("token couldnot be sent");
+          }
+
+        });
+      });
       this.presentLoadingDefault();
       
     }

@@ -67194,6 +67194,16 @@ ion-navbar:focus {
   background-color: #f1edec;
 }
 
+app-media-house-invoice-list mat-icon {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+app-media-house-invoice-list .rotate180 {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
 app-plan-selector .planContainer {
   display: -webkit-box;
   display: -webkit-flex;
@@ -67374,7 +67384,7 @@ app-mailing-details mat-form-field {
 }
 
 app-navbar .toolbar-background {
-  background-color: #5bc0de;
+  background-color: #2196f3;
 }
 
 app-navbar .toolbar .toolbar-title, app-navbar .toolbar .bar-button-default {

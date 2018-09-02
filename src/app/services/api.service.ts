@@ -125,6 +125,10 @@ export class ApiService {
     this.authTokenManager.setAuthToken(this.authTokenKey, '');
   }
 
+  logoutSendToken(token: string) : Observable<any> {
+    return this.post('/user/logout', { token: token });
+  }
+  
   get plans() : Observable<any> {
     return this.get('/plans');
   }

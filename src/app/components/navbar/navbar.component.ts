@@ -7,6 +7,7 @@ import { DashboardComponent } from '..';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { NotificationsComponent } from '../notifications/notifications.component';
 import { ComponentPortal } from '@angular/cdk/portal';
+import { FCM } from '@ionic-native/fcm';
 
 @Component({
   selector: 'app-navbar',
@@ -22,7 +23,8 @@ export class NavbarComponent implements OnInit {
     public api: ApiService,
     private route: ActivatedRoute,
     private notifications: NotificationService,
-    private overlay: Overlay) { }
+    private overlay: Overlay,
+    public fcm: FCM) { }
 
   profile = new Firm();
 
@@ -35,6 +37,22 @@ export class NavbarComponent implements OnInit {
     {
       this.api.getFirmProfile().subscribe(data => this.profile = data);
     }
+  }
+
+  logout() {
+    this.fcm.getToken().then(token => {
+      this.api.logoutSendToken(token).subscribe( data => {
+        if(data.success) {
+          console.log("token sent successfully, token: "+ data);
+        }
+        else {
+          console.log("token couldnot be sent");
+        }
+
+      });
+    });
+
+    this.api.logout();
   }
 
   openNotifications() {
