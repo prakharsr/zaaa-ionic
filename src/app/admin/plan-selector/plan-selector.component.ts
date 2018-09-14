@@ -1,4 +1,4 @@
-import { GobackService, DialogService } from 'app/services';
+import { DialogService } from 'app/services';
 import { Component, OnInit, ApplicationRef } from '@angular/core';
 import { Plan } from '../../models/plan';
 import { ApiService } from '../../services/api.service';
@@ -29,7 +29,7 @@ export class PlanSelectorComponent implements OnInit {
   private email: string;
   private phone: string;
 
-  constructor(public goback: GobackService, private api: ApiService,
+  constructor(private api: ApiService,
     private razorPay: RazorPayService,
     private appRef: ApplicationRef,
     private router: Router,
@@ -40,7 +40,7 @@ export class PlanSelectorComponent implements OnInit {
     private dialog: DialogService) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
     this.api.plans.subscribe(data => {
       this.plans = [];
 

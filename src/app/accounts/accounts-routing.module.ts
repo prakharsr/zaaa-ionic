@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuard } from 'app/guards';
+import { Guard } from 'app/guards';
 
 import {
   MediaHouseInvoiceComponent,
@@ -30,7 +30,7 @@ import { MhReceiptListResolver } from './mh-receipt-list-resolver.service';
 const routes: Routes = [
   {
     path: 'accounts',
-    canActivate: [AuthGuard],
+    canActivate: [Guard],
     children: [
       {
         path: '',

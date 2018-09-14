@@ -1,4 +1,4 @@
-import { GobackService, NotificationService } from 'app/services';
+import { NotificationService } from 'app/services';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { ActivatedRoute } from '@angular/router';
@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
   @ViewChild('notifyBtn', {read: ElementRef}) notifyBtn: ElementRef;
   
   constructor(
-    public goback: GobackService, 
+      
     public api: ApiService,
     private route: ActivatedRoute,
     private notifications: NotificationService,
@@ -32,7 +32,7 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit() {
-    this.goback.urlInit();
+     
     if(this.api.isLoggedIn) 
     {
       this.api.getFirmProfile().subscribe(data => this.profile = data);

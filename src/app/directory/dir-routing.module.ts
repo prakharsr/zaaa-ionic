@@ -20,14 +20,12 @@ import {
   MediaHouseListResolver
 } from '.';
 
-import { AuthGuard } from 'app/guards';
 import { FirmResolver } from 'app/services';
 
 const routes: Routes = [
   {
     path: 'dir',
     component: DirComponent,
-    canActivate: [AuthGuard],
     children: [
       {
         path: 'clients',

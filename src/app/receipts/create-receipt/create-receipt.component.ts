@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { InvoiceDir } from '../../invoice';
@@ -15,10 +15,10 @@ export class CreateReceiptComponent implements OnInit {
 
   allowAdvance = true;
 
-  constructor(public goback: GobackService, private route: ActivatedRoute) { }
+  constructor(  private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
     this.route.data.subscribe((data: { advance: boolean, resolved: InvoiceDir }) => {
       this.advance = data.advance;
       this.invoiceDir = data.resolved;

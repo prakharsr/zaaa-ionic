@@ -91,7 +91,6 @@ ext {
 }
 
 // PLUGIN GRADLE EXTENSIONS START
-apply from: "../cordova-android-support-gradle-release/aaman-cordova-android-support-gradle-release.gradle"
 apply from: "../cordova-plugin-fcm/aaman-FCMPlugin.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 

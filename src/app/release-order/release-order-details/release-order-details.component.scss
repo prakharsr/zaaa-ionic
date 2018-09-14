@@ -1,1 +1,1 @@
-app-release-order-details{.list-group-item div:first-child {     font-style: italic; }}
+app-release-order-details{@media (min-width: 768px) {     mat-card {         height: calc(100% - 15px);     } }  label.text-muted {     font-weight: bold; }}

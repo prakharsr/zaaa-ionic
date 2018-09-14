@@ -1,35 +1,23 @@
 import { NgModule } from '@angular/core';
 import { BaseModule } from '../base.module';
 
-import { DirectoryModule } from 'app/directory/directory.module';
-import { RateCardModule } from 'app/rate-card/rate-card.module';
-
 import {
-  InsertionListResolver,
-  ReleaseOrderListResolver,
-  ReleaseOrderResolver,
-  ReleaseOrderApiService,
-  ReleaseOrderDirResolver,
   InsertionCheckComponent,
   ReleaseOrderComponent,
   ReleaseOrderDetailsComponent,
   ReleaseOrderListComponent,
 } from '.';
+
+import { ReleaseOrderRoutingModule } from './release-order-routing.module';
+import { CreateRoGuard } from './create-ro-guard.service';
 import { IonicModule } from 'ionic-angular';
 
 @NgModule({
   imports: [
-    IonicModule.forRoot(ReleaseOrderModule),
     BaseModule,
-    DirectoryModule,
-    RateCardModule  ],
-  providers: [
-    ReleaseOrderApiService,
-    ReleaseOrderResolver,
-    ReleaseOrderListResolver,
-    InsertionListResolver,
-    ReleaseOrderDirResolver
+    IonicModule.forRoot(ReleaseOrderModule)
   ],
+  providers: [CreateRoGuard],
   declarations: [
     ReleaseOrderComponent,
     ReleaseOrderListComponent,

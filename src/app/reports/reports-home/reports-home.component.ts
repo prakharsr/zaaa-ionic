@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { ReportsApiService } from '../reports-api.service';
 import { Observable } from 'rxjs/Observable';
@@ -15,11 +15,11 @@ export class ReportsHomeComponent implements OnInit {
   updationPeriod = 0;
   insertionPeriod = 0;
 
-  constructor(public goback: GobackService, private api: ReportsApiService,
+  constructor(  private api: ReportsApiService,
     private notifications: NotificationService) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
   }
 
   private download(base: Observable<any>) {

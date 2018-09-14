@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { PaymentsResponse, AccountsApiService, PaymentTotalResponse } from '../accounts-api.service';
@@ -25,13 +25,13 @@ export class ClientInvoicePaymentsComponent implements OnInit {
 
   list: PaymentsResponse[] = [];
 
-  constructor(public goback: GobackService, private api: AccountsApiService,
+  constructor(  private api: AccountsApiService,
     private clientApi: ClientApiService,
     private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
     this.route.data.subscribe((data: { resolved: { total: PaymentTotalResponse, client: string }}) => {
       this.list = data.resolved.total.list.list;
 

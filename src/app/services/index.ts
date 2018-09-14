@@ -10,4 +10,3 @@ export * from './state-api.service';
 export * from './user-profile-resolver.service';
 export * from './window.service';
 export * from './firm-users-resolver.service';
-export * from './goback.service';

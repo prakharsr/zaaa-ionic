@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -43,7 +43,7 @@ export class ReceiptListComponent implements OnInit {
 
   collapsed = true;
 
-  constructor(public goback: GobackService, private route: ActivatedRoute,
+  constructor(  private route: ActivatedRoute,
     private clientApi: ClientApiService,
     private mediaHouseApi: MediaHouseApiService,
     private executiveApi: ExecutiveApiService,
@@ -53,7 +53,7 @@ export class ReceiptListComponent implements OnInit {
     private api: ReceiptsApiService) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
     this.route.data.subscribe((data: { resolved: { list: PageData<PaymentReceipt>, search: ReleaseOrderSearchParams }, advance: boolean}) => {
       this.receipts = data.resolved.list.list;
       this.advance = data.advance;

@@ -17,12 +17,12 @@ INJECTED from /home/lambo/zaaa-ionic/platforms/android/app/src/main/AndroidManif
 INJECTED from /home/lambo/zaaa-ionic/platforms/android/app/src/main/AndroidManifest.xml:2:1-40:12
 MERGED from [com.google.firebase:firebase-core:16.0.3] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-core-16.0.3.aar/abdcf00fb40364fd155a9fe0f1c5b4ea/AndroidManifest.xml:2:1-9:12
 MERGED from [com.razorpay:checkout:1.4.7] /home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/21930036018100a76b0f34ab11142e74/AndroidManifest.xml:2:1-33:12
-MERGED from [com.google.firebase:firebase-messaging:17.3.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-messaging-17.3.0.aar/13b0350f6cc5c0824e10000ce84e4cda/AndroidManifest.xml:17:1-37:12
+MERGED from [com.google.firebase:firebase-messaging:17.3.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-messaging-17.3.1.aar/6255e4a0ffa0c1b5bb0fb6769d929c36/AndroidManifest.xml:17:1-37:12
 MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-impl-17.0.1.aar/2aa0b848e0bcb0b3fab2ce7158d4bd81/AndroidManifest.xml:17:1-34:12
 MERGED from [com.google.firebase:firebase-analytics:16.0.3] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.3.aar/9406ab836b3a609579ef2d338278a00c/AndroidManifest.xml:17:1-55:12
 MERGED from [com.google.android.gms:play-services-measurement-api:16.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/play-services-measurement-api-16.0.1.aar/7fa478c413d0ab59a5e6c6b610e6b894/AndroidManifest.xml:17:1-25:12
 MERGED from [com.google.firebase:firebase-analytics-impl:16.2.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-16.2.1.aar/542441b711dc0250dabb05265c41c49e/AndroidManifest.xml:17:1-40:12
-MERGED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:17:1-59:12
+MERGED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:17:1-59:12
 MERGED from [com.google.firebase:firebase-common:16.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-common-16.0.1.aar/9de810d43986b5a1dcd49b9f1cc9283c/AndroidManifest.xml:2:1-17:12
 MERGED from [com.google.firebase:firebase-iid-interop:16.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-interop-16.0.0.aar/d9c0ce7d3d8957b4cf4a74a15e788f68/AndroidManifest.xml:2:1-10:12
 MERGED from [com.google.android.gms:play-services-base:15.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/play-services-base-15.0.1.aar/d32add39ee4da203d334d443922dad7e/AndroidManifest.xml:17:1-29:12
@@ -31,18 +31,15 @@ MERGED from [com.google.android.gms:play-services-stats:15.0.1] /home/lambo/.gra
 MERGED from [com.google.android.gms:play-services-ads-identifier:15.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/play-services-ads-identifier-15.0.1.aar/67e917395a90847a02b845660b4c9ef0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.firebase:firebase-measurement-connector:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-17.0.0.aar/8b5aee18a4c0c5c3979a5dc20cb770de/AndroidManifest.xml:17:1-25:12
 MERGED from [com.google.android.gms:play-services-basement:15.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/play-services-basement-15.0.1.aar/f84ca4b9c9c8e0aea9d56022718c911e/AndroidManifest.xml:17:1-28:12
-MERGED from [com.android.support:support-v4:27.1.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/3032916940fa7e858bb0f9c99f819168/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-v4:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/c30efcc15200c31bee67e246007c3153/AndroidManifest.xml:17:1-31:12
 MERGED from [:CordovaLib] /home/lambo/zaaa-ionic/platforms/android/CordovaLib/build/intermediates/manifests/full/debug/AndroidManifest.xml:20:1-27:12
-MERGED from [com.android.support:support-media-compat:27.1.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/c9ab1097231c948aa72d6f328bdba6a5/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-fragment:27.1.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/0c15b113f90a032de6646ec7e5eec243/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-ui:27.1.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/bed1f037711d3e4e29bc1687a13cc98b/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-utils:27.1.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/ed110b15709211e2dd75faf434e67b42/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-compat:27.1.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/6fe5e151e5744e80ae349c8992c66541/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:runtime:1.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/65fa38e674d700849f2e52cbd8715640/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/9bb9c48a534f08f70dc972243afda830/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/cd14ce5a4f71fd6d3873c9d74b2e9c47/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.core:runtime:1.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/77e0353ed17ebe20cc3d37e6db484448/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/dd6b02737b026c17c5b77cc81957e695/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-fragment:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/5e0290b04790f65de2c909107e2ddf20/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-utils:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/35deedb037ec74053d6f7264efcb509d/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-ui:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/989985994ffeb46615daf751f6144667/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-compat:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/4996d29aa333acf873fb1cf8d39df1dd/AndroidManifest.xml:17:1-31:12
 MERGED from [com.google.android.gms:play-services-measurement-base:16.0.2] /home/lambo/.gradle/caches/transforms-1/files-1.1/play-services-measurement-base-16.0.2.aar/f377288b4c3ef97a5dbdc5ca0f9d6f84/AndroidManifest.xml:2:1-9:12
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/b65dd87edb123313a5e96a53bd66a0ab/AndroidManifest.xml:17:1-30:12
 INJECTED from /home/lambo/zaaa-ionic/platforms/android/app/src/main/AndroidManifest.xml:2:1-40:12
 INJECTED from /home/lambo/zaaa-ionic/platforms/android/app/src/main/AndroidManifest.xml:2:1-40:12
 INJECTED from /home/lambo/zaaa-ionic/platforms/android/app/src/main/AndroidManifest.xml:2:1-40:12
@@ -86,8 +83,8 @@ MERGED from [com.google.firebase:firebase-analytics:16.0.3] /home/lambo/.gradle/
 MERGED from [com.google.firebase:firebase-analytics:16.0.3] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.3.aar/9406ab836b3a609579ef2d338278a00c/AndroidManifest.xml:23:5-67
 MERGED from [com.google.firebase:firebase-analytics-impl:16.2.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-16.2.1.aar/542441b711dc0250dabb05265c41c49e/AndroidManifest.xml:23:5-67
 MERGED from [com.google.firebase:firebase-analytics-impl:16.2.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-16.2.1.aar/542441b711dc0250dabb05265c41c49e/AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:23:5-67
 	android:name
 		ADDED from /home/lambo/zaaa-ionic/platforms/android/app/src/main/AndroidManifest.xml:4:22-64
 application
@@ -96,8 +93,8 @@ MERGED from [com.google.firebase:firebase-core:16.0.3] /home/lambo/.gradle/cache
 MERGED from [com.google.firebase:firebase-core:16.0.3] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-core-16.0.3.aar/abdcf00fb40364fd155a9fe0f1c5b4ea/AndroidManifest.xml:7:5-20
 MERGED from [com.razorpay:checkout:1.4.7] /home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/21930036018100a76b0f34ab11142e74/AndroidManifest.xml:12:5-31:19
 MERGED from [com.razorpay:checkout:1.4.7] /home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/21930036018100a76b0f34ab11142e74/AndroidManifest.xml:12:5-31:19
-MERGED from [com.google.firebase:firebase-messaging:17.3.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-messaging-17.3.0.aar/13b0350f6cc5c0824e10000ce84e4cda/AndroidManifest.xml:22:5-35:19
-MERGED from [com.google.firebase:firebase-messaging:17.3.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-messaging-17.3.0.aar/13b0350f6cc5c0824e10000ce84e4cda/AndroidManifest.xml:22:5-35:19
+MERGED from [com.google.firebase:firebase-messaging:17.3.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-messaging-17.3.1.aar/6255e4a0ffa0c1b5bb0fb6769d929c36/AndroidManifest.xml:22:5-35:19
+MERGED from [com.google.firebase:firebase-messaging:17.3.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-messaging-17.3.1.aar/6255e4a0ffa0c1b5bb0fb6769d929c36/AndroidManifest.xml:22:5-35:19
 MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-impl-17.0.1.aar/2aa0b848e0bcb0b3fab2ce7158d4bd81/AndroidManifest.xml:26:5-32:19
 MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-impl-17.0.1.aar/2aa0b848e0bcb0b3fab2ce7158d4bd81/AndroidManifest.xml:26:5-32:19
 MERGED from [com.google.firebase:firebase-analytics:16.0.3] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.3.aar/9406ab836b3a609579ef2d338278a00c/AndroidManifest.xml:28:5-53:19
@@ -106,8 +103,8 @@ MERGED from [com.google.android.gms:play-services-measurement-api:16.0.1] /home/
 MERGED from [com.google.android.gms:play-services-measurement-api:16.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/play-services-measurement-api-16.0.1.aar/7fa478c413d0ab59a5e6c6b610e6b894/AndroidManifest.xml:22:5-23:19
 MERGED from [com.google.firebase:firebase-analytics-impl:16.2.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-16.2.1.aar/542441b711dc0250dabb05265c41c49e/AndroidManifest.xml:28:5-38:19
 MERGED from [com.google.firebase:firebase-analytics-impl:16.2.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-16.2.1.aar/542441b711dc0250dabb05265c41c49e/AndroidManifest.xml:28:5-38:19
-MERGED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:28:5-57:19
-MERGED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:28:5-57:19
+MERGED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:28:5-57:19
+MERGED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:28:5-57:19
 MERGED from [com.google.firebase:firebase-common:16.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-common-16.0.1.aar/9de810d43986b5a1dcd49b9f1cc9283c/AndroidManifest.xml:9:5-15:19
 MERGED from [com.google.firebase:firebase-common:16.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-common-16.0.1.aar/9de810d43986b5a1dcd49b9f1cc9283c/AndroidManifest.xml:9:5-15:19
 MERGED from [com.google.firebase:firebase-iid-interop:16.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-interop-16.0.0.aar/d9c0ce7d3d8957b4cf4a74a15e788f68/AndroidManifest.xml:7:5-8:19
@@ -124,8 +121,22 @@ MERGED from [com.google.firebase:firebase-measurement-connector:17.0.0] /home/la
 MERGED from [com.google.firebase:firebase-measurement-connector:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-17.0.0.aar/8b5aee18a4c0c5c3979a5dc20cb770de/AndroidManifest.xml:22:5-23:19
 MERGED from [com.google.android.gms:play-services-basement:15.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/play-services-basement-15.0.1.aar/f84ca4b9c9c8e0aea9d56022718c911e/AndroidManifest.xml:22:5-26:19
 MERGED from [com.google.android.gms:play-services-basement:15.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/play-services-basement-15.0.1.aar/f84ca4b9c9c8e0aea9d56022718c911e/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-v4:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/c30efcc15200c31bee67e246007c3153/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-v4:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/c30efcc15200c31bee67e246007c3153/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/dd6b02737b026c17c5b77cc81957e695/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/dd6b02737b026c17c5b77cc81957e695/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/5e0290b04790f65de2c909107e2ddf20/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/5e0290b04790f65de2c909107e2ddf20/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/35deedb037ec74053d6f7264efcb509d/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/35deedb037ec74053d6f7264efcb509d/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/989985994ffeb46615daf751f6144667/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/989985994ffeb46615daf751f6144667/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/4996d29aa333acf873fb1cf8d39df1dd/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/4996d29aa333acf873fb1cf8d39df1dd/AndroidManifest.xml:25:5-29:19
 MERGED from [com.google.android.gms:play-services-measurement-base:16.0.2] /home/lambo/.gradle/caches/transforms-1/files-1.1/play-services-measurement-base-16.0.2.aar/f377288b4c3ef97a5dbdc5ca0f9d6f84/AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-measurement-base:16.0.2] /home/lambo/.gradle/caches/transforms-1/files-1.1/play-services-measurement-base-16.0.2.aar/f377288b4c3ef97a5dbdc5ca0f9d6f84/AndroidManifest.xml:7:5-20
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/b65dd87edb123313a5e96a53bd66a0ab/AndroidManifest.xml:24:5-28:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/b65dd87edb123313a5e96a53bd66a0ab/AndroidManifest.xml:24:5-28:19
 	android:supportsRtl
 		ADDED from /home/lambo/zaaa-ionic/platforms/android/app/src/main/AndroidManifest.xml:5:114-140
 	android:label
@@ -216,8 +227,8 @@ MERGED from [com.google.firebase:firebase-core:16.0.3] /home/lambo/.gradle/cache
 MERGED from [com.google.firebase:firebase-core:16.0.3] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-core-16.0.3.aar/abdcf00fb40364fd155a9fe0f1c5b4ea/AndroidManifest.xml:5:5-44
 MERGED from [com.razorpay:checkout:1.4.7] /home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/21930036018100a76b0f34ab11142e74/AndroidManifest.xml:5:5-7:41
 MERGED from [com.razorpay:checkout:1.4.7] /home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/21930036018100a76b0f34ab11142e74/AndroidManifest.xml:5:5-7:41
-MERGED from [com.google.firebase:firebase-messaging:17.3.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-messaging-17.3.0.aar/13b0350f6cc5c0824e10000ce84e4cda/AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-messaging:17.3.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-messaging-17.3.0.aar/13b0350f6cc5c0824e10000ce84e4cda/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-messaging:17.3.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-messaging-17.3.1.aar/6255e4a0ffa0c1b5bb0fb6769d929c36/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-messaging:17.3.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-messaging-17.3.1.aar/6255e4a0ffa0c1b5bb0fb6769d929c36/AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-impl-17.0.1.aar/2aa0b848e0bcb0b3fab2ce7158d4bd81/AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-impl-17.0.1.aar/2aa0b848e0bcb0b3fab2ce7158d4bd81/AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-analytics:16.0.3] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.3.aar/9406ab836b3a609579ef2d338278a00c/AndroidManifest.xml:20:5-44
@@ -226,8 +237,8 @@ MERGED from [com.google.android.gms:play-services-measurement-api:16.0.1] /home/
 MERGED from [com.google.android.gms:play-services-measurement-api:16.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/play-services-measurement-api-16.0.1.aar/7fa478c413d0ab59a5e6c6b610e6b894/AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-analytics-impl:16.2.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-16.2.1.aar/542441b711dc0250dabb05265c41c49e/AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-analytics-impl:16.2.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-16.2.1.aar/542441b711dc0250dabb05265c41c49e/AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-common:16.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-common-16.0.1.aar/9de810d43986b5a1dcd49b9f1cc9283c/AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.firebase:firebase-common:16.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-common-16.0.1.aar/9de810d43986b5a1dcd49b9f1cc9283c/AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.firebase:firebase-iid-interop:16.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-interop-16.0.0.aar/d9c0ce7d3d8957b4cf4a74a15e788f68/AndroidManifest.xml:5:5-44
@@ -244,30 +255,26 @@ MERGED from [com.google.firebase:firebase-measurement-connector:17.0.0] /home/la
 MERGED from [com.google.firebase:firebase-measurement-connector:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-17.0.0.aar/8b5aee18a4c0c5c3979a5dc20cb770de/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-basement:15.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/play-services-basement-15.0.1.aar/f84ca4b9c9c8e0aea9d56022718c911e/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-basement:15.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/play-services-basement-15.0.1.aar/f84ca4b9c9c8e0aea9d56022718c911e/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:27.1.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/3032916940fa7e858bb0f9c99f819168/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:27.1.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/3032916940fa7e858bb0f9c99f819168/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/c30efcc15200c31bee67e246007c3153/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/c30efcc15200c31bee67e246007c3153/AndroidManifest.xml:21:5-23:54
 MERGED from [:CordovaLib] /home/lambo/zaaa-ionic/platforms/android/CordovaLib/build/intermediates/manifests/full/debug/AndroidManifest.xml:25:5-44
 MERGED from [:CordovaLib] /home/lambo/zaaa-ionic/platforms/android/CordovaLib/build/intermediates/manifests/full/debug/AndroidManifest.xml:25:5-44
-MERGED from [com.android.support:support-media-compat:27.1.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/c9ab1097231c948aa72d6f328bdba6a5/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-media-compat:27.1.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/c9ab1097231c948aa72d6f328bdba6a5/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-fragment:27.1.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/0c15b113f90a032de6646ec7e5eec243/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-fragment:27.1.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/0c15b113f90a032de6646ec7e5eec243/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:27.1.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/bed1f037711d3e4e29bc1687a13cc98b/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:27.1.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/bed1f037711d3e4e29bc1687a13cc98b/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:27.1.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/ed110b15709211e2dd75faf434e67b42/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:27.1.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/ed110b15709211e2dd75faf434e67b42/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:27.1.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/6fe5e151e5744e80ae349c8992c66541/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:27.1.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/6fe5e151e5744e80ae349c8992c66541/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:runtime:1.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/65fa38e674d700849f2e52cbd8715640/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:runtime:1.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/65fa38e674d700849f2e52cbd8715640/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/9bb9c48a534f08f70dc972243afda830/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/9bb9c48a534f08f70dc972243afda830/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/cd14ce5a4f71fd6d3873c9d74b2e9c47/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/cd14ce5a4f71fd6d3873c9d74b2e9c47/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.core:runtime:1.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/77e0353ed17ebe20cc3d37e6db484448/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.core:runtime:1.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/77e0353ed17ebe20cc3d37e6db484448/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/dd6b02737b026c17c5b77cc81957e695/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/dd6b02737b026c17c5b77cc81957e695/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-fragment:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/5e0290b04790f65de2c909107e2ddf20/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-fragment:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/5e0290b04790f65de2c909107e2ddf20/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-utils:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/35deedb037ec74053d6f7264efcb509d/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-utils:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/35deedb037ec74053d6f7264efcb509d/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-ui:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/989985994ffeb46615daf751f6144667/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-ui:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/989985994ffeb46615daf751f6144667/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/4996d29aa333acf873fb1cf8d39df1dd/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/4996d29aa333acf873fb1cf8d39df1dd/AndroidManifest.xml:21:5-23:58
 MERGED from [com.google.android.gms:play-services-measurement-base:16.0.2] /home/lambo/.gradle/caches/transforms-1/files-1.1/play-services-measurement-base-16.0.2.aar/f377288b4c3ef97a5dbdc5ca0f9d6f84/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-measurement-base:16.0.2] /home/lambo/.gradle/caches/transforms-1/files-1.1/play-services-measurement-base-16.0.2.aar/f377288b4c3ef97a5dbdc5ca0f9d6f84/AndroidManifest.xml:5:5-44
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/b65dd87edb123313a5e96a53bd66a0ab/AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/b65dd87edb123313a5e96a53bd66a0ab/AndroidManifest.xml:20:5-22:41
+	tools:overrideLibrary
+		ADDED from [com.android.support:support-v4:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/c30efcc15200c31bee67e246007c3153/AndroidManifest.xml:23:9-51
 	android:targetSdkVersion
 		ADDED from /home/lambo/zaaa-ionic/platforms/android/app/src/main/AndroidManifest.xml:37:42-71
 	android:minSdkVersion
@@ -294,8 +301,8 @@ MERGED from [com.google.firebase:firebase-analytics:16.0.3] /home/lambo/.gradle/
 MERGED from [com.google.firebase:firebase-analytics:16.0.3] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.3.aar/9406ab836b3a609579ef2d338278a00c/AndroidManifest.xml:24:5-79
 MERGED from [com.google.firebase:firebase-analytics-impl:16.2.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-16.2.1.aar/542441b711dc0250dabb05265c41c49e/AndroidManifest.xml:24:5-79
 MERGED from [com.google.firebase:firebase-analytics-impl:16.2.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-16.2.1.aar/542441b711dc0250dabb05265c41c49e/AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:22:5-79
-MERGED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:22:5-79
 	android:name
 		ADDED from [com.razorpay:checkout:1.4.7] /home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/21930036018100a76b0f34ab11142e74/AndroidManifest.xml:10:22-76
 activity#com.razorpay.CheckoutActivity
@@ -325,27 +332,27 @@ ADDED from [com.razorpay:checkout:1.4.7] /home/lambo/.gradle/caches/transforms-1
 	android:name
 		ADDED from [com.razorpay:checkout:1.4.7] /home/lambo/.gradle/caches/transforms-1/files-1.1/checkout-1.4.7.aar/21930036018100a76b0f34ab11142e74/AndroidManifest.xml:28:25-62
 service#com.google.firebase.messaging.FirebaseMessagingService
-ADDED from [com.google.firebase:firebase-messaging:17.3.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-messaging-17.3.0.aar/13b0350f6cc5c0824e10000ce84e4cda/AndroidManifest.xml:28:9-34:19
+ADDED from [com.google.firebase:firebase-messaging:17.3.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-messaging-17.3.1.aar/6255e4a0ffa0c1b5bb0fb6769d929c36/AndroidManifest.xml:28:9-34:19
 	android:exported
-		ADDED from [com.google.firebase:firebase-messaging:17.3.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-messaging-17.3.0.aar/13b0350f6cc5c0824e10000ce84e4cda/AndroidManifest.xml:30:13-36
+		ADDED from [com.google.firebase:firebase-messaging:17.3.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-messaging-17.3.1.aar/6255e4a0ffa0c1b5bb0fb6769d929c36/AndroidManifest.xml:30:13-36
 	android:name
-		ADDED from [com.google.firebase:firebase-messaging:17.3.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-messaging-17.3.0.aar/13b0350f6cc5c0824e10000ce84e4cda/AndroidManifest.xml:29:13-82
+		ADDED from [com.google.firebase:firebase-messaging:17.3.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-messaging-17.3.1.aar/6255e4a0ffa0c1b5bb0fb6769d929c36/AndroidManifest.xml:29:13-82
 uses-permission#android.permission.WAKE_LOCK
 ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-impl-17.0.1.aar/2aa0b848e0bcb0b3fab2ce7158d4bd81/AndroidManifest.xml:24:5-68
 MERGED from [com.google.firebase:firebase-analytics:16.0.3] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.3.aar/9406ab836b3a609579ef2d338278a00c/AndroidManifest.xml:25:5-68
 MERGED from [com.google.firebase:firebase-analytics:16.0.3] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.3.aar/9406ab836b3a609579ef2d338278a00c/AndroidManifest.xml:25:5-68
 MERGED from [com.google.firebase:firebase-analytics-impl:16.2.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-16.2.1.aar/542441b711dc0250dabb05265c41c49e/AndroidManifest.xml:25:5-68
 MERGED from [com.google.firebase:firebase-analytics-impl:16.2.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-16.2.1.aar/542441b711dc0250dabb05265c41c49e/AndroidManifest.xml:25:5-68
-MERGED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:24:5-68
-MERGED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:24:5-68
+MERGED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:24:5-68
+MERGED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:24:5-68
 	android:name
 		ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-impl-17.0.1.aar/2aa0b848e0bcb0b3fab2ce7158d4bd81/AndroidManifest.xml:24:22-65
 service#com.google.firebase.components.ComponentDiscoveryService
 ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-impl-17.0.1.aar/2aa0b848e0bcb0b3fab2ce7158d4bd81/AndroidManifest.xml:27:9-31:19
-MERGED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:29:9-35:19
-MERGED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:29:9-35:19
+MERGED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:29:9-35:19
+MERGED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:29:9-35:19
 	android:exported
-		ADDED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:31:13-37
+		ADDED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:31:13-37
 	android:name
 		ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-impl-17.0.1.aar/2aa0b848e0bcb0b3fab2ce7158d4bd81/AndroidManifest.xml:27:18-89
 meta-data#com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar
@@ -405,35 +412,35 @@ ADDED from [com.google.firebase:firebase-analytics:16.0.3] /home/lambo/.gradle/c
 	android:name
 		ADDED from [com.google.firebase:firebase-analytics:16.0.3] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.3.aar/9406ab836b3a609579ef2d338278a00c/AndroidManifest.xml:49:13-87
 uses-permission#com.google.android.c2dm.permission.RECEIVE
-ADDED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:26:5-82
+ADDED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:26:5-82
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:26:22-79
+		ADDED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:26:22-79
 meta-data#com.google.firebase.components:com.google.firebase.iid.Registrar
-ADDED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:32:13-34:85
+ADDED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:32:13-34:85
 	android:value
-		ADDED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:34:17-82
+		ADDED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:34:17-82
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:33:17-96
+		ADDED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:33:17-96
 receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
-ADDED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:37:9-44:20
+ADDED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:37:9-44:20
 	android:exported
-		ADDED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:39:13-36
+		ADDED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:39:13-36
 	android:permission
-		ADDED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:40:13-73
+		ADDED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:40:13-73
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:38:13-78
+		ADDED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:38:13-78
 intent-filter#com.google.android.c2dm.intent.RECEIVE
-ADDED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:41:13-43:29
+ADDED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:41:13-43:29
 action#com.google.android.c2dm.intent.RECEIVE
-ADDED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:42:17-81
+ADDED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:42:17-81
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:42:25-78
+		ADDED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:42:25-78
 service#com.google.firebase.iid.FirebaseInstanceIdService
-ADDED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:50:9-56:19
+ADDED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:50:9-56:19
 	android:exported
-		ADDED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:52:13-36
+		ADDED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:52:13-36
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:17.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.0.aar/a60390d5ad606445ac6920e35aba76ec/AndroidManifest.xml:51:13-77
+		ADDED from [com.google.firebase:firebase-iid:17.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-iid-17.0.1.aar/b83c5a997df31934b9f5c5355c9c1555/AndroidManifest.xml:51:13-77
 provider#com.google.firebase.provider.FirebaseInitProvider
 ADDED from [com.google.firebase:firebase-common:16.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/firebase-common-16.0.1.aar/9de810d43986b5a1dcd49b9f1cc9283c/AndroidManifest.xml:10:9-14:39
 	android:authorities
@@ -458,3 +465,25 @@ ADDED from [com.google.android.gms:play-services-basement:15.0.1] /home/lambo/.g
 		ADDED from [com.google.android.gms:play-services-basement:15.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/play-services-basement-15.0.1.aar/f84ca4b9c9c8e0aea9d56022718c911e/AndroidManifest.xml:25:13-66
 	android:name
 		ADDED from [com.google.android.gms:play-services-basement:15.0.1] /home/lambo/.gradle/caches/transforms-1/files-1.1/play-services-basement-15.0.1.aar/f84ca4b9c9c8e0aea9d56022718c911e/AndroidManifest.xml:24:13-58
+meta-data#android.support.VERSION
+ADDED from [com.android.support:support-v4:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/c30efcc15200c31bee67e246007c3153/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/dd6b02737b026c17c5b77cc81957e695/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/dd6b02737b026c17c5b77cc81957e695/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/5e0290b04790f65de2c909107e2ddf20/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/5e0290b04790f65de2c909107e2ddf20/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/35deedb037ec74053d6f7264efcb509d/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/35deedb037ec74053d6f7264efcb509d/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/989985994ffeb46615daf751f6144667/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/989985994ffeb46615daf751f6144667/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/4996d29aa333acf873fb1cf8d39df1dd/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/4996d29aa333acf873fb1cf8d39df1dd/AndroidManifest.xml:26:9-28:38
+	android:value
+		ADDED from [com.android.support:support-v4:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/c30efcc15200c31bee67e246007c3153/AndroidManifest.xml:28:13-35
+	android:name
+		ADDED from [com.android.support:support-v4:26.1.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/c30efcc15200c31bee67e246007c3153/AndroidManifest.xml:27:13-51
+meta-data#android.arch.lifecycle.VERSION
+ADDED from [android.arch.lifecycle:runtime:1.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/b65dd87edb123313a5e96a53bd66a0ab/AndroidManifest.xml:25:9-27:47
+	android:value
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/b65dd87edb123313a5e96a53bd66a0ab/AndroidManifest.xml:27:13-44
+	android:name
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] /home/lambo/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/b65dd87edb123313a5e96a53bd66a0ab/AndroidManifest.xml:26:13-58

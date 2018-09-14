@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { WindowService } from '../../services/window.service';
@@ -10,10 +10,10 @@ import { WindowService } from '../../services/window.service';
 })
 export class EmptyComponent implements OnInit {
 
-  constructor(public goback: GobackService, public navCtrl: NavController, private winRef: WindowService, public navParams: NavParams) { }
+  constructor(  public navCtrl: NavController, private winRef: WindowService, public navParams: NavParams) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
   }
 
   ionViewWillEnter() {

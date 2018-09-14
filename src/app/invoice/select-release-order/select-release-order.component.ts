@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { ReleaseOrder, ReleaseOrderSearchParams, ReleaseOrderApiService } from 'app/release-order';
 import { ClientApiService, MediaHouseApiService, MediaHouse, Client } from 'app/directory';
@@ -24,12 +24,12 @@ export class SelectReleaseOrderComponent implements OnInit {
 
   pastDays = 0;
 
-  constructor(public goback: GobackService, private clientApi: ClientApiService,
+  constructor(  private clientApi: ClientApiService,
     private mediaHouseApi: MediaHouseApiService,
     private roApi: ReleaseOrderApiService) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
     this.search();
   }
 

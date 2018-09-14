@@ -99,9 +99,6 @@
     "com.razorpay.cordova": {
       "PACKAGE_NAME": "com.zenedo.aaman"
     },
-    "cordova-android-support-gradle-release": {
-      "PACKAGE_NAME": "com.zenedo.aaman"
-    },
     "cordova-pdf-generator": {
       "PACKAGE_NAME": "com.zenedo.aaman"
     },
@@ -383,7 +380,6 @@
   ],
   "plugin_metadata": {
     "com.razorpay.cordova": "0.16.1",
-    "cordova-android-support-gradle-release": "1.4.4",
     "cordova-pdf-generator": "2.0.4",
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-fcm": "2.1.2",

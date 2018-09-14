@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { ImportExportApiService } from '../import-export-api.service';
 import { Observable } from 'rxjs/Observable';
@@ -11,11 +11,11 @@ import { NotificationService } from 'app/services';
 })
 export class ImportExportComponent implements OnInit {
 
-  constructor(public goback: GobackService, private api: ImportExportApiService,
+  constructor(  private api: ImportExportApiService,
     private notifications: NotificationService) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
   }
 
   private download(fileName: string, base: Observable<any>) {

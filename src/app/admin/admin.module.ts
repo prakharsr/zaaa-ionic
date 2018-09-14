@@ -14,6 +14,7 @@ import { IonicModule } from 'ionic-angular';
   imports: [
     IonicModule.forRoot(AdminModule),
     BaseModule
+ 
   ],
   declarations: [
     EmptyComponent,

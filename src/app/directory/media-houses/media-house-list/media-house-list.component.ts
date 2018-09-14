@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import {of} from 'rxjs/observable/of';
 import 'rxjs/add/operator/catch';
@@ -32,13 +32,13 @@ export class MediaHouseListComponent implements OnInit {
 
   isSuperAdmin = false;
 
-  constructor(public goback: GobackService, private api: MediaHouseApiService,
+  constructor(  private api: MediaHouseApiService,
     private dialog: DialogService,
     private router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
     this.route.data.subscribe((data: { list: PageData<MediaHouse>, global: boolean, superAdmin: boolean }) => {
       this.global = data.global;
       this.mediaHouses = data.list.list;

@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import {of} from 'rxjs/observable/of';
 import 'rxjs/add/operator/catch';
@@ -28,13 +28,13 @@ export class ExecutiveListComponent implements OnInit {
   query: string;
   searchFailed = false;
 
-constructor(public goback: GobackService, private api: ExecutiveApiService,
+constructor(  private api: ExecutiveApiService,
     private dialog: DialogService,
     private router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
     this.route.data.subscribe((data: { list: PageData<Executive> }) => {
         this.executives = data.list.list;
         this.pageCount = data.list.pageCount;

@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit, Inject } from '@angular/core';
 import { MediaHouseInvoice } from '../media-house-invoice';
 import { MAT_DIALOG_DATA } from '@angular/material';
@@ -13,13 +13,13 @@ export class MediaHouseInvoiceDialogComponent implements OnInit {
 
   details = new MediaHouseInvoice();
 
-  constructor(public goback: GobackService, @Inject(MAT_DIALOG_DATA) public data: { ro: ReleaseOrder, insertions }) {
+  constructor(  @Inject(MAT_DIALOG_DATA) public data: { ro: ReleaseOrder, insertions }) {
     this.details.releaseOrderId = data.ro.id;
     this.details.insertions = data.insertions;
   }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
   }
 
   get totalAmount() {

@@ -250,7 +250,6 @@ module.exports.metadata =
 // TOP OF METADATA
 {
   "com.razorpay.cordova": "0.16.1",
-  "cordova-android-support-gradle-release": "1.4.4",
   "cordova-pdf-generator": "2.0.4",
   "cordova-plugin-device": "2.0.2",
   "cordova-plugin-fcm": "2.1.2",

@@ -6,30 +6,21 @@ import {
 
   ClientListComponent,
   ClientComponent,
-  ClientResolver,
-  ClientListResolver,
-  ClientApiService,
 
   ExecutiveListComponent,
   ExecutiveComponent,
-  ExecutiveResolver,
-  ExecutiveListResolver,
-  ExecutiveApiService,
 
   MediaHouseListComponent,
   MediaHouseComponent,
-  MediaHouseResolver,
-  MediaHouseListResolver,
-  MediaHouseApiService
 } from '.';
 
-import { RouterModule } from '@angular/router';
+import { DirRoutingModule } from './dir-routing.module';
 import { IonicModule } from 'ionic-angular';
 
 @NgModule({
   imports: [
     BaseModule,
-    IonicModule.forRoot(DirectoryModule),
+    IonicModule.forRoot(DirectoryModule)
   ],
   declarations: [
     ClientComponent,
@@ -39,17 +30,6 @@ import { IonicModule } from 'ionic-angular';
     ClientListComponent,
     ExecutiveListComponent,
     MediaHouseListComponent
-  ],
-  providers: [
-    ClientApiService,
-    ExecutiveApiService,
-    MediaHouseApiService,
-    ClientResolver,
-    ExecutiveResolver,
-    MediaHouseResolver,
-    ClientListResolver,
-    ExecutiveListResolver,
-    MediaHouseListResolver
   ]
 })
 export class DirectoryModule { }

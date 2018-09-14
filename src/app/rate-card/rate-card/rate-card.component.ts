@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
@@ -7,11 +7,10 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
-import { map } from 'rxjs/operators';
 import { RateCardApiService } from '../rate-card-api.service';
 import { MediaHouseApiService, MediaHouse, Pullout } from 'app/directory';
-import { NotificationService, OptionsService } from 'app/services';
-import { RateCard, Category, FixSize, Scheme, Covered, Remark, Tax } from '../rate-card';
+import { NotificationService, OptionsService, DialogService } from 'app/services';
+import { RateCard, FixSize, Scheme, Covered, Remark, Tax } from '../rate-card';
 import { SuperAdminApiService } from '../../super-admin/super-admin-api.service';
 
 @Component({
@@ -32,16 +31,17 @@ export class RateCardComponent implements OnInit {
 
   isSuperAdmin = false;
 
-  constructor(public goback: GobackService, private api: RateCardApiService,
+  constructor(  private api: RateCardApiService,
     private route: ActivatedRoute,
     private router: Router,
     private mediaHouseApi: MediaHouseApiService,
     private notifications: NotificationService,
     private options: OptionsService,
-    private superAdminApi: SuperAdminApiService) { }
+    private superAdminApi: SuperAdminApiService,
+    private dialog: DialogService) { }
 
   rateCard = new RateCard();
-  selectedCategories: Category[] = [null, null, null, null, null, null];
+  selectedCategories: string[] = [null, null, null, null, null, null];
 
   get isTypeWords() {
 
@@ -81,11 +81,13 @@ export class RateCardComponent implements OnInit {
   private initNew() {
     this.mediaType = this.mediaTypes[0];
     this.rateCard.rateCardType = this.rateCardTypes[0];
-    this.rateCard.unit = this.units[0];
-    this.rateCard.position = this.positions[0];
+    // this.rateCard.unit = this.units[0];
+    this.rateCard.position = this.options.positions[0];
     this.rateCard.hue = this.hues[0];
     this.rateCard.AdTime = this.adTimes[0];
     this.dropdownPullOutName = this.others;
+
+    this.rateCard.rate = null;
   }
 
   private initEdit(data: RateCard) {
@@ -101,67 +103,12 @@ export class RateCardComponent implements OnInit {
       this.dropdownPullOutName = this.others;
       this.customPullOutName = this.rateCard.pullOutName;
 
-      this.buildCategoryTree();
-    }
-  }
-
-  private buildCategoryTree() {
-    let c : Category = this.categories.find(p => p.name == this.rateCard.categories[0]);
-
-    if (c) {
-      this.category1 = c;
-
-      let i = 1;
-
-      while (i < this.rateCard.categories.length && c.subcategories.length > 0) {
-        c = c.subcategories.find(p => p.name == this.rateCard.categories[i]);
-
-        if (c) {
-          this.setCategory(i, c);
-
-          ++i;
+      if (this.rateCard.categories) {
+        for (let i = 0; i < this.selectedCategories.length && i < this.rateCard.categories.length; ++i) {
+          this.selectedCategories[i] = this.rateCard.categories[i];
         }
-        else break;
       }
     }
-  }
-
-  findSubCategories(category: Category, query: string): Category[] {
-    let result : Category[] = [];
-
-    if (category.name.toLowerCase().indexOf(query.toLowerCase()) != -1) {
-      result.push(category);
-    }
-
-    if (category.subcategories) {
-      category.subcategories.forEach(subCategory => {
-        this.findSubCategories(subCategory, query).forEach(a => result.push(a));
-      });
-    }
-
-    return result;
-  }
-
-  findCategories(query: string): Category[]  {
-    let result : Category[] = [];
-
-    if (query) {
-      this.categories.forEach(element => {
-        this.findSubCategories(element, query).forEach(a => result.push(a));
-      });
-    }
-
-    return result;
-
-  }
-
-  searchCategories = (text: Observable<string>) => {
-    return text.debounceTime(300)
-      .distinctUntilChanged()
-      .pipe(
-        map(term => this.findCategories(term))
-      )
-      .catch(() => of([]));
   }
 
   mediaHouse;
@@ -177,8 +124,7 @@ export class RateCardComponent implements OnInit {
   searchEdition = (text: Observable<string>) => {
     return text.debounceTime(300)
       .distinctUntilChanged()
-      .switchMap(term => this.mediaHouseApi.searchMediaHousesByEdition(term,
-        this.mediaHouse ? (this.mediaHouse.pubName ? this.mediaHouse.pubName : this.mediaHouse) : null))
+      .switchMap(term => this.mediaHouseApi.searchMediaHousesByEdition(term, this.mediaHouseName))
       .catch(() => of([]));
   }
 
@@ -206,44 +152,8 @@ export class RateCardComponent implements OnInit {
   
   editionResultFormatter = (result: MediaHouse) => result.address.edition;
 
-  categoryInputFormatter = (result: Category) => {
-    let stack : Category[] = [];
-
-    while (result) {
-      stack.push(result);
-      result = result.parent;
-    }
-
-    let i = 0;
-
-    while (stack.length) {
-      this.setCategory(i, stack.pop());
-
-      ++i;
-    }
-  }
-
-  categoryResultFormatter = (result: Category) => {
-    let stack : Category[] = [];
-
-    while (result) {
-      stack.push(result);
-      result = result.parent;
-    }
-
-    let formatted = stack.pop().name;
-
-    while (stack.length) {
-      formatted += " > " + stack.pop().name;
-    }
-
-    return formatted;
-  }
-
   ngOnInit() {
-    this.goback.urlInit();
-    this.categories = this.options.categories;
-
+     
     this.route.paramMap.subscribe(params => {
       if (params.has('id')) {
         this.id = params.get('id');
@@ -283,7 +193,7 @@ export class RateCardComponent implements OnInit {
     this.rateCard.mediaType = mediaType;
 
     this.rateCard.adType = this.adTypes[0];
-    this.rateCard.unit = this.units[0];
+    // this.rateCard.unit = this.units[0];
   }
 
   get adTypes() {
@@ -303,66 +213,51 @@ export class RateCardComponent implements OnInit {
 
   rateCardTypes = ['Local', 'Regional', 'Corporate'];
 
-  get units() {
-    let result = [];
+  // get units() {
+  //   let result = [];
 
+  //   if (this.isTypeLen) {
+  //     result.push('Sqcm');
+  //   }
+
+  //   if (this.isTypeWords) {
+  //     result.push('Words');
+  //     result.push('Lines');
+  //   }
+
+  //   if (this.isTypeTime) {
+  //     result.push('sec');
+  //   }
+
+  //   return result;
+  // }
+
+  get rateText() {
     if (this.isTypeLen) {
-      result.push('Sqcm');
+      //return this.releaseorder.fixRate ? "Rate per insertion" : "Rate per sqcm";
+
+      return "Rate per sqcm";
     }
 
     if (this.isTypeWords) {
-      result.push('Words');
-      result.push('Lines');
+      return "Rate per insertion";
     }
 
     if (this.isTypeTime) {
-      result.push('sec');
-    }
-
-    return result;
-  }
-
-  get positions() {
-    let result = ['Classified', 'Back Page', 'Jacket', 'Prime Time'];
-
-    for (let i = 1; i <= 8; ++i) {
-      result.push('Page ' + i);
-    }
-
-    return result;
-  }
-  
-  categories: Category[];
-
-  getCategory(index: number) {
-    return this.selectedCategories[index];
-  }
-
-  setCategory(index: number, category: Category) {
-    if (this.selectedCategories[index] == category) {
-      return;
-    }
-
-    this.selectedCategories[index] = category;
-
-    for (let i = index + 1; i < this.selectedCategories.length; ++i) {
-      this.setCategory(i, null);
+      return "Rate per sec";
     }
   }
 
-  get category1() { return this.getCategory(0); }
-  get category2() { return this.getCategory(1); }
-  get category3() { return this.getCategory(2); }
-  get category4() { return this.getCategory(3); }
-  get category5() { return this.getCategory(4); }
-  get category6() { return this.getCategory(5); }
-
-  set category1(category: Category) { this.setCategory(0, category); }
-  set category2(category: Category) { this.setCategory(1, category); }
-  set category3(category: Category) { this.setCategory(2, category); }
-  set category4(category: Category) { this.setCategory(3, category); }
-  set category5(category: Category) { this.setCategory(4, category); }
-  set category6(category: Category) { this.setCategory(5, category); }
+  getCategories() {
+    this.dialog.getCategoriesDetails({
+      categories: this.selectedCategories,
+      fixedLevel: -1
+    }).subscribe(data => {
+      if (data) {
+        this.selectedCategories = data.selectedCategories.map(M => M ? M.name : null);
+      }
+    });
+  }
 
   addFixSize() {
     this.rateCard.fixSizes.push(new FixSize());
@@ -389,11 +284,8 @@ export class RateCardComponent implements OnInit {
   copyCovered() {
     let covered = new Covered();
 
-    if (this.mediaHouse) {
-      covered.covMediaHouse = this.mediaHouse.pubName ? this.mediaHouse.pubName : this.mediaHouse;
-    }
-
-    covered.covEdition = this.rateCard.bookingEdition;
+    covered.covMediaHouse = this.mediaHouseName;
+    covered.covEdition = this.editionName;
 
     this.rateCard.covered.push(covered);
   }
@@ -460,17 +352,25 @@ export class RateCardComponent implements OnInit {
     )
   }
 
+  private get editionName() {
+    return this.edition && this.edition.address && this.edition.address.edition
+    ? this.edition.address.edition : this.edition;
+  }
+
+  private get mediaHouseName() {
+    return this.mediaHouse && this.mediaHouse.pubName ? this.mediaHouse.pubName : this.mediaHouse;
+  }
+
   submit () {
     this.rateCard.categories = [];
 
-    this.rateCard.mediaHouseName = this.mediaHouse && this.mediaHouse.pubName ? this.mediaHouse.pubName : this.mediaHouse;
+    this.rateCard.mediaHouseName = this.mediaHouseName;
 
-    this.rateCard.bookingEdition = this.edition && this.edition.address && this.edition.address.edition
-      ? this.edition.address.edition : this.edition;
+    this.rateCard.bookingEdition = this.editionName;
 
     this.selectedCategories.forEach(element => {
       if (element) {
-        this.rateCard.categories.push(element.name);
+        this.rateCard.categories.push(element);
       }
     });
 

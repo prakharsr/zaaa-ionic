@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SuperAdminApiService } from '../super-admin-api.service';
@@ -14,12 +14,12 @@ export class SendNotificationComponent implements OnInit {
   title = "";
   body = "";
 
-  constructor(public goback: GobackService, private router: Router,
+  constructor(  private router: Router,
     private api: SuperAdminApiService,
     private notifications: NotificationService) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
   }
 
   submit() {

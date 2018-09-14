@@ -21,12 +21,12 @@ public final class R {
         public static final int rzp_white_border_black_bg = 0x7f050028;
     }
     public static final class id {
-        public static final int ll_loader = 0x7f060024;
-        public static final int progressBar = 0x7f06002b;
-        public static final int rzp_innerbox = 0x7f06002f;
-        public static final int rzp_outerbox = 0x7f060030;
-        public static final int rzp_securedpayments = 0x7f060031;
-        public static final int rzp_theMainMagicView = 0x7f060032;
+        public static final int ll_loader = 0x7f060018;
+        public static final int progressBar = 0x7f06001f;
+        public static final int rzp_innerbox = 0x7f060022;
+        public static final int rzp_outerbox = 0x7f060023;
+        public static final int rzp_securedpayments = 0x7f060024;
+        public static final int rzp_theMainMagicView = 0x7f060025;
     }
     public static final class layout {
         public static final int rzp_loader = 0x7f08000f;

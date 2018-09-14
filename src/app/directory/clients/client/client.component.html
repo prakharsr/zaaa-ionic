@@ -296,11 +296,11 @@
             </div>
             <div class="mb-3">
               <div class="text-muted small">Date of Birth</div>
-              <div>{{(contactPerson.dob | date) || '--'}}</div>
+              <div>{{(contactPerson.dob | date:'dd-MMM-y') || '--'}}</div>
             </div>
             <div class="mb-3">
               <div class="text-muted small">Anniversary</div>
-              <div>{{(contactPerson.anniversaryDate | date) || '--'}}</div>
+              <div>{{(contactPerson.anniversaryDate | date:'dd-MMM-y') || '--'}}</div>
             </div>
             <div class="mb-3">
               <div class="text-muted small">Mobile</div>
@@ -390,7 +390,7 @@
               </div>
             
               <mat-form-field>
-                <input matInput type="tel" pattern="\\d{10}" maxlength="10" minlength="10" name="s-{{i}}-mobileNo" placeholder="Mobile Number" [(ngModel)]="item.mobileNo" #mobileNoField="ngModel">
+                <input matInput type="tel" pattern="^\d{10}$" maxlength="10" minlength="10" name="s-{{i}}-mobileNo" placeholder="Mobile Number" [(ngModel)]="item.mobileNo" #mobileNoField="ngModel">
               </mat-form-field>
         
               <mat-form-field>

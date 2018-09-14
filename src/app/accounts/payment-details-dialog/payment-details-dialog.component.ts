@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 
 export class PaymentDetails {
@@ -20,10 +20,10 @@ export class PaymentDetailsDialogComponent implements OnInit {
 
   paymentTypes = ['Cash', 'Credit', 'Cheque', 'NEFT'];
 
-  constructor(public goback: GobackService, ) { }
+  constructor(  ) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
   }
 
 }

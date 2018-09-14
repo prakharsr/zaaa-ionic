@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PageData } from 'app/models';
@@ -31,7 +31,7 @@ export class CreditDebitNotesComponent implements OnInit {
 
   collapsed = true;
 
-  constructor(public goback: GobackService, private route: ActivatedRoute,
+  constructor(  private route: ActivatedRoute,
     private router: Router,
     private clientApi: ClientApiService,
     private mediaHouseApi: MediaHouseApiService,
@@ -40,7 +40,7 @@ export class CreditDebitNotesComponent implements OnInit {
     private dialog: DialogService) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
     this.route.data.subscribe((data: {
       mediaHouseNote: boolean,
       clientNote: boolean,

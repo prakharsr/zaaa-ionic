@@ -1,12 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BaseModule } from '../base.module';
 
-import { InvoiceModule } from 'app/invoice/invoice.module';
-
 import {
-  ReceiptsApiService,
-  ReceiptListResolver,
-  ReceiptResolver,
   ReceiptListComponent,
   LinkAdvanceComponent,
   AdvanceReceiptComponent,
@@ -14,14 +9,13 @@ import {
   ReceiptDetailsComponent
 } from '.';
 import { CreateReceiptComponent } from './create-receipt/create-receipt.component';
-import { SelectInvoiceComponent } from './select-invoice/select-invoice.component';
+import { ReceiptsRoutingModule } from './receipts-routing.module';
 import { IonicModule } from 'ionic-angular';
 
 @NgModule({
   imports: [
     BaseModule,
-    IonicModule.forRoot(ReceiptsModule),
-    InvoiceModule
+    IonicModule.forRoot(ReceiptsModule)
   ],
   declarations: [
     ReceiptComponent,
@@ -29,16 +23,7 @@ import { IonicModule } from 'ionic-angular';
     ReceiptDetailsComponent,
     AdvanceReceiptComponent,
     LinkAdvanceComponent,
-    CreateReceiptComponent,
-    SelectInvoiceComponent
-  ],
-  providers: [
-    ReceiptsApiService,
-    ReceiptResolver,
-    ReceiptListResolver
-  ],
-  entryComponents: [
-    SelectInvoiceComponent
+    CreateReceiptComponent
   ]
 })
 export class ReceiptsModule { }

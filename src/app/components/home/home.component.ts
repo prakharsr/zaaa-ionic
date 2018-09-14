@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { Platform, LoadingController, Spinner } from 'ionic-angular';
@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   profile = new Firm();
   isLoaded = false;
 
-  constructor(public goback: GobackService, platform: Platform,
+  constructor(  platform: Platform,
      public api: ApiService,
      private router: Router,
      private loadingCtrl: LoadingController, public fcm: FCM) {
@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
     this.router.navigateByUrl("/dashboard");
   }
   ngOnInit() {
-    this.goback.urlInit();
+     
     // setTimeout(2000);
 
     if(this.api.isLoggedIn) 

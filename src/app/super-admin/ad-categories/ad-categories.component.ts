@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { DialogService, NotificationService } from 'app/services';
 import { SuperAdminApiService } from '../super-admin-api.service';
@@ -11,12 +11,12 @@ import { AdCategory } from '../../models/ad-category';
 })
 export class AdCategoriesComponent implements OnInit {
 
-  constructor(public goback: GobackService, private dialog: DialogService,
+  constructor(  private dialog: DialogService,
     private api: SuperAdminApiService,
     private notification: NotificationService) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
     this.api.getCategories(0, null).subscribe(data => {
       this.categories[0] = data;
 

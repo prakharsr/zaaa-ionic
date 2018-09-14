@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
@@ -32,13 +32,13 @@ export class MediaHouseInvoiceListComponent implements OnInit {
 
   collapsed = true;
 
-  constructor(public goback: GobackService, private api: AccountsApiService,
+  constructor(  private api: AccountsApiService,
     private route: ActivatedRoute,
     private router: Router,
     private mediaHouseApi: MediaHouseApiService) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
     this.route.data.subscribe((data: { resolved: { list: PageData<MediaHouseInvoice>, search: ReleaseOrderSearchParams } }) => {
       this.list = data.resolved.list.list.map(item => {
         return {
@@ -102,5 +102,18 @@ export class MediaHouseInvoiceListComponent implements OnInit {
     this.router.navigate(['/accounts/mediahouseinvoice/list/', pageNo], {
       queryParams: new ReleaseOrderSearchParams(this.mediaHouseName, this.editionName, null, null, null, this.pastDays)
     })
+  }
+
+  getInsertionStateText(state: number) {
+    switch (state) {
+      case 1:
+        return 'Not Published';
+
+      case 2:
+        return 'Published';
+
+      case 3:
+        return 'Disputed';
+    }
   }
 }

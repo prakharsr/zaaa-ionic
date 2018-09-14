@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PaymentReceipt, AdvanceReceipt } from '../payment-receipt';
@@ -21,13 +21,13 @@ export class LinkAdvanceComponent implements OnInit {
   page: number;
   pageCount: number;
 
-  constructor(public goback: GobackService, private route: ActivatedRoute,
+  constructor(  private route: ActivatedRoute,
     private api: ReceiptsApiService,
     private router: Router,
     private notifications: NotificationService) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
     this.route.data.subscribe((data: { resolved: { list: PageData<PaymentReceipt>, search: ReleaseOrderSearchParams }, invoice: Invoice }) => {
       this.receipts = data.resolved.list.list;
       this.invoice = data.invoice;

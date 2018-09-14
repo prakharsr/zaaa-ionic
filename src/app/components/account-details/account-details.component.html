@@ -1,6 +1,6 @@
 <mat-toolbar>  
   <mat-toolbar-row>
-    <div class="container"> Account Details</div>
+    <div class="container"><a class="text-light" routerLink="/">Home</a> <span class="text-muted mx-2">/</span> <a class="text-light" routerLink="/profile">Manage Profile</a> <span class="text-muted mx-2">/</span> Account Details</div>
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -78,7 +78,7 @@
               Login Details
             </div>
             <div class="col-auto">
-              <a class="btn btn-danger" (click)="this.goback.gotoComponent('changePassword')">
+              <a class="btn btn-danger" routerLink="/changePassword">
                 <mat-icon>vpn_key</mat-icon> Change Password
               </a>
             </div>

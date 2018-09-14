@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
@@ -32,14 +32,14 @@ export class RateCardListComponent implements OnInit {
 
   isSuperAdmin = false;
 
-  constructor(public goback: GobackService, private api: RateCardApiService,
+  constructor(  private api: RateCardApiService,
     private superAdminApi: SuperAdminApiService,
     private dialog: DialogService,
     private router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
     this.route.data.subscribe((data: { list: PageData<RateCard>, global: boolean, superAdmin: boolean }) => {
       this.global = data.global;
       this.ratecards = data.list.list;

@@ -1,26 +1,26 @@
+
 import { Component, OnInit } from '@angular/core';
-import { TnC, ApiService, NotificationService, GobackService } from 'app/services';
+import { TnC, ApiService, NotificationService } from 'app/services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Firm } from 'app/models';
 
 @Component({
   selector: 'app-tnc',
   templateUrl: './tnc.component.html',
-  // styleUrls: ['./tnc.component.css']
+  
 })
 export class TncComponent implements OnInit {
 
   tnc = new TnC();
   firm: Firm;
 
-  constructor(private api: ApiService,
-    public goback: GobackService,
+  constructor(  private api: ApiService,
     private route: ActivatedRoute,
     private router: Router,
     private notifications: NotificationService) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
     this.api.tnc.subscribe(data => {
       this.tnc = data;
 

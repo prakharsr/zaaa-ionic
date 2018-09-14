@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService, NotificationService } from 'app/services';
@@ -14,12 +14,12 @@ export class RegisterComponent implements OnInit {
   email: string;
   acceptTnC: boolean;
 
-  constructor(public goback: GobackService, private api: ApiService,
+  constructor(  private api: ApiService,
     private router: Router,
     private notifications: NotificationService) { }
 
   ngOnInit() {
-    this.goback.urlInit(); }
+      }
 
   GoToDashboard() : void {
     this.router.navigateByUrl('/dashboard');

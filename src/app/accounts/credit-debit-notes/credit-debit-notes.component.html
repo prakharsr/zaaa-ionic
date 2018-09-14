@@ -28,11 +28,11 @@
 </ng-template>
 
 <div class="container">
-  <button class="fab" (click)="this.goback.gotoComponent('accounts/notes/mediahouse/new')" *ngIf="mediaHouseNote">
+  <button class="fab" routerLink="/accounts/notes/mediahouse/new" *ngIf="mediaHouseNote">
     <mat-icon>add</mat-icon>
   </button>
 
-  <button class="fab" (click)="this.goback.gotoComponent('accounts/notes/client/new')" *ngIf="clientNote">
+  <button class="fab" routerLink="/accounts/notes/client/new" *ngIf="clientNote">
     <mat-icon>add</mat-icon>
   </button>
 

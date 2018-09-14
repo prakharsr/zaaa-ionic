@@ -25,49 +25,49 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <button class="hamburger" ion-item routerLinkActive="active" *ngIf="!api.isLoggedIn" (click)="this.goback.gotoComponent('login')" menuClose>
+        <button class="hamburger" ion-item routerLinkActive="active" *ngIf="!api.isLoggedIn" routerLink="/login" menuClose>
         Login
         </button>
-        <button class="hamburger" ion-item routerLinkActive="active" *ngIf="!api.isLoggedIn" (click)="this.goback.gotoComponent('register')" menuClose>
+        <button class="hamburger" ion-item routerLinkActive="active" *ngIf="!api.isLoggedIn" routerLink="/register" menuClose>
         Register
         </button>  
-        <button class="hamburger" ion-item routerLinkActive="active" *ngIf="!api.isLoggedIn" (click)="this.goback.gotoComponent('forgotPassword')" menuClose>
+        <button class="hamburger" ion-item routerLinkActive="active" *ngIf="!api.isLoggedIn" routerLink="/forgotPassword" menuClose>
         Forgot Password
         </button>      
-        <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('dashboard')" menuClose>
+        <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" routerLink="/dashboard" menuClose>
         Dashboard
         </button>
-        <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('profile')" menuClose>
+        <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" routerLink="/profile" menuClose>
         Manage Profile
         </button>
-        <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('dir')" menuClose>
+        <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" routerLink="/dir" menuClose>
         Directory
        </button>
-       <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('ratecards')" menuClose>
+       <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" routerLink="/ratecards" menuClose>
         Rate Cards
        </button>
-       <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('releaseorders')" menuClose>
+       <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" routerLink="/releaseorders" menuClose>
         Release Orders  
        </button>
-       <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('releaseorders/check')" menuClose>
+       <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" routerLink="/releaseorders/check" menuClose>
         Insertion Check
        </button>
-       <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('invoices')" menuClose>
+       <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" routerLink="/invoices" menuClose>
         Invoices
        </button>
-       <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('receipts')" menuClose>
+       <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" routerLink="/receipts" menuClose>
         Payment Receipts
        </button>
-       <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('accounts')" menuClose>
+       <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" routerLink="/accounts" menuClose>
         Accounts
        </button>
-       <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('reports')" menuClose>
+       <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" routerLink="/reports" menuClose>
         Reports
        </button>
-       <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent('tickets')" menuClose>
+       <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" routerLink="/tickets" menuClose>
         Support
        </button>
-       <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" (click)="this.goback.gotoComponent(''); logout()" menuClose>
+       <button class="hamburger" ion-item routerLinkActive="active" *ngIf="api.isLoggedIn" routerLink="/" (click)="logout()" menuClose>
         Logout
        </button>
         

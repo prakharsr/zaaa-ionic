@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserProfile } from 'app/models';
@@ -16,14 +16,14 @@ export class AccountDetailsComponent implements OnInit {
   profile = new UserProfile();
   editPersonalDetails = false;
 
-  constructor(public goback: GobackService, private api: ApiService,
+  constructor(  private api: ApiService,
     private dialog: DialogService,
     private notifications: NotificationService,
     private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
     this.route.data.subscribe((data: { user: UserProfile }) => {
       this.profile = data.user;
 

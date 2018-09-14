@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { SuperAdminApiService } from '../super-admin-api.service';
 import { NotificationService } from '../../services';
@@ -15,12 +15,12 @@ export class CreateAdminComponent implements OnInit {
   email = "";
   password = "";
 
-  constructor(public goback: GobackService, private api: SuperAdminApiService,
+  constructor(  private api: SuperAdminApiService,
     private notification: NotificationService,
     private router: Router) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
   }
 
   submit() {

@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Executive } from '../executive';
@@ -26,13 +26,13 @@ export class ExecutiveComponent implements OnInit {
   moreExecutiveDetails = false;
   moreContactDetails = false;
   
-  constructor(public goback: GobackService, private api: ExecutiveApiService,
+  constructor(  private api: ExecutiveApiService,
     private route: ActivatedRoute,
     private router: Router,
     private notifications: NotificationService) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
     this.route.paramMap.subscribe(params => {
       if (params.has('id')) {
         this.id = params.get('id');

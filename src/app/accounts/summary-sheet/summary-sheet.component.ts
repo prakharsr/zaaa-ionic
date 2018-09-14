@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
@@ -24,7 +24,7 @@ export class SummarySheetComponent implements OnInit {
 
   collapsed = true;
 
-  constructor(public goback: GobackService, private mediaHouseApi: MediaHouseApiService,
+  constructor(  private mediaHouseApi: MediaHouseApiService,
     private route: ActivatedRoute,
     private router: Router,
     private api: AccountsApiService,
@@ -32,7 +32,7 @@ export class SummarySheetComponent implements OnInit {
     private dialog: DialogService) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
     this.route.data.subscribe((data: { resolved: { list: SummarySheetResponse[], search: ReleaseOrderSearchParams }}) => {
       this.summarySheet = data.resolved.list;
 
@@ -133,5 +133,18 @@ export class SummarySheetComponent implements OnInit {
 
   toDate(date: NgbDate) {
     return new Date(date.year, date.month - 1, date.day);
+  }
+
+  getInsertionStateText(state: number) {
+    switch (state) {
+      case 1:
+        return 'Not Published';
+
+      case 2:
+        return 'Published';
+
+      case 3:
+        return 'Disputed';
+    }
   }
 }

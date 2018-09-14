@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { CreditDebitNote } from '../credit-debit-note';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -24,7 +24,7 @@ export class CreateNoteComponent implements OnInit {
 
   note = new CreditDebitNote();
 
-  constructor(public goback: GobackService, private route: ActivatedRoute,
+  constructor(  private route: ActivatedRoute,
     private clientApi: ClientApiService,
     private api: AccountsApiService,
     private notifications: NotificationService,
@@ -33,7 +33,7 @@ export class CreateNoteComponent implements OnInit {
     private options: OptionsService) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
     this.route.data.subscribe((data: { mediaHouseNote: boolean, clientNote: boolean }) => {
       this.mediaHouseNote = data.mediaHouseNote;
       this.clientNote = data.clientNote;

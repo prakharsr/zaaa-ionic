@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
@@ -28,14 +28,14 @@ export class AccountsGstComponent implements OnInit {
 
   list = [];
 
-  constructor(public goback: GobackService, private route: ActivatedRoute,
+  constructor(  private route: ActivatedRoute,
     private clientApi: ClientApiService,
     private api: AccountsApiService,
     private router: Router,
     private notifications: NotificationService) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
     this.route.data.subscribe((data: {
       clientTax: boolean,
       monthTax: boolean,

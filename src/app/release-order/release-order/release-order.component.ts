@@ -1,4 +1,4 @@
-import { GobackService, WindowService } from 'app/services';
+import { WindowService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
@@ -16,7 +16,6 @@ import { StateApiService, NotificationService, OptionsService, DialogService } f
 declare var cordova:any;
 
 import {
-  Category,
   RateCard,
   FixSize,
   Scheme,
@@ -53,10 +52,7 @@ export class ReleaseOrderComponent implements OnInit {
   id: string;
 
   selectedCategories: string[] = [null, null, null, null, null, null];
-  categories: Category[];
   fixedCategoriesLevel = -1;
-
-  showCalculations = false;
 
   submitting = false;
 
@@ -65,7 +61,9 @@ export class ReleaseOrderComponent implements OnInit {
   dropdownPullOutName: string;
   customPullOutName = 'Main';
 
-  constructor(public goback: GobackService, private route: ActivatedRoute,
+ showCalculations = false;
+
+  constructor(  private route: ActivatedRoute,
     private router: Router,
     private api: ReleaseOrderApiService,
     private mediaHouseApi: MediaHouseApiService,
@@ -127,7 +125,6 @@ export class ReleaseOrderComponent implements OnInit {
   toDate(date: NgbDate) {
     return new Date(date.year, date.month - 1, date.day);
   }
-
 
   private confirmGeneration(releaseOrder: ReleaseOrder) : Observable<boolean> {
     if (releaseOrder.generated) {
@@ -492,8 +489,24 @@ export class ReleaseOrderComponent implements OnInit {
     });
   }
 
+  get checkInsertionCount() {
+    return this.releaseorder.insertions.length == this.availableAds;
+  }
+
+  initExecutive() {
+    this.route.data.subscribe((data: { user: UserProfile, firm: Firm }) => {
+      this.releaseorder.paymentBankName = data.firm.bankName;
+
+      let exe = new Executive();
+      exe.executiveName = data.user.name;
+      exe.orgName = data.firm.name;
+
+      this.executive = exe;
+    });
+  }
+
   ngOnInit() {
-    this.goback.urlInit();
+     
     this.dropdownPullOutName = this.others;
 
     this.route.paramMap.subscribe(params => {
@@ -520,16 +533,6 @@ export class ReleaseOrderComponent implements OnInit {
       }
       else {
         this.initNew();
-
-        this.route.data.subscribe((data: { user: UserProfile, firm: Firm }) => {
-          this.releaseorder.paymentBankName = data.firm.bankName;
-
-          let exe = new Executive();
-          exe.executiveName = data.user.name;
-          exe.orgName = data.firm.name;
-
-          this.executive = exe;
-        });
       }
     });
   }
@@ -542,9 +545,13 @@ export class ReleaseOrderComponent implements OnInit {
     this.mediaType = this.mediaTypes[0];
     this.releaseorder.adHue = this.hues[0];
     // this.releaseorder.unit = this.units[0];
-    this.releaseorder.adPosition = this.positions[0];
+    this.releaseorder.adPosition = this.options.positions[0];
     this.selectedTax = this.taxes[1];
     this.releaseorder.paymentType = 'Credit';
+
+    this.releaseorder.rate = null;
+
+    this.initExecutive();
   }
 
   private initFromReleaseOrder() {
@@ -623,7 +630,7 @@ export class ReleaseOrderComponent implements OnInit {
       this.releaseorder.adType = rateCard.adType;
       this.releaseorder.AdTime = rateCard.AdTime;
       this.releaseorder.rate = rateCard.rate;
-      this.releaseorder.unit = rateCard.unit;
+      //this.releaseorder.unit = rateCard.unit;
       this.releaseorder.adHue = rateCard.hue;
       this.releaseorder.adPosition = rateCard.position;
       this.releaseorder.AdWordsMax = rateCard.AdWordsMax;
@@ -661,13 +668,15 @@ export class ReleaseOrderComponent implements OnInit {
 
       this.buildCategoryTree(rateCard.categories);
 
-      this.mediaHouseApi.searchMediaHouses(rateCard.mediaHouseName).subscribe(data => {
+      this.mediaHouseApi.searchMediaHousesByEdition(rateCard.bookingEdition, rateCard.mediaHouseName).subscribe(data => {
         if (data && data.length > 0) {
           this.mediaHouse = data[0];
 
           this.initMediaHouse(this.mediaHouse);
         }
       });
+
+      this.initExecutive();
     }
   }
 
@@ -731,8 +740,8 @@ export class ReleaseOrderComponent implements OnInit {
     this.releaseorder.adTotal = this.availableAds;
     this.releaseorder.adTotalSpace = this.totalSpace;
     this.releaseorder.adGrossAmount = this.grossAmount;
-    this.releaseorder.netAmountFigures = this.netAmount;
-    this.releaseorder.netAmountWords = this.options.amountToWords(this.netAmount);
+    this.releaseorder.netAmountFigures = this.displayTotal;
+    this.releaseorder.netAmountWords = this.options.amountToWords(this.displayTotal);
     this.releaseorder.clientPayment = this.releaseorder.paymentAmount = this.clientPayment;
 
     this.releaseorder.taxAmount = this.selectedTax;
@@ -855,12 +864,6 @@ export class ReleaseOrderComponent implements OnInit {
 
   adTimes = ['Any Time', 'Prime Time ', 'Evening', 'Morning'];
 
-  positions= ['Any Page', 'Front Page', 'Front Inside Page', 'Back Page', 'Back Inside Page',
-             'Fixed Page', '2nd Page', '3rd Page', '5th Page', 'Sports','Bussiness','Regional',
-             'Entertainment','Automobile','Education','Health','Editorial','World','National',
-             'City Page','Appointment','Classified Page','Obituary Page','Matrimonial','Tender/Notice',
-             'Right Hand Side','Left Hand Side' ];
-
   // get units() {
   //   let result = [];
 
@@ -882,7 +885,7 @@ export class ReleaseOrderComponent implements OnInit {
 
   get rateText() {
     if (this.isTypeLen) {
-      return "Rate per sqcm";
+      return this.releaseorder.fixRate ? "Rate per insertion" : "Rate per sqcm";
     }
 
     if (this.isTypeWords) {
@@ -1293,5 +1296,13 @@ export class ReleaseOrderComponent implements OnInit {
       }
     }
     else this.notifications.show('Fix errors before submitting');
+  }
+
+  get perInsertionRate() {
+    return Math.ceil(this.displayTotal / this.availableAds);
+  }
+
+  get perSqcmRate() {
+    return Math.ceil(this.perInsertionRate / this.totalSpace);
   }
 }

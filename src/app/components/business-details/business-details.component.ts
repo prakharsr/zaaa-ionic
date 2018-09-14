@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Firm, UserProfile } from 'app/models';
@@ -35,7 +35,7 @@ export class BusinessDetailsComponent implements OnInit {
   moreAddr = false;
   moreBankDetails = false;
 
-  constructor(public goback: GobackService, private ifscService: IfscService,
+  constructor(  private ifscService: IfscService,
     private api: ApiService,
     private dialog: DialogService,
     private notifications: NotificationService,
@@ -43,7 +43,7 @@ export class BusinessDetailsComponent implements OnInit {
     public stateApi: StateApiService) {}
 
   ngOnInit() {
-    this.goback.urlInit();
+     
     this.route.data.subscribe((data: { firm: Firm, user: UserProfile }) => {
       this.profile = data.firm;
       this.user = data.user;

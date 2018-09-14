@@ -67159,9 +67159,14 @@ input.ng-valid.form-control, select.ng-valid {
   border-left: 5px solid #69f0ae;
 }
 
-mat-form-field, mat-slide-toggle {
+mat-form-field {
   width: 100%;
   margin: -3px 0;
+}
+
+mat-slide-toggle {
+  width: 100%;
+  margin: 1px 0px;
 }
 
 mat-icon {
@@ -67400,6 +67405,13 @@ app-navbar #menuButton {
   margin: 0;
 }
 
+app-preview .zoomed {
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+}
+
 app-profile-view .list-group-item div:first-child {
   font-style: italic;
 }
@@ -67414,7 +67426,7 @@ app-profile-view label {
 }
 
 @media (min-width: 768px) {
-  app-tnc mat-card, app-tnc .card {
+  app-tnc mat-card {
     height: 100%;
   }
 }
@@ -67525,8 +67537,8 @@ app-invoice label {
   }
 }
 
-app-rate-card .list-group-item div:first-child {
-  font-style: italic;
+app-invoice-details label.text-muted {
+  font-weight: bold;
 }
 
 app-rate-card mat-card {
@@ -67538,53 +67550,12 @@ app-rate-card mat-card-title {
   font-weight: bolder;
 }
 
-app-rate-card label {
-  font-size: 15px;
+app-rate-card label.text-muted {
+  font-weight: bold;
 }
 
-app-rate-card .form-group label {
-  font-size: 12px;
-  margin-bottom: 4px;
-}
-
-app-rate-card .form-control {
-  border-radius: 0;
-  border-left: 1px solid #ced4da;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  font-size: 12px;
-  padding-left: 6px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-}
-
-app-rate-card .form-group .text-danger {
-  font-size: 12px;
-  margin-top: 4px;
-}
-
-app-rate-card .form-group select {
-  height: auto;
-}
-
-app-rate-card input.ng-invalid.form-control, app-rate-card select.ng-invalid.form-control {
-  border-left: 1px solid #ced4da;
-}
-
-app-rate-card input.ng-valid.form-control, app-rate-card select.ng-valid.form-control {
-  border-left: 1px solid #ced4da;
-}
-
-app-rate-card input.ng-touched.ng-invalid.form-control, app-rate-card select.ng-touched.ng-invalid.form-control {
-  border: 1px solid #ff5252;
-}
-
-app-rate-card input.ng-valid.form-control:focus, app-rate-card select.ng-valid.form-control:focus {
-  border: 1px solid #69f0ae;
-}
-
-app-rate-card-details .list-group-item div:first-child {
-  font-style: italic;
+app-rate-card-details label.text-muted {
+  font-weight: bold;
 }
 
 app-advance-receipt .list-group-item div:first-child {
@@ -67607,6 +67578,16 @@ app-advance-receipt label {
 @media (min-width: 768px) {
   app-advance-receipt mat-card {
     height: 100%;
+  }
+}
+
+app-receipt-details label.text-muted {
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  app-receipt-details .card-h100 {
+    height: calc(100% - 15px);
   }
 }
 
@@ -67716,8 +67697,14 @@ app-release-order input.ng-valid.form-control:focus, app-release-order select.ng
   border: 1px solid #69f0ae;
 }
 
-app-release-order-details .list-group-item div:first-child {
-  font-style: italic;
+@media (min-width: 768px) {
+  app-release-order-details mat-card {
+    height: calc(100% - 15px);
+  }
+}
+
+app-release-order-details label.text-muted {
+  font-weight: bold;
 }
 
 app-release-order-list .mat-column-action {

@@ -35,7 +35,7 @@
       
           <mat-form-field>
             <span matPrefix>+91 &nbsp;</span>
-            <input matInput type="tel" pattern="\\d{10}" maxlength="10" minlength="10" name="phone" placeholder="Phone Number" [(ngModel)]="coUser.phone" required #phoneField="ngModel">
+            <input matInput type="tel" pattern="^\d{10}$" maxlength="10" minlength="10" name="phone" placeholder="Phone Number" [(ngModel)]="coUser.phone" required #phoneField="ngModel">
             <mat-error *ngIf="phoneField.errors?.required">
               Phone Number is empty or invalid.
             </mat-error>

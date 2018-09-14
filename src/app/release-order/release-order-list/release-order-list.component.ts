@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -45,7 +45,7 @@ export class ReleaseOrderListComponent implements OnInit {
 
   collapsed = true;
 
-  constructor(public goback: GobackService, private api: ReleaseOrderApiService,
+  constructor(  private api: ReleaseOrderApiService,
     private dialog: DialogService,
     private route: ActivatedRoute,
     private notifications: NotificationService,
@@ -55,7 +55,7 @@ export class ReleaseOrderListComponent implements OnInit {
     private executiveApi: ExecutiveApiService) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
     this.route.data.subscribe((data: { resolved: { list: PageData<ReleaseOrder>, search: ReleaseOrderSearchParams }}) => {
       this.init(data.resolved.list);
 

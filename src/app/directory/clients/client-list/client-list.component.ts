@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
@@ -28,13 +28,13 @@ export class ClientListComponent implements OnInit {
   query: string;
   searchFailed = false;
 
-  constructor(public goback: GobackService, private api: ClientApiService,
+  constructor(  private api: ClientApiService,
     private dialog: DialogService,
     private router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
     this.route.data.subscribe((data: { list: PageData<Client> }) => {
       this.clients = data.list.list;
       this.pageCount = data.list.pageCount;

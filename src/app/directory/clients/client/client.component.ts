@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Client, ContactPerson } from '../client';
@@ -54,14 +54,14 @@ export class ClientComponent implements OnInit {
   moreContactDetails = false;
   moreContactPersonDetails = false;
 
-  constructor(public goback: GobackService, private api: ClientApiService,
+  constructor(  private api: ClientApiService,
     private route: ActivatedRoute,
     private router: Router,
     public stateApi: StateApiService,
     private notifications: NotificationService) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
     this.route.paramMap.subscribe(params => {
       if (params.has('id')) {
         this.id = params.get('id');

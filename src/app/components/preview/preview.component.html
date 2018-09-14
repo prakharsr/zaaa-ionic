@@ -10,58 +10,29 @@
 </h2>
 
 <mat-dialog-content>
-  <div class="container-fluid" [innerHtml]="content | safehtml"></div>
+  <div [innerHtml]="content | safehtml" class="container-fluid" [class.zoomed]="zoom"></div>
 </mat-dialog-content>
 
-<!-- <mat-dialog-actions>
-  <button mat-button class="text-light bg-success" mat-dialog-close="save">
-    <mat-icon>save</mat-icon> Save
-  </button>
-  <button mat-button class="text-light bg-danger" [mat-dialog-close]="null">
-    <mat-icon>edit</mat-icon> Edit
-  </button>
-  <button mat-button class="text-light bg-primary" mat-dialog-close="dl">
-    <mat-icon>get_app</mat-icon> Download
-  </button>
-  <button mat-button class="text-light bg-info" mat-dialog-close="mail">
-    <mat-icon>mail</mat-icon> Send Email
-  </button>
-</mat-dialog-actions> -->
-
-<mat-toolbar class="d-md-none fixed-bottom">
-    <div class="container-fluid">
-      <div class="form-row">
-        <div class="col">
-          <button color="primary" type="submit" class="btn btn-block btn-outline-success border-0 btn-sm" mat-dialog-close="save" color="primary">
-            <mat-icon>check</mat-icon>
-            <div class="small">Save</div>
-          </button>
-        </div>
-        <div class="col">
-          <button type="button" class="btn btn-block btn-outline-danger border-0 btn-sm" [mat-dialog-close]="null">
-            <mat-icon>edit</mat-icon>
-            <div class="small">Edit</div>
-          </button>
-        </div>
-        <div class="col">
-          <button color="primary" type="submit" class="btn btn-block btn-outline-primary border-0 btn-sm" mat-dialog-close="dl">
-            <mat-icon>get_app</mat-icon>
-            <div class="small">Download</div>
-          </button>
-        </div>
-        <div class="col">
-          <button color="primary" type="submit" class="btn btn-block btn-outline-info border-0 btn-sm" mat-dialog-close="mail">
-            <mat-icon>mail</mat-icon>
-            <div class="small">Send Mail</div>
-          </button>
-        </div>
-        <div class="col">
-          <button color="primary" type="submit" class="btn btn-block btn-outline-info border-0 btn-sm" mat-dialog-close="share">
-            <mat-icon>share</mat-icon>
-            <div class="small">Share PDF</div>
-          </button>
-        </div>
-      
-      </div>
+<mat-dialog-actions>
+  <div class="form-row">
+    <div class="col">
+      <button mat-button class="text-light bg-success" mat-dialog-close="save">
+        <mat-icon>save</mat-icon> Save
+      </button>
+      <button mat-button class="text-light bg-danger" [mat-dialog-close]="null">
+        <mat-icon>edit</mat-icon> Edit
+      </button>
+      <button mat-button class="text-light bg-primary" mat-dialog-close="dl">
+        <mat-icon>get_app</mat-icon> Download
+      </button>
+      <button mat-button class="text-light bg-info" mat-dialog-close="mail">
+        <mat-icon>mail</mat-icon> Send Email
+      </button>
     </div>
-  </mat-toolbar>
+    <div class="col-auto">
+      <button class="zoom-btn" mat-mini-fab color="primary" (click)="zoom = !zoom">
+        <mat-icon>{{zoom ? 'zoom_out' : 'zoom_in'}}</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-dialog-actions>

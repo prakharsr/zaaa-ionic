@@ -1,4 +1,4 @@
-import { GobackService, WindowService } from 'app/services';
+import { WindowService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
@@ -27,6 +27,7 @@ import {
 import { SelectReleaseOrderComponent } from '../select-release-order/select-release-order.component';
 import { PreviewComponent } from '../../components/preview/preview.component';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { Firm } from 'app/models';
 
 class AvailableInsertion {
   constructor(public insertion: Insertion, public checked = false) { }
@@ -38,6 +39,9 @@ class AvailableInsertion {
   
 })
 export class InvoiceComponent implements OnInit {
+
+  // Dummy variable
+  submitted = false;
 
   invoice = new Invoice();
   releaseOrder: ReleaseOrder;
@@ -52,7 +56,7 @@ export class InvoiceComponent implements OnInit {
   availableInsertions: AvailableInsertion[] = [];
   markedInsertions: Date[] = [];
 
-  constructor(public goback: GobackService, private route: ActivatedRoute,
+  constructor(  private route: ActivatedRoute,
     private notifications: NotificationService,
     private router: Router,
     private api: InvoiceApiService,
@@ -62,47 +66,58 @@ export class InvoiceComponent implements OnInit {
     private windowService: WindowService,
     private socialSharing: SocialSharing) { }
 
-  ngOnInit() {
-    this.goback.urlInit();
-    this.route.data.subscribe((data: { resolved: ReleaseOrderDir }) => {
-      if (data.resolved) {
-        this.init(data.resolved);
-      }
-    });
-  }
-
-  init(resolved: ReleaseOrderDir) {
-    this.releaseOrder = resolved.releaseorder;
-    this.mediaHouse = resolved.mediaHouse;
-    this.client = resolved.client;
-    this.executive = resolved.executive;
-
-    this.invoice.releaseOrderId = this.releaseOrder.id;
-    this.invoice.otherCharges = this.releaseOrder.otherCharges;
-    // this.invoice.publicationDiscount.amount = this.releaseOrder.publicationDiscount;
-    // this.invoice.agencyDiscount1.amount = this.releaseOrder.agencyDiscount1;
-
-    this.invoice.GSTIN = this.client.GSTIN;
-
-    this.taxes.forEach(element => {
-      if (element.primary == this.releaseOrder.taxAmount.primary && element.secondary == this.releaseOrder.taxAmount.secondary) {
-        this.invoice.taxAmount = element;
-      }
-    });
-    
-    this.invoice.taxIncluded = this.releaseOrder.taxIncluded;
-
-    this.invoice.taxType = this.mediaHouse.address.state == this.client.address.state ? 'SGST + CGST' : 'IGST';
-
-    this.availableInsertions = [];
-    
-    this.releaseOrder.insertions.forEach(element => {
-      if (!element.marked) {
-        this.availableInsertions.push(new AvailableInsertion(element));
-      }
-      else this.markedInsertions.push(this.toDate(element.date));
-    });
-  }
+    ngOnInit() {
+       
+      this.route.data.subscribe((data: { resolved: ReleaseOrderDir, firm: Firm }) => {
+        if (data.resolved) {
+          this.init(data.resolved);
+        }
+  
+        switch (data.firm.GSTIN.GSTType) {
+          case 'URD':
+          case 'CRD':
+            this.invoice.taxAmount = this.taxes[0];
+            break;
+          
+          default:
+            this.invoice.taxAmount = this.taxes[1];
+            break;
+        }
+      });
+    }
+  
+    init(resolved: ReleaseOrderDir) {
+      this.releaseOrder = resolved.releaseorder;
+      this.mediaHouse = resolved.mediaHouse;
+      this.client = resolved.client;
+      this.executive = resolved.executive;
+  
+      this.invoice.releaseOrderId = this.releaseOrder.id;
+      this.invoice.otherCharges = this.releaseOrder.otherCharges;
+      // this.invoice.publicationDiscount.amount = this.releaseOrder.publicationDiscount;
+      // this.invoice.agencyDiscount1.amount = this.releaseOrder.agencyDiscount1;
+  
+      this.invoice.GSTIN = this.client.GSTIN;
+  
+      // this.taxes.forEach(element => {
+      //   if (element.primary == this.releaseOrder.taxAmount.primary && element.secondary == this.releaseOrder.taxAmount.secondary) {
+      //     this.invoice.taxAmount = element;
+      //   }
+      // });
+      
+      // this.invoice.taxIncluded = this.releaseOrder.taxIncluded;
+  
+      this.invoice.taxType = this.mediaHouse.address.state == this.client.address.state ? 'SGST + CGST' : 'IGST';
+  
+      this.availableInsertions = [];
+      
+      this.releaseOrder.insertions.forEach(element => {
+        if (!element.marked) {
+          this.availableInsertions.push(new AvailableInsertion(element));
+        }
+        else this.markedInsertions.push(this.toDate(element.date));
+      });
+    }
 
   save() {
     this.submit().subscribe(data => {
@@ -301,11 +316,11 @@ export class InvoiceComponent implements OnInit {
     this.router.navigateByUrl('/invoices');
   }
 
-  presave() {
+  presave(): boolean {
     if (!this.availableInsertions.some(val => val.checked)) {
       this.notifications.show('No Insertions selected');
 
-      return;
+      return false;
     }
     
     this.invoice.adGrossAmount = this.grossAmount;
@@ -316,15 +331,18 @@ export class InvoiceComponent implements OnInit {
     this.invoice.insertions = this.availableInsertions.filter(insertion => insertion.checked).map(insertion => insertion.insertion);
     this.invoice.paymentDate = new Date();
     this.invoice.paymentDate.setDate(this.invoice.paymentDate.getDate() + this.creditDays);
+
+    return true;
   }
 
   submit() : Observable<any> {
     
     this.submitting = true;
 
-    this.presave();
-
-    return this.createInvoice();
+    if (this.presave()) {
+      return this.createInvoice();
+    }
+    else return of({});
   }
 
   private createInvoice() {
@@ -358,8 +376,8 @@ export class InvoiceComponent implements OnInit {
   }
 
   taxes: TaxValues[] = [
+    new TaxValues(0),
     new TaxValues(5),
-    new TaxValues(10),
     new TaxValues(18)
   ];
 
@@ -435,5 +453,45 @@ export class InvoiceComponent implements OnInit {
 
   selectAllInsertions() {
     this.availableInsertions.forEach(insertion => insertion.checked = true);
+  }
+  
+  handleSubmit(valid: boolean, callbackName: string) {
+    if (valid) {
+      switch (callbackName) {
+        case 'save':
+          this.save();
+          break;
+        
+        case 'dl':
+          this.saveAndGen();
+          break;
+        
+        case 'preview':
+          this.genPreview();
+          break;
+
+        case 'mail':
+          this.saveAndSendMsg();
+          break;
+        
+          case 'share':
+          this.sharePdf();
+          break;
+      }
+    }
+    else this.notifications.show('Fix errors before submitting');
+  }
+
+  getInsertionStateText(state: number) {
+    switch (state) {
+      case 1:
+        return 'Not Published';
+
+      case 2:
+        return 'Published';
+
+      case 3:
+        return 'Disputed';
+    }
   }
 }

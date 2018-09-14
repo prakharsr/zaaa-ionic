@@ -10,7 +10,7 @@
   <form (ngSubmit)="sendOtp()" #phoneNumberForm="ngForm">
     <mat-form-field>
       <span matPrefix>+91 &nbsp;</span>
-      <input type="tel" matInput placeholder="Phone Number" [(ngModel)]="number" pattern="\\d{10}" maxlength="10" minlength="10" required name="phone" #phoneNumber="ngModel">
+      <input type="tel" matInput placeholder="Phone Number" [(ngModel)]="number" pattern="^\d{10}$" maxlength="10" minlength="10" required name="phone">
     </mat-form-field>
 
     <div *ngIf="sendError" class="text-danger">
@@ -18,7 +18,7 @@
       
       <br>
     </div>
-    
+
     <div class="text-right">
       <button type="submit" class="btn btn-primary" [disabled]="!phoneNumberForm.form.valid || otpSent">Send Code</button>
     </div>

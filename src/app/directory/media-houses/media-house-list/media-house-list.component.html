@@ -1,8 +1,8 @@
-<button class="fab" (click)="this.goback.gotoComponent('dir/media_houses/new')" *ngIf="!global">
+<button class="fab" routerLink="/dir/media_houses/new" *ngIf="!global">
   <mat-icon>add</mat-icon>
 </button>
 
-<button class="fab" (click)="this.goback.gotoComponent('superadmin/media_houses/new')" *ngIf="isSuperAdmin">
+<button class="fab" routerLink="/superadmin/media_houses/new" *ngIf="isSuperAdmin">
   <mat-icon>add</mat-icon>
 </button>
 

@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { SuperAdminApiService } from '../super-admin-api.service';
 
@@ -11,10 +11,10 @@ export class AdminListComponent implements OnInit {
 
   list = [];
 
-  constructor(public goback: GobackService, private api: SuperAdminApiService) { }
+  constructor(  private api: SuperAdminApiService) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
     this.api.admins.subscribe(data => this.list = data);
   }
 

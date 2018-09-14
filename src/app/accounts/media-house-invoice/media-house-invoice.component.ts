@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -23,7 +23,7 @@ export class MediaHouseInvoiceComponent implements OnInit {
   selectedRoId = "";
   releaseOrder;
 
-  constructor(public goback: GobackService, private dialog: DialogService,
+  constructor(  private dialog: DialogService,
     private api: AccountsApiService,
     private route: ActivatedRoute,
     private notifications: NotificationService,
@@ -31,7 +31,7 @@ export class MediaHouseInvoiceComponent implements OnInit {
     private roApi: ReleaseOrderApiService) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
   }
 
   searchRO = (text: Observable<string>) => {

@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'app/services';
@@ -18,11 +18,11 @@ export class PhoneVerifyComponent implements OnInit {
   sendError : string;
   verifyError: string;
 
-  constructor(public goback: GobackService, private api: ApiService,
+  constructor(  private api: ApiService,
     private router: Router) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
     this.api.getUser().subscribe(data => {
       if (!this.number && data.success && data.user.phone) {
         this.number = data.user.phone;

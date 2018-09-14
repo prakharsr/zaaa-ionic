@@ -6,6 +6,7 @@ import { ErrorHandler } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule }   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AppComponent } from './components/app/app.component';
 // import { IonicImageLoader } from 'ionic-image-loader';
 // import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 
@@ -14,106 +15,85 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { BaseModule } from './base.module';
+import { AppRoutingModule } from './app-routing.module';
+
 import { AdminModule } from './admin/admin.module';
+import { ReportsModule } from './reports/reports.module';
+
+import * as comp from './components';
+import { CreateTicketComponent } from './components/create-ticket/create-ticket.component';
+import { DashboardApiService } from './services/dashboard-api.service';
+import { TncComponent } from './components/tnc/tnc.component';
+
+import { FCM } from '@ionic-native/fcm';
+import { SocialSharing } from '@ionic-native/social-sharing';
 import { DirectoryModule } from './directory/directory.module';
 import { CoUsersModule } from './co-users/co-users.module';
 import { RateCardModule } from './rate-card/rate-card.module';
 import { ReleaseOrderModule } from './release-order/release-order.module';
-import { InvoiceModule } from './invoice/invoice.module';
-import { ReceiptsModule } from './receipts/receipts.module';
 import { AccountsModule } from './accounts/accounts.module';
-import { AppRoutingModule } from './app-routing.module';
-
-
-import {
-  AppComponent,
-
-  HomeComponent,
-  LoginComponent,
-  RegisterComponent,
-  ForgotPswComponent,
-  PhoneVerifyComponent,
-  ProfileViewComponent,
-  AccountDetailsComponent,
-  BusinessDetailsComponent,
-  DashboardComponent,
-  ChangePswComponent,
-  ResetPasswordComponent,
-  NotFoundComponent,
-  NavbarComponent,
-  LoaderComponent
-} from './components';
-
-import { ReportsModule } from './reports/reports.module';
-import { TicketListComponent } from './components/ticket-list/ticket-list.component';
-import { CreateTicketComponent } from './components/create-ticket/create-ticket.component';
-import { DashboardApiService } from './services/dashboard-api.service';
-import { FCM } from '@ionic-native/fcm';
-import { SocialSharing } from '@ionic-native/social-sharing';
-import { TncComponent } from './components/tnc/tnc.component';
-import { DirRoutingModule } from './directory/dir-routing.module';
-import { RateCardRoutingModule } from './rate-card/rate-card-routing.module';
-import { SuperAdminModule } from './super-admin/super-admin.module';
+import { ReceiptsModule } from './receipts/receipts.module';
+import { InvoiceModule } from './invoice/invoice.module';
 
 @NgModule({
   declarations: [
     MyApp,
 
     AppComponent,
-    NavbarComponent,
-    HomeComponent,
-    PhoneVerifyComponent,
-    RegisterComponent,
-    ProfileViewComponent,
-    DashboardComponent,
-    AccountDetailsComponent,
-    BusinessDetailsComponent,
-    ChangePswComponent,
-    ForgotPswComponent,
-    NotFoundComponent,
-    ResetPasswordComponent,
-    LoaderComponent,
+    comp.NavbarComponent,
+    comp.HomeComponent,
+    comp.PhoneVerifyComponent,
+    comp.RegisterComponent,
+    comp.ProfileViewComponent,
+    comp.DashboardComponent,
+    comp.AccountDetailsComponent,
+    comp.BusinessDetailsComponent,
+    comp.ChangePswComponent,
+    comp.ForgotPswComponent,
+    comp.NotFoundComponent,
+    comp.ResetPasswordComponent,
+    comp.LoaderComponent,
     CreateTicketComponent,
     TncComponent
   ],
   imports: [
     IonicModule.forRoot(MyApp),
-    NgbModule.forRoot(),
-    BrowserModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-
     BrowserModule,
     BrowserAnimationsModule,
-    BaseModule,
+    BaseModule.forRoot(),
     AdminModule,
+    ReportsModule,
+
     DirectoryModule,
-    AccountsModule,
     CoUsersModule,
     RateCardModule,
     ReleaseOrderModule,
-    InvoiceModule,
-    ReceiptsModule,
+    AccountsModule,
     ReportsModule,
+    ReceiptsModule,
+    InvoiceModule,
+    AdminModule,
+
     AppRoutingModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+
     AppComponent,
-    NavbarComponent,
-    HomeComponent,
-    PhoneVerifyComponent,
-    RegisterComponent,
-    ProfileViewComponent,
-    DashboardComponent,
-    AccountDetailsComponent,
-    BusinessDetailsComponent,
-    ChangePswComponent,
-    ForgotPswComponent,
-    NotFoundComponent,
-    ResetPasswordComponent,
-    LoaderComponent,
+    comp.NavbarComponent,
+    comp.HomeComponent,
+    comp.PhoneVerifyComponent,
+    comp.RegisterComponent,
+    comp.ProfileViewComponent,
+    comp.DashboardComponent,
+    comp.AccountDetailsComponent,
+    comp.BusinessDetailsComponent,
+    comp.ChangePswComponent,
+    comp.ForgotPswComponent,
+    comp.NotFoundComponent,
+    comp.ResetPasswordComponent,
+    comp.LoaderComponent,
     CreateTicketComponent,
     TncComponent
   ],
@@ -121,9 +101,10 @@ import { SuperAdminModule } from './super-admin/super-admin.module';
     StatusBar,
     SplashScreen,
     DashboardApiService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
     FCM,
-    SocialSharing
+    SocialSharing,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
+
     // {
     //   provide: LocationStrategy,
     //   useClass: PathLocationStrategy

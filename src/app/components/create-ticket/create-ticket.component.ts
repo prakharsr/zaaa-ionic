@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { ApiService, NotificationService } from 'app/services';
 import { Router } from '@angular/router';
@@ -13,12 +13,12 @@ export class CreateTicketComponent implements OnInit {
 
   ticket = new Ticket();
 
-  constructor(public goback: GobackService, private api: ApiService,
+  constructor(  private api: ApiService,
     private notifications: NotificationService,
     private router: Router) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
   }
 
   goBack() {

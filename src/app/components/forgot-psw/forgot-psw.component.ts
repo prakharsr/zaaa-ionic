@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit } from '@angular/core';
 import { ApiService, NotificationService } from 'app/services';
 
@@ -11,11 +11,11 @@ export class ForgotPswComponent implements OnInit {
 
   email: string;
 
-  constructor(public goback: GobackService, private api: ApiService,
+  constructor(  private api: ApiService,
     private notifications: NotificationService) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
   }
 
   submit() {

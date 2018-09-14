@@ -1,4 +1,4 @@
-import { GobackService } from 'app/services';
+
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
@@ -15,12 +15,12 @@ export class CoUserComponent implements OnInit {
 
   coUser = new CoUser();
 
-  constructor(public goback: GobackService, private api: CoUserApiService,
+  constructor(  private api: CoUserApiService,
     private router: Router,
     private notifications: NotificationService) { }
 
   ngOnInit() {
-    this.goback.urlInit();
+     
   }
 
   private navigateBack() {
