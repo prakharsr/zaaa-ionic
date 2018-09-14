@@ -1,12 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
-import {
-  AuthGuard,
-  AdminGuard,
-  PhoneVerifyGuard,
-  PlanGuard
-} from 'app/guards';
+import { Guard } from 'app/guards';
 
 import { FirmResolver, UserProfileResolver } from 'app/services';
 
@@ -47,73 +42,70 @@ const routes: Routes = [
   { path: 'empty', component: EmptyComponent},
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  {
-    path: 'superadmin',
-    loadChildren: 'app/super-admin/super-admin.module#SuperAdminModule'
-  },
-  {
-    path: "account",
-    component: AccountDetailsComponent,
-    canActivate: [AuthGuard, PhoneVerifyGuard, PlanGuard],
-    resolve: {
-      user: UserProfileResolver
-    }
-  },
   { path: 'login', component: LoginComponent },
   { path: "register", component: RegisterComponent },
-  { path: 'forgotPassword', component: ForgotPswComponent },
-  { path: "verify/mobile", component: PhoneVerifyComponent, canActivate: [AuthGuard] },
   {
-    path: "profile",
-    component: ProfileViewComponent,
-    canActivate: [AuthGuard, PhoneVerifyGuard, PlanGuard],
-    resolve: {
-      user: UserProfileResolver
-    }
+    path: '',
+    canActivateChild: [Guard],
+    children: [
+      {
+        path: "verify/mobile",
+        component: PhoneVerifyComponent,
+        data: { verifyMobile: true }
+      },
+      {
+        path: 'plan',
+        component: PlanSelectorComponent,
+        data: { plan: true }
+      },
+      {
+        path: "profile",
+        component: ProfileViewComponent,
+        resolve: {
+          user: UserProfileResolver
+        }
+      },
+      {
+        path: "profile/edit",
+        component: ProfileEditComponent,
+        data: { admin: true },
+        resolve: {
+          user: UserProfileResolver
+        }
+      },
+      {
+        path: "firm",
+        component: BusinessDetailsComponent,
+        resolve: {
+          firm: FirmResolver,
+          user: UserProfileResolver
+        }
+      },
+      {
+        path: "account",
+        component: AccountDetailsComponent,
+        resolve: {
+          user: UserProfileResolver
+        }
+      },
+      {
+        path: 'tnc',
+        component: TncComponent,
+        data: { admin: true },
+        resolve: {
+          firm: FirmResolver
+        }
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+        resolve: {
+          user: UserProfileResolver
+        }
+      },
+      { path: 'changePassword', component: ChangePswComponent },
+    ]
   },
-  {
-    path: "profile/edit",
-    component: ProfileEditComponent,
-    canActivate: [AdminGuard, PhoneVerifyGuard, PlanGuard],
-    resolve: {
-      user: UserProfileResolver
-    }
-  },
-  {
-    path: "firm",
-    component: BusinessDetailsComponent,
-    canActivate: [AuthGuard, PhoneVerifyGuard, PlanGuard],
-    resolve: {
-      firm: FirmResolver,
-      user: UserProfileResolver
-    }
-  },
-  {
-    path: "account",
-    component: AccountDetailsComponent,
-    canActivate: [AuthGuard, PhoneVerifyGuard, PlanGuard],
-    resolve: {
-      user: UserProfileResolver
-    }
-  },
-  {
-    path: 'tnc',
-    component: TncComponent,
-    canActivate: [AdminGuard],
-    resolve: {
-      firm: FirmResolver
-    }
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [AuthGuard, PhoneVerifyGuard, PlanGuard],
-    resolve: {
-      user: UserProfileResolver
-    }
-  },
-  { path: 'plan', component: PlanSelectorComponent, canActivate: [AuthGuard, AdminGuard] },
-  { path: 'changePassword', component: ChangePswComponent, canActivate: [AuthGuard] },
   { path: 'reset_password/:token', component: ResetPasswordComponent },
   {
     path: 'tickets',
@@ -129,6 +121,7 @@ const routes: Routes = [
       }
     ]
   },
+  { path: 'forgotPassword', component: ForgotPswComponent },
   { path: 'testimonial', component: TestimonialComponent },
   { path: '**', component: NotFoundComponent }
 ];
