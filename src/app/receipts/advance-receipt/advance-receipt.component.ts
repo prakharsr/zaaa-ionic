@@ -10,7 +10,9 @@ import 'rxjs/add/operator/switchMap';
 import { map } from 'rxjs/operators';
 import { AdvanceReceipt } from '../payment-receipt';
 import { ReceiptsApiService } from '../receipts-api.service';
-import { NotificationService, StateApiService, DialogService } from 'app/services';
+import { NotificationService, StateApiService, DialogService, WindowService } from 'app/services';
+
+declare var cordova:any;
 
 import {
   Client,
@@ -22,6 +24,7 @@ import {
 } from 'app/directory';
 import { Firm, UserProfile } from '../../models';
 import { PreviewComponent } from '../../components/preview/preview.component';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @Component({
   selector: 'app-advance-receipt',
@@ -42,7 +45,9 @@ export class AdvanceReceiptComponent implements OnInit {
     private executiveApi: ExecutiveApiService,
     private notifications: NotificationService,
     public stateApi: StateApiService,
-    private dialog: DialogService) { }
+    private dialog: DialogService,
+    private windowService: WindowService,
+    private socialSharing: SocialSharing) { }
 
   ngOnInit() {
      
@@ -117,6 +122,19 @@ export class AdvanceReceiptComponent implements OnInit {
     });
   }
 
+  saveAndShare() {
+    this.confirmGeneration().subscribe(confirm=> {
+      if(confirm) {
+        this.submit().subscribe(data => {
+          if (data.success) {
+            this.sharePdf(this.receipt);
+          }
+          else this.submitting = false;
+        });
+      }
+    });
+  }
+
   saveAndSendMsg() {
     this.confirmGeneration().subscribe(confirm => {
       if(confirm) {
@@ -149,35 +167,60 @@ export class AdvanceReceiptComponent implements OnInit {
           case 'mail':
             this.saveAndSendMsg();
             break;
+          case 'share':
+            this.saveAndShare();
+            break;
         }
       });
     });
   }
 
-  gen(receipt: AdvanceReceipt, preview = false) {
+  gen(receipt: AdvanceReceipt, share = false, callback?: () => void) {
     this.api.createAdvanceReceipt(this.receipt).subscribe(data => {
       if (data.msg) {
         this.notifications.show(data.msg);
       }
       else {
-        console.log(data);
-        
-        let blob = new Blob([data], { type: 'application/pdf' });
-        let url = URL.createObjectURL(blob);
+        document.addEventListener('deviceready', () => {
+          console.log(cordova.file);
 
-        let a = document.createElement('a');
-        a.setAttribute('style', 'display:none;');
-        document.body.appendChild(a);
-        a.href = url;
-        if (preview) {
-          a.setAttribute("target", "_blank");
-        }
-        else {
-          a.download = 'receipt.pdf';
-        }
-        a.click();
+        let folderpath = cordova.file.externalRootDirectory + "Download/";
+        let filename = "receipt.pdf";
+       
+        this.windowService.window.resolveLocalFileSystemURL(folderpath, dir => {
+          console.log("Access to the directory granted succesfully");
+          dir.getFile(filename, {create:true}, file => {
+              console.log("File created succesfully.");
+              file.createWriter(fileWriter => {
+                  console.log("Writing content to file");
+                  fileWriter.write(data);
+                  if(callback) {
+                    callback();
+                  }
+                  if(share == false) {
+                    this.notifications.show('Saved receipt.pdf in Download ');
+                  }
+              }, confirm => {
+                  if(share == false) {
+                    this.notifications.show('Unable to save file in path '+ folderpath);
+                  }
+                  else {
+                    this.notifications.show('Unable to share file due to being unable to save file in path '+ folderpath);
+                  }
+              });
+          });
+      });
+
+      });
       }
     });
+  }
+
+  sharePdf(receipt: AdvanceReceipt) {
+    this.gen(receipt, true, () => {
+      this.socialSharing.share('Share Receipt PDF', 'Share', cordova.file.externalRootDirectory + "Download/receipt.pdf");
+    });
+
   }
 
   sendMsg(receipt: AdvanceReceipt) {
@@ -214,6 +257,10 @@ export class AdvanceReceiptComponent implements OnInit {
 
         case 'mail':
           this.saveAndSendMsg();
+          break;
+
+        case 'share':
+          this.saveAndShare();
           break;
       }
     }

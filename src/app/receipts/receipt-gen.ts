@@ -2,9 +2,11 @@ import { PaymentReceipt } from "./payment-receipt";
 import { ReceiptsApiService } from "./receipts-api.service";
 import { NotificationService, DialogService } from "../services";
 
+declare var cordova:any;
+
 export function generate(receipt: PaymentReceipt,
   api: ReceiptsApiService,
-  notifications: NotificationService,
+  notifications: NotificationService, share = false,
   callback?) {
   
   api.generate(receipt).subscribe(data => {
@@ -12,23 +14,49 @@ export function generate(receipt: PaymentReceipt,
       notifications.show(data.msg);
     }
     else {
-      console.log(data);
-      
-      let blob = new Blob([data], { type: 'application/pdf' });
-      let url = URL.createObjectURL(blob);
+      document.addEventListener('deviceready', () => {
+        console.log(cordova.file);
 
-      let a = document.createElement('a');
-      a.setAttribute('style', 'display:none;');
-      document.body.appendChild(a);
-      a.download = 'receipt.pdf';
-      a.href = url;
-      a.click();
+      let folderpath = cordova.file.externalRootDirectory + "Download/";
+      let filename = "receipt.pdf";
+     
+      this.windowService.window.resolveLocalFileSystemURL(folderpath, dir => {
+        console.log("Access to the directory granted succesfully");
+        dir.getFile(filename, {create:true}, file => {
+            console.log("File created succesfully.");
+            file.createWriter(fileWriter => {
+                console.log("Writing content to file");
+                fileWriter.write(data);
+                if(callback) {
+                  callback();
+                }
+                if(share == false) {
+                  this.notifications.show('Saved receipt.pdf in Download ');
+                }
+            }, confirm => {
+                if(share == false) {
+                  this.notifications.show('Unable to save file in path '+ folderpath);
+                }
+                else {
+                  this.notifications.show('Unable to share file due to being unable to save file in path '+ folderpath);
+                }
+            });
+        });
+    });
 
-      if (callback) {
-        callback();
-      }
+    });
     }
   });
+}
+
+export function sharePdf(receipt: PaymentReceipt,
+  api: ReceiptsApiService,
+  notifications: NotificationService, share = false,
+  callback?) {
+  
+    generate(receipt,api, notifications, true, () => {
+      this.socialSharing.share('Share Receipt PDF', 'Share', cordova.file.externalRootDirectory + "Download/receipt.pdf");
+    });
 }
 
 export function sendMsg(receipt: PaymentReceipt,

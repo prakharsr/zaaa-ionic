@@ -159,6 +159,10 @@ export class ReceiptListComponent implements OnInit {
     receiptGen.sendMsg(receipt, this.api, this.notifications, this.dialog);
   }
 
+  share(receipt: PaymentReceipt) {
+    receiptGen.sharePdf(receipt, this.api, this.notifications, true);
+  }
+
   private get editionName() {
     if (this.edition instanceof String) {
       return this.edition;

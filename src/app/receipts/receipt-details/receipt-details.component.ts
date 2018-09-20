@@ -38,4 +38,8 @@ export class ReceiptDetailsComponent implements OnInit {
   cancel() {
     receiptGen.cancel(this.receipt, this.api, this.notifications, this.dialog);
   }
+
+  share() {
+    receiptGen.sharePdf(this.receipt, this.api, this.notifications, true);
+  }
 }

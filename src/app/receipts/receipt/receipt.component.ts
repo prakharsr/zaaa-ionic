@@ -12,9 +12,12 @@ import { PaymentReceipt } from '../payment-receipt';
 import { Invoice, InvoiceDir, InvoiceApiService } from 'app/invoice';
 import { MediaHouse, Client, Executive } from 'app/directory';
 import { ReceiptsApiService } from '../receipts-api.service';
-import { NotificationService, OptionsService, DialogService } from 'app/services';
+import { NotificationService, OptionsService, DialogService, WindowService } from 'app/services';
 import { SelectInvoiceComponent } from '../select-invoice/select-invoice.component';
 import { PreviewComponent } from '../../components/preview/preview.component';
+import { SocialSharing } from '@ionic-native/social-sharing';
+
+declare var cordova:any;
 
 @Component({
   selector: 'app-receipt',
@@ -64,7 +67,9 @@ export class ReceiptComponent implements OnInit {
     private invoiceApi: InvoiceApiService,
     private notifications: NotificationService,
     private options: OptionsService,
-    private dialog: DialogService) { }
+    private dialog: DialogService,
+    private windowService: WindowService,
+    private socialSharing: SocialSharing) { }
 
   submit () : Observable<any> {
 
@@ -114,6 +119,19 @@ export class ReceiptComponent implements OnInit {
     });
   }
 
+  saveAndShare() {
+    this.confirmGeneration().subscribe(confirm=> {
+      if(confirm) {
+        this.submit().subscribe(data => {
+          if (data.success) {
+            this.sharePdf(this.receipt);
+          }
+          else this.submitting = false;
+        });
+      }
+    });
+  }
+
   genPreview() {
     if (!this.presave()) {
       return;
@@ -132,6 +150,10 @@ export class ReceiptComponent implements OnInit {
 
           case 'mail':
             this.saveAndSendMsg();
+            break;
+
+          case 'share':
+            this.saveAndShare();
             break;
         }
       });
@@ -153,31 +175,54 @@ export class ReceiptComponent implements OnInit {
     );
   }
 
-  gen(receipt: PaymentReceipt, preview = false) {
+  gen(receipt: PaymentReceipt, share = false, callback?: () => void) {
     this.api.createReceipt(this.receipt).subscribe(data => {
       if (data.msg) {
         this.notifications.show(data.msg);
       }
       else {
-        console.log(data);
-        
-        let blob = new Blob([data], { type: 'application/pdf' });
-        let url = URL.createObjectURL(blob);
+        document.addEventListener('deviceready', () => {
+          console.log(cordova.file);
 
-        let a = document.createElement('a');
-        a.setAttribute('style', 'display:none;');
-        document.body.appendChild(a);
-        a.href = url;
-        if (preview) {
-          a.setAttribute("target", "_blank");
-        }
-        else {
-          a.download = 'receipt.pdf';
-        }
-        a.click();
+        let folderpath = cordova.file.externalRootDirectory + "Download/";
+        let filename = "receipt.pdf";
+       
+        this.windowService.window.resolveLocalFileSystemURL(folderpath, dir => {
+          console.log("Access to the directory granted succesfully");
+          dir.getFile(filename, {create:true}, file => {
+              console.log("File created succesfully.");
+              file.createWriter(fileWriter => {
+                  console.log("Writing content to file");
+                  fileWriter.write(data);
+                  if(callback) {
+                    callback();
+                  }
+                  if(share == false) {
+                    this.notifications.show('Saved receipt.pdf in Download ');
+                  }
+              }, confirm => {
+                  if(share == false) {
+                    this.notifications.show('Unable to save file in path '+ folderpath);
+                  }
+                  else {
+                    this.notifications.show('Unable to share file due to being unable to save file in path '+ folderpath);
+                  }
+              });
+          });
+      });
+
+      });
       }
     });
   }
+
+  sharePdf(receipt: PaymentReceipt) {
+    this.gen(receipt, true, () => {
+      this.socialSharing.share('Share Receipt PDF', 'Share', cordova.file.externalRootDirectory + "Download/receipt.pdf");
+    });
+
+  }
+
 
   sendMsg(receipt: PaymentReceipt) {
     this.dialog.getMailingDetails().subscribe(mailingDetails => {
@@ -213,6 +258,9 @@ export class ReceiptComponent implements OnInit {
 
         case 'mail':
           this.saveAndSendMsg();
+          break;
+        case 'share':
+          this.saveAndShare();
           break;
       }
     }
