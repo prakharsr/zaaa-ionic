@@ -41,17 +41,17 @@ export class MyApp {
       }
   });
 
-    fcm.onNotification().subscribe( data => {
-      if(data.wasTapped){
-        console.log(JSON.stringify(data));
-  this.navCtrl.setRoot('', { profileId: data.profileId });
-        //Notification was received on device tray and tapped by the user.
-      }else{
-        console.log(JSON.stringify(data));
-  this.navCtrl.push('', { profileId: data.profileId });
-        //Notification was received in foreground. Maybe the user needs to be notified.
-      }
-    });
+  //   fcm.onNotification().subscribe( data => {
+  //     if(data.wasTapped){
+  //       console.log(JSON.stringify(data));
+  // this.navCtrl.setRoot('', { profileId: data.profileId });
+  //       //Notification was received on device tray and tapped by the user.
+  //     }else{
+  //       console.log(JSON.stringify(data));
+  // this.navCtrl.push('', { profileId: data.profileId });
+  //       //Notification was received in foreground. Maybe the user needs to be notified.
+  //     }
+  //   });
   }
 }
 

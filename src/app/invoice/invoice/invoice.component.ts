@@ -85,6 +85,18 @@ export class InvoiceComponent implements OnInit {
         }
       });
     }
+
+    get clientGSTType() {
+      return this.invoice.GSTIN.GSTType;
+    }
+  
+    set clientGSTType(GSTType: string) {
+      this.invoice.GSTIN.GSTType = GSTType;
+  
+      if (GSTType == 'URD') {
+        this.invoice.taxAmount = this.taxes[0];
+      }
+    }
   
     init(resolved: ReleaseOrderDir) {
       this.releaseOrder = resolved.releaseorder;
@@ -98,7 +110,8 @@ export class InvoiceComponent implements OnInit {
       // this.invoice.agencyDiscount1.amount = this.releaseOrder.agencyDiscount1;
   
       this.invoice.GSTIN = this.client.GSTIN;
-  
+      this.clientGSTType = this.client.GSTIN.GSTType;
+      
       // this.taxes.forEach(element => {
       //   if (element.primary == this.releaseOrder.taxAmount.primary && element.secondary == this.releaseOrder.taxAmount.secondary) {
       //     this.invoice.taxAmount = element;

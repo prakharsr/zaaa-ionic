@@ -5,9 +5,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {of} from 'rxjs/observable/of';
 import { ReleaseOrder } from '../release-order';
 import { ReleaseOrderApiService } from '../release-order-api.service';
-import { DialogService, NotificationService } from 'app/services';
+import { DialogService, NotificationService, WindowService } from 'app/services';
 import { PageData } from 'app/models';
 import { ReleaseOrderSearchParams } from '../release-order-search-params';
+
+declare var cordova:any;
 
 import {
   Client,
@@ -18,6 +20,7 @@ import {
   ExecutiveApiService
 } from 'app/directory';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-date';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 class RoExpandable extends ReleaseOrder {
   expanded = false;
@@ -48,9 +51,11 @@ export class ReleaseOrderListComponent implements OnInit {
   constructor(  private api: ReleaseOrderApiService,
     private dialog: DialogService,
     private route: ActivatedRoute,
+    private windowService: WindowService,
     private notifications: NotificationService,
     private router: Router,
     private clientApi: ClientApiService,
+    private socialSharing: SocialSharing,
     private mediaHouseApi: MediaHouseApiService,
     private executiveApi: ExecutiveApiService) { }
 
@@ -189,7 +194,7 @@ export class ReleaseOrderListComponent implements OnInit {
     });
   }
 
-  pdf(releaseOrder: ReleaseOrder) {
+  pdf(releaseOrder: ReleaseOrder, share=false, callback?: () => void) {
     this.confirmGeneration(releaseOrder).subscribe(confirm => {
       if (confirm) {
         this.api.generatePdf(releaseOrder).subscribe(data => {
@@ -199,17 +204,36 @@ export class ReleaseOrderListComponent implements OnInit {
           else {
             releaseOrder.generated = true;
 
-            console.log(data);
-            
-            let blob = new Blob([data], { type: 'application/pdf' });
-            let url = URL.createObjectURL(blob);
-    
-            let a = document.createElement('a');
-            a.setAttribute('style', 'display:none;');
-            document.body.appendChild(a);
-            a.download = 'releaseorder.pdf';
-            a.href = url;
-            a.click();
+            document.addEventListener('deviceready', () => {
+              console.log(cordova.file);
+
+            let folderpath = cordova.file.externalRootDirectory + "Download/";
+            let filename = "releaseorder.pdf";
+           
+            this.windowService.window.resolveLocalFileSystemURL(folderpath, dir => {
+              console.log("Access to the directory granted succesfully");
+              dir.getFile(filename, {create:true}, file => {
+                  console.log("File created succesfully.");
+                  file.createWriter(fileWriter => {
+                      console.log("Writing content to file");
+                      fileWriter.write(data);
+                      if(callback) {
+                        callback();
+                      }
+                      if(share == false) {
+                        this.notifications.show('Saved releaseorder.pdf in Download ');
+                      }
+                  }, confirm => {
+                      if(share == false) {
+                        this.notifications.show('Unable to save file in path '+ folderpath);
+                      }
+                      else {
+                        this.notifications.show('Unable to share file due to being unable to save file in path '+ folderpath);
+                      }
+                    });
+                  });
+              });
+            });
           }
         });
       }
@@ -236,6 +260,12 @@ export class ReleaseOrderListComponent implements OnInit {
           }
         });
       }
+    });
+  }
+
+  sharePdf(releaseOrder : ReleaseOrder) {
+    this.pdf(releaseOrder, true, () => {
+      this.socialSharing.share('Share Release Order PDF', 'Share', cordova.file.externalRootDirectory + "Download/releaseorder.pdf");
     });
   }
 

@@ -821,6 +821,11 @@
           <button color="primary" type="submit" mat-raised-button [disabled]="submitting" (click)="handleSubmit(roForm.form.valid, 'mail')" class="mb-2 bg-info">
             <mat-icon>mail</mat-icon> Send Mail
           </button>
+          
+
+          <button color="primary" type="submit" mat-raised-button [disabled]="submitting" (click)="handleSubmit(roForm.form.valid, 'share')" class="mb-2 bg-info">
+            <mat-icon>share</mat-icon> Share
+          </button>
         </div>
 
         <mat-toolbar class="d-md-none fixed-bottom">
@@ -854,6 +859,12 @@
                 <button color="primary" type="submit" class="btn btn-block btn-outline-info border-0 btn-sm" [disabled]="submitting" (click)="handleSubmit(roForm.form.valid, 'mail')">
                   <mat-icon>mail</mat-icon>
                   <div class="small">Send Mail</div>
+                </button>
+              </div>    
+              <div class="col">
+                <button color="primary" type="submit" class="btn btn-block btn-outline-info border-0 btn-sm" [disabled]="submitting" (click)="handleSubmit(roForm.form.valid, 'share')">
+                  <mat-icon>share</mat-icon>
+                  <div class="small">Share</div>
                 </button>
               </div>    
             </div>
