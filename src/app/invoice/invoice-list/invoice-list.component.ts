@@ -4,10 +4,12 @@ import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, Router } from '@angular/router';
 import { of } from 'rxjs/observable/of';
 import { Invoice } from '../invoice';
-import { NotificationService, DialogService } from 'app/services';
+import { NotificationService, DialogService, WindowService } from 'app/services';
 import { InvoiceApiService } from '../invoice-api.service';
 import { PageData } from 'app/models';
 import { ReleaseOrderSearchParams } from 'app/release-order';
+
+declare var cordova:any;
 
 import {
   Client,
@@ -17,6 +19,7 @@ import {
   MediaHouseApiService,
   ExecutiveApiService
 } from 'app/directory';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @Component({
   selector: 'app-invoice-list',
@@ -42,6 +45,8 @@ export class InvoiceListComponent implements OnInit {
 
   constructor(  private route: ActivatedRoute,
     private clientApi: ClientApiService,
+    private socialSharing: SocialSharing,  
+    private windowService: WindowService,
     private mediaHouseApi: MediaHouseApiService,
     private executiveApi: ExecutiveApiService,
     private router: Router,
@@ -147,27 +152,52 @@ export class InvoiceListComponent implements OnInit {
     return mediaHouse.pubName;
   }
 
-  gen(invoice: Invoice) {
+  gen(invoice: Invoice, share=false, callback?: () => void) {
     this.api.generate(invoice).subscribe(data => {
       if (data.msg) {
         this.notifications.show(data.msg);
       }
       else {
-        console.log(data);
-        
-        let blob = new Blob([data], { type: 'application/pdf' });
-        let url = URL.createObjectURL(blob);
+        document.addEventListener('deviceready', () => {
+          console.log(cordova.file);
 
-        let a = document.createElement('a');
-        a.setAttribute('style', 'display:none;');
-        document.body.appendChild(a);
-        a.download = 'invoice.pdf';
-        a.href = url;
-        a.click();
+        let folderpath = cordova.file.externalRootDirectory + "Download/";
+        let filename = "invoice.pdf";
+       
+        this.windowService.window.resolveLocalFileSystemURL(folderpath, dir => {
+          console.log("Access to the directory granted succesfully");
+          dir.getFile(filename, {create:true}, file => {
+              console.log("File created succesfully.");
+              file.createWriter(fileWriter => {
+                  console.log("Writing content to file");
+                  fileWriter.write(data);
+                  if(callback) {
+                    callback();
+                  }
+                  if(share == false) {
+                    this.notifications.show('Saved invoice.pdf in Download ');
+                  }
+              }, confirm => {
+                  if(share == false) {
+                    this.notifications.show('Unable to save file in path '+ folderpath);
+                  }
+                  else {
+                    this.notifications.show('Unable to share file due to being unable to save file in path '+ folderpath);
+                  }
+                });
+              });
+          });
+        });
       }
     });
   }
 
+  sharePdf(invoice: Invoice) {
+    this.gen(invoice, true, () => {
+      this.socialSharing.share('Share Invoice PDF', 'Share', cordova.file.externalRootDirectory + "Download/invoice.pdf");
+    });
+  }
+  
   sendMsg(invoice: Invoice) {
     this.dialog.getMailingDetails().subscribe(mailingDetails => {
       if (mailingDetails) {

@@ -16,6 +16,9 @@
           <button mat-raised-button color="primary" class="mb-2 bg-primary" (click)="gen(invoice)">
             <mat-icon>get_app</mat-icon> Download
           </button>
+          <button mat-raised-button color="primary" class="mb-2 bg-primary" (click)="sharePdf(invoice)">
+            <mat-icon>share</mat-icon> Share PDF
+          </button>
           <button mat-raised-button color="primary" class="mb-2 bg-info" (click)="sendMsg(invoice)">
             <mat-icon>mail</mat-icon> Send Email
           </button>
@@ -40,6 +43,12 @@
                 <button color="primary" class="btn btn-block btn-outline-primary border-0 btn-sm" (click)="gen(invoice)">
                   <mat-icon>get_app</mat-icon>
                   <div class="small">Download</div>
+                </button>
+              </div>
+              <div class="col">
+                <button color="primary" class="btn btn-block btn-outline-primary border-0 btn-sm" (click)="sharePdf(invoice)">
+                  <mat-icon>share</mat-icon>
+                  <div class="small">Share PDF</div>
                 </button>
               </div>
               <div class="col">

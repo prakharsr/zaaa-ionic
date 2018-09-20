@@ -172,7 +172,7 @@ export class InvoiceComponent implements OnInit {
                           callback();
                         }
                         if(share == false) {
-                          this.notifications.show('Saved releaseorder.pdf in Download ');
+                          this.notifications.show('Saved invoice.pdf in Download ');
                         }
                     }, confirm => {
                         if(share == false) {
