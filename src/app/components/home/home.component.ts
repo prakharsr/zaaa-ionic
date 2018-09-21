@@ -49,17 +49,17 @@ export class HomeComponent implements OnInit {
     if(this.api.isLoggedIn) 
     {
       this.api.getFirmProfile().subscribe(data => this.profile = data);
-      // this.fcm.getToken().then(token => {
-      //   this.api.sendToken(token).subscribe( data => {
-      //     if(data.success) {
-      //       console.log("token sent successfully, token: "+ data);
-      //     }
-      //     else {
-      //       console.log("token couldnot be sent");
-      //     }
+      this.fcm.getToken().then(token => {
+        this.api.sendToken(token).subscribe( data => {
+          if(data.success) {
+            console.log("token sent successfully, token: "+ data);
+          }
+          else {
+            console.log("token couldnot be sent");
+          }
 
-      //   });
-      // });
+        });
+      });
       this.presentLoadingDefault();
       
     }

@@ -92,7 +92,8 @@ export class MhReceiptResponse {
     paymentBankName: string,
     _id: string,
     MHIDate: Date,
-    MHIGrossAmount: number
+    MHIGrossAmount: number,
+    batchID: string
   } []
 }
 

@@ -133,10 +133,7 @@ export class ReceiptComponent implements OnInit {
   }
 
   genPreview() {
-    if (!this.presave()) {
-      return;
-    }
-
+    this.presave();
     this.api.previewReceipthtml(this.receipt).subscribe(data => {
       this.dialog.show(PreviewComponent, { data: data.content }).subscribe(response => {
         switch (response) {
@@ -176,7 +173,7 @@ export class ReceiptComponent implements OnInit {
   }
 
   gen(receipt: PaymentReceipt, share = false, callback?: () => void) {
-    this.api.createReceipt(this.receipt).subscribe(data => {
+    this.api.createReceipt(receipt).subscribe(data => {
       if (data.msg) {
         this.notifications.show(data.msg);
       }
