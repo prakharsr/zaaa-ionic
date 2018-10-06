@@ -1,21 +1,21 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ImportExportApiService } from '../import-export-api.service';
 import { Observable } from 'rxjs/Observable';
-import { NotificationService } from 'app/services';
+import { NotificationService, DialogService } from 'app/services';
+import { DialogComponent } from '../../components';
 
 @Component({
   selector: 'app-import-export',
   templateUrl: './import-export.component.html',
-  
+  styleUrls: ['./import-export.component.css']
 })
 export class ImportExportComponent implements OnInit {
 
-  constructor(  private api: ImportExportApiService,
-    private notifications: NotificationService) { }
+  constructor(private api: ImportExportApiService,
+    private notifications: NotificationService,
+    private dialog: DialogService) { }
 
   ngOnInit() {
-     
   }
 
   private download(fileName: string, base: Observable<any>) {
@@ -44,6 +44,16 @@ export class ImportExportComponent implements OnInit {
       data => {
         if (data.success) {
           this.notifications.show('Imported successfully');
+
+          if (data.errorline) {
+            this.dialog.show(DialogComponent, {
+              data: {
+                title: 'Imported with Errors',
+                message: data.errorline,
+                ok: true
+              }
+            });
+          }
         }
         else {
           console.log(data);

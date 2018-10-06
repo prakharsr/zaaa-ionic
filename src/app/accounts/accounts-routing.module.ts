@@ -26,6 +26,7 @@ import { MediaHouseInvoiceListComponent } from './media-house-invoice-list/media
 import { MediaHouseInvoiceListResolver } from './media-house-invoice-list-resolver.service';
 import { MediaHouseReceiptComponent } from './media-house-receipt/media-house-receipt.component';
 import { MhReceiptListResolver } from './mh-receipt-list-resolver.service';
+import { ReleaseOrderResolver } from '../release-order';
 
 const routes: Routes = [
   {
@@ -127,7 +128,13 @@ const routes: Routes = [
                   resolved: NotesListResolver
                 }
               },
-              { path: 'new', component: CreateNoteComponent }
+              {
+                path: 'new/:id',
+                component: CreateNoteComponent,
+                resolve: {
+                  ro: ReleaseOrderResolver
+                }
+              }
             ]
           },
           {

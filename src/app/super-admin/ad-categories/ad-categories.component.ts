@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { DialogService, NotificationService } from 'app/services';
 import { SuperAdminApiService } from '../super-admin-api.service';
@@ -7,16 +6,15 @@ import { AdCategory } from '../../models/ad-category';
 @Component({
   selector: 'app-ad-categories',
   templateUrl: './ad-categories.component.html',
-  
+  styleUrls: ['./ad-categories.component.css']
 })
 export class AdCategoriesComponent implements OnInit {
 
-  constructor(  private dialog: DialogService,
+  constructor(private dialog: DialogService,
     private api: SuperAdminApiService,
     private notification: NotificationService) { }
 
   ngOnInit() {
-     
     this.api.getCategories(0, null).subscribe(data => {
       this.categories[0] = data;
 

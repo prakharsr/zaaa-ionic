@@ -102,10 +102,6 @@ mat-icon {
     vertical-align: middle;
 }
 
-button[mat-icon-button] {
-    outline: none !important;
-}
-
 ion-navbar:focus {
     outline: none;
 }
@@ -114,9 +110,8 @@ ion-navbar:focus {
     padding: 10px;
 }
 
-.nav-toolbar {
-    background-color: #2196f3;
-    color: white;
+button[mat-icon-button] {
+    outline: none !important;
 }
 
 .mat-toolbar {
@@ -126,4 +121,9 @@ ion-navbar:focus {
 
 .mat-toolbar.fixed-bottom {
     background-color: #f1edec;
+}
+
+.nav-toolbar {
+    background-color: #2196f3;
+    color: white;
 }

@@ -86,7 +86,6 @@ export class ReleaseOrderComponent implements OnInit {
         this.showCalculations = true;
       }
 }
-
   get isTypeWords() {
 
     if (this.mediaType == 'Print' && this.releaseorder.adType == 'Text Classified') {
@@ -506,7 +505,6 @@ export class ReleaseOrderComponent implements OnInit {
   }
 
   ngOnInit() {
-     
     this.dropdownPullOutName = this.others;
 
     this.route.paramMap.subscribe(params => {
@@ -550,6 +548,7 @@ export class ReleaseOrderComponent implements OnInit {
     this.releaseorder.paymentType = 'Credit';
 
     this.releaseorder.rate = null;
+    this.releaseorder.sac = 9983;
 
     this.initExecutive();
   }

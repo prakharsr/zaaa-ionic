@@ -208,7 +208,8 @@ export class ApiService {
           success: true,
           user: this.bodyToUser(data.user),
           firm: this.bodyToFirm(data.firm),
-          plan: data.plan
+          plan: data.plan,
+          rawFirm: data.firm
         }
       })
     );

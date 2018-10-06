@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SuperAdminApiService } from '../super-admin-api.service';
@@ -7,19 +6,18 @@ import { NotificationService } from 'app/services';
 @Component({
   selector: 'app-send-notification',
   templateUrl: './send-notification.component.html',
-  
+  styleUrls: ['./send-notification.component.css']
 })
 export class SendNotificationComponent implements OnInit {
 
   title = "";
   body = "";
 
-  constructor(  private router: Router,
+  constructor(private router: Router,
     private api: SuperAdminApiService,
     private notifications: NotificationService) { }
 
   ngOnInit() {
-     
   }
 
   submit() {

@@ -8,7 +8,8 @@ import { ReportsRoutingModule } from './reports-routing.module';
 
 @NgModule({
   imports: [
-    BaseModule
+    BaseModule,
+    ReportsRoutingModule
   ],
   declarations: [
     ReportsHomeComponent,

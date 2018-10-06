@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ReportsApiService } from '../reports-api.service';
 import { Observable } from 'rxjs/Observable';
@@ -7,7 +6,7 @@ import { NotificationService } from 'app/services';
 @Component({
   selector: 'app-reports-home',
   templateUrl: './reports-home.component.html',
-  
+  styleUrls: ['./reports-home.component.css']
 })
 export class ReportsHomeComponent implements OnInit {
 
@@ -15,11 +14,10 @@ export class ReportsHomeComponent implements OnInit {
   updationPeriod = 0;
   insertionPeriod = 0;
 
-  constructor(  private api: ReportsApiService,
+  constructor(private api: ReportsApiService,
     private notifications: NotificationService) { }
 
   ngOnInit() {
-     
   }
 
   private download(base: Observable<any>) {
