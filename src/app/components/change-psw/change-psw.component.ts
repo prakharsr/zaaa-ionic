@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ApiService, NotificationService } from 'app/services';
 
@@ -13,11 +12,10 @@ export class ChangePswComponent implements OnInit {
   password: string;
   cpassword: string;
 
-  constructor(  private api: ApiService,
+  constructor(private api: ApiService,
     private notifications: NotificationService) { }
 
   ngOnInit() {
-     
   }
 
   submit() {

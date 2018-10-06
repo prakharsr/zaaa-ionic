@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
@@ -32,13 +31,12 @@ export class MediaHouseInvoiceListComponent implements OnInit {
 
   collapsed = true;
 
-  constructor(  private api: AccountsApiService,
+  constructor(private api: AccountsApiService,
     private route: ActivatedRoute,
     private router: Router,
     private mediaHouseApi: MediaHouseApiService) { }
 
   ngOnInit() {
-     
     this.route.data.subscribe((data: { resolved: { list: PageData<MediaHouseInvoice>, search: ReleaseOrderSearchParams } }) => {
       this.list = data.resolved.list.list.map(item => {
         return {

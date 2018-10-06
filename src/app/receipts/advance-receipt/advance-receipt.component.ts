@@ -51,9 +51,8 @@ export class AdvanceReceiptComponent implements OnInit {
     private socialSharing: SocialSharing) { }
 
   ngOnInit() {
-     
-    this.receipt.advanced = true;
     this.receipt.paymentType = this.paymentTypes[0];
+      this.receipt.advanced = true;
 
     this.route.data.subscribe((data: { firm: Firm, user: UserProfile }) => {
       let exe = new Executive();
@@ -272,7 +271,7 @@ export class AdvanceReceiptComponent implements OnInit {
   }
 
 
-  paymentTypes = ['Cash', 'Credit', 'Cheque', 'NEFT'];
+  paymentTypes = ['Cash', 'Cheque', 'NEFT'];
 
   searchMediaHouse = (text: Observable<string>) => {
     return text.debounceTime(300)

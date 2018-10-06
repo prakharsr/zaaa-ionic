@@ -1,4 +1,3 @@
-
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { UserRoles } from '../user-roles';
 
@@ -11,10 +10,9 @@ export class RoleControlComponent implements OnInit {
 
   @Input() @Output() roles = new UserRoles();
 
-  constructor(  ) { }
+  constructor() { }
 
   ngOnInit() {
-     
   }
 
 }

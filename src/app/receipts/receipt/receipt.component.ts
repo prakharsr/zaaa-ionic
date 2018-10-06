@@ -33,6 +33,7 @@ export class ReceiptComponent implements OnInit {
   executive: Executive;
 
   submitting = false;
+  submitted = false;
 
   pastReceipts: PaymentReceipt[] = [];
 
@@ -264,7 +265,6 @@ export class ReceiptComponent implements OnInit {
     else this.notifications.show('Fix errors before submitting');
   }
 
-
   private confirmGeneration() : Observable<boolean> {
 
     return this.dialog.showYesNo('Confirm Generation', "Payment Receipt will be generated. Once generated it cannot be edited or deleted. Are you sure you want to continue?");
@@ -278,7 +278,7 @@ export class ReceiptComponent implements OnInit {
     this.goBack();
   }
 
-  paymentTypes = ['Cash', 'Credit', 'Cheque', 'NEFT'];
+  paymentTypes = ['Cash', 'Cheque', 'NEFT', 'Debit Note'];
 
   selectInvoice() {
     this.dialog.show(SelectInvoiceComponent).subscribe((data: Invoice) => {

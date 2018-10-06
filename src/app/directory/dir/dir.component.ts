@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,7 +10,6 @@ export class DirComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-     
   }
 
 }

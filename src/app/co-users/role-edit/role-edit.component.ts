@@ -1,4 +1,3 @@
-
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserRoles } from '../user-roles';
@@ -15,13 +14,12 @@ export class RoleEditComponent implements OnInit {
   @Input() @Output() roles = new UserRoles();
   id: string;
 
-  constructor(  private api: CoUserApiService,
+  constructor(private api: CoUserApiService,
     private route: ActivatedRoute,
     private router: Router,
     private notifications: NotificationService) { }
 
   ngOnInit() {
-     
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
 

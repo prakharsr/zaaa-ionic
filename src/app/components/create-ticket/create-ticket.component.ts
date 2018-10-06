@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ApiService, NotificationService } from 'app/services';
 import { Router } from '@angular/router';
@@ -13,12 +12,11 @@ export class CreateTicketComponent implements OnInit {
 
   ticket = new Ticket();
 
-  constructor(  private api: ApiService,
+  constructor(private api: ApiService,
     private notifications: NotificationService,
     private router: Router) { }
 
   ngOnInit() {
-     
   }
 
   goBack() {

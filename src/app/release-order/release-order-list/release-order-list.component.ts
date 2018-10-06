@@ -47,6 +47,7 @@ export class ReleaseOrderListComponent implements OnInit {
   pastDays = 0;
 
   collapsed = true;
+  generated = false;
 
   constructor(  private api: ReleaseOrderApiService,
     private dialog: DialogService,
@@ -59,140 +60,141 @@ export class ReleaseOrderListComponent implements OnInit {
     private mediaHouseApi: MediaHouseApiService,
     private executiveApi: ExecutiveApiService) { }
 
-  ngOnInit() {
-     
-    this.route.data.subscribe((data: { resolved: { list: PageData<ReleaseOrder>, search: ReleaseOrderSearchParams }}) => {
-      this.init(data.resolved.list);
-
-      let pub = new MediaHouse();
-      pub.pubName = data.resolved.search.mediaHouse;
-      pub.address.edition = data.resolved.search.edition;
-
-      this.mediaHouse = this.edition = pub;
-     
-      let cl = new Client();
-      cl.orgName = data.resolved.search.client;
-
-      this.client = cl;
-
-      let exe = new Executive();
-      exe.executiveName = data.resolved.search.executive;
-      exe.orgName = data.resolved.search.executiveOrg;
-
-      this.executive = this.executiveOrg = exe;
-
-      this.pastDays = data.resolved.search.past;
-    });
-  }
-
-  private init(data: PageData<ReleaseOrder>) {
-    this.releaseOrders = data.list.map(item => {
-      return {
-        ...item,
-        expanded: false
-      };
-    });
-
-    this.pageCount = data.pageCount;
-    this.page = data.page;
-  }
-
-  searchClient = (text: Observable<string>) => {
-    return text.debounceTime(300)
-      .distinctUntilChanged()
-      .switchMap(term => this.clientApi.searchClients(term))
-      .catch(() => of([]));
-  }
-
-  clientNameFormatter = (client: Client) => client.orgName;
+    ngOnInit() {
+      this.route.data.subscribe((data: { generated: boolean, resolved: { list: PageData<ReleaseOrder>, search: ReleaseOrderSearchParams }}) => {
+        this.generated = data.generated;
   
-  searchExecutive = (text: Observable<string>) => {
-    return text.debounceTime(300)
-      .distinctUntilChanged()
-      .switchMap(term => this.executiveApi.searchExecutives(term))
-      .catch(() => of([]));
-  }
-
-  private get executiveName() {
-    if (this.executive instanceof String) {
-      return this.executive;
-    }
-
-    return this.executive ? this.executive.executiveName : null;
-  }
-
-  searchExecutiveOrg = (text: Observable<string>) => {
-    return text.debounceTime(300)
-      .distinctUntilChanged()
-      .switchMap(term => this.executiveApi.searchExecutivesByOrg(this.executiveName, term))
-      .catch(() => of([]));
-  }
-
-  executiveNameFormatter = (executive: Executive) => {
-    this.executiveOrg = executive;
-
-    return executive.executiveName;
-  }
+        this.init(data.resolved.list);
   
-  executiveOrgFormatter = (executive: Executive) => executive.orgName;
-
-  searchMediaHouse = (text: Observable<string>) => {
-    return text.debounceTime(300)
-      .distinctUntilChanged()
-      .switchMap(term => this.mediaHouseApi.searchMediaHouses(term))
-      .catch(() => of([]));
-  }
-
-  private get mediaHouseName() {
-    if (this.mediaHouse instanceof String) {
-      return this.mediaHouse;
+        let pub = new MediaHouse();
+        pub.pubName = data.resolved.search.mediaHouse;
+        pub.address.edition = data.resolved.search.edition;
+  
+        this.mediaHouse = this.edition = pub;
+       
+        let cl = new Client();
+        cl.orgName = data.resolved.search.client;
+  
+        this.client = cl;
+  
+        let exe = new Executive();
+        exe.executiveName = data.resolved.search.executive;
+        exe.orgName = data.resolved.search.executiveOrg;
+  
+        this.executive = this.executiveOrg = exe;
+  
+        this.pastDays = data.resolved.search.past;
+      });
     }
-
-    return this.mediaHouse ? this.mediaHouse.pubName : null;
-  }
-
-  searchEdition = (text: Observable<string>) => {
-    return text.debounceTime(300)
-      .distinctUntilChanged()
-      .switchMap(term => this.mediaHouseApi.searchMediaHousesByEdition(term, this.mediaHouseName))
-      .catch(() => of([]));
-  }
-
-  editionFormatter = (mediaHouse: MediaHouse) => mediaHouse.address.edition;
-
-  mediaHouseNameFormatter = (mediaHouse: MediaHouse) => {
-    this.edition = mediaHouse;
-
-    return mediaHouse.pubName;
-  }
-
-  private confirmGeneration(releaseOrder: ReleaseOrder) : Observable<boolean> {
-    if (releaseOrder.generated) {
-      return of(true);
+  
+    private init(data: PageData<ReleaseOrder>) {
+      this.releaseOrders = data.list.map(item => {
+        return {
+          ...item,
+          expanded: false
+        };
+      });
+  
+      this.pageCount = data.pageCount;
+      this.page = data.page;
     }
-
-    return this.dialog.showYesNo('Confirm Generation', "Release Order will be generated. Once generated it cannot be edited or deleted. Are you sure you want to continue?");
-  }
-
-  deleteReleaseOrder(releaseOrder: ReleaseOrder) {
-    this.dialog.confirmDeletion("Are you sure you want to delete this Release Order?").subscribe(confirm => {
-      if (!confirm)
-        return;
-
-      this.api.deleteReleaseOrder(releaseOrder).subscribe(
-        data => {
-          if (data.success) {
-            this.releaseOrders = this.releaseOrders.filter(c => c.id !== releaseOrder.id);
+  
+    searchClient = (text: Observable<string>) => {
+      return text.debounceTime(300)
+        .distinctUntilChanged()
+        .switchMap(term => this.clientApi.searchClients(term))
+        .catch(() => of([]));
+    }
+  
+    clientNameFormatter = (client: Client) => client.orgName;
+    
+    searchExecutive = (text: Observable<string>) => {
+      return text.debounceTime(300)
+        .distinctUntilChanged()
+        .switchMap(term => this.executiveApi.searchExecutives(term))
+        .catch(() => of([]));
+    }
+  
+    private get executiveName() {
+      if (this.executive instanceof String) {
+        return this.executive;
+      }
+  
+      return this.executive ? this.executive.executiveName : null;
+    }
+  
+    searchExecutiveOrg = (text: Observable<string>) => {
+      return text.debounceTime(300)
+        .distinctUntilChanged()
+        .switchMap(term => this.executiveApi.searchExecutivesByOrg(this.executiveName, term))
+        .catch(() => of([]));
+    }
+  
+    executiveNameFormatter = (executive: Executive) => {
+      this.executiveOrg = executive;
+  
+      return executive.executiveName;
+    }
+    
+    executiveOrgFormatter = (executive: Executive) => executive.orgName;
+  
+    searchMediaHouse = (text: Observable<string>) => {
+      return text.debounceTime(300)
+        .distinctUntilChanged()
+        .switchMap(term => this.mediaHouseApi.searchMediaHouses(term))
+        .catch(() => of([]));
+    }
+  
+    private get mediaHouseName() {
+      if (this.mediaHouse instanceof String) {
+        return this.mediaHouse;
+      }
+  
+      return this.mediaHouse ? this.mediaHouse.pubName : null;
+    }
+  
+    searchEdition = (text: Observable<string>) => {
+      return text.debounceTime(300)
+        .distinctUntilChanged()
+        .switchMap(term => this.mediaHouseApi.searchMediaHousesByEdition(term, this.mediaHouseName))
+        .catch(() => of([]));
+    }
+  
+    editionFormatter = (mediaHouse: MediaHouse) => mediaHouse.address.edition;
+  
+    mediaHouseNameFormatter = (mediaHouse: MediaHouse) => {
+      this.edition = mediaHouse;
+  
+      return mediaHouse.pubName;
+    }
+  
+    private confirmGeneration(releaseOrder: ReleaseOrder) : Observable<boolean> {
+      if (releaseOrder.generated) {
+        return of(true);
+      }
+  
+      return this.dialog.showYesNo('Confirm Generation', "Release Order will be generated. Once generated it cannot be edited or deleted. Are you sure you want to continue?");
+    }
+  
+    deleteReleaseOrder(releaseOrder: ReleaseOrder) {
+      this.dialog.confirmDeletion("Are you sure you want to delete this Release Order?").subscribe(confirm => {
+        if (!confirm)
+          return;
+  
+        this.api.deleteReleaseOrder(releaseOrder).subscribe(
+          data => {
+            if (data.success) {
+              this.releaseOrders = this.releaseOrders.filter(c => c.id !== releaseOrder.id);
+            }
+            else {
+              console.log(data);
+  
+              this.notifications.show(data.msg);
+            }
           }
-          else {
-            console.log(data);
-
-            this.notifications.show(data.msg);
-          }
-        }
-      );
-    });
-  }
+        );
+      });
+    }
 
   pdf(releaseOrder: ReleaseOrder, share=false, callback?: () => void) {
     this.confirmGeneration(releaseOrder).subscribe(confirm => {
@@ -294,7 +296,16 @@ export class ReleaseOrderListComponent implements OnInit {
   }
 
   search(pageNo: number) {
-    this.router.navigate(['/releaseorders/list/', pageNo], {
+    let url = ['/releaseorders'];
+
+    if (this.generated) {
+      url.push('generated');
+    }
+
+    url.push('list');
+    url.push(String(pageNo));
+
+    this.router.navigate(url, {
       queryParams: new ReleaseOrderSearchParams(this.mediaHouseName, this.editionName, this.clientName, this.executiveName, this.exeOrg, this.pastDays)
     });
   }

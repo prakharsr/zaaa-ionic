@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MediaHouse, MediaHouseScheduling, Pullout } from '../media-house';
@@ -87,7 +86,7 @@ export class MediaHouseComponent implements OnInit {
   global = false;
   isSuperAdmin = false;
   
-  constructor(  private api: MediaHouseApiService,
+  constructor(private api: MediaHouseApiService,
     private route: ActivatedRoute,
     public stateApi: StateApiService,
     private notifications: NotificationService,
@@ -98,7 +97,6 @@ export class MediaHouseComponent implements OnInit {
   }
 
   ngOnInit() {
-     
     this.route.data.subscribe((data: { global: boolean, superAdmin: boolean }) => {
       this.isSuperAdmin = data.superAdmin;
       this.global = data.global;

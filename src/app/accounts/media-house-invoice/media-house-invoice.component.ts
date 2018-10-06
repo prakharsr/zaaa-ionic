@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -23,7 +22,7 @@ export class MediaHouseInvoiceComponent implements OnInit {
   selectedRoId = "";
   releaseOrder;
 
-  constructor(  private dialog: DialogService,
+  constructor(private dialog: DialogService,
     private api: AccountsApiService,
     private route: ActivatedRoute,
     private notifications: NotificationService,
@@ -31,7 +30,6 @@ export class MediaHouseInvoiceComponent implements OnInit {
     private roApi: ReleaseOrderApiService) { }
 
   ngOnInit() {
-     
   }
 
   searchRO = (text: Observable<string>) => {
@@ -69,7 +67,6 @@ export class MediaHouseInvoiceComponent implements OnInit {
       return{
         ...item.insertion,
         insertionDate: this.toDate(item.insertion.date),
-        Amount: 0,
         collectedAmount: 0,
         pendingAmount: 0,
       }

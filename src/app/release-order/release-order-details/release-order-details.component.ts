@@ -8,6 +8,7 @@ import { NotificationService, DialogService, WindowService } from 'app/services'
 import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { AccountsApiService } from '../../accounts';
 
 declare var cordova:any;
 
@@ -21,8 +22,10 @@ export class ReleaseOrderDetailsComponent implements OnInit {
   releaseOrder = new ReleaseOrder();
 
   invoices = [];
+  notes = [];
 
   constructor(  private api: ReleaseOrderApiService,
+    private accountsApi: AccountsApiService,
     private route: ActivatedRoute,
     private router: Router,
     private socialSharing: SocialSharing,
@@ -30,106 +33,111 @@ export class ReleaseOrderDetailsComponent implements OnInit {
     private dialog: DialogService,
     private windowService: WindowService) { }
 
-  ngOnInit() {
-     
-    this.route.data.subscribe((data: { releaseOrder: ReleaseOrder }) => {
-      this.releaseOrder = data.releaseOrder;
-
-      this.api.getInvoices(this.releaseOrder).subscribe(data => this.invoices = data);
-    });
-  }
-
-  toDate(date: NgbDate) {
-    return new Date(date.year, date.month - 1, date.day);
-  }
-
-  get taxDisplay() {
-    let tax = this.releaseOrder.taxAmount.primary + "%";
-
-    if (this.releaseOrder.taxAmount.secondary != 0) {
-      tax += " + " + this.releaseOrder.taxAmount.secondary + "%"
+    ngOnInit() {
+      this.route.data.subscribe((data: { releaseOrder: ReleaseOrder }) => {
+        this.releaseOrder = data.releaseOrder;
+  
+        this.accountsApi.notesForRO(this.releaseOrder).subscribe(data => this.notes = data);
+  
+        this.api.getInvoices(this.releaseOrder).subscribe(data => this.invoices = data);
+      });
     }
-
-    return tax + (this.releaseOrder.taxIncluded ? " Tax Included" : " Tax Excluded");
-  }
-
-  get isTypeWords() {
-
-    if (this.releaseOrder.mediaType == 'Print' && this.releaseOrder.adType == 'Text Classified') {
-      return true;
+  
+    toDate(date: NgbDate) {
+      return new Date(date.year, date.month - 1, date.day);
     }
-
-    if (this.releaseOrder.mediaType == 'Electronic' && this.releaseOrder.adType == 'Scroll') {
-      return true;
+  
+    get taxDisplay() {
+      // let tax = this.releaseOrder.taxAmount.primary + "%";
+  
+      // if (this.releaseOrder.taxAmount.secondary != 0) {
+      //   tax += " + " + this.releaseOrder.taxAmount.secondary + "%"
+      // }
+  
+      // return tax + (this.releaseOrder.taxIncluded ? " Tax Included" : " Tax Excluded");
+  
+      let tax = this.releaseOrder.taxAmount.primary;
+      
+      return tax ? `(Inclusive of ${this.releaseOrder.taxAmount.primary}% tax)` : '';
     }
-
-    return false;
-  }
-
-  get isTypeLen() {
-
-    if (this.releaseOrder.mediaType == 'Print' && this.releaseOrder.adType != 'Text Classified') {
-      return true;
+  
+    get isTypeWords() {
+  
+      if (this.releaseOrder.mediaType == 'Print' && this.releaseOrder.adType == 'Text Classified') {
+        return true;
+      }
+  
+      if (this.releaseOrder.mediaType == 'Electronic' && this.releaseOrder.adType == 'Scroll') {
+        return true;
+      }
+  
+      return false;
     }
-
-    return false;
-  }
-
-  get isTypeTime() {
-
-    if (this.releaseOrder.mediaType == 'Air') {
-      return true;
+  
+    get isTypeLen() {
+  
+      if (this.releaseOrder.mediaType == 'Print' && this.releaseOrder.adType != 'Text Classified') {
+        return true;
+      }
+  
+      return false;
     }
-
-    if (this.releaseOrder.mediaType == 'Electronic' && this.releaseOrder.adType != 'Scroll') {
-      return true;
+  
+    get isTypeTime() {
+  
+      if (this.releaseOrder.mediaType == 'Air') {
+        return true;
+      }
+  
+      if (this.releaseOrder.mediaType == 'Electronic' && this.releaseOrder.adType != 'Scroll') {
+        return true;
+      }
+  
+      return false;
     }
-
-    return false;
-  }
-
-  get rateText() {
-    if (this.isTypeLen) {
-      return this.releaseOrder.fixRate ? "Rate per insertion" : "Rate per sqcm";
+  
+    get rateText() {
+      if (this.isTypeLen) {
+        return this.releaseOrder.fixRate ? "Rate per insertion" : "Rate per sqcm";
+      }
+  
+      if (this.isTypeWords) {
+        return "Rate per insertion";
+      }
+  
+      if (this.isTypeTime) {
+        return "Rate per sec";
+      }
     }
-
-    if (this.isTypeWords) {
-      return "Rate per insertion";
+  
+    private confirmGeneration() : Observable<boolean> {
+      if (this.releaseOrder.generated) {
+        return of(true);
+      }
+  
+      return this.dialog.showYesNo('Confirm Generation', "Release Order will be generated. Once generated it cannot be edited or deleted. Are you sure you want to continue?");
     }
-
-    if (this.isTypeTime) {
-      return "Rate per sec";
-    }
-  }
-
-  private confirmGeneration() : Observable<boolean> {
-    if (this.releaseOrder.generated) {
-      return of(true);
-    }
-
-    return this.dialog.showYesNo('Confirm Generation', "Release Order will be generated. Once generated it cannot be edited or deleted. Are you sure you want to continue?");
-  }
-
-  deleteReleaseOrder() {
-    this.dialog.confirmDeletion("Are you sure you want to delete this Release Order?").subscribe(confirm => {
-      if (!confirm)
-        return;
-
-      this.api.deleteReleaseOrder(this.releaseOrder).subscribe(
-        data => {
-          if (data.success) {
-            // Go to list
-            this.router.navigateByUrl('/releaseorders');
+  
+    deleteReleaseOrder() {
+      this.dialog.confirmDeletion("Are you sure you want to delete this Release Order?").subscribe(confirm => {
+        if (!confirm)
+          return;
+  
+        this.api.deleteReleaseOrder(this.releaseOrder).subscribe(
+          data => {
+            if (data.success) {
+              // Go to list
+              this.router.navigateByUrl('/releaseorders');
+            }
+            else {
+              console.log(data);
+  
+              this.notifications.show(data.msg);
+            }
           }
-          else {
-            console.log(data);
-
-            this.notifications.show(data.msg);
-          }
-        }
-      );
-    });
-  }
+        );
+      });
+    }
 
   pdf(share=false, callback?: () => void) {
     this.confirmGeneration().subscribe(confirm => {

@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
@@ -28,13 +27,12 @@ export class ClientListComponent implements OnInit {
   query: string;
   searchFailed = false;
 
-  constructor(  private api: ClientApiService,
+  constructor(private api: ClientApiService,
     private dialog: DialogService,
     private router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-     
     this.route.data.subscribe((data: { list: PageData<Client> }) => {
       this.clients = data.list.list;
       this.pageCount = data.list.pageCount;

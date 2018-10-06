@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
@@ -24,7 +23,7 @@ export class SummarySheetComponent implements OnInit {
 
   collapsed = true;
 
-  constructor(  private mediaHouseApi: MediaHouseApiService,
+  constructor(private mediaHouseApi: MediaHouseApiService,
     private route: ActivatedRoute,
     private router: Router,
     private api: AccountsApiService,
@@ -32,14 +31,13 @@ export class SummarySheetComponent implements OnInit {
     private dialog: DialogService) { }
 
   ngOnInit() {
-     
     this.route.data.subscribe((data: { resolved: { list: SummarySheetResponse[], search: ReleaseOrderSearchParams }}) => {
       this.summarySheet = data.resolved.list;
 
       if (this.summarySheet.entries) {
         this.summarySheet.forEach(item => {
           item.entries.forEach(entry => {
-            entry.SheetAmount = 0; // This will be filled here
+            entry.SheetAmount = null; // This will be filled here
             entry.checked = false;
           });
         });
@@ -100,12 +98,16 @@ export class SummarySheetComponent implements OnInit {
   submit() {
     let mapped: SummarySheetInsertion[] = [];
 
+    let totalAmount = 0;
+
     this.summarySheet.forEach(item => {
       item.entries.filter(entry => entry.checked).forEach(entry => {
         mapped.push({
           _id: entry._id,
           amount: entry.SheetAmount
         });
+
+        totalAmount += entry.SheetAmount;
       })
     });
 
@@ -115,7 +117,10 @@ export class SummarySheetComponent implements OnInit {
       return;
     }
 
-    this.dialog.show(PaymentDetailsDialogComponent, { width: '400px' }).subscribe((data: PaymentDetails) => {
+    this.dialog.show(PaymentDetailsDialogComponent, {
+      width: '400px',
+      data: { amount: totalAmount }
+    }).subscribe((data: PaymentDetails) => {
       if (data) {
         this.api.generateSummarySheet(data, mapped).subscribe(data => {
           if (data.success) {
@@ -146,5 +151,12 @@ export class SummarySheetComponent implements OnInit {
       case 3:
         return 'Disputed';
     }
+  }
+
+  private round2(num: number) {
+    if (num < 0)
+      return 0;
+
+    return Math.round(num * 100) / 100
   }
 }

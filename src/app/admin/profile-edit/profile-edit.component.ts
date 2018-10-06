@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserProfile } from 'app/models';
@@ -13,13 +12,12 @@ export class ProfileEditComponent implements OnInit {
 
   profile = new UserProfile();
 
-  constructor(  private api: ApiService,
+  constructor(private api: ApiService,
     private route: ActivatedRoute,
     private router: Router,
     private notifications: NotificationService) { }
 
   ngOnInit() {
-     
     this.route.data.subscribe((data: { user: UserProfile }) => {
       this.profile = data.user;
     });

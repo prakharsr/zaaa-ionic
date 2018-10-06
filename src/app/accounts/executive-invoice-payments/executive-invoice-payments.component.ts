@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AccountsApiService, PaymentsResponse, PaymentTotalResponse } from '../accounts-api.service';
@@ -28,13 +27,12 @@ export class ExecutiveInvoicePaymentsComponent implements OnInit {
 
   collapsed = true;
 
-  constructor(  private api: AccountsApiService,
+  constructor(private api: AccountsApiService,
     private executiveApi: ExecutiveApiService,
     private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit() {
-     
     this.route.data.subscribe((data: { resolved: { total: PaymentTotalResponse, executive: string, executiveOrg: string }}) => {
       this.list = data.resolved.total.list.list;
 

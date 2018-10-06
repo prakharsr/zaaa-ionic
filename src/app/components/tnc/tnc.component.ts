@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { TnC, ApiService, NotificationService } from 'app/services';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,13 +13,12 @@ export class TncComponent implements OnInit {
   tnc = new TnC();
   firm: Firm;
 
-  constructor(  private api: ApiService,
+  constructor(private api: ApiService,
     private route: ActivatedRoute,
     private router: Router,
     private notifications: NotificationService) { }
 
   ngOnInit() {
-     
     this.api.tnc.subscribe(data => {
       this.tnc = data;
 

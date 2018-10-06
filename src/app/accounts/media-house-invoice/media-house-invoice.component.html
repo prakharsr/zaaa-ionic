@@ -14,6 +14,12 @@
   <div class="form-group">
     <input type="text" class="form-control" [(ngModel)]="releaseOrder" [ngbTypeahead]="searchRO" placeholder="Release Order No" [resultTemplate]="rtRO" [inputFormatter]="roNoFormatter"/>
   </div>
+
+  <ng-container *ngIf="releaseOrder?.publicationName">
+    <br>
+    <div class="text-muted small">Media House</div>
+    <div>{{releaseOrder.publicationName}} - {{releaseOrder.publicationEdition}}</div>
+  </ng-container>
   
   <br>
 
@@ -34,7 +40,7 @@
         <td>
           <mat-checkbox [(ngModel)]="item.checked">{{toDate(item.insertion.date) | date:'dd-MMM-y'}}</mat-checkbox>
         </td>
-        <td>₹ {{item.insertion.netAmount}}</td>
+        <td>₹ {{item.insertion.Amount}}</td>
         <td>₹ {{item.insertion.taxAmount}}</td>
       </tr>
     </table>

@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { MediaHouseApiService, MediaHouse } from 'app/directory';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -7,7 +6,7 @@ import { NotificationService } from 'app/services';
 import { ReleaseOrderSearchParams } from 'app/release-order';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import { PaymentModePipe } from '../../payment-mode-pipe';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-media-house-receipt',
@@ -20,18 +19,18 @@ export class MediaHouseReceiptComponent implements OnInit {
 
   mediaHouse;
   edition;
+  batchID: string;
 
   collapsed = true;
 
-  constructor(  private mediaHouseApi: MediaHouseApiService,
+  constructor(private mediaHouseApi: MediaHouseApiService,
     private route: ActivatedRoute,
     private api: AccountsApiService,
     private notifications: NotificationService,
     private router: Router) { }
 
   ngOnInit() {
-     
-    this.route.data.subscribe((data: { resolved: { list: MhReceiptResponse[], search: ReleaseOrderSearchParams }}) => {
+    this.route.data.subscribe((data: { resolved: { list: MhReceiptResponse[], search: ReleaseOrderSearchParams, batchID: string }}) => {
       this.list = data.resolved.list;
 
       let pub = new MediaHouse();
@@ -39,13 +38,25 @@ export class MediaHouseReceiptComponent implements OnInit {
       pub.address.edition = data.resolved.search.edition;
 
       this.mediaHouse = this.edition = pub;
+
+      this.batchID = data.resolved.batchID;
     });
   }
 
   search() {
     this.router.navigate(['/accounts/mediahousereceipts/'], {
-      queryParams: new ReleaseOrderSearchParams(this.mediaHouseName, this.editionName, null, null, null, 0)
+      queryParams: {
+        ...new ReleaseOrderSearchParams(this.mediaHouseName, this.editionName, null, null, null, 0),
+        batchID: this.batchID
+      }
     })
+  }
+
+  searchBatchID = (text: Observable<string>) => {
+    return text.debounceTime(300)
+      .distinctUntilChanged()
+      .switchMap(term => this.api.searchBatchIDs(term))
+      .catch(() => of([]));
   }
 
   searchMediaHouse = (text: Observable<string>) => {

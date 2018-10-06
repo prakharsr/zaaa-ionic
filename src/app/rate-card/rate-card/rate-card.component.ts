@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
@@ -31,7 +30,7 @@ export class RateCardComponent implements OnInit {
 
   isSuperAdmin = false;
 
-  constructor(  private api: RateCardApiService,
+  constructor(private api: RateCardApiService,
     private route: ActivatedRoute,
     private router: Router,
     private mediaHouseApi: MediaHouseApiService,
@@ -153,7 +152,6 @@ export class RateCardComponent implements OnInit {
   editionResultFormatter = (result: MediaHouse) => result.address.edition;
 
   ngOnInit() {
-     
     this.route.paramMap.subscribe(params => {
       if (params.has('id')) {
         this.id = params.get('id');

@@ -1,9 +1,9 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserProfile } from 'app/models';
 import { ApiService, DialogService, NotificationService } from 'app/services';
 import { environment } from 'environments/environment';
+import { UserCache } from '../../guards/guard.service';
 
 @Component({
   selector: 'app-profile-view',
@@ -13,16 +13,24 @@ import { environment } from 'environments/environment';
 export class ProfileViewComponent implements OnInit {
 
   profile = new UserProfile();
-
-  constructor(  private api: ApiService,
+  plan: { name: string, expiresOn: Date }
+  
+  constructor(private api: ApiService,
     private dialog: DialogService,
     private notifications: NotificationService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    public cache: UserCache) { }
 
   ngOnInit() {
-     
     this.route.data.subscribe((data: { user: UserProfile }) => {
       this.profile = data.user;
+    });
+
+    this.api.getUserCheck().subscribe(data => {
+      this.plan = {
+        name: data.rawFirm.plan.name,
+        expiresOn: data.rawFirm.plan.expiresOn
+      };
     });
   }
 

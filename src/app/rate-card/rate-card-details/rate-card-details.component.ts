@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RateCard } from '../rate-card';
@@ -19,7 +18,7 @@ export class RateCardDetailsComponent implements OnInit {
   global = false;
   isSuperAdmin = false;
 
-  constructor(  private api: RateCardApiService,
+  constructor(private api: RateCardApiService,
     private superAdminApi: SuperAdminApiService,
     private route: ActivatedRoute,
     private dialog: DialogService,
@@ -27,7 +26,6 @@ export class RateCardDetailsComponent implements OnInit {
     private notifications: NotificationService) { }
 
   ngOnInit() {
-     
     this.route.data.subscribe((data: { rateCard: RateCard, global: boolean, superAdmin: boolean }) => {
       this.ratecard = data.rateCard;
       this.global = data.global;

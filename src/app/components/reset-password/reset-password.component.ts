@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, NotificationService } from 'app/services';
@@ -14,12 +13,11 @@ export class ResetPasswordComponent implements OnInit {
   cpassword: string;
   token: string;
 
-  constructor(  private api: ApiService,
+  constructor(private api: ApiService,
     private route: ActivatedRoute,
     private notifications: NotificationService) { }
 
   ngOnInit() {
-     
     this.route.paramMap.subscribe(params => {
       this.token = params.get('token');
     });

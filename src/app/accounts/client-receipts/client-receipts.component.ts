@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { PaymentReceipt, ReceiptSearchParams } from 'app/receipts';
 import { PageData, UserProfile } from 'app/models';
@@ -28,7 +27,7 @@ export class ClientReceiptsComponent implements OnInit {
 
   allUsers = new UserProfile();
 
-  constructor(  private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,
     private clientApi: ClientApiService,
     private api: AccountsApiService,
     private notifications: NotificationService,
@@ -36,7 +35,6 @@ export class ClientReceiptsComponent implements OnInit {
   }
 
   ngOnInit() {
-     
     this.allUsers.name = "All Users";
     this.selectedUser = this.allUsers;
 

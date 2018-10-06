@@ -53,7 +53,6 @@ export class ReceiptListComponent implements OnInit {
     private api: ReceiptsApiService) { }
 
   ngOnInit() {
-     
     this.route.data.subscribe((data: { resolved: { list: PageData<PaymentReceipt>, search: ReleaseOrderSearchParams }, advance: boolean}) => {
       this.receipts = data.resolved.list.list;
       this.advance = data.advance;

@@ -117,7 +117,7 @@ export class PlanSelectorComponent implements OnInit {
       
       this.api.setPlan(plan, '', new BillingDetails()).subscribe(
         data => {
-          this.router.navigateByUrl('/');
+          this.router.navigateByUrl('/profile');
         },
         err => alert("Plan was not saved.")
       );

@@ -24,18 +24,17 @@ export class InvoiceDetailsComponent implements OnInit {
   constructor(  private route: ActivatedRoute,    private socialSharing: SocialSharing,  private windowService: WindowService,
     private api: InvoiceApiService, private notifications: NotificationService, private dialog: DialogService, private router: Router) { }
 
-  ngOnInit() {
-     
-    this.route.data.subscribe((data: { invoice: Invoice }) => {
-      this.invoice = data.invoice;
-    });
-
-    this.api.getPayedReceipts(this.invoice).subscribe(data => this.receipts = data);
-  }
-
-  toDate(date: NgbDate) {
-    return new Date(date.year, date.month - 1, date.day);
-  }
+    ngOnInit() {
+      this.route.data.subscribe((data: { invoice: Invoice }) => {
+        this.invoice = data.invoice;
+      });
+  
+      this.api.getPayedReceipts(this.invoice).subscribe(data => this.receipts = data);
+    }
+  
+    toDate(date: NgbDate) {
+      return new Date(date.year, date.month - 1, date.day);
+    }
 
   gen(invoice: Invoice, share=false, callback?: () => void) {
     this.api.generate(invoice).subscribe(data => {
@@ -120,6 +119,19 @@ export class InvoiceDetailsComponent implements OnInit {
     this.router.navigate(['/receipts/advance/link', invoice.id]);
   }
 
+  getInsertionStateText(state: number) {
+    switch (state) {
+      case 1:
+        return 'Not Published';
+
+      case 2:
+        return 'Published';
+
+      case 3:
+        return 'Disputed';
+    }
+  }
+
   get taxDisplay() {
     let tax = this.invoice.taxAmount.primary + "%";
 
@@ -131,6 +143,6 @@ export class InvoiceDetailsComponent implements OnInit {
       tax += " (" + this.invoice.taxType + ") ";
     }
 
-    return tax + (this.invoice.taxIncluded ? " Included" : " Excluded");
+    return tax + (this.invoice.taxIncluded ? " Included" : "");
   }
 }

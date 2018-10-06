@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 import { ApiService } from 'app/services';
-import { ReleaseOrderSearchParams } from 'app/release-order';
+import { ReleaseOrderSearchParams, ReleaseOrder } from 'app/release-order';
 import { PageData, MailingDetails } from 'app/models';
 import { PaymentReceipt } from '../receipts';
 import { CreditDebitNote } from './credit-debit-note';
@@ -92,7 +92,7 @@ export class MhReceiptResponse {
     paymentBankName: string,
     _id: string,
     MHIDate: Date,
-    MHIGrossAmount: number,
+    MHIGrossAmount: number
     batchID: string
   } []
 }
@@ -120,11 +120,12 @@ export class AccountsApiService {
     );
   }
 
-  searchMediaHouseReceipts(params: ReleaseOrderSearchParams) : Observable<MhReceiptResponse[]> {
+  searchMediaHouseReceipts(params: ReleaseOrderSearchParams, batchID?: string) : Observable<MhReceiptResponse[]> {
     return this.api.post('/user/mediahouseReceipts/search', {
       publicationName: params.mediaHouse,
       publicationEdition: params.edition,
-      insertionPeriod: params.past
+      insertionPeriod: params.past,
+      batchID: batchID
     }).pipe(
       map(data => {
         let result: MhReceiptResponse[] = [];
@@ -334,5 +335,29 @@ export class AccountsApiService {
     return this.api.post('/user/mediahouseReceipts', {
       mhis: insertions
     })
+  }
+
+  searchBatchIDs(term: string): Observable<string[]> {
+    return this.api.post('/user/batchID', {
+      batchID: term
+    }).pipe(
+      map(data => data.success ? data.batchIDs : [])
+    );
+  }
+
+  notesForRO(ro: ReleaseOrder): Observable<CreditDebitNote[]> {
+    return this.api.post('/user/notes/releaseOrder/search/', {
+      DocId: ro.id
+    }).pipe(
+      map(data => {
+        let result: CreditDebitNote[] = [];
+
+        if (data.success) {
+          result = data.notes;
+        }
+
+        return result;
+      })
+    );
   }
 }

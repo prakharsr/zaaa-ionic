@@ -1,9 +1,7 @@
-import { ApiService } from 'app/services';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserProfile } from 'app/models';
 import { DashboardApiService } from 'app/services/dashboard-api.service';
-import { FCM } from '@ionic-native/fcm';
 
 export class ChartDataItem {
   name: Date;
@@ -19,11 +17,10 @@ export class DashboardComponent implements OnInit {
 
   admin: boolean;
 
-  constructor(  private route: ActivatedRoute,
-    private dashboardApi: DashboardApiService, public fcm: FCM, public api: ApiService) { }
+  constructor(private route: ActivatedRoute,
+    private dashboardApi: DashboardApiService) { }
 
   ngOnInit() {
-     
     this.route.data.subscribe((data: { user: UserProfile }) => {
       this.admin = data.user.isAdmin;
     });
@@ -104,11 +101,11 @@ export class DashboardComponent implements OnInit {
       if (data.success) {
         this.roChartResults = [
           {
-            name: 'Last Year',
+            name: 'Current Year',
             series: []
           },
           {
-            name: 'Current Year',
+            name: 'Last Year',
             series: []
           }
         ];
@@ -125,8 +122,8 @@ export class DashboardComponent implements OnInit {
         }[] = data.releaseOrders;
 
         d.forEach(element => {
-          this.roChartResults[0].series.push({ name: this.toChartKey(element._id), value: element.generated });
-          this.roChartResults[1].series.push({ name: this.toChartKey(element._id), value: element.totalAmount });
+          this.roChartResults[0].series.push({ name: this.toChartKey(element._id), value: element.totalAmount });
+          this.roChartResults[1].series.push({ name: this.toChartKey(element._id), value: element.generated });
         });
       }
     });

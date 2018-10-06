@@ -6,7 +6,7 @@ import { AdCategory } from '../../models/ad-category';
 @Component({
   selector: 'app-ad-categories',
   templateUrl: './ad-categories.component.html',
-  styleUrls: ['./ad-categories.component.css']
+  
 })
 export class AdCategoriesComponent implements OnInit {
 

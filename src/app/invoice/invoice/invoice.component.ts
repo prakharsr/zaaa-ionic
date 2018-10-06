@@ -67,7 +67,6 @@ export class InvoiceComponent implements OnInit {
     private socialSharing: SocialSharing) { }
 
     ngOnInit() {
-       
       this.route.data.subscribe((data: { resolved: ReleaseOrderDir, firm: Firm }) => {
         if (data.resolved) {
           this.init(data.resolved);
@@ -329,6 +328,10 @@ export class InvoiceComponent implements OnInit {
     this.router.navigateByUrl('/invoices');
   }
 
+  round2(num: number) {
+    return Math.round(num * 100) / 100
+  }
+
   presave(): boolean {
     if (!this.availableInsertions.some(val => val.checked)) {
       this.notifications.show('No Insertions selected');
@@ -465,7 +468,14 @@ export class InvoiceComponent implements OnInit {
   }
 
   selectAllInsertions() {
-    this.availableInsertions.forEach(insertion => insertion.checked = true);
+    let target = !this.areAllSelected;
+
+    this.availableInsertions.forEach(insertion => insertion.checked = target);
+  }
+
+  get areAllSelected()
+  {
+    return this.availableInsertions.every(insertion => insertion.checked);
   }
   
   handleSubmit(valid: boolean, callbackName: string) {

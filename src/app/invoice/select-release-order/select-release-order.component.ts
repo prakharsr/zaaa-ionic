@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ReleaseOrder, ReleaseOrderSearchParams, ReleaseOrderApiService } from 'app/release-order';
 import { ClientApiService, MediaHouseApiService, MediaHouse, Client } from 'app/directory';
@@ -24,12 +23,11 @@ export class SelectReleaseOrderComponent implements OnInit {
 
   pastDays = 0;
 
-  constructor(  private clientApi: ClientApiService,
+  constructor(private clientApi: ClientApiService,
     private mediaHouseApi: MediaHouseApiService,
     private roApi: ReleaseOrderApiService) { }
 
   ngOnInit() {
-     
     this.search();
   }
 

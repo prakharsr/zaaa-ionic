@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-date';
@@ -43,7 +42,7 @@ export class InsertionCheckComponent implements OnInit {
 
   pageState: number;
 
-  constructor(  private dialog: DialogService,
+  constructor(private dialog: DialogService,
     private route: ActivatedRoute,
     private api: ReleaseOrderApiService,
     private notifications: NotificationService,
@@ -53,7 +52,6 @@ export class InsertionCheckComponent implements OnInit {
     private executiveApi: ExecutiveApiService) { }
 
   ngOnInit() {
-     
     this.route.paramMap.subscribe(params => {
       this.pageState = +params.get('state');
     });

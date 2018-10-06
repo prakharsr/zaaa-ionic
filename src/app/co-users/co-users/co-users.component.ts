@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CoUser } from '../co-user';
@@ -18,12 +17,11 @@ export class CoUsersComponent implements OnInit {
 
   coUsers: CoUser[] = [];
 
-  constructor(  private api: CoUserApiService,
+  constructor(private api: CoUserApiService,
     private dialog: DialogService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-     
     this.route.data.subscribe((data: { coUsers: CoUser[], user: UserProfile }) => {
       this.coUsers = data.coUsers;
 

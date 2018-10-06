@@ -7,7 +7,7 @@ import { DialogComponent } from '../../components';
 @Component({
   selector: 'app-import-export',
   templateUrl: './import-export.component.html',
-  styleUrls: ['./import-export.component.css']
+  
 })
 export class ImportExportComponent implements OnInit {
 

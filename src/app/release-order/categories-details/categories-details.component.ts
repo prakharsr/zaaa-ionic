@@ -1,4 +1,3 @@
-
 import { Component, OnInit, Inject } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';

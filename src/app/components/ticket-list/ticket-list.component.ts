@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ApiService, NotificationService } from 'app/services';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -20,14 +19,13 @@ export class TicketListComponent implements OnInit {
   isSuperAdmin = false;
   status = 0;
 
-  constructor(  private api: ApiService,
+  constructor(private api: ApiService,
     private superAdminApi: SuperAdminApiService,
     private notification: NotificationService,
     private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit() {
-     
     this.route.data.subscribe((data: { superAdmin: boolean, status: number }) => {
       this.isSuperAdmin = data.superAdmin;
       this.status = data.status;

@@ -21,7 +21,6 @@ import { IonicModule } from 'ionic-angular';
 @NgModule({
   imports: [
     BaseModule,
-    AccountsRoutingModule,
     IonicModule.forRoot(AccountsModule)
   ],
   declarations: [

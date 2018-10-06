@@ -1,4 +1,3 @@
-
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
@@ -15,12 +14,11 @@ export class CoUserComponent implements OnInit {
 
   coUser = new CoUser();
 
-  constructor(  private api: CoUserApiService,
+  constructor(private api: CoUserApiService,
     private router: Router,
     private notifications: NotificationService) { }
 
   ngOnInit() {
-     
   }
 
   private navigateBack() {

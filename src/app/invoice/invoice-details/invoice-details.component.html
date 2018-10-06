@@ -36,25 +36,25 @@
               <div class="col">
                 <button color="primary" class="btn btn-block btn-outline-success border-0 btn-sm" [routerLink]="['/releaseorders', invoice.releaseOrderId]">
                   <mat-icon>call_made</mat-icon>
-                  <div class="small">View R.O.</div>
+                  <div class="small">ViewRO</div>
                 </button>
               </div>
               <div class="col">
                 <button color="primary" class="btn btn-block btn-outline-primary border-0 btn-sm" (click)="gen(invoice)">
                   <mat-icon>get_app</mat-icon>
-                  <div class="small">Download</div>
+                  <div class="small">Downld</div>
                 </button>
               </div>
               <div class="col">
                 <button color="primary" class="btn btn-block btn-outline-primary border-0 btn-sm" (click)="sharePdf(invoice)">
                   <mat-icon>share</mat-icon>
-                  <div class="small">Share PDF</div>
+                  <div class="small">SharePDF</div>
                 </button>
               </div>
               <div class="col">
                 <button color="primary" class="btn btn-block btn-outline-info border-0 btn-sm" (click)="sendMsg(invoice)">
                   <mat-icon>mail</mat-icon>
-                  <div class="small">Email</div>
+                  <div class="small">Mail</div>
                 </button>
               </div>
               <div class="col">
@@ -66,7 +66,7 @@
               <div class="col">
                 <button color="primary" class="btn btn-block btn-outline-primary border-0 btn-sm" (click)="linkAdvanceReceipt(invoice)">
                   <mat-icon>link</mat-icon>
-                  <div class="small">Link Adv. Rcpt</div>
+                  <div class="small">Link AdvRcpt</div>
                 </button>
               </div>
             </div>
@@ -78,8 +78,8 @@
         <div class="small text-muted mt-2">Final Amount (Net Amount + Tax)</div>
         <div>₹ {{invoice.FinalTaxAmount}}</div>
     
-        <div class="small text-muted mt-2">Cleared Amount</div>
-        <div>₹ {{invoice.clearedAmount}}</div>
+        <div class="small text-muted mt-2">Received Amount</div>
+        <div>₹ {{invoice.clearedAmount + invoice.collectedAmount + invoice.shadowAmount}} (Collected: {{invoice.collectedAmount}}, Shadow: {{invoice.shadowAmount}})</div>
         
         <div class="small text-muted mt-2">Pending Amount</div>
         <div>₹ {{invoice.pendingAmount}}</div>
@@ -87,6 +87,66 @@
     </div>
   </mat-card>
   
+  <br>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <br>
+      <mat-card class="mat-elevation-z3">
+        <label>
+          <a matTooltip="View in Directory" [routerLink]="['/dir/media_houses', invoice.mediahouseID]">Media House Details</a>
+        </label>
+
+        <div class="row">
+          <div class="col">
+            <div class="small text-muted mt-2">Name</div>
+            <div>{{invoice.publicationName}}</div>
+          </div>
+          <div class="col">
+            <div class="small text-muted mt-2">Edition</div>
+            <div>{{invoice.publicationEdition}}</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="small text-muted mt-2">State</div>
+            <div>{{invoice.publicationState}}</div>
+          </div>
+          <div class="col">
+            <div class="small text-muted mt-2">GSTIN</div>
+            <div>{{invoice.publicationGSTIN.GSTNo}}</div>
+          </div>
+        </div>
+
+        <div class="small text-muted mt-2">Media Type</div>
+        <div>{{invoice.mediaType}}</div>
+      </mat-card>
+    </div>
+    <div class="col-lg-6">
+      <br>
+      <mat-card class="mat-elevation-z3">
+        <label>
+          <a matTooltip="View in Directory" [routerLink]="['/dir/clients', invoice.clientID]">Client Details</a>
+        </label>
+
+        <div class="small text-muted mt-2">Name</div>
+        <div>{{invoice.clientName}}</div>
+
+        <div class="row">
+          <div class="col">
+            <div class="small text-muted mt-2">State</div>
+            <div>{{invoice.clientState}}</div>
+          </div>
+          <div class="col">
+            <div class="small text-muted mt-2">GSTIN</div>
+            <div>{{invoice.clientGSTIN.GSTType}} {{invoice.clientGSTIN.GSTNo}}</div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
   <br>
 
   <div class="row">
@@ -156,7 +216,7 @@
       <mat-card class="mat-elevation-z3">
         <label class="text-muted">Remarks</label>
         
-        <div class="small text-muted mt-2">For Invoice</div>
+        <div class="small text-muted mt-2">For Invoice (to be printed on Invoice)</div>
         <div>{{invoice.remark || '--'}}</div>
     
         <div class="small text-muted mt-2">For Internal Use</div>
@@ -167,9 +227,13 @@
     <div class="col-lg-6">
       <mat-card class="mat-elevation-z3">
         <label class="text-muted">Insertions</label>
-
-        <div *ngFor="let item of invoice.insertions">
-          {{toDate(item.date) | date:'dd-MMM-y'}}
+        <div class="row" *ngFor="let item of invoice.insertions">
+          <div class="col"
+               [class.text-danger]="item.state == 1"
+               [class.text-success]="item.state == 2"
+               [class.text-warning]="item.state == 3">
+               {{toDate(item.date) | date:'dd-MMM-y'}}
+          </div>
         </div>
       </mat-card>
 
