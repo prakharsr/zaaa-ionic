@@ -142,7 +142,7 @@ export class InvoiceComponent implements OnInit {
 
   saveAndGen(share = false, callback?: () => void) {
     // Confirm
-    this.confirmGeneration(this.invoice).subscribe(confirm => {
+    this.confirmGeneration().subscribe(confirm => {
       if (confirm) {
         // Save
         this.submit().subscribe(data => {
@@ -202,18 +202,15 @@ export class InvoiceComponent implements OnInit {
 
   }
 
-  private confirmGeneration(invoice: Invoice) : Observable<boolean> {
-    if (1) {
-      return of(true);
-    }
+  private confirmGeneration() : Observable<boolean> {
 
-    return this.dialog.showYesNo('Confirm Generation', "Release Order will be generated. Once generated it cannot be edited or deleted. Are you sure you want to continue?");
+    return this.dialog.showYesNo('Confirm Generation', "Invoice will be generated. Once generated it cannot be edited or deleted. Are you sure you want to continue?");
   }
 
 
   saveAndSendMsg() {
     // Confirm
-    this.confirmGeneration(this.invoice).subscribe(confirm => {
+    this.confirmGeneration().subscribe(confirm => {
       if (confirm) {
         // Mailing Details
         this.dialog.getMailingDetails().subscribe(mailingDetails => {

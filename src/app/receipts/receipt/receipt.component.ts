@@ -94,12 +94,49 @@ export class ReceiptComponent implements OnInit {
     });
   }
 
-  saveAndGen() {
+  saveAndGen(share = false, callback?: () => void) {
     this.confirmGeneration().subscribe(confirm=> {
       if(confirm) {
         this.submit().subscribe(data => {
           if (data.success) {
-            this.gen(this.receipt);
+            this.api.generate(this.receipt).subscribe(data => {
+              if (data.msg) {
+                this.notifications.show(data.msg);
+              }
+              else {
+                document.addEventListener('deviceready', () => {
+                  console.log(cordova.file);
+        
+                let folderpath = cordova.file.externalRootDirectory + "Download/";
+                let filename = "receipt.pdf";
+               
+                this.windowService.window.resolveLocalFileSystemURL(folderpath, dir => {
+                  console.log("Access to the directory granted succesfully");
+                  dir.getFile(filename, {create:true}, file => {
+                      console.log("File created succesfully.");
+                      file.createWriter(fileWriter => {
+                          console.log("Writing content to file");
+                          fileWriter.write(data);
+                          if(callback) {
+                            callback();
+                          }
+                          if(share == false) {
+                            this.notifications.show('Saved receipt.pdf in Download ');
+                          }
+                      }, confirm => {
+                          if(share == false) {
+                            this.notifications.show('Unable to save file in path '+ folderpath);
+                          }
+                          else {
+                            this.notifications.show('Unable to share file due to being unable to save file in path '+ folderpath);
+                          }
+                      });
+                  });
+              });
+              this.goBack();
+              });
+              }
+            });
           }
           else this.submitting = false;
         });
@@ -125,7 +162,9 @@ export class ReceiptComponent implements OnInit {
       if(confirm) {
         this.submit().subscribe(data => {
           if (data.success) {
-            this.sharePdf(this.receipt);
+            this.saveAndGen(true, () => {
+              this.socialSharing.share('Share Receipt PDF', 'Share', cordova.file.externalRootDirectory + "Download/receipt.pdf");
+            });
           }
           else this.submitting = false;
         });
@@ -172,55 +211,6 @@ export class ReceiptComponent implements OnInit {
       })
     );
   }
-
-  gen(receipt: PaymentReceipt, share = false, callback?: () => void) {
-    this.api.generate(receipt).subscribe(data => {
-      if (data.msg) {
-        this.notifications.show(data.msg);
-      }
-      else {
-        document.addEventListener('deviceready', () => {
-          console.log(cordova.file);
-
-        let folderpath = cordova.file.externalRootDirectory + "Download/";
-        let filename = "receipt.pdf";
-       
-        this.windowService.window.resolveLocalFileSystemURL(folderpath, dir => {
-          console.log("Access to the directory granted succesfully");
-          dir.getFile(filename, {create:true}, file => {
-              console.log("File created succesfully.");
-              file.createWriter(fileWriter => {
-                  console.log("Writing content to file");
-                  fileWriter.write(data);
-                  if(callback) {
-                    callback();
-                  }
-                  if(share == false) {
-                    this.notifications.show('Saved receipt.pdf in Download ');
-                  }
-              }, confirm => {
-                  if(share == false) {
-                    this.notifications.show('Unable to save file in path '+ folderpath);
-                  }
-                  else {
-                    this.notifications.show('Unable to share file due to being unable to save file in path '+ folderpath);
-                  }
-              });
-          });
-      });
-      this.goBack();
-      });
-      }
-    });
-  }
-
-  sharePdf(receipt: PaymentReceipt) {
-    this.gen(receipt, true, () => {
-      this.socialSharing.share('Share Receipt PDF', 'Share', cordova.file.externalRootDirectory + "Download/receipt.pdf");
-    });
-
-  }
-
 
   sendMsg(receipt: PaymentReceipt) {
     this.dialog.getMailingDetails().subscribe(mailingDetails => {

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, Router } from '@angular/router';
 import { of } from 'rxjs/observable/of';
 import { PaymentReceipt } from '../payment-receipt';
-import { NotificationService, DialogService } from 'app/services';
+import { NotificationService, DialogService, WindowService } from 'app/services';
 import { ReceiptsApiService } from '../receipts-api.service';
 import { PageData } from 'app/models';
 import { ReleaseOrderSearchParams } from 'app/release-order';
@@ -18,6 +18,9 @@ import {
   MediaHouseApiService,
   ExecutiveApiService
 } from 'app/directory';
+import { SocialSharing } from '@ionic-native/social-sharing';
+
+declare var cordova:any;
 
 @Component({
   selector: 'app-receipt-list',
@@ -50,7 +53,9 @@ export class ReceiptListComponent implements OnInit {
     private router: Router,
     private notifications: NotificationService,
     private dialog: DialogService,
-    private api: ReceiptsApiService) { }
+    private api: ReceiptsApiService,
+    private windowService: WindowService,
+    private socialSharing: SocialSharing) { }
 
   ngOnInit() {
     this.route.data.subscribe((data: { resolved: { list: PageData<PaymentReceipt>, search: ReleaseOrderSearchParams }, advance: boolean}) => {
@@ -150,16 +155,85 @@ export class ReceiptListComponent implements OnInit {
     return mediaHouse.pubName;
   }
 
-  gen(receipt: PaymentReceipt) {
-    receiptGen.generate(receipt, this.api, this.notifications);
+  gen(receipt: PaymentReceipt,share = false, callback?: () => void) {
+    this.api.generate(receipt).subscribe(data => {
+      if (data.msg) {
+        this.notifications.show(data.msg);
+      }
+      else {
+        document.addEventListener('deviceready', () => {
+          console.log(cordova.file);
+
+        let folderpath = cordova.file.externalRootDirectory + "Download/";
+        let filename = "receipt.pdf";
+       
+        this.windowService.window.resolveLocalFileSystemURL(folderpath, dir => {
+          console.log("Access to the directory granted succesfully");
+          dir.getFile(filename, {create:true}, file => {
+              console.log("File created succesfully.");
+              file.createWriter(fileWriter => {
+                  console.log("Writing content to file");
+                  fileWriter.write(data);
+                  if(callback) {
+                    callback();
+                  }
+                  if(share == false) {
+                    this.notifications.show('Saved receipt.pdf in Download ');
+                  }
+              }, confirm => {
+                  if(share == false) {
+                    this.notifications.show('Unable to save file in path '+ folderpath);
+                  }
+                  else {
+                    this.notifications.show('Unable to share file due to being unable to save file in path '+ folderpath);
+                  }
+              });
+          });
+      });
+      });
+      }
+    });
   }
 
   sendMsg(receipt: PaymentReceipt) {
-    receiptGen.sendMsg(receipt, this.api, this.notifications, this.dialog);
+    this.dialog.getMailingDetails().subscribe(mailingDetails => {
+      if (mailingDetails) {
+        this.api.sendMail(receipt, mailingDetails).subscribe(data => {
+          if (data.success) {
+            this.notifications.show("Sent Successfully");
+          }
+          else {
+            console.log(data);
+
+            this.notifications.show(data.msg);
+          }
+        });
+      }
+    });
+  }
+
+  cancel(receipt: PaymentReceipt) {
+    
+  this.dialog.showYesNo("Confirm Cancellation", "Do you want to cancel this Receipt? This cannot be undone.").subscribe(confirm => {
+    if (confirm) {
+      this.api.cancel(receipt).subscribe(data => {
+        if (data.success) {
+          this.notifications.show('Cancelled');
+        }
+        else {
+          console.log(data);
+
+          this.notifications.show(data.msg);
+        }
+      });
+    }
+  });
   }
 
   share(receipt: PaymentReceipt) {
-    receiptGen.sharePdf(receipt, this.api, this.notifications, true);
+    this.gen(receipt, true, () => {
+      this.socialSharing.share('Share Receipt PDF', 'Share', cordova.file.externalRootDirectory + "Download/receipt.pdf");
+    });
   }
 
   private get editionName() {
@@ -190,9 +264,5 @@ export class ReceiptListComponent implements OnInit {
     this.router.navigate(['/receipts/list/', pageNo], {
       queryParams: new ReleaseOrderSearchParams(this.mediaHouseName, this.editionName, this.clientName, this.executiveName, this.exeOrg, this.pastDays)
     });
-  }
-
-  cancel(receipt: PaymentReceipt) {
-    receiptGen.cancel(receipt, this.api, this.notifications, this.dialog);
   }
 }

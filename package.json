@@ -39,7 +39,7 @@
     "@swimlane/ngx-charts": "^7.3.0",
     "bootstrap": "^4.1.0",
     "com.razorpay.cordova": "git+https://github.com/razorpay/razorpay-cordova.git",
-    "cordova-android": "^7.1.1",
+    "cordova-android": "7.0.0",
     "cordova-ios": "4.5.5",
     "cordova-osx": "^4.0.2",
     "cordova-pdf-generator": "^2.0.4",
