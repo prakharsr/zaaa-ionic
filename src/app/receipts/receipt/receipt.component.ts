@@ -174,7 +174,7 @@ export class ReceiptComponent implements OnInit {
   }
 
   gen(receipt: PaymentReceipt, share = false, callback?: () => void) {
-    this.api.createReceipt(receipt).subscribe(data => {
+    this.api.generate(receipt).subscribe(data => {
       if (data.msg) {
         this.notifications.show(data.msg);
       }
@@ -208,7 +208,7 @@ export class ReceiptComponent implements OnInit {
               });
           });
       });
-
+      this.goBack();
       });
       }
     });
@@ -228,6 +228,8 @@ export class ReceiptComponent implements OnInit {
         this.api.sendMail(receipt, mailingDetails).subscribe(data => {
           if (data.success) {
             this.notifications.show("Sent Successfully");
+
+            this.goBack();
           }
           else {
             console.log(data);

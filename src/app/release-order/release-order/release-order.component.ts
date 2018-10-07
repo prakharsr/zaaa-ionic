@@ -408,7 +408,7 @@ export class ReleaseOrderComponent implements OnInit {
               //     });
               
               // });
-
+              this.goBack();
       
             });
             

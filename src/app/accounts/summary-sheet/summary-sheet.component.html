@@ -41,12 +41,12 @@
   </div>
 
   <form #ssForm="ngForm" (ngSubmit)="submit()">
-    <button class="fab bg-success" type="submit" [disabled]="!ssForm.form.valid" *ngIf="ssForm.form.valid">
+    <button class="fab bg-success" type="submit" [disabled]="!ssForm.form.valid || submitting" *ngIf="ssForm.form.valid">
       <mat-icon>check</mat-icon>
     </button>
 
     <div *ngIf="summarySheet.length == 0" class="text-muted">
-      <br>No more Media House Invoices are pending.
+      <br>No more Media House Invoices are pending for this MediaHouse.
     </div>
 
     <br>

@@ -183,7 +183,7 @@ export class InvoiceComponent implements OnInit {
                     });
                 });
             });
-
+            this.goBack();
             });
             
               }
@@ -225,6 +225,8 @@ export class InvoiceComponent implements OnInit {
                 this.api.sendMail(this.invoice, mailingDetails).subscribe(data => {
                   if (data.success) {
                     this.notifications.show("Sent Successfully");
+
+                    this.goBack();
 
                   }
                   else {
